@@ -10,12 +10,14 @@ namespace Colourful
 {
     public static class Extensions
     {
+        private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(6);
+
         public static double CheckRange(this double value, double min, double max)
         {
-            if (value < min)
+            if (DoubleComparer.Compare(value, min) < 0)
                 throw new ArgumentOutOfRangeException("value", value, "The minimum value is " + min);
 
-            if (value > max)
+            if (DoubleComparer.Compare(value, max) > 0)
                 throw new ArgumentOutOfRangeException("value", value, "The maximum value is " + max);
 
             return value;

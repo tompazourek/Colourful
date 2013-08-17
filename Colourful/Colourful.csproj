@@ -54,6 +54,8 @@
     <Compile Include="Conversion\IChromaticAdaptation.cs" />
     <Compile Include="Conversion\VonKriesChromaticAdaptation.cs" />
     <Compile Include="Conversion\XYZScaling.cs" />
+    <Compile Include="DoubleRoundingComparer.cs" />
+    <Compile Include="DoublePrecisionComparer.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Colors\IColorVector.cs" />
     <Compile Include="Colors\Illuminants.cs" />
