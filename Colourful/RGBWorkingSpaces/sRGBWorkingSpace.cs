@@ -25,7 +25,7 @@ namespace Colourful.RGBWorkingSpaces
         {
             // Inverse sRGB Companding
             double V = channel;
-            double v = V <= 0.04045 ? V/12.92 : Math.Pow((V + 0.055)/1.055, 2.4);
+            double v = V <= 0.04045 ? V / 12.92 : Math.Pow((V + 0.055) / 1.055, 2.4);
             return v;
         }
 

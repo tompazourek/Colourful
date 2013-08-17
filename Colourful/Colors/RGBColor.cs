@@ -56,7 +56,7 @@ namespace Colourful.Colors
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((RGBColor) obj);
         }
 
@@ -64,7 +64,7 @@ namespace Colourful.Colors
         {
             unchecked
             {
-                return (base.GetHashCode()*397) ^ WorkingSpace.GetHashCode();
+                return (base.GetHashCode() * 397) ^ WorkingSpace.GetHashCode();
             }
         }
 
@@ -106,9 +106,9 @@ namespace Colourful.Colors
 
         public Color ToColor()
         {
-            var r = (byte)Math.Round(R * 255);
-            var g = (byte)Math.Round(G * 255);
-            var b = (byte)Math.Round(B * 255);
+            var r = (byte) Math.Round(R * 255);
+            var g = (byte) Math.Round(G * 255);
+            var b = (byte) Math.Round(B * 255);
             return Color.FromArgb(r, g, b);
         }
 
@@ -120,7 +120,7 @@ namespace Colourful.Colors
         public XYZColor ToXYZ()
         {
             var converter = new RGBToXYZConverter();
-            var result = converter.Convert(this);
+            XYZColor result = converter.Convert(this);
             return result;
         }
 
@@ -131,7 +131,7 @@ namespace Colourful.Colors
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
             var converter = new RGBToXYZConverter();
-            var result = converter.Convert(this, referenceWhite);
+            XYZColor result = converter.Convert(this, referenceWhite);
             return result;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace Colourful.RGBWorkingSpaces
         public double InverseCompanding(double channel)
         {
             // Inverse L* Companding
-            var V = channel;
-            const double kappa = 24389d/27d;
-            var v = V <= 0.08 ? 100*V/kappa : Math.Pow((V + 0.16)/1.16, 3);
+            double V = channel;
+            const double kappa = 24389d / 27d;
+            double v = V <= 0.08 ? 100 * V / kappa : Math.Pow((V + 0.16) / 1.16, 3);
             return v;
         }
 

@@ -21,17 +21,17 @@ namespace Colourful.RGBWorkingSpaces
 
             double Sr, Sg, Sb;
 
-            double Xr = xr/yr;
+            double Xr = xr / yr;
             const double Yr = 1;
-            double Zr = (1 - xr - yr)/yr;
+            double Zr = (1 - xr - yr) / yr;
 
-            double Xg = xg/yg;
+            double Xg = xg / yg;
             const double Yg = 1;
-            double Zg = (1 - xg - yg)/yg;
+            double Zg = (1 - xg - yg) / yg;
 
-            double Xb = xb/yb;
+            double Xb = xb / yb;
             const double Yb = 1;
-            double Zb = (1 - xb - yb)/yb;
+            double Zb = (1 - xb - yb) / yb;
 
             {
                 Matrix<double> S = DenseMatrix.OfRows(3, 3, new[]
@@ -41,16 +41,16 @@ namespace Colourful.RGBWorkingSpaces
                         new[] { Zr, Zg, Zb },
                     }).Inverse();
 
-                var W = workingSpace.ReferenceWhite.Vector;
+                Vector<double> W = workingSpace.ReferenceWhite.Vector;
 
-                (S*W).AssignVariables(out Sr, out Sg, out Sb);
+                (S * W).AssignVariables(out Sr, out Sg, out Sb);
             }
 
             DenseMatrix M = DenseMatrix.OfRows(3, 3, new[]
                 {
-                    new[] { Sr*Xr, Sg*Xg, Sb*Xb },
-                    new[] { Sr*Yr, Sg*Yg, Sb*Yb },
-                    new[] { Sr*Zr, Sg*Zg, Sb*Zb },
+                    new[] { Sr * Xr, Sg * Xg, Sb * Xb },
+                    new[] { Sr * Yr, Sg * Yg, Sb * Yb },
+                    new[] { Sr * Zr, Sg * Zg, Sb * Zb },
                 });
 
             return M;

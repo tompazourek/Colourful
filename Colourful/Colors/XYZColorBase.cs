@@ -58,8 +58,8 @@ namespace Colourful.Colors
             unchecked
             {
                 int hashCode = X.GetHashCode();
-                hashCode = (hashCode*397) ^ Y.GetHashCode();
-                hashCode = (hashCode*397) ^ Z.GetHashCode();
+                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * 397) ^ Z.GetHashCode();
                 return hashCode;
             }
         }

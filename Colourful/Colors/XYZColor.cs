@@ -62,7 +62,7 @@ namespace Colourful.Colors
         {
             unchecked
             {
-                return (base.GetHashCode()*397) ^ ReferenceWhite.GetHashCode();
+                return (base.GetHashCode() * 397) ^ ReferenceWhite.GetHashCode();
             }
         }
 

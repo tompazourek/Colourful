@@ -49,7 +49,7 @@ namespace Colourful.Colors
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((RGBColorBase) obj);
         }
 
@@ -58,8 +58,8 @@ namespace Colourful.Colors
             unchecked
             {
                 int hashCode = R.GetHashCode();
-                hashCode = (hashCode*397) ^ G.GetHashCode();
-                hashCode = (hashCode*397) ^ B.GetHashCode();
+                hashCode = (hashCode * 397) ^ G.GetHashCode();
+                hashCode = (hashCode * 397) ^ B.GetHashCode();
                 return hashCode;
             }
         }

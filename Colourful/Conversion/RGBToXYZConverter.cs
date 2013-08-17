@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
 using Colourful.RGBWorkingSpaces;
+using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful.Conversion
 {
@@ -19,15 +21,15 @@ namespace Colourful.Conversion
         {
             IRGBWorkingSpace workingSpace = input.WorkingSpace;
 
-            var rgb = input.GetUncompandedVector();
-            var matrix = workingSpace.GetRGBToXYZMatrix();
+            Vector<double> rgb = input.GetUncompandedVector();
+            Matrix<double> matrix = workingSpace.GetRGBToXYZMatrix();
 
-            var xyz = matrix*rgb;
+            Vector<double> xyz = matrix * rgb;
 
             double x, y, z;
             xyz.AssignVariables(out x, out y, out z);
 
-            var referenceWhite = workingSpace.ReferenceWhite;
+            XYZColorBase referenceWhite = workingSpace.ReferenceWhite;
 
             return new XYZColor(x, y, z, referenceWhite);
         }
@@ -40,12 +42,12 @@ namespace Colourful.Conversion
         /// <returns></returns>
         public XYZColor Convert(RGBColor input, XYZColorBase referenceWhite)
         {
-            var converted = Convert(input);
+            XYZColor converted = Convert(input);
 
             if (converted.ReferenceWhite == referenceWhite)
                 return converted;
 
-            var output = new BradfordChromaticAdaptation().Transform(converted, referenceWhite);
+            XYZColor output = new BradfordChromaticAdaptation().Transform(converted, referenceWhite);
             return output;
         }
     }

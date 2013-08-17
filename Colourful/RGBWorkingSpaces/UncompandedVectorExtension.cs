@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,8 @@ namespace Colourful.RGBWorkingSpaces
         public static Vector<double> GetUncompandedVector(this RGBColor rgbColor)
         {
             Func<double, double> inverseCompandingFunction = rgbColor.WorkingSpace.InverseCompanding;
-            var compandedVector = rgbColor.Vector;
-            var uncompandedVector = DenseVector.OfEnumerable(compandedVector.Select(inverseCompandingFunction));
+            Vector<double> compandedVector = rgbColor.Vector;
+            DenseVector uncompandedVector = DenseVector.OfEnumerable(compandedVector.Select(inverseCompandingFunction));
             return uncompandedVector;
         }
     }
