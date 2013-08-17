@@ -58,6 +58,13 @@
     <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
+    <Compile Include="RGBWorkingSpaces\AppleRGB1998.cs" />
+    <Compile Include="RGBWorkingSpaces\ApplesRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\BestRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\BetaRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\BruceRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\CIERGB.cs" />
+    <Compile Include="RGBWorkingSpaces\ECIRGBv2.cs" />
     <Compile Include="DoubleRoundingComparer.cs" />
     <Compile Include="DoublePrecisionComparer.cs" />
     <Compile Include="Extensions.cs" />
@@ -70,14 +77,22 @@
     <Compile Include="Conversion\RGBToXYZConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Colors\RGBColorBase.cs" />
+    <Compile Include="RGBWorkingSpaces\ColorMatchRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\DonRGB4.cs" />
+    <Compile Include="RGBWorkingSpaces\EktaSpacePS5.cs" />
     <Compile Include="RGBWorkingSpaces\IInverseCompanding.cs" />
     <Compile Include="RGBWorkingSpaces\InverseGammaCompanding.cs" />
     <Compile Include="RGBWorkingSpaces\InverseLCompanding.cs" />
     <Compile Include="Colors\IRGBWorkingSpace.cs" />
+    <Compile Include="RGBWorkingSpaces\NTSCRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\PALSECAMRGB.cs" />
+    <Compile Include="RGBWorkingSpaces\ProPhotoRGB.cs" />
     <Compile Include="RGBWorkingSpaces\RGBPrimariesChromaticityCoordinates.cs" />
+    <Compile Include="RGBWorkingSpaces\SMPTECRGB.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBInverseCompanding.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBSimplifiedWorkingSpace.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBWorkingSpace.cs" />
+    <Compile Include="RGBWorkingSpaces\WideGamutsRGB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
