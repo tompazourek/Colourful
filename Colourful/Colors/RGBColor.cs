@@ -18,19 +18,32 @@ namespace Colourful.Colors
         #region Other
 
         /// <summary>
-        /// Used when working space is not specified explicitly
+        /// sRGB color space, used when working space is not specified explicitly.
         /// </summary>
-        public static readonly IRGBWorkingSpace ImplicitWorkingSpace = new sRGBWorkingSpace();
+        public static readonly IRGBWorkingSpace DefaultWorkingSpace = WorkingSpaces.sRGB;
+
+        public static class WorkingSpaces
+        {
+            /// <summary>
+            /// sRGB
+            /// </summary>
+            public static readonly IRGBWorkingSpace sRGB = new sRGBWorkingSpace();
+
+            /// <summary>
+            /// Simplified sRGB (uses gamma 2.2 for companding)
+            /// </summary>
+            public static readonly IRGBWorkingSpace sRGBSimplified = new sRGBSimplifiedWorkingSpace();
+        }
 
         #endregion
 
         #region Constructor
 
         /// <remarks>
-        /// Uses <see cref="ImplicitWorkingSpace"/> as working space
+        /// Uses <see cref="DefaultWorkingSpace"/> as working space
         /// </remarks>
         public RGBColor(double r, double g, double b)
-            : this(r, g, b, ImplicitWorkingSpace)
+            : this(r, g, b, DefaultWorkingSpace)
         {
         }
 
@@ -46,6 +59,7 @@ namespace Colourful.Colors
 
         /// <summary>
         /// The color space of RGB color
+        /// <seealso cref="WorkingSpaces"/>
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; private set; }
 
@@ -130,7 +144,7 @@ namespace Colourful.Colors
         }
 
         /// <remarks>
-        /// Output color is adjusted to the given reference white (Bradford adaptation).
+        /// Output color is adjusted to the given reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
         /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {

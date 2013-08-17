@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
 
-namespace Colourful.Conversion
+namespace Colourful.ChromaticAdaptation
 {
     public interface IChromaticAdaptation
     {

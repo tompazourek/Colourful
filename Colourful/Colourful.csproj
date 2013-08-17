@@ -52,11 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conversion\BradfordChromaticAdaptation.cs" />
-    <Compile Include="Conversion\ChromaticAdaptationBase.cs" />
-    <Compile Include="Conversion\IChromaticAdaptation.cs" />
-    <Compile Include="Conversion\VonKriesChromaticAdaptation.cs" />
-    <Compile Include="Conversion\XYZScaling.cs" />
+    <Compile Include="Colors\ChromaticityCoordinates.cs" />
+    <Compile Include="ChromaticAdaptation\BradfordChromaticAdaptation.cs" />
+    <Compile Include="ChromaticAdaptation\ChromaticAdaptationBase.cs" />
+    <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
+    <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
+    <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
     <Compile Include="DoubleRoundingComparer.cs" />
     <Compile Include="DoublePrecisionComparer.cs" />
     <Compile Include="Extensions.cs" />
@@ -69,13 +70,14 @@
     <Compile Include="Conversion\RGBToXYZConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Colors\RGBColorBase.cs" />
-    <Compile Include="RGBWorkingSpaces\InverseGammaCompandingBase.cs" />
-    <Compile Include="RGBWorkingSpaces\InverseLCompandingBase.cs" />
-    <Compile Include="RGBWorkingSpaces\IRGBWorkingSpace.cs" />
-    <Compile Include="RGBWorkingSpaces\RGBSystemChromacityCoordinates.cs" />
-    <Compile Include="RGBWorkingSpaces\RGBToXYZMatricesExtensions.cs" />
+    <Compile Include="RGBWorkingSpaces\IInverseCompanding.cs" />
+    <Compile Include="RGBWorkingSpaces\InverseGammaCompanding.cs" />
+    <Compile Include="RGBWorkingSpaces\InverseLCompanding.cs" />
+    <Compile Include="Colors\IRGBWorkingSpace.cs" />
+    <Compile Include="RGBWorkingSpaces\RGBPrimariesChromaticityCoordinates.cs" />
+    <Compile Include="RGBWorkingSpaces\sRGBInverseCompanding.cs" />
+    <Compile Include="RGBWorkingSpaces\sRGBSimplifiedWorkingSpace.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBWorkingSpace.cs" />
-    <Compile Include="RGBWorkingSpaces\UncompandedVectorExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

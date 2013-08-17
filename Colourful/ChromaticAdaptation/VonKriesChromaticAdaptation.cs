@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.ChromaticAdaptation
 {
     /// <summary>
-    /// Bradfor chromatic adaptation
+    /// Von Kries chromatic adaptation
     /// </summary>
     /// <remarks>
     /// Chromatic adaptation matrix is taken from:
     /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
     /// </remarks>
-    public class BradfordChromaticAdaptation : ChromaticAdaptationBase
+    public class VonKriesChromaticAdaptation : ChromaticAdaptationBase
     {
         public override Matrix<double> MA
         {
@@ -24,9 +24,9 @@ namespace Colourful.Conversion
             {
                 return DenseMatrix.OfRows(3, 3, new[]
                     {
-                        new[] { 0.8951000, 0.2664000, -0.1614000 },
-                        new[] { -0.7502000, 1.7135000, 0.0367000 },
-                        new[] { 0.0389000, -0.0685000, 1.0296000 },
+                        new[] { 0.4002400, 0.7076000, -0.0808100 },
+                        new[] { -0.2263000, 1.1653200, 0.0457000 },
+                        new[] { 0.0000000, 0.0000000, 0.9182200 },
                     });
             }
         }

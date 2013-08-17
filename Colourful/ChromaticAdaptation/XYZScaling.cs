@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.ChromaticAdaptation
 {
     public class XYZScaling : ChromaticAdaptationBase
     {

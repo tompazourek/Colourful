@@ -15,15 +15,15 @@ namespace Colourful.Colors
         #region Other
 
         /// <summary>
-        /// Used when reference white is not specified explicitly
+        /// D50, used when reference white is not specified explicitly
         /// </summary>
-        public static readonly XYZColorBase ImplicitReferenceWhite = Illuminants.D50;
+        public static readonly XYZColorBase DefaultReferenceWhite = Illuminants.D50;
 
         #endregion
 
         #region Constructor
 
-        public XYZColor(double x, double y, double z) : this(x, y, z, ImplicitReferenceWhite)
+        public XYZColor(double x, double y, double z) : this(x, y, z, DefaultReferenceWhite)
         {
         }
 
