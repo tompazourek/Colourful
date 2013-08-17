@@ -8,7 +8,7 @@ using Colourful.Colors;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.ChromaticAdaptation
 {
     /// <summary>
     /// Chromatic adaptation.

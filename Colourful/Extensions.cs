@@ -8,7 +8,7 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful
 {
-    public static class Extensions
+    internal static class Extensions
     {
         private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(6);
 

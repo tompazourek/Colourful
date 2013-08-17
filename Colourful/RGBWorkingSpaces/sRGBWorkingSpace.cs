@@ -8,35 +8,38 @@ using Colourful.Colors;
 
 namespace Colourful.RGBWorkingSpaces
 {
-    //http://www.brucelindbloom.com/index.html?ColorCheckerCalcHelp.html
+    /// <summary>
+    /// sRGB working space
+    /// </summary>
+    /// <remarks>
+    /// Uses proper companding function, according to:
+    /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
+    /// <br />
+    /// Chromaticity coordinates taken from:
+    /// http://www.brucelindbloom.com/index.html?WorkingSpaceInfo.html
+    /// </remarks>
     public class sRGBWorkingSpace : IRGBWorkingSpace
     {
-        private static readonly RGBSystemChromacityCoordinates ChromacityCoordinatesConst = new RGBSystemChromacityCoordinates
+        internal static readonly RGBPrimariesChromaticityCoordinates ChromaticityCoordinatesConst = new RGBPrimariesChromaticityCoordinates
             {
-                xr = 0.6400,
-                yr = 0.3300,
-                xg = 0.3000,
-                yg = 0.6000,
-                xb = 0.1500,
-                yb = 0.0600,
+                R = new ChromaticityCoordinates(0.6400, 0.3300),
+                G = new ChromaticityCoordinates(0.3000, 0.6000),
+                B = new ChromaticityCoordinates(0.1500, 0.0600),
             };
-
-        public double InverseCompanding(double channel)
-        {
-            // Inverse sRGB Companding
-            double V = channel;
-            double v = V <= 0.04045 ? V / 12.92 : Math.Pow((V + 0.055) / 1.055, 2.4);
-            return v;
-        }
 
         public XYZColorBase ReferenceWhite
         {
             get { return Illuminants.D65; }
         }
 
-        public RGBSystemChromacityCoordinates ChromacityCoordinates
+        public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates
         {
-            get { return ChromacityCoordinatesConst; }
+            get { return ChromaticityCoordinatesConst; }
+        }
+
+        public IInverseCompanding InverseCompanding
+        {
+            get { return new sRGBInverseCompanding(); }
         }
     }
 }
