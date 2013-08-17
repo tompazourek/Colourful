@@ -9,6 +9,13 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful.Conversion
 {
+    /// <summary>
+    /// Von Kries chromatic adaptation
+    /// </summary>
+    /// <remarks>
+    /// Chromatic adaptation matrix is taken from:
+    /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
+    /// </remarks>
     public class VonKriesChromaticAdaptation : ChromaticAdaptationBase
     {
         public override Matrix<double> MA

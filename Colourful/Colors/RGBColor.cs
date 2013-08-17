@@ -26,6 +26,9 @@ namespace Colourful.Colors
 
         #region Constructor
 
+        /// <remarks>
+        /// Uses <see cref="ImplicitWorkingSpace"/> as working space
+        /// </remarks>
         public RGBColor(double r, double g, double b)
             : this(r, g, b, ImplicitWorkingSpace)
         {
@@ -41,6 +44,9 @@ namespace Colourful.Colors
 
         #region Attributes
 
+        /// <summary>
+        /// The color space of RGB color
+        /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; private set; }
 
         #endregion
@@ -113,10 +119,9 @@ namespace Colourful.Colors
         }
 
 
-        /// <summary>
-        /// Converts to XYZ, target reference white is taken from RGB working space
-        /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reference white of output is taken from RGB working space.
+        /// </remarks>
         public XYZColor ToXYZ()
         {
             var converter = new RGBToXYZConverter();
@@ -124,10 +129,9 @@ namespace Colourful.Colors
             return result;
         }
 
-        /// <summary>
-        /// Converts to XYZ, output color is adjusted to the given reference white (Bradford adaptation)
-        /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Output color is adjusted to the given reference white (Bradford adaptation).
+        /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
             var converter = new RGBToXYZConverter();

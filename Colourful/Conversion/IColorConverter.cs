@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Colourful.Conversion
 {
-    internal interface IColorConverter<in TInput, out TOutput>
+    /// <summary>
+    /// Converts between two color spaces
+    /// </summary>
+    /// <typeparam name="TInput"></typeparam>
+    /// <typeparam name="TOutput"></typeparam>
+    public interface IColorConverter<in TInput, out TOutput>
     {
         TOutput Convert(TInput input);
     }

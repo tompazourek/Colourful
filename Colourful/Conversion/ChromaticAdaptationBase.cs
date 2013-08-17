@@ -10,13 +10,21 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful.Conversion
 {
+    /// <summary>
+    /// Chromatic adaptation.
+    /// A linear transformation of a source color (XS, YS, ZS) into a destination color (XD, YD, ZD) by a linear transformation [M]
+    /// which is dependent on the source reference white (XWS, YWS, ZWS) and the destination reference white (XWD, YWD, ZWD).
+    /// </summary>
     public abstract class ChromaticAdaptationBase : IChromaticAdaptation
     {
+        /// <summary>
+        /// Definition of the cone response domain.
+        /// </summary>
         public abstract Matrix<double> MA { get; }
 
         public XYZColor Transform(XYZColor source, XYZColorBase destinationReferenceWhite)
         {
-            // http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
+            // transformation described here: http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
             double rhoS, gammaS, betaS, rhoD, gammaD, betaD;
             (MA * source.ReferenceWhite.Vector).AssignVariables(out rhoS, out gammaS, out betaS);
             (MA * destinationReferenceWhite.Vector).AssignVariables(out rhoD, out gammaD, out betaD);

@@ -10,6 +10,9 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful.Conversion
 {
+    /// <summary>
+    /// Converts from RGB to XYZ
+    /// </summary>
     public class RGBToXYZConverter : IColorConverter<RGBColor, XYZColor>
     {
         /// <summary>
