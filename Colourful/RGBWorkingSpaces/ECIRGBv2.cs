@@ -17,9 +17,9 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class ECIRGBv2 : IRGBWorkingSpace
     {
-        public IInverseCompanding InverseCompanding
+        public ICompanding Companding
         {
-            get { return new InverseLCompanding(); }
+            get { return new LCompanding(); }
         }
 
         public virtual XYZColorBase ReferenceWhite

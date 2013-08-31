@@ -83,9 +83,7 @@ namespace Colourful.Colors
 
         public static LabColor FromXYZ(XYZColor input)
         {
-            var converter = new XYZAndLabConverter();
-            LabColor result = converter.Convert(input);
-            return result;
+            return input.ToLab();
         }
 
         #endregion

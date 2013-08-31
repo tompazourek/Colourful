@@ -17,9 +17,9 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class DonRGB4 : IRGBWorkingSpace
     {
-        public IInverseCompanding InverseCompanding
+        public ICompanding Companding
         {
-            get { return new InverseGammaCompanding(2.2); }
+            get { return new GammaCompanding(2.2); }
         }
 
         public virtual XYZColorBase ReferenceWhite

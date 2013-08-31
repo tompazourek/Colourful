@@ -25,11 +25,12 @@ namespace Colourful.Colors
         RGBPrimariesChromaticityCoordinates ChromaticityCoordinates { get; }
 
         /// <summary>
-        /// Used for conversion to XYZ.
-        /// The companded channel (R, G, B) is made linear with respect to the energy using this function.
+        /// The companding function associated with the RGB color system.
+        /// Used for conversion to XYZ and backward.
         /// See this for more information:
         /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
+        /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
         /// </summary>
-        IInverseCompanding InverseCompanding { get; }
+        ICompanding Companding { get; }
     }
 }

@@ -50,7 +50,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="XYZAndLabConversionTest.cs" />
-    <Compile Include="RGBToXYZConversionTest.cs" />
+    <Compile Include="RGBAndXYZConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

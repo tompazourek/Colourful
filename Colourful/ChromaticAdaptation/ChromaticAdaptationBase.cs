@@ -24,6 +24,18 @@ namespace Colourful.ChromaticAdaptation
 
         public XYZColor Transform(XYZColor source, XYZColorBase destinationReferenceWhite)
         {
+            double XD, YD, ZD;
+            TransformCore(source, destinationReferenceWhite, out XD, out YD, out ZD);
+
+            XD = XD.CropRange(0, destinationReferenceWhite.X);
+            YD = YD.CropRange(0, destinationReferenceWhite.Y);
+            ZD = ZD.CropRange(0, destinationReferenceWhite.Z);
+
+            return new XYZColor(XD, YD, ZD, destinationReferenceWhite);
+        }
+
+        private void TransformCore(XYZColor source, XYZColorBase destinationReferenceWhite, out double XD, out double YD, out double ZD)
+        {
             // transformation described here: http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
             double rhoS, gammaS, betaS, rhoD, gammaD, betaD;
             (MA * source.ReferenceWhite.Vector).AssignVariables(out rhoS, out gammaS, out betaS);
@@ -32,10 +44,15 @@ namespace Colourful.ChromaticAdaptation
             DiagonalMatrix diagonalMatrix = DiagonalMatrix.OfDiagonal(3, 3, new[] { rhoD / rhoS, gammaD / gammaS, betaD / betaS });
             Matrix<double> M = MA.Inverse() * diagonalMatrix * MA;
 
-            double XD, YD, ZD;
             (M * source.Vector).AssignVariables(out XD, out YD, out ZD);
+        }
 
-            return new XYZColor(XD, YD, ZD, destinationReferenceWhite);
+        public XYZColorBase TransformNonCropped(XYZColor source, XYZColorBase destinationReferenceWhite)
+        {
+            double XD, YD, ZD;
+            TransformCore(source, destinationReferenceWhite, out XD, out YD, out ZD);
+
+            return new XYZColorBase(XD, YD, ZD);
         }
     }
 }

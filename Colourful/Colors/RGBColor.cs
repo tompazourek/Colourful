@@ -196,6 +196,23 @@ namespace Colourful.Colors
             return new RGBColor(r, g, b);
         }
 
+        /// <remarks>
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// </remarks>
+        public static RGBColor FromXYZ(XYZColor input, IRGBWorkingSpace workingSpace)
+        {
+            return input.ToRGB(workingSpace);
+        }
+
+        /// <remarks>
+        /// Target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// </remarks>
+        public static RGBColor FromXYZ(XYZColor input)
+        {
+            return input.ToRGB();
+        }
+
         #endregion
 
         #region To
@@ -208,23 +225,22 @@ namespace Colourful.Colors
             return Color.FromArgb(r, g, b);
         }
 
-
         /// <remarks>
         /// Reference white of output is taken from RGB working space.
         /// </remarks>
         public XYZColor ToXYZ()
         {
-            var converter = new RGBToXYZConverter();
+            var converter = new RGBAndXYZConverter();
             XYZColor result = converter.Convert(this);
             return result;
         }
 
         /// <remarks>
-        /// Output color is adjusted to the given reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
+        /// Output color is adjusted to the given reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
         /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
-            var converter = new RGBToXYZConverter();
+            var converter = new RGBAndXYZConverter();
             XYZColor result = converter.Convert(this, referenceWhite);
             return result;
         }
@@ -241,11 +257,6 @@ namespace Colourful.Colors
         public static implicit operator RGBColor(Color color)
         {
             return FromColor(color);
-        }
-
-        public static implicit operator XYZColor(RGBColor color)
-        {
-            return color.ToXYZ();
         }
 
         #endregion

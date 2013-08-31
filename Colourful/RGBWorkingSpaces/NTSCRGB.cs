@@ -17,9 +17,9 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class NTSCRGB : IRGBWorkingSpace
     {
-        public IInverseCompanding InverseCompanding
+        public ICompanding Companding
         {
-            get { return new InverseGammaCompanding(2.2); }
+            get { return new GammaCompanding(2.2); }
         }
 
         public virtual XYZColorBase ReferenceWhite

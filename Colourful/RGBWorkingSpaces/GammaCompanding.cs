@@ -8,27 +8,34 @@ using System.Threading.Tasks;
 namespace Colourful.RGBWorkingSpaces
 {
     /// <summary>
-    /// Inverse gamma companding
+    /// Gamma companding
     /// </summary>
     /// <remarks>
     /// For more info see:
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
+    /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    public class InverseGammaCompanding : IInverseCompanding
+    public class GammaCompanding : ICompanding
     {
-        public double Gamma { get; private set;}
+        public double Gamma { get; private set; }
 
-        public InverseGammaCompanding(double gamma)
+        public GammaCompanding(double gamma)
         {
             Gamma = gamma;
         }
 
         public double InverseCompanding(double channel)
         {
-            // inverse gamma companding
             double V = channel;
             double v = Math.Pow(V, Gamma);
             return v;
+        }
+
+        public double Companding(double channel)
+        {
+            double v = channel;
+            double V = Math.Pow(v, 1/Gamma);
+            return V;
         }
     }
 }

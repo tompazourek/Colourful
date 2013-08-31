@@ -27,9 +27,9 @@ namespace Colourful.RGBWorkingSpaces
             get { return sRGBWorkingSpace.ChromaticityCoordinatesConst; }
         }
 
-        public IInverseCompanding InverseCompanding
+        public ICompanding Companding
         {
-            get { return new InverseGammaCompanding(2.2); }
+            get { return new GammaCompanding(2.2); }
         }
     }
 }

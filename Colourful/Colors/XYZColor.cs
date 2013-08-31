@@ -89,9 +89,7 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromLab(LabColor input)
         {
-            var converter = new XYZAndLabConverter();
-            var result = converter.Convert(input);
-            return result;
+            return input.ToXYZ();
         }
 
         /// <remarks>
@@ -99,9 +97,23 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromLab(LabColor input, XYZColorBase referenceWhite)
         {
-            var converter = new XYZAndLabConverter();
-            var result = converter.Convert(input, referenceWhite);
-            return result;
+            return input.ToXYZ(referenceWhite);
+        }
+
+        /// <remarks>
+        /// Reference white of output is taken from RGB working space.
+        /// </remarks>
+        public static XYZColor FromRGB(RGBColor input)
+        {
+            return input.ToXYZ();
+        }
+
+        /// <remarks>
+        /// Output color is adjusted to the given reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// </remarks>
+        public static XYZColor FromRGB(RGBColor input, XYZColorBase referenceWhite)
+        {
+            return input.ToXYZ(referenceWhite);
         }
 
         #endregion
@@ -112,6 +124,27 @@ namespace Colourful.Colors
         {
             var converter = new XYZAndLabConverter();
             LabColor result = converter.Convert(this);
+            return result;
+        }
+
+        /// <remarks>
+        /// Target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// </remarks>
+        public RGBColor ToRGB()
+        {
+            var converter = new RGBAndXYZConverter();
+            RGBColor result = converter.Convert(this);
+            return result;
+        }
+
+        /// <remarks>
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// </remarks>
+        public RGBColor ToRGB(IRGBWorkingSpace workingSpace)
+        {
+            var converter = new RGBAndXYZConverter();
+            RGBColor result = converter.Convert(this, workingSpace);
             return result;
         }
 
