@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Conversion;
 
 namespace Colourful.Colors
 {
@@ -75,6 +76,21 @@ namespace Colourful.Colors
         {
             return !Equals(left, right);
         }
+
+        #endregion
+
+        #region Conversions
+
+        #region To
+
+        public LabColor ToLab()
+        {
+            var converter = new XYZToLabConverter();
+            LabColor result = converter.Convert(this);
+            return result;
+        }
+
+        #endregion
 
         #endregion
     }

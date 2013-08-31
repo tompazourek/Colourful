@@ -24,12 +24,6 @@ namespace Colourful.Tests
         /// <summary>
         /// Tests conversion from RGB (default sRGB workspace) to XYZ (D65)
         /// </summary>
-        /// <param name="r"></param>
-        /// <param name="g"></param>
-        /// <param name="b"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
         [Test]
         [TestCase(1, 1, 1, 0.950470, 1.000000, 1.088830)]
         [TestCase(0, 0, 0, 0, 0, 0)]
