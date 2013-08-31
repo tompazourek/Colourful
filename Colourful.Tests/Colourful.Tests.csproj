@@ -49,7 +49,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="XYZToLabConversionTest.cs" />
+    <Compile Include="XYZAndLabConversionTest.cs" />
     <Compile Include="RGBToXYZConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Conversion;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
@@ -16,7 +17,7 @@ namespace Colourful.Colors
     {
         #region Constructor
 
-        internal LabColor(double l, double a, double b)
+        public LabColor(double l, double a, double b)
         {
             L = l;
             this.a = a;
@@ -73,6 +74,45 @@ namespace Colourful.Colors
         {
             return !Equals(left, right);
         }
+
+        #endregion
+
+        #region Conversions
+
+        #region From
+
+        public static LabColor FromXYZ(XYZColor input)
+        {
+            var converter = new XYZAndLabConverter();
+            LabColor result = converter.Convert(input);
+            return result;
+        }
+
+        #endregion
+
+        #region To
+
+        /// <remarks>
+        /// Target reference white is <see cref="XYZColor.DefaultReferenceWhite"/>.
+        /// </remarks>
+        public XYZColor ToXYZ()
+        {
+            var converter = new XYZAndLabConverter();
+            var result = converter.Convert(this);
+            return result;
+        }
+
+        /// <remarks>
+        /// Target XYZ color has given reference white.
+        /// </remarks>
+        public XYZColor ToXYZ(XYZColorBase referenceWhite)
+        {
+            var converter = new XYZAndLabConverter();
+            var result = converter.Convert(this, referenceWhite);
+            return result;
+        }
+
+        #endregion
 
         #endregion
     }

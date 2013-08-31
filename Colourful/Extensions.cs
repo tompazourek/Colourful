@@ -23,6 +23,17 @@ namespace Colourful
             return value;
         }
 
+        public static double CropRange(this double value, double min, double max)
+        {
+            if (DoubleComparer.Compare(value, min) < 0)
+                return min;
+
+            if (DoubleComparer.Compare(value, max) > 0)
+                return max;
+
+            return value;
+        }
+
         public static void AssignVariables(this Vector<double> vector, out double v1, out double v2, out double v3)
         {
             if (vector.Count != 3)

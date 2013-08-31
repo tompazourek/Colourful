@@ -40,6 +40,7 @@ namespace Colourful.Colors
 
         #region Attributes
 
+        /// <see cref="Illuminants"/>
         public XYZColorBase ReferenceWhite { get; private set; }
 
         #endregion
@@ -81,11 +82,35 @@ namespace Colourful.Colors
 
         #region Conversions
 
+        #region From
+
+        /// <remarks>
+        /// Target reference white is <see cref="DefaultReferenceWhite"/>.
+        /// </remarks>
+        public static XYZColor FromLab(LabColor input)
+        {
+            var converter = new XYZAndLabConverter();
+            var result = converter.Convert(input);
+            return result;
+        }
+
+        /// <remarks>
+        /// Target XYZ color has given reference white.
+        /// </remarks>
+        public static XYZColor FromLab(LabColor input, XYZColorBase referenceWhite)
+        {
+            var converter = new XYZAndLabConverter();
+            var result = converter.Convert(input, referenceWhite);
+            return result;
+        }
+
+        #endregion
+
         #region To
 
         public LabColor ToLab()
         {
-            var converter = new XYZToLabConverter();
+            var converter = new XYZAndLabConverter();
             LabColor result = converter.Convert(this);
             return result;
         }

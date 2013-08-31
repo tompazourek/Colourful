@@ -59,7 +59,7 @@
     <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
     <Compile Include="Colors\LabColor.cs" />
-    <Compile Include="Conversion\XYZToLabConverter.cs" />
+    <Compile Include="Conversion\XYZAndLabConverter.cs" />
     <Compile Include="RGBWorkingSpaces\AppleRGB1998.cs" />
     <Compile Include="RGBWorkingSpaces\ApplesRGB.cs" />
     <Compile Include="RGBWorkingSpaces\BestRGB.cs" />
