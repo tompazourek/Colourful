@@ -21,6 +21,7 @@ namespace Colourful.Colors
         /// sRGB color space.
         /// Used when working space is not specified explicitly.
         /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBWorkingSpaces.sRGB;
 
         #endregion

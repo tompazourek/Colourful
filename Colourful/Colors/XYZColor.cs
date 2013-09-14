@@ -20,6 +20,7 @@ namespace Colourful.Colors
         /// D50 standard illuminant.
         /// Used when reference white is not specified explicitly.
         /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XYZColorBase DefaultReferenceWhite = Illuminants.D50;
 
         #endregion

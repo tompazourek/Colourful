@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public class RGBWorkingSpaceEqualityComparer : IEqualityComparer<IRGBWorkingSpace>
     {
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IEqualityComparer<IRGBWorkingSpace> Default = new RGBWorkingSpaceEqualityComparer();
 
         public bool Equals(IRGBWorkingSpace x, IRGBWorkingSpace y)
