@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests LCH(ab)-LAB conversions
+    /// Tests <see cref="LabColor"/>-<see cref="LChabColor"/> conversions.
     /// </summary>
     /// <remarks>
     /// Test data generated using:
@@ -22,7 +22,7 @@ namespace Colourful.Tests
         private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
 
         /// <summary>
-        /// Tests conversion from L*a*b* to L*C*h (ab)
+        /// Tests conversion from <see cref="LabColor"/> to <see cref="LChabColor"/>.
         /// </summary>
         [Test]
         [TestCase(0, 0, 0, 0, 0, 0)]
@@ -34,7 +34,7 @@ namespace Colourful.Tests
         [TestCase(10, -20, 30, 10, 36.0555, 123.6901)]
         [TestCase(10, 20, -30, 10, 36.0555, 303.6901)]
         [TestCase(10, -20, -30, 10, 36.0555, 236.3099)]
-        public void Convert_LAB_to_LCHab(double l, double a, double b, double l2, double c, double h)
+        public void Convert_Lab_to_LCHab(double l, double a, double b, double l2, double c, double h)
         {
             // arrange
             var input = new LabColor(l, a, b);
@@ -49,7 +49,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Tests conversion from L*C*h (ab) to L*a*b*
+        /// Tests conversion from <see cref="LChabColor"/> to <see cref="LabColor"/>.
         /// </summary>
         [Test]
         [TestCase(0, 0, 0, 0, 0, 0)]
@@ -61,7 +61,7 @@ namespace Colourful.Tests
         [TestCase(10, 36.0555, 123.6901, 10, -20, 30)]
         [TestCase(10, 36.0555, 303.6901, 10, 20, -30)]
         [TestCase(10, 36.0555, 236.3099, 10, -20, -30)]
-        public void Convert_LCHab_to_LAB(double l, double c, double h, double l2, double a, double b)
+        public void Convert_LCHab_to_Lab(double l, double c, double h, double l2, double a, double b)
         {
             // arrange
             var input = new LChabColor(l, c, h);

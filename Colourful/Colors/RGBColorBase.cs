@@ -10,12 +10,15 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Colors
 {
     /// <summary>
-    /// RGB color without working space
+    /// RGB color without specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
     public class RGBColorBase : IColorVector
     {
         #region Constructor
 
+        /// <param name="r">Red (from 0 to 1)</param>
+        /// <param name="g">Green (from 0 to 1)</param>
+        /// <param name="b">Blue (from 0 to 1)</param>
         internal RGBColorBase(double r, double g, double b)
         {
             R = r.CheckRange(0, 1);
@@ -27,10 +30,33 @@ namespace Colourful.Colors
 
         #region Channels
 
+        /// <summary>
+        /// Red
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
         public double R { get; private set; }
+
+        /// <summary>
+        /// Green
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
         public double G { get; private set; }
+
+        /// <summary>
+        /// Blue
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
         public double B { get; private set; }
 
+        /// <summary>
+        /// <see cref="IColorVector"/>
+        /// </summary>
         public Vector<double> Vector
         {
             get { return DenseVector.OfEnumerable(new[] { R, G, B }); }

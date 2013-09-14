@@ -16,7 +16,8 @@ namespace Colourful.Colors
         #region Other
 
         /// <summary>
-        /// D50, used when reference white is not specified explicitly
+        /// D50 standard illuminant.
+        /// Used when reference white is not specified explicitly.
         /// </summary>
         public static readonly XYZColorBase DefaultReferenceWhite = Illuminants.D50;
 
@@ -24,10 +25,18 @@ namespace Colourful.Colors
 
         #region Constructor
 
+        /// <param name="x">X (from 0 to reference white X)</param>
+        /// <param name="y">Y (from 0 to reference white Y)</param>
+        /// <param name="z">Z (from 0 to reference white Z)</param>
+        /// <remarks>Uses <see cref="DefaultReferenceWhite"/> as reference white.</remarks>
         public XYZColor(double x, double y, double z) : this(x, y, z, DefaultReferenceWhite)
         {
         }
 
+        /// <param name="x">X (from 0 to reference white X)</param>
+        /// <param name="y">Y (from 0 to reference white Y)</param>
+        /// <param name="z">Z (from 0 to reference white Z)</param>
+        /// <param name="referenceWhite">Reference white (see <see cref="Illuminants"/>)</param>
         public XYZColor(double x, double y, double z, XYZColorBase referenceWhite) : base(x, y, z)
         {
             x.CheckRange(0, referenceWhite.X);
@@ -40,7 +49,7 @@ namespace Colourful.Colors
 
         #region Attributes
 
-        /// <see cref="Illuminants"/>
+        /// <remarks><see cref="Illuminants"/></remarks>
         public XYZColorBase ReferenceWhite { get; private set; }
 
         #endregion

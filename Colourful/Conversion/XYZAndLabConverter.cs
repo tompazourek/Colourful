@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using Colourful.Colors;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts from XYZ to L*a*b* and backwards
+    /// Converts from <see cref="XYZColor"/> to <see cref="LabColor"/> and backwards.
     /// </summary>
     public class XYZAndLabConverter : IColorConverter<XYZColor, LabColor>, IColorConverter<LabColor, XYZColor>
     {
@@ -19,7 +20,7 @@ namespace Colourful.Conversion
 
         public LabColor Convert(XYZColor input)
         {
-            // Conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
+            // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
             double Xr = input.ReferenceWhite.X, Yr = input.ReferenceWhite.Y, Zr = input.ReferenceWhite.Z;
 
             double xr = input.X / Xr, yr = input.Y / Yr, zr = input.Z / Zr;
@@ -46,21 +47,18 @@ namespace Colourful.Conversion
 
         #region Lab to XYZ
 
-        /// <summary>
+        /// <remarks>
         /// Target reference white is <see cref="XYZColor.DefaultReferenceWhite"/>
-        /// <seealso cref="Convert(LabColor, XYZColorBase)"/>
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// </remarks>
         public XYZColor Convert(LabColor input)
         {
-            var result = Convert(input, XYZColor.DefaultReferenceWhite);
+            XYZColor result = Convert(input, XYZColor.DefaultReferenceWhite);
             return result;
         }
 
         public XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
         {
-            // Conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
+            // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;
             double fy = (L + 16) / 116d;
             double fx = a / 500d + fy;
@@ -75,7 +73,7 @@ namespace Colourful.Conversion
 
             double Xr = referenceWhite.X, Yr = referenceWhite.Y, Zr = referenceWhite.Z;
 
-            // avoids XYZ coordinates out of XYZ ref. white range
+            // avoids XYZ coordinates out range (restricted by 0 and XYZ reference white)
             xr = xr.CropRange(0, 1);
             yr = yr.CropRange(0, 1);
             zr = zr.CropRange(0, 1);

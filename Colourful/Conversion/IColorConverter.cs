@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts between two color spaces
+    /// Converts color between two color spaces.
     /// </summary>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TOutput"></typeparam>

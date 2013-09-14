@@ -11,15 +11,15 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Colors
 {
     /// <summary>
-    /// CIE-L*C*h, cylindrical form of CIE L*a*b*
+    /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>
     /// </summary>
     public class LChabColor : IColorVector
     {
         #region Constructor
 
-        /// <param name="l"></param>
-        /// <param name="c"></param>
-        /// <param name="h">Hue in degrees (not radians)</param>
+        /// <param name="l">L* (lightness)</param>
+        /// <param name="c">C* (chroma)</param>
+        /// <param name="h">h° (hue in degrees)</param>
         public LChabColor(double l, double c, double h)
         {
             L = l;
@@ -31,14 +31,27 @@ namespace Colourful.Colors
 
         #region Channels
 
+        /// <summary>
+        /// L* (lightness)
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 100.
+        /// </remarks>
         public double L { get; private set; }
+
+        /// <summary>
+        /// C* (chroma)
+        /// </summary>
         public double C { get; private set; }
 
         /// <summary>
-        /// Hue in degrees (not radians)
+        /// h° (hue in degrees)
         /// </summary>
         public double h { get; private set; }
 
+        /// <summary>
+        /// <see cref="IColorVector"/>
+        /// </summary>
         public Vector<double> Vector
         {
             get { return DenseVector.OfEnumerable(new[] { L, C, h }); }
@@ -58,7 +71,7 @@ namespace Colourful.Colors
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LChabColor)obj);
+            return Equals((LChabColor) obj);
         }
 
         public override int GetHashCode()
@@ -100,13 +113,12 @@ namespace Colourful.Colors
         public LabColor ToLab()
         {
             var converter = new LabAndLChabConverter();
-            var result = converter.Convert(this);
+            LabColor result = converter.Convert(this);
             return result;
         }
 
         #endregion
 
         #endregion
-
     }
 }

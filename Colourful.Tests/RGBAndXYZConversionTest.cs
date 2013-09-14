@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests RGB-XYZ conversions
+    /// Tests <see cref="RGBColor"/>-<see cref="XYZColor"/> conversions.
     /// </summary>
     /// <remarks>
     /// Test data generated using:
@@ -22,7 +22,9 @@ namespace Colourful.Tests
         private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(6);
 
         /// <summary>
-        /// Tests conversion from RGB (default sRGB workspace) to XYZ (D65)
+        /// Tests conversion
+        /// from <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>)
+        /// to <see cref="XYZColor"/> (<see cref="Illuminants.D65"/>).
         /// </summary>
         [Test]
         [TestCase(1, 1, 1, 0.950470, 1.000000, 1.088830)]
@@ -40,13 +42,16 @@ namespace Colourful.Tests
             XYZColor output = input.ToXYZ();
 
             // assert
+            Assert.That(output.ReferenceWhite, Is.EqualTo(Illuminants.D65));
             Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
             Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
             Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
         }
 
         /// <summary>
-        /// Tests conversion from XYZ (D65) to RGB (default sRGB workspace)
+        /// Tests conversion
+        /// from <see cref="XYZColor"/> (<see cref="Illuminants.D65"/>)
+        /// to <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>).
         /// </summary>
         [Test]
         [TestCase(0.950470, 1.000000, 1.088830, 1, 1, 1)]
@@ -70,7 +75,9 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Tests conversion from RGB (default sRGB workspace) to XYZ (D50)
+        /// Tests conversion
+        /// from <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>)
+        /// to <see cref="XYZColor"/> (<see cref="Illuminants.D50"/>).
         /// </summary>
         [Test]
         [TestCase(1, 1, 1, 0.964220, 1.000000, 0.825210)]
@@ -88,13 +95,16 @@ namespace Colourful.Tests
             XYZColor output = input.ToXYZ(Illuminants.D50);
 
             // assert
+            Assert.That(output.ReferenceWhite, Is.EqualTo(Illuminants.D50));
             Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
             Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
             Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
         }
 
         /// <summary>
-        /// Tests conversion from XYZ (D50) to RGB (default sRGB workspace)
+        /// Tests conversion
+        /// from <see cref="XYZColor"/> (<see cref="Illuminants.D50"/>)
+        /// to <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>).
         /// </summary>
         [Test]
         [TestCase(0.96422, 1.00000, 0.82521, 1, 1, 1)]

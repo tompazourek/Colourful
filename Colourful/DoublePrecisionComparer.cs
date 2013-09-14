@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 namespace Colourful
 {
     /// <summary>
-    /// Compares two doubles and takes only specific number of fractional digits into account
+    /// Compares two doubles and takes only specific number of fractional digits into account.
     /// </summary>
     public class DoublePrecisionComparer : IComparer<double>
     {
+        /// <param name="precision"><see cref="Precision"/></param>
         public DoublePrecisionComparer(int precision)
         {
             Precision = precision;

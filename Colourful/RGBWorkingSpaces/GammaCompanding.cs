@@ -17,12 +17,12 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class GammaCompanding : ICompanding
     {
-        public double Gamma { get; private set; }
-
         public GammaCompanding(double gamma)
         {
             Gamma = gamma;
         }
+
+        public double Gamma { get; private set; }
 
         public double InverseCompanding(double channel)
         {
@@ -34,7 +34,7 @@ namespace Colourful.RGBWorkingSpaces
         public double Companding(double channel)
         {
             double v = channel;
-            double V = Math.Pow(v, 1/Gamma);
+            double V = Math.Pow(v, 1 / Gamma);
             return V;
         }
     }

@@ -9,12 +9,13 @@ using Colourful.Colors;
 namespace Colourful.RGBWorkingSpaces
 {
     /// <summary>
-    /// Chromaticity coordinates of RGB primaries. One of the specifiers of <see cref="IRGBWorkingSpace"/>.
+    /// Chromaticity coordinates of RGB primaries.
+    /// One of the specifiers of <see cref="IRGBWorkingSpace"/>.
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
-        public ChromaticityCoordinates R;
-        public ChromaticityCoordinates G;
         public ChromaticityCoordinates B;
+        public ChromaticityCoordinates G;
+        public ChromaticityCoordinates R;
     }
 }

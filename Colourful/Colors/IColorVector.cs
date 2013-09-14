@@ -9,7 +9,7 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Colors
 {
     /// <summary>
-    /// The base of all colors in color spaces
+    /// Color represented as a vector in its color space
     /// </summary>
     public interface IColorVector
     {

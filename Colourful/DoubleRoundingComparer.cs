@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 namespace Colourful
 {
     /// <summary>
-    /// Compares two doubles and rounds to specific number of fractional digits
+    /// Compares two doubles and rounds to specific number of fractional digits.
     /// </summary>
     public class DoubleRoundingComparer : IComparer<double>
     {
+        /// <param name="precision"><see cref="Precision"/></param>
         public DoubleRoundingComparer(int precision)
         {
             Precision = precision;

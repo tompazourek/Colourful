@@ -9,6 +9,13 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 
 namespace Colourful.ChromaticAdaptation
 {
+    /// <summary>
+    /// XYZ scaling (chromatic adaptation)
+    /// </summary>
+    /// <remarks>
+    /// Chromatic adaptation matrix is taken from:
+    /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
+    /// </remarks>
     public class XYZScaling : ChromaticAdaptationBase
     {
         public override Matrix<double> MA

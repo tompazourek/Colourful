@@ -11,12 +11,15 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Colors
 {
     /// <summary>
-    /// CIE 1976 L*a*b*
+    /// CIE L*a*b* (1976) color
     /// </summary>
     public class LabColor : IColorVector
     {
         #region Constructor
 
+        /// <param name="l">L* (lightness)</param>
+        /// <param name="a">a*</param>
+        /// <param name="b">b*</param>
         public LabColor(double l, double a, double b)
         {
             L = l;
@@ -28,10 +31,33 @@ namespace Colourful.Colors
 
         #region Channels
 
+        /// <summary>
+        /// L* (lightness)
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 100.
+        /// </remarks>
         public double L { get; private set; }
+
+        /// <summary>
+        /// a*
+        /// </summary>
+        /// <remarks>
+        /// Negative values indicate green while positive values indicate magenta.
+        /// </remarks>
         public double a { get; private set; }
+
+        /// <summary>
+        /// b*
+        /// </summary>
+        /// <remarks>
+        /// Negative values indicate blue and positive values indicate yellow.
+        /// </remarks>
         public double b { get; private set; }
 
+        /// <summary>
+        /// <see cref="IColorVector"/>
+        /// </summary>
         public Vector<double> Vector
         {
             get { return DenseVector.OfEnumerable(new[] { L, a, b }); }
@@ -51,7 +77,7 @@ namespace Colourful.Colors
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LabColor)obj);
+            return Equals((LabColor) obj);
         }
 
         public override int GetHashCode()
@@ -101,7 +127,7 @@ namespace Colourful.Colors
         public XYZColor ToXYZ()
         {
             var converter = new XYZAndLabConverter();
-            var result = converter.Convert(this);
+            XYZColor result = converter.Convert(this);
             return result;
         }
 
@@ -111,14 +137,14 @@ namespace Colourful.Colors
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
             var converter = new XYZAndLabConverter();
-            var result = converter.Convert(this, referenceWhite);
+            XYZColor result = converter.Convert(this, referenceWhite);
             return result;
         }
 
         public LChabColor ToLChab()
         {
             var converter = new LabAndLChabConverter();
-            var result = converter.Convert(this);
+            LChabColor result = converter.Convert(this);
             return result;
         }
 

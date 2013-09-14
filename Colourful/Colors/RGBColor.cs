@@ -11,14 +11,15 @@ using Colourful.RGBWorkingSpaces;
 namespace Colourful.Colors
 {
     /// <summary>
-    /// RGB color with specified working space
+    /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
     public class RGBColor : RGBColorBase
     {
         #region Other
 
         /// <summary>
-        /// sRGB color space, used when working space is not specified explicitly.
+        /// sRGB color space.
+        /// Used when working space is not specified explicitly.
         /// </summary>
         public static readonly IRGBWorkingSpace DefaultWorkingSpace = WorkingSpaces.sRGB;
 
@@ -30,7 +31,8 @@ namespace Colourful.Colors
             public static readonly IRGBWorkingSpace sRGB = new sRGBWorkingSpace();
 
             /// <summary>
-            /// Simplified sRGB (uses gamma 2.2 for companding)
+            /// Simplified sRGB (uses <see cref="GammaCompanding">gamma companding</see> instead of <see cref="sRGBCompanding"/>).
+            /// See also <see cref="sRGB"/>.
             /// </summary>
             public static readonly IRGBWorkingSpace sRGBSimplified = new sRGBSimplifiedWorkingSpace();
 
@@ -40,7 +42,7 @@ namespace Colourful.Colors
             public static readonly IRGBWorkingSpace ECIRGBv2 = new ECIRGBv2();
 
             /// <summary>
-            /// Adobe RGB (1998
+            /// Adobe RGB (1998)
             /// </summary>
             public static readonly IRGBWorkingSpace AppleRGB1998 = new AppleRGB1998();
 
@@ -108,21 +110,25 @@ namespace Colourful.Colors
             /// Wide Gamut RGB
             /// </summary>
             public static readonly IRGBWorkingSpace WideGamutsRGB = new WideGamutsRGB();
-
         }
 
         #endregion
 
         #region Constructor
 
-        /// <remarks>
-        /// Uses <see cref="DefaultWorkingSpace"/> as working space
-        /// </remarks>
+        /// <param name="r">Red (from 0 to 1)</param>
+        /// <param name="g">Green (from 0 to 1)</param>
+        /// <param name="b">Blue (from 0 to 1)</param>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
         public RGBColor(double r, double g, double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
         }
 
+        /// <param name="r">Red (from 0 to 1)</param>
+        /// <param name="g">Green (from 0 to 1)</param>
+        /// <param name="b">Blue (from 0 to 1)</param>
+        /// <param name="workingSpace"><see cref="IRGBWorkingSpace"/></param>
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
@@ -134,7 +140,7 @@ namespace Colourful.Colors
         #region Attributes
 
         /// <summary>
-        /// The color space of RGB color
+        /// RGB color space
         /// <seealso cref="WorkingSpaces"/>
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; private set; }
@@ -226,7 +232,7 @@ namespace Colourful.Colors
         }
 
         /// <remarks>
-        /// Reference white of output is taken from RGB working space.
+        /// Reference white of output is taken from RGB working space (<see cref="IRGBWorkingSpace.ReferenceWhite"/>)
         /// </remarks>
         public XYZColor ToXYZ()
         {

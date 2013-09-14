@@ -11,17 +11,22 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.ChromaticAdaptation
 {
     /// <summary>
-    /// Chromatic adaptation.
-    /// A linear transformation of a source color (XS, YS, ZS) into a destination color (XD, YD, ZD) by a linear transformation [M]
-    /// which is dependent on the source reference white (XWS, YWS, ZWS) and the destination reference white (XWD, YWD, ZWD).
+    /// Basic implementation of chromatic adaptation algorithm
     /// </summary>
+    /// <remarks>
+    /// Transformation described here:
+    /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
+    /// </remarks>
     public abstract class ChromaticAdaptationBase : IChromaticAdaptation
     {
         /// <summary>
-        /// Definition of the cone response domain.
+        /// Definition of the cone response domain
         /// </summary>
         public abstract Matrix<double> MA { get; }
 
+        /// <summary>
+        /// Transforms XYZ color to destination reference white.
+        /// </summary>
         public XYZColor Transform(XYZColor source, XYZColorBase destinationReferenceWhite)
         {
             double XD, YD, ZD;
@@ -34,9 +39,16 @@ namespace Colourful.ChromaticAdaptation
             return new XYZColor(XD, YD, ZD, destinationReferenceWhite);
         }
 
+        public XYZColorBase TransformNonCropped(XYZColor source, XYZColorBase destinationReferenceWhite)
+        {
+            double XD, YD, ZD;
+            TransformCore(source, destinationReferenceWhite, out XD, out YD, out ZD);
+
+            return new XYZColorBase(XD, YD, ZD);
+        }
+
         private void TransformCore(XYZColor source, XYZColorBase destinationReferenceWhite, out double XD, out double YD, out double ZD)
         {
-            // transformation described here: http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
             double rhoS, gammaS, betaS, rhoD, gammaD, betaD;
             (MA * source.ReferenceWhite.Vector).AssignVariables(out rhoS, out gammaS, out betaS);
             (MA * destinationReferenceWhite.Vector).AssignVariables(out rhoD, out gammaD, out betaD);
@@ -45,14 +57,6 @@ namespace Colourful.ChromaticAdaptation
             Matrix<double> M = MA.Inverse() * diagonalMatrix * MA;
 
             (M * source.Vector).AssignVariables(out XD, out YD, out ZD);
-        }
-
-        public XYZColorBase TransformNonCropped(XYZColor source, XYZColorBase destinationReferenceWhite)
-        {
-            double XD, YD, ZD;
-            TransformCore(source, destinationReferenceWhite, out XD, out YD, out ZD);
-
-            return new XYZColorBase(XD, YD, ZD);
         }
     }
 }

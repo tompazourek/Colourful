@@ -9,7 +9,8 @@ using Colourful.Colors;
 namespace Colourful.RGBWorkingSpaces
 {
     /// <summary>
-    /// sRGB simplified working space. Uses gamma for companding.
+    /// sRGB simplified working space.
+    /// Uses gamma for companding.
     /// </summary>
     /// <remarks>
     /// Chromaticity coordinates taken from:

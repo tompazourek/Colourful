@@ -25,12 +25,12 @@ namespace Colourful.Colors
         public static XYZColorBase A = new XYZColorBase(1.09850, 1, 0.35585);
 
         /// <summary>
-        /// {obsolete} Direct sunlight at noon
+        /// Direct sunlight at noon (obsolete)
         /// </summary>
         public static XYZColorBase B = new XYZColorBase(0.99072, 1, 0.85223);
 
         /// <summary>
-        /// {obsolete} Average / North sky Daylight
+        /// Average / North sky Daylight (obsolete)
         /// </summary>
         public static XYZColorBase C = new XYZColorBase(0.98074, 1, 1.18232);
 

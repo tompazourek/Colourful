@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Colourful.Colors
 {
     /// <summary>
-    ///CIE xy chromaticity
+    /// Coordinates of CIE xy chromaticity space
     /// </summary>
     public struct ChromaticityCoordinates
     {

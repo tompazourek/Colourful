@@ -13,30 +13,34 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts from RGB to XYZ and backwards
+    /// Converts from <see cref="RGBColor"/> to <see cref="XYZColor"/> and backwards.
     /// </summary>
     public class RGBAndXYZConverter : IColorConverter<RGBColor, XYZColor>, IColorConverter<XYZColor, RGBColor>
     {
-        /// <summary>
-        /// Uses <see cref="DefaultChromaticAdaptation"/> if needed
-        /// </summary>
+        /// <remarks>
+        /// Uses <see cref="DefaultChromaticAdaptation"/> if needed.
+        /// </remarks>
         public RGBAndXYZConverter()
         {
             ChromaticAdaptation = DefaultChromaticAdaptation;
         }
 
-        /// <summary>
-        /// Uses specified <see cref="IChromaticAdaptation"/> if needed
-        /// </summary>
+        /// <remarks>
+        /// Uses given <see cref="IChromaticAdaptation"/> if needed.
+        /// </remarks>
         public RGBAndXYZConverter(IChromaticAdaptation chromaticAdaptation)
         {
             ChromaticAdaptation = chromaticAdaptation;
         }
 
+        /// <summary>
+        /// <see cref="IChromaticAdaptation"/>
+        /// </summary>
         public IChromaticAdaptation ChromaticAdaptation { get; private set; }
 
         /// <summary>
-        /// Bradford chromatic adaptation, used when chromatic adaptation for reference white adjustation is not specified explicitly.
+        /// Bradford chromatic adaptation.
+        /// Used when chromatic adaptation for reference white adjustation is not specified explicitly.
         /// </summary>
         public IChromaticAdaptation DefaultChromaticAdaptation
         {
@@ -45,11 +49,9 @@ namespace Colourful.Conversion
 
         #region RGB to XYZ
 
-        /// <summary>
-        /// Converts RGB to XYZ, target reference white is taken from RGB working space
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Target reference white is taken from RGB working space.
+        /// </remarks>
         public XYZColor Convert(RGBColor input)
         {
             IRGBWorkingSpace workingSpace = input.WorkingSpace;
@@ -67,12 +69,9 @@ namespace Colourful.Conversion
             return new XYZColor(x, y, z, referenceWhite);
         }
 
-        /// <summary>
-        /// Converts RGB to XYZ, output color is adjusted to the given reference white (Bradford adaptation)
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="referenceWhite"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Output color is adjusted to the given reference white (Bradford adaptation).
+        /// </remarks>
         public XYZColor Convert(RGBColor input, XYZColorBase referenceWhite)
         {
             XYZColor converted = Convert(input);
@@ -86,7 +85,7 @@ namespace Colourful.Conversion
 
         private static Matrix<double> GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
-            // http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
+            // for more info, see: http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
 
             RGBPrimariesChromaticityCoordinates chromaticity = workingSpace.ChromaticityCoordinates;
             double xr = chromaticity.R.x, xg = chromaticity.G.x, xb = chromaticity.B.x,
@@ -132,11 +131,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding"/>) to RGB vector.
         /// </summary>
-        /// <param name="rgbColor"></param>
-        /// <returns></returns>
         private static Vector<double> UncompandVector(RGBColor rgbColor)
         {
-            var inverseCompanding = rgbColor.WorkingSpace.Companding;
+            ICompanding inverseCompanding = rgbColor.WorkingSpace.Companding;
             Vector<double> compandedVector = rgbColor.Vector;
             DenseVector uncompandedVector = DenseVector.OfEnumerable(compandedVector.Select(inverseCompanding.InverseCompanding));
             return uncompandedVector;
@@ -152,7 +149,7 @@ namespace Colourful.Conversion
         /// </remarks>
         public RGBColor Convert(XYZColor input)
         {
-            var result = Convert(input, RGBColor.DefaultWorkingSpace);
+            RGBColor result = Convert(input, RGBColor.DefaultWorkingSpace);
             return result;
         }
 
@@ -161,12 +158,12 @@ namespace Colourful.Conversion
         /// </remarks>
         public RGBColor Convert(XYZColor input, IRGBWorkingSpace workingSpace)
         {
-            Vector<double> inputVector = input.ReferenceWhite != workingSpace.ReferenceWhite 
+            Vector<double> inputVector = input.ReferenceWhite != workingSpace.ReferenceWhite
                 ? ChromaticAdaptation.TransformNonCropped(input, workingSpace.ReferenceWhite).Vector
                 : input.Vector;
 
-            var uncompandedVector = GetXYZToRGBMatrix(workingSpace) * inputVector;
-            var result = CompandVector(uncompandedVector, workingSpace);
+            Vector<double> uncompandedVector = GetXYZToRGBMatrix(workingSpace) * inputVector;
+            RGBColor result = CompandVector(uncompandedVector, workingSpace);
             return result;
         }
 
@@ -178,10 +175,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Applying the working space companding function (<see cref="IRGBWorkingSpace.Companding"/>) to uncompanded vector.
         /// </summary>
-        /// <returns></returns>
         private static RGBColor CompandVector(Vector<double> uncompandedVector, IRGBWorkingSpace workingSpace)
         {
-            var companding = workingSpace.Companding;
+            ICompanding companding = workingSpace.Companding;
             DenseVector compandedVector = DenseVector.OfEnumerable(uncompandedVector.Select(companding.Companding));
             double R, G, B;
             compandedVector.AssignVariables(out R, out G, out B);

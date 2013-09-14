@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Colors;
 
 namespace Colourful.RGBWorkingSpaces
 {
     /// <summary>
-    /// Companded channel is made linear with respect to the energy.
+    /// Pair of companding functions for <see cref="IRGBWorkingSpace"/>.
+    /// Used for conversion to XYZ and backwards.
+    /// See also: <seealso cref="IRGBWorkingSpace.Companding"/>
     /// </summary>
     public interface ICompanding
     {

@@ -10,7 +10,7 @@ using MathNet.Numerics;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts from L*a*b* to L*C*h(ab) and backwards
+    /// Converts from <see cref="LabColor"/> to <see cref="LChabColor"/> and backwards.
     /// </summary>
     public class LabAndLChabConverter : IColorConverter<LabColor, LChabColor>, IColorConverter<LChabColor, LabColor>
     {
@@ -20,7 +20,7 @@ namespace Colourful.Conversion
             double C = Math.Sqrt(a * a + b * b);
             double hRadians = Math.Atan2(b, a);
             double hDegrees = Trig.RadianToDegree(hRadians);
-            
+
             if (hDegrees > 360)
                 hDegrees -= 360;
             else if (hDegrees < 0)
