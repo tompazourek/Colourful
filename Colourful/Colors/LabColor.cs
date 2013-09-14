@@ -126,7 +126,7 @@ namespace Colourful.Colors
         /// </remarks>
         public XYZColor ToXYZ()
         {
-            var converter = new XYZAndLabConverter();
+            var converter = new LabToXYZConverter();
             XYZColor result = converter.Convert(this);
             return result;
         }
@@ -136,8 +136,8 @@ namespace Colourful.Colors
         /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
-            var converter = new XYZAndLabConverter();
-            XYZColor result = converter.Convert(this, referenceWhite);
+            var converter = new LabToXYZConverter(referenceWhite);
+            XYZColor result = converter.Convert(this);
             return result;
         }
 

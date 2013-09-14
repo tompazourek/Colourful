@@ -65,8 +65,10 @@
     <Compile Include="Colors\LChabColor.cs" />
     <Compile Include="Colors\LabColor.cs" />
     <Compile Include="Colors\RGBColorSpaces.cs" />
+    <Compile Include="Conversion\LabToXYZConverter.cs" />
     <Compile Include="Conversion\LabAndLChabConverter.cs" />
-    <Compile Include="Conversion\XYZAndLabConverter.cs" />
+    <Compile Include="Conversion\XYZToLabConverter.cs" />
+    <Compile Include="Conversion\XYZAndLabConverterBase.cs" />
     <Compile Include="RGBWorkingSpaces\AppleRGB1998.cs" />
     <Compile Include="RGBWorkingSpaces\ApplesRGB.cs" />
     <Compile Include="RGBWorkingSpaces\BestRGB.cs" />

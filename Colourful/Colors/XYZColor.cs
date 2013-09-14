@@ -131,7 +131,7 @@ namespace Colourful.Colors
 
         public LabColor ToLab()
         {
-            var converter = new XYZAndLabConverter();
+            var converter = new XYZToLabConverter();
             LabColor result = converter.Convert(this);
             return result;
         }

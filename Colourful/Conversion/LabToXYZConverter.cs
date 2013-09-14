@@ -9,54 +9,34 @@ using Colourful.Colors;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="XYZColor"/> to <see cref="LabColor"/> and backwards.
+    /// Converts from <see cref="LabColor"/> to <see cref="XYZColor"/>.
     /// </summary>
-    public class XYZAndLabConverter : IColorConverter<XYZColor, LabColor>, IColorConverter<LabColor, XYZColor>
+    /// <remarks>
+    /// Target reference white is <see cref="XYZColor.ReferenceWhite"/>, when not set, <see cref="XYZColor.DefaultReferenceWhite"/> is used.
+    /// </remarks>
+    public class LabToXYZConverter : XYZAndLabConverterBase, IColorConverter<LabColor, XYZColor>
     {
-        private const double Epsilon = 216d / 24389d;
-        private const double Kappa = 24389d / 27d;
-
-        #region XYZ to Lab
-
-        public LabColor Convert(XYZColor input)
+        public LabToXYZConverter()
         {
-            // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
-            double Xr = input.ReferenceWhite.X, Yr = input.ReferenceWhite.Y, Zr = input.ReferenceWhite.Z;
-
-            double xr = input.X / Xr, yr = input.Y / Yr, zr = input.Z / Zr;
-
-            double fx = f(xr);
-            double fy = f(yr);
-            double fz = f(zr);
-
-            double L = 116 * fy - 16;
-            double a = 500 * (fx - fy);
-            double b = 200 * (fy - fz);
-
-            var output = new LabColor(L, a, b);
-            return output;
         }
 
-        private double f(double cr)
+        public LabToXYZConverter(XYZColorBase referenceWhite)
         {
-            double fc = cr > Epsilon ? Math.Pow(cr, 1 / 3d) : (Kappa * cr + 16) / 116d;
-            return fc;
+            ReferenceWhite = referenceWhite;
         }
 
-        #endregion
+        /// <summary>
+        /// Target reference white. When not set, <see cref="XYZColor.DefaultReferenceWhite"/> is used.
+        /// </summary>
+        public XYZColorBase ReferenceWhite { get; private set; }
 
-        #region Lab to XYZ
-
-        /// <remarks>
-        /// Target reference white is <see cref="XYZColor.DefaultReferenceWhite"/>
-        /// </remarks>
         public XYZColor Convert(LabColor input)
         {
-            XYZColor result = Convert(input, XYZColor.DefaultReferenceWhite);
+            XYZColor result = Convert(input, ReferenceWhite ?? XYZColor.DefaultReferenceWhite);
             return result;
         }
 
-        public XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
+        private XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
         {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;
@@ -85,7 +65,5 @@ namespace Colourful.Conversion
             var result = new XYZColor(X, Y, Z, referenceWhite);
             return result;
         }
-
-        #endregion
     }
 }
