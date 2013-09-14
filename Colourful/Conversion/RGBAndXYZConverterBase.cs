@@ -48,19 +48,17 @@ namespace Colourful.Conversion
             double Xb = xb / yb;
             const double Yb = 1;
             double Zb = (1 - xb - yb) / yb;
+            
+            Matrix<double> S = DenseMatrix.OfRows(3, 3, new[]
+                {
+                    new[] { Xr, Xg, Xb },
+                    new[] { Yr, Yg, Yb },
+                    new[] { Zr, Zg, Zb },
+                }).Inverse();
 
-            {
-                Matrix<double> S = DenseMatrix.OfRows(3, 3, new[]
-                    {
-                        new[] { Xr, Xg, Xb },
-                        new[] { Yr, Yg, Yb },
-                        new[] { Zr, Zg, Zb },
-                    }).Inverse();
+            Vector<double> W = workingSpace.ReferenceWhite.Vector;
 
-                Vector<double> W = workingSpace.ReferenceWhite.Vector;
-
-                (S * W).AssignVariables(out Sr, out Sg, out Sb);
-            }
+            (S * W).AssignVariables(out Sr, out Sg, out Sb);
 
             DenseMatrix M = DenseMatrix.OfRows(3, 3, new[]
                 {
