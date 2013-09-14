@@ -146,7 +146,7 @@ namespace Colourful.Colors
         /// </remarks>
         public XYZColor ToXYZ()
         {
-            var converter = new RGBToXYZConverter();
+            var converter = new RGBToXYZConverter(WorkingSpace);
             XYZColor result = converter.Convert(this);
             return result;
         }
@@ -156,7 +156,7 @@ namespace Colourful.Colors
         /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
-            var converter = new RGBToXYZConverter(referenceWhite);
+            var converter = new RGBToXYZConverter(WorkingSpace, referenceWhite);
             XYZColor result = converter.Convert(this);
             return result;
         }

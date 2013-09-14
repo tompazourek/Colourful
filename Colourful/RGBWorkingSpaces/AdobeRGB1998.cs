@@ -15,7 +15,7 @@ namespace Colourful.RGBWorkingSpaces
     /// Chromaticity coordinates taken from:
     /// http://www.brucelindbloom.com/index.html?WorkingSpaceInfo.html
     /// </remarks>
-    public class AppleRGB1998 : IRGBWorkingSpace
+    public class AdobeRGB1998 : IRGBWorkingSpace
     {
         private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
         private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1500, 0.0600));

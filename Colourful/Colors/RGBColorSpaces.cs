@@ -29,7 +29,7 @@ namespace Colourful.Colors
         /// <summary>
         /// Adobe RGB (1998)
         /// </summary>
-        public static readonly IRGBWorkingSpace AppleRGB1998 = new AppleRGB1998();
+        public static readonly IRGBWorkingSpace AdobeRGB1998 = new AdobeRGB1998();
 
         /// <summary>
         /// Apple sRGB

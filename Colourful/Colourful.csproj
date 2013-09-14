@@ -71,7 +71,7 @@
     <Compile Include="Conversion\RGBAndXYZConverterBase.cs" />
     <Compile Include="Conversion\XYZToLabConverter.cs" />
     <Compile Include="Conversion\XYZAndLabConverterBase.cs" />
-    <Compile Include="RGBWorkingSpaces\AppleRGB1998.cs" />
+    <Compile Include="RGBWorkingSpaces\AdobeRGB1998.cs" />
     <Compile Include="RGBWorkingSpaces\ApplesRGB.cs" />
     <Compile Include="RGBWorkingSpaces\BestRGB.cs" />
     <Compile Include="RGBWorkingSpaces\BetaRGB.cs" />
@@ -101,6 +101,7 @@
     <Compile Include="RGBWorkingSpaces\PALSECAMRGB.cs" />
     <Compile Include="RGBWorkingSpaces\ProPhotoRGB.cs" />
     <Compile Include="RGBWorkingSpaces\RGBPrimariesChromaticityCoordinates.cs" />
+    <Compile Include="RGBWorkingSpaces\RGBWorkingSpaceEqualityComparer.cs" />
     <Compile Include="RGBWorkingSpaces\SMPTECRGB.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBCompanding.cs" />
     <Compile Include="RGBWorkingSpaces\sRGBSimplifiedWorkingSpace.cs" />

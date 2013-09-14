@@ -30,5 +30,33 @@ namespace Colourful.RGBWorkingSpaces
             double V = v <= 0.0031308 ? 12.92 * v : 1.055 * Math.Pow(v, 1 / 2.4d) - 0.055;
             return V;
         }
+
+        protected bool Equals(sRGBCompanding other)
+        {
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((sRGBCompanding) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return 1;
+        }
+
+        public static bool operator ==(sRGBCompanding left, sRGBCompanding right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(sRGBCompanding left, sRGBCompanding right)
+        {
+            return !Equals(left, right);
+        }
     }
 }

@@ -21,24 +21,24 @@ namespace Colourful.Conversion
     /// </remarks>
     public class RGBToXYZConverter : RGBAndXYZConverterBase, IColorConverter<RGBColor, XYZColor>
     {
-        public RGBToXYZConverter()
-        {
-        }
+        private readonly Matrix<double> _conversionMatrix;
 
-        public RGBToXYZConverter(XYZColorBase referenceWhite)
+        /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
+        /// <param name="referenceWhite">When not set, reference white is taken from RGB working space.</param>
+        /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
+        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace, XYZColorBase referenceWhite = null, IChromaticAdaptation chromaticAdaptation = null)
         {
+            SourceRGBWorkingSpace = sourceRGBWorkingSpace;
             ReferenceWhite = referenceWhite;
+            ChromaticAdaptation = chromaticAdaptation ?? DefaultChromaticAdaptation;
+
+            _conversionMatrix = GetRGBToXYZMatrix(SourceRGBWorkingSpace);
         }
 
-        public RGBToXYZConverter(IChromaticAdaptation chromaticAdaptation) : base(chromaticAdaptation)
-        {
-        }
-
-        public RGBToXYZConverter(XYZColorBase referenceWhite, IChromaticAdaptation chromaticAdaptation)
-            : base(chromaticAdaptation)
-        {
-            ReferenceWhite = referenceWhite;
-        }
+        /// <summary>
+        /// Source RGB working space
+        /// </summary>
+        public IRGBWorkingSpace SourceRGBWorkingSpace { get; private set; }
 
         /// <summary>
         /// Target reference white. When not set, reference white is taken from RGB working space.
@@ -47,24 +47,23 @@ namespace Colourful.Conversion
 
         public XYZColor Convert(RGBColor input)
         {
-            IRGBWorkingSpace workingSpace = input.WorkingSpace;
+            if (!RGBWorkingSpaceEqualityComparer.Default.Equals(input.WorkingSpace, SourceRGBWorkingSpace))
+                throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 
             Vector<double> rgb = UncompandVector(input);
-            Matrix<double> matrix = GetRGBToXYZMatrix(workingSpace);
-
-            Vector<double> xyz = matrix * rgb;
+            Vector<double> xyz = _conversionMatrix * rgb;
 
             double x, y, z;
             xyz.AssignVariables(out x, out y, out z);
 
-            var converted = new XYZColor(x, y, z, workingSpace.ReferenceWhite);
-            if (ReferenceWhite == null || workingSpace.ReferenceWhite == ReferenceWhite)
+            var converted = new XYZColor(x, y, z, SourceRGBWorkingSpace.ReferenceWhite);
+            if (ReferenceWhite == null || SourceRGBWorkingSpace.ReferenceWhite == ReferenceWhite)
                 return converted;
 
             XYZColor output = ChromaticAdaptation.Transform(converted, ReferenceWhite);
             return output;
         }
-        
+
         /// <summary>
         /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding"/>) to RGB vector.
         /// </summary>

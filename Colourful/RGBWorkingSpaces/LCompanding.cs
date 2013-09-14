@@ -33,5 +33,33 @@ namespace Colourful.RGBWorkingSpaces
             double V = v <= Epsilon ? v * Kappa / 100d : Math.Pow(1.16 * v, 1 / 3d) - 0.16;
             return V;
         }
+
+        protected bool Equals(LCompanding other)
+        {
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((LCompanding) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return 1;
+        }
+
+        public static bool operator ==(LCompanding left, LCompanding right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(LCompanding left, LCompanding right)
+        {
+            return !Equals(left, right);
+        }
     }
 }

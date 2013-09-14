@@ -37,5 +37,33 @@ namespace Colourful.RGBWorkingSpaces
             double V = Math.Pow(v, 1 / Gamma);
             return V;
         }
+
+        protected bool Equals(GammaCompanding other)
+        {
+            return Gamma.Equals(other.Gamma);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((GammaCompanding) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Gamma.GetHashCode();
+        }
+
+        public static bool operator ==(GammaCompanding left, GammaCompanding right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(GammaCompanding left, GammaCompanding right)
+        {
+            return !Equals(left, right);
+        }
     }
 }

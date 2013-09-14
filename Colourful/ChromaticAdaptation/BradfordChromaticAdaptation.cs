@@ -18,16 +18,18 @@ namespace Colourful.ChromaticAdaptation
     /// </remarks>
     public class BradfordChromaticAdaptation : ChromaticAdaptationBase
     {
+        private readonly DenseMatrix _matrix = DenseMatrix.OfRows(3, 3, new[]
+            {
+                new[] { 0.8951000, 0.2664000, -0.1614000 },
+                new[] { -0.7502000, 1.7135000, 0.0367000 },
+                new[] { 0.0389000, -0.0685000, 1.0296000 },
+            });
+
         public override Matrix<double> MA
         {
             get
             {
-                return DenseMatrix.OfRows(3, 3, new[]
-                    {
-                        new[] { 0.8951000, 0.2664000, -0.1614000 },
-                        new[] { -0.7502000, 1.7135000, 0.0367000 },
-                        new[] { 0.0389000, -0.0685000, 1.0296000 },
-                    });
+                return _matrix;
             }
         }
     }

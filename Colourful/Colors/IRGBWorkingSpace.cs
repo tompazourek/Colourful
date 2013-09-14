@@ -10,7 +10,8 @@ namespace Colourful.Colors
 {
     /// <summary>
     /// RGB working color space
-    /// </summary>
+    /// </summary> 
+    /// <remarks>For equality checks use <seealso cref="RGBWorkingSpaceEqualityComparer"/>.</remarks>
     public interface IRGBWorkingSpace
     {
         /// <summary>

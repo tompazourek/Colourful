@@ -18,9 +18,11 @@ namespace Colourful.ChromaticAdaptation
     /// </remarks>
     public class XYZScaling : ChromaticAdaptationBase
     {
+        private readonly DiagonalMatrix _matrix = DiagonalMatrix.Identity(3);
+
         public override Matrix<double> MA
         {
-            get { return DiagonalMatrix.Identity(3); }
+            get { return _matrix; }
         }
     }
 }
