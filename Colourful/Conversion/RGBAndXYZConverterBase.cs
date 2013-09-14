@@ -9,7 +9,7 @@ namespace Colourful.Conversion
 {
     public abstract class RGBAndXYZConverterBase
     {
-        private readonly BradfordChromaticAdaptation _bradfordChromaticAdaptation = new BradfordChromaticAdaptation();
+        private static readonly BradfordChromaticAdaptation BradfordChromaticAdaptation = new BradfordChromaticAdaptation();
 
         /// <summary>
         /// <see cref="IChromaticAdaptation"/>
@@ -20,9 +20,9 @@ namespace Colourful.Conversion
         /// Bradford chromatic adaptation.
         /// Used when chromatic adaptation for reference white adjustation is not specified explicitly.
         /// </summary>
-        public IChromaticAdaptation DefaultChromaticAdaptation
+        public static IChromaticAdaptation DefaultChromaticAdaptation
         {
-            get { return _bradfordChromaticAdaptation; }
+            get { return BradfordChromaticAdaptation; }
         }
 
         protected static Matrix<double> GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
