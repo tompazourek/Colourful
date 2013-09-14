@@ -18,6 +18,8 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class sRGBSimplifiedWorkingSpace : IRGBWorkingSpace
     {
+        private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
+
         public virtual XYZColorBase ReferenceWhite
         {
             get { return Illuminants.D65; }
@@ -30,7 +32,7 @@ namespace Colourful.RGBWorkingSpaces
 
         public ICompanding Companding
         {
-            get { return new GammaCompanding(2.2); }
+            get { return _gammaCompanding; }
         }
     }
 }

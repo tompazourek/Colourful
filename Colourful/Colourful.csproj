@@ -64,6 +64,7 @@
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
     <Compile Include="Colors\LChabColor.cs" />
     <Compile Include="Colors\LabColor.cs" />
+    <Compile Include="Colors\RGBColorSpaces.cs" />
     <Compile Include="Conversion\LabAndLChabConverter.cs" />
     <Compile Include="Conversion\XYZAndLabConverter.cs" />
     <Compile Include="RGBWorkingSpaces\AppleRGB1998.cs" />

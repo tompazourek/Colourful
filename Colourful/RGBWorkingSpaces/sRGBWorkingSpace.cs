@@ -27,6 +27,8 @@ namespace Colourful.RGBWorkingSpaces
                 B = new ChromaticityCoordinates(0.1500, 0.0600),
             };
 
+        private readonly sRGBCompanding _sRGBCompanding = new sRGBCompanding();
+
         public XYZColorBase ReferenceWhite
         {
             get { return Illuminants.D65; }
@@ -39,7 +41,7 @@ namespace Colourful.RGBWorkingSpaces
 
         public ICompanding Companding
         {
-            get { return new sRGBCompanding(); }
+            get { return _sRGBCompanding; }
         }
     }
 }

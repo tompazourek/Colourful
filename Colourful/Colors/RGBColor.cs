@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Conversion;
-using Colourful.RGBWorkingSpaces;
 
 namespace Colourful.Colors
 {
@@ -21,96 +20,7 @@ namespace Colourful.Colors
         /// sRGB color space.
         /// Used when working space is not specified explicitly.
         /// </summary>
-        public static readonly IRGBWorkingSpace DefaultWorkingSpace = WorkingSpaces.sRGB;
-
-        public static class WorkingSpaces
-        {
-            /// <summary>
-            /// sRGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace sRGB = new sRGBWorkingSpace();
-
-            /// <summary>
-            /// Simplified sRGB (uses <see cref="GammaCompanding">gamma companding</see> instead of <see cref="sRGBCompanding"/>).
-            /// See also <see cref="sRGB"/>.
-            /// </summary>
-            public static readonly IRGBWorkingSpace sRGBSimplified = new sRGBSimplifiedWorkingSpace();
-
-            /// <summary>
-            /// ECI RGB v2
-            /// </summary>
-            public static readonly IRGBWorkingSpace ECIRGBv2 = new ECIRGBv2();
-
-            /// <summary>
-            /// Adobe RGB (1998)
-            /// </summary>
-            public static readonly IRGBWorkingSpace AppleRGB1998 = new AppleRGB1998();
-
-            /// <summary>
-            /// Apple sRGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace ApplesRGB = new ApplesRGB();
-
-            /// <summary>
-            /// Best RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace BestRGB = new BestRGB();
-
-            /// <summary>
-            /// Beta RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace BetaRGB = new BetaRGB();
-
-            /// <summary>
-            /// Bruce RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace BruceRGB = new BruceRGB();
-
-            /// <summary>
-            /// CIE RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace CIERGB = new CIERGB();
-
-            /// <summary>
-            /// ColorMatch RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace ColorMatchRGB = new ColorMatchRGB();
-
-            /// <summary>
-            /// Don RGB 4
-            /// </summary>
-            public static readonly IRGBWorkingSpace DonRGB4 = new DonRGB4();
-
-            /// <summary>
-            /// Ekta Space PS5
-            /// </summary>
-            public static readonly IRGBWorkingSpace EktaSpacePS5 = new EktaSpacePS5();
-
-            /// <summary>
-            /// NTSC RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace NTSCRGB = new NTSCRGB();
-
-            /// <summary>
-            /// PAL/SECAM RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace PALSECAMRGB = new PALSECAMRGB();
-
-            /// <summary>
-            /// ProPhoto RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace ProPhotoRGB = new ProPhotoRGB();
-
-            /// <summary>
-            /// SMPTE-C RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace SMPTECRGB = new SMPTECRGB();
-
-            /// <summary>
-            /// Wide Gamut RGB
-            /// </summary>
-            public static readonly IRGBWorkingSpace WideGamutsRGB = new WideGamutsRGB();
-        }
+        public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBColorSpaces.sRGB;
 
         #endregion
 
@@ -128,7 +38,7 @@ namespace Colourful.Colors
         /// <param name="r">Red (from 0 to 1)</param>
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
-        /// <param name="workingSpace"><see cref="IRGBWorkingSpace"/></param>
+        /// <param name="workingSpace"><see cref="RGBColorSpaces"/></param>
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
@@ -141,7 +51,7 @@ namespace Colourful.Colors
 
         /// <summary>
         /// RGB color space
-        /// <seealso cref="WorkingSpaces"/>
+        /// <seealso cref="RGBColorSpaces"/>
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; private set; }
 

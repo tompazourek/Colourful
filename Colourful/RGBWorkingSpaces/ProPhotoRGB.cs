@@ -17,9 +17,12 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class ProPhotoRGB : IRGBWorkingSpace
     {
+        private readonly GammaCompanding _gammaCompanding = new GammaCompanding(1.8);
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.7347, 0.2653), G = new ChromaticityCoordinates(0.1596, 0.8404), B = new ChromaticityCoordinates(0.0366, 0.0001) };
+
         public ICompanding Companding
         {
-            get { return new GammaCompanding(1.8); }
+            get { return _gammaCompanding; }
         }
 
         public virtual XYZColorBase ReferenceWhite
@@ -29,7 +32,7 @@ namespace Colourful.RGBWorkingSpaces
 
         public virtual RGBPrimariesChromaticityCoordinates ChromaticityCoordinates
         {
-            get { return new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.7347, 0.2653), G = new ChromaticityCoordinates(0.1596, 0.8404), B = new ChromaticityCoordinates(0.0366, 0.0001) }; }
+            get { return _rgbPrimariesChromaticityCoordinates; }
         }
     }
 }

@@ -17,9 +17,12 @@ namespace Colourful.RGBWorkingSpaces
     /// </remarks>
     public class ColorMatchRGB : IRGBWorkingSpace
     {
+        private readonly GammaCompanding _gammaCompanding = new GammaCompanding(1.8);
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.6300, 0.3400), G = new ChromaticityCoordinates(0.2950, 0.6050), B = new ChromaticityCoordinates(0.1500, 0.0750) };
+
         public ICompanding Companding
         {
-            get { return new GammaCompanding(1.8); }
+            get { return _gammaCompanding; }
         }
 
         public virtual XYZColorBase ReferenceWhite
@@ -29,7 +32,7 @@ namespace Colourful.RGBWorkingSpaces
 
         public virtual RGBPrimariesChromaticityCoordinates ChromaticityCoordinates
         {
-            get { return new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.6300, 0.3400), G = new ChromaticityCoordinates(0.2950, 0.6050), B = new ChromaticityCoordinates(0.1500, 0.0750) }; }
+            get { return _rgbPrimariesChromaticityCoordinates; }
         }
     }
 }

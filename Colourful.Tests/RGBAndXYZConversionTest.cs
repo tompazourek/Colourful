@@ -69,6 +69,7 @@ namespace Colourful.Tests
             RGBColor output = input.ToRGB();
 
             // assert
+            Assert.That(output.WorkingSpace, Is.EqualTo(RGBColor.DefaultWorkingSpace));
             Assert.That(output.R, Is.EqualTo(r).Using(DoubleComparer));
             Assert.That(output.G, Is.EqualTo(g).Using(DoubleComparer));
             Assert.That(output.B, Is.EqualTo(b).Using(DoubleComparer));
@@ -122,6 +123,7 @@ namespace Colourful.Tests
             RGBColor output = input.ToRGB();
 
             // assert
+            Assert.That(output.WorkingSpace, Is.EqualTo(RGBColor.DefaultWorkingSpace));
             Assert.That(output.R, Is.EqualTo(r).Using(DoubleComparer));
             Assert.That(output.G, Is.EqualTo(g).Using(DoubleComparer));
             Assert.That(output.B, Is.EqualTo(b).Using(DoubleComparer));
