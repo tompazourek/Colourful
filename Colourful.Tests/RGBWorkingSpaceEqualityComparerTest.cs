@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
-using Colourful.RGBWorkingSpaces;
+using Colourful.Implementation.RGB;
 using NUnit.Framework;
 
 namespace Colourful.Tests
@@ -15,48 +16,6 @@ namespace Colourful.Tests
     [TestFixture]
     public class RGBWorkingSpaceEqualityComparerTest
     {
-        [Test]
-        public void SameReference_IsEqual()
-        {
-            // arrange
-            IRGBWorkingSpace x = new sRGBWorkingSpace();
-            IRGBWorkingSpace y = x;
-
-            // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
-
-            // assert
-            Assert.IsTrue(equals);
-        }
-
-        [Test]
-        public void SameWorkingSpace_IsEqual()
-        {
-            // arrange
-            IRGBWorkingSpace x = new sRGBWorkingSpace();
-            IRGBWorkingSpace y = new sRGBWorkingSpace();
-
-            // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
-
-            // assert
-            Assert.IsTrue(equals);
-        }
-
-        [Test]
-        public void DifferentWorkingSpace_IsNotEqual()
-        {
-            // arrange
-            IRGBWorkingSpace x = new sRGBWorkingSpace();
-            IRGBWorkingSpace y = new AdobeRGB1998();
-
-            // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
-
-            // assert
-            Assert.IsFalse(equals);
-        }
-
         private class AdobeRGB1998Duplicate : IRGBWorkingSpace
         {
             public ICompanding Companding
@@ -76,11 +35,53 @@ namespace Colourful.Tests
         }
 
         [Test]
+        public void DifferentWorkingSpace_IsNotEqual()
+        {
+            // arrange
+            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
+            IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
+
+            // act
+            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+
+            // assert
+            Assert.IsFalse(equals);
+        }
+
+        [Test]
         public void DifferentWorkingSpace_SameSpecifiers_IsEqual()
         {
             // arrange
             IRGBWorkingSpace x = new AdobeRGB1998Duplicate();
-            IRGBWorkingSpace y = new AdobeRGB1998();
+            IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
+
+            // act
+            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+
+            // assert
+            Assert.IsTrue(equals);
+        }
+
+        [Test]
+        public void SameReference_IsEqual()
+        {
+            // arrange
+            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
+            IRGBWorkingSpace y = x;
+
+            // act
+            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+
+            // assert
+            Assert.IsTrue(equals);
+        }
+
+        [Test]
+        public void SameWorkingSpace_IsEqual()
+        {
+            // arrange
+            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
+            IRGBWorkingSpace y = RGBWorkingSpaces.sRGB;
 
             // act
             bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);

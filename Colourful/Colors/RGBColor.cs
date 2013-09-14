@@ -20,7 +20,7 @@ namespace Colourful.Colors
         /// sRGB color space.
         /// Used when working space is not specified explicitly.
         /// </summary>
-        public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBColorSpaces.sRGB;
+        public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBWorkingSpaces.sRGB;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace Colourful.Colors
         /// <param name="r">Red (from 0 to 1)</param>
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
-        /// <param name="workingSpace"><see cref="RGBColorSpaces"/></param>
+        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
@@ -51,7 +51,7 @@ namespace Colourful.Colors
 
         /// <summary>
         /// RGB color space
-        /// <seealso cref="RGBColorSpaces"/>
+        /// <seealso cref="RGBWorkingSpaces"/>
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; private set; }
 

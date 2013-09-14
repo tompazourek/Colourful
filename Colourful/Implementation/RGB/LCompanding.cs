@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colourful.RGBWorkingSpaces
+namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// L* companding

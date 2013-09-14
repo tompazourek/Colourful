@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
 
-namespace Colourful.RGBWorkingSpaces
+namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Compares equality of two RGB working spaces

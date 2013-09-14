@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
-using Colourful.RGBWorkingSpaces;
+using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 

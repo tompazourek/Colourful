@@ -1,6 +1,6 @@
 ﻿using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
-using Colourful.RGBWorkingSpaces;
+using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 

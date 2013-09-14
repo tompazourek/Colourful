@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
 
-namespace Colourful.RGBWorkingSpaces
+namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Pair of companding functions for <see cref="IRGBWorkingSpace"/>.
