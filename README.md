@@ -1,7 +1,7 @@
 Colourful .NET
 ==============
 
-.NET library for working with color spaces. Still in early phase of development.
+Open source .NET library for working with color spaces. Still in **early phase of development**.
 
 Currently supports following color spaces (and conversions):
 
