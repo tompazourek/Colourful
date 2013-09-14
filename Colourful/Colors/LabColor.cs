@@ -86,6 +86,11 @@ namespace Colourful.Colors
             return input.ToLab();
         }
 
+        public static LabColor FromLChab(LChabColor input)
+        {
+            return input.ToLab();
+        }
+
         #endregion
 
         #region To
@@ -107,6 +112,13 @@ namespace Colourful.Colors
         {
             var converter = new XYZAndLabConverter();
             var result = converter.Convert(this, referenceWhite);
+            return result;
+        }
+
+        public LChabColor ToLChab()
+        {
+            var converter = new LabAndLChabConverter();
+            var result = converter.Convert(this);
             return result;
         }
 

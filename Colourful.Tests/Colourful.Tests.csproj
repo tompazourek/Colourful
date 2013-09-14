@@ -49,6 +49,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="LabAndLChabConversionTest.cs" />
     <Compile Include="XYZAndLabConversionTest.cs" />
     <Compile Include="RGBAndXYZConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
