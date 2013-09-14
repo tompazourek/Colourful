@@ -113,7 +113,7 @@ namespace Colourful.Colors
         }
 
         /// <remarks>
-        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
         /// </remarks>
         public static RGBColor FromXYZ(XYZColor input, IRGBWorkingSpace workingSpace)
         {
@@ -122,7 +122,7 @@ namespace Colourful.Colors
 
         /// <remarks>
         /// Target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
-        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
         /// </remarks>
         public static RGBColor FromXYZ(XYZColor input)
         {
@@ -146,18 +146,18 @@ namespace Colourful.Colors
         /// </remarks>
         public XYZColor ToXYZ()
         {
-            var converter = new RGBAndXYZConverter();
+            var converter = new RGBToXYZConverter();
             XYZColor result = converter.Convert(this);
             return result;
         }
 
         /// <remarks>
-        /// Output color is adjusted to the given reference white (using <see cref="RGBAndXYZConverter.DefaultChromaticAdaptation"/>).
+        /// Output color is adjusted to the given reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
         /// </remarks>
         public XYZColor ToXYZ(XYZColorBase referenceWhite)
         {
-            var converter = new RGBAndXYZConverter();
-            XYZColor result = converter.Convert(this, referenceWhite);
+            var converter = new RGBToXYZConverter(referenceWhite);
+            XYZColor result = converter.Convert(this);
             return result;
         }
 
