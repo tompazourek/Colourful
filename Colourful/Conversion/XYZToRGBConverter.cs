@@ -23,9 +23,23 @@ namespace Colourful.Conversion
     {
         private readonly Matrix<double> _conversionMatrix;
 
+        public XYZToRGBConverter() : this((IRGBWorkingSpace)null)
+        {
+        }
+
+        /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
+        public XYZToRGBConverter(IChromaticAdaptation chromaticAdaptation) : this(null, chromaticAdaptation)
+        {
+        }
+
+        /// <param name="targetRGBWorkingSpace">When not set, <see cref="RGBColor.DefaultWorkingSpace"/></param>
+        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace) : this(targetRGBWorkingSpace, null)
+        {
+        }
+
         /// <param name="targetRGBWorkingSpace">When not set, <see cref="RGBColor.DefaultWorkingSpace"/></param>
         /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
-        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace = null, IChromaticAdaptation chromaticAdaptation = null)
+        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace, IChromaticAdaptation chromaticAdaptation)
         {
             TargetRGBWorkingSpace = targetRGBWorkingSpace ?? RGBColor.DefaultWorkingSpace;
             ChromaticAdaptation = chromaticAdaptation ?? DefaultChromaticAdaptation;
@@ -40,6 +54,8 @@ namespace Colourful.Conversion
 
         public RGBColor Convert(XYZColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             Vector<double> inputVector;
 
             if (input.ReferenceWhite == TargetRGBWorkingSpace.ReferenceWhite)

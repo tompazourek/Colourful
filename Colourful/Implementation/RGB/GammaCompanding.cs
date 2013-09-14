@@ -33,8 +33,9 @@ namespace Colourful.Implementation.RGB
             return V;
         }
 
-        protected bool Equals(GammaCompanding other)
+        public bool Equals(GammaCompanding other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return Gamma.Equals(other.Gamma);
         }
 

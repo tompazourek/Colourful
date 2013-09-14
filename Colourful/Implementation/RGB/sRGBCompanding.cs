@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
+    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")]
     public class sRGBCompanding : ICompanding
     {
         public double InverseCompanding(double channel)
@@ -31,17 +33,12 @@ namespace Colourful.Implementation.RGB
             return V;
         }
 
-        protected bool Equals(sRGBCompanding other)
-        {
-            return true;
-        }
-
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((sRGBCompanding) obj);
+            if (obj.GetType() != GetType()) return false;
+            return true;
         }
 
         public override int GetHashCode()

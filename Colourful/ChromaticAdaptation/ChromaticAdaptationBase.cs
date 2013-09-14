@@ -29,6 +29,9 @@ namespace Colourful.ChromaticAdaptation
         /// </summary>
         public XYZColor Transform(XYZColor source, XYZColorBase destinationReferenceWhite)
         {
+            if (destinationReferenceWhite == null)
+                throw new ArgumentNullException("destinationReferenceWhite");
+
             double XD, YD, ZD;
             TransformCore(source, destinationReferenceWhite, out XD, out YD, out ZD);
 

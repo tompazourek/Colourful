@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
         public double R { get; private set; }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
         public double G { get; private set; }
 
         /// <summary>
@@ -52,6 +55,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
         public double B { get; private set; }
 
         /// <summary>
@@ -66,8 +70,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(RGBColorBase other)
+        public bool Equals(RGBColorBase other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
         }
 

@@ -1,4 +1,5 @@
-﻿using Colourful.ChromaticAdaptation;
+﻿using System;
+using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
 using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
@@ -26,6 +27,8 @@ namespace Colourful.Conversion
 
         protected static Matrix<double> GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
+            if (workingSpace == null) throw new ArgumentNullException("workingSpace");
+
             // for more info, see: http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
 
             RGBPrimariesChromaticityCoordinates chromaticity = workingSpace.ChromaticityCoordinates;

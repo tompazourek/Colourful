@@ -24,9 +24,27 @@ namespace Colourful.Conversion
         private readonly Matrix<double> _conversionMatrix;
 
         /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
+        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace)
+            : this(sourceRGBWorkingSpace, (XYZColorBase)null)
+        {
+        }
+
+        /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
+        /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
+        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace, IChromaticAdaptation chromaticAdaptation) : this(sourceRGBWorkingSpace, null, chromaticAdaptation)
+        {
+        }
+
+        /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
+        /// <param name="referenceWhite">When not set, reference white is taken from RGB working space.</param>
+        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace, XYZColorBase referenceWhite) : this(sourceRGBWorkingSpace, referenceWhite, null)
+        {
+        }
+
+        /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
         /// <param name="referenceWhite">When not set, reference white is taken from RGB working space.</param>
         /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
-        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace, XYZColorBase referenceWhite = null, IChromaticAdaptation chromaticAdaptation = null)
+        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace, XYZColorBase referenceWhite, IChromaticAdaptation chromaticAdaptation)
         {
             SourceRGBWorkingSpace = sourceRGBWorkingSpace;
             ReferenceWhite = referenceWhite;
@@ -47,6 +65,8 @@ namespace Colourful.Conversion
 
         public XYZColor Convert(RGBColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             if (!RGBWorkingSpaceEqualityComparer.Default.Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 

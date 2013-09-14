@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,7 @@ namespace Colourful.Colors
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBColor(double r, double g, double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
@@ -39,6 +41,7 @@ namespace Colourful.Colors
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
@@ -59,8 +62,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(RGBColor other)
+        public bool Equals(RGBColor other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
@@ -117,6 +121,9 @@ namespace Colourful.Colors
         /// </remarks>
         public static RGBColor FromXYZ(XYZColor input, IRGBWorkingSpace workingSpace)
         {
+            if (input == null) throw new ArgumentNullException("input");
+            if (workingSpace == null) throw new ArgumentNullException("workingSpace");
+
             return input.ToRGB(workingSpace);
         }
 
@@ -126,6 +133,8 @@ namespace Colourful.Colors
         /// </remarks>
         public static RGBColor FromXYZ(XYZColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             return input.ToRGB();
         }
 
@@ -165,9 +174,12 @@ namespace Colourful.Colors
 
         #region Implicit
 
-        public static implicit operator Color(RGBColor rgbColorBase)
+        public static implicit operator Color(RGBColor input)
         {
-            return rgbColorBase.ToColor();
+            if (input == null)
+                return default(Color);
+
+            return input.ToColor();
         }
 
         public static implicit operator RGBColor(Color color)

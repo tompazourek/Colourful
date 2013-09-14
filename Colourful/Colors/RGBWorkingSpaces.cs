@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Text;
-using System.Linq;
-using System.Diagnostics;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Colourful.Implementation.RGB;
 
 namespace Colourful.Colors
@@ -21,18 +22,18 @@ namespace Colourful.Colors
         /// Uses proper companding function, according to:
         /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
         /// </remarks>
-        public static readonly IRGBWorkingSpace sRGB = new RGBWorkingSpace(Illuminants.D65, new sRGBCompanding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.3000, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")] public static readonly IRGBWorkingSpace sRGB = new RGBWorkingSpace(Illuminants.D65, new sRGBCompanding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.3000, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
 
         /// <summary>
         /// Simplified sRGB (uses <see cref="GammaCompanding">gamma companding</see> instead of <see cref="sRGBCompanding"/>).
         /// See also <see cref="sRGB"/>.
         /// </summary>
-        public static readonly IRGBWorkingSpace sRGBSimplified = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.3000, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")] public static readonly IRGBWorkingSpace sRGBSimplified = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.3000, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
 
         /// <summary>
         /// ECI RGB v2
         /// </summary>
-        public static readonly IRGBWorkingSpace ECIRGBv2 = new RGBWorkingSpace(Illuminants.D50, new LCompanding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6700, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1400, 0.0800)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Bv")] [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Bv")] [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "ECIRG")] public static readonly IRGBWorkingSpace ECIRGBv2 = new RGBWorkingSpace(Illuminants.D50, new LCompanding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6700, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1400, 0.0800)));
 
         /// <summary>
         /// Adobe RGB (1998)
@@ -62,7 +63,7 @@ namespace Colourful.Colors
         /// <summary>
         /// CIE RGB
         /// </summary>
-        public static readonly IRGBWorkingSpace CIERGB = new RGBWorkingSpace(Illuminants.E, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.2740, 0.7170), new ChromaticityCoordinates(0.1670, 0.0090)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "CIERGB")] public static readonly IRGBWorkingSpace CIERGB = new RGBWorkingSpace(Illuminants.E, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.2740, 0.7170), new ChromaticityCoordinates(0.1670, 0.0090)));
 
         /// <summary>
         /// ColorMatch RGB
@@ -77,17 +78,17 @@ namespace Colourful.Colors
         /// <summary>
         /// Ekta Space PS5
         /// </summary>
-        public static readonly IRGBWorkingSpace EktaSpacePS5 = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6950, 0.3050), new ChromaticityCoordinates(0.2600, 0.7000), new ChromaticityCoordinates(0.1100, 0.0050)));
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ekta")] public static readonly IRGBWorkingSpace EktaSpacePS5 = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6950, 0.3050), new ChromaticityCoordinates(0.2600, 0.7000), new ChromaticityCoordinates(0.1100, 0.0050)));
 
         /// <summary>
         /// NTSC RGB
         /// </summary>
-        public static readonly IRGBWorkingSpace NTSCRGB = new RGBWorkingSpace(Illuminants.C, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6700, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1400, 0.0800)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "NTSCRGB")] public static readonly IRGBWorkingSpace NTSCRGB = new RGBWorkingSpace(Illuminants.C, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6700, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1400, 0.0800)));
 
         /// <summary>
         /// PAL/SECAM RGB
         /// </summary>
-        public static readonly IRGBWorkingSpace PALSECAMRGB = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.2900, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "PALSECAMRGB")] public static readonly IRGBWorkingSpace PALSECAMRGB = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.2900, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
 
         /// <summary>
         /// ProPhoto RGB
@@ -97,11 +98,11 @@ namespace Colourful.Colors
         /// <summary>
         /// SMPTE-C RGB
         /// </summary>
-        public static readonly IRGBWorkingSpace SMPTECRGB = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6300, 0.3400), new ChromaticityCoordinates(0.3100, 0.5950), new ChromaticityCoordinates(0.1550, 0.0700)));
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "SMPTECRGB")] public static readonly IRGBWorkingSpace SMPTECRGB = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6300, 0.3400), new ChromaticityCoordinates(0.3100, 0.5950), new ChromaticityCoordinates(0.1550, 0.0700)));
 
         /// <summary>
         /// Wide Gamut RGB
         /// </summary>
-        public static readonly IRGBWorkingSpace WideGamutsRGB = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.1150, 0.8260), new ChromaticityCoordinates(0.1570, 0.0180)));
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Gamuts")] public static readonly IRGBWorkingSpace WideGamutsRGB = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.1150, 0.8260), new ChromaticityCoordinates(0.1570, 0.0180)));
     }
 }

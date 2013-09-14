@@ -16,6 +16,8 @@ namespace Colourful.Conversion
     {
         public LChabColor Convert(LabColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             double L = input.L, a = input.a, b = input.b;
             double C = Math.Sqrt(a * a + b * b);
             double hRadians = Math.Atan2(b, a);
@@ -32,6 +34,8 @@ namespace Colourful.Conversion
 
         public LabColor Convert(LChabColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             double L = input.L, C = input.C, hDegrees = input.h;
             double hRadians = Trig.DegreeToRadian(hDegrees);
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,17 +23,17 @@ namespace Colourful.Colors
         /// <summary>
         /// Incandescent / Tungsten
         /// </summary>
-        public static readonly XYZColorBase A = new XYZColorBase(1.09850, 1, 0.35585);
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "A")] public static readonly XYZColorBase A = new XYZColorBase(1.09850, 1, 0.35585);
 
         /// <summary>
         /// Direct sunlight at noon (obsolete)
         /// </summary>
-        public static readonly XYZColorBase B = new XYZColorBase(0.99072, 1, 0.85223);
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")] public static readonly XYZColorBase B = new XYZColorBase(0.99072, 1, 0.85223);
 
         /// <summary>
         /// Average / North sky Daylight (obsolete)
         /// </summary>
-        public static readonly XYZColorBase C = new XYZColorBase(0.98074, 1, 1.18232);
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "C")] public static readonly XYZColorBase C = new XYZColorBase(0.98074, 1, 1.18232);
 
         /// <summary>
         /// Horizon Light. ICC profile PCS
@@ -57,7 +58,7 @@ namespace Colourful.Colors
         /// <summary>
         /// Equal energy
         /// </summary>
-        public static readonly XYZColorBase E = new XYZColorBase(1, 1, 1);
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "E")] public static readonly XYZColorBase E = new XYZColorBase(1, 1, 1);
 
         /// <summary>
         /// Cool White Fluorescent

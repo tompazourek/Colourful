@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,18 +36,21 @@ namespace Colourful.Colors
         /// Ranges usually from 0 to 1.
         /// For <see cref="XYZColor"/>, the range is restricted by <see cref="XYZColor.ReferenceWhite"/>.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         public double X { get; private set; }
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// For <see cref="XYZColor"/>, the range is restricted by <see cref="XYZColor.ReferenceWhite"/>.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y { get; private set; }
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// For <see cref="XYZColor"/>, the range is restricted by <see cref="XYZColor.ReferenceWhite"/>.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Z")]
         public double Z { get; private set; }
 
         /// <summary>
@@ -61,8 +65,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(XYZColorBase other)
+        public bool Equals(XYZColorBase other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
         }
 

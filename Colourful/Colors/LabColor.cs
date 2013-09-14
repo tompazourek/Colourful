@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Colourful.Colors
         /// <param name="l">L* (lightness)</param>
         /// <param name="a">a*</param>
         /// <param name="b">b*</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LabColor(double l, double a, double b)
         {
             L = l;
@@ -37,6 +39,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
         public double L { get; private set; }
 
         /// <summary>
@@ -45,6 +48,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Negative values indicate green while positive values indicate magenta.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
         public double a { get; private set; }
 
         /// <summary>
@@ -53,6 +57,7 @@ namespace Colourful.Colors
         /// <remarks>
         /// Negative values indicate blue and positive values indicate yellow.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
         public double b { get; private set; }
 
         /// <summary>
@@ -67,8 +72,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(LabColor other)
+        public bool Equals(LabColor other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
         }
 
@@ -109,11 +115,15 @@ namespace Colourful.Colors
 
         public static LabColor FromXYZ(XYZColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             return input.ToLab();
         }
 
         public static LabColor FromLChab(LChabColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             return input.ToLab();
         }
 

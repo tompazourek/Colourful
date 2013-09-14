@@ -15,6 +15,8 @@ namespace Colourful.Conversion
     {
         public LabColor Convert(XYZColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
             double Xr = input.ReferenceWhite.X, Yr = input.ReferenceWhite.Y, Zr = input.ReferenceWhite.Z;
 
@@ -32,7 +34,7 @@ namespace Colourful.Conversion
             return output;
         }
 
-        private double f(double cr)
+        private static double f(double cr)
         {
             double fc = cr > Epsilon ? Math.Pow(cr, 1 / 3d) : (Kappa * cr + 16) / 116d;
             return fc;

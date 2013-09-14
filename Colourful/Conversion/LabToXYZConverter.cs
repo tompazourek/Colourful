@@ -36,7 +36,7 @@ namespace Colourful.Conversion
             return result;
         }
 
-        private XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
+        private static XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
         {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;

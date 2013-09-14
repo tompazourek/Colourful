@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Colourful.Colors
         /// <param name="y">Y (from 0 to reference white Y)</param>
         /// <param name="z">Z (from 0 to reference white Z)</param>
         /// <remarks>Uses <see cref="DefaultReferenceWhite"/> as reference white.</remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "z")]
         public XYZColor(double x, double y, double z) : this(x, y, z, DefaultReferenceWhite)
         {
         }
@@ -37,8 +39,11 @@ namespace Colourful.Colors
         /// <param name="y">Y (from 0 to reference white Y)</param>
         /// <param name="z">Z (from 0 to reference white Z)</param>
         /// <param name="referenceWhite">Reference white (see <see cref="Illuminants"/>)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "z")]
         public XYZColor(double x, double y, double z, XYZColorBase referenceWhite) : base(x, y, z)
         {
+            if (referenceWhite == null) throw new ArgumentNullException("referenceWhite");
+
             x.CheckRange(0, referenceWhite.X);
             y.CheckRange(0, referenceWhite.Y);
             z.CheckRange(0, referenceWhite.Z);
@@ -56,8 +61,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(XYZColor other)
+        public bool Equals(XYZColor other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return base.Equals(other) && ReferenceWhite.Equals(other.ReferenceWhite);
         }
 
@@ -98,6 +104,7 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromLab(LabColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
             return input.ToXYZ();
         }
 
@@ -106,6 +113,9 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromLab(LabColor input, XYZColorBase referenceWhite)
         {
+            if (input == null) throw new ArgumentNullException("input");
+            if (referenceWhite == null) throw new ArgumentNullException("referenceWhite");
+
             return input.ToXYZ(referenceWhite);
         }
 
@@ -114,6 +124,8 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromRGB(RGBColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             return input.ToXYZ();
         }
 
@@ -122,6 +134,8 @@ namespace Colourful.Colors
         /// </remarks>
         public static XYZColor FromRGB(RGBColor input, XYZColorBase referenceWhite)
         {
+            if (input == null) throw new ArgumentNullException("input");
+            if (referenceWhite == null) throw new ArgumentNullException("referenceWhite");
             return input.ToXYZ(referenceWhite);
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Colourful.Colors
         /// <param name="l">L* (lightness)</param>
         /// <param name="c">C* (chroma)</param>
         /// <param name="h">h° (hue in degrees)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LChabColor(double l, double c, double h)
         {
             L = l;
@@ -37,16 +39,19 @@ namespace Colourful.Colors
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
         public double L { get; private set; }
 
         /// <summary>
         /// C* (chroma)
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "C")]
         public double C { get; private set; }
 
         /// <summary>
         /// h° (hue in degrees)
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
         public double h { get; private set; }
 
         /// <summary>
@@ -61,8 +66,9 @@ namespace Colourful.Colors
 
         #region Equality
 
-        protected bool Equals(LChabColor other)
+        public bool Equals(LChabColor other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return L.Equals(other.L) && C.Equals(other.C) && h.Equals(other.h);
         }
 
@@ -103,6 +109,8 @@ namespace Colourful.Colors
 
         public static LChabColor FromLab(LabColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             return input.ToLChab();
         }
 

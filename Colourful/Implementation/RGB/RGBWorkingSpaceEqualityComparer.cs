@@ -17,6 +17,9 @@ namespace Colourful.Implementation.RGB
 
         public bool Equals(IRGBWorkingSpace x, IRGBWorkingSpace y)
         {
+            if (x == null || y == null)
+                return EqualityComparer<IRGBWorkingSpace>.Default.Equals(x, y);
+
             if (!x.ReferenceWhite.Equals(y.ReferenceWhite))
                 return false;
 
@@ -31,6 +34,8 @@ namespace Colourful.Implementation.RGB
 
         public int GetHashCode(IRGBWorkingSpace obj)
         {
+            if (obj == null) throw new ArgumentNullException("obj");
+
             unchecked
             {
                 int hashCode = obj.ReferenceWhite.GetHashCode();

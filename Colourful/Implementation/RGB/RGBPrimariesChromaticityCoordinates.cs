@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,29 +15,48 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
+        private readonly ChromaticityCoordinates _b;
+        private readonly ChromaticityCoordinates _g;
+        private readonly ChromaticityCoordinates _r;
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
+        public RGBPrimariesChromaticityCoordinates(ChromaticityCoordinates r, ChromaticityCoordinates g, ChromaticityCoordinates b)
+        {
+            _r = r;
+            _g = g;
+            _b = b;
+        }
+
         /// <summary>
         /// Red
         /// </summary>
-        public readonly ChromaticityCoordinates R;
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
+        public ChromaticityCoordinates R
+        {
+            get { return _r; }
+        }
+
         /// <summary>
         /// Green
         /// </summary>
-        public readonly ChromaticityCoordinates G;
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
+        public ChromaticityCoordinates G
+        {
+            get { return _g; }
+        }
+
         /// <summary>
         /// Blue
         /// </summary>
-        public readonly ChromaticityCoordinates B;
-
-        public RGBPrimariesChromaticityCoordinates(ChromaticityCoordinates r, ChromaticityCoordinates g, ChromaticityCoordinates b)
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
+        public ChromaticityCoordinates B
         {
-            R = r;
-            G = g;
-            B = b;
+            get { return _b; }
         }
 
         public bool Equals(RGBPrimariesChromaticityCoordinates other)
         {
-            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
+            return _r.Equals(other._r) && _g.Equals(other._g) && _b.Equals(other._b);
         }
 
         public override bool Equals(object obj)
@@ -49,9 +69,9 @@ namespace Colourful.Implementation.RGB
         {
             unchecked
             {
-                int hashCode = R.GetHashCode();
-                hashCode = (hashCode * 397) ^ G.GetHashCode();
-                hashCode = (hashCode * 397) ^ B.GetHashCode();
+                int hashCode = _r.GetHashCode();
+                hashCode = (hashCode * 397) ^ _g.GetHashCode();
+                hashCode = (hashCode * 397) ^ _b.GetHashCode();
                 return hashCode;
             }
         }
