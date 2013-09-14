@@ -13,7 +13,7 @@ using MathNet.Numerics.LinearAlgebra.Generic;
 namespace Colourful.Conversion
 {
     /// <summary>
-    /// Converts from RGB to XYZ
+    /// Converts from RGB to XYZ and backwards
     /// </summary>
     public class RGBAndXYZConverter : IColorConverter<RGBColor, XYZColor>, IColorConverter<XYZColor, RGBColor>
     {
