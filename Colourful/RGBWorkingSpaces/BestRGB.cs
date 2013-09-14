@@ -18,7 +18,7 @@ namespace Colourful.RGBWorkingSpaces
     public class BestRGB : IRGBWorkingSpace
     {
         private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
-        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.7347, 0.2653), G = new ChromaticityCoordinates(0.2150, 0.7750), B = new ChromaticityCoordinates(0.1300, 0.0350) };
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7347, 0.2653), new ChromaticityCoordinates(0.2150, 0.7750), new ChromaticityCoordinates(0.1300, 0.0350));
 
         public ICompanding Companding
         {

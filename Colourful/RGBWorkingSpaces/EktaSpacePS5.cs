@@ -18,7 +18,7 @@ namespace Colourful.RGBWorkingSpaces
     public class EktaSpacePS5 : IRGBWorkingSpace
     {
         private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
-        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.6950, 0.3050), G = new ChromaticityCoordinates(0.2600, 0.7000), B = new ChromaticityCoordinates(0.1100, 0.0050) };
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6950, 0.3050), new ChromaticityCoordinates(0.2600, 0.7000), new ChromaticityCoordinates(0.1100, 0.0050));
 
         public ICompanding Companding
         {

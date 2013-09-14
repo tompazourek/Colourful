@@ -18,7 +18,7 @@ namespace Colourful.RGBWorkingSpaces
     public class SMPTECRGB : IRGBWorkingSpace
     {
         private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
-        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.6300, 0.3400), G = new ChromaticityCoordinates(0.3100, 0.5950), B = new ChromaticityCoordinates(0.1550, 0.0700) };
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6300, 0.3400), new ChromaticityCoordinates(0.3100, 0.5950), new ChromaticityCoordinates(0.1550, 0.0700));
 
         public ICompanding Companding
         {

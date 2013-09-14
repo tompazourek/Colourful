@@ -18,7 +18,7 @@ namespace Colourful.RGBWorkingSpaces
     public class BruceRGB : IRGBWorkingSpace
     {
         private readonly GammaCompanding _gammaCompanding = new GammaCompanding(2.2);
-        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates { R = new ChromaticityCoordinates(0.6400, 0.3300), G = new ChromaticityCoordinates(0.2800, 0.6500), B = new ChromaticityCoordinates(0.1500, 0.0600) };
+        private readonly RGBPrimariesChromaticityCoordinates _rgbPrimariesChromaticityCoordinates = new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.2800, 0.6500), new ChromaticityCoordinates(0.1500, 0.0600));
 
         public ICompanding Companding
         {

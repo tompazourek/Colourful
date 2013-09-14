@@ -21,11 +21,11 @@ namespace Colourful.RGBWorkingSpaces
     public class sRGBWorkingSpace : IRGBWorkingSpace
     {
         internal static readonly RGBPrimariesChromaticityCoordinates ChromaticityCoordinatesConst = new RGBPrimariesChromaticityCoordinates
-            {
-                R = new ChromaticityCoordinates(0.6400, 0.3300),
-                G = new ChromaticityCoordinates(0.3000, 0.6000),
-                B = new ChromaticityCoordinates(0.1500, 0.0600),
-            };
+            (
+                new ChromaticityCoordinates(0.6400, 0.3300),
+                new ChromaticityCoordinates(0.3000, 0.6000),
+                new ChromaticityCoordinates(0.1500, 0.0600)
+            );
 
         private readonly sRGBCompanding _sRGBCompanding = new sRGBCompanding();
 

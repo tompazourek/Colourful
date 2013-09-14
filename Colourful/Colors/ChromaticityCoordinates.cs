@@ -12,8 +12,8 @@ namespace Colourful.Colors
     /// </summary>
     public struct ChromaticityCoordinates
     {
-        public double x;
-        public double y;
+        public readonly double x;
+        public readonly double y;
 
         public ChromaticityCoordinates(double x, double y)
         {
