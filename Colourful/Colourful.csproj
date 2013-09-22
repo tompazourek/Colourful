@@ -66,6 +66,8 @@
     <Compile Include="Conversion\RGBAndXYZConverterBase.cs" />
     <Compile Include="Conversion\XYZToLabConverter.cs" />
     <Compile Include="Conversion\XYZAndLabConverterBase.cs" />
+    <Compile Include="Difference\CIE76ColorDifference.cs" />
+    <Compile Include="Difference\IColorDifference.cs" />
     <Compile Include="DoubleRoundingComparer.cs" />
     <Compile Include="DoublePrecisionComparer.cs" />
     <Compile Include="Extensions.cs" />
