@@ -57,4 +57,5 @@ Supports following chromatic adaptation methods:
 Support following color difference formulas:
 
 * CIE76
+* CIE94
 * CIEDE2000
