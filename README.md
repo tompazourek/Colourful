@@ -53,3 +53,8 @@ Supports following chromatic adaptation methods:
 * Von Kries
 * XYZ scaling
 * (custom chromatic adaptation)
+
+Support following color difference formulas:
+
+* CIE76
+* CIEDE2000
