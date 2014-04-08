@@ -23,7 +23,7 @@ namespace Colourful.Tests
                 get { return new GammaCompanding(2.2); }
             }
 
-            public XYZColorBase ReferenceWhite
+            public XYZColor WhitePoint
             {
                 get { return Illuminants.D65; }
             }

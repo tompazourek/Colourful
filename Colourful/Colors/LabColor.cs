@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Colourful.Conversion;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
@@ -16,17 +15,35 @@ namespace Colourful.Colors
     /// </summary>
     public class LabColor : IColorVector
     {
+        /// <summary>
+        /// D50 standard illuminant.
+        /// Used when reference white is not specified explicitly.
+        /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        public static readonly XYZColor DefaultWhitePoint = Illuminants.D50;
+
         #region Constructor
 
         /// <param name="l">L* (lightness)</param>
         /// <param name="a">a*</param>
         /// <param name="b">b*</param>
+        /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
-        public LabColor(double l, double a, double b)
+        public LabColor(double l, double a, double b) : this(l, a, b, DefaultWhitePoint)
+        {
+        }
+
+        /// <param name="l">L* (lightness)</param>
+        /// <param name="a">a*</param>
+        /// <param name="b">b*</param>
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        public LabColor(double l, double a, double b, XYZColor whitePoint)
         {
             L = l;
             this.a = a;
             this.b = b;
+            WhitePoint = whitePoint;
         }
 
         #endregion
@@ -59,6 +76,9 @@ namespace Colourful.Colors
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
         public double b { get; private set; }
+
+        /// <remarks><see cref="Illuminants"/></remarks>
+        public XYZColor WhitePoint { get; private set; }
 
         /// <summary>
         /// <see cref="IColorVector"/>
@@ -106,59 +126,6 @@ namespace Colourful.Colors
         {
             return !Equals(left, right);
         }
-
-        #endregion
-
-        #region Conversions
-
-        #region From
-
-        public static LabColor FromXYZ(XYZColor input)
-        {
-            if (input == null) throw new ArgumentNullException("input");
-
-            return input.ToLab();
-        }
-
-        public static LabColor FromLChab(LChabColor input)
-        {
-            if (input == null) throw new ArgumentNullException("input");
-
-            return input.ToLab();
-        }
-
-        #endregion
-
-        #region To
-
-        /// <remarks>
-        /// Target reference white is <see cref="XYZColor.DefaultReferenceWhite"/>.
-        /// </remarks>
-        public XYZColor ToXYZ()
-        {
-            var converter = new LabToXYZConverter();
-            XYZColor result = converter.Convert(this);
-            return result;
-        }
-
-        /// <remarks>
-        /// Target XYZ color has given reference white.
-        /// </remarks>
-        public XYZColor ToXYZ(XYZColorBase referenceWhite)
-        {
-            var converter = new LabToXYZConverter(referenceWhite);
-            XYZColor result = converter.Convert(this);
-            return result;
-        }
-
-        public LChabColor ToLChab()
-        {
-            var converter = new LabAndLChabConverter();
-            LChabColor result = converter.Convert(this);
-            return result;
-        }
-
-        #endregion
 
         #endregion
     }

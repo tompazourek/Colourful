@@ -77,7 +77,6 @@
     <Compile Include="Colors\Illuminants.cs" />
     <Compile Include="Colors\RGBColor.cs" />
     <Compile Include="Colors\XYZColor.cs" />
-    <Compile Include="Colors\XYZColorBase.cs" />
     <Compile Include="Conversion\IColorConverter.cs" />
     <Compile Include="Conversion\RGBToXYZConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />

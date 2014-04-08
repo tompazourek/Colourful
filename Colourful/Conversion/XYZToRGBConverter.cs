@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
 using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
@@ -17,33 +16,18 @@ namespace Colourful.Conversion
     /// </summary>
     /// <remarks>
     /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/> when not set.
-    /// If the source XYZ color reference white doesn't match the target RGB working space reference white, it is adjusted using <see cref="RGBAndXYZConverterBase.ChromaticAdaptation"/>.
     /// </remarks>
     public class XYZToRGBConverter : RGBAndXYZConverterBase, IColorConverter<XYZColor, RGBColor>
     {
         private readonly Matrix<double> _conversionMatrix;
 
-        public XYZToRGBConverter() : this((IRGBWorkingSpace)null)
+        public XYZToRGBConverter() : this(null)
         {
         }
 
-        /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
-        public XYZToRGBConverter(IChromaticAdaptation chromaticAdaptation) : this(null, chromaticAdaptation)
-        {
-        }
-
-        /// <param name="targetRGBWorkingSpace">When not set, <see cref="RGBColor.DefaultWorkingSpace"/></param>
-        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace) : this(targetRGBWorkingSpace, null)
-        {
-        }
-
-        /// <param name="targetRGBWorkingSpace">When not set, <see cref="RGBColor.DefaultWorkingSpace"/></param>
-        /// <param name="chromaticAdaptation">When not set, <see cref="RGBAndXYZConverterBase.DefaultChromaticAdaptation"/></param>
-        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace, IChromaticAdaptation chromaticAdaptation)
+        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace)
         {
             TargetRGBWorkingSpace = targetRGBWorkingSpace ?? RGBColor.DefaultWorkingSpace;
-            ChromaticAdaptation = chromaticAdaptation ?? DefaultChromaticAdaptation;
-
             _conversionMatrix = GetXYZToRGBMatrix(TargetRGBWorkingSpace);
         }
 
@@ -56,13 +40,7 @@ namespace Colourful.Conversion
         {
             if (input == null) throw new ArgumentNullException("input");
 
-            Vector<double> inputVector;
-
-            if (input.ReferenceWhite == TargetRGBWorkingSpace.ReferenceWhite)
-                inputVector = input.Vector;
-            else
-                inputVector = ChromaticAdaptation.TransformNonCropped(input, TargetRGBWorkingSpace.ReferenceWhite).Vector;
-
+            Vector<double> inputVector = input.Vector;
             Vector<double> uncompandedVector = _conversionMatrix * inputVector;
             RGBColor result1 = CompandVector(uncompandedVector, TargetRGBWorkingSpace);
             RGBColor result = result1;

@@ -11,33 +11,12 @@ namespace Colourful.Conversion
     /// <summary>
     /// Converts from <see cref="LabColor"/> to <see cref="XYZColor"/>.
     /// </summary>
-    /// <remarks>
-    /// Target reference white is <see cref="XYZColor.ReferenceWhite"/>, when not set, <see cref="XYZColor.DefaultReferenceWhite"/> is used.
-    /// </remarks>
     public class LabToXYZConverter : XYZAndLabConverterBase, IColorConverter<LabColor, XYZColor>
     {
-        public LabToXYZConverter()
-        {
-        }
-
-        public LabToXYZConverter(XYZColorBase referenceWhite)
-        {
-            ReferenceWhite = referenceWhite;
-        }
-
-        /// <summary>
-        /// Target reference white. When not set, <see cref="XYZColor.DefaultReferenceWhite"/> is used.
-        /// </summary>
-        public XYZColorBase ReferenceWhite { get; private set; }
-
         public XYZColor Convert(LabColor input)
         {
-            XYZColor result = Convert(input, ReferenceWhite ?? XYZColor.DefaultReferenceWhite);
-            return result;
-        }
+            if (input == null) throw new ArgumentNullException("input");
 
-        private static XYZColor Convert(LabColor input, XYZColorBase referenceWhite)
-        {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;
             double fy = (L + 16) / 116d;
@@ -51,7 +30,7 @@ namespace Colourful.Conversion
             double yr = L > Kappa * Epsilon ? Math.Pow((L + 16) / 116d, 3) : L / Kappa;
             double zr = fz3 > Epsilon ? fz3 : (116 * fz - 16) / Kappa;
 
-            double Xr = referenceWhite.X, Yr = referenceWhite.Y, Zr = referenceWhite.Z;
+            double Xr = input.WhitePoint.X, Yr = input.WhitePoint.Y, Zr = input.WhitePoint.Z;
 
             // avoids XYZ coordinates out range (restricted by 0 and XYZ reference white)
             xr = xr.CropRange(0, 1);
@@ -62,7 +41,7 @@ namespace Colourful.Conversion
             double Y = yr * Yr;
             double Z = zr * Zr;
 
-            var result = new XYZColor(X, Y, Z, referenceWhite);
+            var result = new XYZColor(X, Y, Z);
             return result;
         }
     }

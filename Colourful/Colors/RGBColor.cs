@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Colourful.Conversion;
 
 namespace Colourful.Colors
 {
@@ -94,101 +92,6 @@ namespace Colourful.Colors
         {
             return !Equals(left, right);
         }
-
-        #endregion
-
-        #region Conversions
-
-        #region From
-
-        public static RGBColor FromColor(Color color, IRGBWorkingSpace workingSpace)
-        {
-            double r = color.R / 255d;
-            double g = color.G / 255d;
-            double b = color.B / 255d;
-            return new RGBColor(r, g, b, workingSpace);
-        }
-
-        public static RGBColor FromColor(Color color)
-        {
-            double r = color.R / 255d;
-            double g = color.G / 255d;
-            double b = color.B / 255d;
-            return new RGBColor(r, g, b);
-        }
-
-        /// <remarks>
-        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
-        /// </remarks>
-        public static RGBColor FromXYZ(XYZColor input, IRGBWorkingSpace workingSpace)
-        {
-            if (input == null) throw new ArgumentNullException("input");
-            if (workingSpace == null) throw new ArgumentNullException("workingSpace");
-
-            return input.ToRGB(workingSpace);
-        }
-
-        /// <remarks>
-        /// Target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
-        /// Input color is adjusted to target RGB working space reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
-        /// </remarks>
-        public static RGBColor FromXYZ(XYZColor input)
-        {
-            if (input == null) throw new ArgumentNullException("input");
-
-            return input.ToRGB();
-        }
-
-        #endregion
-
-        #region To
-
-        public Color ToColor()
-        {
-            var r = (byte) Math.Round(R * 255);
-            var g = (byte) Math.Round(G * 255);
-            var b = (byte) Math.Round(B * 255);
-            return Color.FromArgb(r, g, b);
-        }
-
-        /// <remarks>
-        /// Reference white of output is taken from RGB working space (<see cref="IRGBWorkingSpace.ReferenceWhite"/>)
-        /// </remarks>
-        public XYZColor ToXYZ()
-        {
-            var converter = new RGBToXYZConverter(WorkingSpace);
-            XYZColor result = converter.Convert(this);
-            return result;
-        }
-
-        /// <remarks>
-        /// Output color is adjusted to the given reference white (using <see cref="RGBToXYZConverter.DefaultChromaticAdaptation"/>).
-        /// </remarks>
-        public XYZColor ToXYZ(XYZColorBase referenceWhite)
-        {
-            var converter = new RGBToXYZConverter(WorkingSpace, referenceWhite);
-            XYZColor result = converter.Convert(this);
-            return result;
-        }
-
-        #endregion
-
-        #region Implicit
-
-        public static implicit operator Color(RGBColor input)
-        {
-            if (input == null)
-                return default(Color);
-
-            return input.ToColor();
-        }
-
-        public static implicit operator RGBColor(Color color)
-        {
-            return FromColor(color);
-        }
-
-        #endregion
 
         #endregion
     }

@@ -17,7 +17,7 @@ namespace Colourful.Colors
         /// <summary>
         /// Reference white of the color space
         /// </summary>
-        XYZColorBase ReferenceWhite { get; }
+        XYZColor WhitePoint { get; }
 
         /// <summary>
         /// Chromaticity coordinates of the primaries

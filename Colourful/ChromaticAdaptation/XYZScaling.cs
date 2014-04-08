@@ -20,7 +20,7 @@ namespace Colourful.ChromaticAdaptation
     {
         private readonly DiagonalMatrix _matrix = DiagonalMatrix.Identity(3);
 
-        public override Matrix<double> MA
+        protected override Matrix<double> MA
         {
             get { return _matrix; }
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
+using Colourful.Conversion;
 using NUnit.Framework;
 
 namespace Colourful.Tests
@@ -38,9 +39,10 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new LabColor(l, a, b);
+            var converter = new LabAndLChabConverter();
 
             // act
-            LChabColor output = input.ToLChab();
+            LChabColor output = converter.Convert(input);
 
             // assert
             Assert.That(output.L, Is.EqualTo(l2).Using(DoubleComparer));
@@ -65,9 +67,10 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new LChabColor(l, c, h);
+            var converter = new LabAndLChabConverter();
 
             // act
-            LabColor output = input.ToLab();
+            LabColor output = converter.Convert(input);
 
             // assert
             Assert.That(output.L, Is.EqualTo(l2).Using(DoubleComparer));

@@ -22,7 +22,7 @@ namespace Colourful.Implementation.RGB
             if (x == null || y == null)
                 return EqualityComparer<IRGBWorkingSpace>.Default.Equals(x, y);
 
-            if (!x.ReferenceWhite.Equals(y.ReferenceWhite))
+            if (!x.WhitePoint.Equals(y.WhitePoint))
                 return false;
 
             if (!x.Companding.Equals(y.Companding))
@@ -40,7 +40,7 @@ namespace Colourful.Implementation.RGB
 
             unchecked
             {
-                int hashCode = obj.ReferenceWhite.GetHashCode();
+                int hashCode = obj.WhitePoint.GetHashCode();
                 hashCode = (hashCode * 397) ^ obj.Companding.GetHashCode();
                 hashCode = (hashCode * 397) ^ obj.ChromaticityCoordinates.GetHashCode();
                 return hashCode;

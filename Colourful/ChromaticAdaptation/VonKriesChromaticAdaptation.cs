@@ -25,7 +25,7 @@ namespace Colourful.ChromaticAdaptation
                 new[] { 0.0000000, 0.0000000, 0.9182200 },
             });
 
-        public override Matrix<double> MA
+        protected override Matrix<double> MA
         {
             get
             {

@@ -1,5 +1,9 @@
 ﻿using System;
-using Colourful.ChromaticAdaptation;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Colourful.Colors;
 using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
@@ -9,22 +13,6 @@ namespace Colourful.Conversion
 {
     public abstract class RGBAndXYZConverterBase
     {
-        private static readonly BradfordChromaticAdaptation BradfordChromaticAdaptation = new BradfordChromaticAdaptation();
-
-        /// <summary>
-        /// <see cref="IChromaticAdaptation"/>
-        /// </summary>
-        public IChromaticAdaptation ChromaticAdaptation { get; protected set; }
-
-        /// <summary>
-        /// Bradford chromatic adaptation.
-        /// Used when chromatic adaptation for reference white adjustation is not specified explicitly.
-        /// </summary>
-        public static IChromaticAdaptation DefaultChromaticAdaptation
-        {
-            get { return BradfordChromaticAdaptation; }
-        }
-
         protected static Matrix<double> GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException("workingSpace");
@@ -48,7 +36,7 @@ namespace Colourful.Conversion
             double Xb = xb / yb;
             const double Yb = 1;
             double Zb = (1 - xb - yb) / yb;
-            
+
             Matrix<double> S = DenseMatrix.OfRows(3, 3, new[]
                 {
                     new[] { Xr, Xg, Xb },
@@ -56,7 +44,7 @@ namespace Colourful.Conversion
                     new[] { Zr, Zg, Zb },
                 }).Inverse();
 
-            Vector<double> W = workingSpace.ReferenceWhite.Vector;
+            Vector<double> W = workingSpace.WhitePoint.Vector;
 
             (S * W).AssignVariables(out Sr, out Sg, out Sb);
 

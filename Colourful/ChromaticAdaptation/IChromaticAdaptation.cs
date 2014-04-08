@@ -19,9 +19,9 @@ namespace Colourful.ChromaticAdaptation
     /// </summary>
     public interface IChromaticAdaptation
     {
-        XYZColor Transform(XYZColor source, XYZColorBase destinationReferenceWhite);
+        XYZColor Transform(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint);
 
         /// <remarks>Doesn't crop the resulting color space coordinates (e. g. allows negative values for XYZ coordinates).</remarks>
-        XYZColorBase TransformNonCropped(XYZColor source, XYZColorBase destinationReferenceWhite);
+        XYZColor TransformNonCropped(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint);
     }
 }

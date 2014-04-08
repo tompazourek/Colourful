@@ -13,12 +13,27 @@ namespace Colourful.Conversion
     /// </summary>
     public class XYZToLabConverter : XYZAndLabConverterBase, IColorConverter<XYZColor, LabColor>
     {
+        public XYZToLabConverter()
+            : this(LabColor.DefaultWhitePoint)
+        {
+        }
+
+        public XYZToLabConverter(XYZColor labWhitePoint)
+        {
+            LabWhitePoint = labWhitePoint;
+        }
+
+        /// <summary>
+        /// Target reference white. When not set, <see cref="LabColor.DefaultWhitePoint"/> is used.
+        /// </summary>
+        public XYZColor LabWhitePoint { get; private set; }
+
         public LabColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException("input");
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
-            double Xr = input.ReferenceWhite.X, Yr = input.ReferenceWhite.Y, Zr = input.ReferenceWhite.Z;
+            double Xr = LabWhitePoint.X, Yr = LabWhitePoint.Y, Zr = LabWhitePoint.Z;
 
             double xr = input.X / Xr, yr = input.Y / Yr, zr = input.Z / Zr;
 

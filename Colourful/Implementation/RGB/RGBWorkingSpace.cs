@@ -13,14 +13,14 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public class RGBWorkingSpace : IRGBWorkingSpace
     {
-        public RGBWorkingSpace(XYZColorBase referenceWhite, ICompanding companding, RGBPrimariesChromaticityCoordinates chromaticityCoordinates)
+        public RGBWorkingSpace(XYZColor referenceWhite, ICompanding companding, RGBPrimariesChromaticityCoordinates chromaticityCoordinates)
         {
-            ReferenceWhite = referenceWhite;
+            WhitePoint = referenceWhite;
             Companding = companding;
             ChromaticityCoordinates = chromaticityCoordinates;
         }
 
-        public XYZColorBase ReferenceWhite { get; private set; }
+        public XYZColor WhitePoint { get; private set; }
 
         public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates { get; private set; }
 

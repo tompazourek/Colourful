@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
+using Colourful.Conversion;
 using NUnit.Framework;
 
 namespace Colourful.Tests
@@ -35,10 +37,12 @@ namespace Colourful.Tests
         public void Convert_XYZ_to_Lab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
-            var input = new XYZColor(x, y, z, Illuminants.D65);
+            var input = new XYZColor(x, y, z);
+            var converter = new XYZToLabConverter(Illuminants.D65);
 
             // act
-            LabColor output = input.ToLab();
+            XYZColor intermediate = input;
+            LabColor output = converter.Convert(intermediate);
 
             // assert
             Assert.That(output.L, Is.EqualTo(l).Using(DoubleComparerLabPrecision));
@@ -61,13 +65,13 @@ namespace Colourful.Tests
         public void Convert_Lab_to_XYZ(double l, double a, double b, double x, double y, double z)
         {
             // arrange
-            var input = new LabColor(l, a, b);
+            var input = new LabColor(l, a, b, Illuminants.D65);
+            var converter = new LabToXYZConverter();
 
             // act
-            XYZColor output = input.ToXYZ(Illuminants.D65);
+            XYZColor output = converter.Convert(input);
 
             // assert
-            Assert.That(output.ReferenceWhite, Is.EqualTo(Illuminants.D65));
             Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparerXYZPrecision));
             Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparerXYZPrecision));
             Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparerXYZPrecision));

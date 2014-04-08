@@ -28,7 +28,7 @@ namespace Colourful.Conversion
             else if (hDegrees < 0)
                 hDegrees += 360;
 
-            var output = new LChabColor(L, C, hDegrees);
+            var output = new LChabColor(L, C, hDegrees, input.WhitePoint);
             return output;
         }
 
@@ -42,7 +42,7 @@ namespace Colourful.Conversion
             double a = C * Math.Cos(hRadians);
             double b = C * Math.Sin(hRadians);
 
-            var output = new LabColor(L, a, b);
+            var output = new LabColor(L, a, b, input.WhitePoint);
             return output;
         }
     }
