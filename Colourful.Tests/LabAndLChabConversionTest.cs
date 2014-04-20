@@ -39,7 +39,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new LabColor(l, a, b);
-            var converter = new LabAndLChabConverter();
+            var converter = new LabToLChabConverter();
 
             // act
             LChabColor output = converter.Convert(input);
@@ -67,7 +67,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new LChabColor(l, c, h);
-            var converter = new LabAndLChabConverter();
+            var converter = new LChabToLabConverter();
 
             // act
             LabColor output = converter.Convert(input);
