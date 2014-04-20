@@ -63,7 +63,7 @@
     <Compile Include="Conversion\LChab\LabToLChabConverter.cs" />
     <Compile Include="Conversion\RGB\XYZToRGBConverter.cs" />
     <Compile Include="Conversion\Lab\LabToXYZConverter.cs" />
-    <Compile Include="Conversion\LChab\LabAndLChabConverter.cs" />
+    <Compile Include="Conversion\LChab\LChabToLabConverter.cs" />
     <Compile Include="Conversion\RGB\RGBAndXYZConverterBase.cs" />
     <Compile Include="Conversion\Lab\XYZToLabConverter.cs" />
     <Compile Include="Conversion\Lab\XYZAndLabConverterBase.cs" />
@@ -89,7 +89,6 @@
     <Compile Include="Colors\IRGBWorkingSpace.cs" />
     <Compile Include="Implementation\RGB\RGBPrimariesChromaticityCoordinates.cs" />
     <Compile Include="Implementation\RGB\RGBWorkingSpace.cs" />
-    <Compile Include="Implementation\RGB\RGBWorkingSpaceEqualityComparer.cs" />
     <Compile Include="Implementation\RGB\sRGBCompanding.cs" />
   </ItemGroup>
   <ItemGroup>

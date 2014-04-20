@@ -11,10 +11,10 @@ using NUnit.Framework;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests <see cref="RGBWorkingSpaceEqualityComparer"/>.
+    /// Tests equals on RGB working space.
     /// </summary>
     [TestFixture]
-    public class RGBWorkingSpaceEqualityComparerTest
+    public class RGBWorkingSpaceEqualsTest
     {
         private class AdobeRGB1998Duplicate : IRGBWorkingSpace
         {
@@ -42,7 +42,7 @@ namespace Colourful.Tests
             IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
 
             // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+            bool equals = x.Equals(y);
 
             // assert
             Assert.IsFalse(equals);
@@ -56,7 +56,7 @@ namespace Colourful.Tests
             IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
 
             // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+            bool equals = y.Equals(x);
 
             // assert
             Assert.IsTrue(equals);
@@ -70,7 +70,7 @@ namespace Colourful.Tests
             IRGBWorkingSpace y = x;
 
             // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+            bool equals = x.Equals(y);
 
             // assert
             Assert.IsTrue(equals);
@@ -84,7 +84,7 @@ namespace Colourful.Tests
             IRGBWorkingSpace y = RGBWorkingSpaces.sRGB;
 
             // act
-            bool equals = RGBWorkingSpaceEqualityComparer.Default.Equals(x, y);
+            bool equals = x.Equals(y);
 
             // assert
             Assert.IsTrue(equals);

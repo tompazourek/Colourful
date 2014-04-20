@@ -34,7 +34,7 @@ namespace Colourful.Conversion
         {
             if (input == null) throw new ArgumentNullException("input");
 
-            if (!RGBWorkingSpaceEqualityComparer.Default.Equals(input.WorkingSpace, SourceRGBWorkingSpace))
+            if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 
             Vector<double> rgb = UncompandVector(input);

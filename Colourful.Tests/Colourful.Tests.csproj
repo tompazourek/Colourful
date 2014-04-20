@@ -53,7 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="LabAndLChabConversionTest.cs" />
-    <Compile Include="RGBWorkingSpaceEqualityComparerTest.cs" />
+    <Compile Include="RGBWorkingSpaceEqualsTest.cs" />
     <Compile Include="ColorDifferenceFormulasTest.cs" />
     <Compile Include="XYZAndLabConversionTest.cs" />
     <Compile Include="RGBAndXYZConversionTest.cs" />
