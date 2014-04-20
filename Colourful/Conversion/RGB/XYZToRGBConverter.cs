@@ -64,5 +64,37 @@ namespace Colourful.Conversion
             var result = new RGBColor(R, G, B, workingSpace);
             return result;
         }
+
+        #region Overrides
+
+        protected bool Equals(XYZToRGBConverter other)
+        {
+            return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((XYZToRGBConverter) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(XYZToRGBConverter left, XYZToRGBConverter right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(XYZToRGBConverter left, XYZToRGBConverter right)
+        {
+            return !Equals(left, right);
+        }
+
+        #endregion
     }
 }

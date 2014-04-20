@@ -44,5 +44,32 @@ namespace Colourful.Conversion
             var result = new XYZColor(X, Y, Z);
             return result;
         }
+
+        #region Overrides
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1;
+        }
+
+        public static bool operator ==(LabToXYZConverter left, LabToXYZConverter right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(LabToXYZConverter left, LabToXYZConverter right)
+        {
+            return !Equals(left, right);
+        }
+
+        #endregion
     }
 }

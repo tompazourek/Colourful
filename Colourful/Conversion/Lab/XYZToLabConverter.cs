@@ -54,5 +54,37 @@ namespace Colourful.Conversion
             double fc = cr > Epsilon ? Math.Pow(cr, 1 / 3d) : (Kappa * cr + 16) / 116d;
             return fc;
         }
+
+        #region Overrides
+
+        protected bool Equals(XYZToLabConverter other)
+        {
+            return LabWhitePoint.Equals(other.LabWhitePoint);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((XYZToLabConverter) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return LabWhitePoint.GetHashCode();
+        }
+
+        public static bool operator ==(XYZToLabConverter left, XYZToLabConverter right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(XYZToLabConverter left, XYZToLabConverter right)
+        {
+            return !Equals(left, right);
+        }
+
+        #endregion
     }
 }
