@@ -13,7 +13,7 @@ namespace Colourful.Colors
     /// <summary>
     /// RGB color without specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
-    public class RGBColorBase : IColorVector
+    public abstract class RGBColorBase : IColorVector
     {
         #region Constructor
 
