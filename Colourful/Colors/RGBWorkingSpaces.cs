@@ -131,6 +131,6 @@ namespace Colourful.Colors
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Gamuts")]
-        public static readonly IRGBWorkingSpace WideGamutsRGB = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.1150, 0.8260), new ChromaticityCoordinates(0.1570, 0.0180)));
+        public static readonly IRGBWorkingSpace WideGamutRGB = new RGBWorkingSpace(Illuminants.D50, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.7350, 0.2650), new ChromaticityCoordinates(0.1150, 0.8260), new ChromaticityCoordinates(0.1570, 0.0180)));
     }
 }
