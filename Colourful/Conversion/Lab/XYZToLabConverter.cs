@@ -45,7 +45,7 @@ namespace Colourful.Conversion
             double a = 500 * (fx - fy);
             double b = 200 * (fy - fz);
 
-            var output = new LabColor(L, a, b);
+            var output = new LabColor(L, a, b, LabWhitePoint);
             return output;
         }
 
