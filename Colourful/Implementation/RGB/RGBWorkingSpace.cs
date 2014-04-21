@@ -30,6 +30,7 @@ namespace Colourful.Implementation.RGB
 
         protected bool Equals(IRGBWorkingSpace other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return Equals(WhitePoint, other.WhitePoint) && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) && Equals(Companding, other.Companding);
         }
 
@@ -37,8 +38,9 @@ namespace Colourful.Implementation.RGB
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (!(obj is IRGBWorkingSpace)) return false;
-            return Equals((IRGBWorkingSpace) obj);
+            var workingSpace = obj as IRGBWorkingSpace;
+            if (workingSpace == null) return false;
+            return Equals(workingSpace);
         }
 
         public override int GetHashCode()

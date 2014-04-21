@@ -69,6 +69,7 @@ namespace Colourful.Conversion
 
         protected bool Equals(XYZToRGBConverter other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
         }
 

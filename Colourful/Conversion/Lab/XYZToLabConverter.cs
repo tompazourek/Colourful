@@ -59,6 +59,7 @@ namespace Colourful.Conversion
 
         protected bool Equals(XYZToLabConverter other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return LabWhitePoint.Equals(other.LabWhitePoint);
         }
 

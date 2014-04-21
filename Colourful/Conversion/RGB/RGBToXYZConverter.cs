@@ -62,6 +62,7 @@ namespace Colourful.Conversion
 
         protected bool Equals(RGBToXYZConverter other)
         {
+            if (other == null) throw new ArgumentNullException("other");
             return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 

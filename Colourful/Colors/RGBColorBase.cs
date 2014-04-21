@@ -70,7 +70,7 @@ namespace Colourful.Colors
 
         #region Equality
 
-        public bool Equals(RGBColorBase other)
+        protected bool Equals(RGBColorBase other)
         {
             if (other == null) throw new ArgumentNullException("other");
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
