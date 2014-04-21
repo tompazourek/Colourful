@@ -9,7 +9,7 @@ using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="XYZColor"/> to <see cref="RGBColor"/>.
@@ -17,7 +17,7 @@ namespace Colourful.Conversion
     /// <remarks>
     /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/> when not set.
     /// </remarks>
-    public class XYZToRGBConverter : RGBAndXYZConverterBase, IColorConverter<XYZColor, RGBColor>
+    public class XYZToRGBConverter : RGBAndXYZConverterBase, IColorConversion<XYZColor, RGBColor>
     {
         private readonly Matrix<double> _conversionMatrix;
 

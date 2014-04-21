@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.Colors;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="XYZColor"/> to <see cref="LabColor"/>.
     /// </summary>
-    public class XYZToLabConverter : XYZAndLabConverterBase, IColorConverter<XYZColor, LabColor>
+    public class XYZToLabConverter : XYZAndLabConverterBase, IColorConversion<XYZColor, LabColor>
     {
         public XYZToLabConverter()
             : this(LabColor.DefaultWhitePoint)

@@ -1,18 +1,18 @@
-﻿using System.Threading.Tasks;
-using System.Text;
-using System.Linq;
-using System.Diagnostics;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Colourful.Colors;
 using MathNet.Numerics;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LabColor"/> to <see cref="LChabColor"/>.
     /// </summary>
-    public class LabToLChabConverter : IColorConverter<LabColor, LChabColor>
+    public class LabToLChabConverter : IColorConversion<LabColor, LChabColor>
     {
         public LChabColor Convert(LabColor input)
         {

@@ -9,12 +9,12 @@ using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="RGBColor"/> to <see cref="XYZColor"/>.
     /// </summary>
-    public class RGBToXYZConverter : RGBAndXYZConverterBase, IColorConverter<RGBColor, XYZColor>
+    public class RGBToXYZConverter : RGBAndXYZConverterBase, IColorConversion<RGBColor, XYZColor>
     {
         private readonly Matrix<double> _conversionMatrix;
 

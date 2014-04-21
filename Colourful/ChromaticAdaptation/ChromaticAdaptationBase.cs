@@ -27,27 +27,15 @@ namespace Colourful.ChromaticAdaptation
         /// <summary>
         /// Transforms XYZ color to destination reference white.
         /// </summary>
-        /// <remarks>Makes sure that the XYZ coordinates do not are cropped to the range given by target white point.</remarks>
         public XYZColor Transform(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint)
         {
-            if (targetWhitePoint == null)
-                throw new ArgumentNullException("targetWhitePoint");
+            if (sourceColor == null) throw new ArgumentNullException("sourceColor");
+            if (sourceWhitePoint == null) throw new ArgumentNullException("sourceWhitePoint");
+            if (targetWhitePoint == null) throw new ArgumentNullException("targetWhitePoint");
 
-            double XD, YD, ZD;
-            TransformCore(sourceColor, sourceWhitePoint, targetWhitePoint, out XD, out YD, out ZD);
+            if (sourceWhitePoint.Equals(targetWhitePoint))
+                return sourceColor;
 
-            XD = XD.CropRange(0, targetWhitePoint.X);
-            YD = YD.CropRange(0, targetWhitePoint.Y);
-            ZD = ZD.CropRange(0, targetWhitePoint.Z);
-
-            return new XYZColor(XD, YD, ZD);
-        }
-
-        /// <summary>
-        /// Transforms XYZ color to destination reference white.
-        /// </summary>
-        public XYZColor TransformNonCropped(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint)
-        {
             double XD, YD, ZD;
             TransformCore(sourceColor, sourceWhitePoint, targetWhitePoint, out XD, out YD, out ZD);
 

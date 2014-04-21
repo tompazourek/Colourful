@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Colourful.Colors;
 using MathNet.Numerics;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LChabColor"/> to <see cref="LabColor"/>.
     /// </summary>
-    public class LChabToLabConverter : IColorConverter<LChabColor, LabColor>
+    public class LChabToLabConverter : IColorConversion<LChabColor, LabColor>
     {
         public LabColor Convert(LChabColor input)
         {

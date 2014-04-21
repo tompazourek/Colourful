@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Colourful.ChromaticAdaptation;
 using Colourful.Colors;
 using Colourful.Conversion;
 using NUnit.Framework;
@@ -25,29 +24,30 @@ namespace Colourful.Tests
 
         /// <summary>
         /// Tests conversion
-        /// from <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>)
-        /// to <see cref="XYZColor"/> (<see cref="Illuminants.D65"/>).
+        /// from <see cref="XYZColor"/> (<see cref="Illuminants.D50"/>)
+        /// to <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>).
         /// </summary>
         [Test]
-        [TestCase(1, 1, 1, 0.950470, 1.000000, 1.088830)]
+        [TestCase(0.96422, 1.00000, 0.82521, 1, 1, 1)]
+        [TestCase(0.00000, 1.00000, 0.00000, 0, 1, 0)]
+        [TestCase(0.96422, 0.00000, 0.00000, 1, 0, 0.292064)]
+        [TestCase(0.00000, 0.00000, 0.82521, 0, 0.181415, 1)]
         [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(1, 0, 0, 0.412456, 0.212673, 0.019334)]
-        [TestCase(0, 1, 0, 0.357576, 0.715152, 0.119192)]
-        [TestCase(0, 0, 1, 0.180437, 0.072175, 0.950304)]
-        [TestCase(0.754902, 0.501961, 0.100000, 0.297676, 0.267854, 0.045504)]
-        public void Convert_sRGB_to_XYZ_D65(double r, double g, double b, double x, double y, double z)
+        [TestCase(0.297676, 0.267854, 0.045504, 0.720315, 0.509999, 0.168112)]
+        public void Convert_XYZ_D50_to_sRGB(double x, double y, double z, double r, double g, double b)
         {
-            // arrange
-            var input = new RGBColor(r, g, b);
-            var converter = new RGBToXYZConverter(input.WorkingSpace);
+            // arange
+            var input = new XYZColor(x, y, z);
+            var converter = new ColorConverter { WhitePoint = Illuminants.D50, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
-            XYZColor output = converter.Convert(input);
+            RGBColor output = converter.ToRGB(input);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
-            Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
-            Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
+            Assert.That(output.WorkingSpace, Is.EqualTo(RGBColor.DefaultWorkingSpace));
+            Assert.That(output.R, Is.EqualTo(r).Using(DoubleComparer));
+            Assert.That(output.G, Is.EqualTo(g).Using(DoubleComparer));
+            Assert.That(output.B, Is.EqualTo(b).Using(DoubleComparer));
         }
 
         /// <summary>
@@ -66,10 +66,10 @@ namespace Colourful.Tests
         {
             // arange
             var input = new XYZColor(x, y, z);
-            var converter = new XYZToRGBConverter();
+            var converter = new ColorConverter { WhitePoint = Illuminants.D65, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
-            RGBColor output = converter.Convert(input);
+            RGBColor output = converter.ToRGB(input);
 
             // assert
             Assert.That(output.WorkingSpace, Is.EqualTo(RGBColor.DefaultWorkingSpace));
@@ -94,12 +94,10 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new RGBColor(r, g, b);
-            var converter = new RGBToXYZConverter(input.WorkingSpace);
-            var adaptation = new BradfordChromaticAdaptation();
+            var converter = new ColorConverter { WhitePoint = Illuminants.D50 };
 
             // act
-            XYZColor intermediate = converter.Convert(input);
-            XYZColor output = adaptation.TransformNonCropped(intermediate, input.WorkingSpace.WhitePoint, Illuminants.D50);
+            XYZColor output = converter.ToXYZ(input);
 
             // assert
             Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
@@ -109,32 +107,29 @@ namespace Colourful.Tests
 
         /// <summary>
         /// Tests conversion
-        /// from <see cref="XYZColor"/> (<see cref="Illuminants.D50"/>)
-        /// to <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>).
+        /// from <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>)
+        /// to <see cref="XYZColor"/> (<see cref="Illuminants.D65"/>).
         /// </summary>
         [Test]
-        [TestCase(0.96422, 1.00000, 0.82521, 1, 1, 1)]
-        [TestCase(0.00000, 1.00000, 0.00000, 0, 1, 0)]
-        [TestCase(0.96422, 0.00000, 0.00000, 1, 0, 0.292064)]
-        [TestCase(0.00000, 0.00000, 0.82521, 0, 0.181415, 1)]
+        [TestCase(1, 1, 1, 0.950470, 1.000000, 1.088830)]
         [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(0.297676, 0.267854, 0.045504, 0.720315, 0.509999, 0.168112)]
-        public void Convert_XYZ_D50_to_sRGB(double x, double y, double z, double r, double g, double b)
+        [TestCase(1, 0, 0, 0.412456, 0.212673, 0.019334)]
+        [TestCase(0, 1, 0, 0.357576, 0.715152, 0.119192)]
+        [TestCase(0, 0, 1, 0.180437, 0.072175, 0.950304)]
+        [TestCase(0.754902, 0.501961, 0.100000, 0.297676, 0.267854, 0.045504)]
+        public void Convert_sRGB_to_XYZ_D65(double r, double g, double b, double x, double y, double z)
         {
-            // arange
-            var input = new XYZColor(x, y, z);
-            var converter = new XYZToRGBConverter();
-            var adaptation = new BradfordChromaticAdaptation();
+            // arrange
+            var input = new RGBColor(r, g, b);
+            var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
 
             // act
-            XYZColor intermediate = adaptation.TransformNonCropped(input, Illuminants.D50, RGBColor.DefaultWorkingSpace.WhitePoint);
-            RGBColor output = converter.Convert(intermediate);
+            XYZColor output = converter.ToXYZ(input);
 
             // assert
-            Assert.That(output.WorkingSpace, Is.EqualTo(RGBColor.DefaultWorkingSpace));
-            Assert.That(output.R, Is.EqualTo(r).Using(DoubleComparer));
-            Assert.That(output.G, Is.EqualTo(g).Using(DoubleComparer));
-            Assert.That(output.B, Is.EqualTo(b).Using(DoubleComparer));
+            Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
+            Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
+            Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
         }
     }
 }

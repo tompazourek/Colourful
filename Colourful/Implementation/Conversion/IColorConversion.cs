@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts color between two color spaces.
     /// </summary>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TOutput"></typeparam>
-    public interface IColorConverter<in TInput, out TOutput>
+    public interface IColorConversion<in TInput, out TOutput>
     {
         TOutput Convert(TInput input);
     }

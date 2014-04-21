@@ -9,7 +9,7 @@ using Colourful.Implementation.RGB;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Conversion
+namespace Colourful.Implementation.Conversion
 {
     public abstract class RGBAndXYZConverterBase
     {
