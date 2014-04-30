@@ -62,6 +62,9 @@ namespace Colourful.Difference
             if (x == null) throw new ArgumentNullException("x");
             if (y == null) throw new ArgumentNullException("y");
 
+            if (x.WhitePoint != y.WhitePoint)
+                throw new ArgumentException("Colors must have same white point to be compared.");
+
             double da = x.a - y.a;
             double db = x.b - y.b;
             double dL = x.L - y.L;

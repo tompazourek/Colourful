@@ -28,6 +28,9 @@ namespace Colourful.Difference
             if (x == null) throw new ArgumentNullException("x");
             if (y == null) throw new ArgumentNullException("y");
 
+            if (x.WhitePoint != y.WhitePoint)
+                throw new ArgumentException("Colors must have same white point to be compared.");
+
             var L = new[] { x.L, y.L };
             var a = new[] { x.a, y.a };
             var b = new[] { x.b, y.b };
