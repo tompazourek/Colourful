@@ -134,10 +134,7 @@ namespace Colourful.Colors
 
         public override string ToString()
         {
-            return string.Format("Lab [L={0}, a={1}, b={2}]",
-                L.ToString("0.##", CultureInfo.InvariantCulture),
-                a.ToString("0.##", CultureInfo.InvariantCulture),
-                b.ToString("0.##", CultureInfo.InvariantCulture));
+            return string.Format(CultureInfo.InvariantCulture, "Lab [L={0:0.##}, a={1:0.##}, b={2:0.##}]", L, a, b);
         }
 
         #endregion

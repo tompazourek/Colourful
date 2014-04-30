@@ -127,10 +127,7 @@ namespace Colourful.Colors
 
         public override string ToString()
         {
-            return string.Format("LChab [L={0}, C={1}, h={2}]",
-                L.ToString("0.##", CultureInfo.InvariantCulture),
-                C.ToString("0.##", CultureInfo.InvariantCulture),
-                h.ToString("0.##", CultureInfo.InvariantCulture));
+            return string.Format(CultureInfo.InvariantCulture, "LChab [L={0:0.##}, C={1:0.##}, h={2:0.##}]", L, C, h);
         }
 
         #endregion

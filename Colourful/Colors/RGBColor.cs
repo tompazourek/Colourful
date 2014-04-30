@@ -141,10 +141,7 @@ namespace Colourful.Colors
 
         public override string ToString()
         {
-            return string.Format("RGB [R={0}, G={1}, B={2}]",
-                R.ToString("0.##", CultureInfo.InvariantCulture),
-                G.ToString("0.##", CultureInfo.InvariantCulture),
-                B.ToString("0.##", CultureInfo.InvariantCulture));
+            return string.Format(CultureInfo.InvariantCulture, "RGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);
         }
 
         #endregion

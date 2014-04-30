@@ -104,10 +104,7 @@ namespace Colourful.Colors
 
         public override string ToString()
         {
-            return string.Format("XYZ [X={0}, Y={1}, Z={2}]",
-                X.ToString("0.##", CultureInfo.InvariantCulture),
-                Y.ToString("0.##", CultureInfo.InvariantCulture),
-                Z.ToString("0.##", CultureInfo.InvariantCulture));
+            return string.Format(CultureInfo.InvariantCulture, "XYZ [X={0:0.##}, Y={1:0.##}, Z={2:0.##}]", X, Y, Z);
         }
 
         #endregion

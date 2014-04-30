@@ -69,9 +69,7 @@ namespace Colourful.Colors
 
         public override string ToString()
         {
-            return string.Format("xy [x={0}, y={1}]",
-                x.ToString("0.##", CultureInfo.InvariantCulture),
-                y.ToString("0.##", CultureInfo.InvariantCulture));
+            return string.Format(CultureInfo.InvariantCulture, "xy [x={0:0.##}, y={1:0.##}]", x, y);
         }
 
         #endregion
