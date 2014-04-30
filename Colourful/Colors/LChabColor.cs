@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
+using System.Globalization;
 
 namespace Colourful.Colors
 {
@@ -118,6 +119,18 @@ namespace Colourful.Colors
         public static bool operator !=(LChabColor left, LChabColor right)
         {
             return !Equals(left, right);
+        }
+
+        #endregion
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format("LChab [L={0}, C={1}, h={2}]",
+                L.ToString("0.##", CultureInfo.InvariantCulture),
+                C.ToString("0.##", CultureInfo.InvariantCulture),
+                h.ToString("0.##", CultureInfo.InvariantCulture));
         }
 
         #endregion

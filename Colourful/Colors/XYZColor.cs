@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
+using System.Globalization;
 
 namespace Colourful.Colors
 {
@@ -95,6 +96,18 @@ namespace Colourful.Colors
         public static bool operator !=(XYZColor left, XYZColor right)
         {
             return !Equals(left, right);
+        }
+
+        #endregion
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format("XYZ [X={0}, Y={1}, Z={2}]",
+                X.ToString("0.##", CultureInfo.InvariantCulture),
+                Y.ToString("0.##", CultureInfo.InvariantCulture),
+                Z.ToString("0.##", CultureInfo.InvariantCulture));
         }
 
         #endregion

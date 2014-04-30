@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
+using System.Globalization;
 
 namespace Colourful.Colors
 {
@@ -125,6 +126,18 @@ namespace Colourful.Colors
         public static bool operator !=(LabColor left, LabColor right)
         {
             return !Equals(left, right);
+        }
+
+        #endregion
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format("Lab [L={0}, a={1}, b={2}]",
+                L.ToString("0.##", CultureInfo.InvariantCulture),
+                a.ToString("0.##", CultureInfo.InvariantCulture),
+                b.ToString("0.##", CultureInfo.InvariantCulture));
         }
 
         #endregion

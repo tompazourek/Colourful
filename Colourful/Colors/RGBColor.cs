@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -132,6 +133,18 @@ namespace Colourful.Colors
         {
             var output = new RGBColor(color);
             return output;
+        }
+
+        #endregion
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format("RGB [R={0}, G={1}, B={2}]",
+                R.ToString("0.##", CultureInfo.InvariantCulture),
+                G.ToString("0.##", CultureInfo.InvariantCulture),
+                B.ToString("0.##", CultureInfo.InvariantCulture));
         }
 
         #endregion

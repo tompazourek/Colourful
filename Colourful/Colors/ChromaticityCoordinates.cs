@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,5 +64,16 @@ namespace Colourful.Colors
         {
             return !left.Equals(right);
         }
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format("xy [x={0}, y={1}]",
+                x.ToString("0.##", CultureInfo.InvariantCulture),
+                y.ToString("0.##", CultureInfo.InvariantCulture));
+        }
+
+        #endregion
     }
 }
