@@ -148,5 +148,33 @@ namespace Colourful.Tests
             // assert
             Assert.That(deltaE, Is.EqualTo(expectedDeltaE).Using(DoubleComparerLabRounding));
         }
+
+        /// <summary>
+        /// Tests <see cref="CMCColorDifference"/>
+        /// </summary>
+        /// <remarks>
+        /// Test data generated using:
+        /// http://www.brucelindbloom.com/index.html?ColorDifferenceCalc.html
+        /// </remarks>
+        [Test]
+        [TestCase(0, 0, 0, 0, 0, 0, 0, 0)]
+        [TestCase(100, 0, 0, 0, 0, 0, 67.480171, 33.740085)]
+        [TestCase(100, -50, 50, 20, 10, -20, 66.320207, 47.038863)]
+        [TestCase(10.3454, 3.2151, -189.1230, 51.7781, -22.5151, 1.0001, 98.577755, 69.187455)]
+        public void CMCColorDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE_imperceptibility, double expectedDeltaE_acceptability)
+        {
+            // arrange
+            var x = new LabColor(l1, a1, b1);
+            var y = new LabColor(l2, a2, b2);
+
+            // act
+            double deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceTreshold.Imperceptibility).ComputeDifference(x, y);
+            double deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceTreshold.Acceptability).ComputeDifference(x, y);
+            
+
+            // assert
+            Assert.That(deltaE_imperceptibility, Is.EqualTo(expectedDeltaE_imperceptibility).Using(DoubleComparerLabPrecision));
+            Assert.That(deltaE_acceptability, Is.EqualTo(expectedDeltaE_acceptability).Using(DoubleComparerLabPrecision));
+        }
     }
 }

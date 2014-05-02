@@ -69,6 +69,7 @@
     <Compile Include="Conversion\ColorConverter.ToLab.cs" />
     <Compile Include="Conversion\ColorConverter.ToLChab.cs" />
     <Compile Include="Conversion\ColorConverter.ToHunterLab.cs" />
+    <Compile Include="Difference\CMCColorDifference.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\HunterLabToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZAndHunterLabConverterBase.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZToHunterLabConverter.cs" />
