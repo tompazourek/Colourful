@@ -42,6 +42,12 @@ namespace Colourful.Conversion
         public XYZColor TargetLabWhitePoint { get; set; }
 
         /// <summary>
+        /// White point used *when creating* HunterLab colors. (HunterLab colors on the input already contain the white point information)
+        /// Defaults to: <see cref="HunterLabColor.DefaultWhitePoint"/>.
+        /// </summary>
+        public XYZColor TargetHunterLabWhitePoint { get; set; }
+
+        /// <summary>
         /// Working space used *when creating* RGB colors. (RGB colors on the input already contain the working space information)
         /// Defaults to: <see cref="RGBColor.DefaultWorkingSpace"/>.
         /// </summary>
@@ -54,6 +60,7 @@ namespace Colourful.Conversion
             WhitePoint = DefaultWhitePoint;
             ChromaticAdaptation = DefaultChromaticAdaptationMethod;
             TargetLabWhitePoint = LabColor.DefaultWhitePoint;
+            TargetHunterLabWhitePoint = HunterLabColor.DefaultWhitePoint;
             TargetRGBWorkingSpace = RGBColor.DefaultWorkingSpace;
         }
 

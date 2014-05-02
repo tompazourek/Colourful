@@ -58,6 +58,7 @@
     <Compile Include="RGBWorkingSpaceEqualsTest.cs" />
     <Compile Include="ColorDifferenceFormulasTest.cs" />
     <Compile Include="ToStringTest.cs" />
+    <Compile Include="XYZAndHunterLabConversionTest.cs" />
     <Compile Include="XYZAndLabConversionTest.cs" />
     <Compile Include="RGBAndXYZConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

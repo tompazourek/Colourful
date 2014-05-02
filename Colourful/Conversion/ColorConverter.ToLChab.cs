@@ -47,5 +47,17 @@ namespace Colourful.Conversion
             LChabColor result = converter.Convert(adapted);
             return result;
         }
+
+        public LChabColor ToLChab(HunterLabColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion to XYZ (incl. adaptation)
+            XYZColor xyzColor = ToXYZ(color);
+
+            // conversion to LChab (incl. adaptation to lab white point (LabWhitePoint))
+            LChabColor result = ToLChab(xyzColor);
+            return result;
+        }
     }
 }

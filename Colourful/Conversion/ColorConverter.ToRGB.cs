@@ -49,5 +49,17 @@ namespace Colourful.Conversion
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
+
+        public RGBColor ToRGB(HunterLabColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion to XYZ
+            XYZColor xyzColor = ToXYZ(color);
+
+            // conversion to RGB
+            RGBColor result = ToRGB(xyzColor);
+            return result;
+        }
     }
 }

@@ -43,6 +43,13 @@ namespace Colourful.Tests
         }
 
         [Test]
+        public void HunterLabColor()
+        {
+            var color = new HunterLabColor(10, 20.5, 45.445);
+            Assert.AreEqual("HunterLab [L=10, a=20.5, b=45.45]", color.ToString());
+        }
+
+        [Test]
         public void ChromaticityCoordinates()
         {
             var coordinates = new ChromaticityCoordinates(1, 0.445);

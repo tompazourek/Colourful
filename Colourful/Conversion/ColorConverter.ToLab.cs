@@ -53,5 +53,17 @@ namespace Colourful.Conversion
             LabColor adapted = Adapt(unadapted);
             return adapted;
         }
+
+        public LabColor ToLab(HunterLabColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
+            XYZColor xyzColor = ToXYZ(color);
+
+            // conversion to Lab (incl. adaptation to lab white point (LabWhitePoint))
+            LabColor result = ToLab(xyzColor);
+            return result;
+        }
     }
 }

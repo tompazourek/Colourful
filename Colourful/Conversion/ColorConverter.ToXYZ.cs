@@ -55,5 +55,21 @@ namespace Colourful.Conversion
             XYZColor result = ToXYZ(labColor);
             return result;
         }
+
+        public XYZColor ToXYZ(HunterLabColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion
+            var converter = new HunterLabToXYZConverter();
+            XYZColor unadapted = converter.Convert(color);
+
+            // adaptation
+            XYZColor adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+                ? unadapted
+                : Adapt(unadapted, color.WhitePoint);
+
+            return adapted;
+        }
     }
 }
