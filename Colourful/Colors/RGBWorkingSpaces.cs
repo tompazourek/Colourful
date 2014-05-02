@@ -35,6 +35,16 @@ namespace Colourful.Colors
         public static readonly IRGBWorkingSpace sRGBSimplified = new RGBWorkingSpace(Illuminants.D65, new GammaCompanding(2.2), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.3000, 0.6000), new ChromaticityCoordinates(0.1500, 0.0600)));
 
         /// <summary>
+        /// Rec. 709 (ITU-R Recommendation BT.709)
+        /// </summary>
+        public static readonly IRGBWorkingSpace Rec709 = new RGBWorkingSpace(Illuminants.D65, new Rec709Companding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.64, 0.33), new ChromaticityCoordinates(0.30, 0.60), new ChromaticityCoordinates(0.15, 0.06)));
+
+        /// <summary>
+        /// Rec. 2020 (ITU-R Recommendation BT.2020)
+        /// </summary>
+        public static readonly IRGBWorkingSpace Rec2020 = new RGBWorkingSpace(Illuminants.D65, new Rec2020Companding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.708, 0.292), new ChromaticityCoordinates(0.170, 0.797), new ChromaticityCoordinates(0.131, 0.046)));
+
+        /// <summary>
         /// ECI RGB v2
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]

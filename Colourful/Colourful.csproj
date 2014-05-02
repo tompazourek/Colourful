@@ -95,6 +95,7 @@
     <Compile Include="Implementation\Conversion\RGB\RGBToXYZConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Implementation\RGB\GammaCompanding.cs" />
+    <Compile Include="Implementation\RGB\Rec709Companding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Colors\RGBColorBase.cs" />
     <Compile Include="Implementation\RGB\ICompanding.cs" />
