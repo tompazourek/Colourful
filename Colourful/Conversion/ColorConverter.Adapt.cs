@@ -89,5 +89,23 @@ namespace Colourful.Conversion
             LChabColor result = ToLChab(labColor);
             return result;
         }
+
+        /// <summary>
+        /// Adapts Lab color from the source white point to white point set in <see cref="TargetHunterLabWhitePoint"/>.
+        /// </summary>
+        public HunterLabColor Adapt(HunterLabColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            if (!IsChromaticAdaptationPerformed)
+                throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
+
+            if (color.WhitePoint.Equals(TargetHunterLabWhitePoint))
+                return color;
+
+            XYZColor xyzColor = ToXYZ(color);
+            HunterLabColor result = ToHunterLab(xyzColor);
+            return result;
+        }
     }
 }
