@@ -9,7 +9,7 @@ Currently supports following color spaces (and conversions):
 * CIE 1931 XYZ 
 * CIE L\*a\*b\* (1976)
 * CIE L\*C\*h°<sub>ab</sub>
-
+* Hunter Lab
 
 Supports following RGB working spaces:
 
@@ -56,6 +56,7 @@ Supports following chromatic adaptation methods:
 
 Support following color difference formulas:
 
-* CIE76
-* CIE94
-* CIEDE2000
+* CIE Delta-E 1976
+* CMC l:c (1984)
+* CIE Delta-E 1994
+* CIE Delta-E 2000
