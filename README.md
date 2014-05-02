@@ -68,6 +68,8 @@ Supports following RGB working spaces:
   * ProPhoto RGB
   * SMPTE-C RGB
   * Wide Gamut RGB
+  * Rec. 709
+  * Rec. 2020
   * (custom RGB working spaces)
 
 Supports following standard illuminants:
