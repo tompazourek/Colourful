@@ -3,6 +3,44 @@ Colourful .NET
 
 Open source .NET library for working with color spaces. Still in **early phase of development**.
 
+Usage
+-----
+
+```csharp
+using Colourful.Colors;
+using Colourful.Conversion;
+
+var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
+var input = new RGBColor(1, 0, 0);
+var output = converter.ToXYZ(input);
+```
+
+The `ColorConverter` facade can convert from any of the supported color spaces to any other color space. It always performs the chromatic adaptation if the input and output color space white points are different.
+
+The adaptation can be also performed alone (e.g. from CIELAB D50 to CIELAB D65).
+
+
+```csharp
+var converter = new ColorConverter { TargetLabWhitePoint = Illuminants.D65 };
+var input = new LabColor(10, 20, 30, Illuminants.D50);
+var output = converter.Adapt(input);
+```
+
+Adaptation can also convert from one RGB working space to another (e.g. from sRGB to Adobe RGB).
+
+```csharp
+using System.Drawing;
+
+var converter = new ColorConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.AdobeRGB1998 };
+var input = new RGBColor(Color.Yellow, RGBWorkingSpaces.sRGB);
+var output = converter.Adapt(input);
+```
+
+For more details, see the detailed XML documentation, or the [unit tests](https://github.com/tompazourek/Colourful/tree/master/Colourful.Tests).
+
+What is supported
+-----------------
+
 Currently supports following color spaces (and conversions):
 
 * RGB
