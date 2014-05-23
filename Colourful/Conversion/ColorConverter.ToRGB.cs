@@ -29,10 +29,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to RGB
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
@@ -41,10 +38,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to RGB
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
@@ -53,10 +47,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to RGB
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
@@ -65,10 +56,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to RGB
             RGBColor result = ToRGB(xyzColor);
             return result;
         }

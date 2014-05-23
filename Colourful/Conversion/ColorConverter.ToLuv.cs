@@ -14,10 +14,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
@@ -41,10 +38,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
@@ -53,10 +47,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
@@ -65,10 +56,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
             LuvColor result = ToLuv(xyzColor);
             return result;
         }

@@ -14,10 +14,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation)
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to LChab (incl. adaptation to lab white point (LabWhitePoint))
             LChabColor result = ToLChab(xyzColor);
             return result;
         }
@@ -26,10 +23,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to Lab (incl. adaptation to lab white point (LabWhitePoint))
             LabColor labColor = ToLab(color);
-
-            // conversion to LChab (perserving white point)
             LChabColor result = ToLChab(labColor);
             return result;
         }
@@ -51,10 +45,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation)
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to LChab (incl. adaptation to lab white point (LabWhitePoint))
             LChabColor result = ToLChab(xyzColor);
             return result;
         }
@@ -63,10 +54,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion to XYZ (incl. adaptation)
             XYZColor xyzColor = ToXYZ(color);
-
-            // conversion to LChab (incl. adaptation to lab white point (LabWhitePoint))
             LChabColor result = ToLChab(xyzColor);
             return result;
         }
