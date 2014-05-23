@@ -106,5 +106,23 @@ namespace Colourful.Conversion
             HunterLabColor result = ToHunterLab(xyzColor);
             return result;
         }
+
+        /// <summary>
+        /// Adapts Luv color from the source white point to white point set in <see cref="TargetLuvWhitePoint"/>.
+        /// </summary>
+        public LuvColor Adapt(LuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            if (!IsChromaticAdaptationPerformed)
+                throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
+
+            if (color.WhitePoint.Equals(TargetLuvWhitePoint))
+                return color;
+
+            XYZColor xyzColor = ToXYZ(color);
+            LuvColor result = ToLuv(xyzColor);
+            return result;
+        }
     }
 }
