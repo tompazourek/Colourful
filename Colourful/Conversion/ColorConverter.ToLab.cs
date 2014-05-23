@@ -65,5 +65,17 @@ namespace Colourful.Conversion
             LabColor result = ToLab(xyzColor);
             return result;
         }
+
+        public LabColor ToLuv(LuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
+            XYZColor xyzColor = ToXYZ(color);
+
+            // conversion to Lab (incl. adaptation to lab white point (LabWhitePoint))
+            LabColor result = ToLab(xyzColor);
+            return result;
+        }
     }
 }

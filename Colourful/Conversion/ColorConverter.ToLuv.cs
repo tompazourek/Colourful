@@ -11,66 +11,66 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
-        public HunterLabColor ToHunterLab(RGBColor color)
+        public LuvColor ToLuv(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
 
-            // conversion to HunterLab (incl. adaptation to lab white point (HunterLabWhitePoint))
-            HunterLabColor result = ToHunterLab(xyzColor);
+            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(XYZColor color)
+        public LuvColor ToLuv(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // adaptation
-            XYZColor adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
-                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetHunterLabWhitePoint)
+            XYZColor adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
+                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLuvWhitePoint)
                 : color;
 
             // conversion
-            var converter = new XYZToHunterLabConverter(TargetHunterLabWhitePoint);
-            HunterLabColor result = converter.Convert(adapted);
+            var converter = new XYZToLuvConverter(TargetLuvWhitePoint);
+            LuvColor result = converter.Convert(adapted);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LabColor color)
+        public LuvColor ToLuv(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
 
-            // conversion to Lab (incl. adaptation to lab white point (HunterLabWhitePoint))
-            HunterLabColor result = ToHunterLab(xyzColor);
+            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LChabColor color)
+        public LuvColor ToLuv(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
 
-            // conversion to Lab (incl. adaptation to lab white point (HunterLabWhitePoint))
-            HunterLabColor result = ToHunterLab(xyzColor);
+            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LuvColor color)
+        public LuvColor ToLuv(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion to XYZ (incl. adaptation to current white point (WhitePoint))
             XYZColor xyzColor = ToXYZ(color);
 
-            // conversion to Lab (incl. adaptation to lab white point (HunterLabWhitePoint))
-            HunterLabColor result = ToHunterLab(xyzColor);
+            // conversion to Luv (incl. adaptation to lab white point (LuvWhitePoint))
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
     }

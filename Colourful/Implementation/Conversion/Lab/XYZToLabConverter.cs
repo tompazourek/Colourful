@@ -11,7 +11,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="XYZColor"/> to <see cref="LabColor"/>.
     /// </summary>
-    public class XYZToLabConverter : XYZAndLabConverterBase, IColorConversion<XYZColor, LabColor>
+    public class XYZToLabConverter : IColorConversion<XYZColor, LabColor>
     {
         public XYZToLabConverter()
             : this(LabColor.DefaultWhitePoint)
@@ -51,7 +51,7 @@ namespace Colourful.Implementation.Conversion
 
         private static double f(double cr)
         {
-            double fc = cr > Epsilon ? Math.Pow(cr, 1 / 3d) : (Kappa * cr + 16) / 116d;
+            double fc = cr > CIEConstants.Epsilon ? Math.Pow(cr, 1 / 3d) : (CIEConstants.Kappa * cr + 16) / 116d;
             return fc;
         }
 

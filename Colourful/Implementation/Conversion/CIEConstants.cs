@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Colourful.Implementation.Conversion
 {
-    public abstract class XYZAndLabConverterBase
+    internal static class CIEConstants
     {
-        protected const double Epsilon = 216d / 24389d;
-        protected const double Kappa = 24389d / 27d;
+        public const double Epsilon = 216d / 24389d;
+        public const double Kappa = 24389d / 27d;
     }
 }

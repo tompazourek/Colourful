@@ -71,5 +71,21 @@ namespace Colourful.Conversion
 
             return adapted;
         }
+
+        public XYZColor ToXYZ(LuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion
+            var converter = new LuvToXYZConverter();
+            XYZColor unadapted = converter.Convert(color);
+
+            // adaptation
+            XYZColor adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+                ? unadapted
+                : Adapt(unadapted, color.WhitePoint);
+
+            return adapted;
+        }
     }
 }

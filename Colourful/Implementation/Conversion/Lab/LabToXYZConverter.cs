@@ -11,7 +11,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="LabColor"/> to <see cref="XYZColor"/>.
     /// </summary>
-    public class LabToXYZConverter : XYZAndLabConverterBase, IColorConversion<LabColor, XYZColor>
+    public class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
     {
         public XYZColor Convert(LabColor input)
         {
@@ -26,9 +26,9 @@ namespace Colourful.Implementation.Conversion
             double fx3 = Math.Pow(fx, 3);
             double fz3 = Math.Pow(fz, 3);
 
-            double xr = fx3 > Epsilon ? fx3 : (116 * fx - 16) / Kappa;
-            double yr = L > Kappa * Epsilon ? Math.Pow((L + 16) / 116d, 3) : L / Kappa;
-            double zr = fz3 > Epsilon ? fz3 : (116 * fz - 16) / Kappa;
+            double xr = fx3 > CIEConstants.Epsilon ? fx3 : (116 * fx - 16) / CIEConstants.Kappa;
+            double yr = L > CIEConstants.Kappa * CIEConstants.Epsilon ? Math.Pow((L + 16) / 116d, 3) : L / CIEConstants.Kappa;
+            double zr = fz3 > CIEConstants.Epsilon ? fz3 : (116 * fz - 16) / CIEConstants.Kappa;
 
             double Xr = input.WhitePoint.X, Yr = input.WhitePoint.Y, Zr = input.WhitePoint.Z;
 

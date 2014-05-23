@@ -58,6 +58,7 @@
     <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
+    <Compile Include="Colors\LuvColor.cs" />
     <Compile Include="Colors\HunterLabColor.cs" />
     <Compile Include="Colors\LChabColor.cs" />
     <Compile Include="Colors\LabColor.cs" />
@@ -69,17 +70,20 @@
     <Compile Include="Conversion\ColorConverter.ToLab.cs" />
     <Compile Include="Conversion\ColorConverter.ToLChab.cs" />
     <Compile Include="Conversion\ColorConverter.ToHunterLab.cs" />
+    <Compile Include="Conversion\ColorConverter.ToLuv.cs" />
     <Compile Include="Difference\CMCColorDifference.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\HunterLabToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZAndHunterLabConverterBase.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZToHunterLabConverter.cs" />
     <Compile Include="Implementation\Conversion\LChab\LabToLChabConverter.cs" />
+    <Compile Include="Implementation\Conversion\Luv\LuvToXYZConverter.cs" />
+    <Compile Include="Implementation\Conversion\Luv\XYZToLuvConverter.cs" />
     <Compile Include="Implementation\Conversion\RGB\XYZToRGBConverter.cs" />
     <Compile Include="Implementation\Conversion\Lab\LabToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\LChab\LChabToLabConverter.cs" />
     <Compile Include="Implementation\Conversion\RGB\RGBAndXYZConverterBase.cs" />
     <Compile Include="Implementation\Conversion\Lab\XYZToLabConverter.cs" />
-    <Compile Include="Implementation\Conversion\Lab\XYZAndLabConverterBase.cs" />
+    <Compile Include="Implementation\Conversion\CIEConstants.cs" />
     <Compile Include="Difference\CIE76ColorDifference.cs" />
     <Compile Include="Difference\CIE94ColorDifference.cs" />
     <Compile Include="Difference\CIEDE2000ColorDifference.cs" />
@@ -113,6 +117,7 @@
   <ItemGroup>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
