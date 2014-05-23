@@ -47,6 +47,7 @@ Currently supports following color spaces (and conversions):
 * CIE 1931 XYZ 
 * CIE L\*a\*b\* (1976)
 * CIE L\*C\*h°<sub>ab</sub>
+* CIE L\*u\*v\* (1976)
 * Hunter Lab
 
 Supports following RGB working spaces:
@@ -72,7 +73,7 @@ Supports following RGB working spaces:
   * Rec. 2020
   * (custom RGB working spaces)
 
-Supports following standard illuminants:
+Contains definition of following standard illuminants as white points:
 
 * A
 * B
@@ -85,7 +86,7 @@ Supports following standard illuminants:
 * F2
 * F7
 * F11
-* (custom standard illuminant)
+* (custom white points)
 
 Supports following chromatic adaptation methods:
 
