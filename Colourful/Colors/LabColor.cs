@@ -9,7 +9,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 using System.Globalization;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// CIE L*a*b* (1976) color

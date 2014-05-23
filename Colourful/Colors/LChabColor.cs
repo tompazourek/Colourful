@@ -9,7 +9,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 using System.Globalization;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>

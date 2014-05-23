@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// Color represented as a vector in its color space

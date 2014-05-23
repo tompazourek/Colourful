@@ -4,9 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Colourful.ChromaticAdaptation;
-using Colourful.Colors;
-using Colourful.Conversion;
 using NUnit.Framework;
 
 namespace Colourful.Tests

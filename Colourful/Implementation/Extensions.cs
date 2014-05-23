@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful
+namespace Colourful.Implementation
 {
     internal static class Extensions
     {

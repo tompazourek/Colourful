@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation.RGB;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <remarks>
     /// Chromaticity coordinates taken from:

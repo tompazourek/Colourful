@@ -7,8 +7,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Implementation;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>

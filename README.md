@@ -7,9 +7,6 @@ Usage
 -----
 
 ```csharp
-using Colourful.Colors;
-using Colourful.Conversion;
-
 var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
 var input = new RGBColor(1, 0, 0);
 var output = converter.ToXYZ(input);

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.ChromaticAdaptation;
-using Colourful.Colors;
 
 namespace Colourful.Conversion
 {

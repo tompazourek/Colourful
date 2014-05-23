@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colourful
+namespace Colourful.Implementation
 {
     /// <summary>
     /// Compares two doubles and rounds to specific number of fractional digits.

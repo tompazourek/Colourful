@@ -5,10 +5,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Implementation;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Generic;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// RGB color without specified <see cref="IRGBWorkingSpace">working space</see>

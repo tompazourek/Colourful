@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colourful.Colors
+namespace Colourful
 {
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
