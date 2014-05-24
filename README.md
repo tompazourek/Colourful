@@ -3,13 +3,13 @@ Colourful .NET
 
 Open source .NET library for working with color spaces.
 
-&copy; [Tomáš Pažourek](https://github.com/tompazourek), 2014
-
-All rights reserved.
-
 The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
+
+&copy; [Tomáš Pažourek](https://github.com/tompazourek), 2014
+<br/>
+All rights reserved.
 
 Usage
 -----
