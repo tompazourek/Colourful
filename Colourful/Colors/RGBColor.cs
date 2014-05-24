@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -123,13 +133,13 @@ namespace Colourful
             if (input == null)
                 return new Color();
 
-            var r = (byte)Math.Round(input.R * 255).CropRange(0, 255);
-            var g = (byte)Math.Round(input.G * 255).CropRange(0, 255);
-            var b = (byte)Math.Round(input.B * 255).CropRange(0, 255);
+            var r = (byte) Math.Round(input.R * 255).CropRange(0, 255);
+            var g = (byte) Math.Round(input.G * 255).CropRange(0, 255);
+            var b = (byte) Math.Round(input.B * 255).CropRange(0, 255);
             var output = Color.FromArgb(r, g, b);
             return output;
         }
-        
+
         public static explicit operator RGBColor(Color color)
         {
             var output = new RGBColor(color);

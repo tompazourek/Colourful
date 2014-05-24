@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -170,7 +180,7 @@ namespace Colourful.Tests
             // act
             double deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceTreshold.Imperceptibility).ComputeDifference(x, y);
             double deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceTreshold.Acceptability).ComputeDifference(x, y);
-            
+
 
             // assert
             Assert.That(deltaE_imperceptibility, Is.EqualTo(expectedDeltaE_imperceptibility).Using(DoubleComparerLabPrecision));

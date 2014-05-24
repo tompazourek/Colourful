@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -43,7 +53,10 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double x { get { return Chromaticity.x; } }
+        public double x
+        {
+            get { return Chromaticity.x; }
+        }
 
         /// <remarks>
         /// Ranges usually from 0 to 1.

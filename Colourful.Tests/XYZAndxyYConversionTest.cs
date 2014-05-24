@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,10 +34,10 @@ namespace Colourful.Tests
         private static readonly object[] TestData =
             {
                 // X, Y, Z, x, y, Y
-                new object [] { 0, 0, 0, 0, 0, 0 },
-                new object [] { 0.436075, 0.222504, 0.013932, 0.648427, 0.330856, 0.222504 },
-                new object [] { 0.964220, 1.000000, 0.825210, 0.345669, 0.358496, 1.000000 },
-                new object [] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 },
+                new object[] { 0, 0, 0, 0, 0, 0 },
+                new object[] { 0.436075, 0.222504, 0.013932, 0.648427, 0.330856, 0.222504 },
+                new object[] { 0.964220, 1.000000, 0.825210, 0.345669, 0.358496, 1.000000 },
+                new object[] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 },
             };
 
         [Test]

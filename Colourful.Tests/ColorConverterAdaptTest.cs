@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -135,10 +145,10 @@ namespace Colourful.Tests
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColorConverter
-            {
-                ChromaticAdaptation = new VonKriesChromaticAdaptation(),
-                WhitePoint = Illuminants.D50
-            };
+                {
+                    ChromaticAdaptation = new VonKriesChromaticAdaptation(),
+                    WhitePoint = Illuminants.D50
+                };
 
             // action
             XYZColor output = converter.Adapt(input, Illuminants.D65);
@@ -158,10 +168,10 @@ namespace Colourful.Tests
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColorConverter
-            {
-                ChromaticAdaptation = new XYZScaling(),
-                WhitePoint = Illuminants.D50
-            };
+                {
+                    ChromaticAdaptation = new XYZScaling(),
+                    WhitePoint = Illuminants.D50
+                };
 
             // action
             XYZColor output = converter.Adapt(input, Illuminants.D65);

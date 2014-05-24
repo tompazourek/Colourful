@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region License
+
+// Copyright (C) Tomáš Pažourek, 2014
+// All rights reserved.
+// 
+// Distributed under MIT license as a part of project Colourful.
+// https://github.com/tompazourek/Colourful
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -84,7 +94,7 @@ namespace Colourful.Tests
             // assert
             Debug.WriteLine(string.Format("CCT {0} K (difference {1} K)", cct, Math.Abs(expectedCCT - cct)));
             const double delta = 66; // to pass the tests
-            AssertEqualWithDelta(expectedCCT, cct, delta); 
+            AssertEqualWithDelta(expectedCCT, cct, delta);
         }
 
         [Test, TestCaseSource("CCTData_Wikipedia")]
