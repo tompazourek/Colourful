@@ -97,9 +97,9 @@ namespace Colourful.Tests
             ChromaticityCoordinates chromaticity = approximation.GetChromaticityOfCCT(cct);
 
             // assert
-            const double delta = 0.01;
+            const double delta = 0.02;
             AssertEqualWithDelta(expectedX, chromaticity.x, delta);
-            AssertEqualWithDelta(expectedX, chromaticity.x, delta);
+            AssertEqualWithDelta(expectedY, chromaticity.y, delta);
         }
     }
 }
