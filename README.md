@@ -14,7 +14,9 @@ var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
 XYZColor output = converter.ToXYZ(input);
 ```
 
-The `ColorConverter` facade can convert **from any of the supported color spaces to any other color space**. It always performs the chromatic adaptation if the input and output color space white points are different.
+The `ColorConverter` facade can convert **from any of the supported color spaces to any other color space**.
+
+It **always performs the chromatic adaptation** if the input and output color space white points are different.
 
 The adaptation can be also performed alone (e.g. from CIELAB D50 to CIELAB D65).
 
@@ -43,14 +45,17 @@ For more details, see the detailed XML documentation, or the [unit tests](https:
 What is supported
 -----------------
 
-Currently supports following color spaces (and conversions):
+Currently supports following color spaces (and conversions between each other):
 
-* RGB
-* CIE 1931 XYZ 
-* CIE L\*a\*b\* (1976)
-* CIE L\*C\*h°<sub>ab</sub>
-* CIE L\*u\*v\* (1976)
-* Hunter Lab
+* **RGB**
+* **CIE 1931 XYZ **
+* **CIE xyY (derived from XYZ)**
+* **CIE L\*a\*b\* (1976)**
+* **CIE L\*C\*h°<sub>ab</sub>**
+* **CIE L\*u\*v\* (1976)**
+* **Hunter Lab**
+
+Also supports computing **correlated color temperature (CCT)** from chromaticity and computing chromaticity from CCT. Altough these are just approximations with low precision.
 
 Supports following RGB working spaces:
 
