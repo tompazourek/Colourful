@@ -34,6 +34,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public LuvColor ToLuv(xyYColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LuvColor result = ToLuv(xyzColor);
+            return result;
+        }
+
         public LuvColor ToLuv(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

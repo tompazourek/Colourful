@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CCTTest.cs" />
     <Compile Include="ColorConverterAdaptTest.cs" />
+    <Compile Include="XYZAndxyYConversionTest.cs" />
     <Compile Include="XYZAndLuvConversionTest.cs" />
     <Compile Include="LabAndLChabConversionTest.cs" />
     <Compile Include="RGBWorkingSpaceEqualsTest.cs" />

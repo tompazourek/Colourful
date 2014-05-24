@@ -58,6 +58,7 @@
     <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
+    <Compile Include="Colors\xyYColor.cs" />
     <Compile Include="Colors\LuvColor.cs" />
     <Compile Include="Colors\HunterLabColor.cs" />
     <Compile Include="Colors\LChabColor.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Conversion\ColorConverter.ToLChab.cs" />
     <Compile Include="Conversion\ColorConverter.ToHunterLab.cs" />
     <Compile Include="Conversion\ColorConverter.ToLuv.cs" />
+    <Compile Include="Conversion\ColorConverter.ToxyY.cs" />
     <Compile Include="Difference\CMCColorDifference.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\HunterLabToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZAndHunterLabConverterBase.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Difference\CIE94ColorDifference.cs" />
     <Compile Include="Difference\CIEDE2000ColorDifference.cs" />
     <Compile Include="Difference\IColorDifference.cs" />
+    <Compile Include="Implementation\Conversion\xyY\xyYAndXYZConverter.cs" />
     <Compile Include="Implementation\DoubleRoundingComparer.cs" />
     <Compile Include="Implementation\DoublePrecisionComparer.cs" />
     <Compile Include="Implementation\Extensions.cs" />

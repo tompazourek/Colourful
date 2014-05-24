@@ -25,6 +25,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public RGBColor ToRGB(xyYColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            RGBColor result = ToRGB(xyzColor);
+            return result;
+        }
+
         public RGBColor ToRGB(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

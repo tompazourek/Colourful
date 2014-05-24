@@ -10,63 +10,58 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
-        public HunterLabColor ToHunterLab(RGBColor color)
+        public xyYColor ToxyY(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            xyYColor result = ToxyY(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(XYZColor color)
+        public xyYColor ToxyY(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
-
-            // adaptation
-            XYZColor adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
-                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetHunterLabWhitePoint)
-                : color;
 
             // conversion
-            var converter = new XYZToHunterLabConverter(TargetHunterLabWhitePoint);
-            HunterLabColor result = converter.Convert(adapted);
+            var converter = new xyYAndXYZConverter();
+            var result = converter.Convert(color);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(xyYColor color)
+        public xyYColor ToxyY(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            xyYColor result = ToxyY(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LabColor color)
+        public xyYColor ToxyY(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            xyYColor result = ToxyY(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LChabColor color)
+        public xyYColor ToxyY(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            xyYColor result = ToxyY(xyzColor);
             return result;
         }
 
-        public HunterLabColor ToHunterLab(LuvColor color)
+        public xyYColor ToxyY(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            xyYColor result = ToxyY(xyzColor);
             return result;
         }
     }

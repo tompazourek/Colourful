@@ -34,6 +34,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public LabColor ToLab(xyYColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LabColor result = ToLab(xyzColor);
+            return result;
+        }
+
         public LabColor ToLab(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

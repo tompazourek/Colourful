@@ -26,6 +26,16 @@ namespace Colourful.Conversion
             return adapted;
         }
 
+        public XYZColor ToXYZ(xyYColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion
+            var converter = new xyYAndXYZConverter();
+            XYZColor converted = converter.Convert(color);
+            return converted;
+        }
+
         public XYZColor ToXYZ(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
