@@ -47,9 +47,9 @@ What is supported
 
 Currently supports following color spaces (and conversions between each other):
 
-* **RGB**
+* **RGB** (see working spaces below)
 * **CIE 1931 XYZ**
-* **CIE xyY (derived from XYZ)**
+* **CIE xyY** (derived from XYZ)
 * **CIE L\*a\*b\* (1976)**
 * **CIE L\*C\*h°<sub>ab</sub>**
 * **CIE L\*u\*v\* (1976)**
