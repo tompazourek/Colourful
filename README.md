@@ -23,7 +23,7 @@ var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
 XYZColor output = converter.ToXYZ(input);
 ```
 
-The `ColorConverter` facade can convert **from any of the supported color spaces to any other color space**.
+The `ColorConverter` facade can convert **from any of the [supported color spaces](./#color-spaces) to any other color space**.
 
 It **always performs the chromatic adaptation** if the input and output color space white points are different.
 
@@ -49,6 +49,8 @@ var converter = new ColorConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.Ad
 
 RGBColor output = converter.Adapt(input);
 ```
+
+Converter can be configured to arbitrary chromatic adaptation method, [several are supported](./#chromatic-adaptation-methods).
 
 ### CCT approximation
 
