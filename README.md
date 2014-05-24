@@ -110,8 +110,8 @@ All of these color spaces (including RGB) have double precision. Conversion to `
   * ProPhoto RGB
   * SMPTE-C RGB
   * Wide Gamut RGB
-  * Rec. 709
-  * Rec. 2020
+  * Rec. 709 *(ITU-R Recommendation BT.709 &ndash; HDTV)*
+  * Rec. 2020 *(ITU-R Recommendation BT.2020 &ndash; UHDTV)*
   * *(custom RGB working spaces)*
 
 ### Illuminants &mdash; white points
