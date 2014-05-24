@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace Colourful
         /// <summary>
         /// Returns chromaticity coordinates of given CCT (specified in K)
         /// </summary>
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public ChromaticityCoordinates GetChromaticityOfCCT(double temperature)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Planckian_locus#Approximation
@@ -55,6 +57,7 @@ namespace Colourful
         /// <summary>
         /// Returns CCT (specified in K) of given chromaticity coordinates
         /// </summary>
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public double GetCCTOfChromaticity(ChromaticityCoordinates chromaticity)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Color_temperature#Approximation

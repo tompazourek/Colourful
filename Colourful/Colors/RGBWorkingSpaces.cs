@@ -47,11 +47,13 @@ namespace Colourful
         /// <summary>
         /// Rec. 709 (ITU-R Recommendation BT.709)
         /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IRGBWorkingSpace Rec709 = new RGBWorkingSpace(Illuminants.D65, new Rec709Companding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.64, 0.33), new ChromaticityCoordinates(0.30, 0.60), new ChromaticityCoordinates(0.15, 0.06)));
 
         /// <summary>
         /// Rec. 2020 (ITU-R Recommendation BT.2020)
         /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IRGBWorkingSpace Rec2020 = new RGBWorkingSpace(Illuminants.D65, new Rec2020Companding(), new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.708, 0.292), new ChromaticityCoordinates(0.170, 0.797), new ChromaticityCoordinates(0.131, 0.046)));
 
         /// <summary>

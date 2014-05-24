@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -29,6 +31,7 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy"), SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -39,6 +42,7 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -48,6 +52,7 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -57,6 +62,7 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -66,6 +72,7 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

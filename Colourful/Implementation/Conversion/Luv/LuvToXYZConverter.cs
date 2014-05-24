@@ -57,12 +57,12 @@ namespace Colourful.Implementation.Conversion
             return result;
         }
 
-        private double Compute_u0(XYZColor input)
+        private static double Compute_u0(XYZColor input)
         {
             return (4 * input.X) / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
-        private double Compute_v0(XYZColor input)
+        private static double Compute_v0(XYZColor input)
         {
             return (9 * input.Y) / (input.X + 15 * input.Y + 3 * input.Z);
         }

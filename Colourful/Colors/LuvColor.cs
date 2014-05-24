@@ -39,6 +39,7 @@ namespace Colourful
         /// <param name="u">a*</param>
         /// <param name="v">b*</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v) : this(l, u, v, DefaultWhitePoint)
         {
         }
@@ -47,6 +48,7 @@ namespace Colourful
         /// <param name="u">a*</param>
         /// <param name="v">b*</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v, XYZColor whitePoint)
         {
             L = l;
@@ -65,16 +67,19 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
         public double L { get; private set; }
 
         /// <summary>
         /// u*
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
         public double u { get; private set; }
 
         /// <summary>
         /// v*
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "v"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public double v { get; private set; }
 
         /// <remarks><see cref="Illuminants"/></remarks>

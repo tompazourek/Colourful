@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Colourful
     /// <summary>
     /// CIE xyY color space (derived from <see cref="XYZColor"/> color space)
     /// </summary>
+    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy"), SuppressMessage("Microsoft.Naming", "CA1708:IdentifiersShouldDifferByMoreThanCase")]
     public class xyYColor : IColorVector
     {
         #region Constructor
@@ -30,6 +32,7 @@ namespace Colourful
         /// <param name="x">x (usually from 0 to 1) chromaticity coordinate</param>
         /// <param name="y">y (usually from 0 to 1) chromaticity coordinate</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1708:IdentifiersShouldDifferByMoreThanCase")]
         public xyYColor(double x, double y, double Y)
             : this(new ChromaticityCoordinates(x, y), Y)
         {
@@ -37,6 +40,7 @@ namespace Colourful
 
         /// <param name="chromaticity">Chromaticity coordinates (x and y together)</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public xyYColor(ChromaticityCoordinates chromaticity, double Y)
         {
             if (chromaticity == null)
@@ -53,6 +57,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         public double x
         {
             get { return Chromaticity.x; }
@@ -61,6 +66,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public double y
         {
             get { return Chromaticity.y; }
@@ -69,6 +75,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y { get; private set; }
 
         /// <remarks>

@@ -28,6 +28,8 @@
       <Acronym>CIEDE</Acronym>
       <Acronym>XYZ</Acronym>
       <Acronym>NTSC</Acronym>
+      <Acronym>CCT</Acronym>
+      <Acronym>CMC</Acronym>
     </CasingExceptions>
   </Acronyms>
 </Dictionary>

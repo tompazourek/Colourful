@@ -42,9 +42,8 @@ namespace Colourful.Implementation.Conversion
             if (input == null) throw new ArgumentNullException("input");
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Luv.html
-            double Xr = LuvWhitePoint.X, Yr = LuvWhitePoint.Y, Zr = LuvWhitePoint.Z;
 
-            double yr = input.Y / Yr;
+            double yr = input.Y / LuvWhitePoint.Y;
             double up = Compute_up(input);
             double vp = Compute_vp(input);
             double upr = Compute_up(LuvWhitePoint);
@@ -67,12 +66,12 @@ namespace Colourful.Implementation.Conversion
             return new LuvColor(L, u, v);
         }
 
-        private double Compute_up(XYZColor input)
+        private static double Compute_up(XYZColor input)
         {
             return (4 * input.X) / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
-        private double Compute_vp(XYZColor input)
+        private static double Compute_vp(XYZColor input)
         {
             return (9 * input.Y) / (input.X + 15 * input.Y + 3 * input.Z);
         }

@@ -178,8 +178,8 @@ namespace Colourful.Tests
             var y = new LabColor(l2, a2, b2);
 
             // act
-            double deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceTreshold.Imperceptibility).ComputeDifference(x, y);
-            double deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceTreshold.Acceptability).ComputeDifference(x, y);
+            double deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceThreshold.Imperceptibility).ComputeDifference(x, y);
+            double deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceThreshold.Acceptability).ComputeDifference(x, y);
 
 
             // assert

@@ -36,20 +36,20 @@ namespace Colourful.Difference
         /// </summary>
         private readonly double _l;
 
-        public CMCColorDifference(CMCColorDifferenceTreshold treshold)
+        public CMCColorDifference(CMCColorDifferenceThreshold threshold)
         {
-            switch (treshold)
+            switch (threshold)
             {
-                case CMCColorDifferenceTreshold.Acceptability:
+                case CMCColorDifferenceThreshold.Acceptability:
                     _l = 2;
                     _c = 1;
                     break;
-                case CMCColorDifferenceTreshold.Imperceptibility:
+                case CMCColorDifferenceThreshold.Imperceptibility:
                     _l = 1;
                     _c = 1;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("treshold");
+                    throw new ArgumentOutOfRangeException("threshold");
             }
         }
 
@@ -118,7 +118,7 @@ namespace Colourful.Difference
         }
     }
 
-    public enum CMCColorDifferenceTreshold
+    public enum CMCColorDifferenceThreshold
     {
         /// <summary>
         /// 2:1 (l:c)

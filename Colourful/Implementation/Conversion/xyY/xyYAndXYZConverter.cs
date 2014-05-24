@@ -11,16 +11,20 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Colourful.Implementation.Conversion
 {
+    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy")]
     public class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
     {
         public XYZColor Convert(xyYColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             // ReSharper disable CompareOfFloatsByEqualityOperator
             if (input.y == 0)
                 return new XYZColor(0, 0, input.Y);
@@ -35,6 +39,8 @@ namespace Colourful.Implementation.Conversion
 
         public xyYColor Convert(XYZColor input)
         {
+            if (input == null) throw new ArgumentNullException("input");
+
             double x = input.X / (input.X + input.Y + input.Z);
             double y = input.Y / (input.X + input.Y + input.Z);
 

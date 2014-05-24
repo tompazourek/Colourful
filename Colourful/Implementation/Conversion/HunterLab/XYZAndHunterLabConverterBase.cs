@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,11 @@ namespace Colourful.Implementation.Conversion
 {
     public abstract class XYZAndHunterLabConverterBase
     {
-        protected double ComputeKa(XYZColor whitePoint)
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Ka"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ka")]
+        protected static double ComputeKa(XYZColor whitePoint)
         {
+            if (whitePoint == null) throw new ArgumentNullException("whitePoint");
+
             if (whitePoint == Illuminants.C)
                 return 175;
 
@@ -28,8 +32,11 @@ namespace Colourful.Implementation.Conversion
             return Ka;
         }
 
-        protected double ComputeKb(XYZColor whitePoint)
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Kb")]
+        protected static double ComputeKb(XYZColor whitePoint)
         {
+            if (whitePoint == null) throw new ArgumentNullException("whitePoint");
+
             if (whitePoint == Illuminants.C)
                 return 70;
 
