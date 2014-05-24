@@ -91,8 +91,6 @@
     <Compile Include="Difference\CIEDE2000ColorDifference.cs" />
     <Compile Include="Difference\IColorDifference.cs" />
     <Compile Include="Implementation\Conversion\xyY\xyYAndXYZConverter.cs" />
-    <Compile Include="Implementation\DoubleRoundingComparer.cs" />
-    <Compile Include="Implementation\DoublePrecisionComparer.cs" />
     <Compile Include="Implementation\Extensions.cs" />
     <Compile Include="Colors\IColorVector.cs" />
     <Compile Include="Colors\Illuminants.cs" />

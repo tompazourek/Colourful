@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="CCTTest.cs" />
     <Compile Include="ColorConverterAdaptTest.cs" />
+    <Compile Include="DoublePrecisionComparer.cs" />
+    <Compile Include="DoubleRoundingComparer.cs" />
     <Compile Include="XYZAndxyYConversionTest.cs" />
     <Compile Include="XYZAndLuvConversionTest.cs" />
     <Compile Include="LabAndLChabConversionTest.cs" />

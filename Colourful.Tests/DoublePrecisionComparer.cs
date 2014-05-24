@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colourful.Implementation
+namespace Colourful.Tests
 {
     /// <summary>
     /// Compares two doubles and takes only specific number of fractional digits into account.
