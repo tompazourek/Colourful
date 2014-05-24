@@ -41,6 +41,8 @@ var converter = new ColorConverter { TargetLabWhitePoint = Illuminants.D65 };
 LabColor output = converter.Adapt(input);
 ```
 
+### Conversion between RGB working spaces
+
 Adaptation can also convert from one RGB working space to another (e.g. from sRGB to Adobe RGB).
 
 ```csharp
