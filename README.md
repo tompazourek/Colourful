@@ -3,11 +3,12 @@ Colourful .NET
 
 Open source .NET library for working with color spaces.
 
-**Author:** [Tomáš Pažourek](https://github.com/tompazourek)
+&copy; [Tomáš Pažourek](https://github.com/tompazourek), 2014
+All rights reserved.
+
+The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
-
-The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel free to fork or use commercially.
 
 Usage
 -----
@@ -74,7 +75,7 @@ var color2 = new LabColor(l2, a2, b2);
 double deltaE = new CIEDE2000ColorDifference().ComputeDifference(color1, color2);
 ```
 
-*For more details, see the detailed XML documentation, or the [unit tests](https://github.com/tompazourek/Colourful/tree/master/Colourful.Tests).*
+*For more details, see the detailed XML documentation (generated during build), or the [unit tests](https://github.com/tompazourek/Colourful/tree/master/Colourful.Tests).*
 
 What is supported
 -----------------
