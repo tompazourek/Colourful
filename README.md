@@ -57,6 +57,8 @@ Currently supports following color spaces (and conversions between each other):
 
 Also supports computing **correlated color temperature (CCT)** from chromaticity and computing chromaticity from CCT. Altough these are just approximations with low precision.
 
+All of these color spaces (including RGB) have double precision. Conversion to `System.Drawing.Color`, which is 8-bit is supported from `RGBColor` through implicit operator to make integration seamless.
+
 Supports following RGB working spaces:
 
   * sRGB
