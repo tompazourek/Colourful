@@ -134,7 +134,7 @@ All of these color spaces (including RGB) have double precision. Conversion to `
 * XYZ scaling
 * *(custom chromatic adaptation)*
 
-### Color difference formulas
+### Color difference formulas (ΔE)
 
 * CIE Delta-E 1976
 * CMC l:c (1984)
