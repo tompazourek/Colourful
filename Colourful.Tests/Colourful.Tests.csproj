@@ -53,6 +53,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CCTTest.cs" />
     <Compile Include="ColorConverterAdaptTest.cs" />
     <Compile Include="XYZAndLuvConversionTest.cs" />
     <Compile Include="LabAndLChabConversionTest.cs" />
