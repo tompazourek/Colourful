@@ -7,6 +7,8 @@ Open source .NET library for working with color spaces.
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
 
+The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel free to fork or use commercially.
+
 Usage
 -----
 
