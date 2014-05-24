@@ -47,7 +47,7 @@ RGBColor output = converter.Adapt(input);
 
 ### CCT approximation
 
-Colourful also supports computing **correlated color temperature (CCT)** from chromaticity and computing chromaticity from CCT. Altough these are just approximations with low precision.
+Colourful also supports computing **correlated color temperature (CCT)** from chromaticity and computing chromaticity from CCT. Although these are just approximations with low precision.
 
 ```csharp
 var converter = new CCTConverter();
@@ -57,7 +57,7 @@ ChromaticityCoordinates chromaticity = converter.GetChromaticityOfCCT(5454); // 
 double cct = converter.GetCCTOfChromaticity(new ChromaticityCoordinates(0.31271, 0.32902)); // cca 6500 K 
 ```
 
-To obtain chromaticity of color in any color space, use conversion to **CIE xyY** color space. To obtain color from chromaticity (xy), just add the luminance **Y**. 
+To obtain chromaticity of a color in any color space, use conversion to **CIE xyY** color space. To obtain color from chromaticity (xy), just add the luminance **Y** and the result is **xyY**. 
 
 ### Color difference
 
