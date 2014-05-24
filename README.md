@@ -114,17 +114,17 @@ All of these color spaces (including RGB) have double precision. Conversion to `
 
 ### Illuminants &mdash; white points
 
-* A
-* B
-* C
-* D50
-* D55
-* D65
-* D75
-* E
-* F2
-* F7
-* F11
+* A *(Incandescent / Tungsten)*
+* B *(Direct sunlight at noon (obsolete))*
+* C *(Average / North sky Daylight (obsolete))*
+* D50 *(Horizon Light. ICC profile PCS)*
+* D55 *(Mid-morning / Mid-afternoon Daylight)*
+* D65 *(Noon Daylight: Television, sRGB color space)*
+* D75 *(North sky Daylight)*
+* E *(Equal energy)*
+* F2 *(Cool White Fluorescent)*
+* F7 *(D65 simulator, Daylight simulator)*
+* F11 *(Philips TL84, Ultralume 40)*
 * *(custom white points)*
 
 ### Chromatic adaptation methods
