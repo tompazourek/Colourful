@@ -1,9 +1,11 @@
 Colourful .NET
 ==============
 
-Open source .NET library for working with color spaces. Still in **early phase of development**.
+Open source .NET library for working with color spaces.
 
 **Author:** [Tomáš Pažourek](https://github.com/tompazourek)
+
+**Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
 
 Usage
 -----
