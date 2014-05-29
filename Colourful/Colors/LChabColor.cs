@@ -93,6 +93,26 @@ namespace Colourful
 
         #endregion
 
+        #region Saturation
+
+        /// <summary>
+        /// Computes saturation of the color (chroma normalized by lightness)
+        /// </summary>
+        public double Saturation
+        {
+            get { return SaturationLChFormulas.GetSaturation(L, C); }
+        }
+
+        /// <summary>
+        /// Computes saturation of the color (Eva Lübbe human perception of saturation formula)
+        /// </summary>
+        public double SaturationEvaLubbe
+        {
+            get { return SaturationLChFormulas.GetSaturationEvaLubbe(L, C); }
+        }
+
+        #endregion
+
         #region Equality
 
         public bool Equals(LChabColor other)

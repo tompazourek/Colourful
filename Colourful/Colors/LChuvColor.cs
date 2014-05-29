@@ -93,6 +93,27 @@ namespace Colourful
 
         #endregion
 
+        #region Saturation
+
+        /// <summary>
+        /// Computes saturation of the color (chroma normalized by lightness)
+        /// </summary>
+        public double Saturation
+        {
+            get { return SaturationLChFormulas.GetSaturation(L, C); }
+        }
+
+        /// <summary>
+        /// Constructs the color using saturation instead of chromas
+        /// </summary>
+        public static LChuvColor FromSaturation(double lightness, double hue, double saturation)
+        {
+            var chroma = SaturationLChFormulas.GetChroma(saturation, lightness);
+            return new LChuvColor(lightness, chroma, hue);
+        }
+
+        #endregion
+
         #region Equality
 
         public bool Equals(LChuvColor other)

@@ -105,6 +105,7 @@
     <Compile Include="Implementation\RGB\Rec709Companding.cs" />
     <Compile Include="Implementation\Utils\MatrixFactory.cs" />
     <Compile Include="Other\CCTConverter.cs" />
+    <Compile Include="Other\SaturationLChFormulas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Colors\RGBColorBase.cs" />
     <Compile Include="Implementation\RGB\ICompanding.cs" />
