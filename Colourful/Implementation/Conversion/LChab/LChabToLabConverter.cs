@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -28,7 +27,7 @@ namespace Colourful.Implementation.Conversion
             if (input == null) throw new ArgumentNullException("input");
 
             double L = input.L, C = input.C, hDegrees = input.h;
-            double hRadians = Trig.DegreeToRadian(hDegrees);
+            double hRadians = Angle.DegreeToRadian(hDegrees);
 
             double a = C * Math.Cos(hRadians);
             double b = C * Math.Sin(hRadians);

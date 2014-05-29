@@ -15,8 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.ChromaticAdaptation
 {
@@ -32,7 +31,8 @@ namespace Colourful.ChromaticAdaptation
         /// <summary>
         /// Definition of the cone response domain
         /// </summary>
-        protected abstract Matrix<double> MA { get; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        protected abstract Matrix MA { get; }
 
         /// <summary>
         /// Transforms XYZ color to destination reference white.
@@ -55,13 +55,13 @@ namespace Colourful.ChromaticAdaptation
         private void TransformCore(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint, out double XD, out double YD, out double ZD)
         {
             double rhoS, gammaS, betaS, rhoD, gammaD, betaD;
-            (MA * sourceWhitePoint.Vector).AssignVariables(out rhoS, out gammaS, out betaS);
-            (MA * targetWhitePoint.Vector).AssignVariables(out rhoD, out gammaD, out betaD);
+            (MA.MultiplyBy(sourceWhitePoint.Vector)).AssignVariables(out rhoS, out gammaS, out betaS);
+            (MA.MultiplyBy(targetWhitePoint.Vector)).AssignVariables(out rhoD, out gammaD, out betaD);
 
-            DiagonalMatrix diagonalMatrix = DiagonalMatrix.OfDiagonal(3, 3, new[] { rhoD / rhoS, gammaD / gammaS, betaD / betaS });
-            Matrix<double> M = MA.Inverse() * diagonalMatrix * MA;
+            Matrix diagonalMatrix = MatrixFactory.CreateDiagonal(rhoD / rhoS, gammaD / gammaS, betaD / betaS);
+            Matrix M = MA.Inverse().MultiplyBy(diagonalMatrix).MultiplyBy(MA);
 
-            (M * sourceColor.Vector).AssignVariables(out XD, out YD, out ZD);
+            (M.MultiplyBy(sourceColor.Vector)).AssignVariables(out XD, out YD, out ZD);
         }
     }
 }

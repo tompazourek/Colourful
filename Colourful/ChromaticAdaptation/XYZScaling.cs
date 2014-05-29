@@ -14,8 +14,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Colourful.Implementation;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.ChromaticAdaptation
 {
@@ -28,9 +28,9 @@ namespace Colourful.ChromaticAdaptation
     /// </remarks>
     public class XYZScaling : ChromaticAdaptationBase
     {
-        private readonly DiagonalMatrix _matrix = DiagonalMatrix.Identity(3);
+        private readonly Matrix _matrix = MatrixFactory.CreateIdentity(3);
 
-        protected override Matrix<double> MA
+        protected override Matrix MA
         {
             get { return _matrix; }
         }

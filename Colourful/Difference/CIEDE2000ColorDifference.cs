@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics;
+using Colourful.Implementation;
 
 namespace Colourful.Difference
 {
@@ -85,7 +85,7 @@ namespace Colourful.Difference
         /// <returns></returns>
         private static double SinDeg(double x)
         {
-            double x_rad = Trig.DegreeToRadian(x);
+            double x_rad = Angle.DegreeToRadian(x);
             double y = Math.Sin(x_rad);
             return y;
         }
@@ -97,7 +97,7 @@ namespace Colourful.Difference
         /// <returns></returns>
         private static double CosDeg(double x)
         {
-            double x_rad = Trig.DegreeToRadian(x);
+            double x_rad = Angle.DegreeToRadian(x);
             double y = Math.Cos(x_rad);
             return y;
         }
@@ -141,7 +141,7 @@ namespace Colourful.Difference
                     h_prime[i] = 0;
 
                 double hRadians = Math.Atan2(b[i], a_prime[i]);
-                double hDegrees = Trig.RadianToDegree(hRadians);
+                double hDegrees = Angle.RadianToDegree(hRadians);
                 if (hDegrees < 0)
                     hDegrees += 360;
 

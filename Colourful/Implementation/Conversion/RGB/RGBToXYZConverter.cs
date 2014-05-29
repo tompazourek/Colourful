@@ -15,8 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation.RGB;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -25,7 +25,7 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class RGBToXYZConverter : RGBAndXYZConverterBase, IColorConversion<RGBColor, XYZColor>
     {
-        private readonly Matrix<double> _conversionMatrix;
+        private readonly Matrix _conversionMatrix;
 
         /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
         public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace)
@@ -46,8 +46,8 @@ namespace Colourful.Implementation.Conversion
             if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 
-            Vector<double> rgb = UncompandVector(input);
-            Vector<double> xyz = _conversionMatrix * rgb;
+            Vector rgb = UncompandVector(input);
+            Vector xyz = _conversionMatrix.MultiplyBy(rgb);
 
             double x, y, z;
             xyz.AssignVariables(out x, out y, out z);
@@ -59,11 +59,11 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding"/>) to RGB vector.
         /// </summary>
-        private static Vector<double> UncompandVector(RGBColor rgbColor)
+        private static Vector UncompandVector(RGBColor rgbColor)
         {
             ICompanding inverseCompanding = rgbColor.WorkingSpace.Companding;
-            Vector<double> compandedVector = rgbColor.Vector;
-            DenseVector uncompandedVector = DenseVector.OfEnumerable(compandedVector.Select(inverseCompanding.InverseCompanding));
+            Vector compandedVector = rgbColor.Vector;
+            Vector uncompandedVector = compandedVector.Select(inverseCompanding.InverseCompanding).ToList();
             return uncompandedVector;
         }
 

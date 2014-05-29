@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
 {
@@ -23,6 +23,6 @@ namespace Colourful
     /// </summary>
     public interface IColorVector
     {
-        Vector<double> Vector { get; }
+        Vector Vector { get; }
     }
 }

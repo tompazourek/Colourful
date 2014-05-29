@@ -14,8 +14,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.ChromaticAdaptation
 {
@@ -28,14 +28,14 @@ namespace Colourful.ChromaticAdaptation
     /// </remarks>
     public class BradfordChromaticAdaptation : ChromaticAdaptationBase
     {
-        private readonly DenseMatrix _matrix = DenseMatrix.OfRows(3, 3, new[]
+        private readonly Matrix _matrix = new []
             {
-                new[] { 0.8951000, 0.2664000, -0.1614000 },
-                new[] { -0.7502000, 1.7135000, 0.0367000 },
-                new[] { 0.0389000, -0.0685000, 1.0296000 },
-            });
+                new [] { 0.8951000, 0.2664000, -0.1614000 },
+                new [] { -0.7502000, 1.7135000, 0.0367000 },
+                new [] { 0.0389000, -0.0685000, 1.0296000 },
+            };
 
-        protected override Matrix<double> MA
+        protected override Matrix MA
         {
             get { return _matrix; }
         }

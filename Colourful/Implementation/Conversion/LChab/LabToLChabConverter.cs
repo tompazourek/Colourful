@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -30,7 +29,7 @@ namespace Colourful.Implementation.Conversion
             double L = input.L, a = input.a, b = input.b;
             double C = Math.Sqrt(a * a + b * b);
             double hRadians = Math.Atan2(b, a);
-            double hDegrees = Trig.RadianToDegree(hRadians);
+            double hDegrees = Angle.RadianToDegree(hRadians);
 
             if (hDegrees > 360)
                 hDegrees -= 360;

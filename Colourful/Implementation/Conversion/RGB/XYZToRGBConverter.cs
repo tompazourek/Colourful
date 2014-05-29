@@ -15,8 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation.RGB;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -28,7 +28,7 @@ namespace Colourful.Implementation.Conversion
     /// </remarks>
     public class XYZToRGBConverter : RGBAndXYZConverterBase, IColorConversion<XYZColor, RGBColor>
     {
-        private readonly Matrix<double> _conversionMatrix;
+        private readonly Matrix _conversionMatrix;
 
         public XYZToRGBConverter() : this(null)
         {
@@ -49,8 +49,8 @@ namespace Colourful.Implementation.Conversion
         {
             if (input == null) throw new ArgumentNullException("input");
 
-            Vector<double> inputVector = input.Vector;
-            Vector<double> uncompandedVector = _conversionMatrix * inputVector;
+            Vector inputVector = input.Vector;
+            Vector uncompandedVector = _conversionMatrix.MultiplyBy(inputVector);
             RGBColor result1 = CompandVector(uncompandedVector, TargetRGBWorkingSpace);
             RGBColor result = result1;
             return result;
@@ -59,10 +59,10 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Applying the working space companding function (<see cref="IRGBWorkingSpace.Companding"/>) to uncompanded vector.
         /// </summary>
-        private static RGBColor CompandVector(Vector<double> uncompandedVector, IRGBWorkingSpace workingSpace)
+        private static RGBColor CompandVector(Vector uncompandedVector, IRGBWorkingSpace workingSpace)
         {
             ICompanding companding = workingSpace.Companding;
-            DenseVector compandedVector = DenseVector.OfEnumerable(uncompandedVector.Select(companding.Companding));
+            Vector compandedVector = uncompandedVector.Select(companding.Companding).ToList();
             double R, G, B;
             compandedVector.AssignVariables(out R, out G, out B);
 

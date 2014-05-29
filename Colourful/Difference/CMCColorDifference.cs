@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics;
+using Colourful.Implementation;
 
 namespace Colourful.Difference
 {
@@ -77,7 +77,7 @@ namespace Colourful.Difference
 
             double dH = Math.Sqrt(da * da + db * db - dC * dC);
             double H1_rad = Math.Atan2(b1, a1);
-            double H1 = Trig.RadianToDegree(H1_rad);
+            double H1 = Angle.RadianToDegree(H1_rad);
 
             if (H1 < 0)
                 H1 += 360;
@@ -112,7 +112,7 @@ namespace Colourful.Difference
         /// <returns></returns>
         private static double CosDeg(double x)
         {
-            double x_rad = Trig.DegreeToRadian(x);
+            double x_rad = Angle.DegreeToRadian(x);
             double y = Math.Cos(x_rad);
             return y;
         }

@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colourful.Implementation;
 
 namespace Colourful.Difference
 {
@@ -33,7 +34,7 @@ namespace Colourful.Difference
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
 
-            var distance = (x.Vector - y.Vector).Norm(2);
+            var distance = Extensions.EuclideanDistance(x.Vector, y.Vector);
             return distance;
         }
     }

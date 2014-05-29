@@ -15,14 +15,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation.RGB;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
     public abstract class RGBAndXYZConverterBase
     {
-        protected static Matrix<double> GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException("workingSpace");
 
@@ -46,28 +47,29 @@ namespace Colourful.Implementation.Conversion
             const double Yb = 1;
             double Zb = (1 - xb - yb) / yb;
 
-            Matrix<double> S = DenseMatrix.OfRows(3, 3, new[]
+            var S = new []
                 {
                     new[] { Xr, Xg, Xb },
                     new[] { Yr, Yg, Yb },
                     new[] { Zr, Zg, Zb },
-                }).Inverse();
+                }.Inverse();
 
-            Vector<double> W = workingSpace.WhitePoint.Vector;
+            Vector W = workingSpace.WhitePoint.Vector;
 
-            (S * W).AssignVariables(out Sr, out Sg, out Sb);
+            (S.MultiplyBy(W)).AssignVariables(out Sr, out Sg, out Sb);
 
-            DenseMatrix M = DenseMatrix.OfRows(3, 3, new[]
+            var M = new []
                 {
                     new[] { Sr * Xr, Sg * Xg, Sb * Xb },
                     new[] { Sr * Yr, Sg * Yg, Sb * Yb },
                     new[] { Sr * Zr, Sg * Zg, Sb * Zb },
-                });
+                };
 
             return M;
         }
 
-        protected static Matrix<double> GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
         {
             return GetRGBToXYZMatrix(workingSpace).Inverse();
         }

@@ -15,9 +15,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Generic;
 using System.Globalization;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
 {
@@ -94,9 +93,9 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector<double> Vector
+        public Vector Vector
         {
-            get { return DenseVector.OfEnumerable(new[] { L, a, b }); }
+            get { return new[] { L, a, b }; }
         }
 
         #endregion
