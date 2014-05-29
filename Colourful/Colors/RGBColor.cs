@@ -121,6 +121,47 @@ namespace Colourful
 
         #endregion
 
+        #region Factory methods
+
+        /// <summary>
+        /// Creates RGB color with all channels equal
+        /// </summary>
+        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        public static RGBColor FromGrey(double value, IRGBWorkingSpace workingSpace)
+        {
+            return new RGBColor(value, value, value, workingSpace);
+        }
+
+        /// <summary>
+        /// Creates RGB color with all channels equal
+        /// </summary>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        public static RGBColor FromGrey(double value)
+        {
+            return FromGrey(value, DefaultWorkingSpace);
+        }
+
+        /// <summary>
+        /// Creates RGB color from 8-bit channels
+        /// </summary>
+        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        public static RGBColor FromRGB8bit(byte r, byte g, byte b, IRGBWorkingSpace workingSpace)
+        {
+            return new RGBColor(r / 255d, g / 255d, b / 255d, workingSpace);
+        }
+
+
+        /// <summary>
+        /// Creates RGB color from 8-bit channels
+        /// </summary>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        public static RGBColor FromRGB8bit(byte r, byte g, byte b)
+        {
+            return FromRGB8bit(r, g, b, DefaultWorkingSpace);
+        }
+
+        #endregion
+
         #region Color conversions
 
         public Color ToColor()
