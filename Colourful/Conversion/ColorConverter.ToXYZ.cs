@@ -108,5 +108,18 @@ namespace Colourful.Conversion
 
             return adapted;
         }
+
+        public XYZColor ToXYZ(LChuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion to Luv
+            var luvConverter = new LChuvToLuvConverter();
+            LuvColor labColor = luvConverter.Convert(color);
+
+            // conversion to XYZ (incl. adaptation)
+            XYZColor result = ToXYZ(labColor);
+            return result;
+        }
     }
 }

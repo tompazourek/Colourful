@@ -95,6 +95,7 @@ Colourful currently supports following color spaces (and conversions between eac
 * **CIE L\*a\*b\* (1976)**
 * **CIE L\*C\*h°<sub>ab</sub>**
 * **CIE L\*u\*v\* (1976)**
+* **CIE L\*C\*h°<sub>uv</sub>**
 * **Hunter Lab**
 
 All of these color spaces (including RGB) have double precision. Conversion to `System.Drawing.Color`, which is 8-bit, is supported from `RGBColor` through implicit type-conversion operator to make integration seamless.

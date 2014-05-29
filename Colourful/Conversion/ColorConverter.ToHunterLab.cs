@@ -79,5 +79,14 @@ namespace Colourful.Conversion
             HunterLabColor result = ToHunterLab(xyzColor);
             return result;
         }
+
+        public HunterLabColor ToHunterLab(LChuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            HunterLabColor result = ToHunterLab(xyzColor);
+            return result;
+        }
     }
 }

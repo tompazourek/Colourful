@@ -79,5 +79,21 @@ namespace Colourful.Conversion
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
+
+        public LuvColor ToLuv(LChuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion (perserving white point)
+            var converter = new LChuvToLuvConverter();
+            LuvColor unadapted = converter.Convert(color);
+
+            if (!IsChromaticAdaptationPerformed)
+                return unadapted;
+
+            // adaptation to target luv white point (LuvWhitePoint)
+            LuvColor adapted = Adapt(unadapted);
+            return adapted;
+        }
     }
 }

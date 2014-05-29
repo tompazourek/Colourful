@@ -77,5 +77,14 @@ namespace Colourful.Conversion
             LChabColor result = ToLChab(xyzColor);
             return result;
         }
+
+        public LChabColor ToLChab(LChuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LChabColor result = ToLChab(xyzColor);
+            return result;
+        }
     }
 }
