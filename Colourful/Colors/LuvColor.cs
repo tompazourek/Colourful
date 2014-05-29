@@ -72,12 +72,18 @@ namespace Colourful
         /// <summary>
         /// u*
         /// </summary>
+        /// <remarks>
+        /// Ranges usually from -100 to 100.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
         public double u { get; private set; }
 
         /// <summary>
         /// v*
         /// </summary>
+        /// <remarks>
+        /// Ranges usually from -100 to 100.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "v"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public double v { get; private set; }
 

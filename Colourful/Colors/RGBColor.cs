@@ -126,6 +126,7 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color with all channels equal
         /// </summary>
+        /// <param name="value">Grey value (from 0 to 1)</param>
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         public static RGBColor FromGrey(double value, IRGBWorkingSpace workingSpace)
         {
@@ -135,6 +136,7 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color with all channels equal
         /// </summary>
+        /// <param name="value">Grey value (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
         public static RGBColor FromGrey(double value)
         {

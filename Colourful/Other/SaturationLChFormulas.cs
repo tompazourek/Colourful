@@ -27,9 +27,11 @@ namespace Colourful
         /// </summary>
         public static double GetSaturation(double L, double C)
         {
-            double result = C / L;
+            double result = 100 * (C / L);
+
             if (double.IsNaN(result))
                 return 0;
+            
             return result;
         }
 
@@ -38,7 +40,7 @@ namespace Colourful
         /// </summary>
         public static double GetChroma(double saturation, double L)
         {
-            double result = L * saturation;
+            double result = L * (saturation / 100);
             return result;
         }
     }

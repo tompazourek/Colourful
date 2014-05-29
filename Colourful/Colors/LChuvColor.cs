@@ -71,12 +71,18 @@ namespace Colourful
         /// <summary>
         /// C* (chroma)
         /// </summary>
+        /// <remarks>
+        /// Ranges usually from 0 to 100.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "C")]
         public double C { get; private set; }
 
         /// <summary>
         /// h° (hue in degrees)
         /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 360.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
         public double h { get; private set; }
 
@@ -98,6 +104,9 @@ namespace Colourful
         /// <summary>
         /// Computes saturation of the color (chroma normalized by lightness)
         /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 100.
+        /// </remarks>
         public double Saturation
         {
             get { return SaturationLChFormulas.GetSaturation(L, C); }

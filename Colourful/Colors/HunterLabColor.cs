@@ -73,6 +73,7 @@ namespace Colourful
         /// a
         /// </summary>
         /// <remarks>
+        /// Ranges usually from -100 to 100.
         /// Negative values indicate green while positive values indicate magenta.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
@@ -82,6 +83,7 @@ namespace Colourful
         /// b
         /// </summary>
         /// <remarks>
+        /// Ranges usually from -100 to 100.
         /// Negative values indicate blue and positive values indicate yellow.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]

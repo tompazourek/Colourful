@@ -34,12 +34,24 @@ namespace Colourful
             _y = y;
         }
 
+        /// <summary>
+        /// Chromaticity coordinate x
+        /// </summary>
+        /// <remarks>
+        /// Ranges usually from 0 to 1.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         public double x
         {
             get { return _x; }
         }
 
+        /// <summary>
+        /// Chromaticity coordinate y
+        /// </summary>
+        /// <remarks>
+        /// Ranges usually from 0 to 1.
+        /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public double y
         {

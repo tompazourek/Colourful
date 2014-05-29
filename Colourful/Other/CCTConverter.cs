@@ -57,6 +57,7 @@ namespace Colourful
         /// <summary>
         /// Returns CCT (specified in K) of given chromaticity coordinates
         /// </summary>
+        /// <remarks>Ranges usually from around 0 to 25000</remarks>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public double GetCCTOfChromaticity(ChromaticityCoordinates chromaticity)
         {
