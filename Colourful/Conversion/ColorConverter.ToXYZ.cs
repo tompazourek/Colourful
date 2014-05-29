@@ -21,12 +21,23 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
+        private RGBToXYZConverter _lastRGBToXYZConverter;
+
+        private RGBToXYZConverter GetRGBToXYZConverter(IRGBWorkingSpace workingSpace)
+        {
+            if (_lastRGBToXYZConverter != null &&
+                _lastRGBToXYZConverter.SourceRGBWorkingSpace.Equals(workingSpace))
+                return _lastRGBToXYZConverter;
+
+            return _lastRGBToXYZConverter = new RGBToXYZConverter(workingSpace);
+        }
+
         public XYZColor ToXYZ(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion
-            var converter = new RGBToXYZConverter(color.WorkingSpace);
+            var converter = GetRGBToXYZConverter(color.WorkingSpace);
             XYZColor unadapted = converter.Convert(color);
 
             // adaptation

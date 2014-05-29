@@ -20,6 +20,17 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
+        private XYZToRGBConverter _lastXYZToRGBConverter;
+
+        private XYZToRGBConverter GetXYZToRGBConverter(IRGBWorkingSpace workingSpace)
+        {
+            if (_lastXYZToRGBConverter != null &&
+                _lastXYZToRGBConverter.TargetRGBWorkingSpace.Equals(workingSpace))
+                return _lastXYZToRGBConverter;
+
+            return _lastXYZToRGBConverter = new XYZToRGBConverter(workingSpace);
+        }
+        
         public RGBColor ToRGB(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -30,7 +41,7 @@ namespace Colourful.Conversion
                 : ChromaticAdaptation.Transform(color, WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion
-            var converter = new XYZToRGBConverter(TargetRGBWorkingSpace);
+            var converter = GetXYZToRGBConverter(TargetRGBWorkingSpace);
             RGBColor result = converter.Convert(adapted);
             return result;
         }

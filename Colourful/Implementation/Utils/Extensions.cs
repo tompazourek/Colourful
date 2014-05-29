@@ -102,20 +102,14 @@ namespace Colourful.Implementation
 
         public static Matrix MultiplyBy(this Matrix matrix1, Matrix matrix2)
         {
-            int rows1 = matrix1.Count;
-            int cols1 = matrix1[0].Count;
-
-            int rows2 = matrix2.Count;
-            int cols2 = matrix2[0].Count;
-
-            if (cols1 != rows2)
+            if (matrix1[0].Count != matrix2.Count)
                 throw new ArgumentOutOfRangeException("matrix1", "Non-conformable matrices cannot be multiplied.");
 
-            double[][] result = MatrixFactory.CreateEmpty(rows1, cols2);
+            double[][] result = MatrixFactory.CreateEmpty(matrix1.Count, matrix2[0].Count);
 
-            for (int i = 0; i < rows1; ++i) // each row of 1
-                for (int j = 0; j < cols2; ++j) // each column of 2
-                    for (int k = 0; k < cols1; ++k)
+            for (int i = 0; i < matrix1.Count; ++i) // each row of 1
+                for (int j = 0; j < matrix2[0].Count; ++j) // each column of 2
+                    for (int k = 0; k < matrix1[0].Count; ++k)
                         result[i][j] += matrix1[i][k] * matrix2[k][j];
 
             return result;

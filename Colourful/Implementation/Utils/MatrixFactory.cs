@@ -27,8 +27,8 @@ namespace Colourful.Implementation
             for (int i = 0; i < rows; i++)
             {
                 result[i] = new double[columns];
-                for (int j = 0; j < columns; j++)
-                    result[i][j] = 0;
+                //for (int j = 0; j < columns; j++)
+                //    result[i][j] = 0;
             }
             return result;
         }
