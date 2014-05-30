@@ -147,9 +147,10 @@ namespace Colourful
         /// Creates RGB color from 8-bit channels
         /// </summary>
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
-        public static RGBColor FromRGB8bit(byte r, byte g, byte b, IRGBWorkingSpace workingSpace)
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
+        public static RGBColor FromRGB8bit(byte red, byte green, byte blue, IRGBWorkingSpace workingSpace)
         {
-            return new RGBColor(r / 255d, g / 255d, b / 255d, workingSpace);
+            return new RGBColor(red / 255d, green / 255d, blue / 255d, workingSpace);
         }
 
 
@@ -157,9 +158,10 @@ namespace Colourful
         /// Creates RGB color from 8-bit channels
         /// </summary>
         /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
-        public static RGBColor FromRGB8bit(byte r, byte g, byte b)
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
+        public static RGBColor FromRGB8bit(byte red, byte green, byte blue)
         {
-            return FromRGB8bit(r, g, b, DefaultWorkingSpace);
+            return FromRGB8bit(red, green, blue, DefaultWorkingSpace);
         }
 
         #endregion

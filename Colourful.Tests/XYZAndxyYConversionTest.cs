@@ -73,7 +73,7 @@ namespace Colourful.Tests
             // assert
             Assert.That(output.x, Is.EqualTo(x).Using(DoubleComparer));
             Assert.That(output.y, Is.EqualTo(y).Using(DoubleComparer));
-            Assert.That(output.Y, Is.EqualTo(Y).Using(DoubleComparer));
+            Assert.That(output.Luminance, Is.EqualTo(Y).Using(DoubleComparer));
         }
     }
 }

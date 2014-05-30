@@ -27,11 +27,11 @@ namespace Colourful.Implementation.Conversion
 
             // ReSharper disable CompareOfFloatsByEqualityOperator
             if (input.y == 0)
-                return new XYZColor(0, 0, input.Y);
+                return new XYZColor(0, 0, input.Luminance);
             // ReSharper restore CompareOfFloatsByEqualityOperator
 
-            double X = (input.x * input.Y) / input.y;
-            double Y = input.Y;
+            double X = (input.x * input.Luminance) / input.y;
+            double Y = input.Luminance;
             double Z = ((1 - input.x - input.y) * Y) / input.y;
 
             return new XYZColor(X, Y, Z);

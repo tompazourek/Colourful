@@ -46,7 +46,7 @@ namespace Colourful
                 throw new ArgumentNullException("chromaticity");
 
             Chromaticity = chromaticity;
-            this.Y = Y;
+            this.Luminance = Y;
         }
 
         #endregion
@@ -71,11 +71,13 @@ namespace Colourful
             get { return Chromaticity.y; }
         }
 
-        /// <remarks>
-        /// Ranges usually from 0 to 1.
-        /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
-        public double Y { get; private set; }
+		/// <summary>
+		/// Y channel (luminance)
+		/// </summary>
+		/// <remarks>
+		/// Ranges usually from 0 to 1.
+		/// </remarks>
+        public double Luminance { get; private set; }
 
         /// <remarks>
         /// Chromaticity coordinates (identical to x and y)
@@ -87,7 +89,7 @@ namespace Colourful
         /// </summary>
         public Vector Vector
         {
-            get { return new[] { x, y, Y }; }
+            get { return new[] { x, y, Luminance }; }
         }
 
         #endregion
@@ -97,7 +99,7 @@ namespace Colourful
         public bool Equals(xyYColor other)
         {
             if (other == null) throw new ArgumentNullException("other");
-            return x.Equals(other.x) && y.Equals(other.y) && Y.Equals(other.Y);
+            return x.Equals(other.x) && y.Equals(other.y) && Luminance.Equals(other.Luminance);
         }
 
         public override bool Equals(object obj)
@@ -114,7 +116,7 @@ namespace Colourful
             {
                 int hashCode = x.GetHashCode();
                 hashCode = (hashCode * 397) ^ y.GetHashCode();
-                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * 397) ^ Luminance.GetHashCode();
                 return hashCode;
             }
         }
@@ -135,7 +137,7 @@ namespace Colourful
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "xyY [x={0:0.##}, y={1:0.##}, Y={2:0.##}]", x, y, Y);
+            return string.Format(CultureInfo.InvariantCulture, "xyY [x={0:0.##}, y={1:0.##}, Y={2:0.##}]", x, y, Luminance);
         }
 
         #endregion
