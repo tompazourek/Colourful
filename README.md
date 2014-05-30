@@ -1,6 +1,8 @@
 Colourful .NET
 ==============
 
+[![Build status](https://ci.appveyor.com/api/projects/status/xegjq1k7ixfrf157)](https://ci.appveyor.com/project/tompazourek/colourful)
+
 Open source .NET library for working with color spaces.
 
 The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
