@@ -50,14 +50,14 @@ namespace Colourful.Conversion
                 return color;
 
             // conversion to XYZ
-            var converterToXYZ = new RGBToXYZConverter(color.WorkingSpace);
+            var converterToXYZ = GetRGBToXYZConverter(color.WorkingSpace);
             XYZColor unadapted = converterToXYZ.Convert(color);
 
             // adaptation
             XYZColor adapted = ChromaticAdaptation.Transform(unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion back to RGB
-            var converterToRGB = new XYZToRGBConverter(TargetRGBWorkingSpace);
+            var converterToRGB = GetXYZToRGBConverter(TargetRGBWorkingSpace);
             RGBColor result = converterToRGB.Convert(adapted);
 
             return result;
