@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Colourful</id>
+        <version>$version$</version>
+        <title>Colourful</title>
+        <authors>Tomáš Pažourek</authors>
+        <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/tompazourek/Colourful</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Open source .NET library for working with color spaces. 
+
+Supports these color spaces:
+
+- RGB (various working spaces)
+- CIE XYZ
+- CIE xyY
+- CIE Lab
+- CIE Luv
+- CIE LCh (uv)
+- CIE LCh (ab)
+- HunterLab
+
+Conversions are done correctly using chromatic adaptation and white points.
+
+Other features include: Delta-E color difference (many formulas), Correlated color temperature (CCT) approximation, Conversion between RGB working spaces, Chromatic adaptation (many white points supported).
+
+For more info, visit the project page.</description>
+        <summary>Open source .NET library for working with color spaces.</summary>
+        <copyright>Tomáš Pažourek, 2014</copyright>
+        <tags>colour,color,delta-e,rgb to lab,cielab,cieluv,cct</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
+            <frameworkAssembly assemblyName="System" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+</package>
