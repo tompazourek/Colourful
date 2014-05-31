@@ -43,6 +43,6 @@ using System.Threading.Tasks;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0.0-alpha")]
+[assembly: AssemblyInformationalVersion("1.0.0-alpha")]
 
 [assembly: CLSCompliant(true)]
