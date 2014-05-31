@@ -56,6 +56,19 @@ namespace Colourful
             WhitePoint = whitePoint;
         }
 
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
+        /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
+        public LabColor(Vector vector) : this(vector, DefaultWhitePoint)
+        {
+        }
+
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        public LabColor(Vector vector, XYZColor whitePoint)
+            : this(vector[0], vector[1], vector[2], whitePoint)
+        {
+        }
+
         #endregion
 
         #region Channels

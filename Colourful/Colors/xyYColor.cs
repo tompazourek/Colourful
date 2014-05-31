@@ -49,6 +49,12 @@ namespace Colourful
             this.Luminance = Y;
         }
 
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (usually from 0 to 1)</param>
+        public xyYColor(Vector vector)
+            : this(vector[0], vector[1], vector[2])
+        {
+        }
+
         #endregion
 
         #region Channels

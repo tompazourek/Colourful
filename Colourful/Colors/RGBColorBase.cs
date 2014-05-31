@@ -37,6 +37,12 @@ namespace Colourful
             B = b.CheckRange(0, 1);
         }
 
+         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
+        internal RGBColorBase(Vector vector)
+            : this(vector[0], vector[1], vector[2])
+        {
+        }
+
         #endregion
 
         #region Channels

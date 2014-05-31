@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Colourful.Implementation;
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
 {
@@ -69,6 +70,21 @@ namespace Colourful
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         public RGBColor(Color color, IRGBWorkingSpace workingSpace)
             : base(((double) color.R) / 255, ((double) color.G) / 255, ((double) color.B) / 255)
+        {
+            WorkingSpace = workingSpace;
+        }
+
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        public RGBColor(Vector vector)
+            : this(vector, DefaultWorkingSpace)
+        {
+        }
+
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
+        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        public RGBColor(Vector vector, IRGBWorkingSpace workingSpace)
+            : base(vector)
         {
             WorkingSpace = workingSpace;
         }
