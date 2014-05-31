@@ -36,7 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Colourful.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Colourful.xml</DocumentationFile>
     <NoWarn>1591, 1573</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -115,9 +115,6 @@
     <Compile Include="Implementation\RGB\RGBPrimariesChromaticityCoordinates.cs" />
     <Compile Include="Implementation\RGB\RGBWorkingSpace.cs" />
     <Compile Include="Implementation\RGB\sRGBCompanding.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
