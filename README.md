@@ -9,6 +9,8 @@ The library is released with an [MIT license](https://raw.githubusercontent.com/
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
 
+Binaries of the last build can be downloaded on the [AppVeyor CI page of the project](https://ci.appveyor.com/project/tompazourek/colourful/build/artifacts) (publishing to NuGet [is planned](https://github.com/tompazourek/Colourful/issues/2)).
+
 &copy; [Tomáš Pažourek](https://github.com/tompazourek), 2014
 <br/>
 All rights reserved.
