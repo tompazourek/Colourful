@@ -53,14 +53,22 @@ namespace Colourful.ChromaticAdaptation
             return new XYZColor(XD, YD, ZD);
         }
 
+        /// <summary>
+        /// Inversed MA (used as performance optimization)
+        /// </summary>
+        private Matrix _maInverse;
+        
         private void TransformCore(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint, out double XD, out double YD, out double ZD)
         {
+            if (_maInverse == null)
+                _maInverse = MA.Inverse();
+
             double rhoS, gammaS, betaS, rhoD, gammaD, betaD;
             (MA.MultiplyBy(sourceWhitePoint.Vector)).AssignVariables(out rhoS, out gammaS, out betaS);
             (MA.MultiplyBy(targetWhitePoint.Vector)).AssignVariables(out rhoD, out gammaD, out betaD);
 
             Matrix diagonalMatrix = MatrixFactory.CreateDiagonal(rhoD / rhoS, gammaD / gammaS, betaD / betaS);
-            Matrix M = MA.Inverse().MultiplyBy(diagonalMatrix).MultiplyBy(MA);
+            Matrix M = _maInverse.MultiplyBy(diagonalMatrix).MultiplyBy(MA);
 
             (M.MultiplyBy(sourceColor.Vector)).AssignVariables(out XD, out YD, out ZD);
         }
