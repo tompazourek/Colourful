@@ -21,7 +21,6 @@ namespace Colourful
     /// <summary>
     /// RGB working color space
     /// </summary> 
-    /// <remarks>For equality checks use <seealso cref="RGBWorkingSpaceEqualityComparer"/>.</remarks>
     public interface IRGBWorkingSpace
     {
         /// <summary>

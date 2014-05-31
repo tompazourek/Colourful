@@ -50,6 +50,7 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (usually from 0 to 1)</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public xyYColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {

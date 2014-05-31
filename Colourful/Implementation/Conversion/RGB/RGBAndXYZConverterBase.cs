@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace Colourful.Implementation.Conversion
 {
     public abstract class RGBAndXYZConverterBase
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException("workingSpace");
@@ -68,7 +69,7 @@ namespace Colourful.Implementation.Conversion
             return M;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
         {
             return GetRGBToXYZMatrix(workingSpace).Inverse();

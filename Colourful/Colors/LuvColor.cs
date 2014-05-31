@@ -64,6 +64,7 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LuvColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
