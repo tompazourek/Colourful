@@ -27,8 +27,6 @@ namespace Colourful.Implementation
             for (int i = 0; i < rows; i++)
             {
                 result[i] = new double[columns];
-                //for (int j = 0; j < columns; j++)
-                //    result[i][j] = 0;
             }
             return result;
         }
@@ -39,8 +37,7 @@ namespace Colourful.Implementation
             for (int i = 0; i < size; i++)
             {
                 result[i] = new double[size];
-                for (int j = 0; j < size; j++)
-                    result[i][j] = i == j ? 1 : 0;
+                result[i][i] = 1;
             }
             return result;
         }
@@ -52,8 +49,7 @@ namespace Colourful.Implementation
             for (int i = 0; i < size; i++)
             {
                 result[i] = new double[size];
-                for (int j = 0; j < size; j++)
-                    result[i][j] = i == j ? items[i] : 0;
+                result[i][i] = items[i];
             }
             return result;
         }
