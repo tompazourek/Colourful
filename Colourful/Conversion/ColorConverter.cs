@@ -30,7 +30,7 @@ namespace Colourful.Conversion
         public static readonly IChromaticAdaptation DefaultChromaticAdaptationMethod = new BradfordChromaticAdaptation();
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        public static readonly XYZColor DefaultWhitePoint = Illuminants.D50;
+        public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
         /// <summary>
         /// Chromatic adaptation method used. When null, no adaptation will be performed.
