@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Colourful")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Open source .NET library for working with color spaces.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Colourful")]
-[assembly: AssemblyCopyright("Copyright © Tomáš Pažourek 2013")]
+[assembly: AssemblyCopyright("Copyright © Tomáš Pažourek 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -43,5 +43,6 @@ using System.Threading.Tasks;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0.0-alpha")]
 
 [assembly: CLSCompliant(true)]
