@@ -7,6 +7,7 @@
         <authors>Tomáš Pažourek</authors>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/tompazourek/Colourful</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_64.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Open source .NET library for working with color spaces. 
 
