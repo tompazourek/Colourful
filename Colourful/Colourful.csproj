@@ -65,6 +65,17 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseAll|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Colourful.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591, 1573</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -148,7 +159,14 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'ReleaseAll'">
+    <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 4.0%29" RunEachTargetSeparately="true" />
+    <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 3.5%29" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="CleanAll" AfterTargets="Clean" Condition="'$(Configuration)' == 'ReleaseAll'">
+    <RemoveDir Directories="$(OUTDIR)"/>
+  </Target>
+  
 </Project>
