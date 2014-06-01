@@ -3,11 +3,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/xegjq1k7ixfrf157)](https://ci.appveyor.com/project/tompazourek/colourful)
 
-Open source .NET library for working with color spaces.
-
-The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
-
-**Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
+*Open source .NET library for working with color spaces.*
 
 Binaries of the last build can be downloaded on the [AppVeyor CI page of the project](https://ci.appveyor.com/project/tompazourek/colourful/build/artifacts).
 
@@ -17,9 +13,11 @@ The library is also [published on NuGet.org](https://www.nuget.org/packages/Colo
 PM> Install-Package Colourful -Pre
 ```
 
-&copy; [Tomáš Pažourek](https://github.com/tompazourek), 2014
-<br/>
-All rights reserved.
+The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
+
+**Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
+
+---
 
 Usage
 -----
