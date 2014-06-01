@@ -34,18 +34,18 @@ namespace Colourful
 
         #region Constructor
 
-        /// <param name="l">L* (lightness)</param>
-        /// <param name="u">a*</param>
-        /// <param name="v">b*</param>
+        /// <param name="l">L* (lightness) (from 0 to 100)</param>
+        /// <param name="u">u* (usually from -100 to 100)</param>
+        /// <param name="v">v* (usually from -100 to 100)</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v) : this(l, u, v, DefaultWhitePoint)
         {
         }
 
-        /// <param name="l">L* (lightness)</param>
-        /// <param name="u">a*</param>
-        /// <param name="v">b*</param>
+        /// <param name="l">L* (lightness) (from 0 to 100)</param>
+        /// <param name="u">u* (usually from -100 to 100)</param>
+        /// <param name="v">v* (usually from -100 to 100)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v, XYZColor whitePoint)

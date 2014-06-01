@@ -27,6 +27,8 @@ namespace Colourful
         private readonly double _x;
         private readonly double _y;
 
+        /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
+        /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public ChromaticityCoordinates(double x, double y)
         {

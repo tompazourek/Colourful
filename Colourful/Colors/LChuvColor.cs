@@ -34,17 +34,17 @@ namespace Colourful
 
         #region Constructor
 
-        /// <param name="l">L* (lightness)</param>
-        /// <param name="c">C* (chroma)</param>
-        /// <param name="h">h° (hue in degrees)</param>
+        /// <param name="l">L* (lightness) (from 0 to 100)</param>
+        /// <param name="c">C* (chroma) (from 0 to 100)</param>
+        /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LChuvColor(double l, double c, double h) : this(l, c, h, DefaultWhitePoint)
         {
         }
 
-        /// <param name="l">L* (lightness)</param>
-        /// <param name="c">C* (chroma)</param>
-        /// <param name="h">h° (hue in degrees)</param>
+        /// <param name="l">L* (lightness) (from 0 to 100)</param>
+        /// <param name="c">C* (chroma) (from 0 to 100)</param>
+        /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LChuvColor(double l, double c, double h, XYZColor whitePoint)

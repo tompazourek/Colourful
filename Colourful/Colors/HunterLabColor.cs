@@ -34,18 +34,18 @@ namespace Colourful
 
         #region Constructor
 
-        /// <param name="l">L (lightness)</param>
-        /// <param name="a">a</param>
-        /// <param name="b">b</param>
+        /// <param name="l">L (lightness) (from 0 to 100)</param>
+        /// <param name="a">a (usually from -100 to 100)</param>
+        /// <param name="b">b (usually from -100 to 100)</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public HunterLabColor(double l, double a, double b) : this(l, a, b, DefaultWhitePoint)
         {
         }
 
-        /// <param name="l">L (lightness)</param>
-        /// <param name="a">a</param>
-        /// <param name="b">b</param>
+        /// <param name="l">L (lightness) (from 0 to 100)</param>
+        /// <param name="a">a (usually from -100 to 100)</param>
+        /// <param name="b">b (usually from -100 to 100)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public HunterLabColor(double l, double a, double b, XYZColor whitePoint)
