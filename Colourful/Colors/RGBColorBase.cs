@@ -14,9 +14,15 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Colourful.Implementation;
+
+#if (NET40 || NET35)
+using Vector = System.Collections.Generic.IList<double>;
+using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+#else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+#endif
 
 namespace Colourful
 {

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Colourful</id>
-        <version>$version$</version>
+        <version>1.0.0-alpha2</version>
         <title>Colourful</title>
         <authors>Tomáš Pažourek</authors>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
@@ -31,10 +31,20 @@ For more info, visit the project page.</description>
         <copyright>Tomáš Pažourek, 2014</copyright>
         <tags>colour,color,sRGB,Adobe RGB,delta-e,rgb to lab,cielab,cieluv,ciexyz,cct,chromatic adaptation</tags>
         <frameworkAssemblies>
-            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
             <frameworkAssembly assemblyName="System" targetFramework="" />
             <frameworkAssembly assemblyName="System.Core" targetFramework="" />
             <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
         </frameworkAssemblies>
     </metadata>
+    <files>
+        <file src="Colourful\bin\Release\net35\Colourful.dll" target="lib\net35\Colourful.dll" />
+        <file src="Colourful\bin\Release\net35\Colourful.pdb" target="lib\net35\Colourful.pdb" />
+        <file src="Colourful\bin\Release\net35\Colourful.xml" target="lib\net35\Colourful.xml" />
+        <file src="Colourful\bin\Release\net40\Colourful.dll" target="lib\net40\Colourful.dll" />
+        <file src="Colourful\bin\Release\net40\Colourful.pdb" target="lib\net40\Colourful.pdb" />
+        <file src="Colourful\bin\Release\net40\Colourful.xml" target="lib\net40\Colourful.xml" />
+        <file src="Colourful\bin\Release\Colourful.dll" target="lib\net45\Colourful.dll" />
+        <file src="Colourful\bin\Release\Colourful.pdb" target="lib\net45\Colourful.pdb" />
+        <file src="Colourful\bin\Release\Colourful.xml" target="lib\net45\Colourful.xml" />
+    </files>
 </package>
