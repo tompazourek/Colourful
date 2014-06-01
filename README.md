@@ -5,6 +5,13 @@
 
 *Open source .NET library for working with color spaces.*
 
+The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
+
+**Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
+
+Download
+--------
+
 Binaries of the last build can be downloaded on the [AppVeyor CI page of the project](https://ci.appveyor.com/project/tompazourek/colourful/build/artifacts).
 
 The library is also [published on NuGet.org](https://www.nuget.org/packages/Colourful/), install using:
@@ -15,11 +22,6 @@ PM> Install-Package Colourful -Pre
 
 <sup>Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for .NET v4.5, v4.0 and v3.5.</sup>
 
-The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
-
-**Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
-
----
 
 Usage
 -----
