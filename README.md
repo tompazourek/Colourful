@@ -5,7 +5,7 @@
 
 *Open source .NET library for working with color spaces.*
 
-The library is released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
+The library is written in C# and released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE), so feel **free to fork** or **use commercially**.
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
 
@@ -28,6 +28,7 @@ Usage
 
 ### Color conversion
 
+<sub>Sample C# code:</sub>
 ```csharp
 RGBColor input = new RGBColor(1, 0, 0);
 
