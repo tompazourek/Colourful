@@ -84,12 +84,12 @@ namespace Colourful
             get { return Chromaticity.y; }
         }
 
-		/// <summary>
-		/// Y channel (luminance)
-		/// </summary>
-		/// <remarks>
-		/// Ranges usually from 0 to 1.
-		/// </remarks>
+        /// <summary>
+        /// Y channel (luminance)
+        /// </summary>
+        /// <remarks>
+        /// Ranges usually from 0 to 1.
+        /// </remarks>
         public double Luminance { get; private set; }
 
         /// <remarks>
