@@ -46,6 +46,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CCTTest.cs" />
+    <Compile Include="ColorCheckerData.cs" />
     <Compile Include="ColorConverterAdaptTest.cs" />
     <Compile Include="LuvAndLChuvConversionTest.cs" />
     <Compile Include="DoublePrecisionComparer.cs" />
