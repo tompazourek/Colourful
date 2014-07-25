@@ -102,7 +102,7 @@ What is supported
 Colourful currently supports following color spaces (and conversions between each other):
 
 * **RGB** *(see working spaces below)*
-* **linear RGB* *(RGB with uncompanded channels)*
+* **linear RGB** *(RGB with uncompanded channels)* <sup>*</sup>
 * **CIE 1931 XYZ**
 * **CIE xyY** *(derived from XYZ)*
 * **CIE L\*a\*b\* (1976)**
@@ -110,6 +110,8 @@ Colourful currently supports following color spaces (and conversions between eac
 * **CIE L\*u\*v\* (1976)**
 * **CIE L\*C\*h°<sub>uv</sub>**
 * **Hunter Lab**
+
+<sup>* for more information, see: http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no</sup>
 
 All of these color spaces (including RGB) have double precision. Conversion to `System.Drawing.Color`, which is 8-bit, is supported from `RGBColor` through implicit type-conversion operator to make integration seamless.
 
