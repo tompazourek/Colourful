@@ -28,7 +28,6 @@ Usage
 
 ### Color conversion
 
-<sub>Sample C# code:</sub>
 ```csharp
 RGBColor input = new RGBColor(1, 0, 0);
 
