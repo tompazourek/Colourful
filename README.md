@@ -102,13 +102,13 @@ What is supported
 Colourful currently supports following color spaces (and conversions between each other):
 
 * **RGB** *(see working spaces below)*
-* **linear RGB** *(RGB with uncompanded channels)* <sup>*</sup>
-* **CIE 1931 XYZ**
+* **linear RGB** <sup>*</sup>
+* **CIE XYZ (1931)**
 * **CIE xyY** *(derived from XYZ)*
-* **CIE L\*a\*b\* (1976)**
-* **CIE L\*C\*h°<sub>ab</sub>**
-* **CIE L\*u\*v\* (1976)**
-* **CIE L\*C\*h°<sub>uv</sub>**
+* **CIE L\*a\*b\* (1976)** *(CIELAB)*
+* **CIE L\*C\*h°<sub>ab</sub>** *(CIELCH)*
+* **CIE L\*u\*v\* (1976)** *(CIELUV)*
+* **CIE L\*C\*h°<sub>uv</sub>** *(CIELCH)*
 * **Hunter Lab**
 
 <sup>* for more information, see: http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no</sup>
