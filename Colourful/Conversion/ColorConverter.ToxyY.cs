@@ -30,6 +30,16 @@ namespace Colourful.Conversion
             return result;
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
+        public xyYColor ToxyY(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            xyYColor result = ToxyY(xyzColor);
+            return result;
+        }
+
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy"), SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {

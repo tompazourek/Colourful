@@ -102,6 +102,7 @@ What is supported
 Colourful currently supports following color spaces (and conversions between each other):
 
 * **RGB** *(see working spaces below)*
+* **linear RGB* *(RGB with uncompanded channels)*
 * **CIE 1931 XYZ**
 * **CIE xyY** *(derived from XYZ)*
 * **CIE L\*a\*b\* (1976)**

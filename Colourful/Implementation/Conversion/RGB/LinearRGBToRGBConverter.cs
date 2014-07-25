@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Colourful.Implementation.RGB;
@@ -25,39 +26,13 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
-    /// <summary>
-    /// Converts from <see cref="XYZColor"/> to <see cref="RGBColor"/>.
-    /// </summary>
-    /// <remarks>
-    /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/> when not set.
-    /// </remarks>
-    public class XYZToRGBConverter : RGBAndXYZConverterBase, IColorConversion<XYZColor, RGBColor>
+    public class LinearRGBToRGBConverter : IColorConversion<LinearRGBColor, RGBColor>
     {
-        private readonly Matrix _conversionMatrix;
-
-        public XYZToRGBConverter() : this(null)
-        {
-        }
-
-        public XYZToRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace)
-        {
-            TargetRGBWorkingSpace = targetRGBWorkingSpace ?? RGBColor.DefaultWorkingSpace;
-            _conversionMatrix = GetXYZToRGBMatrix(TargetRGBWorkingSpace);
-        }
-
-        /// <summary>
-        /// Target RGB working space. When not set, target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
-        /// </summary>
-        public IRGBWorkingSpace TargetRGBWorkingSpace { get; private set; }
-
-        public RGBColor Convert(XYZColor input)
+        public RGBColor Convert(LinearRGBColor input)
         {
             if (input == null) throw new ArgumentNullException("input");
 
-            Vector inputVector = input.Vector;
-            Vector uncompandedVector = _conversionMatrix.MultiplyBy(inputVector);
-            RGBColor result1 = CompandVector(uncompandedVector, TargetRGBWorkingSpace);
-            RGBColor result = result1;
+            RGBColor result = CompandVector(input.Vector, input.WorkingSpace);
             return result;
         }
 
@@ -81,10 +56,11 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
-        protected bool Equals(XYZToRGBConverter other)
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
+        protected bool Equals(LinearRGBToRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException("other");
-            return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
+            return true;
         }
 
         public override bool Equals(object obj)
@@ -92,20 +68,20 @@ namespace Colourful.Implementation.Conversion
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((XYZToRGBConverter) obj);
+            return Equals((LinearRGBToRGBConverter)obj);
         }
 
         public override int GetHashCode()
         {
-            return (TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0);
+            return 1;
         }
 
-        public static bool operator ==(XYZToRGBConverter left, XYZToRGBConverter right)
+        public static bool operator ==(LinearRGBToRGBConverter left, LinearRGBToRGBConverter right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(XYZToRGBConverter left, XYZToRGBConverter right)
+        public static bool operator !=(LinearRGBToRGBConverter left, LinearRGBToRGBConverter right)
         {
             return !Equals(left, right);
         }

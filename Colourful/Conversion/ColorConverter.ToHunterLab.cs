@@ -28,6 +28,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public HunterLabColor ToHunterLab(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            HunterLabColor result = ToHunterLab(xyzColor);
+            return result;
+        }
+
         public HunterLabColor ToHunterLab(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

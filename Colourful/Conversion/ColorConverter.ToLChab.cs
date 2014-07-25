@@ -28,6 +28,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public LChabColor ToLChab(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LChabColor result = ToLChab(xyzColor);
+            return result;
+        }
+
         public LChabColor ToLChab(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

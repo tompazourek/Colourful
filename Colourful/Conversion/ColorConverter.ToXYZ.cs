@@ -20,24 +20,36 @@ namespace Colourful.Conversion
 {
     public partial class ColorConverter
     {
-        private RGBToXYZConverter _lastRGBToXYZConverter;
+        private LinearRGBToXYZConverter _lastLinearRGBToXYZConverter;
 
-        private RGBToXYZConverter GetRGBToXYZConverter(IRGBWorkingSpace workingSpace)
+        private LinearRGBToXYZConverter GetLinearRGBToXYZConverter(IRGBWorkingSpace workingSpace)
         {
-            if (_lastRGBToXYZConverter != null &&
-                _lastRGBToXYZConverter.SourceRGBWorkingSpace.Equals(workingSpace))
-                return _lastRGBToXYZConverter;
+            if (_lastLinearRGBToXYZConverter != null &&
+                _lastLinearRGBToXYZConverter.SourceRGBWorkingSpace.Equals(workingSpace))
+                return _lastLinearRGBToXYZConverter;
 
-            return _lastRGBToXYZConverter = new RGBToXYZConverter(workingSpace);
+            return _lastLinearRGBToXYZConverter = new LinearRGBToXYZConverter(workingSpace);
         }
 
         public XYZColor ToXYZ(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
+            // uncompanding
+            var rgbConverter = new RGBToLinearRGBConverter();
+            LinearRGBColor linear = rgbConverter.Convert(color);
+
             // conversion
-            var converter = GetRGBToXYZConverter(color.WorkingSpace);
-            XYZColor unadapted = converter.Convert(color);
+            var result = ToXYZ(linear);
+            return result;
+        }
+
+        public XYZColor ToXYZ(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+            // conversion
+            var converterXyz = GetLinearRGBToXYZConverter(color.WorkingSpace);
+            XYZColor unadapted = converterXyz.Convert(color);
 
             // adaptation
             XYZColor adapted = color.WorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed

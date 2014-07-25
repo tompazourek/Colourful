@@ -26,7 +26,7 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
-    public abstract class RGBAndXYZConverterBase
+    public abstract class LinearRGBAndXYZConverterBase
     {
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)

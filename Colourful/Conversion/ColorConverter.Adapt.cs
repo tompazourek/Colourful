@@ -35,9 +35,9 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace"/>.
+        /// Adapts linear RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace"/>.
         /// </summary>
-        public RGBColor Adapt(RGBColor color)
+        public LinearRGBColor Adapt(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
@@ -48,17 +48,31 @@ namespace Colourful.Conversion
                 return color;
 
             // conversion to XYZ
-            var converterToXYZ = GetRGBToXYZConverter(color.WorkingSpace);
+            var converterToXYZ = GetLinearRGBToXYZConverter(color.WorkingSpace);
             XYZColor unadapted = converterToXYZ.Convert(color);
 
             // adaptation
             XYZColor adapted = ChromaticAdaptation.Transform(unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion back to RGB
-            var converterToRGB = GetXYZToRGBConverter(TargetRGBWorkingSpace);
-            RGBColor result = converterToRGB.Convert(adapted);
+            var converterToRGB = GetXYZToLinearRGBConverter(TargetRGBWorkingSpace);
+            LinearRGBColor result = converterToRGB.Convert(adapted);
 
             return result;
+        }
+
+        /// <summary>
+        /// Adapts RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace"/>.
+        /// </summary>
+        public RGBColor Adapt(RGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            var linearInput = ToLinearRGB(color);
+            var linearOutput = Adapt(linearInput);
+            var compandedOutput = ToRGB(linearOutput);
+
+            return compandedOutput;
         }
 
         /// <summary>

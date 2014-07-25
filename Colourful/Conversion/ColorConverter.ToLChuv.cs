@@ -28,6 +28,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public LChuvColor ToLChuv(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LChuvColor result = ToLChuv(xyzColor);
+            return result;
+        }
+
         public LChuvColor ToLChuv(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");

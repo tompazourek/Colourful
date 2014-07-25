@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Colourful.Implementation.RGB;
@@ -25,39 +26,14 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
-    /// <summary>
-    /// Converts from <see cref="RGBColor"/> to <see cref="XYZColor"/>.
-    /// </summary>
-    public class RGBToXYZConverter : RGBAndXYZConverterBase, IColorConversion<RGBColor, XYZColor>
+    public class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
     {
-        private readonly Matrix _conversionMatrix;
-
-        /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
-        public RGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace)
-        {
-            SourceRGBWorkingSpace = sourceRGBWorkingSpace;
-            _conversionMatrix = GetRGBToXYZMatrix(SourceRGBWorkingSpace);
-        }
-
-        /// <summary>
-        /// Source RGB working space
-        /// </summary>
-        public IRGBWorkingSpace SourceRGBWorkingSpace { get; private set; }
-
-        public XYZColor Convert(RGBColor input)
+        public LinearRGBColor Convert(RGBColor input)
         {
             if (input == null) throw new ArgumentNullException("input");
 
-            if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
-                throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
-
-            Vector rgb = UncompandVector(input);
-            Vector xyz = _conversionMatrix.MultiplyBy(rgb);
-
-            double x, y, z;
-            xyz.AssignVariables(out x, out y, out z);
-
-            var converted = new XYZColor(x, y, z);
+            Vector uncompandedVector = UncompandVector(input);
+            var converted = new LinearRGBColor(uncompandedVector, input.WorkingSpace);
             return converted;
         }
 
@@ -68,16 +44,17 @@ namespace Colourful.Implementation.Conversion
         {
             ICompanding inverseCompanding = rgbColor.WorkingSpace.Companding;
             Vector compandedVector = rgbColor.Vector;
-            Vector uncompandedVector = compandedVector.Select(inverseCompanding.InverseCompanding).ToList();
+            Vector uncompandedVector = compandedVector.Select(x => inverseCompanding.InverseCompanding(x).CropRange(0, 1)).ToList();
             return uncompandedVector;
         }
 
         #region Overrides
 
-        protected bool Equals(RGBToXYZConverter other)
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
+        protected bool Equals(RGBToLinearRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException("other");
-            return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
+            return true;
         }
 
         public override bool Equals(object obj)
@@ -85,20 +62,20 @@ namespace Colourful.Implementation.Conversion
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((RGBToXYZConverter) obj);
+            return Equals((RGBToLinearRGBConverter)obj);
         }
 
         public override int GetHashCode()
         {
-            return (SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0);
+            return 1;
         }
 
-        public static bool operator ==(RGBToXYZConverter left, RGBToXYZConverter right)
+        public static bool operator ==(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(RGBToXYZConverter left, RGBToXYZConverter right)
+        public static bool operator !=(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
         {
             return !Equals(left, right);
         }

@@ -88,6 +88,7 @@
     <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
     <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
+    <Compile Include="Colors\LinearRGBColor.cs" />
     <Compile Include="Colors\LChuvColor.cs" />
     <Compile Include="Colors\xyYColor.cs" />
     <Compile Include="Colors\LuvColor.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Conversion\ColorConverter.ToLuv.cs" />
     <Compile Include="Conversion\ColorConverter.ToxyY.cs" />
     <Compile Include="Conversion\ColorConverter.ToLChuv.cs" />
+    <Compile Include="Conversion\ColorConverter.ToLinearRGB.cs" />
     <Compile Include="Difference\CMCColorDifference.cs" />
     <Compile Include="Implementation\Conversion\LChuv\LuvToLChuvConverter.cs" />
     <Compile Include="Implementation\Conversion\LChuv\LChuvToLuvConverter.cs" />
@@ -114,10 +116,12 @@
     <Compile Include="Implementation\Conversion\LChab\LabToLChabConverter.cs" />
     <Compile Include="Implementation\Conversion\Luv\LuvToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\Luv\XYZToLuvConverter.cs" />
-    <Compile Include="Implementation\Conversion\RGB\XYZToRGBConverter.cs" />
+    <Compile Include="Implementation\Conversion\RGB\LinearRGBToRGBConverter.cs" />
+    <Compile Include="Implementation\Conversion\RGB\RGBToLinearRGBConverter.cs" />
+    <Compile Include="Implementation\Conversion\RGB\XYZToLinearRGBConverter.cs" />
     <Compile Include="Implementation\Conversion\Lab\LabToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\LChab\LChabToLabConverter.cs" />
-    <Compile Include="Implementation\Conversion\RGB\RGBAndXYZConverterBase.cs" />
+    <Compile Include="Implementation\Conversion\RGB\LinearRGBAndXYZConverterBase.cs" />
     <Compile Include="Implementation\Conversion\Lab\XYZToLabConverter.cs" />
     <Compile Include="Implementation\Conversion\CIEConstants.cs" />
     <Compile Include="Difference\CIE76ColorDifference.cs" />
@@ -131,7 +135,7 @@
     <Compile Include="Colors\RGBColor.cs" />
     <Compile Include="Colors\XYZColor.cs" />
     <Compile Include="Implementation\Conversion\IColorConversion.cs" />
-    <Compile Include="Implementation\Conversion\RGB\RGBToXYZConverter.cs" />
+    <Compile Include="Implementation\Conversion\RGB\LinearRGBToXYZConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Implementation\Utils\Angle.cs" />
     <Compile Include="Implementation\RGB\GammaCompanding.cs" />
@@ -160,13 +164,11 @@
   <Target Name="BeforeBuild">
   </Target>
   -->
-
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'ReleaseAll'">
     <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 4.0%29" RunEachTargetSeparately="true" />
     <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 3.5%29" RunEachTargetSeparately="true" />
   </Target>
   <Target Name="CleanAll" AfterTargets="Clean" Condition="'$(Configuration)' == 'ReleaseAll'">
-    <RemoveDir Directories="$(OUTDIR)"/>
+    <RemoveDir Directories="$(OUTDIR)" />
   </Target>
-  
 </Project>

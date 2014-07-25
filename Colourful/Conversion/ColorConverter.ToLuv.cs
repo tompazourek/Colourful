@@ -28,6 +28,15 @@ namespace Colourful.Conversion
             return result;
         }
 
+        public LuvColor ToLuv(LinearRGBColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LuvColor result = ToLuv(xyzColor);
+            return result;
+        }
+
         public LuvColor ToLuv(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
