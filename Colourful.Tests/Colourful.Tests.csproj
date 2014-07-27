@@ -54,6 +54,7 @@
     <Compile Include="DoublePrecisionComparer.cs" />
     <Compile Include="DoubleRoundingComparer.cs" />
     <Compile Include="ColorVectorComparer.cs" />
+    <Compile Include="MacbethColorCheckerTest.cs" />
     <Compile Include="XYZAndxyYConversionTest.cs" />
     <Compile Include="XYZAndLuvConversionTest.cs" />
     <Compile Include="LabAndLChabConversionTest.cs" />

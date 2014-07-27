@@ -94,6 +94,17 @@ double deltaE = new CIEDE2000ColorDifference().ComputeDifference(color1, color2)
 
 *For more details, see the detailed XML documentation (generated during build), or the [unit tests](https://github.com/tompazourek/Colourful/tree/master/Colourful.Tests).*
 
+### Macbeth ColorChecker
+
+Colourful contains definition of all 24 [Macbeth ColorChecker](http://en.wikipedia.org/wiki/ColorChecker) colors in sRGB, which are useful for color calibration. Access them this way:
+
+```csharp
+RGBColor[] testColors = MacbethColorChecker.Colors; // array of 24 colors
+
+RGBColor testColor = MacbethColorChecker.DarkSkin; // individual colors
+```
+
+
 What is supported
 -----------------
 
