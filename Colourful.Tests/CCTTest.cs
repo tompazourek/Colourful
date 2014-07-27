@@ -71,15 +71,7 @@ namespace Colourful.Tests
                 new object[] { 0.265931, 0.270159, 14000 },
                 new object[] { 0.263705, 0.267277, 15000 },
             };
-
-        private void AssertEqualWithDelta(double expected, double actual, double delta)
-        {
-            double difference = Math.Abs(expected - actual);
-
-            if (difference > delta)
-                Assert.AreEqual(expected, actual); // simulate fail
-        }
-
+        
         [Test, TestCaseSource("CCTData_Wikipedia")]
         public void CCTFromChromaticity(double x, double y, double expectedCCT)
         {
@@ -92,8 +84,7 @@ namespace Colourful.Tests
 
             // assert
             Debug.WriteLine(string.Format("CCT {0} K (difference {1} K)", cct, Math.Abs(expectedCCT - cct)));
-            const double delta = 66; // to pass the tests
-            AssertEqualWithDelta(expectedCCT, cct, delta);
+            Assert.That(cct, Is.EqualTo(expectedCCT).Using(new DoubleDeltaComparer(66)));
         }
 
         [Test, TestCaseSource("CCTData_Wikipedia")]
@@ -106,9 +97,9 @@ namespace Colourful.Tests
             ChromaticityCoordinates chromaticity = approximation.GetChromaticityOfCCT(cct);
 
             // assert
-            const double delta = 0.02;
-            AssertEqualWithDelta(expectedX, chromaticity.x, delta);
-            AssertEqualWithDelta(expectedY, chromaticity.y, delta);
+            var deltaComparer = new DoubleDeltaComparer(0.02);
+            Assert.That(chromaticity.x, Is.EqualTo(expectedX).Using(deltaComparer));
+            Assert.That(chromaticity.y, Is.EqualTo(expectedY).Using(deltaComparer));
         }
     }
 }

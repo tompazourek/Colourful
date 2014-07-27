@@ -72,6 +72,7 @@ namespace Colourful.Tests
         [TestCase(10, -20, 30, 10, 36.0555, 123.6901)]
         [TestCase(10, 20, -30, 10, 36.0555, 303.6901)]
         [TestCase(10, -20, -30, 10, 36.0555, 236.3099)]
+        [TestCase(37.3511, 24.1720, 16.0684, 37.3511, 29.0255, 33.6141)]
         public void Convert_Luv_to_LChuv(double l, double u, double v, double l2, double c, double h)
         {
             // arrange
