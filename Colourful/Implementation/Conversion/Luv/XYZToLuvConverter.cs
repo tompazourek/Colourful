@@ -62,7 +62,7 @@ namespace Colourful.Implementation.Conversion
             if (double.IsNaN(v))
                 v = 0;
 
-            return new LuvColor(L, u, v);
+            return new LuvColor(L, u, v, LuvWhitePoint);
         }
 
         private static double Compute_up(XYZColor input)
