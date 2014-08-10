@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Colourful</id>
-        <version>1.0.0-alpha2</version>
+        <version>1.0.0-alpha3</version>
         <title>Colourful</title>
         <authors>Tomáš Pažourek</authors>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
@@ -21,7 +21,8 @@ Supports these color spaces:
 - CIE Luv
 - CIE LCh (uv)
 - CIE LCh (ab)
-- HunterLab
+- Hunter Lab
+- LMS (cone response)
 
 Conversions are done correctly using chromatic adaptation and white points.
 
