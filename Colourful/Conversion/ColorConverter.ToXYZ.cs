@@ -143,5 +143,15 @@ namespace Colourful.Conversion
             XYZColor result = ToXYZ(labColor);
             return result;
         }
+
+        public XYZColor ToXYZ(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion
+            var converter = _cachedXYZAndLMSConverter;
+            XYZColor converted = converter.Convert(color);
+            return converted;
+        }
     }
 }

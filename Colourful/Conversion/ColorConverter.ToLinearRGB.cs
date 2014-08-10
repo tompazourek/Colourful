@@ -99,5 +99,14 @@ namespace Colourful.Conversion
             LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
+
+        public LinearRGBColor ToLinearRGB(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
+            return result;
+        }
     }
 }

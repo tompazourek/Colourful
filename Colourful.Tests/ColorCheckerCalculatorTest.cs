@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Colourful.ChromaticAdaptation;
 using Colourful.Conversion;
 using NUnit.Framework;
 using DataRow = Colourful.Tests.ColorCheckerCalculatorData.Row;
@@ -35,7 +34,7 @@ namespace Colourful.Tests
                     TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,
                     TargetLabWhitePoint = Illuminants.C,
                     TargetLuvWhitePoint = Illuminants.C,
-                    ChromaticAdaptation = new BradfordChromaticAdaptation()
+                    ChromaticAdaptation = new VonKriesChromaticAdaptation()
                 };
         }
 

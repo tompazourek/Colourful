@@ -13,9 +13,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Colourful.ChromaticAdaptation;
 using Colourful.Conversion;
 using Colourful.Implementation;
+using Colourful.Implementation.Conversion;
 using NUnit.Framework;
 
 namespace Colourful.Tests
@@ -122,7 +122,6 @@ namespace Colourful.Tests
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColorConverter
                 {
-                    ChromaticAdaptation = new BradfordChromaticAdaptation(),
                     WhitePoint = Illuminants.D50
                 };
 
@@ -145,7 +144,7 @@ namespace Colourful.Tests
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColorConverter
                 {
-                    ChromaticAdaptation = new VonKriesChromaticAdaptation(),
+                    ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.VonKriesHPEAdjusted),
                     WhitePoint = Illuminants.D50
                 };
 
@@ -168,7 +167,7 @@ namespace Colourful.Tests
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColorConverter
                 {
-                    ChromaticAdaptation = new XYZScaling(),
+                    ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.XYZScaling),
                     WhitePoint = Illuminants.D50
                 };
 

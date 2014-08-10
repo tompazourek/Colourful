@@ -107,5 +107,14 @@ namespace Colourful.Conversion
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
+
+        public RGBColor ToRGB(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            RGBColor result = ToRGB(xyzColor);
+            return result;
+        }
     }
 }

@@ -9,12 +9,19 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Colourful.ChromaticAdaptation;
+using Colourful.Implementation.Conversion;
+
+#if (NET40 || NET35)
+using Vector = System.Collections.Generic.IList<double>;
+using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+#else
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
+using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+#endif
 
 namespace Colourful.Conversion
 {
@@ -26,15 +33,33 @@ namespace Colourful.Conversion
         #region Attributes
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        public static readonly IChromaticAdaptation DefaultChromaticAdaptationMethod = new BradfordChromaticAdaptation();
-
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
+
+        private Matrix _transformationMatrix;
 
         /// <summary>
         /// Chromatic adaptation method used. When null, no adaptation will be performed.
         /// </summary>
         public IChromaticAdaptation ChromaticAdaptation { get; set; }
+
+        /// <summary>
+        /// Transformation matrix used in conversion to <see cref="LMSColor"/>, also used in the default Von Kries Chromatic Adaptation method.
+        /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+        public Matrix LMSTransformationMatrix
+        {
+            get { return _transformationMatrix; }
+            set {
+                _transformationMatrix = value;
+
+                if (_cachedXYZAndLMSConverter == null)
+                    _cachedXYZAndLMSConverter = new XYZAndLMSConverter(value);
+                else
+                    _cachedXYZAndLMSConverter.TransformationMatrix = value;
+            }
+        }
+
+        private XYZAndLMSConverter _cachedXYZAndLMSConverter;
 
         /// <summary>
         /// White point used for chromatic adaptation in conversions from/to XYZ color space.
@@ -72,7 +97,8 @@ namespace Colourful.Conversion
         public ColorConverter()
         {
             WhitePoint = DefaultWhitePoint;
-            ChromaticAdaptation = DefaultChromaticAdaptationMethod;
+            LMSTransformationMatrix = XYZAndLMSConverter.DefaultTransformationMatrix;
+            ChromaticAdaptation = new VonKriesChromaticAdaptation(_cachedXYZAndLMSConverter, _cachedXYZAndLMSConverter);
             TargetLabWhitePoint = LabColor.DefaultWhitePoint;
             TargetHunterLabWhitePoint = HunterLabColor.DefaultWhitePoint;
             TargetLuvWhitePoint = LuvColor.DefaultWhitePoint;

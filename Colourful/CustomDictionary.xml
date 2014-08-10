@@ -31,6 +31,10 @@
       <Acronym>NTSC</Acronym>
       <Acronym>CCT</Acronym>
       <Acronym>CMC</Acronym>
+      <Acronym>LMS</Acronym>
+      <Acronym>HPE</Acronym>
+      <Acronym>CMCCAT</Acronym>
+      <Acronym>CAT</Acronym>
     </CasingExceptions>
   </Acronyms>
 </Dictionary>

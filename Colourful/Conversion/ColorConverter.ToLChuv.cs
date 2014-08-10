@@ -94,6 +94,14 @@ namespace Colourful.Conversion
             LChuvColor result = converter.Convert(adapted);
             return result;
         }
-        
+
+        public LChuvColor ToLChuv(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LChuvColor result = ToLChuv(xyzColor);
+            return result;
+        }
     }
 }

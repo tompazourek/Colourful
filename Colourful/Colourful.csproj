@@ -83,11 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors\ChromaticityCoordinates.cs" />
-    <Compile Include="ChromaticAdaptation\BradfordChromaticAdaptation.cs" />
-    <Compile Include="ChromaticAdaptation\ChromaticAdaptationBase.cs" />
-    <Compile Include="ChromaticAdaptation\IChromaticAdaptation.cs" />
-    <Compile Include="ChromaticAdaptation\VonKriesChromaticAdaptation.cs" />
-    <Compile Include="ChromaticAdaptation\XYZScaling.cs" />
+    <Compile Include="Conversion\VonKriesChromaticAdaptation.cs" />
+    <Compile Include="Conversion\IChromaticAdaptation.cs" />
+    <Compile Include="Conversion\ColorConverter.ToLMS.cs" />
+    <Compile Include="Implementation\Conversion\LMS\LMSTransformationMatrix.cs" />
+    <Compile Include="Colors\LMSColor.cs" />
     <Compile Include="Colors\MacbethColorChecker.cs" />
     <Compile Include="Colors\LinearRGBColor.cs" />
     <Compile Include="Colors\LChuvColor.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Implementation\Conversion\HunterLab\XYZAndHunterLabConverterBase.cs" />
     <Compile Include="Implementation\Conversion\HunterLab\XYZToHunterLabConverter.cs" />
     <Compile Include="Implementation\Conversion\LChab\LabToLChabConverter.cs" />
+    <Compile Include="Implementation\Conversion\LMS\XYZAndLMSConverter.cs" />
     <Compile Include="Implementation\Conversion\Luv\LuvToXYZConverter.cs" />
     <Compile Include="Implementation\Conversion\Luv\XYZToLuvConverter.cs" />
     <Compile Include="Implementation\Conversion\RGB\LinearRGBToRGBConverter.cs" />

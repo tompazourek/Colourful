@@ -100,5 +100,15 @@ namespace Colourful.Conversion
             xyYColor result = ToxyY(xyzColor);
             return result;
         }
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
+        public xyYColor ToxyY(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            xyYColor result = ToxyY(xyzColor);
+            return result;
+        }
     }
 }

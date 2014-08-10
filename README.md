@@ -121,6 +121,7 @@ Colourful currently supports following color spaces (and conversions between eac
 * **CIE L\*u\*v\* (1976)** *(CIELUV)*
 * **CIE L\*C\*h°<sub>uv</sub>** *(CIELCH)*
 * **Hunter Lab**
+* **LMS** *(cone response)*
 
 <sup>* for more information, see: http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no</sup>
 
@@ -164,11 +165,17 @@ All of these color spaces (including RGB) have double precision. Conversion to `
 * F11 *(Philips TL84, Ultralume 40)*
 * *(custom white points)*
 
-### Chromatic adaptation methods
+### Chromatic adaptation
 
-* Bradford
-* Von Kries
+Right now there is only one chromatic adaptation method, the **von Kries chromatic adaptation method**. Custom used-defined chromatic adaptation methods are also supported. The von Kries chromatic adaptation method can be parametrized using **LMS transformation matrix**. These LMS transformation matrices are available:
+
+* Bradford (default)
+* Von Kries (Hunt-Pointer-Estevez adjusted for D65)
+* Von Kries (Hunt-Pointer-Estevez for equal energy)
 * XYZ scaling
+* Spectral-sharpened Bradford 
+* CMCCAT2000
+* CAT02
 * *(custom chromatic adaptation)*
 
 ### Color difference formulas (ΔE)

@@ -103,5 +103,14 @@ namespace Colourful.Conversion
             LuvColor adapted = Adapt(unadapted);
             return adapted;
         }
+
+        public LuvColor ToLuv(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LuvColor result = ToLuv(xyzColor);
+            return result;
+        }
     }
 }
