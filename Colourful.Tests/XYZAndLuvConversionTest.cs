@@ -47,7 +47,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new LuvColor(l, u, v, Illuminants.D65);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
 
             // act
             XYZColor output = converter.ToXYZ(input);
@@ -72,7 +72,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new XYZColor(x, y, z);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
 
             // act
             LuvColor output = converter.ToLuv(input);

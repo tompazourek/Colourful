@@ -23,12 +23,12 @@ namespace Colourful.Tests
     public class ColorCheckerCalculatorTest
     {
         private readonly DataRow[] TestData;
-        private readonly ColorConverter _converter;
+        private readonly ColourfulConverter _converter;
 
         public ColorCheckerCalculatorTest()
         {
             TestData = ColorCheckerCalculatorData.GetData().ToArray();
-            _converter = new ColorConverter
+            _converter = new ColourfulConverter
                 {
                     WhitePoint = Illuminants.C,
                     TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,

@@ -18,7 +18,7 @@ using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(RGBColor color)

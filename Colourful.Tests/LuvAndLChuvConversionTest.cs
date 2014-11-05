@@ -30,7 +30,7 @@ namespace Colourful.Tests
     {
         private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
 
-        private static readonly ColorConverter Converter = new ColorConverter();
+        private static readonly ColourfulConverter Converter = new ColourfulConverter();
 
         /// <summary>
         /// Tests conversion from <see cref="LChuvColor"/> to <see cref="LuvColor"/>.

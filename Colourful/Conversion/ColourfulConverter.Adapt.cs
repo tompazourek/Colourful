@@ -16,7 +16,7 @@ using System.Text;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
         /// <summary>
         /// Performs chromatic adaptation of given XYZ color.

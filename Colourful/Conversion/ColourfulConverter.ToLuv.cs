@@ -13,90 +13,103 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
-        public LMSColor ToLMS(RGBColor color)
+        public LuvColor ToLuv(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(LinearRGBColor color)
+        public LuvColor ToLuv(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(XYZColor color)
+        public LuvColor ToLuv(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
+
+            // adaptation
+            XYZColor adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
+                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLuvWhitePoint)
+                : color;
 
             // conversion
-            var converter = _cachedXYZAndLMSConverter;
-            var result = converter.Convert(color);
+            var converter = new XYZToLuvConverter(TargetLuvWhitePoint);
+            LuvColor result = converter.Convert(adapted);
             return result;
         }
 
-        public LMSColor ToLMS(xyYColor color)
+        public LuvColor ToLuv(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(LabColor color)
+        public LuvColor ToLuv(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(LChabColor color)
+        public LuvColor ToLuv(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(HunterLabColor color)
+        public LuvColor ToLuv(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
 
-        public LMSColor ToLMS(LuvColor color)
+        public LuvColor ToLuv(LChuvColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            // conversion (perserving white point)
+            var converter = new LChuvToLuvConverter();
+            LuvColor unadapted = converter.Convert(color);
+
+            if (!IsChromaticAdaptationPerformed)
+                return unadapted;
+
+            // adaptation to target luv white point (LuvWhitePoint)
+            LuvColor adapted = Adapt(unadapted);
+            return adapted;
+        }
+
+        public LuvColor ToLuv(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
-            return result;
-        }
-
-        public LMSColor ToLMS(LChuvColor color)
-        {
-            if (color == null) throw new ArgumentNullException("color");
-
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            LuvColor result = ToLuv(xyzColor);
             return result;
         }
     }

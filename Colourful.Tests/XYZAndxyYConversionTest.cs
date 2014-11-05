@@ -46,7 +46,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new xyYColor(x, y, Y);
-            var converter = new ColorConverter();
+            var converter = new ColourfulConverter();
 
             // act
             XYZColor output = converter.ToXYZ(input);
@@ -64,7 +64,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new XYZColor(xyzX, xyzY, xyzZ);
-            var converter = new ColorConverter();
+            var converter = new ColourfulConverter();
 
             // act
             xyYColor output = converter.ToxyY(input);

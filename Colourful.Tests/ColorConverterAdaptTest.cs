@@ -21,7 +21,7 @@ using NUnit.Framework;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests <see cref="ColorConverter.Adapt" /> methods.
+    /// Tests <see cref="ColourfulConverter.Adapt" /> methods.
     /// Test data generated using:
     /// http://www.brucelindbloom.com/index.html?ChromAdaptCalc.html
     /// http://www.brucelindbloom.com/index.html?ColorCalculator.html
@@ -41,7 +41,7 @@ namespace Colourful.Tests
             // arrange
             var input = new RGBColor(r1, g1, b1, RGBWorkingSpaces.WideGamutRGB);
             var expectedOutput = new RGBColor(r2, g2, b2, RGBWorkingSpaces.sRGB);
-            var converter = new ColorConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
+            var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // action
             RGBColor output = converter.Adapt(input);
@@ -62,7 +62,7 @@ namespace Colourful.Tests
             // arrange
             var input = new RGBColor(r1, g1, b1, RGBWorkingSpaces.sRGB);
             var expectedOutput = new RGBColor(r2, g2, b2, RGBWorkingSpaces.WideGamutRGB);
-            var converter = new ColorConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.WideGamutRGB };
+            var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.WideGamutRGB };
 
             // action
             RGBColor output = converter.Adapt(input);
@@ -82,7 +82,7 @@ namespace Colourful.Tests
             // arrange
             var input = new LabColor(l1, a1, b1, Illuminants.D65);
             var expectedOutput = new LabColor(l2, a2, b2);
-            var converter = new ColorConverter { TargetLabWhitePoint = Illuminants.D50 };
+            var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D50 };
 
             // action
             LabColor output = converter.Adapt(input);
@@ -101,7 +101,7 @@ namespace Colourful.Tests
             // arrange
             var input = new LChabColor(l1, c1, h1, Illuminants.D50);
             var expectedOutput = new LChabColor(l2, c2, h2);
-            var converter = new ColorConverter { TargetLabWhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D65 };
 
             // action
             LChabColor output = converter.Adapt(input);
@@ -120,7 +120,7 @@ namespace Colourful.Tests
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
-            var converter = new ColorConverter
+            var converter = new ColourfulConverter
                 {
                     WhitePoint = Illuminants.D50
                 };
@@ -142,7 +142,7 @@ namespace Colourful.Tests
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
-            var converter = new ColorConverter
+            var converter = new ColourfulConverter
                 {
                     ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.VonKriesHPEAdjusted),
                     WhitePoint = Illuminants.D50
@@ -165,7 +165,7 @@ namespace Colourful.Tests
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
-            var converter = new ColorConverter
+            var converter = new ColourfulConverter
                 {
                     ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.XYZScaling),
                     WhitePoint = Illuminants.D50

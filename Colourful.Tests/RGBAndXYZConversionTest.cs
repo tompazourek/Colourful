@@ -47,7 +47,7 @@ namespace Colourful.Tests
         {
             // arange
             var input = new XYZColor(x, y, z);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D50, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D50, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
             RGBColor output = converter.ToRGB(input);
@@ -75,7 +75,7 @@ namespace Colourful.Tests
         {
             // arange
             var input = new XYZColor(x, y, z);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
             RGBColor output = converter.ToRGB(input);
@@ -103,7 +103,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new RGBColor(r, g, b);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D50 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D50 };
 
             // act
             XYZColor output = converter.ToXYZ(input);
@@ -130,7 +130,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new RGBColor(r, g, b);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
             XYZColor output = converter.ToXYZ(input);

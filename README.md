@@ -31,12 +31,12 @@ Usage
 ```csharp
 RGBColor input = new RGBColor(1, 0, 0);
 
-var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
+var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
 XYZColor output = converter.ToXYZ(input);
 ```
 
-The `ColorConverter` facade can convert **from any of the [supported color spaces](#color-spaces) to any other color space**.
+The `ColourfulConverter` facade can convert **from any of the [supported color spaces](#color-spaces) to any other color space**.
 
 It **always performs the chromatic adaptation** if the input and output color space white points are different.
 
@@ -48,7 +48,7 @@ The adaptation can be also performed alone (e.g. from CIELAB D50 to CIELAB D65).
 ```csharp
 LabColor input = new LabColor(10, 20, 30, Illuminants.D50);
 
-var converter = new ColorConverter { TargetLabWhitePoint = Illuminants.D65 };
+var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D65 };
 
 LabColor output = converter.Adapt(input);
 ```
@@ -60,7 +60,7 @@ Adaptation can also convert from one RGB working space to another (e.g. from sRG
 ```csharp
 RGBColor input = new RGBColor(Color.Yellow, RGBWorkingSpaces.sRGB);
 
-var converter = new ColorConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.AdobeRGB1998 };
+var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.AdobeRGB1998 };
 
 RGBColor output = converter.Adapt(input);
 ```

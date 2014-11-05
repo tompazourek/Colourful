@@ -18,7 +18,7 @@ using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
         private LinearRGBToXYZConverter _lastLinearRGBToXYZConverter;
 

@@ -2,11 +2,11 @@
 
 // Copyright (C) Tomáš Pažourek, 2014
 // All rights reserved.
-// 
+//
 // Distributed under MIT license as a part of project Colourful.
 // https://github.com/tompazourek/Colourful
 
-#endregion
+#endregion License
 
 using System;
 using System.Collections.Generic;
@@ -18,102 +18,94 @@ using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
-        private XYZToLinearRGBConverter _lastXYZToLinearRGBConverter;
-
-        private XYZToLinearRGBConverter GetXYZToLinearRGBConverter(IRGBWorkingSpace workingSpace)
-        {
-            if (_lastXYZToLinearRGBConverter != null &&
-                _lastXYZToLinearRGBConverter.TargetRGBWorkingSpace.Equals(workingSpace))
-                return _lastXYZToLinearRGBConverter;
-
-            return _lastXYZToLinearRGBConverter = new XYZToLinearRGBConverter(workingSpace);
-        }
-
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public RGBColor ToRGB(LinearRGBColor color)
+        public LinearRGBColor ToLinearRGB(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             // conversion
-            var converter = new LinearRGBToRGBConverter();
-            RGBColor result = converter.Convert(color);
+            var converter = new RGBToLinearRGBConverter();
+            LinearRGBColor result = converter.Convert(color);
             return result;
         }
-        
-        public RGBColor ToRGB(XYZColor color)
+
+        public LinearRGBColor ToLinearRGB(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            // conversion
-            var linear = ToLinearRGB(color);
+            // adaptation
+            XYZColor adapted = TargetRGBWorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+                ? color
+                : ChromaticAdaptation.Transform(color, WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
-            // companding to RGB
-            RGBColor result = ToRGB(linear);
+            // conversion to linear RGB
+            var xyzConverter = GetXYZToLinearRGBConverter(TargetRGBWorkingSpace);
+            LinearRGBColor result = xyzConverter.Convert(adapted);
             return result;
         }
 
-        public RGBColor ToRGB(xyYColor color)
-        {
-            if (color == null) throw new ArgumentNullException("color");
-
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
-            return result;
-        }
-
-        public RGBColor ToRGB(LabColor color)
+        public LinearRGBColor ToLinearRGB(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
 
-        public RGBColor ToRGB(LChabColor color)
+        public LinearRGBColor ToLinearRGB(LabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
 
-        public RGBColor ToRGB(HunterLabColor color)
+        public LinearRGBColor ToLinearRGB(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
 
-        public RGBColor ToRGB(LuvColor color)
+        public LinearRGBColor ToLinearRGB(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
 
-        public RGBColor ToRGB(LChuvColor color)
+        public LinearRGBColor ToLinearRGB(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
 
-        public RGBColor ToRGB(LMSColor color)
+        public LinearRGBColor ToLinearRGB(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException("color");
 
             XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
+            return result;
+        }
+
+        public LinearRGBColor ToLinearRGB(LMSColor color)
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor xyzColor = ToXYZ(color);
+            LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
     }

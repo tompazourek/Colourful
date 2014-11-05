@@ -42,7 +42,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new HunterLabColor(l, a, b);
-            var converter = new ColorConverter { WhitePoint = Illuminants.C };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.C };
 
             // act
             XYZColor output = converter.ToXYZ(input);
@@ -63,7 +63,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new XYZColor(x, y, z);
-            var converter = new ColorConverter { WhitePoint = Illuminants.C };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.C };
 
             // act
             HunterLabColor output = converter.ToHunterLab(input);
@@ -84,7 +84,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new HunterLabColor(l, a, b);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
             XYZColor output = converter.ToXYZ(input);
@@ -105,7 +105,7 @@ namespace Colourful.Tests
         {
             // arrange
             var input = new XYZColor(x, y, z);
-            var converter = new ColorConverter { WhitePoint = Illuminants.D65 };
+            var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
             HunterLabColor output = converter.ToHunterLab(input);

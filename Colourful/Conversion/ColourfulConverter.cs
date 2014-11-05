@@ -28,7 +28,7 @@ namespace Colourful.Conversion
     /// <summary>
     /// Converts between color spaces and makes sure that the color is adapted using chromatic adaptation.
     /// </summary>
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
         #region Attributes
 
@@ -94,7 +94,7 @@ namespace Colourful.Conversion
 
         #endregion
 
-        public ColorConverter()
+        public ColourfulConverter()
         {
             WhitePoint = DefaultWhitePoint;
             LMSTransformationMatrix = XYZAndLMSConverter.DefaultTransformationMatrix;

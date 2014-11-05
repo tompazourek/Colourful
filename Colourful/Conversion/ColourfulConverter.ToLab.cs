@@ -17,7 +17,7 @@ using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
-    public partial class ColorConverter
+    public partial class ColourfulConverter
     {
         public LabColor ToLab(RGBColor color)
         {
