@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Colourful</id>
-        <version>1.0.0-alpha3</version>
+        <version>1.0.0</version>
         <title>Colourful</title>
         <authors>Tomáš Pažourek</authors>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
@@ -31,7 +31,7 @@ Other features include: Delta-E color difference (many formulas), Correlated col
 For more info, visit the project page.</description>
         <summary>Open source .NET library for working with color spaces.</summary>
         <copyright>Tomáš Pažourek, 2014</copyright>
-        <tags>colour,color,sRGB,Adobe RGB,delta-e,rgb to lab,cielab,cieluv,ciexyz,cct,chromatic adaptation</tags>
+        <tags>colour,color,sRGB,Adobe RGB,delta-e,rgb to lab,cielab,cieluv,ciexyz,cct,chromatic adaptation,ciede</tags>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System" targetFramework="" />
             <frameworkAssembly assemblyName="System.Core" targetFramework="" />
