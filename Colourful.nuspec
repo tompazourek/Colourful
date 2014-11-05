@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Colourful</id>
-        <version>1.0.0</version>
+        <version>1.1.0-alpha1</version>
         <title>Colourful</title>
         <authors>Tomáš Pažourek</authors>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>

@@ -17,7 +17,7 @@ Binaries of the last build can be downloaded on the [AppVeyor CI page of the pro
 The library is also [published on NuGet.org](https://www.nuget.org/packages/Colourful/), install using:
 
 ```
-PM> Install-Package Colourful -Pre
+PM> Install-Package Colourful
 ```
 
 <sup>Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for .NET v4.5, v4.0 and v3.5.</sup>
