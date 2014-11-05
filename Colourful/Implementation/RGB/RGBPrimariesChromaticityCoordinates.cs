@@ -23,12 +23,12 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
-        private readonly ChromaticityCoordinates _b;
-        private readonly ChromaticityCoordinates _g;
-        private readonly ChromaticityCoordinates _r;
+        private readonly xyChromaticityCoordinates _b;
+        private readonly xyChromaticityCoordinates _g;
+        private readonly xyChromaticityCoordinates _r;
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
-        public RGBPrimariesChromaticityCoordinates(ChromaticityCoordinates r, ChromaticityCoordinates g, ChromaticityCoordinates b)
+        public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
         {
             _r = r;
             _g = g;
@@ -39,7 +39,7 @@ namespace Colourful.Implementation.RGB
         /// Red
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
-        public ChromaticityCoordinates R
+        public xyChromaticityCoordinates R
         {
             get { return _r; }
         }
@@ -48,7 +48,7 @@ namespace Colourful.Implementation.RGB
         /// Green
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
-        public ChromaticityCoordinates G
+        public xyChromaticityCoordinates G
         {
             get { return _g; }
         }
@@ -57,7 +57,7 @@ namespace Colourful.Implementation.RGB
         /// Blue
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
-        public ChromaticityCoordinates B
+        public xyChromaticityCoordinates B
         {
             get { return _b; }
         }

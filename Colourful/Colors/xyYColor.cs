@@ -39,24 +39,24 @@ namespace Colourful
         /// <param name="Y">Y (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1708:IdentifiersShouldDifferByMoreThanCase")]
         public xyYColor(double x, double y, double Y)
-            : this(new ChromaticityCoordinates(x, y), Y)
+            : this(new xyChromaticityCoordinates(x, y), Y)
         {
         }
 
         /// <param name="chromaticity">Chromaticity coordinates (x and y together)</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
-        public xyYColor(ChromaticityCoordinates chromaticity, double Y)
+        public xyYColor(xyChromaticityCoordinates chromaticity, double Y)
         {
             if (chromaticity == null)
                 throw new ArgumentNullException("chromaticity");
 
             Chromaticity = chromaticity;
-            this.Luminance = Y;
+            Luminance = Y;
         }
 
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (usually from 0 to 1)</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public xyYColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {
@@ -95,7 +95,7 @@ namespace Colourful
         /// <remarks>
         /// Chromaticity coordinates (identical to x and y)
         /// </remarks>
-        public ChromaticityCoordinates Chromaticity { get; private set; }
+        public xyChromaticityCoordinates Chromaticity { get; private set; }
 
         /// <summary>
         /// <see cref="IColorVector"/>

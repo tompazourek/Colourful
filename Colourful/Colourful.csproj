@@ -82,7 +82,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Colors\ChromaticityCoordinates.cs" />
+    <Compile Include="Colors\xyChromaticityCoordinates.cs" />
     <Compile Include="Conversion\VonKriesChromaticAdaptation.cs" />
     <Compile Include="Conversion\IChromaticAdaptation.cs" />
     <Compile Include="Conversion\ColorConverter.ToLMS.cs" />

@@ -38,7 +38,7 @@ namespace Colourful.Tests
 
             public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates
             {
-                get { return new RGBPrimariesChromaticityCoordinates(new ChromaticityCoordinates(0.6400, 0.3300), new ChromaticityCoordinates(0.2100, 0.7100), new ChromaticityCoordinates(0.1500, 0.0600)); }
+                get { return new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.2100, 0.7100), new xyChromaticityCoordinates(0.1500, 0.0600)); }
             }
         }
 

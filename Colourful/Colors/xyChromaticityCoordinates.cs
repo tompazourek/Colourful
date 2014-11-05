@@ -21,7 +21,8 @@ namespace Colourful
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
     /// </summary>
-    public struct ChromaticityCoordinates
+    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy")]
+    public struct xyChromaticityCoordinates
     {
         private readonly double _x;
         private readonly double _y;
@@ -29,7 +30,7 @@ namespace Colourful
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
-        public ChromaticityCoordinates(double x, double y)
+        public xyChromaticityCoordinates(double x, double y)
         {
             _x = x;
             _y = y;
@@ -59,7 +60,7 @@ namespace Colourful
             get { return _y; }
         }
 
-        public bool Equals(ChromaticityCoordinates other)
+        public bool Equals(xyChromaticityCoordinates other)
         {
             return _x.Equals(other._x) && _y.Equals(other._y);
         }
@@ -67,7 +68,7 @@ namespace Colourful
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is ChromaticityCoordinates && Equals((ChromaticityCoordinates) obj);
+            return obj is xyChromaticityCoordinates && Equals((xyChromaticityCoordinates) obj);
         }
 
         public override int GetHashCode()
@@ -78,12 +79,12 @@ namespace Colourful
             }
         }
 
-        public static bool operator ==(ChromaticityCoordinates left, ChromaticityCoordinates right)
+        public static bool operator ==(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
         {
             return left.Equals(right);
         }
 
-        public static bool operator !=(ChromaticityCoordinates left, ChromaticityCoordinates right)
+        public static bool operator !=(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
         {
             return !left.Equals(right);
         }

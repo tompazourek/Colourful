@@ -58,7 +58,7 @@ namespace Colourful.Tests
         [Test]
         public void ChromaticityCoordinates()
         {
-            var coordinates = new ChromaticityCoordinates(1, 0.445);
+            var coordinates = new xyChromaticityCoordinates(1, 0.445);
             Assert.AreEqual("xy [x=1, y=0.45]", coordinates.ToString());
         }
     }

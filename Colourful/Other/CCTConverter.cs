@@ -27,7 +27,7 @@ namespace Colourful
         /// Returns chromaticity coordinates of given CCT (specified in K)
         /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public ChromaticityCoordinates GetChromaticityOfCCT(double temperature)
+        public xyChromaticityCoordinates GetChromaticityOfCCT(double temperature)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Planckian_locus#Approximation
 
@@ -50,7 +50,7 @@ namespace Colourful
             else // correctly 4000 <= T <= 25000
                 y_c = +3.0817580 * Math.Pow(x_c, 3) - 5.87338670 * Math.Pow(x_c, 2) + 3.75112997 * x_c - 0.37001483;
 
-            return new ChromaticityCoordinates(x_c, y_c);
+            return new xyChromaticityCoordinates(x_c, y_c);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Colourful
         /// </summary>
         /// <remarks>Ranges usually from around 0 to 25000</remarks>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public double GetCCTOfChromaticity(ChromaticityCoordinates chromaticity)
+        public double GetCCTOfChromaticity(xyChromaticityCoordinates chromaticity)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Color_temperature#Approximation
 
