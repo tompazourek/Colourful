@@ -31,7 +31,7 @@ Other features include: Delta-E color difference (many formulas), Correlated col
 For more info, visit the project page.</description>
         <summary>Open source .NET library for working with color spaces.</summary>
         <copyright>Tomáš Pažourek, 2014</copyright>
-        <tags>colour,color,sRGB,Adobe RGB,delta-e,rgb to lab,cielab,cieluv,ciexyz,cct,chromatic adaptation,ciede</tags>
+        <tags>color space sRGB Adobe RGB delta-e lab luv xyz cielab cieluv ciexyz cct chromatic adaptation conversion difference convert</tags>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System" targetFramework="" />
             <frameworkAssembly assemblyName="System.Core" targetFramework="" />
