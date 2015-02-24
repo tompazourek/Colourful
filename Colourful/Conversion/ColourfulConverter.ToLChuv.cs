@@ -108,9 +108,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            LChuvColor converted = color as LChuvColor;
 
-            return ToLChuv(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLChuv(source);
+            }
         }
     }
 }

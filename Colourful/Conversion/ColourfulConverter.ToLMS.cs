@@ -104,9 +104,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            LMSColor converted = color as LMSColor;
 
-            return ToLMS(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLMS(source);
+            }
         }
     }
 }

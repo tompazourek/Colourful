@@ -113,9 +113,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            LinearRGBColor converted = color as LinearRGBColor;
 
-            return ToLinearRGB(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLinearRGB(source);
+            }
         }
     }
 }

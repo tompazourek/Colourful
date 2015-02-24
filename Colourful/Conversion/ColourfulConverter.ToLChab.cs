@@ -108,9 +108,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            LChabColor converted = color as LChabColor;
 
-            return ToLChab(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLChab(source);
+            }
         }
     }
 }

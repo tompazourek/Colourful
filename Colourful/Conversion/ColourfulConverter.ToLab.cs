@@ -117,9 +117,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            LabColor converted = color as LabColor;
 
-            return ToLab(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLab(source);
+            }
         }
     }
 }

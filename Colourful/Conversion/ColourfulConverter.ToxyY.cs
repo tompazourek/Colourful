@@ -116,9 +116,18 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException("color");
 
-            dynamic source = color;
+            xyYColor converted = color as xyYColor;
 
-            return ToxyY(source);
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToxyY(source);
+            }
         }
     }
 }

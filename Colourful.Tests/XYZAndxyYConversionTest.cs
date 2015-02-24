@@ -93,5 +93,23 @@ namespace Colourful.Tests
             Assert.That(output.Y, Is.EqualTo(xyzY).Using(DoubleComparer));
             Assert.That(output.Z, Is.EqualTo(xyzZ).Using(DoubleComparer));
         }
+
+        [Test]
+        [TestCase(0.538842, 0.000000, 0.000000)]
+        public void Convert_XYZ_as_vector_to_XYZ(double x, double y, double z)
+        {
+            // arrange
+            IColorVector input = new XYZColor(x, y, z);
+
+            var converter = new ColourfulConverter();
+
+            // act
+            XYZColor output = converter.ToXYZ(input);
+
+            // assert
+            Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
+            Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
+            Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
+        }
     }
 }
