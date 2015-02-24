@@ -154,6 +154,8 @@ namespace Colourful.Conversion
             return converted;
         }
 
+#if (NET35)
+#else
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -171,5 +173,6 @@ namespace Colourful.Conversion
                 return ToXYZ(source);
             }
         }
+#endif
     }
 }

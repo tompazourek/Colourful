@@ -103,7 +103,9 @@ namespace Colourful.Conversion
             LChabColor result = ToLChab(xyzColor);
             return result;
         }
-
+        
+#if (NET35)
+#else
         public LChabColor ToLChab<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -121,5 +123,6 @@ namespace Colourful.Conversion
                 return ToLChab(source);
             }
         }
+#endif
     }
 }

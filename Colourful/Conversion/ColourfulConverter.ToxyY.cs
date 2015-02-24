@@ -110,7 +110,9 @@ namespace Colourful.Conversion
             xyYColor result = ToxyY(xyzColor);
             return result;
         }
-
+        
+#if (NET35)
+#else
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY<T>(T color) where T : IColorVector
         {
@@ -129,5 +131,6 @@ namespace Colourful.Conversion
                 return ToxyY(source);
             }
         }
+#endif
     }
 }

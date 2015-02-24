@@ -112,7 +112,9 @@ namespace Colourful.Conversion
             LabColor result = ToLab(xyzColor);
             return result;
         }
-
+        
+#if (NET35)
+#else
         public LabColor ToLab<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -130,5 +132,6 @@ namespace Colourful.Conversion
                 return ToLab(source);
             }
         }
+#endif
     }
 }

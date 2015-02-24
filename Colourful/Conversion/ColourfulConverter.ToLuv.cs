@@ -112,7 +112,9 @@ namespace Colourful.Conversion
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
-
+        
+#if (NET35)
+#else
         public LuvColor ToLuv<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException("color");
@@ -130,5 +132,6 @@ namespace Colourful.Conversion
                 return ToLuv(source);
             }
         }
+#endif
     }
 }
