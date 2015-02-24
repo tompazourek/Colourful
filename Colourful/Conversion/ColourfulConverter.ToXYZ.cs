@@ -153,5 +153,12 @@ namespace Colourful.Conversion
             XYZColor converted = converter.Convert(color);
             return converted;
         }
+
+        public XYZColor ToXYZ<T>(T color) where T : IColorVector
+        {
+            dynamic source = color;
+
+            return ToXYZ(source);
+        }
     }
 }

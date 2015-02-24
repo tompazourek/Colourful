@@ -112,5 +112,14 @@ namespace Colourful.Conversion
             LabColor result = ToLab(xyzColor);
             return result;
         }
+
+        public LabColor ToLab<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            dynamic source = color;
+
+            return ToLab(source);
+        }
     }
 }

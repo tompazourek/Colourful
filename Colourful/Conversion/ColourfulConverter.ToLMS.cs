@@ -99,5 +99,14 @@ namespace Colourful.Conversion
             LMSColor result = ToLMS(xyzColor);
             return result;
         }
+
+        public LMSColor ToLMS<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            dynamic source = color;
+
+            return ToLMS(source);
+        }
     }
 }

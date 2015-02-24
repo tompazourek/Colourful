@@ -112,5 +112,14 @@ namespace Colourful.Conversion
             LuvColor result = ToLuv(xyzColor);
             return result;
         }
+
+        public LuvColor ToLuv<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            dynamic source = color;
+
+            return ToLuv(source);
+        }
     }
 }
