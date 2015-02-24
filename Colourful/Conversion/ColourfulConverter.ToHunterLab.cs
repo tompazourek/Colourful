@@ -105,5 +105,26 @@ namespace Colourful.Conversion
             HunterLabColor result = ToHunterLab(xyzColor);
             return result;
         }
+        
+#if (NET35)
+#else
+        public HunterLabColor ToHunterLab<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            HunterLabColor converted = color as HunterLabColor;
+
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToHunterLab(source);
+            }
+        }
+#endif
     }
 }

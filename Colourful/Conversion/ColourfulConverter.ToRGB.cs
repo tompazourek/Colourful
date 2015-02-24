@@ -116,5 +116,26 @@ namespace Colourful.Conversion
             RGBColor result = ToRGB(xyzColor);
             return result;
         }
+
+#if (NET35)
+#else
+        public RGBColor ToRGB<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            RGBColor converted = color as RGBColor;
+
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToRGB(source);
+            }
+        }
+#endif
     }
 }

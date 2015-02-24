@@ -153,5 +153,26 @@ namespace Colourful.Conversion
             XYZColor converted = converter.Convert(color);
             return converted;
         }
+
+#if (NET35)
+#else
+        public XYZColor ToXYZ<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            XYZColor converted = color as XYZColor;
+
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToXYZ(source);
+            }
+        }
+#endif
     }
 }

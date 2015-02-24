@@ -108,5 +108,26 @@ namespace Colourful.Conversion
             LinearRGBColor result = ToLinearRGB(xyzColor);
             return result;
         }
+        
+#if (NET35)
+#else
+        public LinearRGBColor ToLinearRGB<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            LinearRGBColor converted = color as LinearRGBColor;
+
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLinearRGB(source);
+            }
+        }
+#endif
     }
 }

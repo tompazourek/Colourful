@@ -103,5 +103,26 @@ namespace Colourful.Conversion
             LChuvColor result = ToLChuv(xyzColor);
             return result;
         }
+        
+#if (NET35)
+#else
+        public LChuvColor ToLChuv<T>(T color) where T : IColorVector
+        {
+            if (color == null) throw new ArgumentNullException("color");
+
+            LChuvColor converted = color as LChuvColor;
+
+            if (converted != null)
+            {
+                return converted;
+            }
+            else
+            {
+                dynamic source = color;
+
+                return ToLChuv(source);
+            }
+        }
+#endif
     }
 }
