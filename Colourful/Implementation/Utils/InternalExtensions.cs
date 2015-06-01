@@ -14,13 +14,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-#if (NET40 || NET35)
-using Vector = System.Collections.Generic.IList<double>;
-using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
-#else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-#endif
+
 
 namespace Colourful.Implementation
 {
@@ -37,25 +33,14 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static double CropRange(this double value, double min, double max)
-        {
-            if (value < min)
-                return min;
-
-            if (value > max)
-                return max;
-
-            return value;
-        }
-
-        public static void AssignVariables(this Vector vector, out double v1, out double v2, out double v3)
+        public static void AssignVariables(this Vector vector, out double vector1, out double vector2, out double result)
         {
             if (vector.Count != 3)
                 throw new ArgumentOutOfRangeException("vector", "Vector must have 3 components.");
 
-            v1 = vector[0];
-            v2 = vector[1];
-            v3 = vector[2];
+            vector1 = vector[0];
+            vector2 = vector[1];
+            result = vector[2];
         }
 
         public static double EuclideanDistance(Vector vector1, Vector vector2)

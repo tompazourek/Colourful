@@ -12,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -63,19 +62,6 @@ namespace Colourful
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
-        {
-            WorkingSpace = workingSpace;
-        }
-
-        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
-        public RGBColor(Color color)
-            : this(color, DefaultWorkingSpace)
-        {
-        }
-
-        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
-        public RGBColor(Color color, IRGBWorkingSpace workingSpace)
-            : base(((double) color.R) / 255, ((double) color.G) / 255, ((double) color.B) / 255)
         {
             WorkingSpace = workingSpace;
         }
@@ -187,34 +173,7 @@ namespace Colourful
         }
 
         #endregion
-
-        #region Color conversions
-
-        public Color ToColor()
-        {
-            return this;
-        }
-
-        public static implicit operator Color(RGBColor input)
-        {
-            if (input == null)
-                return new Color();
-
-            var r = (byte) Math.Round(input.R * 255).CropRange(0, 255);
-            var g = (byte) Math.Round(input.G * 255).CropRange(0, 255);
-            var b = (byte) Math.Round(input.B * 255).CropRange(0, 255);
-            var output = Color.FromArgb(r, g, b);
-            return output;
-        }
-
-        public static explicit operator RGBColor(Color color)
-        {
-            var output = new RGBColor(color);
-            return output;
-        }
-
-        #endregion
-
+        
         #region Overrides
 
         public override string ToString()
