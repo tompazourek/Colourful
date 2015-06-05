@@ -7,8 +7,8 @@
     <ProjectGuid>{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Colorful.Net45</RootNamespace>
-    <AssemblyName>Colorful.Net45</AssemblyName>
+    <RootNamespace>Colourful.Net45</RootNamespace>
+    <AssemblyName>Colourful.Net45</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

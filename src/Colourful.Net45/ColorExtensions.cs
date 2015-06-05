@@ -1,13 +1,8 @@
-﻿using Colourful;
-using Colourful.Implementation;
+﻿using Colourful.Implementation;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Colorful.Net45
+namespace Colourful
 {
     public static class ColorExtensions
     {
