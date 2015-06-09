@@ -17,6 +17,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E40DFE25-7728-46C2-AE04-3064226751B2}"
 	ProjectSection(SolutionItems) = preProject
 		..\build.fsx = ..\build.fsx
+		Colourful.nuspec = Colourful.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colourful.Net45", "Colourful.Net45\Colourful.Net45.csproj", "{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}"
