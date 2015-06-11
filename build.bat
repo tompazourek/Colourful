@@ -1,20 +1,5 @@
 @echo Off
 
-set config=%1
-if "%config%" == "" (
-   set config=Release
-)
-
-set version=
-if not "%PackageVersion%" == "" (
-   set version=-Version %PackageVersion%
-)
-
-
-echo BUILD.BAT - Installing FAKE
-".\.nuget\NuGet.exe" install FAKE -ConfigFile .nuget\Nuget.Config -OutputDirectory src\packages -Version 3.34.7
-echo BUILD.BAT - FAKE installed
-
 echo BUILD.BAT - Restoring nuget packages
 ".\.nuget\NuGet.exe" restore ".\src\Colourful.sln"
 echo BUILD.BAT - Nuget package restore complete
