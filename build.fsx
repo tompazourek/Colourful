@@ -96,7 +96,9 @@ Target "Package" (fun _ ->
             "./src/Colourful.nuspec"
 )
 
-Target "Run" (fun _ -> ())
+Target "Run" (fun _ -> 
+    trace "FAKE build complete"
+)
   
 // Dependencies
 "Clean"
