@@ -10,8 +10,13 @@ if not "%PackageVersion%" == "" (
    set version=-Version %PackageVersion%
 )
 
+
+echo BUILD.BAT - Installing FAKE
+".\.nuget\NuGet.exe" install FAKE -ConfigFile .nuget\Nuget.Config -OutputDirectory src\packages -Version 3.34.7
+echo BUILD.BAT - FAKE installed
+
 echo BUILD.BAT - Restoring nuget packages
-nuget restore ".\src\Colourful.sln"
+".\.nuget\NuGet.exe" restore ".\src\Colourful.sln"
 echo BUILD.BAT - Nuget package restore complete
 
 echo BUILD.BAT - Building solution using FAKE
