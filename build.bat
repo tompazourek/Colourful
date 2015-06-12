@@ -1,7 +1,7 @@
 @echo Off
 
 echo BUILD.BAT - Restoring nuget packages
-".\.nuget\NuGet.exe" restore ".\src\Colourful.sln"
+".\src\.nuget\NuGet.exe" restore ".\src\Colourful.sln"
 echo BUILD.BAT - Nuget package restore complete
 
 echo BUILD.BAT - Building solution using FAKE
