@@ -1,6 +1,7 @@
 version: 1.1.0.{build}
 build_script:
-- build.bat
+- '"src\.nuget\NuGet.exe" restore "src\Colourful.sln" -OutputDirectory "src\packages"'
+- '"src\packages\FAKE.3.34.7\tools\Fake.exe" build.fsx "RunNoTests"'
 artifacts:
 - path: deploy\lib
   name: Colourful_$(APPVEYOR_BUILD_VERSION)

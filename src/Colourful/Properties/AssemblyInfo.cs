@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersionAttribute("1.1.0.0")]
 [assembly: AssemblyFileVersionAttribute("1.1.0.0")]
 [assembly: AssemblyInformationalVersionAttribute("1.1.0.0")]
-[assembly: AssemblyCopyrightAttribute("Tomáš Pažourek, 2015")]
+[assembly: AssemblyCopyrightAttribute("Tomas Pazourek, 2015")]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const string Version = "1.1.0.0";

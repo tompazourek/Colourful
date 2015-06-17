@@ -1,10 +1,10 @@
 @echo Off
 
-echo BUILD.BAT - Restoring nuget packages
-".\src\.nuget\NuGet.exe" restore ".\src\Colourful.sln"
-echo BUILD.BAT - Nuget package restore complete
+echo BUILD.BAT - NuGet package restore started.
+".\src\.nuget\NuGet.exe" restore ".\src\Colourful.sln" -OutputDirectory ".\src\packages"
+echo BUILD.BAT - NuGet package restore finished.
 
-echo BUILD.BAT - Building solution using FAKE
+echo BUILD.BAT - FAKE build started.
 ".\src\packages\FAKE.3.34.7\tools\Fake.exe" build.fsx
-echo BUILD.BAT - FAKE build complete
+echo BUILD.BAT - FAKE build finished.
 

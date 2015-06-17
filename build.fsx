@@ -13,31 +13,16 @@ let deployDir = "./deploy/"
 // Version info
 let version = environVarOrDefault "PackageVersion" (environVarOrDefault "APPVEYOR_BUILD_VERSION" "1.1.0.0")  // or retrieve from CI server
 let project = "Colourful"
-let authors = [ "Tomáš Pažourek" ]
+let authors = [ @"Tomas Pazourek" ]
 let summary = "Open source .NET library for working with color spaces."
-let copyright = "Tomáš Pažourek, 2015"
+let copyright = @"Tomas Pazourek, 2015"
 let tags = "color space sRGB Adobe RGB delta-e lab luv xyz cielab cieluv ciexyz cct chromatic adaptation conversion difference convert"
-let description = "Open source .NET library for working with color spaces. 
-
-Supports these color spaces:
-
-- RGB (various working spaces)
-- linear RGB
-- CIE XYZ
-- CIE xyY
-- CIE Lab
-- CIE Luv
-- CIE LCh (uv)
-- CIE LCh (ab)
-- Hunter Lab
-- LMS (cone response)
-
+let description = @"
+Open source .NET library for working with color spaces.
+Supports these color spaces: RGB (various working spaces), linear RGB, CIE XYZ, CIE xyY, CIE Lab, CIE Luv, CIE LCh (uv), CIE LCh (ab), Hunter Lab, LMS (cone response).
 Conversions are done correctly using chromatic adaptation and white points.
-
 Other features include: Delta-E color difference (many formulas), Correlated color temperature (CCT) approximation, Conversion between RGB working spaces, Chromatic adaptation (many white points supported).
-
 For more info, visit the project page."
-
 
 let solution = "./src/Colourful.sln"
  
@@ -148,32 +133,13 @@ Target "Run" (fun _ ->
     trace "FAKE build complete"
 )
 
-// Dependencies
+Target "RunNoTests" (fun _ -> 
+    trace "FAKE build complete (without tests)"
+)
 
-"Clean"
-  ==> "BuildNET45"
+// Dependencies:
 
-"Clean"
-  ==> "BuildNET40"
-
-"Clean"
-  ==> "BuildNET35"
-
-"Clean"
-  ==> "BuildPCL"
-
-"AssemblyInfo"
-  ==> "BuildNET45"
-
-"AssemblyInfo"
-  ==> "BuildNET40"
-
-"AssemblyInfo"
-  ==> "BuildNET35"
-
-"AssemblyInfo"
-  ==> "BuildPCL"
-
+// Build target depends on all partial build targets
 "BuildNET45"
   ==> "Build"
 
@@ -186,11 +152,41 @@ Target "Run" (fun _ ->
 "BuildPCL"
   ==> "Build"
 
+// all partial build tasks depend on Clean and AssemblyInfo
 "Clean"
-  ==> "Build"
+  ==> "AssemblyInfo"
+  ==> "BuildNET45"
+
+"Clean"
+  ==> "AssemblyInfo"
+  ==> "BuildNET40"
+
+"Clean"
+  ==> "AssemblyInfo"
+  ==> "BuildNET35"
+
+"Clean"
+  ==> "AssemblyInfo"
+  ==> "BuildPCL"
+
+// Test target depends on Build
+"Build"
   ==> "Test"
+
+// Package target depends on Build
+"Build"
   ==> "Package"
+
+// Run target depends on Package and Test
+"Test"
   ==> "Run"
+
+"Package"
+  ==> "Run"
+
+// RunNoTests depends only on packages
+"Package"
+  ==> "RunNoTests"
 
 // Start build
 RunTargetOrDefault "Run"
