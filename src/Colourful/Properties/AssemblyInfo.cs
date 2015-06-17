@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProductAttribute("Colourful")]
 [assembly: AssemblyVersionAttribute("1.1.0.0")]
 [assembly: AssemblyFileVersionAttribute("1.1.0.0")]
-[assembly: AssemblyInformationalVersionAttribute("1.1.0.0")]
+[assembly: AssemblyInformationalVersionAttribute("1.1.0")]
 [assembly: AssemblyCopyrightAttribute("Tomas Pazourek, 2015")]
 namespace System {
     internal static class AssemblyVersionInformation {

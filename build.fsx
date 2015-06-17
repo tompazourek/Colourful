@@ -11,6 +11,7 @@ let buildDir = "./build/"
 let deployDir = "./deploy/"
  
 // Version info
+let informationalVersion = "1.1.0"
 let version = environVarOrDefault "PackageVersion" (environVarOrDefault "APPVEYOR_BUILD_VERSION" "1.1.0.0")  // or retrieve from CI server
 let project = "Colourful"
 let authors = [ @"Tomas Pazourek" ]
@@ -41,7 +42,7 @@ Target "AssemblyInfo" (fun _ ->
             Attribute.Product project
             Attribute.Version version
             Attribute.FileVersion version
-            Attribute.InformationalVersion version
+            Attribute.InformationalVersion informationalVersion
             Attribute.Copyright copyright
         ]
 )

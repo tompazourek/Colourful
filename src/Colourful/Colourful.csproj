@@ -58,6 +58,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release %28.NET 4.0%29|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OutputPath>bin\Release\net40</OutputPath>
     <DefineConstants>TRACE;NET40</DefineConstants>
     <DocumentationFile>bin\Release\net40\Colourful.xml</DocumentationFile>
