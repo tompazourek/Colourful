@@ -5,12 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Colourful</RootNamespace>
     <AssemblyName>Colourful</AssemblyName>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -31,19 +30,32 @@
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU' Or '$(Configuration)' == 'ReleaseAll'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\Release\net45</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Colourful.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net45\Colourful.xml</DocumentationFile>
     <NoWarn>1591, 1573</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release %28PCL%29|AnyCPU'">
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <OutputPath>bin\Release\pcl</OutputPath>
+    <DefineConstants>TRACE;PCL</DefineConstants>
+    <DocumentationFile>bin\Release\pcl\Colourful.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591, 1573</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release %28.NET 4.0%29|AnyCPU'">
     <OutputPath>bin\Release\net40</OutputPath>
@@ -68,17 +80,12 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseAll|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\Colourful.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>1591, 1573</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" Condition="'$(Configuration)|$(Platform)' != 'Release %28.NET 3.5%29|AnyCPU' And '$(Configuration)|$(Platform)' != 'Release %28PCL%29|AnyCPU'" />
+    <Reference Include="System" Condition="'$(Configuration)|$(Platform)' != 'Release %28PCL%29|AnyCPU'" />
+    <Reference Include="System.Core" Condition="'$(Configuration)|$(Platform)' != 'Release %28PCL%29|AnyCPU'" />
+    <Reference Include="System.Drawing" Condition="'$(Configuration)|$(Platform)' != 'Release %28PCL%29|AnyCPU'" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors\xyChromaticityCoordinates.cs" />
     <Compile Include="Conversion\VonKriesChromaticAdaptation.cs" />
@@ -129,7 +136,7 @@
     <Compile Include="Difference\CIEDE2000ColorDifference.cs" />
     <Compile Include="Difference\IColorDifference.cs" />
     <Compile Include="Implementation\Conversion\xyY\xyYAndXYZConverter.cs" />
-    <Compile Include="Implementation\Utils\InternalExtensions.cs" />
+    <Compile Include="Implementation\Utils\Extensions.cs" />
     <Compile Include="Colors\IColorVector.cs" />
     <Compile Include="Colors\Illuminants.cs" />
     <Compile Include="Colors\RGBColor.cs" />
@@ -142,7 +149,6 @@
     <Compile Include="Implementation\RGB\Rec2020Companding.cs" />
     <Compile Include="Implementation\RGB\Rec709Companding.cs" />
     <Compile Include="Implementation\Utils\MatrixFactory.cs" />
-    <Compile Include="Implementation\Utils\PublicExtensions.cs" />
     <Compile Include="Other\CCTConverter.cs" />
     <Compile Include="Other\SaturationLChFormulas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,7 +164,8 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="'$(Configuration)|$(Platform)' != 'Release %28PCL%29|AnyCPU'" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" Condition="'$(Configuration)|$(Platform)' == 'Release %28PCL%29|AnyCPU'" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -166,10 +173,13 @@
   </Target>
   -->
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'ReleaseAll'">
+    <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28PCL%29" RunEachTargetSeparately="true" />
     <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 4.0%29" RunEachTargetSeparately="true" />
     <MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release %28.NET 3.5%29" RunEachTargetSeparately="true" />
   </Target>
   <Target Name="CleanAll" AfterTargets="Clean" Condition="'$(Configuration)' == 'ReleaseAll'">
-    <RemoveDir Directories="$(OUTDIR)" />
+      <Delete Files="obj\**\*" />
+      <Delete Files="bin\**\*" />
+      <RemoveDir Directories="bin;obj" />
   </Target>
 </Project>

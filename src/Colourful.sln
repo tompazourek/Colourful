@@ -20,13 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E40DFE25
 		Colourful.nuspec = Colourful.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colourful.Net45", "Colourful.Net45\Colourful.Net45.csproj", "{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release (.NET 3.5)|Any CPU = Release (.NET 3.5)|Any CPU
 		Release (.NET 4.0)|Any CPU = Release (.NET 4.0)|Any CPU
+		Release (PCL)|Any CPU = Release (PCL)|Any CPU
 		Release|Any CPU = Release|Any CPU
 		ReleaseAll|Any CPU = ReleaseAll|Any CPU
 	EndGlobalSection
@@ -37,30 +36,24 @@ Global
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release (.NET 3.5)|Any CPU.Build.0 = Release (.NET 3.5)|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release (.NET 4.0)|Any CPU.ActiveCfg = Release (.NET 4.0)|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release (.NET 4.0)|Any CPU.Build.0 = Release (.NET 4.0)|Any CPU
+		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release (PCL)|Any CPU.ActiveCfg = Release (PCL)|Any CPU
+		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release (PCL)|Any CPU.Build.0 = Release (PCL)|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.ReleaseAll|Any CPU.ActiveCfg = ReleaseAll|Any CPU
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.ReleaseAll|Any CPU.Build.0 = ReleaseAll|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.Build.0 = Debug|Any CPU
+		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.ActiveCfg = Debug (.NET 3.5)|Any CPU
+		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.Build.0 = Debug (.NET 3.5)|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 4.0)|Any CPU.Build.0 = Debug|Any CPU
+		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (PCL)|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (PCL)|Any CPU.Build.0 = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.ReleaseAll|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.ReleaseAll|Any CPU.Build.0 = Debug|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release (.NET 3.5)|Any CPU.ActiveCfg = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release (.NET 3.5)|Any CPU.Build.0 = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release (.NET 4.0)|Any CPU.ActiveCfg = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release (.NET 4.0)|Any CPU.Build.0 = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.ReleaseAll|Any CPU.ActiveCfg = Release|Any CPU
-		{5D4FAEB4-2176-4895-BB17-DCF6E69D142B}.ReleaseAll|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

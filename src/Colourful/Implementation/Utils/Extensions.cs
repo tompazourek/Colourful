@@ -24,7 +24,7 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation
 {
-    internal static class InternalExtensions
+    internal static class Extensions
     {
         public static double CheckRange(this double value, double min, double max)
         {
@@ -37,14 +37,25 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static void AssignVariables(this Vector vector, out double vector1, out double vector2, out double result)
+        public static double CropRange(this double value, double min, double max)
+        {
+            if (value < min)
+                return min;
+
+            if (value > max)
+                return max;
+
+            return value;
+        }
+
+        public static void AssignVariables(this Vector vector, out double component1, out double component2, out double component3)
         {
             if (vector.Count != 3)
                 throw new ArgumentOutOfRangeException("vector", "Vector must have 3 components.");
 
-            vector1 = vector[0];
-            vector2 = vector[1];
-            result = vector[2];
+            component1 = vector[0];
+            component2 = vector[1];
+            component3 = vector[2];
         }
 
         public static double EuclideanDistance(Vector vector1, Vector vector2)
