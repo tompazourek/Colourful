@@ -14,13 +14,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
+#if (NET40 || NET35)
+using Vector = System.Collections.Generic.IList<double>;
+using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+#else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-
+#endif
 
 namespace Colourful.Implementation
 {
-    internal static class Extensions
+    internal static class InternalExtensions
     {
         public static double CheckRange(this double value, double min, double max)
         {
