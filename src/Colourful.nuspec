@@ -14,27 +14,6 @@
       <releaseNotes>@releaseNotes@</releaseNotes>
       @dependencies@
       @references@
-
-      <!--
-        <frameworkAssemblies>
-            <frameworkAssembly assemblyName="System" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Core" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
-        </frameworkAssemblies>
-        -->
+      @frameworkAssemblies@
     </metadata>
-    @files@
-  <!--
-    <files>
-        <file src="Colourful\bin\Release\net35\Colourful.dll" target="lib\net35\Colourful.dll" />
-        <file src="Colourful\bin\Release\net35\Colourful.pdb" target="lib\net35\Colourful.pdb" />
-        <file src="Colourful\bin\Release\net35\Colourful.xml" target="lib\net35\Colourful.xml" />
-        <file src="Colourful\bin\Release\net40\Colourful.dll" target="lib\net40\Colourful.dll" />
-        <file src="Colourful\bin\Release\net40\Colourful.pdb" target="lib\net40\Colourful.pdb" />
-        <file src="Colourful\bin\Release\net40\Colourful.xml" target="lib\net40\Colourful.xml" />
-        <file src="Colourful\bin\Release\Colourful.dll" target="lib\net45\Colourful.dll" />
-        <file src="Colourful\bin\Release\Colourful.pdb" target="lib\net45\Colourful.pdb" />
-        <file src="Colourful\bin\Release\Colourful.xml" target="lib\net45\Colourful.xml" />
-    </files>
-    -->
 </package>

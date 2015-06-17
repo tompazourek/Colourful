@@ -1,0 +1,8 @@
+version: 1.1.0.{build}
+build_script:
+- build.bat
+artifacts:
+- path: deploy\lib
+  name: Colourful_$(APPVEYOR_BUILD_VERSION)
+- path: deploy\Colourful*.nupkg
+  name: Colourful_$(APPVEYOR_BUILD_VERSION)
