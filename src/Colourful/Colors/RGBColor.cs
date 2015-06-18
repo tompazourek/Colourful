@@ -12,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -24,6 +23,10 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+#endif
+
+#if (!PCL)
+using System.Drawing;
 #endif
 
 namespace Colourful
@@ -67,19 +70,6 @@ namespace Colourful
             WorkingSpace = workingSpace;
         }
 
-        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
-        public RGBColor(Color color)
-            : this(color, DefaultWorkingSpace)
-        {
-        }
-
-        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
-        public RGBColor(Color color, IRGBWorkingSpace workingSpace)
-            : base(((double) color.R) / 255, ((double) color.G) / 255, ((double) color.B) / 255)
-        {
-            WorkingSpace = workingSpace;
-        }
-
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
         public RGBColor(Vector vector)
@@ -94,6 +84,23 @@ namespace Colourful
         {
             WorkingSpace = workingSpace;
         }
+
+#if (!PCL)
+
+        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        public RGBColor(Color color)
+            : this(color, DefaultWorkingSpace)
+        {
+        }
+
+        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        public RGBColor(Color color, IRGBWorkingSpace workingSpace)
+            : base(((double)color.R) / 255, ((double)color.G) / 255, ((double)color.B) / 255)
+        {
+            WorkingSpace = workingSpace;
+        }
+
+#endif
 
         #endregion
 
@@ -188,6 +195,8 @@ namespace Colourful
 
         #endregion
 
+#if (!PCL)
+
         #region Color conversions
 
         public Color ToColor()
@@ -200,9 +209,9 @@ namespace Colourful
             if (input == null)
                 return new Color();
 
-            var r = (byte) Math.Round(input.R * 255).CropRange(0, 255);
-            var g = (byte) Math.Round(input.G * 255).CropRange(0, 255);
-            var b = (byte) Math.Round(input.B * 255).CropRange(0, 255);
+            var r = (byte)Math.Round(input.R * 255).CropRange(0, 255);
+            var g = (byte)Math.Round(input.G * 255).CropRange(0, 255);
+            var b = (byte)Math.Round(input.B * 255).CropRange(0, 255);
             var output = Color.FromArgb(r, g, b);
             return output;
         }
@@ -215,6 +224,8 @@ namespace Colourful
 
         #endregion
 
+#endif
+        
         #region Overrides
 
         public override string ToString()

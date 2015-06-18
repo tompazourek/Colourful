@@ -12,11 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation;
 
 #if (NET40 || NET35)
 using Vector = System.Collections.Generic.IList<double>;

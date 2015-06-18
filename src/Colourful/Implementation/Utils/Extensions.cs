@@ -48,14 +48,14 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static void AssignVariables(this Vector vector, out double v1, out double v2, out double v3)
+        public static void AssignVariables(this Vector vector, out double component1, out double component2, out double component3)
         {
             if (vector.Count != 3)
                 throw new ArgumentOutOfRangeException("vector", "Vector must have 3 components.");
 
-            v1 = vector[0];
-            v2 = vector[1];
-            v3 = vector[2];
+            component1 = vector[0];
+            component2 = vector[1];
+            component3 = vector[2];
         }
 
         public static double EuclideanDistance(Vector vector1, Vector vector2)

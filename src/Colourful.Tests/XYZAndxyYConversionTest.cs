@@ -75,6 +75,9 @@ namespace Colourful.Tests
             Assert.That(output.Luminance, Is.EqualTo(Y).Using(DoubleComparer));
         }
 
+        
+#if (!NET35)
+
         [Test]
         [TestCaseSource("TestData")]
         [TestCase(0, 0, 0, 0.538842, 0.000000, 0.000000)]
@@ -111,5 +114,7 @@ namespace Colourful.Tests
             Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
             Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
         }
+
+#endif
     }
 }
