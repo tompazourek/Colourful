@@ -7,11 +7,13 @@ open System.IO;
 RestorePackages()
  
 // Properties
+
 let buildDir = "./build/"
 let deployDir = "./deploy/"
  
 // Version info
-let informationalVersion = "1.1.0"
+
+let informationalVersion = "1.1.0" // used for NuGet package version as well
 let version = environVarOrDefault "PackageVersion" (environVarOrDefault "APPVEYOR_BUILD_VERSION" "1.1.0.0")  // or retrieve from CI server
 let project = "Colourful"
 let authors = [ @"Tomas Pazourek" ]
@@ -28,6 +30,7 @@ For more info, visit the project page."
 let solution = "./src/Colourful.sln"
  
 // Targets
+
 Target "Clean" (fun _ ->
     CleanDirs [buildDir; deployDir]
 )
@@ -87,7 +90,6 @@ Target "Test" (fun _ ->
 )
 
 Target "Package" (fun _ ->
-
     let files = [ "Colourful.dll"; "Colourful.pdb"; "Colourful.xml" ]
     let libDir = Path.Combine(deployDir, "lib")
 
@@ -125,7 +127,7 @@ Target "Package" (fun _ ->
                                     { FrameworkVersions = ["net35"; "net40"; "net45"]; AssemblyName = "System.Core" };
                                     { FrameworkVersions = ["net35"; "net40"; "net45"]; AssemblyName = "System.Drawing" };
                                     { FrameworkVersions = ["net35"]; AssemblyName = "Microsoft.CSharp" }]
-            Version = version
+            Version = informationalVersion
             Publish = false }) 
             "./src/Colourful.nuspec"
 )
@@ -140,7 +142,7 @@ Target "RunNoTests" (fun _ ->
 
 // Dependencies:
 
-// Build target depends on all partial build targets
+// the Build target depends on all platform-specific build targets
 "BuildNET45"
   ==> "Build"
 
@@ -153,7 +155,7 @@ Target "RunNoTests" (fun _ ->
 "BuildPCL"
   ==> "Build"
 
-// all partial build tasks depend on Clean and AssemblyInfo
+// all platform-specific build targets depend on Clean and AssemblyInfo targets
 "Clean"
   ==> "AssemblyInfo"
   ==> "BuildNET45"
@@ -170,22 +172,22 @@ Target "RunNoTests" (fun _ ->
   ==> "AssemblyInfo"
   ==> "BuildPCL"
 
-// Test target depends on Build
+// the Test target depends on Build target
 "Build"
   ==> "Test"
 
-// Package target depends on Build
+// the Package target depends on Build target
 "Build"
   ==> "Package"
 
-// Run target depends on Package and Test
+// the Run target depends on Package and Test targets
 "Test"
   ==> "Run"
 
 "Package"
   ==> "Run"
 
-// RunNoTests depends only on packages
+// the RunNoTests depends only on Package target
 "Package"
   ==> "RunNoTests"
 
