@@ -2,21 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Colourful</id>
-        <version>@build.number@</version>
-        <title>@title@</title>
-        <authors>@authors@</authors>
-        <owners>@authors@</owners>
         <licenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/tompazourek/Colourful</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_64.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>@description@</description>
-        <releaseNotes>@releaseNotes@</releaseNotes>
-        <summary>@summary@</summary>
-        <copyright>@copyright@</copyright>
-        <tags>@tags@</tags>
-        @dependencies@
-        @references@
-        @frameworkAssemblies@
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+            <frameworkAssembly assemblyName="System.Drawing" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework3.5" />
+        </frameworkAssemblies>
     </metadata>
 </package>

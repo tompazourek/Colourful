@@ -108,5 +108,6 @@ Backup*/
 UpgradeLog*.XML
 /Documents
 
-build/
-deploy/
+output/
+tools/*.exe
+tools/*/*

@@ -34,9 +34,9 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Release\net45\</OutputPath>
     <DefineConstants>TRACE;NET45</DefineConstants>
-    <DocumentationFile>bin\Release\Colourful.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net45\Colourful.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>1591, 1573</NoWarn>
     <DebugType>pdbonly</DebugType>

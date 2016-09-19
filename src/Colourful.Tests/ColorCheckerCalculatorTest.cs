@@ -1,14 +1,4 @@
-﻿#region License
-
-// Copyright (C) Tomáš Pažourek, 2014
-// All rights reserved.
-// 
-// Distributed under MIT license as a part of project Colourful.
-// https://github.com/tompazourek/Colourful
-
-#endregion
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -22,20 +12,19 @@ namespace Colourful.Tests
     [TestFixture]
     public class ColorCheckerCalculatorTest
     {
-        private readonly DataRow[] TestData;
+        private static readonly DataRow[] TestData = ColorCheckerCalculatorData.GetData().ToArray();
         private readonly ColourfulConverter _converter;
 
         public ColorCheckerCalculatorTest()
         {
-            TestData = ColorCheckerCalculatorData.GetData().ToArray();
             _converter = new ColourfulConverter
-                {
-                    WhitePoint = Illuminants.C,
-                    TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,
-                    TargetLabWhitePoint = Illuminants.C,
-                    TargetLuvWhitePoint = Illuminants.C,
-                    ChromaticAdaptation = new VonKriesChromaticAdaptation()
-                };
+            {
+                WhitePoint = Illuminants.C,
+                TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,
+                TargetLabWhitePoint = Illuminants.C,
+                TargetLuvWhitePoint = Illuminants.C,
+                ChromaticAdaptation = new VonKriesChromaticAdaptation()
+            };
         }
 
         private void RethrowException(AssertionException ex, DataRow row)
@@ -54,7 +43,10 @@ namespace Colourful.Tests
                 Assert.That(actualXYZ, Is.EqualTo(expectedXYZ)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.000001))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
 
         [TestCaseSource("TestData")]
@@ -68,7 +60,10 @@ namespace Colourful.Tests
                 Assert.That(actualRGB, Is.EqualTo(expectedRGB)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00912))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
 
         [TestCaseSource("TestData")]
@@ -82,7 +77,10 @@ namespace Colourful.Tests
                 Assert.That(actualxyY, Is.EqualTo(expectedxyY)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.000001))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
 
         [TestCaseSource("TestData")]
@@ -96,7 +94,10 @@ namespace Colourful.Tests
                 Assert.That(actualLChab, Is.EqualTo(expectedLChab)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00017))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
 
         [TestCaseSource("TestData")]
@@ -110,7 +111,10 @@ namespace Colourful.Tests
                 Assert.That(actualLChuv, Is.EqualTo(expectedLChuv)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00022))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
 
         [TestCaseSource("TestData")]
@@ -124,7 +128,10 @@ namespace Colourful.Tests
                 Assert.That(actualLuv, Is.EqualTo(expectedLuv)
                     .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00000105))));
             }
-            catch (AssertionException ex) { RethrowException(ex, row); }
+            catch (AssertionException ex)
+            {
+                RethrowException(ex, row);
+            }
         }
     }
 }

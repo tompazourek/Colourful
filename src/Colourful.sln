@@ -1,22 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colourful", "Colourful\Colourful.csproj", "{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colourful.Tests", "Colourful.Tests\Colourful.Tests.csproj", "{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ACF69B61-A54A-47C1-9E7C-3EF2B50471DD}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E40DFE25-7728-46C2-AE04-3064226751B2}"
 	ProjectSection(SolutionItems) = preProject
-		..\build.fsx = ..\build.fsx
+		..\appveyor.yml = ..\appveyor.yml
+		..\build.cake = ..\build.cake
+		..\build.ps1 = ..\build.ps1
 		Colourful.nuspec = Colourful.nuspec
 	EndProjectSection
 EndProject
@@ -44,6 +39,7 @@ Global
 		{201BBCA3-F201-4E67-AEC5-998C3B4B4F25}.ReleaseAll|Any CPU.Build.0 = Release (PCL)|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.ActiveCfg = Debug (.NET 3.5)|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 3.5)|Any CPU.Build.0 = Debug (.NET 3.5)|Any CPU
 		{7AC359A4-03E3-4842-90AD-4C5F02EFA81D}.Release (.NET 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
