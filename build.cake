@@ -26,9 +26,9 @@ For more info, visit the project page.";
 
 // Get whether or not this is a local build
 var local = BuildSystem.IsLocalBuild;
-var versionInformational = "1.1.0"; // used for NuGet package version as well
-var versionBuildNumber = AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number.ToString() : "0";
-var versionBuild = versionInformational + "." + versionBuildNumber;
+var versionInformational = "1.1.1"; // used for NuGet package version as well
+var buildNumber = AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number.ToString() : "0";
+var versionBuild = versionInformational + "." + buildNumber;
 
 // Define directories and files
 var sourceDirectory = Directory("./src");
@@ -133,7 +133,7 @@ Task("Patch-Assembly-Info")
         Product = productName,
         Version = "0.0.0.0",
         FileVersion = "0.0.0.0",
-        InformationalVersion = versionBuildNumber,
+        InformationalVersion = buildNumber,
         Copyright = copyright
     });
 });
@@ -143,7 +143,7 @@ Task("Update-AppVeyor-Build-Number")
     .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor)
     .Does(() =>
 {
-    AppVeyor.UpdateBuildVersion(versionBuildNumber);
+    AppVeyor.UpdateBuildVersion(versionBuild);
 });
 
 // Builds solution
