@@ -5,6 +5,6 @@ echo BUILD.BAT - NuGet package restore started.
 echo BUILD.BAT - NuGet package restore finished.
 
 echo BUILD.BAT - FAKE build started.
-".\src\packages\FAKE.3.34.7\tools\Fake.exe" build.fsx
+".\src\packages\FAKE.3.34.7\tools\Fake.exe" build.fsx encoding=utf-8
 echo BUILD.BAT - FAKE build finished.
 

@@ -99,6 +99,7 @@ namespace Colourful.Conversion
             WhitePoint = DefaultWhitePoint;
             LMSTransformationMatrix = XYZAndLMSConverter.DefaultTransformationMatrix;
             ChromaticAdaptation = new VonKriesChromaticAdaptation(_cachedXYZAndLMSConverter, _cachedXYZAndLMSConverter);
+
             TargetLabWhitePoint = LabColor.DefaultWhitePoint;
             TargetHunterLabWhitePoint = HunterLabColor.DefaultWhitePoint;
             TargetLuvWhitePoint = LuvColor.DefaultWhitePoint;

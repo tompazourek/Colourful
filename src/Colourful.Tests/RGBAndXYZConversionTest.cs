@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using Colourful.Conversion;
@@ -86,7 +87,7 @@ namespace Colourful.Tests
             Assert.That(output.G, Is.EqualTo(g).Using(DoubleComparer));
             Assert.That(output.B, Is.EqualTo(b).Using(DoubleComparer));
         }
-
+        
         /// <summary>
         /// Tests conversion
         /// from <see cref="RGBColor"/> (<see cref="RGBColor.DefaultWorkingSpace">default sRGB working space</see>)

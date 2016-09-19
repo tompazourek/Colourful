@@ -16,9 +16,9 @@ let deployDir = "./deploy/"
 let informationalVersion = "1.1.0" // used for NuGet package version as well
 let version = environVarOrDefault "PackageVersion" (environVarOrDefault "APPVEYOR_BUILD_VERSION" "1.1.0.0")  // or retrieve from CI server
 let project = "Colourful"
-let authors = [ @"Tomas Pazourek" ]
+let authors = [ @"Tomáš Pažourek" ]
 let summary = "Open source .NET library for working with color spaces."
-let copyright = @"Tomas Pazourek, 2015"
+let copyright = @"Tomáš Pažourek, 2016"
 let tags = "color space sRGB Adobe RGB delta-e lab luv xyz cielab cieluv ciexyz cct chromatic adaptation conversion difference convert"
 let description = @"
 Open source .NET library for working with color spaces.
