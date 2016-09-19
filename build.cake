@@ -133,7 +133,7 @@ Task("Patch-Assembly-Info")
         Product = productName,
         Version = "0.0.0.0",
         FileVersion = "0.0.0.0",
-        InformationalVersion = versionInformational,
+        InformationalVersion = versionBuildNumber,
         Copyright = copyright
     });
 });
@@ -143,7 +143,7 @@ Task("Update-AppVeyor-Build-Number")
     .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor)
     .Does(() =>
 {
-    AppVeyor.UpdateBuildVersion(versionInformational);
+    AppVeyor.UpdateBuildVersion(versionBuildNumber);
 });
 
 // Builds solution
@@ -215,8 +215,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("Package")
-    //.IsDependentOn("Run-Unit-Tests")
-.IsDependentOn("Build")
+    .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
     var files = new [] { "Colourful.dll", "Colourful.pdb", "Colourful.xml" };
