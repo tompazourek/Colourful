@@ -170,6 +170,7 @@ namespace Colourful.Tests
         [TestCase(100, 0, 0, 0, 0, 0, 67.480171, 33.740085)]
         [TestCase(100, -50, 50, 20, 10, -20, 66.320207, 47.038863)]
         [TestCase(10.3454, 3.2151, -189.1230, 51.7781, -22.5151, 1.0001, 98.577755, 69.187455)]
+        [TestCase(41.41, 2.64, 4.15, 0, 0, 0, 42.570316, 21.769476)]
         public void CMCColorDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE_imperceptibility, double expectedDeltaE_acceptability)
         {
             // arrange

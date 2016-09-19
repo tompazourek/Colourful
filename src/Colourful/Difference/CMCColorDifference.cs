@@ -74,7 +74,7 @@ namespace Colourful.Difference
             double C2 = Math.Sqrt(a2 * a2 + b2 * b2);
             double dC = C1 - C2;
 
-            double dH = Math.Sqrt(da * da + db * db - dC * dC);
+            double dH_pow2 = da * da + db * db - dC * dC;
             double H1_rad = Math.Atan2(b1, a1);
             double H1 = Angle.RadianToDegree(H1_rad);
 
@@ -98,9 +98,9 @@ namespace Colourful.Difference
 
             double dE_1 = dL / (_l * SL);
             double dE_2 = dC / (_c * SC);
-            double dE_3 = dH / SH;
+            double dE_3_pow2 = dH_pow2 / (SH * SH);
 
-            double dE = Math.Sqrt(dE_1 * dE_1 + dE_2 * dE_2 + dE_3 * dE_3);
+            double dE = Math.Sqrt(dE_1 * dE_1 + dE_2 * dE_2 + dE_3_pow2);
             return dE;
         }
 
