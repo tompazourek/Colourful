@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -58,7 +58,7 @@ namespace Colourful.Difference
                     K2 = 0.014;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("application");
+                    throw new ArgumentOutOfRangeException(nameof(application));
             }
         }
 
@@ -67,27 +67,27 @@ namespace Colourful.Difference
         /// <returns>Delta-E (1994) color difference</returns>
         public double ComputeDifference(LabColor x, LabColor y)
         {
-            if (x == null) throw new ArgumentNullException("x");
-            if (y == null) throw new ArgumentNullException("y");
+            if (x == null) throw new ArgumentNullException(nameof(x));
+            if (y == null) throw new ArgumentNullException(nameof(y));
 
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
 
-            double da = x.a - y.a;
-            double db = x.b - y.b;
-            double dL = x.L - y.L;
-            double C1 = Math.Sqrt(x.a * x.a + x.b * x.b);
-            double C2 = Math.Sqrt(y.a * y.a + y.b * y.b);
-            double dC = C1 - C2;
-            double dH_sq = da * da + db * db - dC * dC; // dH ^ 2
+            var da = x.a - y.a;
+            var db = x.b - y.b;
+            var dL = x.L - y.L;
+            var C1 = Math.Sqrt(x.a*x.a + x.b*x.b);
+            var C2 = Math.Sqrt(y.a*y.a + y.b*y.b);
+            var dC = C1 - C2;
+            var dH_sq = da*da + db*db - dC*dC; // dH ^ 2
             const double SL = 1;
-            double SC = 1 + K1 * C1;
-            double SH = 1 + K2 * C1;
-            double dE94 = Math.Sqrt(
-                Math.Pow(dL / (KL * SL), 2) +
-                    Math.Pow(dC / (KC * SC), 2) +
-                    dH_sq / Math.Pow(KH * SH, 2)
-                );
+            var SC = 1 + K1*C1;
+            var SH = 1 + K2*C1;
+            var dE94 = Math.Sqrt(
+                Math.Pow(dL/(KL*SL), 2) +
+                Math.Pow(dC/(KC*SC), 2) +
+                dH_sq/Math.Pow(KH*SH, 2)
+            );
             return dE94;
         }
     }

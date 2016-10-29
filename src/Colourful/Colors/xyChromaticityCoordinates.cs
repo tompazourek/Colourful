@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -24,16 +24,13 @@ namespace Colourful
     [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy")]
     public struct xyChromaticityCoordinates
     {
-        private readonly double _x;
-        private readonly double _y;
-
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public xyChromaticityCoordinates(double x, double y)
         {
-            _x = x;
-            _y = y;
+            this.x = x;
+            this.y = y;
         }
 
         /// <summary>
@@ -43,10 +40,7 @@ namespace Colourful
         /// Ranges usually from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
-        public double x
-        {
-            get { return _x; }
-        }
+        public double x { get; }
 
         /// <summary>
         /// Chromaticity coordinate y
@@ -55,27 +49,24 @@ namespace Colourful
         /// Ranges usually from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
-        public double y
-        {
-            get { return _y; }
-        }
+        public double y { get; }
 
         public bool Equals(xyChromaticityCoordinates other)
         {
-            return _x.Equals(other._x) && _y.Equals(other._y);
+            return x.Equals(other.x) && y.Equals(other.y);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is xyChromaticityCoordinates && Equals((xyChromaticityCoordinates) obj);
+            return obj is xyChromaticityCoordinates && Equals((xyChromaticityCoordinates)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (_x.GetHashCode() * 397) ^ _y.GetHashCode();
+                return (x.GetHashCode()*397) ^ y.GetHashCode();
             }
         }
 

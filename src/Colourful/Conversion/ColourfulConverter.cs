@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -14,10 +14,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Colourful.Implementation.Conversion;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -49,7 +49,8 @@ namespace Colourful.Conversion
         public Matrix LMSTransformationMatrix
         {
             get { return _transformationMatrix; }
-            set {
+            set
+            {
                 _transformationMatrix = value;
 
                 if (_cachedXYZAndLMSConverter == null)
@@ -110,7 +111,7 @@ namespace Colourful.Conversion
         {
             get
             {
-                bool result = WhitePoint != null && ChromaticAdaptation != null;
+                var result = WhitePoint != null && ChromaticAdaptation != null;
                 return result;
             }
         }

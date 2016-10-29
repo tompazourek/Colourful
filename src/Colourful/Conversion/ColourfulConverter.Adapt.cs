@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -24,13 +24,13 @@ namespace Colourful.Conversion
         /// </summary>
         public XYZColor Adapt(XYZColor color, XYZColor sourceWhitePoint)
         {
-            if (color == null) throw new ArgumentNullException("color");
-            if (sourceWhitePoint == null) throw new ArgumentNullException("sourceWhitePoint");
+            if (color == null) throw new ArgumentNullException(nameof(color));
+            if (sourceWhitePoint == null) throw new ArgumentNullException(nameof(sourceWhitePoint));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
-            XYZColor result = ChromaticAdaptation.Transform(color, sourceWhitePoint, WhitePoint);
+            var result = ChromaticAdaptation.Transform(color, sourceWhitePoint, WhitePoint);
             return result;
         }
 
@@ -39,7 +39,7 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor Adapt(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
@@ -49,14 +49,14 @@ namespace Colourful.Conversion
 
             // conversion to XYZ
             var converterToXYZ = GetLinearRGBToXYZConverter(color.WorkingSpace);
-            XYZColor unadapted = converterToXYZ.Convert(color);
+            var unadapted = converterToXYZ.Convert(color);
 
             // adaptation
-            XYZColor adapted = ChromaticAdaptation.Transform(unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
+            var adapted = ChromaticAdaptation.Transform(unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion back to RGB
             var converterToRGB = GetXYZToLinearRGBConverter(TargetRGBWorkingSpace);
-            LinearRGBColor result = converterToRGB.Convert(adapted);
+            var result = converterToRGB.Convert(adapted);
 
             return result;
         }
@@ -66,7 +66,7 @@ namespace Colourful.Conversion
         /// </summary>
         public RGBColor Adapt(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             var linearInput = ToLinearRGB(color);
             var linearOutput = Adapt(linearInput);
@@ -80,7 +80,7 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor Adapt(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
@@ -88,8 +88,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLabWhitePoint))
                 return color;
 
-            XYZColor xyzColor = ToXYZ(color);
-            LabColor result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLab(xyzColor);
             return result;
         }
 
@@ -98,7 +98,7 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor Adapt(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
@@ -106,8 +106,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLabWhitePoint))
                 return color;
 
-            LabColor labColor = ToLab(color);
-            LChabColor result = ToLChab(labColor);
+            var labColor = ToLab(color);
+            var result = ToLChab(labColor);
             return result;
         }
 
@@ -116,7 +116,7 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor Adapt(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
@@ -124,8 +124,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetHunterLabWhitePoint))
                 return color;
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
@@ -134,7 +134,7 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor Adapt(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
@@ -142,8 +142,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLuvWhitePoint))
                 return color;
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
     }

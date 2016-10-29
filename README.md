@@ -20,7 +20,7 @@ The library is also [published on NuGet.org](https://www.nuget.org/packages/Colo
 PM> Install-Package Colourful
 ```
 
-<sup>Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built as a Portable Class Library, or for .NET v4.5, v4.0, and v3.5.</sup>
+<sup>Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built as for .NET v4.6, .NET v4.5, v4.0, v3.5, .NET Standard 1.1 and .NET Standard 1.6.</sup>
 
 
 Usage

@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -26,15 +26,15 @@ namespace Colourful.Implementation.RGB
     {
         public double InverseCompanding(double channel)
         {
-            double V = channel;
-            double L = V < 0.081 ? V / 4.5 : Math.Pow((V + 0.099) / 1.099, 1 / 0.45);
+            var V = channel;
+            var L = V < 0.081 ? V/4.5 : Math.Pow((V + 0.099)/1.099, 1/0.45);
             return L;
         }
 
         public double Companding(double channel)
         {
-            double L = channel;
-            double V = L < 0.018 ? 4500 * L : 1.099 * L - 0.099;
+            var L = channel;
+            var V = L < 0.018 ? 4500*L : 1.099*L - 0.099;
             return V;
         }
     }

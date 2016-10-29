@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -15,18 +15,17 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 #endif
-
-#if (!PCL)
+#if (DRAWING)
 using System.Drawing;
+using Colourful.Implementation;
+
 #endif
 
 namespace Colourful
@@ -85,7 +84,7 @@ namespace Colourful
             WorkingSpace = workingSpace;
         }
 
-#if (!PCL)
+#if (DRAWING)
 
         /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
         public RGBColor(Color color)
@@ -95,7 +94,7 @@ namespace Colourful
 
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         public RGBColor(Color color, IRGBWorkingSpace workingSpace)
-            : base(((double)color.R) / 255, ((double)color.G) / 255, ((double)color.B) / 255)
+            : base(((double)color.R)/255, ((double)color.G)/255, ((double)color.B)/255)
         {
             WorkingSpace = workingSpace;
         }
@@ -110,7 +109,7 @@ namespace Colourful
         /// RGB color space
         /// <seealso cref="RGBWorkingSpaces"/>
         /// </summary>
-        public IRGBWorkingSpace WorkingSpace { get; private set; }
+        public IRGBWorkingSpace WorkingSpace { get; }
 
         #endregion
 
@@ -118,7 +117,7 @@ namespace Colourful
 
         public bool Equals(RGBColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
@@ -127,14 +126,14 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((RGBColor) obj);
+            return Equals((RGBColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (base.GetHashCode() * 397) ^ WorkingSpace.GetHashCode();
+                return (base.GetHashCode()*397) ^ WorkingSpace.GetHashCode();
             }
         }
 
@@ -179,7 +178,7 @@ namespace Colourful
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
         public static RGBColor FromRGB8bit(byte red, byte green, byte blue, IRGBWorkingSpace workingSpace)
         {
-            return new RGBColor(red / 255d, green / 255d, blue / 255d, workingSpace);
+            return new RGBColor(red/255d, green/255d, blue/255d, workingSpace);
         }
 
 
@@ -195,7 +194,7 @@ namespace Colourful
 
         #endregion
 
-#if (!PCL)
+#if (DRAWING)
 
         #region Color conversions
 
@@ -209,9 +208,9 @@ namespace Colourful
             if (input == null)
                 return new Color();
 
-            var r = (byte)Math.Round(input.R * 255).CropRange(0, 255);
-            var g = (byte)Math.Round(input.G * 255).CropRange(0, 255);
-            var b = (byte)Math.Round(input.B * 255).CropRange(0, 255);
+            var r = (byte)Math.Round(input.R*255).CropRange(0, 255);
+            var g = (byte)Math.Round(input.G*255).CropRange(0, 255);
+            var b = (byte)Math.Round(input.B*255).CropRange(0, 255);
             var output = Color.FromArgb(r, g, b);
             return output;
         }
@@ -225,7 +224,7 @@ namespace Colourful
         #endregion
 
 #endif
-        
+
         #region Overrides
 
         public override string ToString()

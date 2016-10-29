@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -14,11 +14,10 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation.RGB;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -30,9 +29,9 @@ namespace Colourful.Implementation.Conversion
     {
         public RGBColor Convert(LinearRGBColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
-            RGBColor result = CompandVector(input.Vector, input.WorkingSpace);
+            var result = CompandVector(input.Vector, input.WorkingSpace);
             return result;
         }
 
@@ -41,7 +40,7 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         private static RGBColor CompandVector(Vector uncompandedVector, IRGBWorkingSpace workingSpace)
         {
-            ICompanding companding = workingSpace.Companding;
+            var companding = workingSpace.Companding;
             Vector compandedVector = uncompandedVector.Select(companding.Companding).ToList();
             double R, G, B;
             compandedVector.AssignVariables(out R, out G, out B);
@@ -59,7 +58,7 @@ namespace Colourful.Implementation.Conversion
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected bool Equals(LinearRGBToRGBConverter other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return true;
         }
 

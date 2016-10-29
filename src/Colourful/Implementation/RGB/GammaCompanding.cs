@@ -1,6 +1,6 @@
-#region License
+﻿#region License
 
-// Copyright (C) Tom� Pa�ourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -27,25 +27,25 @@ namespace Colourful.Implementation.RGB
             Gamma = gamma;
         }
 
-        public double Gamma { get; private set; }
+        public double Gamma { get; }
 
         public double InverseCompanding(double channel)
         {
-            double V = channel;
-            double v = Math.Pow(V, Gamma);
+            var V = channel;
+            var v = Math.Pow(V, Gamma);
             return v;
         }
 
         public double Companding(double channel)
         {
-            double v = channel;
-            double V = Math.Pow(v, 1 / Gamma);
+            var v = channel;
+            var V = Math.Pow(v, 1/Gamma);
             return V;
         }
 
         public bool Equals(GammaCompanding other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return Gamma.Equals(other.Gamma);
         }
 
@@ -53,8 +53,8 @@ namespace Colourful.Implementation.RGB
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((GammaCompanding) obj);
+            if (obj.GetType() != GetType()) return false;
+            return Equals((GammaCompanding)obj);
         }
 
         public override int GetHashCode()

@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Colourful.Conversion;
-using Colourful.Implementation;
 using NUnit.Framework;
 
 namespace Colourful.Tests

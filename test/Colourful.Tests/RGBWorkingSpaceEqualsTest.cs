@@ -26,20 +26,11 @@ namespace Colourful.Tests
     {
         private class AdobeRGB1998Duplicate : IRGBWorkingSpace
         {
-            public ICompanding Companding
-            {
-                get { return new GammaCompanding(2.2); }
-            }
+            public ICompanding Companding => new GammaCompanding(2.2);
 
-            public XYZColor WhitePoint
-            {
-                get { return Illuminants.D65; }
-            }
+            public XYZColor WhitePoint => Illuminants.D65;
 
-            public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates
-            {
-                get { return new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.2100, 0.7100), new xyChromaticityCoordinates(0.1500, 0.0600)); }
-            }
+            public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates => new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.2100, 0.7100), new xyChromaticityCoordinates(0.1500, 0.0600));
         }
 
         [Test]

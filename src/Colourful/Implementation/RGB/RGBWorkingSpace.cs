@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -28,17 +28,17 @@ namespace Colourful.Implementation.RGB
             ChromaticityCoordinates = chromaticityCoordinates;
         }
 
-        public XYZColor WhitePoint { get; private set; }
+        public XYZColor WhitePoint { get; }
 
-        public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates { get; private set; }
+        public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates { get; }
 
-        public ICompanding Companding { get; private set; }
+        public ICompanding Companding { get; }
 
         #region Overrides
 
         protected bool Equals(IRGBWorkingSpace other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(WhitePoint, other.WhitePoint) && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) && Equals(Companding, other.Companding);
         }
 
@@ -55,9 +55,9 @@ namespace Colourful.Implementation.RGB
         {
             unchecked
             {
-                int hashCode = (WhitePoint != null ? WhitePoint.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ ChromaticityCoordinates.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Companding != null ? Companding.GetHashCode() : 0);
+                var hashCode = (WhitePoint != null ? WhitePoint.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ ChromaticityCoordinates.GetHashCode();
+                hashCode = (hashCode*397) ^ (Companding != null ? Companding.GetHashCode() : 0);
                 return hashCode;
             }
         }

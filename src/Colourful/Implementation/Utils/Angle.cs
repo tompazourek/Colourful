@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -21,17 +21,17 @@ namespace Colourful.Implementation
     /// </summary>
     internal static class Angle
     {
-        private const double TwoPI = 2 * Math.PI;
+        private const double TwoPI = 2*Math.PI;
 
         public static double RadianToDegree(double rad)
         {
-            double deg = 360 * (rad / TwoPI);
+            var deg = 360*(rad/TwoPI);
             return deg;
         }
 
         public static double DegreeToRadian(double deg)
         {
-            double rad = TwoPI * (deg / 360d);
+            var rad = TwoPI*(deg/360d);
             return rad;
         }
     }

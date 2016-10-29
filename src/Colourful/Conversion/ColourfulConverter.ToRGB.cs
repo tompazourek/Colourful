@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -34,96 +34,95 @@ namespace Colourful.Conversion
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public RGBColor ToRGB(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new LinearRGBToRGBConverter();
-            RGBColor result = converter.Convert(color);
+            var result = converter.Convert(color);
             return result;
         }
-        
+
         public RGBColor ToRGB(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var linear = ToLinearRGB(color);
 
             // companding to RGB
-            RGBColor result = ToRGB(linear);
+            var result = ToRGB(linear);
             return result;
         }
 
         public RGBColor ToRGB(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
         public RGBColor ToRGB(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            RGBColor result = ToRGB(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
             return result;
         }
 
-#if (NET35)
-#else
+#if (DYNAMIC)
         public RGBColor ToRGB<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            RGBColor converted = color as RGBColor;
+            var converted = color as RGBColor;
 
             if (converted != null)
             {

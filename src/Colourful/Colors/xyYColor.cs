@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -12,13 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -49,7 +49,7 @@ namespace Colourful
         public xyYColor(xyChromaticityCoordinates chromaticity, double Y)
         {
             if (chromaticity == null)
-                throw new ArgumentNullException("chromaticity");
+                throw new ArgumentNullException(nameof(chromaticity));
 
             Chromaticity = chromaticity;
             Luminance = Y;
@@ -70,19 +70,13 @@ namespace Colourful
         /// Ranges usually from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
-        public double x
-        {
-            get { return Chromaticity.x; }
-        }
+        public double x => Chromaticity.x;
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
-        public double y
-        {
-            get { return Chromaticity.y; }
-        }
+        public double y => Chromaticity.y;
 
         /// <summary>
         /// Y channel (luminance)
@@ -90,20 +84,17 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double Luminance { get; private set; }
+        public double Luminance { get; }
 
         /// <remarks>
         /// Chromaticity coordinates (identical to x and y)
         /// </remarks>
-        public xyChromaticityCoordinates Chromaticity { get; private set; }
+        public xyChromaticityCoordinates Chromaticity { get; }
 
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { x, y, Luminance }; }
-        }
+        public Vector Vector => new[] { x, y, Luminance };
 
         #endregion
 
@@ -111,7 +102,7 @@ namespace Colourful
 
         public bool Equals(xyYColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return x.Equals(other.x) && y.Equals(other.y) && Luminance.Equals(other.Luminance);
         }
 
@@ -120,16 +111,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((xyYColor) obj);
+            return Equals((xyYColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = x.GetHashCode();
-                hashCode = (hashCode * 397) ^ y.GetHashCode();
-                hashCode = (hashCode * 397) ^ Luminance.GetHashCode();
+                var hashCode = x.GetHashCode();
+                hashCode = (hashCode*397) ^ y.GetHashCode();
+                hashCode = (hashCode*397) ^ Luminance.GetHashCode();
                 return hashCode;
             }
         }

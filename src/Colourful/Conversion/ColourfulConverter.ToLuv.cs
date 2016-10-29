@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -21,105 +21,104 @@ namespace Colourful.Conversion
     {
         public LuvColor ToLuv(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // adaptation
-            XYZColor adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
+            var adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
                 ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLuvWhitePoint)
                 : color;
 
             // conversion
             var converter = new XYZToLuvConverter(TargetLuvWhitePoint);
-            LuvColor result = converter.Convert(adapted);
+            var result = converter.Convert(adapted);
             return result;
         }
 
         public LuvColor ToLuv(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
 
         public LuvColor ToLuv(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion (perserving white point)
             var converter = new LChuvToLuvConverter();
-            LuvColor unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(color);
 
             if (!IsChromaticAdaptationPerformed)
                 return unadapted;
 
             // adaptation to target luv white point (LuvWhitePoint)
-            LuvColor adapted = Adapt(unadapted);
+            var adapted = Adapt(unadapted);
             return adapted;
         }
 
         public LuvColor ToLuv(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LuvColor result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLuv(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         public LuvColor ToLuv<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LuvColor converted = color as LuvColor;
+            var converted = color as LuvColor;
 
             if (converted != null)
             {

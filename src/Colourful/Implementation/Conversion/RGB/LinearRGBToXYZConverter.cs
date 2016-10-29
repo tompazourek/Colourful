@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -13,11 +13,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation.RGB;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -42,16 +41,16 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Source RGB working space
         /// </summary>
-        public IRGBWorkingSpace SourceRGBWorkingSpace { get; private set; }
+        public IRGBWorkingSpace SourceRGBWorkingSpace { get; }
 
         public XYZColor Convert(LinearRGBColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 
-            Vector xyz = _conversionMatrix.MultiplyBy(input.Vector);
+            var xyz = _conversionMatrix.MultiplyBy(input.Vector);
 
             double x, y, z;
             xyz.AssignVariables(out x, out y, out z);
@@ -64,7 +63,7 @@ namespace Colourful.Implementation.Conversion
 
         protected bool Equals(LinearRGBToXYZConverter other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
@@ -73,7 +72,7 @@ namespace Colourful.Implementation.Conversion
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LinearRGBToXYZConverter) obj);
+            return Equals((LinearRGBToXYZConverter)obj);
         }
 
         public override int GetHashCode()

@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -33,11 +33,11 @@ namespace Colourful.Conversion
 
         public XYZColor ToXYZ(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // uncompanding
             var rgbConverter = new RGBToLinearRGBConverter();
-            LinearRGBColor linear = rgbConverter.Convert(color);
+            var linear = rgbConverter.Convert(color);
 
             // conversion
             var result = ToXYZ(linear);
@@ -46,13 +46,13 @@ namespace Colourful.Conversion
 
         public XYZColor ToXYZ(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
             // conversion
             var converterXyz = GetLinearRGBToXYZConverter(color.WorkingSpace);
-            XYZColor unadapted = converterXyz.Convert(color);
+            var unadapted = converterXyz.Convert(color);
 
             // adaptation
-            XYZColor adapted = color.WorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+            var adapted = color.WorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
                 : Adapt(unadapted, color.WorkingSpace.WhitePoint);
 
@@ -62,24 +62,24 @@ namespace Colourful.Conversion
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public XYZColor ToXYZ(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new xyYAndXYZConverter();
-            XYZColor converted = converter.Convert(color);
+            var converted = converter.Convert(color);
             return converted;
         }
 
         public XYZColor ToXYZ(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new LabToXYZConverter();
-            XYZColor unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(color);
 
             // adaptation
-            XYZColor adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+            var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
                 : Adapt(unadapted, color.WhitePoint);
 
@@ -88,27 +88,27 @@ namespace Colourful.Conversion
 
         public XYZColor ToXYZ(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion to Lab
             var labConverter = new LChabToLabConverter();
-            LabColor labColor = labConverter.Convert(color);
+            var labColor = labConverter.Convert(color);
 
             // conversion to XYZ (incl. adaptation)
-            XYZColor result = ToXYZ(labColor);
+            var result = ToXYZ(labColor);
             return result;
         }
 
         public XYZColor ToXYZ(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new HunterLabToXYZConverter();
-            XYZColor unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(color);
 
             // adaptation
-            XYZColor adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+            var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
                 : Adapt(unadapted, color.WhitePoint);
 
@@ -117,14 +117,14 @@ namespace Colourful.Conversion
 
         public XYZColor ToXYZ(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new LuvToXYZConverter();
-            XYZColor unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(color);
 
             // adaptation
-            XYZColor adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+            var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
                 : Adapt(unadapted, color.WhitePoint);
 
@@ -133,34 +133,33 @@ namespace Colourful.Conversion
 
         public XYZColor ToXYZ(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion to Luv
             var luvConverter = new LChuvToLuvConverter();
-            LuvColor labColor = luvConverter.Convert(color);
+            var labColor = luvConverter.Convert(color);
 
             // conversion to XYZ (incl. adaptation)
-            XYZColor result = ToXYZ(labColor);
+            var result = ToXYZ(labColor);
             return result;
         }
 
         public XYZColor ToXYZ(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = _cachedXYZAndLMSConverter;
-            XYZColor converted = converter.Convert(color);
+            var converted = converter.Convert(color);
             return converted;
         }
 
-#if (NET35)
-#else
+#if (DYNAMIC)
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor converted = color as XYZColor;
+            var converted = color as XYZColor;
 
             if (converted != null)
             {

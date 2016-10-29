@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -34,24 +34,24 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Target reference white. When not set, <see cref="LabColor.DefaultWhitePoint"/> is used.
         /// </summary>
-        public XYZColor LabWhitePoint { get; private set; }
+        public XYZColor LabWhitePoint { get; }
 
         public LabColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
             double Xr = LabWhitePoint.X, Yr = LabWhitePoint.Y, Zr = LabWhitePoint.Z;
 
-            double xr = input.X / Xr, yr = input.Y / Yr, zr = input.Z / Zr;
+            double xr = input.X/Xr, yr = input.Y/Yr, zr = input.Z/Zr;
 
-            double fx = f(xr);
-            double fy = f(yr);
-            double fz = f(zr);
+            var fx = f(xr);
+            var fy = f(yr);
+            var fz = f(zr);
 
-            double L = 116 * fy - 16;
-            double a = 500 * (fx - fy);
-            double b = 200 * (fy - fz);
+            var L = 116*fy - 16;
+            var a = 500*(fx - fy);
+            var b = 200*(fy - fz);
 
             var output = new LabColor(L, a, b, LabWhitePoint);
             return output;
@@ -59,7 +59,7 @@ namespace Colourful.Implementation.Conversion
 
         private static double f(double cr)
         {
-            double fc = cr > CIEConstants.Epsilon ? Math.Pow(cr, 1 / 3d) : (CIEConstants.Kappa * cr + 16) / 116d;
+            var fc = cr > CIEConstants.Epsilon ? Math.Pow(cr, 1/3d) : (CIEConstants.Kappa*cr + 16)/116d;
             return fc;
         }
 
@@ -67,7 +67,7 @@ namespace Colourful.Implementation.Conversion
 
         protected bool Equals(XYZToLabConverter other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
@@ -76,7 +76,7 @@ namespace Colourful.Implementation.Conversion
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((XYZToLabConverter) obj);
+            return Equals((XYZToLabConverter)obj);
         }
 
         public override int GetHashCode()

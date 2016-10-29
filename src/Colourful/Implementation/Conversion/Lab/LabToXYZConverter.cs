@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,20 +23,20 @@ namespace Colourful.Implementation.Conversion
     {
         public XYZColor Convert(LabColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;
-            double fy = (L + 16) / 116d;
-            double fx = a / 500d + fy;
-            double fz = fy - b / 200d;
+            var fy = (L + 16)/116d;
+            var fx = a/500d + fy;
+            var fz = fy - b/200d;
 
-            double fx3 = Math.Pow(fx, 3);
-            double fz3 = Math.Pow(fz, 3);
+            var fx3 = Math.Pow(fx, 3);
+            var fz3 = Math.Pow(fz, 3);
 
-            double xr = fx3 > CIEConstants.Epsilon ? fx3 : (116 * fx - 16) / CIEConstants.Kappa;
-            double yr = L > CIEConstants.Kappa * CIEConstants.Epsilon ? Math.Pow((L + 16) / 116d, 3) : L / CIEConstants.Kappa;
-            double zr = fz3 > CIEConstants.Epsilon ? fz3 : (116 * fz - 16) / CIEConstants.Kappa;
+            var xr = fx3 > CIEConstants.Epsilon ? fx3 : (116*fx - 16)/CIEConstants.Kappa;
+            var yr = L > CIEConstants.Kappa*CIEConstants.Epsilon ? Math.Pow((L + 16)/116d, 3) : L/CIEConstants.Kappa;
+            var zr = fz3 > CIEConstants.Epsilon ? fz3 : (116*fz - 16)/CIEConstants.Kappa;
 
             double Xr = input.WhitePoint.X, Yr = input.WhitePoint.Y, Zr = input.WhitePoint.Z;
 
@@ -45,9 +45,9 @@ namespace Colourful.Implementation.Conversion
             yr = yr.CropRange(0, 1);
             zr = zr.CropRange(0, 1);
 
-            double X = xr * Xr;
-            double Y = yr * Yr;
-            double Z = zr * Zr;
+            var X = xr*Xr;
+            var Y = yr*Yr;
+            var Z = zr*Zr;
 
             var result = new XYZColor(X, Y, Z);
             return result;

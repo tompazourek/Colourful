@@ -50,6 +50,8 @@ namespace Colourful.Tests
         /// <summary>
         /// Data from: http://www.brucelindbloom.com/index.html?ColorCalculator.html
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
+        // Results are not precise enough.
         private static readonly object[] CCTData_Lindbloom =
             {
                 new object[] { 0.585719, 0.393121, 1500 },
@@ -72,7 +74,7 @@ namespace Colourful.Tests
                 new object[] { 0.263705, 0.267277, 15000 },
             };
         
-        [Test, TestCaseSource("CCTData_Wikipedia")]
+        [Test, TestCaseSource(nameof(CCTData_Wikipedia))]
         public void CCTFromChromaticity(double x, double y, double expectedCCT)
         {
             // arrange
@@ -83,11 +85,11 @@ namespace Colourful.Tests
             double cct = approximation.GetCCTOfChromaticity(chromaticity);
 
             // assert
-            Debug.WriteLine(string.Format("CCT {0} K (difference {1} K)", cct, Math.Abs(expectedCCT - cct)));
+            Debug.WriteLine($"CCT {cct} K (difference {Math.Abs(expectedCCT - cct)} K)");
             Assert.That(cct, Is.EqualTo(expectedCCT).Using(new DoubleDeltaComparer(66)));
         }
 
-        [Test, TestCaseSource("CCTData_Wikipedia")]
+        [Test, TestCaseSource(nameof(CCTData_Wikipedia))]
         public void ChromaticityFromCCT(double expectedX, double expectedY, double cct)
         {
             // arrange

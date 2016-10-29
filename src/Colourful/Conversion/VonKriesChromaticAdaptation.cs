@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -9,17 +9,17 @@
 #endregion
 
 using System;
+using Colourful.Implementation;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation;
 using Colourful.Implementation.Conversion;
-using System.Diagnostics.CodeAnalysis;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -58,8 +58,8 @@ namespace Colourful.Conversion
 
         public VonKriesChromaticAdaptation(IColorConversion<XYZColor, LMSColor> conversionToLMS, IColorConversion<LMSColor, XYZColor> conversionToXYZ)
         {
-            if (conversionToLMS == null) throw new ArgumentNullException("conversionToLMS");
-            if (conversionToXYZ == null) throw new ArgumentNullException("conversionToXYZ");
+            if (conversionToLMS == null) throw new ArgumentNullException(nameof(conversionToLMS));
+            if (conversionToXYZ == null) throw new ArgumentNullException(nameof(conversionToXYZ));
 
             _conversionToLMS = conversionToLMS;
             _conversionToXYZ = conversionToXYZ;
@@ -70,21 +70,21 @@ namespace Colourful.Conversion
         /// </summary>
         public XYZColor Transform(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint)
         {
-            if (sourceColor == null) throw new ArgumentNullException("sourceColor");
-            if (sourceWhitePoint == null) throw new ArgumentNullException("sourceWhitePoint");
-            if (targetWhitePoint == null) throw new ArgumentNullException("targetWhitePoint");
+            if (sourceColor == null) throw new ArgumentNullException(nameof(sourceColor));
+            if (sourceWhitePoint == null) throw new ArgumentNullException(nameof(sourceWhitePoint));
+            if (targetWhitePoint == null) throw new ArgumentNullException(nameof(targetWhitePoint));
 
             if (sourceWhitePoint.Equals(targetWhitePoint))
                 return sourceColor;
 
-            LMSColor sourceColorLMS = _conversionToLMS.Convert(sourceColor);
-            LMSColor sourceWhitePointLMS = _conversionToLMS.Convert(sourceWhitePoint);
-            LMSColor targetWhitePointLMS = _conversionToLMS.Convert(targetWhitePoint);
+            var sourceColorLMS = _conversionToLMS.Convert(sourceColor);
+            var sourceWhitePointLMS = _conversionToLMS.Convert(sourceWhitePoint);
+            var targetWhitePointLMS = _conversionToLMS.Convert(targetWhitePoint);
 
-            Matrix diagonalMatrix = MatrixFactory.CreateDiagonal(targetWhitePointLMS.L / sourceWhitePointLMS.L, targetWhitePointLMS.M / sourceWhitePointLMS.M, targetWhitePointLMS.S / sourceWhitePointLMS.S);
+            var diagonalMatrix = MatrixFactory.CreateDiagonal(targetWhitePointLMS.L/sourceWhitePointLMS.L, targetWhitePointLMS.M/sourceWhitePointLMS.M, targetWhitePointLMS.S/sourceWhitePointLMS.S);
 
             var targetColorLMS = new LMSColor(diagonalMatrix.MultiplyBy(sourceColorLMS.Vector));
-            XYZColor targetColor = _conversionToXYZ.Convert(targetColorLMS);
+            var targetColor = _conversionToXYZ.Convert(targetColorLMS);
             return targetColor;
         }
     }

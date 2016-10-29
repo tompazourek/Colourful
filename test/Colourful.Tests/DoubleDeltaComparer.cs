@@ -30,7 +30,7 @@ namespace Colourful.Tests
         /// <summary>
         /// Smallest allowed difference
         /// </summary>
-        public double Delta { get; private set; }
+        public double Delta { get; }
 
         public int Compare(double x, double y)
         {

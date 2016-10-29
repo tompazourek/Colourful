@@ -12,6 +12,8 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
+project.lock.json
+.vs/
 
 # Build results
 [Dd]ebug/
@@ -109,5 +111,4 @@ UpgradeLog*.XML
 /Documents
 
 output/
-tools/*.exe
-tools/*/*
+tools/

@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,12 +23,12 @@ namespace Colourful.Implementation.Conversion
     {
         public LChabColor Convert(LabColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             double L = input.L, a = input.a, b = input.b;
-            double C = Math.Sqrt(a * a + b * b);
-            double hRadians = Math.Atan2(b, a);
-            double hDegrees = Angle.RadianToDegree(hRadians);
+            var C = Math.Sqrt(a*a + b*b);
+            var hRadians = Math.Atan2(b, a);
+            var hDegrees = Angle.RadianToDegree(hRadians);
 
             if (hDegrees > 360)
                 hDegrees -= 360;

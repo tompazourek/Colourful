@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,63 +23,51 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
-        private readonly xyChromaticityCoordinates _b;
-        private readonly xyChromaticityCoordinates _g;
-        private readonly xyChromaticityCoordinates _r;
-
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
         {
-            _r = r;
-            _g = g;
-            _b = b;
+            R = r;
+            G = g;
+            B = b;
         }
 
         /// <summary>
         /// Red
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
-        public xyChromaticityCoordinates R
-        {
-            get { return _r; }
-        }
+        public xyChromaticityCoordinates R { get; }
 
         /// <summary>
         /// Green
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
-        public xyChromaticityCoordinates G
-        {
-            get { return _g; }
-        }
+        public xyChromaticityCoordinates G { get; }
 
         /// <summary>
         /// Blue
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
-        public xyChromaticityCoordinates B
-        {
-            get { return _b; }
-        }
+        public xyChromaticityCoordinates B { get; }
 
+        [SuppressMessage("ReSharper", "ImpureMethodCallOnReadonlyValueField")]
         public bool Equals(RGBPrimariesChromaticityCoordinates other)
         {
-            return _r.Equals(other._r) && _g.Equals(other._g) && _b.Equals(other._b);
+            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is RGBPrimariesChromaticityCoordinates && Equals((RGBPrimariesChromaticityCoordinates) obj);
+            return obj is RGBPrimariesChromaticityCoordinates && Equals((RGBPrimariesChromaticityCoordinates)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = _r.GetHashCode();
-                hashCode = (hashCode * 397) ^ _g.GetHashCode();
-                hashCode = (hashCode * 397) ^ _b.GetHashCode();
+                var hashCode = R.GetHashCode();
+                hashCode = (hashCode*397) ^ G.GetHashCode();
+                hashCode = (hashCode*397) ^ B.GetHashCode();
                 return hashCode;
             }
         }
