@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -9,16 +9,16 @@
 #endregion
 
 using System;
+using Colourful.Implementation;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -43,7 +43,7 @@ namespace Colourful
             B = b.CheckRange(0, 1);
         }
 
-         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
         internal RGBColorBase(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {
@@ -60,7 +60,7 @@ namespace Colourful
         /// Ranges from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
-        public double R { get; private set; }
+        public double R { get; }
 
         /// <summary>
         /// Green
@@ -69,7 +69,7 @@ namespace Colourful
         /// Ranges from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
-        public double G { get; private set; }
+        public double G { get; }
 
         /// <summary>
         /// Blue
@@ -78,15 +78,12 @@ namespace Colourful
         /// Ranges from 0 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
-        public double B { get; private set; }
+        public double B { get; }
 
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { R, G, B }; }
-        }
+        public Vector Vector => new[] { R, G, B };
 
         #endregion
 
@@ -94,7 +91,7 @@ namespace Colourful
 
         protected bool Equals(RGBColorBase other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
         }
 
@@ -103,16 +100,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((RGBColorBase) obj);
+            return Equals((RGBColorBase)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = R.GetHashCode();
-                hashCode = (hashCode * 397) ^ G.GetHashCode();
-                hashCode = (hashCode * 397) ^ B.GetHashCode();
+                var hashCode = R.GetHashCode();
+                hashCode = (hashCode*397) ^ G.GetHashCode();
+                hashCode = (hashCode*397) ^ B.GetHashCode();
                 return hashCode;
             }
         }

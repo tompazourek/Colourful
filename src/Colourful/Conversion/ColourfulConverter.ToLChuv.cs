@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -21,96 +21,95 @@ namespace Colourful.Conversion
     {
         public LChuvColor ToLChuv(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LuvColor luvColor = ToLuv(color);
-            LChuvColor result = ToLChuv(luvColor);
+            var luvColor = ToLuv(color);
+            var result = ToLChuv(luvColor);
             return result;
         }
 
         public LChuvColor ToLChuv(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
 
         public LChuvColor ToLChuv(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // adaptation to target luv white point (LuvWhitePoint)
-            LuvColor adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
+            var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
             // conversion (perserving white point)
             var converter = new LuvToLChuvConverter();
-            LChuvColor result = converter.Convert(adapted);
+            var result = converter.Convert(adapted);
             return result;
         }
 
         public LChuvColor ToLChuv(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChuvColor result = ToLChuv(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChuv(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         public LChuvColor ToLChuv<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LChuvColor converted = color as LChuvColor;
+            var converted = color as LChuvColor;
 
             if (converted != null)
             {

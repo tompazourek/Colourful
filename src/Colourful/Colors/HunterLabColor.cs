@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -15,10 +15,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -87,7 +87,7 @@ namespace Colourful
         /// Ranges from 0 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
-        public double L { get; private set; }
+        public double L { get; }
 
         /// <summary>
         /// a
@@ -97,7 +97,7 @@ namespace Colourful
         /// Negative values indicate green while positive values indicate magenta.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
-        public double a { get; private set; }
+        public double a { get; }
 
         /// <summary>
         /// b
@@ -107,7 +107,7 @@ namespace Colourful
         /// Negative values indicate blue and positive values indicate yellow.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        public double b { get; private set; }
+        public double b { get; }
 
         /// <remarks><see cref="Illuminants"/></remarks>
         public XYZColor WhitePoint { get; private set; }
@@ -115,10 +115,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { L, a, b }; }
-        }
+        public Vector Vector => new[] { L, a, b };
 
         #endregion
 
@@ -126,7 +123,7 @@ namespace Colourful
 
         public bool Equals(LabColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
         }
 
@@ -135,16 +132,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LabColor) obj);
+            return Equals((LabColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = L.GetHashCode();
-                hashCode = (hashCode * 397) ^ a.GetHashCode();
-                hashCode = (hashCode * 397) ^ b.GetHashCode();
+                var hashCode = L.GetHashCode();
+                hashCode = (hashCode*397) ^ a.GetHashCode();
+                hashCode = (hashCode*397) ^ b.GetHashCode();
                 return hashCode;
             }
         }

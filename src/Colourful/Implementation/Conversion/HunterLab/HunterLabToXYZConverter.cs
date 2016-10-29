@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,17 +23,17 @@ namespace Colourful.Implementation.Conversion
     {
         public XYZColor Convert(HunterLabColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             double L = input.L, a = input.a, b = input.b;
             double Xn = input.WhitePoint.X, Yn = input.WhitePoint.Y, Zn = input.WhitePoint.Z;
 
-            double Ka = ComputeKa(input.WhitePoint);
-            double Kb = ComputeKb(input.WhitePoint);
+            var Ka = ComputeKa(input.WhitePoint);
+            var Kb = ComputeKb(input.WhitePoint);
 
-            double Y = Math.Pow(L / 100d, 2) * Yn;
-            double X = ((a / Ka) * Math.Sqrt(Y / Yn) + Y / Yn) * Xn;
-            double Z = ((b / Kb) * Math.Sqrt(Y / Yn) - Y / Yn) * (-Zn);
+            var Y = Math.Pow(L/100d, 2)*Yn;
+            var X = ((a/Ka)*Math.Sqrt(Y/Yn) + Y/Yn)*Xn;
+            var Z = ((b/Kb)*Math.Sqrt(Y/Yn) - Y/Yn)*(-Zn);
 
             var result = new XYZColor(X, Y, Z);
             return result;

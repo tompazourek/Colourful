@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -34,27 +34,27 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Target reference white. When not set, <see cref="LuvColor.DefaultWhitePoint"/> is used.
         /// </summary>
-        public XYZColor LuvWhitePoint { get; private set; }
+        public XYZColor LuvWhitePoint { get; }
 
         public LuvColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Luv.html
 
-            double yr = input.Y / LuvWhitePoint.Y;
-            double up = Compute_up(input);
-            double vp = Compute_vp(input);
-            double upr = Compute_up(LuvWhitePoint);
-            double vpr = Compute_vp(LuvWhitePoint);
+            var yr = input.Y/LuvWhitePoint.Y;
+            var up = Compute_up(input);
+            var vp = Compute_vp(input);
+            var upr = Compute_up(LuvWhitePoint);
+            var vpr = Compute_vp(LuvWhitePoint);
 
-            double L = yr > CIEConstants.Epsilon ? (116 * Math.Pow(yr, 1 / 3d) - 16) : (CIEConstants.Kappa * yr);
+            var L = yr > CIEConstants.Epsilon ? (116*Math.Pow(yr, 1/3d) - 16) : (CIEConstants.Kappa*yr);
 
             if (double.IsNaN(L) || L < 0)
                 L = 0;
 
-            double u = 13 * L * (up - upr);
-            double v = 13 * L * (vp - vpr);
+            var u = 13*L*(up - upr);
+            var v = 13*L*(vp - vpr);
 
             if (double.IsNaN(u))
                 u = 0;
@@ -67,19 +67,19 @@ namespace Colourful.Implementation.Conversion
 
         private static double Compute_up(XYZColor input)
         {
-            return (4 * input.X) / (input.X + 15 * input.Y + 3 * input.Z);
+            return (4*input.X)/(input.X + 15*input.Y + 3*input.Z);
         }
 
         private static double Compute_vp(XYZColor input)
         {
-            return (9 * input.Y) / (input.X + 15 * input.Y + 3 * input.Z);
+            return (9*input.Y)/(input.X + 15*input.Y + 3*input.Z);
         }
 
         #region Overrides
 
         protected bool Equals(XYZToLuvConverter other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return LuvWhitePoint.Equals(other.LuvWhitePoint);
         }
 
@@ -88,7 +88,7 @@ namespace Colourful.Implementation.Conversion
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((XYZToLuvConverter) obj);
+            return Equals((XYZToLuvConverter)obj);
         }
 
         public override int GetHashCode()

@@ -30,7 +30,7 @@ namespace Colourful.Tests
         /// <summary>
         /// Number of fractional digits
         /// </summary>
-        public int Precision { get; private set; }
+        public int Precision { get; }
 
         public int Compare(double x, double y)
         {

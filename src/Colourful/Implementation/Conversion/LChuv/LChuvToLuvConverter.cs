@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,13 +23,13 @@ namespace Colourful.Implementation.Conversion
     {
         public LuvColor Convert(LChuvColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             double L = input.L, C = input.C, hDegrees = input.h;
-            double hRadians = Angle.DegreeToRadian(hDegrees);
+            var hRadians = Angle.DegreeToRadian(hDegrees);
 
-            double u = C * Math.Cos(hRadians);
-            double v = C * Math.Sin(hRadians);
+            var u = C*Math.Cos(hRadians);
+            var v = C*Math.Sin(hRadians);
 
             var output = new LuvColor(L, u, v, input.WhitePoint);
             return output;

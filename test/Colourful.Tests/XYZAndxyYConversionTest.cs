@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Colourful.Conversion;
-using Colourful.Implementation;
 using NUnit.Framework;
 
 namespace Colourful.Tests
@@ -40,7 +39,7 @@ namespace Colourful.Tests
             };
 
         [Test]
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         [TestCase(0, 0, 0, 0.538842, 0.000000, 0.000000)]
         public void Convert_xyY_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
@@ -58,7 +57,7 @@ namespace Colourful.Tests
         }
 
         [Test]
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         [TestCase(0.231809, 0, 0.077528, 0.749374, 0.000000, 0.000000)]
         public void Convert_XYZ_to_xyY(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
@@ -79,7 +78,7 @@ namespace Colourful.Tests
 #if (!NET35)
 
         [Test]
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         [TestCase(0, 0, 0, 0.538842, 0.000000, 0.000000)]
         public void Convert_xyY_as_vector_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {

@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -10,13 +10,13 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -65,7 +65,7 @@ namespace Colourful.Implementation.Conversion
 
         public LMSColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             var outputVector = TransformationMatrix.MultiplyBy(input.Vector);
             var output = new LMSColor(outputVector);
@@ -74,7 +74,7 @@ namespace Colourful.Implementation.Conversion
 
         public XYZColor Convert(LMSColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             var outputVector = _transformationMatrixInverse.MultiplyBy(input.Vector);
             var output = new XYZColor(outputVector);

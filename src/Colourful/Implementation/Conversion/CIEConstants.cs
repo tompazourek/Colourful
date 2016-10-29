@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -18,7 +18,7 @@ namespace Colourful.Implementation.Conversion
 {
     internal static class CIEConstants
     {
-        public const double Epsilon = 216d / 24389d;
-        public const double Kappa = 24389d / 27d;
+        public const double Epsilon = 216d/24389d;
+        public const double Kappa = 24389d/27d;
     }
 }

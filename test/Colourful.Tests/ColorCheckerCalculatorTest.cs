@@ -32,7 +32,7 @@ namespace Colourful.Tests
             throw new AssertionException(string.Format("[{0}]\n{1}", row.Name, ex.Message), ex);
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_XYZ(DataRow row)
         {
             var inputLab = row.GetLabColor();
@@ -49,7 +49,7 @@ namespace Colourful.Tests
             }
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_RGB(DataRow row)
         {
             var inputLab = row.GetLabColor();
@@ -66,7 +66,7 @@ namespace Colourful.Tests
             }
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_xyY(DataRow row)
         {
             var inputLab = row.GetLabColor();
@@ -83,7 +83,7 @@ namespace Colourful.Tests
             }
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_LChab(DataRow row)
         {
             var inputLab = row.GetLabColor();
@@ -100,7 +100,7 @@ namespace Colourful.Tests
             }
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_LChuv(DataRow row)
         {
             var inputLab = row.GetLabColor();
@@ -117,7 +117,7 @@ namespace Colourful.Tests
             }
         }
 
-        [TestCaseSource("TestData")]
+        [TestCaseSource(nameof(TestData))]
         public void Convert_Lab_to_Luv(DataRow row)
         {
             var inputLab = row.GetLabColor();

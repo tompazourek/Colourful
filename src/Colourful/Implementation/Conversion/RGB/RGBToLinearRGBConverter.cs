@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -14,11 +14,10 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Colourful.Implementation.RGB;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -30,9 +29,9 @@ namespace Colourful.Implementation.Conversion
     {
         public LinearRGBColor Convert(RGBColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
-            Vector uncompandedVector = UncompandVector(input);
+            var uncompandedVector = UncompandVector(input);
             var converted = new LinearRGBColor(uncompandedVector, input.WorkingSpace);
             return converted;
         }
@@ -42,8 +41,8 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         private static Vector UncompandVector(RGBColor rgbColor)
         {
-            ICompanding inverseCompanding = rgbColor.WorkingSpace.Companding;
-            Vector compandedVector = rgbColor.Vector;
+            var inverseCompanding = rgbColor.WorkingSpace.Companding;
+            var compandedVector = rgbColor.Vector;
             Vector uncompandedVector = compandedVector.Select(x => inverseCompanding.InverseCompanding(x).CropRange(0, 1)).ToList();
             return uncompandedVector;
         }
@@ -53,7 +52,7 @@ namespace Colourful.Implementation.Conversion
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected bool Equals(RGBToLinearRGBConverter other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return true;
         }
 

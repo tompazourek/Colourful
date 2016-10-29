@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -26,11 +26,11 @@ namespace Colourful
         /// </summary>
         public static double GetSaturation(double L, double C)
         {
-            double result = 100 * (C / L);
+            var result = 100*(C/L);
 
             if (double.IsNaN(result))
                 return 0;
-            
+
             return result;
         }
 
@@ -39,7 +39,7 @@ namespace Colourful
         /// </summary>
         public static double GetChroma(double saturation, double L)
         {
-            double result = L * (saturation / 100);
+            var result = L*(saturation/100);
             return result;
         }
     }

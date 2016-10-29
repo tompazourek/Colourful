@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -26,20 +26,20 @@ namespace Colourful.Implementation.RGB
     /// </remarks>
     public class LCompanding : ICompanding
     {
-        private const double Kappa = 24389d / 27d;
-        private const double Epsilon = 216d / 24389d;
+        private const double Kappa = 24389d/27d;
+        private const double Epsilon = 216d/24389d;
 
         public double InverseCompanding(double channel)
         {
-            double V = channel;
-            double v = V <= 0.08 ? 100 * V / Kappa : Math.Pow((V + 0.16) / 1.16, 3);
+            var V = channel;
+            var v = V <= 0.08 ? 100*V/Kappa : Math.Pow((V + 0.16)/1.16, 3);
             return v;
         }
 
         public double Companding(double channel)
         {
-            double v = channel;
-            double V = v <= Epsilon ? v * Kappa / 100d : Math.Pow(1.16 * v, 1 / 3d) - 0.16;
+            var v = channel;
+            var V = v <= Epsilon ? v*Kappa/100d : Math.Pow(1.16*v, 1/3d) - 0.16;
             return V;
         }
 

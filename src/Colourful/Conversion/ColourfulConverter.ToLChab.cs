@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -21,96 +21,95 @@ namespace Colourful.Conversion
     {
         public LChabColor ToLChab(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LabColor labColor = ToLab(color);
-            LChabColor result = ToLChab(labColor);
+            var labColor = ToLab(color);
+            var result = ToLChab(labColor);
             return result;
         }
 
         public LChabColor ToLChab(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // adaptation to target lab white point (LabWhitePoint)
-            LabColor adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
+            var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
             // conversion (perserving white point)
             var converter = new LabToLChabConverter();
-            LChabColor result = converter.Convert(adapted);
+            var result = converter.Convert(adapted);
             return result;
         }
 
         public LChabColor ToLChab(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
 
         public LChabColor ToLChab(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LChabColor result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         public LChabColor ToLChab<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LChabColor converted = color as LChabColor;
+            var converted = color as LChabColor;
 
             if (converted != null)
             {

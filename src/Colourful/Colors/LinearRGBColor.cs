@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -15,10 +15,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -88,7 +88,7 @@ namespace Colourful
         /// RGB color space
         /// <seealso cref="RGBWorkingSpaces"/>
         /// </summary>
-        public IRGBWorkingSpace WorkingSpace { get; private set; }
+        public IRGBWorkingSpace WorkingSpace { get; }
 
         #endregion
 
@@ -96,7 +96,7 @@ namespace Colourful
 
         public bool Equals(RGBColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
@@ -105,14 +105,14 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LinearRGBColor) obj);
+            return Equals((LinearRGBColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (base.GetHashCode() * 397) ^ WorkingSpace.GetHashCode();
+                return (base.GetHashCode()*397) ^ WorkingSpace.GetHashCode();
             }
         }
 

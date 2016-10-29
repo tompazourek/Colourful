@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -12,13 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -69,7 +69,7 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LChabColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
@@ -86,7 +86,7 @@ namespace Colourful
         /// Ranges from 0 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
-        public double L { get; private set; }
+        public double L { get; }
 
         /// <summary>
         /// C* (chroma)
@@ -95,7 +95,7 @@ namespace Colourful
         /// Ranges usually from 0 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "C")]
-        public double C { get; private set; }
+        public double C { get; }
 
         /// <summary>
         /// h° (hue in degrees)
@@ -104,7 +104,7 @@ namespace Colourful
         /// Ranges from 0 to 360.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
-        public double h { get; private set; }
+        public double h { get; }
 
         /// <remarks><see cref="Illuminants"/></remarks>
         public XYZColor WhitePoint { get; private set; }
@@ -112,10 +112,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { L, C, h }; }
-        }
+        public Vector Vector => new[] { L, C, h };
 
         #endregion
 
@@ -127,10 +124,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        public double Saturation
-        {
-            get { return SaturationLChFormulas.GetSaturation(L, C); }
-        }
+        public double Saturation => SaturationLChFormulas.GetSaturation(L, C);
 
         #endregion
 
@@ -138,7 +132,7 @@ namespace Colourful
 
         public bool Equals(LChabColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && C.Equals(other.C) && h.Equals(other.h);
         }
 
@@ -147,16 +141,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LChabColor) obj);
+            return Equals((LChabColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = L.GetHashCode();
-                hashCode = (hashCode * 397) ^ C.GetHashCode();
-                hashCode = (hashCode * 397) ^ h.GetHashCode();
+                var hashCode = L.GetHashCode();
+                hashCode = (hashCode*397) ^ C.GetHashCode();
+                hashCode = (hashCode*397) ^ h.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -9,14 +9,13 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -29,7 +28,7 @@ namespace Colourful.Implementation
         public static double[][] CreateEmpty(int rows, int columns)
         {
             var result = new double[rows][];
-            for (int i = 0; i < rows; i++)
+            for (var i = 0; i < rows; i++)
             {
                 result[i] = new double[columns];
             }
@@ -39,11 +38,12 @@ namespace Colourful.Implementation
         public static Matrix CreateIdentity(int size)
         {
             var result = new double[size][];
-            for (int i = 0; i < size; i++)
+            for (var i = 0; i < size; i++)
             {
                 result[i] = new double[size];
                 result[i][i] = 1;
             }
+            // ReSharper disable once CoVariantArrayConversion
             return result;
         }
 
@@ -51,11 +51,12 @@ namespace Colourful.Implementation
         {
             var size = items.Length;
             var result = new double[size][];
-            for (int i = 0; i < size; i++)
+            for (var i = 0; i < size; i++)
             {
                 result[i] = new double[size];
                 result[i][i] = items[i];
             }
+            // ReSharper disable once CoVariantArrayConversion
             return result;
         }
     }

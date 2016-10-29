@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -23,27 +23,27 @@ namespace Colourful.Conversion
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy"), SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = new xyYAndXYZConverter();
@@ -54,71 +54,70 @@ namespace Colourful.Conversion
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            xyYColor result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            xyYColor converted = color as xyYColor;
+            var converted = color as xyYColor;
 
             if (converted != null)
             {

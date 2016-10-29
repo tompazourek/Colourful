@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -22,31 +22,31 @@ namespace Colourful.Implementation.Conversion
     {
         public XYZColor Convert(xyYColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
             // ReSharper disable CompareOfFloatsByEqualityOperator
             if (input.y == 0)
                 return new XYZColor(0, 0, input.Luminance);
             // ReSharper restore CompareOfFloatsByEqualityOperator
 
-            double X = (input.x * input.Luminance) / input.y;
-            double Y = input.Luminance;
-            double Z = ((1 - input.x - input.y) * Y) / input.y;
+            var X = (input.x*input.Luminance)/input.y;
+            var Y = input.Luminance;
+            var Z = ((1 - input.x - input.y)*Y)/input.y;
 
             return new XYZColor(X, Y, Z);
         }
 
         public xyYColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException("input");
+            if (input == null) throw new ArgumentNullException(nameof(input));
 
-            double x = input.X / (input.X + input.Y + input.Z);
-            double y = input.Y / (input.X + input.Y + input.Z);
+            var x = input.X/(input.X + input.Y + input.Z);
+            var y = input.Y/(input.X + input.Y + input.Z);
 
             if (double.IsNaN(x) || double.IsNaN(y))
                 return new xyYColor(0, 0, input.Y);
 
-            double Y = input.Y;
+            var Y = input.Y;
             return new xyYColor(x, y, Y);
         }
     }

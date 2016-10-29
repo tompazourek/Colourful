@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -20,25 +20,25 @@ namespace Colourful.Conversion
     {
         public LMSColor ToLMS(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // conversion
             var converter = _cachedXYZAndLMSConverter;
@@ -48,65 +48,64 @@ namespace Colourful.Conversion
 
         public LMSColor ToLMS(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
 
         public LMSColor ToLMS(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            LMSColor result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         public LMSColor ToLMS<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            LMSColor converted = color as LMSColor;
+            var converted = color as LMSColor;
 
             if (converted != null)
             {

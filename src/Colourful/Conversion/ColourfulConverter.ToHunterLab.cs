@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -21,98 +21,97 @@ namespace Colourful.Conversion
     {
         public HunterLabColor ToHunterLab(RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
             // adaptation
-            XYZColor adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
+            var adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
                 ? ChromaticAdaptation.Transform(color, WhitePoint, TargetHunterLabWhitePoint)
                 : color;
 
             // conversion
             var converter = new XYZToHunterLabConverter(TargetHunterLabWhitePoint);
-            HunterLabColor result = converter.Convert(adapted);
+            var result = converter.Convert(adapted);
             return result;
         }
 
         public HunterLabColor ToHunterLab(xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
 
         public HunterLabColor ToHunterLab(LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            XYZColor xyzColor = ToXYZ(color);
-            HunterLabColor result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
             return result;
         }
-        
-#if (NET35)
-#else
+
+#if (DYNAMIC)
         public HunterLabColor ToHunterLab<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException("color");
+            if (color == null) throw new ArgumentNullException(nameof(color));
 
-            HunterLabColor converted = color as HunterLabColor;
+            var converted = color as HunterLabColor;
 
             if (converted != null)
             {

@@ -14,9 +14,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Colourful.Conversion;
-using Colourful.Implementation;
 using Colourful.Implementation.Conversion;
 using NUnit.Framework;
+#pragma warning disable 1574
 
 namespace Colourful.Tests
 {

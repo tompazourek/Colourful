@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -12,13 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -70,7 +70,7 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LuvColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
@@ -87,7 +87,7 @@ namespace Colourful
         /// Ranges from 0 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
-        public double L { get; private set; }
+        public double L { get; }
 
         /// <summary>
         /// u*
@@ -96,7 +96,7 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "u"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
-        public double u { get; private set; }
+        public double u { get; }
 
         /// <summary>
         /// v*
@@ -105,7 +105,7 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "v"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
-        public double v { get; private set; }
+        public double v { get; }
 
         /// <remarks><see cref="Illuminants"/></remarks>
         public XYZColor WhitePoint { get; private set; }
@@ -113,10 +113,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { L, u, v }; }
-        }
+        public Vector Vector => new[] { L, u, v };
 
         #endregion
 
@@ -124,7 +121,7 @@ namespace Colourful
 
         public bool Equals(LuvColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && u.Equals(other.u) && v.Equals(other.v);
         }
 
@@ -133,16 +130,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LuvColor) obj);
+            return Equals((LuvColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = L.GetHashCode();
-                hashCode = (hashCode * 397) ^ u.GetHashCode();
-                hashCode = (hashCode * 397) ^ v.GetHashCode();
+                var hashCode = L.GetHashCode();
+                hashCode = (hashCode*397) ^ u.GetHashCode();
+                hashCode = (hashCode*397) ^ v.GetHashCode();
                 return hashCode;
             }
         }

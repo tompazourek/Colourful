@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -12,13 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
@@ -55,7 +55,6 @@ namespace Colourful
 
         #region Channels
 
-       
         /// <summary>
         /// Long wavelengths (red) cone response (Rho)
         /// </summary>
@@ -63,7 +62,7 @@ namespace Colourful
         /// Ranges usually from -1 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
-        public double L { get; private set; }
+        public double L { get; }
 
         /// <summary>
         /// Medium wavelengths (green) cone response (Gamma)
@@ -72,7 +71,7 @@ namespace Colourful
         /// Ranges usually from -1 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "M")]
-        public double M { get; private set; }
+        public double M { get; }
 
         /// <summary>
         /// Short wavelengths (blue) cone response (Beta)
@@ -81,15 +80,12 @@ namespace Colourful
         /// Ranges usually from -1 to 1.
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "S")]
-        public double S { get; private set; }
+        public double S { get; }
 
         /// <summary>
         /// <see cref="IColorVector"/>
         /// </summary>
-        public Vector Vector
-        {
-            get { return new[] { L, M, S }; }
-        }
+        public Vector Vector => new[] { L, M, S };
 
         #endregion
 
@@ -97,7 +93,7 @@ namespace Colourful
 
         public bool Equals(LMSColor other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && M.Equals(other.M) && S.Equals(other.S);
         }
 
@@ -106,16 +102,16 @@ namespace Colourful
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((LMSColor) obj);
+            return Equals((LMSColor)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = L.GetHashCode();
-                hashCode = (hashCode * 397) ^ M.GetHashCode();
-                hashCode = (hashCode * 397) ^ S.GetHashCode();
+                var hashCode = L.GetHashCode();
+                hashCode = (hashCode*397) ^ M.GetHashCode();
+                hashCode = (hashCode*397) ^ S.GetHashCode();
                 return hashCode;
             }
         }

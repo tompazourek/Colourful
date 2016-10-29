@@ -26,7 +26,7 @@ namespace Colourful.Tests
             DoubleComparer = doubleComparer;
         }
 
-        public IComparer<double> DoubleComparer { get; private set; }
+        public IComparer<double> DoubleComparer { get; }
 
         public int Compare(IColorVector x, IColorVector y)
         {

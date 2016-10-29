@@ -1,6 +1,6 @@
 ﻿#region License
 
-// Copyright (C) Tomáš Pažourek, 2014
+// Copyright (C) Tomáš Pažourek, 2016
 // All rights reserved.
 // 
 // Distributed under MIT license as a part of project Colourful.
@@ -11,12 +11,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
-
-#if (NET40 || NET35)
+#if (!READONLYCOLLECTIONS)
 using ColorList = System.Collections.Generic.IList<Colourful.RGBColor>;
+
 #else
 using ColorList = System.Collections.Generic.IReadOnlyList<Colourful.RGBColor>;
 #endif
@@ -182,6 +182,5 @@ namespace Colourful
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly ColorList Colors = new[] { DarkSkin, LightSkin, BlueSky, Foliage, BlueFlower, BluishGreen, Orange, PurplishBlue, ModerateRed, Purple, YellowGreen, OrangeYellow, Blue, Green, Red, Yellow, Magenta, Cyan, White, Neutral8, Neutral6p5, Neutral5, Neutral3p5, Black };
-
     }
 }
