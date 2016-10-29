@@ -4,7 +4,7 @@
   "testRunner": "nunit",
 
   "dependencies": {
-    "Colourful": "1.1.2-alpha",
+    "Colourful": "1.1.2",
     "NUnit": "3.4.1",
     "dotnet-test-nunit": "3.4.0-beta-2"
   },
