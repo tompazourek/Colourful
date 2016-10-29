@@ -17,7 +17,7 @@ var summary = "Open source .NET library for working with color spaces.";
 
 // Get whether or not this is a local build
 var local = BuildSystem.IsLocalBuild;
-var versionInformational = "1.1.2-alpha"; // used for NuGet package version as well
+var versionInformational = "1.1.2"; // used for NuGet package version as well
 var buildNumber = AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number.ToString() : "0";
 var versionBuild = versionInformational + "." + buildNumber;
 
