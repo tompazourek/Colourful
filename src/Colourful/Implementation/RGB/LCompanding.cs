@@ -32,7 +32,7 @@ namespace Colourful.Implementation.RGB
         public double InverseCompanding(double channel)
         {
             var V = channel;
-            var v = V <= 0.08 ? 100*V/Kappa : Math.Pow((V + 0.16)/1.16, 3);
+            var v = V <= 0.08 ? 100*V/Kappa : MathUtils.Pow3((V + 0.16)/1.16);
             return v;
         }
 

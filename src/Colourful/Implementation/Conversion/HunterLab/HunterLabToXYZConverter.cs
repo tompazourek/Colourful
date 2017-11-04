@@ -31,7 +31,7 @@ namespace Colourful.Implementation.Conversion
             var Ka = ComputeKa(input.WhitePoint);
             var Kb = ComputeKb(input.WhitePoint);
 
-            var Y = Math.Pow(L/100d, 2)*Yn;
+            var Y = MathUtils.Pow2(L/100d)*Yn;
             var X = ((a/Ka)*Math.Sqrt(Y/Yn) + Y/Yn)*Xn;
             var Z = ((b/Kb)*Math.Sqrt(Y/Yn) - Y/Yn)*(-Zn);
 

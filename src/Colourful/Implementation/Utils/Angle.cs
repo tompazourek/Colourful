@@ -34,5 +34,11 @@ namespace Colourful.Implementation
             var rad = TwoPI*(deg/360d);
             return rad;
         }
+
+        public static double NormalizeDegree(double deg)
+        {
+            var d = deg % 360d;
+            return d >= 0 ? d : (d + 360d);
+        }
     }
 }

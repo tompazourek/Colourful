@@ -32,7 +32,7 @@ namespace Colourful.Implementation.Conversion
             var v0 = Compute_v0(input.WhitePoint);
 
             var Y = L > (CIEConstants.Kappa*CIEConstants.Epsilon)
-                ? Math.Pow((L + 16)/116, 3)
+                ? MathUtils.Pow3((L + 16)/116)
                 : (L/CIEConstants.Kappa);
 
             var a = ((52*L)/(u + 13*L*u0) - 1)/3;

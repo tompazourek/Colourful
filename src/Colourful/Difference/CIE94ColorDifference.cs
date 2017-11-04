@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Colourful.Implementation;
 
 namespace Colourful.Difference
 {
@@ -84,9 +85,9 @@ namespace Colourful.Difference
             var SC = 1 + K1*C1;
             var SH = 1 + K2*C1;
             var dE94 = Math.Sqrt(
-                Math.Pow(dL/(KL*SL), 2) +
-                Math.Pow(dC/(KC*SC), 2) +
-                dH_sq/Math.Pow(KH*SH, 2)
+                MathUtils.Pow2(dL/(KL*SL)) +
+                MathUtils.Pow2(dC/(KC*SC)) +
+                dH_sq/MathUtils.Pow2(KH*SH)
             );
             return dE94;
         }

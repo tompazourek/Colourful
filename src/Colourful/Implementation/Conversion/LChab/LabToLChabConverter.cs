@@ -28,12 +28,7 @@ namespace Colourful.Implementation.Conversion
             double L = input.L, a = input.a, b = input.b;
             var C = Math.Sqrt(a*a + b*b);
             var hRadians = Math.Atan2(b, a);
-            var hDegrees = Angle.RadianToDegree(hRadians);
-
-            if (hDegrees > 360)
-                hDegrees -= 360;
-            else if (hDegrees < 0)
-                hDegrees += 360;
+            var hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(hRadians));
 
             var output = new LChabColor(L, C, hDegrees, input.WhitePoint);
             return output;

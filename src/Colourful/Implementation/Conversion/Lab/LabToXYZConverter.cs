@@ -31,11 +31,11 @@ namespace Colourful.Implementation.Conversion
             var fx = a/500d + fy;
             var fz = fy - b/200d;
 
-            var fx3 = Math.Pow(fx, 3);
-            var fz3 = Math.Pow(fz, 3);
+            var fx3 = MathUtils.Pow3(fx);
+            var fz3 = MathUtils.Pow3(fz);
 
             var xr = fx3 > CIEConstants.Epsilon ? fx3 : (116*fx - 16)/CIEConstants.Kappa;
-            var yr = L > CIEConstants.Kappa*CIEConstants.Epsilon ? Math.Pow((L + 16)/116d, 3) : L/CIEConstants.Kappa;
+            var yr = L > CIEConstants.Kappa*CIEConstants.Epsilon ? MathUtils.Pow3((L + 16)/116d) : L/CIEConstants.Kappa;
             var zr = fz3 > CIEConstants.Epsilon ? fz3 : (116*fz - 16)/CIEConstants.Kappa;
 
             double Xr = input.WhitePoint.X, Yr = input.WhitePoint.Y, Zr = input.WhitePoint.Z;

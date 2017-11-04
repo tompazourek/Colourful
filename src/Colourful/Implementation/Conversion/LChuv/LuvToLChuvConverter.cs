@@ -28,12 +28,7 @@ namespace Colourful.Implementation.Conversion
             double L = input.L, u = input.u, v = input.v;
             var C = Math.Sqrt(u*u + v*v);
             var hRadians = Math.Atan2(v, u);
-            var hDegrees = Angle.RadianToDegree(hRadians);
-
-            if (hDegrees > 360)
-                hDegrees -= 360;
-            else if (hDegrees < 0)
-                hDegrees += 360;
+            var hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(hRadians));
 
             var output = new LChuvColor(L, C, hDegrees, input.WhitePoint);
             return output;

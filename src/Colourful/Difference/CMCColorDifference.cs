@@ -76,19 +76,14 @@ namespace Colourful.Difference
 
             var dH_pow2 = da*da + db*db - dC*dC;
             var H1_rad = Math.Atan2(b1, a1);
-            var H1 = Angle.RadianToDegree(H1_rad);
+            var H1 = Angle.NormalizeDegree(Angle.RadianToDegree(H1_rad));
 
-            if (H1 < 0)
-                H1 += 360;
-            else if (H1 > 360)
-                H1 -= 360;
-
-            var C1_pow4 = (C1*C1*C1*C1);
+            var C1_pow4 = MathUtils.Pow4(C1);
             var F = Math.Sqrt(C1_pow4/(C1_pow4 + 1900));
 
             var T = H1 >= 164 && H1 <= 345
-                ? 0.56 + Math.Abs(0.2*CosDeg(H1 + 168))
-                : 0.36 + Math.Abs(0.4*CosDeg(H1 + 35));
+                ? 0.56 + Math.Abs(0.2*MathUtils.CosDeg(H1 + 168))
+                : 0.36 + Math.Abs(0.4*MathUtils.CosDeg(H1 + 35));
 
             var SC = (0.0638*C1)/(1 + 0.0131*C1) + 0.638;
             var SL = L1 < 16
@@ -102,18 +97,6 @@ namespace Colourful.Difference
 
             var dE = Math.Sqrt(dE_1*dE_1 + dE_2*dE_2 + dE_3_pow2);
             return dE;
-        }
-
-        /// <summary>
-        /// Compute cosine of angle in degrees
-        /// </summary>
-        /// <param name="x">Given angle</param>
-        /// <returns></returns>
-        private static double CosDeg(double x)
-        {
-            var x_rad = Angle.DegreeToRadian(x);
-            var y = Math.Cos(x_rad);
-            return y;
         }
     }
 
