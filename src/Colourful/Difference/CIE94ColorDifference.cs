@@ -33,16 +33,16 @@ namespace Colourful.Difference
         private readonly double KL;
 
         /// <summary>
-        /// Construct using weighing factors for <see cref="CIE94ColorDifferenceApplication.GraphicArts"/>.
+        /// Construct using weighting factors for <see cref="CIE94ColorDifferenceApplication.GraphicArts"/>.
         /// </summary>
         public CIE94ColorDifference() : this(CIE94ColorDifferenceApplication.GraphicArts)
         {
         }
 
         /// <summary>
-        /// Construct using weighing factors for given application of color difference
+        /// Construct using weighting factors for given application of color difference
         /// </summary>
-        /// <param name="application"></param>
+        /// <param name="application">A <see cref="CIE94ColorDifferenceApplication"/> value specifying the application area. Different weighting factors are used in the computation depending on the application.</param>
         public CIE94ColorDifference(CIE94ColorDifferenceApplication application)
         {
             switch (application)
@@ -92,6 +92,9 @@ namespace Colourful.Difference
         }
     }
 
+    /// <summary>
+    /// Application area for CIE Delta-E 1994
+    /// </summary>
     public enum CIE94ColorDifferenceApplication
     {
         GraphicArts,

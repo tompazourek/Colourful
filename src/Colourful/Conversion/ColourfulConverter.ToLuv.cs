@@ -92,7 +92,7 @@ namespace Colourful.Conversion
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
 
-            // conversion (perserving white point)
+            // conversion (preserving white point)
             var converter = new LChuvToLuvConverter();
             var unadapted = converter.Convert(color);
 

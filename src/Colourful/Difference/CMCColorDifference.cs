@@ -117,6 +117,9 @@ namespace Colourful.Difference
         }
     }
 
+    /// <summary>
+    /// Weighting parameters for CMC l:c
+    /// </summary>
     public enum CMCColorDifferenceThreshold
     {
         /// <summary>

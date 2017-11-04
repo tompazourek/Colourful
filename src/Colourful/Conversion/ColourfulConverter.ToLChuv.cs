@@ -89,7 +89,7 @@ namespace Colourful.Conversion
             // adaptation to target luv white point (LuvWhitePoint)
             var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
-            // conversion (perserving white point)
+            // conversion (preserving white point)
             var converter = new LuvToLChuvConverter();
             var result = converter.Convert(adapted);
             return result;
