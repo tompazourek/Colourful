@@ -54,7 +54,7 @@ namespace Colourful.Implementation.Conversion
             if (input == null) throw new ArgumentNullException(nameof(input));
 
             var inputVector = input.Vector;
-            Vector uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).Select(x => x.CropRange(0, 1)).ToList();
+            Vector uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
             var result = new LinearRGBColor(uncompandedVector, TargetRGBWorkingSpace);
             return result;
         }

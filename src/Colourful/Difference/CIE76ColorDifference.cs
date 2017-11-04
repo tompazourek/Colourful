@@ -33,7 +33,12 @@ namespace Colourful.Difference
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
 
-            var distance = Extensions.EuclideanDistance(x.Vector, y.Vector);
+            // Euclidean distance
+            var distance = Math.Sqrt(
+                (x.L - y.L)*(x.L - y.L) +
+                (x.a - y.a)*(x.a - y.a) +
+                (x.b - y.b)*(x.b - y.b)
+            );
             return distance;
         }
     }

@@ -41,15 +41,13 @@ namespace Colourful.Implementation.Conversion
         private static RGBColor CompandVector(Vector uncompandedVector, IRGBWorkingSpace workingSpace)
         {
             var companding = workingSpace.Companding;
-            Vector compandedVector = uncompandedVector.Select(companding.Companding).ToList();
-            double R, G, B;
-            compandedVector.AssignVariables(out R, out G, out B);
-
-            R = R.CropRange(0, 1);
-            G = G.CropRange(0, 1);
-            B = B.CropRange(0, 1);
-
-            var result = new RGBColor(R, G, B, workingSpace);
+            Vector compandedVector = new[]
+            {
+                companding.Companding(uncompandedVector[0]).CropRange(0, 1),
+                companding.Companding(uncompandedVector[1]).CropRange(0, 1),
+                companding.Companding(uncompandedVector[2]).CropRange(0, 1)
+            };
+            var result = new RGBColor(compandedVector, workingSpace);
             return result;
         }
 

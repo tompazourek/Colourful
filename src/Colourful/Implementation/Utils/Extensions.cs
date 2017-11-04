@@ -48,24 +48,22 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static void AssignVariables(this Vector vector, out double component1, out double component2, out double component3)
+        public static Vector CropRange(this Vector vector, double min, double max)
         {
-            if (vector.Count != 3)
-                throw new ArgumentOutOfRangeException(nameof(vector), "Vector must have 3 components.");
+            var croppedVector = new double[vector.Count];
 
-            component1 = vector[0];
-            component2 = vector[1];
-            component3 = vector[2];
-        }
+            for (int i = 0; i < vector.Count; i++)
+            {
+                if (vector[i] < min)
+                    croppedVector[i] = min;
+                else if (vector[i] > max)
+                    croppedVector[i] = max;
+                else
+                    croppedVector[i] = vector[i];
+            }
 
-        public static double EuclideanDistance(Vector vector1, Vector vector2)
-        {
-            if (vector1.Count != vector2.Count)
-                throw new ArgumentException("Vectors are of different size.");
-
-            var sum = vector1.Select((t, i) => (t - vector2[i])*(t - vector2[i])).Sum();
-            var root = Math.Sqrt(sum);
-            return root;
+            // ReSharper disable once CoVariantArrayConversion
+            return croppedVector;
         }
 
         /// <summary>
@@ -99,9 +97,16 @@ namespace Colourful.Implementation
 
         public static Vector MultiplyBy(this Matrix matrix, Vector vector)
         {
-            Matrix vectorAsMatrix = vector.Select(x => new[] { x }).Cast<Vector>().ToArray();
-            Matrix resultAsMatrix = matrix.MultiplyBy(vectorAsMatrix);
-            Vector result = resultAsMatrix.SelectMany(x => x).ToArray();
+            if (matrix[0].Count != vector.Count)
+                throw new ArgumentOutOfRangeException(nameof(matrix), "Non-conformable matrices and vectors cannot be multiplied.");
+
+            var result = new double[matrix.Count];
+
+            for (var i = 0; i < matrix.Count; ++i) // each row of matrix
+                for (var k = 0; k < vector.Count; ++k) // each element of vector
+                    result[i] += matrix[i][k]*vector[k];
+
+            // ReSharper disable once CoVariantArrayConversion
             return result;
         }
 
