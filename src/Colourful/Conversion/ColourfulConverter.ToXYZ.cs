@@ -47,6 +47,7 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
+
             // conversion
             var converterXyz = GetLinearRGBToXYZConverter(color.WorkingSpace);
             var unadapted = converterXyz.Convert(color);

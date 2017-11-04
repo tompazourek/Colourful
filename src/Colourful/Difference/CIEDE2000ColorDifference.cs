@@ -23,7 +23,7 @@ namespace Colourful.Difference
     /// </summary>
     public class CIEDE2000ColorDifference : IColorDifference<LabColor>
     {
-        // parametric weighing factors:
+        // parametric weighting factors:
         private const double k_H = 1;
         private const double k_L = 1;
         private const double k_C = 1;
