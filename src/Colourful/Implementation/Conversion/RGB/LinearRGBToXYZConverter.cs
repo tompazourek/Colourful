@@ -52,10 +52,7 @@ namespace Colourful.Implementation.Conversion
 
             var xyz = _conversionMatrix.MultiplyBy(input.Vector);
 
-            double x, y, z;
-            xyz.AssignVariables(out x, out y, out z);
-
-            var converted = new XYZColor(x, y, z);
+            var converted = new XYZColor(xyz);
             return converted;
         }
 

@@ -39,6 +39,10 @@ namespace Colourful.Conversion
         private readonly IColorConversion<XYZColor, LMSColor> _conversionToLMS;
         private readonly IColorConversion<LMSColor, XYZColor> _conversionToXYZ;
 
+        private XYZColor _lastSourceWhitePoint;
+        private XYZColor _lastTargetWhitePoint;
+        private Matrix _cachedDiagonalMatrix;
+
         public VonKriesChromaticAdaptation() : this(new XYZAndLMSConverter())
         {
         }
@@ -78,12 +82,18 @@ namespace Colourful.Conversion
                 return sourceColor;
 
             var sourceColorLMS = _conversionToLMS.Convert(sourceColor);
-            var sourceWhitePointLMS = _conversionToLMS.Convert(sourceWhitePoint);
-            var targetWhitePointLMS = _conversionToLMS.Convert(targetWhitePoint);
 
-            var diagonalMatrix = MatrixFactory.CreateDiagonal(targetWhitePointLMS.L/sourceWhitePointLMS.L, targetWhitePointLMS.M/sourceWhitePointLMS.M, targetWhitePointLMS.S/sourceWhitePointLMS.S);
+            if (sourceWhitePoint != _lastSourceWhitePoint || targetWhitePoint != _lastTargetWhitePoint)
+            {
+                var sourceWhitePointLMS = _conversionToLMS.Convert(sourceWhitePoint);
+                var targetWhitePointLMS = _conversionToLMS.Convert(targetWhitePoint);
 
-            var targetColorLMS = new LMSColor(diagonalMatrix.MultiplyBy(sourceColorLMS.Vector));
+                _cachedDiagonalMatrix = MatrixFactory.CreateDiagonal(targetWhitePointLMS.L/sourceWhitePointLMS.L, targetWhitePointLMS.M/sourceWhitePointLMS.M, targetWhitePointLMS.S/sourceWhitePointLMS.S);
+                _lastSourceWhitePoint = sourceWhitePoint;
+                _lastTargetWhitePoint = targetWhitePoint;
+            }
+
+            var targetColorLMS = new LMSColor(_cachedDiagonalMatrix.MultiplyBy(sourceColorLMS.Vector));
             var targetColor = _conversionToXYZ.Convert(targetColorLMS);
             return targetColor;
         }

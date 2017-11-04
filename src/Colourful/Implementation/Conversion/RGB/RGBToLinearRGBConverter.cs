@@ -41,9 +41,14 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         private static Vector UncompandVector(RGBColor rgbColor)
         {
-            var inverseCompanding = rgbColor.WorkingSpace.Companding;
+            var companding = rgbColor.WorkingSpace.Companding;
             var compandedVector = rgbColor.Vector;
-            Vector uncompandedVector = compandedVector.Select(x => inverseCompanding.InverseCompanding(x).CropRange(0, 1)).ToList();
+            Vector uncompandedVector = new[]
+            {
+                companding.InverseCompanding(compandedVector[0]).CropRange(0, 1),
+                companding.InverseCompanding(compandedVector[1]).CropRange(0, 1),
+                companding.InverseCompanding(compandedVector[2]).CropRange(0, 1)
+            };
             return uncompandedVector;
         }
 

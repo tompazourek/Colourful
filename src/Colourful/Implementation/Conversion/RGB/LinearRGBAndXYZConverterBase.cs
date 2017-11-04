@@ -37,8 +37,6 @@ namespace Colourful.Implementation.Conversion
             double xr = chromaticity.R.x, xg = chromaticity.G.x, xb = chromaticity.B.x,
                 yr = chromaticity.R.y, yg = chromaticity.G.y, yb = chromaticity.B.y;
 
-            double Sr, Sg, Sb;
-
             var Xr = xr/yr;
             const double Yr = 1;
             var Zr = (1 - xr - yr)/yr;
@@ -60,7 +58,10 @@ namespace Colourful.Implementation.Conversion
 
             var W = workingSpace.WhitePoint.Vector;
 
-            (S.MultiplyBy(W)).AssignVariables(out Sr, out Sg, out Sb);
+            var SW = S.MultiplyBy(W);
+            double Sr = SW[0];
+            double Sg = SW[1];
+            double Sb = SW[2];
 
             Matrix M = new Vector[]
             {
