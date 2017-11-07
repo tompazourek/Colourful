@@ -1,14 +1,4 @@
-﻿#region License
-
-// Copyright (C) Tomáš Pažourek, 2014
-// All rights reserved.
-// 
-// Distributed under MIT license as a part of project Colourful.
-// https://github.com/tompazourek/Colourful
-
-#endregion
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
