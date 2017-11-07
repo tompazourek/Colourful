@@ -13,7 +13,7 @@ using System;
 [assembly: AssemblyVersion("0.0.0.0")]
 [assembly: AssemblyFileVersion("0.0.0.0")]
 [assembly: AssemblyInformationalVersion("0")]
-[assembly: AssemblyCopyright("Copyright © Tomáš Pažourek, 2016")]
+[assembly: AssemblyCopyright("Copyright © Tomáš Pažourek, 2017")]
 [assembly: Guid("D11F6BE9-3DCB-45B7-A076-4D476236C3CB")]
 [assembly: CLSCompliant(true)]
 

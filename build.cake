@@ -17,7 +17,7 @@ var summary = "Open source .NET library for working with color spaces.";
 
 // Get whether or not this is a local build
 var local = BuildSystem.IsLocalBuild;
-var versionInformational = "1.1.2"; // used for NuGet package version as well
+var versionInformational = "1.2.0"; // used for NuGet package version as well
 var buildNumber = AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number.ToString() : "0";
 var versionBuild = versionInformational + "." + buildNumber;
 
@@ -28,7 +28,7 @@ var artifactsDirectory = outputDirectory + Directory("artifacts");
 var testResultsDirectory = outputDirectory + Directory("testresults");
 var solutionDirectory = Directory(".");
 var solutionFile = GetFiles("./*.sln").First();
-var projectDirectories = GetFiles(solutionDirectory.ToString() + "/**/*.xproj").Select(x => x.GetDirectory());
+var projectDirectories = GetFiles(solutionDirectory.ToString() + "/**/*.csproj").Select(x => x.GetDirectory());
 var baseBuildDirectory = sourceDirectory + Directory("Colourful/bin/");
 
 // Define files
@@ -65,7 +65,7 @@ Task("CleanProjectOutputs")
         if (!DirectoryExists(removedDirectory))
             continue;
         
-        DeleteDirectory(removedDirectory, recursive: true);
+        DeleteDirectory(removedDirectory, new DeleteDirectorySettings { Recursive = true });
     }
 });
 
@@ -76,7 +76,7 @@ Task("CleanOutputDirectory")
     if (!DirectoryExists(outputDirectory))
         return;
 
-    DeleteDirectory(outputDirectory, recursive: true);
+    DeleteDirectory(outputDirectory, new DeleteDirectorySettings { Recursive = true });
 });
 
 // Clean all relevant directories
@@ -141,7 +141,7 @@ Task("Build")
     .IsDependentOn("PreBuild")
     .Does(() => 
 {
-    DotNetCoreBuild(MakeAbsolute(File("./src/Colourful/project.json")).ToString(), new DotNetCoreBuildSettings {
+    DotNetCoreBuild(MakeAbsolute(File("./src/Colourful/Colourful.csproj")).ToString(), new DotNetCoreBuildSettings {
         Configuration = configuration
     });
 });
@@ -154,23 +154,26 @@ Task("RunUnitTests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    DotNetCoreTest(MakeAbsolute(File("./test/Colourful.Tests/project.json")).ToString(), new DotNetCoreTestSettings
+    DotNetCoreTest(MakeAbsolute(File("./test/Colourful.Tests/Colourful.Tests.csproj")).ToString(), new DotNetCoreTestSettings
     {
         Configuration = configuration,
         WorkingDirectory = testResultsDirectory.ToString()
     });
 
+    // NOTE: test results are no longer produced when using NUnit3TestAdapter
+    /*
     var testResults = testResultsDirectory.Path + "/TestResult.xml";
 
     if (AppVeyor.IsRunningOnAppVeyor)
             AppVeyor.UploadTestResults(testResults, AppVeyorTestResultsType.NUnit3);
+    */
 });
 
 Task("Package")
     .IsDependentOn("RunUnitTests")
     .Does(() =>
 {
-    DotNetCorePack(MakeAbsolute(File("./src/Colourful/project.json")).ToString(), new DotNetCorePackSettings
+    DotNetCorePack(MakeAbsolute(File("./src/Colourful/Colourful.csproj")).ToString(), new DotNetCorePackSettings
     {
         Configuration = configuration,
         OutputDirectory = artifactsDirectory.ToString()

@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>1.2.0</VersionPrefix>
+    <TargetFrameworks>net46;net40;net45;netstandard1.1;netstandard1.6</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS1591;CS1573</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Colourful</AssemblyName>
+    <PackageId>Colourful</PackageId>
+    <PackageTags>color;space;sRGB;Adobe RGB;delta-e;lab;luv;xyz;cielab;cieluv;ciexyz;cct;chromatic adaptation;conversion;difference;convert</PackageTags>
+    <PackageReleaseNotes>1.2.0:
+
+- Removed .NET 3.5 support (lowest is .NET Standard 1.1).
+- Performance optimizations.
+
+1.1.2:
+
+- Converted to .NET Core library, changing supported targets.
+
+1.1.1:
+
+- Fixed issue with CMC color difference returning wrong results sometimes: 90a3ff8
+
+1.1.0:
+
+- Added overloads to each ColourfulConverter to allow conversion from an aribtrary IColorVector instance.
+- Built as Portable Class Library (PCL) - new solution structure and build system.
+
+1.0.0:
+
+- Initial release</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_64.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/tompazourek/Colourful</RepositoryUrl>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.1' ">1.6.0</NetStandardImplicitPackageVersion>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.0</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
+    <PackageReference Include="Microsoft.CSharp" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+    <PackageReference Include="Microsoft.CSharp" Version="4.0.1" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <DefineConstants>$(DefineConstants);NET40;DRAWING;DYNAMIC</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <DefineConstants>$(DefineConstants);NET45;DRAWING;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <DefineConstants>$(DefineConstants);NET46;DRAWING;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
+    <DefineConstants>$(DefineConstants);NETSTANDARD11</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+    <DefineConstants>$(DefineConstants);NETSTANDARD16;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+  </PropertyGroup>
+
+</Project>

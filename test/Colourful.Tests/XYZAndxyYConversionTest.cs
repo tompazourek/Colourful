@@ -75,7 +75,7 @@ namespace Colourful.Tests
         }
 
         
-#if (!NET35)
+#if (DYNAMIC)
 
         [Test]
         [TestCaseSource(nameof(TestData))]
