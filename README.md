@@ -1,7 +1,7 @@
 ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_32.png) Colourful .NET
 ==============
 
-[![Build status](https://ci.appveyor.com/api/projects/status/xegjq1k7ixfrf157)](https://ci.appveyor.com/project/tompazourek/colourful)
+[![Build status](https://ci.appveyor.com/api/projects/status/xegjq1k7ixfrf157?svg=true)](https://ci.appveyor.com/project/tompazourek/colourful)
 
 *Open source .NET library for working with color spaces.*
 
