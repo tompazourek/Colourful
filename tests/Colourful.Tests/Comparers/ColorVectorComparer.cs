@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace Colourful.Tests
 {
     /// <summary>
     /// Compares two color vectors
     /// </summary>
-    public class ColorVectorComparer : IComparer<IColorVector>
+    public class ColorVectorComparer : IComparer<IColorVector>, IEqualityComparer<IColorVector>
     {
         public ColorVectorComparer(IComparer<double> doubleComparer)
         {
@@ -20,9 +18,13 @@ namespace Colourful.Tests
 
         public int Compare(IColorVector x, IColorVector y)
         {
-            IEnumerable<int> compared = x.Vector.Zip(y.Vector, DoubleComparer.Compare);
-            int result = compared.FirstOrDefault(a => a != 0);
+            var compared = x.Vector.Zip(y.Vector, DoubleComparer.Compare);
+            var result = compared.FirstOrDefault(a => a != 0);
             return result;
         }
+
+        public bool Equals(IColorVector x, IColorVector y) => Compare(x, y) == 0;
+
+        public int GetHashCode(IColorVector obj) => throw new NotSupportedException();
     }
 }

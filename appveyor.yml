@@ -1,6 +1,0 @@
-version: uninitialized (build {build})
-
-build_script:
-- cmd: powershell -NoProfile -ExecutionPolicy unrestricted -Command .\build.ps1
-
-test: off

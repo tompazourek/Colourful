@@ -1,137 +1,87 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Colourful.Conversion;
-using NUnit.Framework;
+using Xunit;
 using DataRow = Colourful.Tests.ColorCheckerCalculatorData.Row;
 
 namespace Colourful.Tests
 {
-    [TestFixture]
     public class ColorCheckerCalculatorTest
     {
-        private static readonly DataRow[] TestData = ColorCheckerCalculatorData.GetData().ToArray();
-        private readonly ColourfulConverter _converter;
+        public static readonly IEnumerable<object[]> TestData = ColorCheckerCalculatorData.GetData().Select(x => new[] { x });
 
-        public ColorCheckerCalculatorTest()
+        public ColourfulConverter Converter => new ColourfulConverter
         {
-            _converter = new ColourfulConverter
-            {
-                WhitePoint = Illuminants.C,
-                TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,
-                TargetLabWhitePoint = Illuminants.C,
-                TargetLuvWhitePoint = Illuminants.C,
-                ChromaticAdaptation = new VonKriesChromaticAdaptation()
-            };
-        }
+            WhitePoint = Illuminants.C,
+            TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB,
+            TargetLabWhitePoint = Illuminants.C,
+            TargetLuvWhitePoint = Illuminants.C,
+            ChromaticAdaptation = new VonKriesChromaticAdaptation()
+        };
 
-        private void RethrowException(AssertionException ex, DataRow row)
-        {
-            throw new AssertionException(string.Format("[{0}]\n{1}", row.Name, ex.Message), ex);
-        }
-
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_XYZ(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedXYZ = row.GetXYZColor();
-            var actualXYZ = _converter.ToXYZ(inputLab);
-            try
-            {
-                Assert.That(actualXYZ, Is.EqualTo(expectedXYZ)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.000001))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualXYZ = Converter.ToXYZ(inputLab);
+
+            Assert.Equal(actualXYZ, expectedXYZ, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
 
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_RGB(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedRGB = row.GetRGBColor();
-            var actualRGB = _converter.ToRGB(inputLab);
-            try
-            {
-                Assert.That(actualRGB, Is.EqualTo(expectedRGB)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00912))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualRGB = Converter.ToRGB(inputLab);
+            Assert.Equal(actualRGB, expectedRGB, new ColorVectorComparer(new DoubleDeltaComparer(0.00912)));
         }
 
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_xyY(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedxyY = row.GetxyYColor();
-            var actualxyY = _converter.ToxyY(inputLab);
-            try
-            {
-                Assert.That(actualxyY, Is.EqualTo(expectedxyY)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.000001))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualxyY = Converter.ToxyY(inputLab);
+
+            Assert.Equal(actualxyY, expectedxyY, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
 
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_LChab(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedLChab = row.GetLChabColor();
-            var actualLChab = _converter.ToLChab(inputLab);
-            try
-            {
-                Assert.That(actualLChab, Is.EqualTo(expectedLChab)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00017))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualLChab = Converter.ToLChab(inputLab);
+
+            Assert.Equal(actualLChab, expectedLChab, new ColorVectorComparer(new DoubleDeltaComparer(0.00017)));
         }
 
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_LChuv(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedLChuv = row.GetLChuvColor();
-            var actualLChuv = _converter.ToLChuv(inputLab);
-            try
-            {
-                Assert.That(actualLChuv, Is.EqualTo(expectedLChuv)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00022))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualLChuv = Converter.ToLChuv(inputLab);
+
+            Assert.Equal(actualLChuv, expectedLChuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00022)));
         }
 
-        [TestCaseSource(nameof(TestData))]
+        [Theory]
+        [MemberData(nameof(TestData))]
         public void Convert_Lab_to_Luv(DataRow row)
         {
             var inputLab = row.GetLabColor();
             var expectedLuv = row.GetLuvColor();
-            var actualLuv = _converter.ToLuv(inputLab);
-            try
-            {
-                Assert.That(actualLuv, Is.EqualTo(expectedLuv)
-                    .Using(new ColorVectorComparer(new DoubleDeltaComparer(0.00000105))));
-            }
-            catch (AssertionException ex)
-            {
-                RethrowException(ex, row);
-            }
+            var actualLuv = Converter.ToLuv(inputLab);
+
+            Assert.Equal(actualLuv, expectedLuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00000105)));
         }
     }
 }

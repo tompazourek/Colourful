@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Colourful.Conversion;
 using Colourful.Implementation.Conversion;
-using NUnit.Framework;
+using Xunit;
+
 #pragma warning disable 1574
 
 namespace Colourful.Tests
@@ -16,16 +13,15 @@ namespace Colourful.Tests
     /// http://www.brucelindbloom.com/index.html?ChromAdaptCalc.html
     /// http://www.brucelindbloom.com/index.html?ColorCalculator.html
     /// </summary>
-    [TestFixture]
     public class ColorConverterAdaptTest
     {
-        private static readonly IComparer<double> DoubleRoundingComparer = new DoubleRoundingComparer(4);
-        private static readonly IComparer<double> DoublePrecisionComparer = new DoublePrecisionComparer(4);
+        private static readonly IEqualityComparer<double> DoubleRoundingComparer = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoublePrecisionComparer = new DoublePrecisionComparer(4);
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(1, 1, 1, 1, 1, 1)]
-        [TestCase(0.206162, 0.260277, 0.746717, 0.220000, 0.130000, 0.780000)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(1, 1, 1, 1, 1, 1)]
+        [InlineData(0.206162, 0.260277, 0.746717, 0.220000, 0.130000, 0.780000)]
         public void Adapt_RGB_WideGamutRGB_To_sRGB(double r1, double g1, double b1, double r2, double g2, double b2)
         {
             // arrange
@@ -34,19 +30,19 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // action
-            RGBColor output = converter.Adapt(input);
+            var output = converter.Adapt(input);
 
             // assert
-            Assert.AreEqual(expectedOutput.WorkingSpace, output.WorkingSpace);
-            Assert.That(output.R, Is.EqualTo(expectedOutput.R).Using(DoubleRoundingComparer));
-            Assert.That(output.G, Is.EqualTo(expectedOutput.G).Using(DoubleRoundingComparer));
-            Assert.That(output.B, Is.EqualTo(expectedOutput.B).Using(DoubleRoundingComparer));
+            Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
+            Assert.Equal(output.R, expectedOutput.R, DoubleRoundingComparer);
+            Assert.Equal(output.G, expectedOutput.G, DoubleRoundingComparer);
+            Assert.Equal(output.B, expectedOutput.B, DoubleRoundingComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(1, 1, 1, 1, 1, 1)]
-        [TestCase(0.220000, 0.130000, 0.780000, 0.206162, 0.260277, 0.746717)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(1, 1, 1, 1, 1, 1)]
+        [InlineData(0.220000, 0.130000, 0.780000, 0.206162, 0.260277, 0.746717)]
         public void Adapt_RGB_sRGB_To_WideGamutRGB(double r1, double g1, double b1, double r2, double g2, double b2)
         {
             // arrange
@@ -55,18 +51,18 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.WideGamutRGB };
 
             // action
-            RGBColor output = converter.Adapt(input);
+            var output = converter.Adapt(input);
 
             // assert
-            Assert.AreEqual(expectedOutput.WorkingSpace, output.WorkingSpace);
-            Assert.That(output.R, Is.EqualTo(expectedOutput.R).Using(DoubleRoundingComparer));
-            Assert.That(output.G, Is.EqualTo(expectedOutput.G).Using(DoubleRoundingComparer));
-            Assert.That(output.B, Is.EqualTo(expectedOutput.B).Using(DoubleRoundingComparer));
+            Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
+            Assert.Equal(output.R, expectedOutput.R, DoubleRoundingComparer);
+            Assert.Equal(output.G, expectedOutput.G, DoubleRoundingComparer);
+            Assert.Equal(output.B, expectedOutput.B, DoubleRoundingComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(22, 33, 1, 22.269869, 32.841164, 1.633926)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(22, 33, 1, 22.269869, 32.841164, 1.633926)]
         public void Adapt_Lab_D65_To_D50(double l1, double a1, double b1, double l2, double a2, double b2)
         {
             // arrange
@@ -75,17 +71,17 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D50 };
 
             // action
-            LabColor output = converter.Adapt(input);
+            var output = converter.Adapt(input);
 
             // assert
-            Assert.That(output.L, Is.EqualTo(expectedOutput.L).Using(DoublePrecisionComparer));
-            Assert.That(output.a, Is.EqualTo(expectedOutput.a).Using(DoublePrecisionComparer));
-            Assert.That(output.b, Is.EqualTo(expectedOutput.b).Using(DoublePrecisionComparer));
+            Assert.Equal(output.L, expectedOutput.L, DoublePrecisionComparer);
+            Assert.Equal(output.a, expectedOutput.a, DoublePrecisionComparer);
+            Assert.Equal(output.b, expectedOutput.b, DoublePrecisionComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(2, 3, 4, 1.978956, 2.967544, 3.121752)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(2, 3, 4, 1.978956, 2.967544, 3.121752)]
         public void Adapt_LChab_D50_To_D65(double l1, double c1, double h1, double l2, double c2, double h2)
         {
             // arrange
@@ -94,80 +90,80 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D65 };
 
             // action
-            LChabColor output = converter.Adapt(input);
+            var output = converter.Adapt(input);
 
             // assert
-            Assert.That(output.L, Is.EqualTo(expectedOutput.L).Using(DoubleRoundingComparer));
-            Assert.That(output.C, Is.EqualTo(expectedOutput.C).Using(DoubleRoundingComparer));
-            Assert.That(output.h, Is.EqualTo(expectedOutput.h).Using(DoubleRoundingComparer));
+            Assert.Equal(output.L, expectedOutput.L, DoubleRoundingComparer);
+            Assert.Equal(output.C, expectedOutput.C, DoubleRoundingComparer);
+            Assert.Equal(output.h, expectedOutput.h, DoubleRoundingComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(0.5, 0.5, 0.5, 0.510286, 0.501489, 0.378970)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(0.5, 0.5, 0.5, 0.510286, 0.501489, 0.378970)]
         public void Adapt_XYZ_D65_To_D50_Bradford(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColourfulConverter
-                {
-                    WhitePoint = Illuminants.D50
-                };
+            {
+                WhitePoint = Illuminants.D50
+            };
 
             // action
-            XYZColor output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(input, Illuminants.D65);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(expectedOutput.X).Using(DoubleRoundingComparer));
-            Assert.That(output.Y, Is.EqualTo(expectedOutput.Y).Using(DoubleRoundingComparer));
-            Assert.That(output.Z, Is.EqualTo(expectedOutput.Z).Using(DoubleRoundingComparer));
+            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
+            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
+            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(0.5, 0.5, 0.5, 0.509591, 0.500204, 0.378942)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(0.5, 0.5, 0.5, 0.509591, 0.500204, 0.378942)]
         public void Adapt_XYZ_D65_To_D50_VonKries(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColourfulConverter
-                {
-                    ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.VonKriesHPEAdjusted),
-                    WhitePoint = Illuminants.D50
-                };
+            {
+                ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.VonKriesHPEAdjusted),
+                WhitePoint = Illuminants.D50
+            };
 
             // action
-            XYZColor output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(input, Illuminants.D65);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(expectedOutput.X).Using(DoubleRoundingComparer));
-            Assert.That(output.Y, Is.EqualTo(expectedOutput.Y).Using(DoubleRoundingComparer));
-            Assert.That(output.Z, Is.EqualTo(expectedOutput.Z).Using(DoubleRoundingComparer));
+            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
+            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
+            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
         }
 
-        [Test]
-        [TestCase(0, 0, 0, 0, 0, 0)]
-        [TestCase(0.5, 0.5, 0.5, 0.507233, 0.500000, 0.378943)]
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0)]
+        [InlineData(0.5, 0.5, 0.5, 0.507233, 0.500000, 0.378943)]
         public void Adapt_XYZ_D65_To_D50_XYZScaling(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
             var input = new XYZColor(x1, y1, z1);
             var expectedOutput = new XYZColor(x2, y2, z2);
             var converter = new ColourfulConverter
-                {
-                    ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.XYZScaling),
-                    WhitePoint = Illuminants.D50
-                };
+            {
+                ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.XYZScaling),
+                WhitePoint = Illuminants.D50
+            };
 
             // action
-            XYZColor output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(input, Illuminants.D65);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(expectedOutput.X).Using(DoubleRoundingComparer));
-            Assert.That(output.Y, Is.EqualTo(expectedOutput.Y).Using(DoubleRoundingComparer));
-            Assert.That(output.Z, Is.EqualTo(expectedOutput.Z).Using(DoubleRoundingComparer));
+            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
+            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
+            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
         }
     }
 }

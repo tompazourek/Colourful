@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Colourful.Tests
 {
     /// <summary>
     /// Compares two doubles and rounds to specific number of fractional digits.
     /// </summary>
-    public class DoubleRoundingComparer : IComparer<double>
+    public class DoubleRoundingComparer : IComparer<double>, IEqualityComparer<double>
     {
-        /// <param name="precision"><see cref="Precision"/></param>
         public DoubleRoundingComparer(int precision)
         {
             Precision = precision;
@@ -24,11 +20,15 @@ namespace Colourful.Tests
 
         public int Compare(double x, double y)
         {
-            double xp = Math.Round(x, Precision, MidpointRounding.AwayFromZero);
-            double yp = Math.Round(y, Precision, MidpointRounding.AwayFromZero);
+            var xp = Math.Round(x, Precision, MidpointRounding.AwayFromZero);
+            var yp = Math.Round(y, Precision, MidpointRounding.AwayFromZero);
 
-            int result = Comparer<double>.Default.Compare(xp, yp);
+            var result = Comparer<double>.Default.Compare(xp, yp);
             return result;
         }
+
+        public bool Equals(double x, double y) => Compare(x, y) == 0;
+
+        public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }

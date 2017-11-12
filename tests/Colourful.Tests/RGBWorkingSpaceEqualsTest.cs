@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using Colourful.Implementation.RGB;
-using NUnit.Framework;
+﻿using Colourful.Implementation.RGB;
+using Xunit;
 
 namespace Colourful.Tests
 {
     /// <summary>
     /// Tests equals on RGB working space.
     /// </summary>
-    [TestFixture]
     public class RGBWorkingSpaceEqualsTest
     {
         private class AdobeRGB1998Duplicate : IRGBWorkingSpace
@@ -23,60 +17,60 @@ namespace Colourful.Tests
             public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates => new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.2100, 0.7100), new xyChromaticityCoordinates(0.1500, 0.0600));
         }
 
-        [Test]
+        [Fact]
         public void DifferentWorkingSpace_IsNotEqual()
         {
             // arrange
-            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
-            IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
+            var x = RGBWorkingSpaces.sRGB;
+            var y = RGBWorkingSpaces.AdobeRGB1998;
 
             // act
-            bool equals = x.Equals(y);
+            var equals = x.Equals(y);
 
             // assert
-            Assert.IsFalse(equals);
+            Assert.False(equals);
         }
 
-        [Test]
+        [Fact]
         public void DifferentWorkingSpace_SameSpecifiers_IsEqual()
         {
             // arrange
             IRGBWorkingSpace x = new AdobeRGB1998Duplicate();
-            IRGBWorkingSpace y = RGBWorkingSpaces.AdobeRGB1998;
+            var y = RGBWorkingSpaces.AdobeRGB1998;
 
             // act
-            bool equals = y.Equals(x);
+            var equals = y.Equals(x);
 
             // assert
-            Assert.IsTrue(equals);
+            Assert.True(equals);
         }
 
-        [Test]
+        [Fact]
         public void SameReference_IsEqual()
         {
             // arrange
-            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
-            IRGBWorkingSpace y = x;
+            var x = RGBWorkingSpaces.sRGB;
+            var y = x;
 
             // act
-            bool equals = x.Equals(y);
+            var equals = x.Equals(y);
 
             // assert
-            Assert.IsTrue(equals);
+            Assert.True(equals);
         }
 
-        [Test]
+        [Fact]
         public void SameWorkingSpace_IsEqual()
         {
             // arrange
-            IRGBWorkingSpace x = RGBWorkingSpaces.sRGB;
-            IRGBWorkingSpace y = RGBWorkingSpaces.sRGB;
+            var x = RGBWorkingSpaces.sRGB;
+            var y = RGBWorkingSpaces.sRGB;
 
             // act
-            bool equals = x.Equals(y);
+            var equals = x.Equals(y);
 
             // assert
-            Assert.IsTrue(equals);
+            Assert.True(equals);
         }
     }
 }

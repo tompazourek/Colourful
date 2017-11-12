@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Colourful.Tests
 {
     /// <summary>
     /// Compares two doubles and takes only specific number of fractional digits into account.
     /// </summary>
-    public class DoublePrecisionComparer : IComparer<double>
+    public class DoublePrecisionComparer : IComparer<double>, IEqualityComparer<double>
     {
-        /// <param name="precision"><see cref="Precision"/></param>
         public DoublePrecisionComparer(int precision)
         {
             Precision = precision;
@@ -24,10 +20,10 @@ namespace Colourful.Tests
 
         public int Compare(double x, double y)
         {
-            double xp = FloorWithPrecision(x, Precision);
-            double yp = FloorWithPrecision(y, Precision);
+            var xp = FloorWithPrecision(x, Precision);
+            var yp = FloorWithPrecision(y, Precision);
 
-            int result = Comparer<double>.Default.Compare(xp, yp);
+            var result = Comparer<double>.Default.Compare(xp, yp);
             return result;
         }
 
@@ -39,9 +35,13 @@ namespace Colourful.Tests
         /// <returns></returns>
         private static double FloorWithPrecision(double input, int decimalPlaces)
         {
-            double power = Math.Pow(10, decimalPlaces);
-            double output = Math.Floor(input * power) / power;
+            var power = Math.Pow(10, decimalPlaces);
+            var output = Math.Floor(input * power) / power;
             return output;
         }
+
+        public bool Equals(double x, double y) => Compare(x, y) == 0;
+
+        public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }

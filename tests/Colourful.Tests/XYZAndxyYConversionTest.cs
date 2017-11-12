@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Colourful.Conversion;
-using NUnit.Framework;
+using Xunit;
 
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests <see cref="XYZColor"/>-<see cref="xyYColor"/> conversions.
+    /// Tests <see cref="XYZColor" />-<see cref="xyYColor" /> conversions.
     /// </summary>
-    [TestFixture]
     public class XYZAndxyYConversionTest
     {
-        private static readonly IComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
 
         /// <summary>
         /// Data from: http://www.brucelindbloom.com/index.html?ColorCalculator.html
         /// </summary>
-        private static readonly object[] TestData =
-            {
-                // X, Y, Z, x, y, Y
-                new object[] { 0, 0, 0, 0, 0, 0 },
-                new object[] { 0.436075, 0.222504, 0.013932, 0.648427, 0.330856, 0.222504 },
-                new object[] { 0.964220, 1.000000, 0.825210, 0.345669, 0.358496, 1.000000 },
-                new object[] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 },
-            };
+        public static readonly IEnumerable<object[]> TestData = new[]
+        {
+            // X, Y, Z, x, y, Y
+            new object[] { 0, 0, 0, 0, 0, 0 },
+            new object[] { 0.436075, 0.222504, 0.013932, 0.648427, 0.330856, 0.222504 },
+            new object[] { 0.964220, 1.000000, 0.825210, 0.345669, 0.358496, 1.000000 },
+            new object[] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 },
+        };
 
-        [Test]
-        [TestCaseSource(nameof(TestData))]
-        [TestCase(0, 0, 0, 0.538842, 0.000000, 0.000000)]
+        [Theory]
+        [MemberData(nameof(TestData))]
+        [InlineData(0, 0, 0, 0.538842, 0.000000, 0.000000)]
         public void Convert_xyY_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
@@ -38,17 +33,17 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter();
 
             // act
-            XYZColor output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(input);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(xyzX).Using(DoubleComparer));
-            Assert.That(output.Y, Is.EqualTo(xyzY).Using(DoubleComparer));
-            Assert.That(output.Z, Is.EqualTo(xyzZ).Using(DoubleComparer));
+            Assert.Equal(output.X, xyzX, DoubleComparer);
+            Assert.Equal(output.Y, xyzY, DoubleComparer);
+            Assert.Equal(output.Z, xyzZ, DoubleComparer);
         }
 
-        [Test]
-        [TestCaseSource(nameof(TestData))]
-        [TestCase(0.231809, 0, 0.077528, 0.749374, 0.000000, 0.000000)]
+        [Theory]
+        [MemberData(nameof(TestData))]
+        [InlineData(0.231809, 0, 0.077528, 0.749374, 0.000000, 0.000000)]
         public void Convert_XYZ_to_xyY(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
@@ -56,20 +51,17 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter();
 
             // act
-            xyYColor output = converter.ToxyY(input);
+            var output = converter.ToxyY(input);
 
             // assert
-            Assert.That(output.x, Is.EqualTo(x).Using(DoubleComparer));
-            Assert.That(output.y, Is.EqualTo(y).Using(DoubleComparer));
-            Assert.That(output.Luminance, Is.EqualTo(Y).Using(DoubleComparer));
+            Assert.Equal(output.x, x, DoubleComparer);
+            Assert.Equal(output.y, y, DoubleComparer);
+            Assert.Equal(output.Luminance, Y, DoubleComparer);
         }
 
-        
-#if (DYNAMIC)
-
-        [Test]
-        [TestCaseSource(nameof(TestData))]
-        [TestCase(0, 0, 0, 0.538842, 0.000000, 0.000000)]
+        [Theory]
+        [MemberData(nameof(TestData))]
+        [InlineData(0, 0, 0, 0.538842, 0.000000, 0.000000)]
         public void Convert_xyY_as_vector_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
@@ -78,16 +70,16 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter();
 
             // act
-            XYZColor output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(input);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(xyzX).Using(DoubleComparer));
-            Assert.That(output.Y, Is.EqualTo(xyzY).Using(DoubleComparer));
-            Assert.That(output.Z, Is.EqualTo(xyzZ).Using(DoubleComparer));
+            Assert.Equal(output.X, xyzX, DoubleComparer);
+            Assert.Equal(output.Y, xyzY, DoubleComparer);
+            Assert.Equal(output.Z, xyzZ, DoubleComparer);
         }
 
-        [Test]
-        [TestCase(0.538842, 0.000000, 0.000000)]
+        [Theory]
+        [InlineData(0.538842, 0.000000, 0.000000)]
         public void Convert_XYZ_as_vector_to_XYZ(double x, double y, double z)
         {
             // arrange
@@ -96,14 +88,12 @@ namespace Colourful.Tests
             var converter = new ColourfulConverter();
 
             // act
-            XYZColor output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(input);
 
             // assert
-            Assert.That(output.X, Is.EqualTo(x).Using(DoubleComparer));
-            Assert.That(output.Y, Is.EqualTo(y).Using(DoubleComparer));
-            Assert.That(output.Z, Is.EqualTo(z).Using(DoubleComparer));
+            Assert.Equal(output.X, x, DoubleComparer);
+            Assert.Equal(output.Y, y, DoubleComparer);
+            Assert.Equal(output.Z, z, DoubleComparer);
         }
-
-#endif
     }
 }

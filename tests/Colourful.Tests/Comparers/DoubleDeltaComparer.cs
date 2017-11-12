@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Colourful.Tests
 {
     /// <summary>
     /// Compares two doubles using delta difference.
     /// </summary>
-    public class DoubleDeltaComparer : IComparer<double>
+    public class DoubleDeltaComparer : IComparer<double>, IEqualityComparer<double>
     {
-        /// <param name="delta"><see cref="Delta"/></param>
         public DoubleDeltaComparer(double delta)
         {
             Delta = delta;
@@ -24,13 +20,17 @@ namespace Colourful.Tests
 
         public int Compare(double x, double y)
         {
-            double actualDifference = Math.Abs(x - y);
+            var actualDifference = Math.Abs(x - y);
 
-            int result = actualDifference > Delta
+            var result = actualDifference > Delta
                 ? Comparer<double>.Default.Compare(x, y)
                 : 0;
 
             return result;
         }
+
+        public bool Equals(double x, double y) => Compare(x, y) == 0;
+
+        public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }
