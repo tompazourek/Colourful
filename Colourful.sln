@@ -25,11 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{73E40E
 		assets\logo_64.png = assets\logo_64.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00ED2823-8292-4F10-8728-BB45BE5B26D2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{00ED2823-8292-4F10-8728-BB45BE5B26D2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colourful", "src\Colourful\Colourful.csproj", "{B9EC174E-55E6-423C-B30A-CE5FE6FA5310}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colourful.Tests", "test\Colourful.Tests\Colourful.Tests.csproj", "{0A692080-39D3-41E0-AAA0-74F2F2615C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colourful.Tests", "tests\Colourful.Tests\Colourful.Tests.csproj", "{0A692080-39D3-41E0-AAA0-74F2F2615C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
