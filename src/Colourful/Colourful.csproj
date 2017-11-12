@@ -14,7 +14,7 @@
     <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tompazourek/Colourful</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_64.png</PackageIconUrl>
-    <PackageTags>color, space, sRGB, Adobe RGB, delta-e, lab, luv, xyz, cielab, cieluv, ciexyz, cct, chromatic adaptation, conversion, difference, convert</PackageTags>
+    <PackageTags>adobe-rgb bradford c-sharp cct chromatic-adaptation chromaticity cie-lab cie-luv cie-xyy cie-xyz color-difference color-space conversion delta-e lab lms luv rgb srgb xyz</PackageTags>
     <Description>Open source .NET library for working with color spaces.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
