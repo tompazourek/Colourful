@@ -1,7 +1,9 @@
 ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_32.png) Colourful .NET
 ==============
 
-[![Build status](https://ci.appveyor.com/api/projects/status/xegjq1k7ixfrf157?svg=true)](https://ci.appveyor.com/project/tompazourek/colourful)
+[![Build status](https://img.shields.io/appveyor/ci/tompazourek/colourful.svg)](https://ci.appveyor.com/project/tompazourek/colourful)
+[![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests)
+[![NuGet downloads](https://img.shields.io/nuget/dt/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 
 *Open source .NET library for working with color spaces.*
 
