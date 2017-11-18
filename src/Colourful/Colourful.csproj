@@ -19,6 +19,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
     <PackageId>Colourful</PackageId>
+    <DocumentationFile>/bin/$(Configuration)/Colourful.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">

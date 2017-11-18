@@ -6,7 +6,7 @@ before_build:
   - dotnet restore
 
 environment:
-  base_version: '1.2.0'
+  base_version: '1.2.1'
   version_suffix: ''
 
 version: $(base_version).{build}$(version_suffix)
