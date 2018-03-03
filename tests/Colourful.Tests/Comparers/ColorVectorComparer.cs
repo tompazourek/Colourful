@@ -18,6 +18,12 @@ namespace Colourful.Tests
 
         public int Compare(IColorVector x, IColorVector y)
         {
+            if (x == null)
+                return y == null ? 0 : 1;
+
+            if (y == null)
+                return -1;
+
             var compared = x.Vector.Zip(y.Vector, DoubleComparer.Compare);
             var result = compared.FirstOrDefault(a => a != 0);
             return result;
