@@ -93,7 +93,7 @@ namespace Colourful
         public double h { get; }
 
         /// <remarks><see cref="Illuminants"/></remarks>
-        public XYZColor WhitePoint { get; private set; }
+        public XYZColor WhitePoint { get; }
 
         /// <summary>
         /// <see cref="IColorVector"/>
