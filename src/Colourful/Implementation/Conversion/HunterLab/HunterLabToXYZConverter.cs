@@ -3,12 +3,12 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="HunterLabColor"/> to <see cref="XYZColor"/>.
+    /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
     /// </summary>
     public class HunterLabToXYZConverter : XYZAndHunterLabConverterBase, IColorConversion<HunterLabColor, XYZColor>
     {
         /// <summary>
-        /// Converts from <see cref="HunterLabColor"/> to <see cref="XYZColor"/>.
+        /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
         /// </summary>
         public XYZColor Convert(HunterLabColor input)
         {
@@ -20,9 +20,9 @@ namespace Colourful.Implementation.Conversion
             var Ka = ComputeKa(input.WhitePoint);
             var Kb = ComputeKb(input.WhitePoint);
 
-            var Y = MathUtils.Pow2(L/100d)*Yn;
-            var X = ((a/Ka)*Math.Sqrt(Y/Yn) + Y/Yn)*Xn;
-            var Z = ((b/Kb)*Math.Sqrt(Y/Yn) - Y/Yn)*(-Zn);
+            var Y = MathUtils.Pow2(L / 100d) * Yn;
+            var X = (a / Ka * Math.Sqrt(Y / Yn) + Y / Yn) * Xn;
+            var Z = (b / Kb * Math.Sqrt(Y / Yn) - Y / Yn) * -Zn;
 
             var result = new XYZColor(X, Y, Z);
             return result;

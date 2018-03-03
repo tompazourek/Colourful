@@ -3,7 +3,7 @@
 namespace Colourful.Implementation.RGB
 {
     /// <summary>
-    /// Trivial implementation of <see cref="IRGBWorkingSpace"/>
+    /// Trivial implementation of <see cref="IRGBWorkingSpace" />
     /// </summary>
     public class RGBWorkingSpace : IRGBWorkingSpace
     {
@@ -46,8 +46,7 @@ namespace Colourful.Implementation.RGB
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            var workingSpace = obj as IRGBWorkingSpace;
-            if (workingSpace == null) return false;
+            if (!(obj is IRGBWorkingSpace workingSpace)) return false;
             return Equals(workingSpace);
         }
 
@@ -56,9 +55,9 @@ namespace Colourful.Implementation.RGB
         {
             unchecked
             {
-                var hashCode = (WhitePoint != null ? WhitePoint.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ ChromaticityCoordinates.GetHashCode();
-                hashCode = (hashCode*397) ^ (Companding != null ? Companding.GetHashCode() : 0);
+                var hashCode = WhitePoint != null ? WhitePoint.GetHashCode() : 0;
+                hashCode = (hashCode * 397) ^ ChromaticityCoordinates.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Companding != null ? Companding.GetHashCode() : 0);
                 return hashCode;
             }
         }

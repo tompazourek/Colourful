@@ -3,12 +3,12 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="LuvColor"/> to <see cref="XYZColor"/>.
+    /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
     /// </summary>
     public class LuvToXYZConverter : IColorConversion<LuvColor, XYZColor>
     {
         /// <summary>
-        /// Converts from <see cref="LuvColor"/> to <see cref="XYZColor"/>.
+        /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
         /// </summary>
         public XYZColor Convert(LuvColor input)
         {
@@ -20,17 +20,17 @@ namespace Colourful.Implementation.Conversion
             var u0 = Compute_u0(input.WhitePoint);
             var v0 = Compute_v0(input.WhitePoint);
 
-            var Y = L > (CIEConstants.Kappa*CIEConstants.Epsilon)
-                ? MathUtils.Pow3((L + 16)/116)
-                : (L/CIEConstants.Kappa);
+            var Y = L > CIEConstants.Kappa * CIEConstants.Epsilon
+                ? MathUtils.Pow3((L + 16) / 116)
+                : L / CIEConstants.Kappa;
 
-            var a = ((52*L)/(u + 13*L*u0) - 1)/3;
-            var b = -5*Y;
-            var c = -1/3d;
-            var d = Y*((39*L)/(v + 13*L*v0) - 5);
+            var a = (52 * L / (u + 13 * L * u0) - 1) / 3;
+            var b = -5 * Y;
+            var c = -1 / 3d;
+            var d = Y * (39 * L / (v + 13 * L * v0) - 5);
 
-            var X = (d - b)/(a - c);
-            var Z = X*a + b;
+            var X = (d - b) / (a - c);
+            var Z = X * a + b;
 
             if (double.IsNaN(X) || X < 0)
                 X = 0;
@@ -47,12 +47,12 @@ namespace Colourful.Implementation.Conversion
 
         private static double Compute_u0(XYZColor input)
         {
-            return (4*input.X)/(input.X + 15*input.Y + 3*input.Z);
+            return 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
         private static double Compute_v0(XYZColor input)
         {
-            return (9*input.Y)/(input.X + 15*input.Y + 3*input.Z);
+            return 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
         #region Overrides

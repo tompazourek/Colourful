@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -33,8 +34,10 @@ namespace Colourful
         /// <param name="r">Red (from 0 to 1)</param>
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
-        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
+        /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public LinearRGBColor(double r, double g, double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
@@ -43,23 +46,29 @@ namespace Colourful
         /// <param name="r">Red (from 0 to 1)</param>
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
-        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
+        /// <param name="workingSpace">
+        ///     <see cref="RGBWorkingSpaces" />
+        /// </param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
             WorkingSpace = workingSpace;
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
-        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
         public LinearRGBColor(Vector vector)
             : this(vector, DefaultWorkingSpace)
         {
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
-        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
+        /// <param name="workingSpace">
+        ///     <see cref="RGBWorkingSpaces" />
+        /// </param>
         public LinearRGBColor(Vector vector, IRGBWorkingSpace workingSpace)
             : base(vector)
         {
@@ -72,7 +81,7 @@ namespace Colourful
 
         /// <summary>
         /// RGB color space
-        /// <seealso cref="RGBWorkingSpaces"/>
+        /// <seealso cref="RGBWorkingSpaces" />
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; }
 
@@ -101,7 +110,7 @@ namespace Colourful
         {
             unchecked
             {
-                return (base.GetHashCode()*397) ^ WorkingSpace.GetHashCode();
+                return (base.GetHashCode() * 397) ^ WorkingSpace.GetHashCode();
             }
         }
 
@@ -125,7 +134,9 @@ namespace Colourful
         /// Creates RGB color with all channels equal
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
-        /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
+        /// <param name="workingSpace">
+        ///     <see cref="RGBWorkingSpaces" />
+        /// </param>
         public static LinearRGBColor FromGrey(double value, IRGBWorkingSpace workingSpace)
         {
             return new LinearRGBColor(value, value, value, workingSpace);
@@ -135,7 +146,7 @@ namespace Colourful
         /// Creates RGB color with all channels equal
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
-        /// <remarks>Uses <see cref="DefaultWorkingSpace"/> as working space.</remarks>
+        /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
         public static LinearRGBColor FromGrey(double value)
         {
             return FromGrey(value, DefaultWorkingSpace);

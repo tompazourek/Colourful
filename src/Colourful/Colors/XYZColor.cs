@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -22,7 +23,9 @@ namespace Colourful
         /// <param name="x">X (usually from 0 to 1)</param>
         /// <param name="y">Y (usually from 0 to 1)</param>
         /// <param name="z">Z (usually from 0 to 1)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "z")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "z")]
         public XYZColor(double x, double y, double z)
         {
             X = x;
@@ -30,7 +33,7 @@ namespace Colourful
             Z = z;
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (usually from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public XYZColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
@@ -60,7 +63,7 @@ namespace Colourful
         public double Z { get; }
 
         /// <summary>
-        /// <see cref="IColorVector"/>
+        ///     <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { X, Y, Z };
 
@@ -90,8 +93,8 @@ namespace Colourful
             unchecked
             {
                 var hashCode = X.GetHashCode();
-                hashCode = (hashCode*397) ^ Y.GetHashCode();
-                hashCode = (hashCode*397) ^ Z.GetHashCode();
+                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * 397) ^ Z.GetHashCode();
                 return hashCode;
             }
         }

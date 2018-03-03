@@ -3,12 +3,12 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="HunterLabColor"/> to <see cref="XYZColor"/>.
+    /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
     /// </summary>
     public class XYZToHunterLabConverter : XYZAndHunterLabConverterBase, IColorConversion<XYZColor, HunterLabColor>
     {
         /// <summary>
-        /// Construct with <see cref="HunterLabColor.DefaultWhitePoint"/>
+        /// Construct with <see cref="HunterLabColor.DefaultWhitePoint" />
         /// </summary>
         public XYZToHunterLabConverter()
             : this(HunterLabColor.DefaultWhitePoint)
@@ -24,12 +24,12 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Target reference white. When not set, <see cref="LabColor.DefaultWhitePoint"/> is used.
+        /// Target reference white. When not set, <see cref="LabColor.DefaultWhitePoint" /> is used.
         /// </summary>
         public XYZColor HunterLabWhitePoint { get; }
 
         /// <summary>
-        /// Converts from <see cref="HunterLabColor"/> to <see cref="XYZColor"/>.
+        /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
         /// </summary>
         public HunterLabColor Convert(XYZColor input)
         {
@@ -42,9 +42,9 @@ namespace Colourful.Implementation.Conversion
             var Ka = ComputeKa(HunterLabWhitePoint);
             var Kb = ComputeKb(HunterLabWhitePoint);
 
-            var L = 100*Math.Sqrt(Y/Yn);
-            var a = Ka*((X/Xn - Y/Yn)/Math.Sqrt(Y/Yn));
-            var b = Kb*((Y/Yn - Z/Zn)/Math.Sqrt(Y/Yn));
+            var L = 100 * Math.Sqrt(Y / Yn);
+            var a = Ka * ((X / Xn - Y / Yn) / Math.Sqrt(Y / Yn));
+            var b = Kb * ((Y / Yn - Z / Zn) / Math.Sqrt(Y / Yn));
 
             if (double.IsNaN(a))
                 a = 0;

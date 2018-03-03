@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -29,7 +30,9 @@ namespace Colourful
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="c">C* (chroma) (from 0 to 100)</param>
         /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LChabColor(double l, double c, double h) : this(l, c, h, DefaultWhitePoint)
         {
         }
@@ -37,8 +40,10 @@ namespace Colourful
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="c">C* (chroma) (from 0 to 100)</param>
         /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
-        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "c")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LChabColor(double l, double c, double h, XYZColor whitePoint)
         {
             L = l;
@@ -47,14 +52,14 @@ namespace Colourful
             WhitePoint = whitePoint;
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
-        /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
         public LChabColor(Vector vector) : this(vector, DefaultWhitePoint)
         {
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
-        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LChabColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
@@ -89,14 +94,17 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 360.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "h"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "h")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "h")]
         public double h { get; }
 
-        /// <remarks><see cref="Illuminants"/></remarks>
+        /// <remarks>
+        ///     <see cref="Illuminants" />
+        /// </remarks>
         public XYZColor WhitePoint { get; }
 
         /// <summary>
-        /// <see cref="IColorVector"/>
+        ///     <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, C, h };
 
@@ -138,8 +146,8 @@ namespace Colourful
             unchecked
             {
                 var hashCode = L.GetHashCode();
-                hashCode = (hashCode*397) ^ C.GetHashCode();
-                hashCode = (hashCode*397) ^ h.GetHashCode();
+                hashCode = (hashCode * 397) ^ C.GetHashCode();
+                hashCode = (hashCode * 397) ^ h.GetHashCode();
                 return hashCode;
             }
         }

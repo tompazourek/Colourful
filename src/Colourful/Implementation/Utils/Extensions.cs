@@ -6,6 +6,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation
@@ -38,7 +39,7 @@ namespace Colourful.Implementation
         {
             var croppedVector = new double[vector.Count];
 
-            for (int i = 0; i < vector.Count; i++)
+            for (var i = 0; i < vector.Count; i++)
             {
                 if (vector[i] < min)
                     croppedVector[i] = min;
@@ -62,21 +63,21 @@ namespace Colourful.Implementation
             if (matrix.Count != 3 || matrix[0].Count != 3)
                 throw new ArgumentOutOfRangeException(nameof(matrix), "Inversion is supported only on 3 by 3 matrices.");
 
-            var A = (matrix[1][1]*matrix[2][2] - matrix[1][2]*matrix[2][1]);
-            var D = -(matrix[0][1]*matrix[2][2] - matrix[0][2]*matrix[2][1]);
-            var G = (matrix[0][1]*matrix[1][2] - matrix[0][2]*matrix[1][1]);
-            var B = -(matrix[1][0]*matrix[2][2] - matrix[1][2]*matrix[2][0]);
-            var E = (matrix[0][0]*matrix[2][2] - matrix[0][2]*matrix[2][0]);
-            var H = -(matrix[0][0]*matrix[1][2] - matrix[0][2]*matrix[1][0]);
-            var C = (matrix[1][0]*matrix[2][1] - matrix[1][1]*matrix[2][0]);
-            var F = -(matrix[0][0]*matrix[2][1] - matrix[0][1]*matrix[2][0]);
-            var I = (matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]);
-            var det = matrix[0][0]*A + matrix[0][1]*B + matrix[0][2]*C;
+            var A = matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1];
+            var D = -(matrix[0][1] * matrix[2][2] - matrix[0][2] * matrix[2][1]);
+            var G = matrix[0][1] * matrix[1][2] - matrix[0][2] * matrix[1][1];
+            var B = -(matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0]);
+            var E = matrix[0][0] * matrix[2][2] - matrix[0][2] * matrix[2][0];
+            var H = -(matrix[0][0] * matrix[1][2] - matrix[0][2] * matrix[1][0]);
+            var C = matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0];
+            var F = -(matrix[0][0] * matrix[2][1] - matrix[0][1] * matrix[2][0]);
+            var I = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            var det = matrix[0][0] * A + matrix[0][1] * B + matrix[0][2] * C;
             Matrix result = new Vector[]
             {
-                new[] { A/det, D/det, G/det },
-                new[] { B/det, E/det, H/det },
-                new[] { C/det, F/det, I/det },
+                new[] { A / det, D / det, G / det },
+                new[] { B / det, E / det, H / det },
+                new[] { C / det, F / det, I / det },
             };
             return result;
         }
@@ -89,8 +90,8 @@ namespace Colourful.Implementation
             var result = new double[matrix.Count];
 
             for (var i = 0; i < matrix.Count; ++i) // each row of matrix
-                for (var k = 0; k < vector.Count; ++k) // each element of vector
-                    result[i] += matrix[i][k]*vector[k];
+            for (var k = 0; k < vector.Count; ++k) // each element of vector
+                result[i] += matrix[i][k] * vector[k];
 
             // ReSharper disable once CoVariantArrayConversion
             return result;
@@ -104,9 +105,9 @@ namespace Colourful.Implementation
             var result = MatrixFactory.CreateEmpty(matrix1.Count, matrix2[0].Count);
 
             for (var i = 0; i < matrix1.Count; ++i) // each row of 1
-                for (var j = 0; j < matrix2[0].Count; ++j) // each column of 2
-                    for (var k = 0; k < matrix1[0].Count; ++k)
-                        result[i][j] += matrix1[i][k]*matrix2[k][j];
+            for (var j = 0; j < matrix2[0].Count; ++j) // each column of 2
+            for (var k = 0; k < matrix1[0].Count; ++k)
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
 
             // ReSharper disable once CoVariantArrayConversion
             return result;

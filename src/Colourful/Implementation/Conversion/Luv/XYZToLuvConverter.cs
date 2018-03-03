@@ -3,12 +3,12 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="XYZColor"/> to <see cref="LuvColor"/>.
+    /// Converts from <see cref="XYZColor" /> to <see cref="LuvColor" />.
     /// </summary>
     public class XYZToLuvConverter : IColorConversion<XYZColor, LuvColor>
     {
         /// <summary>
-        /// Constructs with <see cref="LuvColor.DefaultWhitePoint"/>
+        /// Constructs with <see cref="LuvColor.DefaultWhitePoint" />
         /// </summary>
         public XYZToLuvConverter()
             : this(LuvColor.DefaultWhitePoint)
@@ -24,12 +24,12 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Target reference white. When not set, <see cref="LuvColor.DefaultWhitePoint"/> is used.
+        /// Target reference white. When not set, <see cref="LuvColor.DefaultWhitePoint" /> is used.
         /// </summary>
         public XYZColor LuvWhitePoint { get; }
 
         /// <summary>
-        /// Converts from <see cref="XYZColor"/> to <see cref="LuvColor"/>.
+        /// Converts from <see cref="XYZColor" /> to <see cref="LuvColor" />.
         /// </summary>
         public LuvColor Convert(XYZColor input)
         {
@@ -37,19 +37,19 @@ namespace Colourful.Implementation.Conversion
 
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Luv.html
 
-            var yr = input.Y/LuvWhitePoint.Y;
+            var yr = input.Y / LuvWhitePoint.Y;
             var up = Compute_up(input);
             var vp = Compute_vp(input);
             var upr = Compute_up(LuvWhitePoint);
             var vpr = Compute_vp(LuvWhitePoint);
 
-            var L = yr > CIEConstants.Epsilon ? (116*Math.Pow(yr, 1/3d) - 16) : (CIEConstants.Kappa*yr);
+            var L = yr > CIEConstants.Epsilon ? 116 * Math.Pow(yr, 1 / 3d) - 16 : CIEConstants.Kappa * yr;
 
             if (double.IsNaN(L) || L < 0)
                 L = 0;
 
-            var u = 13*L*(up - upr);
-            var v = 13*L*(vp - vpr);
+            var u = 13 * L * (up - upr);
+            var v = 13 * L * (vp - vpr);
 
             if (double.IsNaN(u))
                 u = 0;
@@ -62,12 +62,12 @@ namespace Colourful.Implementation.Conversion
 
         private static double Compute_up(XYZColor input)
         {
-            return (4*input.X)/(input.X + 15*input.Y + 3*input.Z);
+            return 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
         private static double Compute_vp(XYZColor input)
         {
-            return (9*input.Y)/(input.X + 15*input.Y + 3*input.Z);
+            return 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
         }
 
         #region Overrides

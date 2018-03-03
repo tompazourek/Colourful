@@ -6,7 +6,7 @@ namespace Colourful.Conversion
     {
         /// <summary>
         /// Performs chromatic adaptation of given XYZ color.
-        /// Target white point is <see cref="WhitePoint"/>.
+        /// Target white point is <see cref="WhitePoint" />.
         /// </summary>
         public XYZColor Adapt(XYZColor color, XYZColor sourceWhitePoint)
         {
@@ -21,7 +21,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts linear RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace"/>.
+        /// Adapts linear RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace" />.
         /// </summary>
         public LinearRGBColor Adapt(LinearRGBColor color)
         {
@@ -48,7 +48,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace"/>.
+        /// Adapts RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace" />.
         /// </summary>
         public RGBColor Adapt(RGBColor color)
         {
@@ -62,7 +62,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts Lab color from the source white point to white point set in <see cref="TargetLabWhitePoint"/>.
+        /// Adapts Lab color from the source white point to white point set in <see cref="TargetLabWhitePoint" />.
         /// </summary>
         public LabColor Adapt(LabColor color)
         {
@@ -80,7 +80,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts LChab color from the source white point to white point set in <see cref="TargetLabWhitePoint"/>.
+        /// Adapts LChab color from the source white point to white point set in <see cref="TargetLabWhitePoint" />.
         /// </summary>
         public LChabColor Adapt(LChabColor color)
         {
@@ -98,7 +98,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts Lab color from the source white point to white point set in <see cref="TargetHunterLabWhitePoint"/>.
+        /// Adapts Lab color from the source white point to white point set in <see cref="TargetHunterLabWhitePoint" />.
         /// </summary>
         public HunterLabColor Adapt(HunterLabColor color)
         {
@@ -116,7 +116,7 @@ namespace Colourful.Conversion
         }
 
         /// <summary>
-        /// Adapts Luv color from the source white point to white point set in <see cref="TargetLuvWhitePoint"/>.
+        /// Adapts Luv color from the source white point to white point set in <see cref="TargetLuvWhitePoint" />.
         /// </summary>
         public LuvColor Adapt(LuvColor color)
         {

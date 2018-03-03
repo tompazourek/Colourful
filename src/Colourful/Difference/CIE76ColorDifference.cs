@@ -20,9 +20,9 @@ namespace Colourful.Difference
 
             // Euclidean distance
             var distance = Math.Sqrt(
-                (x.L - y.L)*(x.L - y.L) +
-                (x.a - y.a)*(x.a - y.a) +
-                (x.b - y.b)*(x.b - y.b)
+                (x.L - y.L) * (x.L - y.L) +
+                (x.a - y.a) * (x.a - y.a) +
+                (x.b - y.b) * (x.b - y.b)
             );
             return distance;
         }

@@ -37,7 +37,7 @@ namespace Colourful.Implementation.RGB
         public double Companding(double channel)
         {
             var v = channel;
-            var V = Math.Pow(v, 1/Gamma);
+            var V = Math.Pow(v, 1 / Gamma);
             return V;
         }
 

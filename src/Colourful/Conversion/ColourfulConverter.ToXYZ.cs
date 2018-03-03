@@ -182,12 +182,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToXYZ(source);
-            }
+            dynamic source = color;
+
+            return ToXYZ(source);
         }
 #endif
     }

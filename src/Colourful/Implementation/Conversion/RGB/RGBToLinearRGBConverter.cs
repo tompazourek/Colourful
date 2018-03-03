@@ -7,17 +7,18 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="RGBColor"/> to <see cref="LinearRGBColor"/>.
+    /// Converts from <see cref="RGBColor" /> to <see cref="LinearRGBColor" />.
     /// </summary>
     public class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
     {
         /// <summary>
-        /// Converts from <see cref="RGBColor"/> to <see cref="LinearRGBColor"/>.
+        /// Converts from <see cref="RGBColor" /> to <see cref="LinearRGBColor" />.
         /// </summary>
         public LinearRGBColor Convert(RGBColor input)
         {
@@ -29,7 +30,7 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding"/>) to RGB vector.
+        /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding" />) to RGB vector.
         /// </summary>
         private static Vector UncompandVector(RGBColor rgbColor)
         {

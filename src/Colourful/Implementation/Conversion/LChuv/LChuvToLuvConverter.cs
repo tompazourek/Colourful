@@ -3,12 +3,12 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="LChuvColor"/> to <see cref="LuvColor"/>.
+    /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
     /// </summary>
     public class LChuvToLuvConverter : IColorConversion<LChuvColor, LuvColor>
     {
         /// <summary>
-        /// Converts from <see cref="LChuvColor"/> to <see cref="LuvColor"/>.
+        /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
         /// </summary>
         public LuvColor Convert(LChuvColor input)
         {
@@ -17,8 +17,8 @@ namespace Colourful.Implementation.Conversion
             double L = input.L, C = input.C, hDegrees = input.h;
             var hRadians = Angle.DegreeToRadian(hDegrees);
 
-            var u = C*Math.Cos(hRadians);
-            var v = C*Math.Sin(hRadians);
+            var u = C * Math.Cos(hRadians);
+            var v = C * Math.Sin(hRadians);
 
             var output = new LuvColor(L, u, v, input.WhitePoint);
             return output;

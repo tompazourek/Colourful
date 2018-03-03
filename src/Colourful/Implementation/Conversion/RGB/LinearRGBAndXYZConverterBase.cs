@@ -7,12 +7,13 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Base class for conversions between <see cref="RGBColor"/> and <see cref="XYZColor"/>.
+    /// Base class for conversions between <see cref="RGBColor" /> and <see cref="XYZColor" />.
     /// </summary>
     public abstract class LinearRGBAndXYZConverterBase
     {
@@ -27,20 +28,24 @@ namespace Colourful.Implementation.Conversion
             // for more info, see: http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
 
             var chromaticity = workingSpace.ChromaticityCoordinates;
-            double xr = chromaticity.R.x, xg = chromaticity.G.x, xb = chromaticity.B.x,
-                yr = chromaticity.R.y, yg = chromaticity.G.y, yb = chromaticity.B.y;
+            double xr = chromaticity.R.x,
+                xg = chromaticity.G.x,
+                xb = chromaticity.B.x,
+                yr = chromaticity.R.y,
+                yg = chromaticity.G.y,
+                yb = chromaticity.B.y;
 
-            var Xr = xr/yr;
+            var Xr = xr / yr;
             const double Yr = 1;
-            var Zr = (1 - xr - yr)/yr;
+            var Zr = (1 - xr - yr) / yr;
 
-            var Xg = xg/yg;
+            var Xg = xg / yg;
             const double Yg = 1;
-            var Zg = (1 - xg - yg)/yg;
+            var Zg = (1 - xg - yg) / yg;
 
-            var Xb = xb/yb;
+            var Xb = xb / yb;
             const double Yb = 1;
-            var Zb = (1 - xb - yb)/yb;
+            var Zb = (1 - xb - yb) / yb;
 
             var S = new Vector[]
             {
@@ -52,15 +57,15 @@ namespace Colourful.Implementation.Conversion
             var W = workingSpace.WhitePoint.Vector;
 
             var SW = S.MultiplyBy(W);
-            double Sr = SW[0];
-            double Sg = SW[1];
-            double Sb = SW[2];
+            var Sr = SW[0];
+            var Sg = SW[1];
+            var Sb = SW[2];
 
             Matrix M = new Vector[]
             {
-                new[] { Sr*Xr, Sg*Xg, Sb*Xb },
-                new[] { Sr*Yr, Sg*Yg, Sb*Yb },
-                new[] { Sr*Zr, Sg*Zg, Sb*Zb },
+                new[] { Sr * Xr, Sg * Xg, Sb * Xb },
+                new[] { Sr * Yr, Sg * Yg, Sb * Yb },
+                new[] { Sr * Zr, Sg * Zg, Sb * Zb },
             };
 
             return M;

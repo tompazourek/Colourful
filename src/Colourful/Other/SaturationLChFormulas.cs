@@ -1,7 +1,7 @@
 ﻿namespace Colourful
 {
     /// <summary>
-    /// Extensions useful for <see cref="LChabColor"/> and <see cref="LChuvColor"/> color spaces.
+    /// Extensions useful for <see cref="LChabColor" /> and <see cref="LChuvColor" /> color spaces.
     /// </summary>
     internal static class SaturationLChFormulas
     {
@@ -10,7 +10,7 @@
         /// </summary>
         public static double GetSaturation(double L, double C)
         {
-            var result = 100*(C/L);
+            var result = 100 * (C / L);
 
             if (double.IsNaN(result))
                 return 0;
@@ -23,7 +23,7 @@
         /// </summary>
         public static double GetChroma(double saturation, double L)
         {
-            var result = L*(saturation/100);
+            var result = L * (saturation / 100);
             return result;
         }
     }

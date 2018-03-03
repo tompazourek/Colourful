@@ -4,6 +4,7 @@ using ColorList = System.Collections.Generic.IList<Colourful.RGBColor>;
 
 #else
 using ColorList = System.Collections.Generic.IReadOnlyList<Colourful.RGBColor>;
+
 #endif
 
 namespace Colourful

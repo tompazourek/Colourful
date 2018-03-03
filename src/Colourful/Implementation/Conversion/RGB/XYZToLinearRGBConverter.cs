@@ -6,22 +6,23 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="XYZColor"/> to <see cref="LinearRGBColor"/>.
+    /// Converts from <see cref="XYZColor" /> to <see cref="LinearRGBColor" />.
     /// </summary>
     /// <remarks>
-    /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/> when not set.
+    /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace" /> when not set.
     /// </remarks>
     public class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>
     {
         private readonly Matrix _conversionMatrix;
 
         /// <summary>
-        /// Constructs with <see cref="RGBColor.DefaultWorkingSpace"/>.
+        /// Constructs with <see cref="RGBColor.DefaultWorkingSpace" />.
         /// </summary>
         public XYZToLinearRGBConverter() : this(null)
         {
@@ -37,19 +38,19 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Target RGB working space. When not set, target RGB working space is <see cref="RGBColor.DefaultWorkingSpace"/>.
+        /// Target RGB working space. When not set, target RGB working space is <see cref="RGBColor.DefaultWorkingSpace" />.
         /// </summary>
         public IRGBWorkingSpace TargetRGBWorkingSpace { get; }
 
         /// <summary>
-        /// Converts from <see cref="XYZColor"/> to <see cref="LinearRGBColor"/>.
+        /// Converts from <see cref="XYZColor" /> to <see cref="LinearRGBColor" />.
         /// </summary>
         public LinearRGBColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
 
             var inputVector = input.Vector;
-            Vector uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
+            var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
             var result = new LinearRGBColor(uncompandedVector, TargetRGBWorkingSpace);
             return result;
         }
@@ -75,7 +76,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
-            return (TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0);
+            return TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0;
         }
 
         /// <inheritdoc cref="object" />

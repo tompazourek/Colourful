@@ -3,19 +3,19 @@
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="LabColor"/> to <see cref="LChabColor"/>.
+    /// Converts from <see cref="LabColor" /> to <see cref="LChabColor" />.
     /// </summary>
     public class LabToLChabConverter : IColorConversion<LabColor, LChabColor>
     {
         /// <summary>
-        /// Converts from <see cref="LabColor"/> to <see cref="LChabColor"/>.
+        /// Converts from <see cref="LabColor" /> to <see cref="LChabColor" />.
         /// </summary>
         public LChabColor Convert(LabColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
 
             double L = input.L, a = input.a, b = input.b;
-            var C = Math.Sqrt(a*a + b*b);
+            var C = Math.Sqrt(a * a + b * b);
             var hRadians = Math.Atan2(b, a);
             var hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(hRadians));
 

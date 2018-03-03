@@ -5,6 +5,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation
@@ -18,6 +19,7 @@ namespace Colourful.Implementation
             {
                 result[i] = new double[columns];
             }
+
             return result;
         }
 
@@ -29,6 +31,7 @@ namespace Colourful.Implementation
                 result[i] = new double[size];
                 result[i][i] = 1;
             }
+
             // ReSharper disable once CoVariantArrayConversion
             return result;
         }
@@ -42,6 +45,7 @@ namespace Colourful.Implementation
                 result[i] = new double[size];
                 result[i][i] = items[i];
             }
+
             // ReSharper disable once CoVariantArrayConversion
             return result;
         }

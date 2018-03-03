@@ -1,6 +1,6 @@
 ﻿using System;
-using Colourful.Implementation;
 using System.Diagnostics.CodeAnalysis;
+using Colourful.Implementation;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -29,7 +30,7 @@ namespace Colourful
             B = b.CheckRange(0, 1);
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (range from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         internal RGBColorBase(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {
@@ -67,7 +68,7 @@ namespace Colourful
         public double B { get; }
 
         /// <summary>
-        /// <see cref="IColorVector"/>
+        ///     <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { R, G, B };
 
@@ -97,8 +98,8 @@ namespace Colourful
             unchecked
             {
                 var hashCode = R.GetHashCode();
-                hashCode = (hashCode*397) ^ G.GetHashCode();
-                hashCode = (hashCode*397) ^ B.GetHashCode();
+                hashCode = (hashCode * 397) ^ G.GetHashCode();
+                hashCode = (hashCode * 397) ^ B.GetHashCode();
                 return hashCode;
             }
         }

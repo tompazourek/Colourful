@@ -35,7 +35,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy"), SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -139,12 +140,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToxyY(source);
-            }
+            dynamic source = color;
+
+            return ToxyY(source);
         }
 #endif
     }

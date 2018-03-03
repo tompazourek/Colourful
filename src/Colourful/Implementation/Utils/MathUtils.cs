@@ -14,7 +14,7 @@ namespace Colourful.Implementation
         /// <returns>Result of the exponentiation</returns>
         public static double Pow2(double x)
         {
-            return x*x;
+            return x * x;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Colourful.Implementation
         /// <returns>Result of the exponentiation</returns>
         public static double Pow3(double x)
         {
-            return x*x*x;
+            return x * x * x;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Colourful.Implementation
         /// <returns>Result of the exponentiation</returns>
         public static double Pow4(double x)
         {
-            return (x*x)*(x*x);
+            return x * x * (x * x);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Colourful.Implementation
         /// <returns>Result of the exponentiation</returns>
         public static double Pow7(double x)
         {
-            return (x*x*x)*(x*x*x)*x;
+            return x * x * x * (x * x * x) * x;
         }
 
         /// <summary>

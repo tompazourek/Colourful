@@ -6,12 +6,13 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="LinearRGBColor"/> to <see cref="XYZColor"/>.
+    /// Converts from <see cref="LinearRGBColor" /> to <see cref="XYZColor" />.
     /// </summary>
     public class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>
     {
@@ -30,7 +31,7 @@ namespace Colourful.Implementation.Conversion
         public IRGBWorkingSpace SourceRGBWorkingSpace { get; }
 
         /// <summary>
-        /// Converts from <see cref="LinearRGBColor"/> to <see cref="XYZColor"/>.
+        /// Converts from <see cref="LinearRGBColor" /> to <see cref="XYZColor" />.
         /// </summary>
         public XYZColor Convert(LinearRGBColor input)
         {
@@ -66,7 +67,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
-            return (SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0);
+            return SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0;
         }
 
         /// <inheritdoc cref="object" />

@@ -12,14 +12,14 @@ namespace Colourful.Implementation.RGB
     /// </remarks>
     public class LCompanding : ICompanding
     {
-        private const double Kappa = 24389d/27d;
-        private const double Epsilon = 216d/24389d;
+        private const double Kappa = 24389d / 27d;
+        private const double Epsilon = 216d / 24389d;
 
         /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
-            var v = V <= 0.08 ? 100*V/Kappa : MathUtils.Pow3((V + 0.16)/1.16);
+            var v = V <= 0.08 ? 100 * V / Kappa : MathUtils.Pow3((V + 0.16) / 1.16);
             return v;
         }
 
@@ -27,7 +27,7 @@ namespace Colourful.Implementation.RGB
         public double Companding(double channel)
         {
             var v = channel;
-            var V = v <= Epsilon ? v*Kappa/100d : Math.Pow(1.16*v, 1/3d) - 0.16;
+            var V = v <= Epsilon ? v * Kappa / 100d : Math.Pow(1.16 * v, 1 / 3d) - 0.16;
             return V;
         }
 

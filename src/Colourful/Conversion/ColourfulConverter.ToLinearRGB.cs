@@ -136,12 +136,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToLinearRGB(source);
-            }
+            dynamic source = color;
+
+            return ToLinearRGB(source);
         }
 #endif
     }

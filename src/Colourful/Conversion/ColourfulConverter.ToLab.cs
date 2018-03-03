@@ -140,12 +140,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToLab(source);
-            }
+            dynamic source = color;
+
+            return ToLab(source);
         }
 #endif
     }

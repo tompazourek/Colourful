@@ -4,14 +4,16 @@ namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Chromaticity coordinates of RGB primaries.
-    /// One of the specifiers of <see cref="IRGBWorkingSpace"/>.
+    /// One of the specifiers of <see cref="IRGBWorkingSpace" />.
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
         /// <summary>
         /// Constructs coordinates
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
         {
             R = r;
@@ -48,7 +50,7 @@ namespace Colourful.Implementation.RGB
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is RGBPrimariesChromaticityCoordinates && Equals((RGBPrimariesChromaticityCoordinates)obj);
+            return obj is RGBPrimariesChromaticityCoordinates coordinates && Equals(coordinates);
         }
 
         /// <inheritdoc cref="object" />
@@ -57,8 +59,8 @@ namespace Colourful.Implementation.RGB
             unchecked
             {
                 var hashCode = R.GetHashCode();
-                hashCode = (hashCode*397) ^ G.GetHashCode();
-                hashCode = (hashCode*397) ^ B.GetHashCode();
+                hashCode = (hashCode * 397) ^ G.GetHashCode();
+                hashCode = (hashCode * 397) ^ B.GetHashCode();
                 return hashCode;
             }
         }

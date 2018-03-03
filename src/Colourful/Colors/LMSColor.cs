@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -22,7 +23,9 @@ namespace Colourful
         /// <param name="l">L (usually from -1 to 1)</param>
         /// <param name="m">M (usually from -1 to 1)</param>
         /// <param name="s">S (usually from -1 to 1)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "s")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "s")]
         public LMSColor(double l, double m, double s)
         {
             L = l;
@@ -30,7 +33,7 @@ namespace Colourful
             S = s;
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions (usually from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LMSColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
@@ -69,7 +72,7 @@ namespace Colourful
         public double S { get; }
 
         /// <summary>
-        /// <see cref="IColorVector"/>
+        ///     <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, M, S };
 
@@ -99,8 +102,8 @@ namespace Colourful
             unchecked
             {
                 var hashCode = L.GetHashCode();
-                hashCode = (hashCode*397) ^ M.GetHashCode();
-                hashCode = (hashCode*397) ^ S.GetHashCode();
+                hashCode = (hashCode * 397) ^ M.GetHashCode();
+                hashCode = (hashCode * 397) ^ S.GetHashCode();
                 return hashCode;
             }
         }

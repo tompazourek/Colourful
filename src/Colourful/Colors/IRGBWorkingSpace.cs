@@ -4,7 +4,7 @@ namespace Colourful
 {
     /// <summary>
     /// RGB working color space
-    /// </summary> 
+    /// </summary>
     public interface IRGBWorkingSpace
     {
         /// <summary>

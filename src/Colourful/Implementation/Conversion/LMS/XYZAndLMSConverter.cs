@@ -7,18 +7,19 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
-    /// Converts from <see cref="XYZColor"/> to <see cref="LMSColor"/> and back.
+    /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" /> and back.
     /// </summary>
     public class XYZAndLMSConverter : IColorConversion<XYZColor, LMSColor>, IColorConversion<LMSColor, XYZColor>
     {
         /// <summary>
         /// Default transformation matrix used, when no other is set. (Bradford)
-        /// <see cref="LMSTransformationMatrix"/>
+        /// <see cref="LMSTransformationMatrix" />
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
@@ -26,12 +27,12 @@ namespace Colourful.Implementation.Conversion
 
         /// <summary>
         /// Transformation matrix used for the conversion (definition of the cone response domain).
-        /// <see cref="LMSTransformationMatrix"/>
+        /// <see cref="LMSTransformationMatrix" />
         /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public Matrix TransformationMatrix
         {
-            get { return _transformationMatrix; }
+            get => _transformationMatrix;
             internal set
             {
                 _transformationMatrix = value;
@@ -43,13 +44,13 @@ namespace Colourful.Implementation.Conversion
         private Matrix _transformationMatrix;
 
         /// <summary>
-        /// Constructs with <see cref="DefaultTransformationMatrix"/>
+        /// Constructs with <see cref="DefaultTransformationMatrix" />
         /// </summary>
         public XYZAndLMSConverter() : this(DefaultTransformationMatrix)
         {
         }
 
-        /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix"/>), if not set <see cref="DefaultTransformationMatrix"/> will be used.</param>
+        /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />), if not set <see cref="DefaultTransformationMatrix" /> will be used.</param>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public XYZAndLMSConverter(Matrix transformationMatrix)
         {
@@ -57,7 +58,7 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Converts from <see cref="XYZColor"/> to <see cref="LMSColor"/>.
+        /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" />.
         /// </summary>
         public LMSColor Convert(XYZColor input)
         {
@@ -69,7 +70,7 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Converts from <see cref="LMSColor"/> to <see cref="XYZColor"/>.
+        /// Converts from <see cref="LMSColor" /> to <see cref="XYZColor" />.
         /// </summary>
         public XYZColor Convert(LMSColor input)
         {

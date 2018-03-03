@@ -144,12 +144,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToRGB(source);
-            }
+            dynamic source = color;
+
+            return ToRGB(source);
         }
 #endif
     }

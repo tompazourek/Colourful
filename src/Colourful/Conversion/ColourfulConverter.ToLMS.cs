@@ -127,12 +127,10 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-            else
-            {
-                dynamic source = color;
 
-                return ToLMS(source);
-            }
+            dynamic source = color;
+
+            return ToLMS(source);
         }
 #endif
     }

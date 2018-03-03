@@ -8,6 +8,7 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful
@@ -29,8 +30,10 @@ namespace Colourful
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="a">a* (usually from -100 to 100)</param>
         /// <param name="b">b* (usually from -100 to 100)</param>
-        /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LabColor(double l, double a, double b) : this(l, a, b, DefaultWhitePoint)
         {
         }
@@ -38,8 +41,10 @@ namespace Colourful
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="a">a* (usually from -100 to 100)</param>
         /// <param name="b">b* (usually from -100 to 100)</param>
-        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
         public LabColor(double l, double a, double b, XYZColor whitePoint)
         {
             L = l;
@@ -48,14 +53,14 @@ namespace Colourful
             WhitePoint = whitePoint;
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
-        /// <remarks>Uses <see cref="DefaultWhitePoint"/> as white point.</remarks>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
         public LabColor(Vector vector) : this(vector, DefaultWhitePoint)
         {
         }
 
-        /// <param name="vector"><see cref="Vector"/>, expected 3 dimensions</param>
-        /// <param name="whitePoint">Reference white (see <see cref="Illuminants"/>)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LabColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
@@ -82,7 +87,8 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// Negative values indicate green while positive values indicate magenta.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "a"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "a")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "a")]
         public double a { get; }
 
         /// <summary>
@@ -92,14 +98,17 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// Negative values indicate blue and positive values indicate yellow.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "b")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
         public double b { get; }
 
-        /// <remarks><see cref="Illuminants"/></remarks>
+        /// <remarks>
+        ///     <see cref="Illuminants" />
+        /// </remarks>
         public XYZColor WhitePoint { get; }
 
         /// <summary>
-        /// <see cref="IColorVector"/>
+        ///     <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, a, b };
 
@@ -129,8 +138,8 @@ namespace Colourful
             unchecked
             {
                 var hashCode = L.GetHashCode();
-                hashCode = (hashCode*397) ^ a.GetHashCode();
-                hashCode = (hashCode*397) ^ b.GetHashCode();
+                hashCode = (hashCode * 397) ^ a.GetHashCode();
+                hashCode = (hashCode * 397) ^ b.GetHashCode();
                 return hashCode;
             }
         }

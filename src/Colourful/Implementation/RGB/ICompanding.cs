@@ -1,9 +1,9 @@
 ﻿namespace Colourful.Implementation.RGB
 {
     /// <summary>
-    /// Pair of companding functions for <see cref="IRGBWorkingSpace"/>.
+    /// Pair of companding functions for <see cref="IRGBWorkingSpace" />.
     /// Used for conversion to XYZ and backwards.
-    /// See also: <seealso cref="IRGBWorkingSpace.Companding"/>
+    /// See also: <seealso cref="IRGBWorkingSpace.Companding" />
     /// </summary>
     public interface ICompanding
     {

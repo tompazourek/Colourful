@@ -6,19 +6,20 @@ using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList
 #else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 #endif
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Matrix used for transformation from XYZ to LMS, defining the cone response domain.
-    /// Used in <see cref="Colourful.Conversion.IChromaticAdaptation"/>
+    /// Used in <see cref="Colourful.Conversion.IChromaticAdaptation" />
     /// </summary>
     /// <remarks>
     /// Matrix data obtained from:
     /// Two New von Kries Based Chromatic Adaptation Transforms Found by Numerical Optimization
-    /// S. Bianco, R. Schettini 
-    /// DISCo, Department of Informatics, Systems and Communication, University of Milan-Bicocca, viale Sarca 336, 20126 Milan, Italy 
+    /// S. Bianco, R. Schettini
+    /// DISCo, Department of Informatics, Systems and Communication, University of Milan-Bicocca, viale Sarca 336, 20126 Milan, Italy
     /// http://www.ivl.disco.unimib.it/papers2003/CRA-CAT.pdf
     /// </remarks>
     public static class LMSTransformationMatrix
@@ -67,7 +68,7 @@ namespace Colourful.Implementation.Conversion
         };
 
         /// <summary>
-        /// Spectral sharpening and the Bradford transform 
+        /// Spectral sharpening and the Bradford transform
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]

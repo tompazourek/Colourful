@@ -21,8 +21,8 @@ namespace Colourful
         public static readonly IRGBWorkingSpace sRGB = new RGBWorkingSpace(Illuminants.D65, new sRGBCompanding(), new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.3000, 0.6000), new xyChromaticityCoordinates(0.1500, 0.0600)));
 
         /// <summary>
-        /// Simplified sRGB (uses <see cref="GammaCompanding">gamma companding</see> instead of <see cref="sRGBCompanding"/>).
-        /// See also <see cref="sRGB"/>.
+        /// Simplified sRGB (uses <see cref="GammaCompanding">gamma companding</see> instead of <see cref="sRGBCompanding" />).
+        /// See also <see cref="sRGB" />.
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")]

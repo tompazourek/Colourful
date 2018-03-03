@@ -20,7 +20,7 @@ namespace Colourful.Difference
         private readonly double KL;
 
         /// <summary>
-        /// Construct using weighting factors for <see cref="CIE94ColorDifferenceApplication.GraphicArts"/>.
+        /// Construct using weighting factors for <see cref="CIE94ColorDifferenceApplication.GraphicArts" />.
         /// </summary>
         public CIE94ColorDifference() : this(CIE94ColorDifferenceApplication.GraphicArts)
         {
@@ -29,7 +29,7 @@ namespace Colourful.Difference
         /// <summary>
         /// Construct using weighting factors for given application of color difference
         /// </summary>
-        /// <param name="application">A <see cref="CIE94ColorDifferenceApplication"/> value specifying the application area. Different weighting factors are used in the computation depending on the application.</param>
+        /// <param name="application">A <see cref="CIE94ColorDifferenceApplication" /> value specifying the application area. Different weighting factors are used in the computation depending on the application.</param>
         public CIE94ColorDifference(CIE94ColorDifferenceApplication application)
         {
             switch (application)
@@ -63,17 +63,17 @@ namespace Colourful.Difference
             var da = x.a - y.a;
             var db = x.b - y.b;
             var dL = x.L - y.L;
-            var C1 = Math.Sqrt(x.a*x.a + x.b*x.b);
-            var C2 = Math.Sqrt(y.a*y.a + y.b*y.b);
+            var C1 = Math.Sqrt(x.a * x.a + x.b * x.b);
+            var C2 = Math.Sqrt(y.a * y.a + y.b * y.b);
             var dC = C1 - C2;
-            var dH_sq = da*da + db*db - dC*dC; // dH ^ 2
+            var dH_sq = da * da + db * db - dC * dC; // dH ^ 2
             const double SL = 1;
-            var SC = 1 + K1*C1;
-            var SH = 1 + K2*C1;
+            var SC = 1 + K1 * C1;
+            var SH = 1 + K2 * C1;
             var dE94 = Math.Sqrt(
-                MathUtils.Pow2(dL/(KL*SL)) +
-                MathUtils.Pow2(dC/(KC*SC)) +
-                dH_sq/MathUtils.Pow2(KH*SH)
+                MathUtils.Pow2(dL / (KL * SL)) +
+                MathUtils.Pow2(dC / (KC * SC)) +
+                dH_sq / MathUtils.Pow2(KH * SH)
             );
             return dE94;
         }
@@ -92,6 +92,6 @@ namespace Colourful.Difference
         /// <summary>
         /// Textiles
         /// </summary>
-        Textiles,
-    };
+        Textiles
+    }
 }
