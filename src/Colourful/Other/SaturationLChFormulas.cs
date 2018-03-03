@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
-namespace Colourful
+﻿namespace Colourful
 {
     /// <summary>
     /// Extensions useful for <see cref="LChabColor"/> and <see cref="LChuvColor"/> color spaces.

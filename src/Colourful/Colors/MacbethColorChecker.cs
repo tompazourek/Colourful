@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
 #if (!READONLYCOLLECTIONS)
 using ColorList = System.Collections.Generic.IList<Colourful.RGBColor>;
 

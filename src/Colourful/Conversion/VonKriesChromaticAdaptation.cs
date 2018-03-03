@@ -1,10 +1,6 @@
 ﻿using System;
 using Colourful.Implementation;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
 using Colourful.Implementation.Conversion;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     internal static class CIEConstants
     {

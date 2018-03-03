@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
-namespace Colourful.Implementation.RGB
+﻿namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Pair of companding functions for <see cref="IRGBWorkingSpace"/>.
