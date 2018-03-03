@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-#if (!READONLYCOLLECTIONS)
+﻿#if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
 
@@ -27,8 +26,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez adjusted for D65)
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix VonKriesHPEAdjusted = new Vector[]
         {
             new[] { 0.40024, 0.7076, -0.08081 },
@@ -39,8 +36,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez for equal energy)
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix VonKriesHPE = new Vector[]
         {
             new[] { 0.3897, 0.6890, -0.0787 },
@@ -51,15 +46,11 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// XYZ scaling chromatic adaptation transform matrix
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix XYZScaling = MatrixFactory.CreateIdentity(3);
 
         /// <summary>
         /// Bradford chromatic adaptation transform matrix (used in CMCCAT97)
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix Bradford = new Vector[]
         {
             new[] { 0.8951, 0.2664, -0.1614 },
@@ -70,8 +61,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Spectral sharpening and the Bradford transform
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix BradfordSharp = new Vector[]
         {
             new[] { 1.2694, -0.0988, -0.1706 },
@@ -82,8 +71,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// CMCCAT2000 (fitted from all available color data sets)
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix CMCCAT2000 = new Vector[]
         {
             new[] { 0.7982, 0.3389, -0.1371 },
@@ -94,8 +81,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// CAT02 (optimized for minimizing CIELAB differences)
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix CAT02 = new Vector[]
         {
             new[] { 0.7328, 0.4296, -0.1624 },

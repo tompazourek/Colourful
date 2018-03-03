@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Colourful.Implementation.RGB
+﻿namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Chromaticity coordinates of RGB primaries.
@@ -11,9 +9,6 @@ namespace Colourful.Implementation.RGB
         /// <summary>
         /// Constructs coordinates
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
         {
             R = r;
@@ -24,23 +19,19 @@ namespace Colourful.Implementation.RGB
         /// <summary>
         /// Red
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
         public xyChromaticityCoordinates R { get; }
 
         /// <summary>
         /// Green
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
         public xyChromaticityCoordinates G { get; }
 
         /// <summary>
         /// Blue
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
         public xyChromaticityCoordinates B { get; }
 
         /// <inheritdoc cref="object" />
-        [SuppressMessage("ReSharper", "ImpureMethodCallOnReadonlyValueField")]
         public bool Equals(RGBPrimariesChromaticityCoordinates other)
         {
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);

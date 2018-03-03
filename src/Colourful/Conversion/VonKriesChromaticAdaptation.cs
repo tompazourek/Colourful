@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation;
 using Colourful.Implementation.Conversion;
 #if (!READONLYCOLLECTIONS)
@@ -41,7 +40,6 @@ namespace Colourful.Conversion
         /// Transformation matrix used for the conversion (definition of the cone response domain).
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public VonKriesChromaticAdaptation(Matrix transformationMatrix) : this(new XYZAndLMSConverter(transformationMatrix))
         {
         }

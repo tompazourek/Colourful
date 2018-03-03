@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Implementation.RGB
 {
@@ -11,7 +10,6 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")]
     public class sRGBCompanding : ICompanding
     {
         /// <inheritdoc />

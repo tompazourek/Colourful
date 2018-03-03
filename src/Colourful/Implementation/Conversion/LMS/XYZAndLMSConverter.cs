@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -21,15 +20,12 @@ namespace Colourful.Implementation.Conversion
         /// Default transformation matrix used, when no other is set. (Bradford)
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static readonly Matrix DefaultTransformationMatrix = LMSTransformationMatrix.Bradford;
 
         /// <summary>
         /// Transformation matrix used for the conversion (definition of the cone response domain).
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public Matrix TransformationMatrix
         {
             get => _transformationMatrix;
@@ -51,7 +47,6 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />), if not set <see cref="DefaultTransformationMatrix" /> will be used.</param>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public XYZAndLMSConverter(Matrix transformationMatrix)
         {
             TransformationMatrix = transformationMatrix;

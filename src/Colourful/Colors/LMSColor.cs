@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -23,9 +22,6 @@ namespace Colourful
         /// <param name="l">L (usually from -1 to 1)</param>
         /// <param name="m">M (usually from -1 to 1)</param>
         /// <param name="s">S (usually from -1 to 1)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "s")]
         public LMSColor(double l, double m, double s)
         {
             L = l;
@@ -34,7 +30,6 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LMSColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {
@@ -50,7 +45,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
         public double L { get; }
 
         /// <summary>
@@ -59,7 +53,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "M")]
         public double M { get; }
 
         /// <summary>
@@ -68,7 +61,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "S")]
         public double S { get; }
 
         /// <summary>

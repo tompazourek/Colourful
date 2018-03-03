@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -22,7 +21,6 @@ namespace Colourful
         /// D65 standard illuminant.
         /// Used when reference white is not specified explicitly.
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
         #region Constructor
@@ -31,9 +29,6 @@ namespace Colourful
         /// <param name="u">u* (usually from -100 to 100)</param>
         /// <param name="v">v* (usually from -100 to 100)</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v) : this(l, u, v, DefaultWhitePoint)
         {
         }
@@ -42,9 +37,6 @@ namespace Colourful
         /// <param name="u">u* (usually from -100 to 100)</param>
         /// <param name="v">v* (usually from -100 to 100)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "l")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public LuvColor(double l, double u, double v, XYZColor whitePoint)
         {
             L = l;
@@ -61,7 +53,6 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public LuvColor(Vector vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
@@ -77,7 +68,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "L")]
         public double L { get; }
 
         /// <summary>
@@ -86,8 +76,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -100 to 100.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "u")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "u")]
         public double u { get; }
 
         /// <summary>
@@ -96,8 +84,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -100 to 100.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "v")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "v")]
         public double v { get; }
 
         /// <remarks>

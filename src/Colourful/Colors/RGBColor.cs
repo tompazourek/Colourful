@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -27,7 +26,6 @@ namespace Colourful
         /// sRGB color space.
         /// Used when working space is not specified explicitly.
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBWorkingSpaces.sRGB;
 
         #endregion
@@ -38,9 +36,6 @@ namespace Colourful
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBColor(double r, double g, double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
@@ -52,9 +47,6 @@ namespace Colourful
         /// <param name="workingSpace">
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {
@@ -184,7 +176,6 @@ namespace Colourful
         /// <param name="workingSpace">
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
         public static RGBColor FromRGB8bit(byte red, byte green, byte blue, IRGBWorkingSpace workingSpace)
         {
             return new RGBColor(red / 255d, green / 255d, blue / 255d, workingSpace);
@@ -195,7 +186,6 @@ namespace Colourful
         /// Creates RGB color from 8-bit channels
         /// </summary>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
         public static RGBColor FromRGB8bit(byte red, byte green, byte blue)
         {
             return FromRGB8bit(red, green, blue, DefaultWorkingSpace);

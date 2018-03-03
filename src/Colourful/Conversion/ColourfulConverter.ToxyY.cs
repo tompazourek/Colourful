@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
@@ -9,7 +8,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -22,7 +20,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -35,8 +32,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -50,7 +45,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -63,7 +57,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -76,7 +69,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -89,7 +81,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -102,7 +93,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -115,7 +105,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -129,7 +118,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

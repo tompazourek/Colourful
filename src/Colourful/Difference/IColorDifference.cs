@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Colourful.Difference
+﻿namespace Colourful.Difference
 {
     /// <summary>
     /// Computes distance between two vectors in color space
@@ -11,8 +9,6 @@ namespace Colourful.Difference
         /// <summary>
         /// Computes distance between color x and y.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         double ComputeDifference(TColor x, TColor y);
     }
 }

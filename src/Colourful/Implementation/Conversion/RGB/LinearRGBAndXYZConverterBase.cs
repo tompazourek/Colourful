@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -20,7 +19,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes RGB/XYZ matrix
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException(nameof(workingSpace));
@@ -74,7 +72,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes XYZ/RGB matrix
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
         {
             return GetRGBToXYZMatrix(workingSpace).Inverse();

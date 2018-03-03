@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
@@ -55,7 +54,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public XYZColor ToXYZ(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

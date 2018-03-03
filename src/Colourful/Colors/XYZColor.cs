@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -23,9 +22,6 @@ namespace Colourful
         /// <param name="x">X (usually from 0 to 1)</param>
         /// <param name="y">Y (usually from 0 to 1)</param>
         /// <param name="z">Z (usually from 0 to 1)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "z")]
         public XYZColor(double x, double y, double z)
         {
             X = x;
@@ -34,7 +30,6 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public XYZColor(Vector vector)
             : this(vector[0], vector[1], vector[2])
         {
@@ -47,19 +42,16 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         public double X { get; }
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y { get; }
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Z")]
         public double Z { get; }
 
         /// <summary>

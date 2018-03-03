@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" /> and back.
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy")]
-    [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy")]
     public class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
     {
         /// <summary>

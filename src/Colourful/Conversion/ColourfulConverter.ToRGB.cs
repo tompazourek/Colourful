@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
@@ -20,7 +19,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public RGBColor ToRGB(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

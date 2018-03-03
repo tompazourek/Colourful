@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -46,7 +45,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "R")]
         public double R { get; }
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "G")]
         public double G { get; }
 
         /// <summary>
@@ -64,7 +61,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
         public double B { get; }
 
         /// <summary>

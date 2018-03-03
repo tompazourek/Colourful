@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
@@ -24,7 +23,6 @@ namespace Colourful
         /// sRGB color space.
         /// Used when working space is not specified explicitly.
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly IRGBWorkingSpace DefaultWorkingSpace = RGBWorkingSpaces.sRGB;
 
         #endregion
@@ -35,9 +33,6 @@ namespace Colourful
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public LinearRGBColor(double r, double g, double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
@@ -49,9 +44,6 @@ namespace Colourful
         /// <param name="workingSpace">
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
             : base(r, g, b)
         {

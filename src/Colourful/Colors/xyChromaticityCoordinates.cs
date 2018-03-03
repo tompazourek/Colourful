@@ -1,19 +1,14 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Colourful
 {
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xy")]
-    [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "xy")]
     public struct xyChromaticityCoordinates
     {
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public xyChromaticityCoordinates(double x, double y)
         {
             this.x = x;
@@ -26,8 +21,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "x")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         public double x { get; }
 
         /// <summary>
@@ -36,8 +29,6 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public double y { get; }
 
         /// <inheritdoc cref="object" />

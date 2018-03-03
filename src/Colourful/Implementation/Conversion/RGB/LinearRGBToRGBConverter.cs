@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -47,7 +46,6 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected bool Equals(LinearRGBToRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));

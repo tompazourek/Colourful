@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -11,8 +10,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes the Ka parameter
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Ka")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ka")]
         protected static double ComputeKa(XYZColor whitePoint)
         {
             if (whitePoint == null) throw new ArgumentNullException(nameof(whitePoint));
@@ -27,7 +24,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes the Kb parameter
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Kb")]
         protected static double ComputeKb(XYZColor whitePoint)
         {
             if (whitePoint == null) throw new ArgumentNullException(nameof(whitePoint));

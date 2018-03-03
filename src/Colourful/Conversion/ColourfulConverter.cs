@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -22,7 +21,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Default white point
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
         private Matrix _transformationMatrix;
@@ -35,7 +33,6 @@ namespace Colourful.Conversion
         /// <summary>
         /// Transformation matrix used in conversion to <see cref="LMSColor" />, also used in the default Von Kries Chromatic Adaptation method.
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public Matrix LMSTransformationMatrix
         {
             get => _transformationMatrix;

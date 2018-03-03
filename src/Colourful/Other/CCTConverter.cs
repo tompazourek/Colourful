@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation;
 
 namespace Colourful
@@ -13,7 +12,6 @@ namespace Colourful
         /// <summary>
         /// Returns chromaticity coordinates of given CCT (specified in K)
         /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyChromaticityCoordinates GetChromaticityOfCCT(double temperature)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Planckian_locus#Approximation
@@ -44,7 +42,6 @@ namespace Colourful
         /// Returns CCT (specified in K) of given chromaticity coordinates
         /// </summary>
         /// <remarks>Ranges usually from around 0 to 25000</remarks>
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public double GetCCTOfChromaticity(xyChromaticityCoordinates chromaticity)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Color_temperature#Approximation

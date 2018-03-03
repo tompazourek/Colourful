@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Colourful.Implementation;
 
 namespace Colourful.Difference
@@ -78,8 +77,6 @@ namespace Colourful.Difference
             C_prime0 = Math.Sqrt(a_prime0 * a_prime0 + b0 * b0); // eq. (6)
             C_prime1 = Math.Sqrt(a_prime1 * a_prime1 + b1 * b1);
         }
-
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private static void Calculate_h_prime(double a_prime0, double a_prime1, double b0, double b1, out double h_prime0, out double h_prime1)
         {
             // eq. (7)
@@ -91,8 +88,6 @@ namespace Colourful.Difference
             hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(hRadians));
             h_prime1 = hDegrees;
         }
-
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private static double Calculate_dh_prime(double C_prime0, double C_prime1, double h_prime0, double h_prime1)
         {
             // eq. (10)
@@ -110,8 +105,6 @@ namespace Colourful.Difference
 
             return 0;
         }
-
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private static double Calculate_h_prime_mean(double h_prime0, double h_prime1, double C_prime0, double C_prime1)
         {
             // eq. (14)
