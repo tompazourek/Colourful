@@ -11,6 +11,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class LChabToLabConverter : IColorConversion<LChabColor, LabColor>
     {
+        /// <summary>
+        /// Converts from <see cref="LChabColor"/> to <see cref="LabColor"/>.
+        /// </summary>
         public LabColor Convert(LChabColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -27,6 +30,7 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -35,16 +39,19 @@ namespace Colourful.Implementation.Conversion
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LChabToLabConverter left, LChabToLabConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LChabToLabConverter left, LChabToLabConverter right)
         {
             return !Equals(left, right);

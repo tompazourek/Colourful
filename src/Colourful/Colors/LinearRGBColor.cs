@@ -84,12 +84,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         public bool Equals(RGBColor other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -98,6 +100,7 @@ namespace Colourful
             return Equals((LinearRGBColor)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -106,11 +109,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LinearRGBColor left, LinearRGBColor right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LinearRGBColor left, LinearRGBColor right)
         {
             return !Equals(left, right);
@@ -144,6 +149,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "LinearRGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);

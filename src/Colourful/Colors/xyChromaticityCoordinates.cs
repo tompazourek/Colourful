@@ -41,17 +41,20 @@ namespace Colourful
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "y"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public double y { get; }
 
+        /// <inheritdoc cref="object" />
         public bool Equals(xyChromaticityCoordinates other)
         {
             return x.Equals(other.x) && y.Equals(other.y);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             return obj is xyChromaticityCoordinates && Equals((xyChromaticityCoordinates)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -60,11 +63,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
         {
             return left.Equals(right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
         {
             return !left.Equals(right);
@@ -72,6 +77,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "xy [x={0:0.##}, y={1:0.##}]", x, y);

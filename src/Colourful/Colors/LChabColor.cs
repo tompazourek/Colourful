@@ -120,12 +120,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         public bool Equals(LChabColor other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && C.Equals(other.C) && h.Equals(other.h);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -134,6 +136,7 @@ namespace Colourful
             return Equals((LChabColor)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -145,11 +148,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LChabColor left, LChabColor right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LChabColor left, LChabColor right)
         {
             return !Equals(left, right);
@@ -159,6 +164,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "LChab [L={0:0.##}, C={1:0.##}, h={2:0.##}]", L, C, h);

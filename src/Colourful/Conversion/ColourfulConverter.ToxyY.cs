@@ -10,6 +10,9 @@ namespace Colourful.Conversion
 {
     public partial class ColourfulConverter
     {
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(RGBColor color)
         {
@@ -20,6 +23,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LinearRGBColor color)
         {
@@ -30,6 +36,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy"), SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public xyYColor ToxyY(XYZColor color)
         {
@@ -41,6 +50,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LabColor color)
         {
@@ -51,6 +63,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChabColor color)
         {
@@ -61,6 +76,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(HunterLabColor color)
         {
@@ -71,6 +89,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LuvColor color)
         {
@@ -81,6 +102,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LChuvColor color)
         {
@@ -91,6 +115,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY(LMSColor color)
         {
@@ -102,6 +129,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Toxy")]
         public xyYColor ToxyY<T>(T color) where T : IColorVector
         {

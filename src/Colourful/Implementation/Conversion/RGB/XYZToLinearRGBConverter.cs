@@ -24,10 +24,16 @@ namespace Colourful.Implementation.Conversion
     {
         private readonly Matrix _conversionMatrix;
 
+        /// <summary>
+        /// Constructs with <see cref="RGBColor.DefaultWorkingSpace"/>.
+        /// </summary>
         public XYZToLinearRGBConverter() : this(null)
         {
         }
 
+        /// <summary>
+        /// Constructs with arbitrary working space.
+        /// </summary>
         public XYZToLinearRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace)
         {
             TargetRGBWorkingSpace = targetRGBWorkingSpace ?? RGBColor.DefaultWorkingSpace;
@@ -39,6 +45,9 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public IRGBWorkingSpace TargetRGBWorkingSpace { get; }
 
+        /// <summary>
+        /// Converts from <see cref="XYZColor"/> to <see cref="LinearRGBColor"/>.
+        /// </summary>
         public LinearRGBColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -51,12 +60,14 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         protected bool Equals(XYZToLinearRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -65,16 +76,19 @@ namespace Colourful.Implementation.Conversion
             return Equals((XYZToLinearRGBConverter)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return (TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right)
         {
             return !Equals(left, right);

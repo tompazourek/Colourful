@@ -9,6 +9,9 @@ namespace Colourful.Conversion
 {
     public partial class ColourfulConverter
     {
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -18,6 +21,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -27,6 +33,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -42,6 +51,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -51,6 +63,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -60,6 +75,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -69,6 +87,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -78,6 +99,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -87,6 +111,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -97,6 +124,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

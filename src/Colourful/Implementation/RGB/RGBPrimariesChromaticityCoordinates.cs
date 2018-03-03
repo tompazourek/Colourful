@@ -13,6 +13,9 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public struct RGBPrimariesChromaticityCoordinates
     {
+        /// <summary>
+        /// Constructs coordinates
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "b"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "g"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "r")]
         public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
         {
@@ -39,18 +42,21 @@ namespace Colourful.Implementation.RGB
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "B")]
         public xyChromaticityCoordinates B { get; }
 
+        /// <inheritdoc cref="object" />
         [SuppressMessage("ReSharper", "ImpureMethodCallOnReadonlyValueField")]
         public bool Equals(RGBPrimariesChromaticityCoordinates other)
         {
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             return obj is RGBPrimariesChromaticityCoordinates && Equals((RGBPrimariesChromaticityCoordinates)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -62,11 +68,13 @@ namespace Colourful.Implementation.RGB
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right)
         {
             return left.Equals(right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right)
         {
             return !left.Equals(right);

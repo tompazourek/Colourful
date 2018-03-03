@@ -11,11 +11,17 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class XYZToHunterLabConverter : XYZAndHunterLabConverterBase, IColorConversion<XYZColor, HunterLabColor>
     {
+        /// <summary>
+        /// Construct with <see cref="HunterLabColor.DefaultWhitePoint"/>
+        /// </summary>
         public XYZToHunterLabConverter()
             : this(HunterLabColor.DefaultWhitePoint)
         {
         }
 
+        /// <summary>
+        /// Construct with arbitrary white point
+        /// </summary>
         public XYZToHunterLabConverter(XYZColor labWhitePoint)
         {
             HunterLabWhitePoint = labWhitePoint;
@@ -26,6 +32,9 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor HunterLabWhitePoint { get; }
 
+        /// <summary>
+        /// Converts from <see cref="HunterLabColor"/> to <see cref="XYZColor"/>.
+        /// </summary>
         public HunterLabColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));

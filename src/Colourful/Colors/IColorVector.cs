@@ -19,6 +19,9 @@ namespace Colourful
     /// </summary>
     public interface IColorVector
     {
+        /// <summary>
+        /// Vector
+        /// </summary>
         Vector Vector { get; }
     }
 }

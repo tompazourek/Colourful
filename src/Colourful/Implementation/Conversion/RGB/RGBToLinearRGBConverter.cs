@@ -15,8 +15,14 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
+    /// <summary>
+    /// Converts from <see cref="RGBColor"/> to <see cref="LinearRGBColor"/>.
+    /// </summary>
     public class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
     {
+        /// <summary>
+        /// Converts from <see cref="RGBColor"/> to <see cref="LinearRGBColor"/>.
+        /// </summary>
         public LinearRGBColor Convert(RGBColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -44,6 +50,7 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected bool Equals(RGBToLinearRGBConverter other)
         {
@@ -51,6 +58,7 @@ namespace Colourful.Implementation.Conversion
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -59,16 +67,19 @@ namespace Colourful.Implementation.Conversion
             return Equals((RGBToLinearRGBConverter)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
         {
             return !Equals(left, right);

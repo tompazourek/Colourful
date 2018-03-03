@@ -109,12 +109,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         public bool Equals(LuvColor other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && u.Equals(other.u) && v.Equals(other.v);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -123,6 +125,7 @@ namespace Colourful
             return Equals((LuvColor)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -134,11 +137,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LuvColor left, LuvColor right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LuvColor left, LuvColor right)
         {
             return !Equals(left, right);
@@ -148,6 +153,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "Luv [L={0:0.##}, u={1:0.##}, v={2:0.##}]", L, u, v);

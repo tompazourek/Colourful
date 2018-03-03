@@ -88,7 +88,14 @@ namespace Colourful.Difference
     /// </summary>
     public enum CIE94ColorDifferenceApplication
     {
+        /// <summary>
+        /// Graphic arts
+        /// </summary>
         GraphicArts,
-        Textiles
+
+        /// <summary>
+        /// Textiles
+        /// </summary>
+        Textiles,
     };
 }

@@ -33,6 +33,9 @@ namespace Colourful.Conversion
         private XYZColor _lastTargetWhitePoint;
         private Matrix _cachedDiagonalMatrix;
 
+        /// <summary>
+        /// Constructs von Kries chromatic adaptation using default <see cref="XYZAndLMSConverter"/>
+        /// </summary>
         public VonKriesChromaticAdaptation() : this(new XYZAndLMSConverter())
         {
         }
@@ -50,6 +53,9 @@ namespace Colourful.Conversion
         {
         }
 
+        /// <summary>
+        /// Constructs von Kries chromatic adaptation using given converters
+        /// </summary>
         public VonKriesChromaticAdaptation(IColorConversion<XYZColor, LMSColor> conversionToLMS, IColorConversion<LMSColor, XYZColor> conversionToXYZ)
         {
             if (conversionToLMS == null) throw new ArgumentNullException(nameof(conversionToLMS));

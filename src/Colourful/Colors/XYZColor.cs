@@ -72,12 +72,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         public bool Equals(XYZColor other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -86,6 +88,7 @@ namespace Colourful
             return Equals((XYZColor)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -97,11 +100,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(XYZColor left, XYZColor right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(XYZColor left, XYZColor right)
         {
             return !Equals(left, right);
@@ -111,6 +116,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "XYZ [X={0:0.##}, Y={1:0.##}, Z={2:0.##}]", X, Y, Z);

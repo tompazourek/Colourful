@@ -21,6 +21,9 @@ namespace Colourful.Conversion
             return _lastLinearRGBToXYZConverter = new LinearRGBToXYZConverter(workingSpace);
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -34,6 +37,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -50,6 +56,9 @@ namespace Colourful.Conversion
             return adapted;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public XYZColor ToXYZ(xyYColor color)
         {
@@ -61,6 +70,9 @@ namespace Colourful.Conversion
             return converted;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -77,6 +89,9 @@ namespace Colourful.Conversion
             return adapted;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -90,6 +105,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -106,6 +124,9 @@ namespace Colourful.Conversion
             return adapted;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -122,6 +143,9 @@ namespace Colourful.Conversion
             return adapted;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -135,6 +159,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -146,6 +173,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

@@ -9,6 +9,9 @@ namespace Colourful.Conversion
 {
     public partial class ColourfulConverter
     {
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(RGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -18,6 +21,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(LinearRGBColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -27,6 +33,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -36,6 +45,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -45,6 +57,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(LabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -58,6 +73,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -67,6 +85,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -76,6 +97,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -85,6 +109,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -95,6 +122,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

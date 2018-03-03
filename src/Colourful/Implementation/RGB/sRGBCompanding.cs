@@ -18,6 +18,7 @@ namespace Colourful.Implementation.RGB
     [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "s")]
     public class sRGBCompanding : ICompanding
     {
+        /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
@@ -25,6 +26,7 @@ namespace Colourful.Implementation.RGB
             return v;
         }
 
+        /// <inheritdoc />
         public double Companding(double channel)
         {
             var v = channel;
@@ -32,6 +34,7 @@ namespace Colourful.Implementation.RGB
             return V;
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -40,16 +43,19 @@ namespace Colourful.Implementation.RGB
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(sRGBCompanding left, sRGBCompanding right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(sRGBCompanding left, sRGBCompanding right)
         {
             return !Equals(left, right);

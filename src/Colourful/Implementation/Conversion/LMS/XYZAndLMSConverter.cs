@@ -14,6 +14,9 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
+    /// <summary>
+    /// Converts from <see cref="XYZColor"/> to <see cref="LMSColor"/> and back.
+    /// </summary>
     public class XYZAndLMSConverter : IColorConversion<XYZColor, LMSColor>, IColorConversion<LMSColor, XYZColor>
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Colourful.Implementation.Conversion
         private Matrix _transformationMatrixInverse;
         private Matrix _transformationMatrix;
 
+        /// <summary>
+        /// Constructs with <see cref="DefaultTransformationMatrix"/>
+        /// </summary>
         public XYZAndLMSConverter() : this(DefaultTransformationMatrix)
         {
         }
@@ -53,6 +59,9 @@ namespace Colourful.Implementation.Conversion
             TransformationMatrix = transformationMatrix;
         }
 
+        /// <summary>
+        /// Converts from <see cref="XYZColor"/> to <see cref="LMSColor"/>.
+        /// </summary>
         public LMSColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -62,6 +71,9 @@ namespace Colourful.Implementation.Conversion
             return output;
         }
 
+        /// <summary>
+        /// Converts from <see cref="LMSColor"/> to <see cref="XYZColor"/>.
+        /// </summary>
         public XYZColor Convert(LMSColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));

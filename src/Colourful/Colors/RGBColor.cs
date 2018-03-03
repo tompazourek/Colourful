@@ -82,6 +82,7 @@ namespace Colourful
         {
         }
 
+        /// <param name="color"></param>
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         public RGBColor(Color color, IRGBWorkingSpace workingSpace)
             : base(((double)color.R)/255, ((double)color.G)/255, ((double)color.B)/255)
@@ -105,12 +106,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         public bool Equals(RGBColor other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -119,6 +122,7 @@ namespace Colourful
             return Equals((RGBColor)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -127,11 +131,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(RGBColor left, RGBColor right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(RGBColor left, RGBColor right)
         {
             return !Equals(left, right);
@@ -164,6 +170,9 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color from 8-bit channels
         /// </summary>
+        /// <param name="red"></param>
+        /// <param name="green"></param>
+        /// <param name="blue"></param>
         /// <param name="workingSpace"><see cref="RGBWorkingSpaces"/></param>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "bit")]
         public static RGBColor FromRGB8bit(byte red, byte green, byte blue, IRGBWorkingSpace workingSpace)
@@ -188,11 +197,17 @@ namespace Colourful
 
         #region Color conversions
 
+        /// <summary>
+        /// Convert to <see cref="System.Drawing.Color"/>.
+        /// </summary>
         public Color ToColor()
         {
             return this;
         }
 
+        /// <summary>
+        /// Convert to <see cref="System.Drawing.Color"/>.
+        /// </summary>
         public static implicit operator Color(RGBColor input)
         {
             if (input == null)
@@ -205,6 +220,9 @@ namespace Colourful
             return output;
         }
 
+        /// <summary>
+        /// Convert from <see cref="System.Drawing.Color"/>.
+        /// </summary>
         public static explicit operator RGBColor(Color color)
         {
             var output = new RGBColor(color);
@@ -217,6 +235,7 @@ namespace Colourful
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "RGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);

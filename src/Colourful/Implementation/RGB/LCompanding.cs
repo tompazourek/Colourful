@@ -19,6 +19,7 @@ namespace Colourful.Implementation.RGB
         private const double Kappa = 24389d/27d;
         private const double Epsilon = 216d/24389d;
 
+        /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
@@ -26,6 +27,7 @@ namespace Colourful.Implementation.RGB
             return v;
         }
 
+        /// <inheritdoc />
         public double Companding(double channel)
         {
             var v = channel;
@@ -33,6 +35,7 @@ namespace Colourful.Implementation.RGB
             return V;
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -41,16 +44,19 @@ namespace Colourful.Implementation.RGB
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LCompanding left, LCompanding right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LCompanding left, LCompanding right)
         {
             return !Equals(left, right);

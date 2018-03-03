@@ -79,12 +79,14 @@ namespace Colourful
 
         #region Equality
 
+        /// <inheritdoc cref="object" />
         protected bool Equals(RGBColorBase other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -93,6 +95,7 @@ namespace Colourful
             return Equals((RGBColorBase)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -104,11 +107,13 @@ namespace Colourful
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(RGBColorBase left, RGBColorBase right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(RGBColorBase left, RGBColorBase right)
         {
             return !Equals(left, right);

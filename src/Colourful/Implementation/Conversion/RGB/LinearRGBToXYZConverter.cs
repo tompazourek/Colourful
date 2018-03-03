@@ -33,6 +33,9 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public IRGBWorkingSpace SourceRGBWorkingSpace { get; }
 
+        /// <summary>
+        /// Converts from <see cref="LinearRGBColor"/> to <see cref="XYZColor"/>.
+        /// </summary>
         public XYZColor Convert(LinearRGBColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -48,12 +51,14 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         protected bool Equals(LinearRGBToXYZConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -62,16 +67,19 @@ namespace Colourful.Implementation.Conversion
             return Equals((LinearRGBToXYZConverter)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return (SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right)
         {
             return !Equals(left, right);

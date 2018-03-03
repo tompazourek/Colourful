@@ -16,6 +16,7 @@ namespace Colourful.Implementation.RGB
     /// </remarks>
     public class Rec2020Companding : ICompanding
     {
+        /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
@@ -23,6 +24,7 @@ namespace Colourful.Implementation.RGB
             return L;
         }
 
+        /// <inheritdoc />
         public double Companding(double channel)
         {
             var L = channel;

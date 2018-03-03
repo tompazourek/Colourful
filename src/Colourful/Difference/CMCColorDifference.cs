@@ -25,6 +25,9 @@ namespace Colourful.Difference
         /// </summary>
         private readonly double _l;
 
+        /// <summary>
+        /// Constructs with given recommended threshold parameters.
+        /// </summary>
         public CMCColorDifference(CMCColorDifferenceThreshold threshold)
         {
             switch (threshold)
@@ -42,12 +45,16 @@ namespace Colourful.Difference
             }
         }
 
+        /// <summary>
+        /// Constructs with arbitrary threshold parameters.
+        /// </summary>
         public CMCColorDifference(double lightness, double chroma)
         {
             _l = lightness;
             _c = chroma;
         }
 
+        /// <inheritdoc />
         public double ComputeDifference(LabColor x, LabColor y)
         {
             if (x == null) throw new ArgumentNullException(nameof(x));

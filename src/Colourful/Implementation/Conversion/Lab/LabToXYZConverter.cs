@@ -11,6 +11,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
     {
+        /// <summary>
+        /// Converts from <see cref="LabColor"/> to <see cref="XYZColor"/>.
+        /// </summary>
         public XYZColor Convert(LabColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -45,6 +48,7 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -53,16 +57,19 @@ namespace Colourful.Implementation.Conversion
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LabToXYZConverter left, LabToXYZConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LabToXYZConverter left, LabToXYZConverter right)
         {
             return !Equals(left, right);

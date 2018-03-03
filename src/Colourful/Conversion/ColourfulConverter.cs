@@ -22,6 +22,9 @@ namespace Colourful.Conversion
     {
         #region Attributes
 
+        /// <summary>
+        /// Default white point
+        /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
@@ -85,6 +88,9 @@ namespace Colourful.Conversion
 
         #endregion
 
+        /// <summary>
+        /// Constructs the converter and sets the defaults
+        /// </summary>
         public ColourfulConverter()
         {
             WhitePoint = DefaultWhitePoint;

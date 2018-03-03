@@ -12,13 +12,20 @@ namespace Colourful.Implementation.RGB
     /// </remarks>
     public class GammaCompanding : ICompanding
     {
+        /// <summary>
+        /// Constructs with given gamma
+        /// </summary>
         public GammaCompanding(double gamma)
         {
             Gamma = gamma;
         }
 
+        /// <summary>
+        /// Gamma
+        /// </summary>
         public double Gamma { get; }
 
+        /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
@@ -26,6 +33,7 @@ namespace Colourful.Implementation.RGB
             return v;
         }
 
+        /// <inheritdoc />
         public double Companding(double channel)
         {
             var v = channel;
@@ -33,12 +41,14 @@ namespace Colourful.Implementation.RGB
             return V;
         }
 
+        /// <inheritdoc cref="object" />
         public bool Equals(GammaCompanding other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return Gamma.Equals(other.Gamma);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -47,16 +57,19 @@ namespace Colourful.Implementation.RGB
             return Equals((GammaCompanding)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return Gamma.GetHashCode();
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(GammaCompanding left, GammaCompanding right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(GammaCompanding left, GammaCompanding right)
         {
             return !Equals(left, right);

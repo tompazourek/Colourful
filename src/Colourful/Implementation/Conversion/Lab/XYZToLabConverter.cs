@@ -11,11 +11,17 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class XYZToLabConverter : IColorConversion<XYZColor, LabColor>
     {
+        /// <summary>
+        /// Constructs with <see cref="LabColor.DefaultWhitePoint"/>
+        /// </summary>
         public XYZToLabConverter()
             : this(LabColor.DefaultWhitePoint)
         {
         }
 
+        /// <summary>
+        /// Constructs with arbitrary white point
+        /// </summary>
         public XYZToLabConverter(XYZColor labWhitePoint)
         {
             LabWhitePoint = labWhitePoint;
@@ -26,6 +32,9 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor LabWhitePoint { get; }
 
+        /// <summary>
+        /// Converts from <see cref="XYZColor"/> to <see cref="LabColor"/>.
+        /// </summary>
         public LabColor Convert(XYZColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -55,12 +64,14 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         protected bool Equals(XYZToLabConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -69,16 +80,19 @@ namespace Colourful.Implementation.Conversion
             return Equals((XYZToLabConverter)obj);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return LabWhitePoint.GetHashCode();
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(XYZToLabConverter left, XYZToLabConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(XYZToLabConverter left, XYZToLabConverter right)
         {
             return !Equals(left, right);

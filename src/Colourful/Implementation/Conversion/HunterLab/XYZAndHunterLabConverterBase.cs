@@ -7,8 +7,14 @@ using System.Text;
 
 namespace Colourful.Implementation.Conversion
 {
+    /// <summary>
+    /// Base class for converters between XYZ and Hunter Lab
+    /// </summary>
     public abstract class XYZAndHunterLabConverterBase
     {
+        /// <summary>
+        /// Computes the Ka parameter
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Ka"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ka")]
         protected static double ComputeKa(XYZColor whitePoint)
         {
@@ -21,6 +27,9 @@ namespace Colourful.Implementation.Conversion
             return Ka;
         }
 
+        /// <summary>
+        /// Computes the Kb parameter
+        /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Kb")]
         protected static double ComputeKb(XYZColor whitePoint)
         {

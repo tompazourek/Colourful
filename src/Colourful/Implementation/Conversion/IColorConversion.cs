@@ -13,6 +13,9 @@ namespace Colourful.Implementation.Conversion
     /// <typeparam name="TOutput"></typeparam>
     public interface IColorConversion<in TInput, out TOutput>
     {
+        /// <summary>
+        /// Converts from the input color space to the output color space.
+        /// </summary>
         TOutput Convert(TInput input);
     }
 }

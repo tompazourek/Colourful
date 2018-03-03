@@ -14,8 +14,14 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 
 namespace Colourful.Implementation.Conversion
 {
+    /// <summary>
+    /// Base class for conversions between <see cref="RGBColor"/> and <see cref="XYZColor"/>.
+    /// </summary>
     public abstract class LinearRGBAndXYZConverterBase
     {
+        /// <summary>
+        /// Computes RGB/XYZ matrix
+        /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
@@ -63,6 +69,9 @@ namespace Colourful.Implementation.Conversion
             return M;
         }
 
+        /// <summary>
+        /// Computes XYZ/RGB matrix
+        /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
         {

@@ -21,6 +21,9 @@ namespace Colourful.Conversion
             return _lastXYZToLinearRGBConverter = new XYZToLinearRGBConverter(workingSpace);
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public RGBColor ToRGB(LinearRGBColor color)
         {
@@ -32,6 +35,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(XYZColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -44,6 +50,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(xyYColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -53,6 +62,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(LabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -62,6 +74,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(LChabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -71,6 +86,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(HunterLabColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -80,6 +98,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(LuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -89,6 +110,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(LChuvColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -98,6 +122,9 @@ namespace Colourful.Conversion
             return result;
         }
 
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB(LMSColor color)
         {
             if (color == null) throw new ArgumentNullException(nameof(color));
@@ -108,6 +135,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
         public RGBColor ToRGB<T>(T color) where T : IColorVector
         {
             if (color == null) throw new ArgumentNullException(nameof(color));

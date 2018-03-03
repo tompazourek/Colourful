@@ -11,6 +11,9 @@ namespace Colourful.Implementation.RGB
     /// </summary>
     public class RGBWorkingSpace : IRGBWorkingSpace
     {
+        /// <summary>
+        /// Constructs RGB working space using a reference white, companding, and chromacity coordinates.
+        /// </summary>
         public RGBWorkingSpace(XYZColor referenceWhite, ICompanding companding, RGBPrimariesChromaticityCoordinates chromaticityCoordinates)
         {
             WhitePoint = referenceWhite;
@@ -18,20 +21,31 @@ namespace Colourful.Implementation.RGB
             ChromaticityCoordinates = chromaticityCoordinates;
         }
 
+        /// <summary>
+        /// Reference white point
+        /// </summary>
         public XYZColor WhitePoint { get; }
 
+        /// <summary>
+        /// Chromacity coordinates
+        /// </summary>
         public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates { get; }
 
+        /// <summary>
+        /// Companding
+        /// </summary>
         public ICompanding Companding { get; }
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         protected bool Equals(IRGBWorkingSpace other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(WhitePoint, other.WhitePoint) && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) && Equals(Companding, other.Companding);
         }
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -41,6 +55,7 @@ namespace Colourful.Implementation.RGB
             return Equals(workingSpace);
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             unchecked
@@ -52,11 +67,13 @@ namespace Colourful.Implementation.RGB
             }
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(RGBWorkingSpace left, RGBWorkingSpace right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(RGBWorkingSpace left, RGBWorkingSpace right)
         {
             return !Equals(left, right);

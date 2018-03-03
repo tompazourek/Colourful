@@ -11,6 +11,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public class LuvToLChuvConverter : IColorConversion<LuvColor, LChuvColor>
     {
+        /// <summary>
+        /// Converts from <see cref="LuvColor"/> to <see cref="LChuvColor"/>.
+        /// </summary>
         public LChuvColor Convert(LuvColor input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
@@ -26,6 +29,7 @@ namespace Colourful.Implementation.Conversion
 
         #region Overrides
 
+        /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -34,16 +38,19 @@ namespace Colourful.Implementation.Conversion
             return true;
         }
 
+        /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
             return 1;
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator ==(LuvToLChuvConverter left, LuvToLChuvConverter right)
         {
             return Equals(left, right);
         }
 
+        /// <inheritdoc cref="object" />
         public static bool operator !=(LuvToLChuvConverter left, LuvToLChuvConverter right)
         {
             return !Equals(left, right);
