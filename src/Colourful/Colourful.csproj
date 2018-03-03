@@ -20,6 +20,7 @@
     <PackageId>Colourful</PackageId>
     <DocumentationFile>/bin/$(Configuration)/Colourful.xml</DocumentationFile>
     <Deterministic>True</Deterministic>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
