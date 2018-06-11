@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(RGBColor color)
+        public LuvColor ToLuv(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(LinearRGBColor color)
+        public LuvColor ToLuv(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(XYZColor color)
+        public LuvColor ToLuv(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation
             var adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
                 ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLuvWhitePoint)
@@ -50,10 +44,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(xyYColor color)
+        public LuvColor ToLuv(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -62,10 +54,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(LabColor color)
+        public LuvColor ToLuv(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -74,10 +64,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(LChabColor color)
+        public LuvColor ToLuv(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -88,8 +76,6 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -98,10 +84,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(LChuvColor color)
+        public LuvColor ToLuv(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion (preserving white point)
             var converter = new LChuvToLuvConverter();
             var unadapted = converter.Convert(color);
@@ -117,10 +101,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(LMSColor color)
+        public LuvColor ToLuv(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
             return result;
@@ -130,13 +112,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv<T>(T color) where T : IColorVector
+        public LuvColor ToLuv<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LuvColor;
-
-            if (converted != null)
+            if (color is LuvColor converted)
             {
                 return converted;
             }

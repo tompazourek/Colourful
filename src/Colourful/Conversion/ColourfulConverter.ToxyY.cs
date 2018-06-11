@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(RGBColor color)
+        public xyYColor ToxyY(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LinearRGBColor color)
+        public xyYColor ToxyY(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(XYZColor color)
+        public xyYColor ToxyY(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new xyYAndXYZConverter();
             var result = converter.Convert(color);
@@ -45,10 +39,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LabColor color)
+        public xyYColor ToxyY(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -57,10 +49,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LChabColor color)
+        public xyYColor ToxyY(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -69,10 +59,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(HunterLabColor color)
+        public xyYColor ToxyY(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -81,10 +69,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LuvColor color)
+        public xyYColor ToxyY(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -93,10 +79,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LChuvColor color)
+        public xyYColor ToxyY(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -105,10 +89,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY(LMSColor color)
+        public xyYColor ToxyY(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToxyY(xyzColor);
             return result;
@@ -118,13 +100,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY<T>(T color) where T : IColorVector
-        {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as xyYColor;
-
-            if (converted != null)
+        public xyYColor ToxyY<T>(T color) where T : struct, IColorVector
+        {        
+            if (color is xyYColor converted)
             {
                 return converted;
             }

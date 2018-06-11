@@ -33,8 +33,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public HunterLabColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             // conversion algorithm described here: http://en.wikipedia.org/wiki/Lab_color_space#Hunter_Lab
             double X = input.X, Y = input.Y, Z = input.Z;
             double Xn = HunterLabWhitePoint.X, Yn = HunterLabWhitePoint.Y, Zn = HunterLabWhitePoint.Z;

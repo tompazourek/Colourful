@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// CIE 1931 XYZ color space
     /// </summary>
-    public class XYZColor : IColorVector
+    public readonly struct XYZColor : IColorVector
     {
         #region Constructor
 
@@ -66,17 +66,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(XYZColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((XYZColor)obj);
+            return obj is XYZColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

@@ -55,7 +55,7 @@ namespace Colourful.Implementation.RGB
         {
             unchecked
             {
-                var hashCode = WhitePoint != null ? WhitePoint.GetHashCode() : 0;
+                var hashCode = WhitePoint.GetHashCode();
                 hashCode = (hashCode * 397) ^ ChromaticityCoordinates.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Companding != null ? Companding.GetHashCode() : 0);
                 return hashCode;

@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*u*v* (1976) color
     /// </summary>
-    public class LuvColor : IColorVector
+    public readonly struct LuvColor : IColorVector
     {
         /// <summary>
         /// D65 standard illuminant.
@@ -103,7 +103,6 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(LuvColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && u.Equals(other.u) && v.Equals(other.v);
         }
 

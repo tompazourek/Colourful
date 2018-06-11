@@ -7,10 +7,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(RGBColor color)
+        public LMSColor ToLMS(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -19,10 +17,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(LinearRGBColor color)
+        public LMSColor ToLMS(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -31,10 +27,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(XYZColor color)
+        public LMSColor ToLMS(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = _cachedXYZAndLMSConverter;
             var result = converter.Convert(color);
@@ -44,10 +38,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(xyYColor color)
+        public LMSColor ToLMS(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -56,10 +48,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(LabColor color)
+        public LMSColor ToLMS(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -68,10 +58,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(LChabColor color)
+        public LMSColor ToLMS(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -80,10 +68,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(HunterLabColor color)
+        public LMSColor ToLMS(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -92,10 +78,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(LuvColor color)
+        public LMSColor ToLMS(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -104,10 +88,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS(LChuvColor color)
+        public LMSColor ToLMS(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLMS(xyzColor);
             return result;
@@ -117,13 +99,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS<T>(T color) where T : IColorVector
+        public LMSColor ToLMS<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LMSColor;
-
-            if (converted != null)
+            if (color is LMSColor converted)
             {
                 return converted;
             }

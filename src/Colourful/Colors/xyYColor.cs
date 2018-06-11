@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// CIE xyY color space (derived from <see cref="XYZColor" /> color space)
     /// </summary>
-    public class xyYColor : IColorVector
+    public readonly struct xyYColor : IColorVector
     {
         #region Constructor
 
@@ -31,9 +31,6 @@ namespace Colourful
         /// <param name="Y">Y (usually from 0 to 1)</param>
         public xyYColor(xyChromaticityCoordinates chromaticity, double Y)
         {
-            if (chromaticity == null)
-                throw new ArgumentNullException(nameof(chromaticity));
-
             Chromaticity = chromaticity;
             Luminance = Y;
         }
@@ -83,17 +80,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(xyYColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return x.Equals(other.x) && y.Equals(other.y) && Luminance.Equals(other.Luminance);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((xyYColor)obj);
+            return obj is xyYColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

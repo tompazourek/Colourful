@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public LuvColor Convert(LChuvColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             double L = input.L, C = input.C, hDegrees = input.h;
             var hRadians = Angle.DegreeToRadian(hDegrees);
 

@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(RGBColor color)
+        public HunterLabColor ToHunterLab(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LinearRGBColor color)
+        public HunterLabColor ToHunterLab(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(XYZColor color)
+        public HunterLabColor ToHunterLab(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation
             var adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
                 ? ChromaticAdaptation.Transform(color, WhitePoint, TargetHunterLabWhitePoint)
@@ -50,10 +44,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(xyYColor color)
+        public HunterLabColor ToHunterLab(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -62,10 +54,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LabColor color)
+        public HunterLabColor ToHunterLab(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -74,10 +64,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LChabColor color)
+        public HunterLabColor ToHunterLab(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -86,10 +74,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LuvColor color)
+        public HunterLabColor ToHunterLab(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -98,10 +84,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LChuvColor color)
+        public HunterLabColor ToHunterLab(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -110,10 +94,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab(LMSColor color)
+        public HunterLabColor ToHunterLab(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToHunterLab(xyzColor);
             return result;
@@ -123,13 +105,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to Hunter Lab color
         /// </summary>
-        public HunterLabColor ToHunterLab<T>(T color) where T : IColorVector
+        public HunterLabColor ToHunterLab<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as HunterLabColor;
-
-            if (converted != null)
+            if (color is HunterLabColor converted)
             {
                 return converted;
             }

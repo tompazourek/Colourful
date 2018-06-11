@@ -21,8 +21,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public RGBColor Convert(LinearRGBColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             var result = CompandVector(input.Vector, input.WorkingSpace);
             return result;
         }

@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(RGBColor color)
+        public LChabColor ToLChab(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(LinearRGBColor color)
+        public LChabColor ToLChab(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(XYZColor color)
+        public LChabColor ToLChab(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var labColor = ToLab(color);
             var result = ToLChab(labColor);
             return result;
@@ -44,10 +38,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(xyYColor color)
+        public LChabColor ToLChab(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -56,10 +48,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(LabColor color)
+        public LChabColor ToLChab(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation to target lab white point (LabWhitePoint)
             var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
@@ -72,10 +62,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(HunterLabColor color)
+        public LChabColor ToLChab(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -84,10 +72,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(LuvColor color)
+        public LChabColor ToLChab(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -96,10 +82,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(LChuvColor color)
+        public LChabColor ToLChab(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -108,10 +92,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab(LMSColor color)
+        public LChabColor ToLChab(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChab(xyzColor);
             return result;
@@ -121,13 +103,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
-        public LChabColor ToLChab<T>(T color) where T : IColorVector
+        public LChabColor ToLChab<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LChabColor;
-
-            if (converted != null)
+            if (color is LChabColor converted)
             {
                 return converted;
             }

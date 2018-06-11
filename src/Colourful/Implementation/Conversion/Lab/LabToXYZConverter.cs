@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor Convert(LabColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;
             var fy = (L + 16) / 116d;

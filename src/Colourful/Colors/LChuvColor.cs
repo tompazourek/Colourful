@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*C*h°, cylindrical form of <see cref="LuvColor">CIE L*u*v* (1976)</see>
     /// </summary>
-    public class LChuvColor : IColorVector
+    public readonly struct LChuvColor : IColorVector
     {
         /// <summary>
         /// D65 standard illuminant.
@@ -123,17 +123,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(LChuvColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && C.Equals(other.C) && h.Equals(other.h);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LChuvColor)obj);
+            return obj is LChuvColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

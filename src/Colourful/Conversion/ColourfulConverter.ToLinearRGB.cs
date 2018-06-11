@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(RGBColor color)
+        public LinearRGBColor ToLinearRGB(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new RGBToLinearRGBConverter();
             var result = converter.Convert(color);
@@ -21,10 +19,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(XYZColor color)
+        public LinearRGBColor ToLinearRGB(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation
             var adapted = TargetRGBWorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? color
@@ -39,10 +35,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(xyYColor color)
+        public LinearRGBColor ToLinearRGB(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -51,10 +45,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(LabColor color)
+        public LinearRGBColor ToLinearRGB(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -63,10 +55,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(LChabColor color)
+        public LinearRGBColor ToLinearRGB(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -75,10 +65,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(HunterLabColor color)
+        public LinearRGBColor ToLinearRGB(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -87,10 +75,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(LuvColor color)
+        public LinearRGBColor ToLinearRGB(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -99,10 +85,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(LChuvColor color)
+        public LinearRGBColor ToLinearRGB(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -111,10 +95,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB(LMSColor color)
+        public LinearRGBColor ToLinearRGB(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLinearRGB(xyzColor);
             return result;
@@ -124,13 +106,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB<T>(T color) where T : IColorVector
+        public LinearRGBColor ToLinearRGB<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LinearRGBColor;
-
-            if (converted != null)
+            if (color is LinearRGBColor converted)
             {
                 return converted;
             }

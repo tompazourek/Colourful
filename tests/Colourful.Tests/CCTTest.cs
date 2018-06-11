@@ -67,10 +67,9 @@ namespace Colourful.Tests
         {
             // arrange
             var chromaticity = new xyChromaticityCoordinates(x, y);
-            var approximation = new CCTConverter();
 
             // action
-            var cct = approximation.GetCCTOfChromaticity(chromaticity);
+            var cct = CCTConverter.GetCCTOfChromaticity(chromaticity);
 
             // assert
             Debug.WriteLine($"CCT {cct} K (difference {Math.Abs(expectedCCT - cct)} K)");
@@ -82,11 +81,8 @@ namespace Colourful.Tests
         [MemberData(nameof(CCTData_Wikipedia))]
         public void ChromaticityFromCCT(double expectedX, double expectedY, double cct)
         {
-            // arrange
-            var approximation = new CCTConverter();
-
             // action
-            var chromaticity = approximation.GetChromaticityOfCCT(cct);
+            var chromaticity = CCTConverter.GetChromaticityOfCCT(cct);
 
             // assert
             var deltaComparer = new DoubleDeltaComparer(0.02);

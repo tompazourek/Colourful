@@ -33,8 +33,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public LabColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Lab.html
             double Xr = LabWhitePoint.X, Yr = LabWhitePoint.Y, Zr = LabWhitePoint.Z;
 
