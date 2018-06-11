@@ -12,9 +12,6 @@ namespace Colourful.Difference
         /// <returns>Delta-E (1976) color difference</returns>
         public double ComputeDifference(LabColor x, LabColor y)
         {
-            if (x == null) throw new ArgumentNullException(nameof(x));
-            if (y == null) throw new ArgumentNullException(nameof(y));
-
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
 

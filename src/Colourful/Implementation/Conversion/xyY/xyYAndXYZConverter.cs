@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor Convert(xyYColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             // ReSharper disable CompareOfFloatsByEqualityOperator
             if (input.y == 0)
                 return new XYZColor(0, 0, input.Luminance);
@@ -31,8 +29,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public xyYColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             var x = input.X / (input.X + input.Y + input.Z);
             var y = input.Y / (input.X + input.Y + input.Z);
 

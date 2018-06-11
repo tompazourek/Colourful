@@ -47,8 +47,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public LinearRGBColor Convert(XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             var inputVector = input.Vector;
             var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
             var result = new LinearRGBColor(uncompandedVector, TargetRGBWorkingSpace);
@@ -76,7 +74,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
-            return TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0;
+            return TargetRGBWorkingSpace?.GetHashCode() ?? 0;
         }
 
         /// <inheritdoc cref="object" />

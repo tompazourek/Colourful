@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// Hunter Lab color
     /// </summary>
-    public class HunterLabColor : IColorVector
+    public readonly struct HunterLabColor : IColorVector
     {
         /// <summary>
         /// C standard illuminant.
@@ -105,17 +105,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(LabColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LabColor)obj);
+            return obj is LabColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

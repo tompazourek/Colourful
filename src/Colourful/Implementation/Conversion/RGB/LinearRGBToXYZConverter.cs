@@ -35,8 +35,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor Convert(LinearRGBColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");
 
@@ -51,7 +49,6 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         protected bool Equals(LinearRGBToXYZConverter other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
@@ -67,7 +64,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
         {
-            return SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0;
+            return SourceRGBWorkingSpace?.GetHashCode() ?? 0;
         }
 
         /// <inheritdoc cref="object" />

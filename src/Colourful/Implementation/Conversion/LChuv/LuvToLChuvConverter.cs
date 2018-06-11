@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public LChuvColor Convert(LuvColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             double L = input.L, u = input.u, v = input.v;
             var C = Math.Sqrt(u * u + v * v);
             var hRadians = Math.Atan2(v, u);

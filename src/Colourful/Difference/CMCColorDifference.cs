@@ -53,9 +53,6 @@ namespace Colourful.Difference
         /// <inheritdoc />
         public double ComputeDifference(LabColor x, LabColor y)
         {
-            if (x == null) throw new ArgumentNullException(nameof(x));
-            if (y == null) throw new ArgumentNullException(nameof(y));
-
             double L1 = x.L, a1 = x.a, b1 = x.b;
             double L2 = y.L, a2 = y.a, b2 = y.b;
 

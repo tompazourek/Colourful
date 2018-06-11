@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(RGBColor color)
+        public LabColor ToLab(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(LinearRGBColor color)
+        public LabColor ToLab(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(XYZColor color)
+        public LabColor ToLab(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation
             var adapted = !WhitePoint.Equals(TargetLabWhitePoint) && IsChromaticAdaptationPerformed
                 ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLabWhitePoint)
@@ -50,10 +44,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(xyYColor color)
+        public LabColor ToLab(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -62,10 +54,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(LChabColor color)
+        public LabColor ToLab(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion (preserving white point)
             var converter = new LChabToLabConverter();
             var unadapted = converter.Convert(color);
@@ -81,10 +71,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(HunterLabColor color)
+        public LabColor ToLab(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -93,10 +81,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(LuvColor color)
+        public LabColor ToLab(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -105,10 +91,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(LChuvColor color)
+        public LabColor ToLab(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -117,10 +101,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab(LMSColor color)
+        public LabColor ToLab(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLab(xyzColor);
             return result;
@@ -130,13 +112,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
         /// </summary>
-        public LabColor ToLab<T>(T color) where T : IColorVector
-        {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LabColor;
-
-            if (converted != null)
+        public LabColor ToLab<T>(T color) where T : struct, IColorVector
+        {        
+            if (color is LabColor converted)
             {
                 return converted;
             }

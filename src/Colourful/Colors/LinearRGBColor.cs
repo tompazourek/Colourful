@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Colourful.Implementation;
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -15,7 +16,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>, which has linear channels (not companded)
     /// </summary>
-    public class LinearRGBColor : RGBColorBase
+    public readonly struct LinearRGBColor : IColorVector, IRGB
     {
         #region Other
 
@@ -45,8 +46,10 @@ namespace Colourful
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
         public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
-            : base(r, g, b)
         {
+            R = r.CheckRange(0, 1);
+            G = g.CheckRange(0, 1);
+            B = b.CheckRange(0, 1);
             WorkingSpace = workingSpace;
         }
 
@@ -62,10 +65,39 @@ namespace Colourful
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
         public LinearRGBColor(Vector vector, IRGBWorkingSpace workingSpace)
-            : base(vector)
-        {
-            WorkingSpace = workingSpace;
-        }
+            : this(vector[0], vector[1], vector[2], workingSpace) { }
+        #endregion
+
+        #region Channels
+
+        /// <summary>
+        /// Red
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double R { get; }
+
+        /// <summary>
+        /// Green
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double G { get; }
+
+        /// <summary>
+        /// Blue
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double B { get; }
+
+        /// <summary>
+        ///     <see cref="IColorVector" />
+        /// </summary>
+        public Vector Vector => new[] { R, G, B };
 
         #endregion
 
@@ -82,19 +114,16 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBColor other)
-        {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-            return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
-        }
+        public bool Equals(RGBColor other) => 
+            R.Equals(other.R) && 
+            G.Equals(other.G) && 
+            B == other.B &&
+            WorkingSpace.Equals(other.WorkingSpace);
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LinearRGBColor)obj);
+            return obj is LinearRGBColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

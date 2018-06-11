@@ -19,10 +19,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(RGBColor color)
+        public XYZColor ToXYZ(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // uncompanding
             var rgbConverter = new RGBToLinearRGBConverter();
             var linear = rgbConverter.Convert(color);
@@ -35,10 +33,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LinearRGBColor color)
+        public XYZColor ToXYZ(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converterXyz = GetLinearRGBToXYZConverter(color.WorkingSpace);
             var unadapted = converterXyz.Convert(color);
@@ -54,10 +50,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(xyYColor color)
+        public XYZColor ToXYZ(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new xyYAndXYZConverter();
             var converted = converter.Convert(color);
@@ -67,10 +61,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LabColor color)
+        public XYZColor ToXYZ(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new LabToXYZConverter();
             var unadapted = converter.Convert(color);
@@ -86,10 +78,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LChabColor color)
+        public XYZColor ToXYZ(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion to Lab
             var labConverter = new LChabToLabConverter();
             var labColor = labConverter.Convert(color);
@@ -102,10 +92,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(HunterLabColor color)
+        public XYZColor ToXYZ(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new HunterLabToXYZConverter();
             var unadapted = converter.Convert(color);
@@ -121,10 +109,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LuvColor color)
+        public XYZColor ToXYZ(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new LuvToXYZConverter();
             var unadapted = converter.Convert(color);
@@ -140,10 +126,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LChuvColor color)
+        public XYZColor ToXYZ(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion to Luv
             var luvConverter = new LChuvToLuvConverter();
             var labColor = luvConverter.Convert(color);
@@ -156,10 +140,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE 1931 XYZ color
         /// </summary>
-        public XYZColor ToXYZ(LMSColor color)
+        public XYZColor ToXYZ(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = _cachedXYZAndLMSConverter;
             var converted = converter.Convert(color);
@@ -172,11 +154,7 @@ namespace Colourful.Conversion
         /// </summary>
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as XYZColor;
-
-            if (converted != null)
+            if (color is XYZColor converted)
             {
                 return converted;
             }

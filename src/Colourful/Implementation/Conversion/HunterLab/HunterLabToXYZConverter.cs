@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor Convert(HunterLabColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             double L = input.L, a = input.a, b = input.b;
             double Xn = input.WhitePoint.X, Yn = input.WhitePoint.Y, Zn = input.WhitePoint.Z;
 

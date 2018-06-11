@@ -15,7 +15,7 @@ namespace Colourful
     /// <summary>
     /// LMS color space represented by the response of the three types of cones of the human eye
     /// </summary>
-    public class LMSColor : IColorVector
+    public readonly struct LMSColor : IColorVector
     {
         #region Constructor
 
@@ -75,17 +75,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(LMSColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
             return L.Equals(other.L) && M.Equals(other.M) && S.Equals(other.S);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LMSColor)obj);
+            return obj is LMSColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

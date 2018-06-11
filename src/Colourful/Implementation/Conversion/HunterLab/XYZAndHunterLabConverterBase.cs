@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         protected static double ComputeKa(XYZColor whitePoint)
         {
-            if (whitePoint == null) throw new ArgumentNullException(nameof(whitePoint));
-
             if (whitePoint == Illuminants.C)
                 return 175;
 
@@ -26,8 +24,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         protected static double ComputeKb(XYZColor whitePoint)
         {
-            if (whitePoint == null) throw new ArgumentNullException(nameof(whitePoint));
-
             if (whitePoint == Illuminants.C)
                 return 70;
 

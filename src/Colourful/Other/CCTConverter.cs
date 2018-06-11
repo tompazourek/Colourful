@@ -7,12 +7,12 @@ namespace Colourful
     /// Can compute chromaticity from CCT (Correlated color temperature) and also
     /// compute CCT of given chromaticity.
     /// </summary>
-    public class CCTConverter
+    public static class CCTConverter
     {
         /// <summary>
         /// Returns chromaticity coordinates of given CCT (specified in K)
         /// </summary>
-        public xyChromaticityCoordinates GetChromaticityOfCCT(double temperature)
+        public static xyChromaticityCoordinates GetChromaticityOfCCT(double temperature)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Planckian_locus#Approximation
 
@@ -42,7 +42,7 @@ namespace Colourful
         /// Returns CCT (specified in K) of given chromaticity coordinates
         /// </summary>
         /// <remarks>Ranges usually from around 0 to 25000</remarks>
-        public double GetCCTOfChromaticity(xyChromaticityCoordinates chromaticity)
+        public static double GetCCTOfChromaticity(in xyChromaticityCoordinates chromaticity)
         {
             // approximation described here: http://en.wikipedia.org/wiki/Color_temperature#Approximation
 

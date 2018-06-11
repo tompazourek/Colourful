@@ -8,10 +8,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(RGBColor color)
+        public LChuvColor ToLChuv(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -20,10 +18,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(LinearRGBColor color)
+        public LChuvColor ToLChuv(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -32,10 +28,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(XYZColor color)
+        public LChuvColor ToLChuv(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var luvColor = ToLuv(color);
             var result = ToLChuv(luvColor);
             return result;
@@ -44,10 +38,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(xyYColor color)
+        public LChuvColor ToLChuv(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -56,10 +48,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(LabColor color)
+        public LChuvColor ToLChuv(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -68,10 +58,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(LChabColor color)
+        public LChuvColor ToLChuv(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -80,10 +68,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(HunterLabColor color)
+        public LChuvColor ToLChuv(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -92,10 +78,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(LuvColor color)
+        public LChuvColor ToLChuv(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // adaptation to target luv white point (LuvWhitePoint)
             var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
@@ -108,10 +92,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv(LMSColor color)
+        public LChuvColor ToLChuv(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToLChuv(xyzColor);
             return result;
@@ -121,13 +103,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Luv) color
         /// </summary>
-        public LChuvColor ToLChuv<T>(T color) where T : IColorVector
-        {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as LChuvColor;
-
-            if (converted != null)
+        public LChuvColor ToLChuv<T>(T color) where T : struct, IColorVector
+        {        
+            if (color is LChuvColor converted)
             {
                 return converted;
             }

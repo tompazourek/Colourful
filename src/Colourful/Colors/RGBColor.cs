@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using Colourful.Implementation;
+
 #if (!READONLYCOLLECTIONS)
 using Vector = System.Collections.Generic.IList<double>;
 using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
@@ -9,7 +11,6 @@ using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Gener
 #endif
 #if (DRAWING)
 using System.Drawing;
-using Colourful.Implementation;
 
 #endif
 
@@ -18,7 +19,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
-    public class RGBColor : RGBColorBase
+    public readonly struct RGBColor : IRGB, IColorVector, IEquatable<RGBColor>
     {
         #region Other
 
@@ -48,8 +49,10 @@ namespace Colourful
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
-            : base(r, g, b)
         {
+            R = r.CheckRange(0, 1);
+            G = g.CheckRange(0, 1);
+            B = b.CheckRange(0, 1);
             WorkingSpace = workingSpace;
         }
 
@@ -65,10 +68,7 @@ namespace Colourful
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
         public RGBColor(Vector vector, IRGBWorkingSpace workingSpace)
-            : base(vector)
-        {
-            WorkingSpace = workingSpace;
-        }
+            : this(vector[0], vector[1], vector[2], workingSpace) { }
 
 #if (DRAWING)
 
@@ -83,12 +83,42 @@ namespace Colourful
         ///     <see cref="RGBWorkingSpaces" />
         /// </param>
         public RGBColor(Color color, IRGBWorkingSpace workingSpace)
-            : base((double)color.R / 255, (double)color.G / 255, (double)color.B / 255)
-        {
-            WorkingSpace = workingSpace;
-        }
+            : this((double)color.R / 255, (double)color.G / 255, (double)color.B / 255, workingSpace) { }
 
 #endif
+
+        #endregion
+
+        #region Channels
+
+        /// <summary>
+        /// Red
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double R { get; }
+
+        /// <summary>
+        /// Green
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double G { get; }
+
+        /// <summary>
+        /// Blue
+        /// </summary>
+        /// <remarks>
+        /// Ranges from 0 to 1.
+        /// </remarks>
+        public double B { get; }
+
+        /// <summary>
+        ///     <see cref="IColorVector" />
+        /// </summary>
+        public Vector Vector => new[] { R, G, B };
 
         #endregion
 
@@ -107,17 +137,13 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public bool Equals(RGBColor other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-            return base.Equals(other) && WorkingSpace.Equals(other.WorkingSpace);
+            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B) && WorkingSpace.Equals(other.WorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((RGBColor)obj);
+            return obj is RGBColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />
@@ -210,9 +236,6 @@ namespace Colourful
         /// </summary>
         public static implicit operator Color(RGBColor input)
         {
-            if (input == null)
-                return new Color();
-
             var r = (byte)Math.Round(input.R * 255).CropRange(0, 255);
             var g = (byte)Math.Round(input.G * 255).CropRange(0, 255);
             var b = (byte)Math.Round(input.B * 255).CropRange(0, 255);
@@ -225,8 +248,7 @@ namespace Colourful
         /// </summary>
         public static explicit operator RGBColor(Color color)
         {
-            var output = new RGBColor(color);
-            return output;
+            return new RGBColor(color);
         }
 
         #endregion

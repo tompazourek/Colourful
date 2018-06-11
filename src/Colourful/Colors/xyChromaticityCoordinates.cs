@@ -5,7 +5,7 @@ namespace Colourful
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
     /// </summary>
-    public struct xyChromaticityCoordinates
+    public readonly struct xyChromaticityCoordinates
     {
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>

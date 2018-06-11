@@ -12,8 +12,6 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public XYZColor Convert(LuvColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Luv_to_XYZ.html
             double L = input.L, u = input.u, v = input.v;
 

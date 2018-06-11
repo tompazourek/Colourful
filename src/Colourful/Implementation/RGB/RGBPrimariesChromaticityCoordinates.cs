@@ -4,7 +4,7 @@
     /// Chromaticity coordinates of RGB primaries.
     /// One of the specifiers of <see cref="IRGBWorkingSpace" />.
     /// </summary>
-    public struct RGBPrimariesChromaticityCoordinates
+    public readonly struct RGBPrimariesChromaticityCoordinates
     {
         /// <summary>
         /// Constructs coordinates
@@ -40,8 +40,7 @@
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            return obj is RGBPrimariesChromaticityCoordinates coordinates && Equals(coordinates);
+            return obj is RGBPrimariesChromaticityCoordinates other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

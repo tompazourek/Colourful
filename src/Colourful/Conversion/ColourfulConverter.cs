@@ -101,8 +101,7 @@ namespace Colourful.Conversion
         {
             get
             {
-                var result = WhitePoint != null && ChromaticAdaptation != null;
-                return result;
+                return WhitePoint != null && ChromaticAdaptation != null;
             }
         }
     }

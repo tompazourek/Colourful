@@ -19,10 +19,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LinearRGBColor color)
+        public RGBColor ToRGB(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var converter = new LinearRGBToRGBConverter();
             var result = converter.Convert(color);
@@ -32,10 +30,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(XYZColor color)
+        public RGBColor ToRGB(in XYZColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             // conversion
             var linear = ToLinearRGB(color);
 
@@ -47,10 +43,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(xyYColor color)
+        public RGBColor ToRGB(in xyYColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -59,10 +53,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LabColor color)
+        public RGBColor ToRGB(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -71,10 +63,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LChabColor color)
+        public RGBColor ToRGB(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -83,10 +73,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(HunterLabColor color)
+        public RGBColor ToRGB(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -95,10 +83,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LuvColor color)
+        public RGBColor ToRGB(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -107,10 +93,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LChuvColor color)
+        public RGBColor ToRGB(in LChuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -119,10 +103,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB(LMSColor color)
+        public RGBColor ToRGB(in LMSColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var xyzColor = ToXYZ(color);
             var result = ToRGB(xyzColor);
             return result;
@@ -132,13 +114,9 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB<T>(T color) where T : IColorVector
+        public RGBColor ToRGB<T>(T color) where T : struct, IColorVector
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
-            var converted = color as RGBColor;
-
-            if (converted != null)
+            if (color is RGBColor converted)
             {
                 return converted;
             }
