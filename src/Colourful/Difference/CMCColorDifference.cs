@@ -9,7 +9,7 @@ namespace Colourful.Difference
     /// <remarks>
     /// Equations: http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CMC.html
     /// </remarks>
-    public class CMCColorDifference : IColorDifference<LabColor>
+    public sealed class CMCColorDifference : IColorDifference<LabColor>
     {
         /// <summary>
         /// Chroma

@@ -6,7 +6,7 @@ namespace Colourful.Difference
     /// <summary>
     /// CIE Delta-E 2000 formula
     /// </summary>
-    public class CIEDE2000ColorDifference : IColorDifference<LabColor>
+    public sealed class CIEDE2000ColorDifference : IColorDifference<LabColor>
     {
         // parametric weighting factors:
         private const double k_H = 1;
