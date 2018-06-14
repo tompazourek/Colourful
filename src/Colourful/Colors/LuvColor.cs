@@ -93,18 +93,15 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LuvColor other)
-        {
-            return L.Equals(other.L) && u.Equals(other.u) && v.Equals(other.v);
-        }
+        public bool Equals(LuvColor other) =>
+            L == other.L &&
+            u == other.u &&
+            v == other.v;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LuvColor)obj);
+            return obj is LuvColor other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

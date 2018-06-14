@@ -104,10 +104,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LChabColor other)
-        {
-            return L.Equals(other.L) && C.Equals(other.C) && h.Equals(other.h);
-        }
+        public bool Equals(LChabColor other) =>
+            L == other.L &&
+            C == other.C && 
+            h == other.h;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

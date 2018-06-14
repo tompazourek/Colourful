@@ -65,10 +65,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LMSColor other)
-        {
-            return L.Equals(other.L) && M.Equals(other.M) && S.Equals(other.S);
-        }
+        public bool Equals(LMSColor other) =>
+            L == other.L &&
+            M == other.M &&
+            S == other.S;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

@@ -40,7 +40,6 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
             return obj is xyChromaticityCoordinates coordinates && Equals(coordinates);
         }
 

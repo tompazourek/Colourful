@@ -70,10 +70,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(xyYColor other)
-        {
-            return x.Equals(other.x) && y.Equals(other.y) && Luminance.Equals(other.Luminance);
-        }
+        public bool Equals(xyYColor other) => 
+            x == other.x && 
+            y == other.y && 
+            Luminance == other.Luminance;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

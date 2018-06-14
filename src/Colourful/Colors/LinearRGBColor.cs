@@ -106,9 +106,9 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBColor other) => 
-            R.Equals(other.R) && 
-            G.Equals(other.G) && 
+        public bool Equals(RGBColor other) =>
+            R == other.R &&
+            G == other.G &&
             B == other.B &&
             WorkingSpace.Equals(other.WorkingSpace);
 
