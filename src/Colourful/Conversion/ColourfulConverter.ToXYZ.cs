@@ -22,7 +22,8 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in RGBColor color)
         {
             // uncompanding
-            var rgbConverter = new RGBToLinearRGBConverter();
+            var rgbConverter = RGBToLinearRGBConverter.Default;
+
             var linear = rgbConverter.Convert(color);
 
             // conversion
@@ -53,7 +54,7 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in xyYColor color)
         {
             // conversion
-            var converter = new xyYAndXYZConverter();
+            var converter = xyYAndXYZConverter.Default;
             var converted = converter.Convert(color);
             return converted;
         }
@@ -64,7 +65,7 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in LabColor color)
         {
             // conversion
-            var converter = new LabToXYZConverter();
+            var converter = LabToXYZConverter.Default;
             var unadapted = converter.Convert(color);
 
             // adaptation
@@ -81,7 +82,8 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in LChabColor color)
         {
             // conversion to Lab
-            var labConverter = new LChabToLabConverter();
+            var labConverter = LChabToLabConverter.Default;
+
             var labColor = labConverter.Convert(color);
 
             // conversion to XYZ (incl. adaptation)
@@ -95,7 +97,8 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in HunterLabColor color)
         {
             // conversion
-            var converter = new HunterLabToXYZConverter();
+            var converter = HunterLabToXYZConverter.Default;
+
             var unadapted = converter.Convert(color);
 
             // adaptation
@@ -112,7 +115,7 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in LuvColor color)
         {
             // conversion
-            var converter = new LuvToXYZConverter();
+            var converter = LuvToXYZConverter.Default;
             var unadapted = converter.Convert(color);
 
             // adaptation
@@ -129,7 +132,8 @@ namespace Colourful.Conversion
         public XYZColor ToXYZ(in LChuvColor color)
         {
             // conversion to Luv
-            var luvConverter = new LChuvToLuvConverter();
+            var luvConverter = LChuvToLuvConverter.Default;
+
             var labColor = luvConverter.Convert(color);
 
             // conversion to XYZ (incl. adaptation)
@@ -158,7 +162,7 @@ namespace Colourful.Conversion
             {
                 return converted;
             }
-
+            
             dynamic source = color;
 
             return ToXYZ(source);

@@ -87,7 +87,7 @@ namespace Colourful.Conversion
         public LuvColor ToLuv(in LChuvColor color)
         {
             // conversion (preserving white point)
-            var converter = new LChuvToLuvConverter();
+            var converter = LChuvToLuvConverter.Default;
             var unadapted = converter.Convert(color);
 
             if (!IsChromaticAdaptationPerformed)
@@ -112,7 +112,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv<T>(T color) where T : struct, IColorVector
+        public LuvColor ToLuv<T>(T color) where T : IColorVector
         {
             if (color is LuvColor converted)
             {

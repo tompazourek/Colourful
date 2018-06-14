@@ -7,6 +7,8 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LChuvToLuvConverter : IColorConversion<LChuvColor, LuvColor>
     {
+        public static readonly LChuvToLuvConverter Default = new LChuvToLuvConverter();
+
         /// <summary>
         /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
         /// </summary>

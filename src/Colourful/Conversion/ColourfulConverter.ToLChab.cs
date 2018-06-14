@@ -53,7 +53,7 @@ namespace Colourful.Conversion
             var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
 
             // conversion (preserving white point)
-            var converter = new LabToLChabConverter();
+            var converter = LabToLChabConverter.Default;
             var result = converter.Convert(adapted);
             return result;
         }

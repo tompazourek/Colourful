@@ -9,6 +9,8 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
     {
+        public static readonly RGBToLinearRGBConverter Default = new RGBToLinearRGBConverter();
+
         /// <summary>
         /// Converts from <see cref="RGBColor" /> to <see cref="LinearRGBColor" />.
         /// </summary>

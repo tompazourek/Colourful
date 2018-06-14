@@ -9,10 +9,9 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in RGBColor color)
         {
-            // conversion
-            var converter = new RGBToLinearRGBConverter();
-            var result = converter.Convert(color);
-            return result;
+            var converter = RGBToLinearRGBConverter.Default;
+
+            return converter.Convert(color);
         }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to linear RGB
         /// </summary>
-        public LinearRGBColor ToLinearRGB<T>(T color) where T : struct, IColorVector
+        public LinearRGBColor ToLinearRGB<T>(T color) where T : IColorVector
         {
             if (color is LinearRGBColor converted)
             {

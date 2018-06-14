@@ -100,7 +100,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE xyY color
         /// </summary>
-        public xyYColor ToxyY<T>(T color) where T : struct, IColorVector
+        public xyYColor ToxyY<T>(T color) where T : IColorVector
         {        
             if (color is xyYColor converted)
             {
