@@ -13,7 +13,7 @@ namespace Colourful.Conversion
     /// Transformation described here:
     /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
     /// </remarks>
-    public class VonKriesChromaticAdaptation : IChromaticAdaptation
+    public sealed class VonKriesChromaticAdaptation : IChromaticAdaptation
     {
         private readonly IColorConversion<XYZColor, LMSColor> _conversionToLMS;
         private readonly IColorConversion<LMSColor, XYZColor> _conversionToXYZ;

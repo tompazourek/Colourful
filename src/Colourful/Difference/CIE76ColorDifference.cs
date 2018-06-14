@@ -5,7 +5,7 @@ namespace Colourful.Difference
     /// <summary>
     /// CIE Delta-E 1976 formula
     /// </summary>
-    public class CIE76ColorDifference : IColorDifference<LabColor>
+    public sealed class CIE76ColorDifference : IColorDifference<LabColor>
     {
         /// <param name="x">Reference color</param>
         /// <param name="y">Sample color</param>

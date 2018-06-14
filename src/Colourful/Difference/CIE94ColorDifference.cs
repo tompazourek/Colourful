@@ -10,7 +10,7 @@ namespace Colourful.Difference
     /// Implementation notes:
     /// http://www.brucelindbloom.com/Eqn_DeltaE_CIE94.html
     /// </remarks>
-    public class CIE94ColorDifference : IColorDifference<LabColor>
+    public sealed class CIE94ColorDifference : IColorDifference<LabColor>
     {
         private const double KH = 1;
         private const double KC = 1;
