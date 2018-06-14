@@ -90,12 +90,6 @@ namespace Colourful.Conversion
             TargetRGBWorkingSpace = RGBColor.DefaultWorkingSpace;
         }
 
-        private bool IsChromaticAdaptationPerformed
-        {
-            get
-            {
-                return WhitePoint != null && ChromaticAdaptation != null;
-            }
-        }
+        private bool IsChromaticAdaptationPerformed => WhitePoint != null && ChromaticAdaptation != null;
     }
 }

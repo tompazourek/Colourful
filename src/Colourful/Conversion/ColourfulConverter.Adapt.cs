@@ -8,11 +8,8 @@ namespace Colourful.Conversion
         /// Performs chromatic adaptation of given XYZ color.
         /// Target white point is <see cref="WhitePoint" />.
         /// </summary>
-        public XYZColor Adapt(XYZColor color, XYZColor sourceWhitePoint)
+        public XYZColor Adapt(in XYZColor color, in XYZColor sourceWhitePoint)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-            if (sourceWhitePoint == null) throw new ArgumentNullException(nameof(sourceWhitePoint));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
@@ -23,10 +20,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts linear RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace" />.
         /// </summary>
-        public LinearRGBColor Adapt(LinearRGBColor color)
+        public LinearRGBColor Adapt(in LinearRGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
@@ -50,10 +45,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts RGB color from the source working space to working space set in <see cref="TargetRGBWorkingSpace" />.
         /// </summary>
-        public RGBColor Adapt(RGBColor color)
+        public RGBColor Adapt(in RGBColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             var linearInput = ToLinearRGB(color);
             var linearOutput = Adapt(linearInput);
             var compandedOutput = ToRGB(linearOutput);
@@ -64,10 +57,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts Lab color from the source white point to white point set in <see cref="TargetLabWhitePoint" />.
         /// </summary>
-        public LabColor Adapt(LabColor color)
+        public LabColor Adapt(in LabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
@@ -82,10 +73,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts LChab color from the source white point to white point set in <see cref="TargetLabWhitePoint" />.
         /// </summary>
-        public LChabColor Adapt(LChabColor color)
+        public LChabColor Adapt(in LChabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
@@ -100,10 +89,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts Lab color from the source white point to white point set in <see cref="TargetHunterLabWhitePoint" />.
         /// </summary>
-        public HunterLabColor Adapt(HunterLabColor color)
+        public HunterLabColor Adapt(in HunterLabColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
@@ -118,10 +105,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Adapts Luv color from the source white point to white point set in <see cref="TargetLuvWhitePoint" />.
         /// </summary>
-        public LuvColor Adapt(LuvColor color)
+        public LuvColor Adapt(in LuvColor color)
         {
-            if (color == null) throw new ArgumentNullException(nameof(color));
-
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 

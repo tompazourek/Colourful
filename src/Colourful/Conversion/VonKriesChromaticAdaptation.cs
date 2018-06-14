@@ -53,12 +53,8 @@ namespace Colourful.Conversion
         /// <summary>
         /// Transforms XYZ color to destination reference white.
         /// </summary>
-        public XYZColor Transform(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint)
+        public XYZColor Transform(in XYZColor sourceColor, in XYZColor sourceWhitePoint, in XYZColor targetWhitePoint)
         {
-            if (sourceColor == null) throw new ArgumentNullException(nameof(sourceColor));
-            if (sourceWhitePoint == null) throw new ArgumentNullException(nameof(sourceWhitePoint));
-            if (targetWhitePoint == null) throw new ArgumentNullException(nameof(targetWhitePoint));
-
             if (sourceWhitePoint.Equals(targetWhitePoint))
                 return sourceColor;
 
