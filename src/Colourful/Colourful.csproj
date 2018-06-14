@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net46;net40;net45;netstandard1.1;netstandard1.6;netstandard2.0;</TargetFrameworks>
+    <TargetFrameworks>net46;net45;netstandard1.1;netstandard1.6;netstandard2.0;</TargetFrameworks>
     <Version>0.0.1</Version>
     <AssemblyVersion>0.0.0.1</AssemblyVersion>
     <FileVersion>0.0.0.1</FileVersion>
@@ -28,47 +28,33 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net46' ">
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Drawing" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' OR '$(TargetFramework)' == 'netstandard1.6' OR '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Drawing" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
-    <PackageReference Include="Microsoft.CSharp" Version="4.0.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
-    <PackageReference Include="Microsoft.CSharp" Version="4.0.1" />
-  </ItemGroup>
-  
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
-    <DefineConstants>$(DefineConstants);NET40;DRAWING;DYNAMIC</DefineConstants>
-  </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <DefineConstants>$(DefineConstants);NET45;DRAWING;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET45;DRAWING;DYNAMIC</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <DefineConstants>$(DefineConstants);NET46;DRAWING;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET46;DRAWING;DYNAMIC</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD11</DefineConstants>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD16;DYNAMIC;READONLYCOLLECTIONS</DefineConstants>
+    <DefineConstants>$(DefineConstants);DYNAMIC</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);DYNAMIC</DefineConstants>
+  </PropertyGroup>
+    
 </Project>

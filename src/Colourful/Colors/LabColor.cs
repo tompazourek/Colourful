@@ -1,14 +1,6 @@
-﻿using System;
-using System.Globalization;
-#if (!READONLYCOLLECTIONS)
-using Vector = System.Collections.Generic.IList<double>;
-using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
+﻿using System.Globalization;
 
-#else
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-
-#endif
 
 namespace Colourful
 {
@@ -103,9 +95,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LabColor other)
-        {            return L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
-        }
+        public bool Equals(LabColor other) => 
+            L == other.L && 
+            a == other.a && 
+            b == other.b;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

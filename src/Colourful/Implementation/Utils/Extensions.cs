@@ -1,13 +1,6 @@
 ﻿using System;
-#if (!READONLYCOLLECTIONS)
-using Vector = System.Collections.Generic.IList<double>;
-using Matrix = System.Collections.Generic.IList<System.Collections.Generic.IList<double>>;
-
-#else
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-
-#endif
+using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful.Implementation
 {

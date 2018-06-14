@@ -1,5 +1,8 @@
 ﻿namespace Colourful
 {
+    /// <summary>
+    /// An interface implemented by RGB color types.
+    /// </summary>
     public interface IRGB
     {
         /// <summary>
