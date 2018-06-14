@@ -17,11 +17,8 @@ namespace Colourful.Difference
         /// <param name="y">Sample color</param>
         /// <remarks>Implemented according to: Sharma, Gaurav; Wencheng Wu, Edul N. Dalal (2005). "The CIEDE2000 color-difference formula: Implementation notes, supplementary test data, and mathematical observations" (http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf)</remarks>
         /// <returns>Delta-E (2000) color difference</returns>
-        public double ComputeDifference(LabColor x, LabColor y)
+        public double ComputeDifference(in LabColor x, in LabColor y)
         {
-            if (x == null) throw new ArgumentNullException(nameof(x));
-            if (y == null) throw new ArgumentNullException(nameof(y));
-
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
 
