@@ -25,7 +25,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LinearRGBColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(LinearRGBColor input)
+        public XYZColor Convert(in LinearRGBColor input)
         {
             if (!Equals(input.WorkingSpace, SourceRGBWorkingSpace))
                 throw new InvalidOperationException("Working space of input RGB color must be equal to converter source RGB working space.");

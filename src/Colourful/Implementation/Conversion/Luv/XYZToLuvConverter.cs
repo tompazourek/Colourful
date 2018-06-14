@@ -31,7 +31,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="XYZColor" /> to <see cref="LuvColor" />.
         /// </summary>
-        public LuvColor Convert(XYZColor input)
+        public LuvColor Convert(in XYZColor input)
         {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Luv.html
 

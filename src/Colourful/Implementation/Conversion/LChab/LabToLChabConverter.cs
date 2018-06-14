@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LabColor" /> to <see cref="LChabColor" />.
         /// </summary>
-        public LChabColor Convert(LabColor input)
+        public LChabColor Convert(in LabColor input)
         {
             double L = input.L, a = input.a, b = input.b;
             var C = Math.Sqrt(a * a + b * b);

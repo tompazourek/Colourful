@@ -38,7 +38,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="XYZColor" /> to <see cref="LinearRGBColor" />.
         /// </summary>
-        public LinearRGBColor Convert(XYZColor input)
+        public LinearRGBColor Convert(in XYZColor input)
         {
             var inputVector = input.Vector;
             var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);

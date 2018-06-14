@@ -14,7 +14,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="RGBColor" /> to <see cref="LinearRGBColor" />.
         /// </summary>
-        public LinearRGBColor Convert(RGBColor input)
+        public LinearRGBColor Convert(in RGBColor input)
         {
             var uncompandedVector = UncompandVector(input);
             var converted = new LinearRGBColor(uncompandedVector, input.WorkingSpace);
@@ -24,7 +24,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding" />) to RGB vector.
         /// </summary>
-        private static Vector UncompandVector(RGBColor rgbColor)
+        private static Vector UncompandVector(in RGBColor rgbColor)
         {
             var companding = rgbColor.WorkingSpace.Companding;
             var compandedVector = rgbColor.Vector;

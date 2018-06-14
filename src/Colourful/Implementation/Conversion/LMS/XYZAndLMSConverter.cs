@@ -48,10 +48,8 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" />.
         /// </summary>
-        public LMSColor Convert(XYZColor input)
+        public LMSColor Convert(in XYZColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             var outputVector = TransformationMatrix.MultiplyBy(input.Vector);
             var output = new LMSColor(outputVector);
             return output;
@@ -60,10 +58,8 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LMSColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(LMSColor input)
+        public XYZColor Convert(in LMSColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             var outputVector = _transformationMatrixInverse.MultiplyBy(input.Vector);
             var output = new XYZColor(outputVector);
             return output;

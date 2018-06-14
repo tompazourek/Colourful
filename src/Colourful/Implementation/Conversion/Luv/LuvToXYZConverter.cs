@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(LuvColor input)
+        public XYZColor Convert(in LuvColor input)
         {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Luv_to_XYZ.html
             double L = input.L, u = input.u, v = input.v;
