@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" /> and back.
     /// </summary>
-    public class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
+    public sealed class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
     {
         /// <summary>
         /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" />.

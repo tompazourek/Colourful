@@ -1,14 +1,13 @@
 ﻿using System;
 
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LinearRGBColor" /> to <see cref="RGBColor" />.
     /// </summary>
-    public class LinearRGBToRGBConverter : IColorConversion<LinearRGBColor, RGBColor>
+    public sealed class LinearRGBToRGBConverter : IColorConversion<LinearRGBColor, RGBColor>
     {
         /// <summary>
         /// Converts from <see cref="LinearRGBColor" /> to <see cref="RGBColor" />.
@@ -38,7 +37,7 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        protected bool Equals(LinearRGBToRGBConverter other)
+        public bool Equals(LinearRGBToRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             return true;
@@ -47,17 +46,11 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LinearRGBToRGBConverter)obj);
+            return obj is LinearRGBToRGBConverter;
         }
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return 1;
-        }
+        public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(LinearRGBToRGBConverter left, LinearRGBToRGBConverter right)

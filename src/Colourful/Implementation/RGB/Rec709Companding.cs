@@ -8,7 +8,7 @@ namespace Colourful.Implementation.RGB
     /// <remarks>
     /// http://en.wikipedia.org/wiki/Rec._709
     /// </remarks>
-    public class Rec709Companding : ICompanding
+    public sealed class Rec709Companding : ICompanding
     {
         /// <inheritdoc />
         public double InverseCompanding(double channel)

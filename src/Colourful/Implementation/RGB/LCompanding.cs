@@ -10,7 +10,7 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    public class LCompanding : ICompanding
+    public sealed class LCompanding : ICompanding
     {
         private const double Kappa = 24389d / 27d;
         private const double Epsilon = 216d / 24389d;
@@ -34,17 +34,11 @@ namespace Colourful.Implementation.RGB
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return true;
+            return obj is LCompanding;
         }
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return 1;
-        }
+        public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(LCompanding left, LCompanding right)

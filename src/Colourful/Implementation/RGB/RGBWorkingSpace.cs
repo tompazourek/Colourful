@@ -5,7 +5,7 @@ namespace Colourful.Implementation.RGB
     /// <summary>
     /// Trivial implementation of <see cref="IRGBWorkingSpace" />
     /// </summary>
-    public class RGBWorkingSpace : IRGBWorkingSpace
+    public sealed class RGBWorkingSpace : IRGBWorkingSpace
     {
         /// <summary>
         /// Constructs RGB working space using a reference white, companding, and chromacity coordinates.
@@ -35,19 +35,19 @@ namespace Colourful.Implementation.RGB
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        protected bool Equals(IRGBWorkingSpace other)
+        public bool Equals(RGBWorkingSpace other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
+
+            if (ReferenceEquals(this, other)) return true;
+
             return Equals(WhitePoint, other.WhitePoint) && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) && Equals(Companding, other.Companding);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (!(obj is IRGBWorkingSpace workingSpace)) return false;
-            return Equals(workingSpace);
+            return obj is RGBWorkingSpace other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

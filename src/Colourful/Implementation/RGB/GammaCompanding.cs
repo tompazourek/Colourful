@@ -10,7 +10,7 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    public class GammaCompanding : ICompanding
+    public sealed class GammaCompanding : ICompanding
     {
         /// <summary>
         /// Constructs with given gamma
@@ -45,16 +45,13 @@ namespace Colourful.Implementation.RGB
         public bool Equals(GammaCompanding other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
-            return Gamma.Equals(other.Gamma);
+            return Gamma == other.Gamma;
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((GammaCompanding)obj);
+            return obj is GammaCompanding other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LabColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
+    public sealed class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
     {
         /// <summary>
         /// Converts from <see cref="LabColor" /> to <see cref="XYZColor" />.
@@ -45,17 +43,11 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return true;
+            return obj is LabToXYZConverter;
         }
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return 1;
-        }
+        public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(LabToXYZConverter left, LabToXYZConverter right)

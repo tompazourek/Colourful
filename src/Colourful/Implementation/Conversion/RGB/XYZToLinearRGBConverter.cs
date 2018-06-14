@@ -10,7 +10,7 @@ namespace Colourful.Implementation.Conversion
     /// <remarks>
     /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace" /> when not set.
     /// </remarks>
-    public class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>
+    public sealed class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>
     {
         private readonly Matrix _conversionMatrix;
 
@@ -49,19 +49,19 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        protected bool Equals(XYZToLinearRGBConverter other)
+        public bool Equals(XYZToLinearRGBConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
+
+            if (ReferenceEquals(this, other)) return true;
+
             return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((XYZToLinearRGBConverter)obj);
+            return obj is XYZToLinearRGBConverter other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

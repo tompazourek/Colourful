@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
     /// </summary>
-    public class LChuvToLuvConverter : IColorConversion<LChuvColor, LuvColor>
+    public sealed class LChuvToLuvConverter : IColorConversion<LChuvColor, LuvColor>
     {
         /// <summary>
         /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
@@ -27,10 +27,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return true;
+            return obj is LChuvToLuvConverter;
         }
 
         /// <inheritdoc cref="object" />

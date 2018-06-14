@@ -10,7 +10,7 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    public class sRGBCompanding : ICompanding
+    public sealed class sRGBCompanding : ICompanding
     {
         /// <inheritdoc />
         public double InverseCompanding(double channel)
@@ -31,10 +31,7 @@ namespace Colourful.Implementation.RGB
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return true;
+            return obj is sRGBCompanding;
         }
 
         /// <inheritdoc cref="object" />

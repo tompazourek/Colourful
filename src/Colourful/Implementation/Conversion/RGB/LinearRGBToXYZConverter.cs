@@ -6,7 +6,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="LinearRGBColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>
+    public sealed class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>
     {
         private readonly Matrix _conversionMatrix;
 
@@ -39,18 +39,17 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        protected bool Equals(LinearRGBToXYZConverter other)
+        public bool Equals(LinearRGBToXYZConverter other)
         {
-            return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
+            if (ReferenceEquals(this, other)) return true;
+
+            return object.Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LinearRGBToXYZConverter)obj);
+            return obj is LinearRGBToXYZConverter other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />

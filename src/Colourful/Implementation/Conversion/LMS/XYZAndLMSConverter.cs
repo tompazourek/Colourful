@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
@@ -6,7 +7,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" /> and back.
     /// </summary>
-    public class XYZAndLMSConverter : IColorConversion<XYZColor, LMSColor>, IColorConversion<LMSColor, XYZColor>
+    public sealed class XYZAndLMSConverter : IColorConversion<XYZColor, LMSColor>, IColorConversion<LMSColor, XYZColor>
     {
         /// <summary>
         /// Default transformation matrix used, when no other is set. (Bradford)

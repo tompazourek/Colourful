@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="XYZColor" /> to <see cref="LabColor" />.
     /// </summary>
-    public class XYZToLabConverter : IColorConversion<XYZColor, LabColor>
+    public sealed class XYZToLabConverter : IColorConversion<XYZColor, LabColor>
     {
         /// <summary>
         /// Constructs with <see cref="LabColor.DefaultWhitePoint" />
@@ -59,19 +59,19 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        protected bool Equals(XYZToLabConverter other)
+        public bool Equals(XYZToLabConverter other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
+
+            if (ReferenceEquals(this, other)) return true;
+
             return LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((XYZToLabConverter)obj);
+            return obj is XYZToLabConverter other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />
