@@ -10,7 +10,7 @@ namespace Colourful.Difference
         /// <param name="x">Reference color</param>
         /// <param name="y">Sample color</param>
         /// <returns>Delta-E (1976) color difference</returns>
-        public double ComputeDifference(LabColor x, LabColor y)
+        public double ComputeDifference(in LabColor x, in LabColor y)
         {
             if (x.WhitePoint != y.WhitePoint)
                 throw new ArgumentException("Colors must have same white point to be compared.");
