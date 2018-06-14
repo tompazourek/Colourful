@@ -129,10 +129,11 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBColor other)
-        {
-            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B) && WorkingSpace.Equals(other.WorkingSpace);
-        }
+        public bool Equals(RGBColor other) =>
+            R == other.R &&
+            G == other.G &&
+            B == other.B &&
+            WorkingSpace.Equals(other.WorkingSpace);
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

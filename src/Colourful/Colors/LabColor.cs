@@ -95,9 +95,9 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LabColor other) => 
-            L == other.L && 
-            a == other.a && 
+        public bool Equals(LabColor other) =>
+            L == other.L &&
+            a == other.a &&
             b == other.b;
 
         /// <inheritdoc cref="object" />

@@ -56,10 +56,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(XYZColor other)
-        {
-            return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
-        }
+        public bool Equals(XYZColor other) =>
+            X == other.X &&
+            Y == other.Y &&
+            Z == other.Z;
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
