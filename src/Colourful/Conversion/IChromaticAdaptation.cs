@@ -8,6 +8,6 @@
     public interface IChromaticAdaptation
     {
         /// <remarks>Doesn't crop the resulting color space coordinates (e. g. allows negative values for XYZ coordinates).</remarks>
-        XYZColor Transform(XYZColor sourceColor, XYZColor sourceWhitePoint, XYZColor targetWhitePoint);
+        XYZColor Transform(in XYZColor sourceColor, in XYZColor sourceWhitePoint, in XYZColor targetWhitePoint);
     }
 }
