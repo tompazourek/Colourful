@@ -56,7 +56,7 @@ namespace Colourful.Conversion
         public LabColor ToLab(in LChabColor color)
         {
             // conversion (preserving white point)
-            var converter = new LChabToLabConverter();
+            var converter = LChabToLabConverter.Default;
             var unadapted = converter.Convert(color);
 
             if (!IsChromaticAdaptationPerformed)

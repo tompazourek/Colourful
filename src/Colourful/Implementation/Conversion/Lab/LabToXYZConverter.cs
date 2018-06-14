@@ -5,6 +5,8 @@
     /// </summary>
     public sealed class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
     {
+        public static readonly LabToXYZConverter Default = new LabToXYZConverter();
+
         /// <summary>
         /// Converts from <see cref="LabColor" /> to <see cref="XYZColor" />.
         /// </summary>

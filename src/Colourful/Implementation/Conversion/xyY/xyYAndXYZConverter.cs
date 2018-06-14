@@ -7,6 +7,8 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
     {
+        public static readonly xyYAndXYZConverter Default = new xyYAndXYZConverter();
+
         /// <summary>
         /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" />.
         /// </summary>

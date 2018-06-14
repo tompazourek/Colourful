@@ -7,6 +7,8 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LChabToLabConverter : IColorConversion<LChabColor, LabColor>
     {
+        public static readonly LChabToLabConverter Default = new LChabToLabConverter();
+
         /// <summary>
         /// Converts from <see cref="LChabColor" /> to <see cref="LabColor" />.
         /// </summary>

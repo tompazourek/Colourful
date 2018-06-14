@@ -7,6 +7,8 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LuvToXYZConverter : IColorConversion<LuvColor, XYZColor>
     {
+        public static readonly LuvToXYZConverter Default = new LuvToXYZConverter();
+
         /// <summary>
         /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
         /// </summary>

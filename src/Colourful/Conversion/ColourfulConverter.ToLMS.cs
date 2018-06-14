@@ -99,7 +99,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to LMS color
         /// </summary>
-        public LMSColor ToLMS<T>(T color) where T : struct, IColorVector
+        public LMSColor ToLMS<T>(T color) where T : IColorVector
         {
             if (color is LMSColor converted)
             {

@@ -22,7 +22,8 @@ namespace Colourful.Conversion
         public RGBColor ToRGB(in LinearRGBColor color)
         {
             // conversion
-            var converter = new LinearRGBToRGBConverter();
+            var converter = LinearRGBToRGBConverter.Default;
+
             var result = converter.Convert(color);
             return result;
         }
@@ -114,7 +115,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to RGB color
         /// </summary>
-        public RGBColor ToRGB<T>(T color) where T : struct, IColorVector
+        public RGBColor ToRGB<T>(T color) where T : IColorVector
         {
             if (color is RGBColor converted)
             {
