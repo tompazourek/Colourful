@@ -78,7 +78,7 @@ namespace Colourful.Tests
             Assert.Equal(output.Z, xyzZ, DoubleComparer);
         }
         
-        /*
+ 
         [Theory]
         [InlineData(0.538842, 0.000000, 0.000000)]
         public void Convert_XYZ_as_vector_to_XYZ(double x, double y, double z)
@@ -96,6 +96,5 @@ namespace Colourful.Tests
             Assert.Equal(output.Y, y, DoubleComparer);
             Assert.Equal(output.Z, z, DoubleComparer);
         }
-        */
     }
 }
