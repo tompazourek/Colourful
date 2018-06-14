@@ -1,10 +1,4 @@
-﻿#if (!READONLYCOLLECTIONS)
-using ColorList = System.Collections.Generic.IList<Colourful.RGBColor>;
-
-#else
-using ColorList = System.Collections.Generic.IReadOnlyList<Colourful.RGBColor>;
-
-#endif
+﻿using ColorList = System.Collections.Generic.IReadOnlyList<Colourful.RGBColor>;
 
 namespace Colourful
 {

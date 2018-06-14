@@ -1,5 +1,4 @@
-﻿using System;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
