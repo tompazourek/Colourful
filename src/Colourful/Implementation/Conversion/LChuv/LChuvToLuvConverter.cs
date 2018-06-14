@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LChuvColor" /> to <see cref="LuvColor" />.
         /// </summary>
-        public LuvColor Convert(LChuvColor input)
+        public LuvColor Convert(in LChuvColor input)
         {
             double L = input.L, C = input.C, hDegrees = input.h;
             var hRadians = Angle.DegreeToRadian(hDegrees);

@@ -10,7 +10,7 @@
         /// <summary>
         /// Converts from <see cref="LabColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(LabColor input)
+        public XYZColor Convert(in LabColor input)
         {
             // conversion algorithm described here: http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html
             double L = input.L, a = input.a, b = input.b;

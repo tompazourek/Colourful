@@ -12,10 +12,8 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LChabColor" /> to <see cref="LabColor" />.
         /// </summary>
-        public LabColor Convert(LChabColor input)
+        public LabColor Convert(in LChabColor input)
         {
-            if (input == null) throw new ArgumentNullException(nameof(input));
-
             double L = input.L, C = input.C, hDegrees = input.h;
             var hRadians = Angle.DegreeToRadian(hDegrees);
 

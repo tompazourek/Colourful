@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(xyYColor input)
+        public XYZColor Convert(in xyYColor input)
         {
             // ReSharper disable CompareOfFloatsByEqualityOperator
             if (input.y == 0)
@@ -29,7 +29,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="XYZColor" /> to <see cref="xyYColor" />.
         /// </summary>
-        public xyYColor Convert(XYZColor input)
+        public xyYColor Convert(in XYZColor input)
         {
             var x = input.X / (input.X + input.Y + input.Z);
             var y = input.Y / (input.X + input.Y + input.Z);

@@ -31,7 +31,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public HunterLabColor Convert(XYZColor input)
+        public HunterLabColor Convert(in XYZColor input)
         {
             // conversion algorithm described here: http://en.wikipedia.org/wiki/Lab_color_space#Hunter_Lab
             double X = input.X, Y = input.Y, Z = input.Z;

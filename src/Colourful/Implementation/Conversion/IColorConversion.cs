@@ -5,11 +5,13 @@
     /// </summary>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TOutput"></typeparam>
-    public interface IColorConversion<in TInput, out TOutput>
+    public interface IColorConversion<TInput, TOutput>
+        where TInput : struct
+        where TOutput : struct
     {
         /// <summary>
         /// Converts from the input color space to the output color space.
         /// </summary>
-        TOutput Convert(TInput input);
+        TOutput Convert(in TInput input);
     }
 }

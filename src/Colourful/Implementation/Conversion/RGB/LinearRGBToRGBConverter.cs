@@ -14,7 +14,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LinearRGBColor" /> to <see cref="RGBColor" />.
         /// </summary>
-        public RGBColor Convert(LinearRGBColor input)
+        public RGBColor Convert(in LinearRGBColor input)
         {
             var result = CompandVector(input.Vector, input.WorkingSpace);
             return result;

@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="LuvColor" /> to <see cref="LChuvColor" />.
         /// </summary>
-        public LChuvColor Convert(LuvColor input)
+        public LChuvColor Convert(in LuvColor input)
         {
             double L = input.L, u = input.u, v = input.v;
             var C = Math.Sqrt(u * u + v * v);

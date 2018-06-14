@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
         /// </summary>
-        public XYZColor Convert(HunterLabColor input)
+        public XYZColor Convert(in HunterLabColor input)
         {
             double L = input.L, a = input.a, b = input.b;
             double Xn = input.WhitePoint.X, Yn = input.WhitePoint.Y, Zn = input.WhitePoint.Z;
