@@ -35,7 +35,7 @@ namespace Colourful.Implementation.RGB
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBWorkingSpace other)
+        public bool Equals(IRGBWorkingSpace other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
 
@@ -47,7 +47,7 @@ namespace Colourful.Implementation.RGB
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)
         {
-            return obj is RGBWorkingSpace other && Equals(other);
+            return obj is IRGBWorkingSpace other && Equals(other);
         }
 
         /// <inheritdoc cref="object" />
