@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public class XYZToHunterLabConverter : XYZAndHunterLabConverterBase, IColorConversion<XYZColor, HunterLabColor>
+    public sealed class XYZToHunterLabConverter : XYZAndHunterLabConverterBase, IColorConversion<XYZColor, HunterLabColor>
     {
         /// <summary>
         /// Construct with <see cref="HunterLabColor.DefaultWhitePoint" />

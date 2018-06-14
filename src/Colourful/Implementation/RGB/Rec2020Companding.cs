@@ -9,7 +9,7 @@ namespace Colourful.Implementation.RGB
     /// http://en.wikipedia.org/wiki/Rec._2020
     /// For 10-bits, companding is identical to <see cref="Colourful.Implementation.RGB.Rec709Companding" />
     /// </remarks>
-    public class Rec2020Companding : ICompanding
+    public sealed class Rec2020Companding : ICompanding
     {
         /// <inheritdoc />
         public double InverseCompanding(double channel)
