@@ -51,11 +51,9 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(XYZToLinearRGBConverter other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-
-            if (ReferenceEquals(this, other)) return true;
-
-            return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
+            if (other == null) return false;
+            
+            return ReferenceEquals(this, other) || TargetRGBWorkingSpace.Equals(other.TargetRGBWorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
