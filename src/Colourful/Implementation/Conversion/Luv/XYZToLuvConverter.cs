@@ -73,11 +73,9 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(XYZToLuvConverter other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-
-            if (ReferenceEquals(this, other)) return true;
-
-            return LuvWhitePoint.Equals(other.LuvWhitePoint);
+            if (other == null) return false;
+            
+            return ReferenceEquals(this, other) || LuvWhitePoint.Equals(other.LuvWhitePoint);
         }
 
         /// <inheritdoc cref="object" />

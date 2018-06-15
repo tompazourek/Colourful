@@ -37,11 +37,13 @@ namespace Colourful.Implementation.RGB
         /// <inheritdoc cref="object" />
         public bool Equals(IRGBWorkingSpace other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
+            if (other == null) return false;
 
             if (ReferenceEquals(this, other)) return true;
 
-            return Equals(WhitePoint, other.WhitePoint) && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) && Equals(Companding, other.Companding);
+            return Equals(WhitePoint, other.WhitePoint)
+                && ChromaticityCoordinates.Equals(other.ChromaticityCoordinates) 
+                && Companding.Equals(other.Companding);
         }
 
         /// <inheritdoc cref="object" />

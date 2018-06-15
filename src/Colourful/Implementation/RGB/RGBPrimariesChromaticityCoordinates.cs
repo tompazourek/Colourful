@@ -32,10 +32,10 @@
         public xyChromaticityCoordinates B { get; }
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBPrimariesChromaticityCoordinates other)
-        {
-            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B);
-        }
+        public bool Equals(RGBPrimariesChromaticityCoordinates other) => 
+            R.Equals(other.R) && 
+            G.Equals(other.G) && 
+            B.Equals(other.B);
 
         /// <inheritdoc cref="object" />
         public override bool Equals(object obj)

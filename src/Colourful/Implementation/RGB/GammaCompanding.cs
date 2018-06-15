@@ -44,7 +44,8 @@ namespace Colourful.Implementation.RGB
         /// <inheritdoc cref="object" />
         public bool Equals(GammaCompanding other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
+            if (other == null) return false;
+
             return Gamma == other.Gamma;
         }
 

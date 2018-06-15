@@ -41,8 +41,7 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(LinearRGBToRGBConverter other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-            return true;
+            return other != null;
         }
 
         /// <inheritdoc cref="object" />

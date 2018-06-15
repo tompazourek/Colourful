@@ -61,11 +61,9 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(XYZToLabConverter other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-
-            if (ReferenceEquals(this, other)) return true;
-
-            return LabWhitePoint.Equals(other.LabWhitePoint);
+            if (other == null) return false;
+            
+            return ReferenceEquals(this, other) || LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
         /// <inheritdoc cref="object" />
