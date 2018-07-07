@@ -8,7 +8,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>, which has linear channels (not companded)
     /// </summary>
-    public readonly struct LinearRGBColor : IColorVector, IRGB
+    public readonly struct LinearRGBColor : IColorVector
     {
         #region Other
 

@@ -13,7 +13,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
-    public readonly struct RGBColor : IRGB, IColorVector, IEquatable<RGBColor>
+    public readonly struct RGBColor : IColorVector, IEquatable<RGBColor>
     {
         #region Other
 
