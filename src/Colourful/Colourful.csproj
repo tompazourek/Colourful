@@ -48,5 +48,9 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <DefineConstants>$(DefineConstants);DYNAMIC</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Colourful.csproj.DotSettings" />
+  </ItemGroup>
     
 </Project>
