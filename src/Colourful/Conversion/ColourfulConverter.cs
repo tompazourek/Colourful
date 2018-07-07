@@ -1,5 +1,4 @@
 ﻿using Colourful.Implementation.Conversion;
-
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Conversion
@@ -9,6 +8,23 @@ namespace Colourful.Conversion
     /// </summary>
     public partial class ColourfulConverter
     {
+        /// <summary>
+        /// Constructs the converter and sets the defaults
+        /// </summary>
+        public ColourfulConverter()
+        {
+            WhitePoint = DefaultWhitePoint;
+            LMSTransformationMatrix = XYZAndLMSConverter.DefaultTransformationMatrix;
+            ChromaticAdaptation = new VonKriesChromaticAdaptation(_cachedXYZAndLMSConverter, _cachedXYZAndLMSConverter);
+
+            TargetLabWhitePoint = LabColor.DefaultWhitePoint;
+            TargetHunterLabWhitePoint = HunterLabColor.DefaultWhitePoint;
+            TargetLuvWhitePoint = LuvColor.DefaultWhitePoint;
+            TargetRGBWorkingSpace = RGBColor.DefaultWorkingSpace;
+        }
+
+        private bool IsChromaticAdaptationPerformed => ChromaticAdaptation != null;
+
         #region Attributes
 
         /// <summary>
@@ -34,9 +50,13 @@ namespace Colourful.Conversion
                 _transformationMatrix = value;
 
                 if (_cachedXYZAndLMSConverter == null)
+                {
                     _cachedXYZAndLMSConverter = new XYZAndLMSConverter(value);
+                }
                 else
+                {
                     _cachedXYZAndLMSConverter.TransformationMatrix = value;
+                }
             }
         }
 
@@ -74,22 +94,5 @@ namespace Colourful.Conversion
         public IRGBWorkingSpace TargetRGBWorkingSpace { get; set; }
 
         #endregion
-
-        /// <summary>
-        /// Constructs the converter and sets the defaults
-        /// </summary>
-        public ColourfulConverter()
-        {
-            WhitePoint = DefaultWhitePoint;
-            LMSTransformationMatrix = XYZAndLMSConverter.DefaultTransformationMatrix;
-            ChromaticAdaptation = new VonKriesChromaticAdaptation(_cachedXYZAndLMSConverter, _cachedXYZAndLMSConverter);
-
-            TargetLabWhitePoint = LabColor.DefaultWhitePoint;
-            TargetHunterLabWhitePoint = HunterLabColor.DefaultWhitePoint;
-            TargetLuvWhitePoint = LuvColor.DefaultWhitePoint;
-            TargetRGBWorkingSpace = RGBColor.DefaultWorkingSpace;
-        }
-
-        private bool IsChromaticAdaptationPerformed => WhitePoint != null && ChromaticAdaptation != null;
     }
 }

@@ -99,9 +99,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE L*C*h° (Lab) color
-        /// </summary>
+/// <summary>
+/// Convert to CIE L*C*h° (Lab) color
+/// </summary>
         public LChabColor ToLChab<T>(T color) where T : struct, IColorVector
         {
             if (color is LChabColor converted)

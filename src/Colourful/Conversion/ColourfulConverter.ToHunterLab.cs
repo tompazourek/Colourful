@@ -101,9 +101,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to Hunter Lab color
-        /// </summary>
+/// <summary>
+/// Convert to Hunter Lab color
+/// </summary>
         public HunterLabColor ToHunterLab<T>(T color) where T : struct, IColorVector
         {
             if (color is HunterLabColor converted)

@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -78,12 +78,12 @@ namespace Colourful
         public double h { get; }
 
         /// <remarks>
-        ///     <see cref="Illuminants" />
+        /// <see cref="Illuminants" />
         /// </remarks>
         public XYZColor WhitePoint { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, C, h };
 
@@ -104,16 +104,14 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LChabColor other) =>
             L == other.L &&
-            C == other.C && 
+            C == other.C &&
             h == other.h;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LChabColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LChabColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -128,26 +126,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LChabColor left, LChabColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LChabColor left, LChabColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LChabColor left, LChabColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LChabColor left, LChabColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "LChab [L={0:0.##}, C={1:0.##}, h={2:0.##}]", L, C, h);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "LChab [L={0:0.##}, C={1:0.##}, h={2:0.##}]", L, C, h);
 
         #endregion
     }

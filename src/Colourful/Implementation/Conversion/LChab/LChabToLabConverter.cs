@@ -7,6 +7,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LChabToLabConverter : IColorConversion<LChabColor, LabColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly LChabToLabConverter Default = new LChabToLabConverter();
 
         /// <summary>
@@ -27,25 +30,16 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LChabToLabConverter;
-        }
+        public override bool Equals(object obj) => obj is LChabToLabConverter;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LChabToLabConverter left, LChabToLabConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LChabToLabConverter left, LChabToLabConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LChabToLabConverter left, LChabToLabConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LChabToLabConverter left, LChabToLabConverter right) => !Equals(left, right);
 
         #endregion
     }

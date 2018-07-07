@@ -1,7 +1,6 @@
 ﻿using System;
 using Colourful.Implementation;
 using Colourful.Implementation.Conversion;
-
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Conversion
@@ -17,10 +16,10 @@ namespace Colourful.Conversion
     {
         private readonly IColorConversion<XYZColor, LMSColor> _conversionToLMS;
         private readonly IColorConversion<LMSColor, XYZColor> _conversionToXYZ;
+        private Matrix _cachedDiagonalMatrix;
 
         private XYZColor _lastSourceWhitePoint;
         private XYZColor _lastTargetWhitePoint;
-        private Matrix _cachedDiagonalMatrix;
 
         /// <summary>
         /// Constructs von Kries chromatic adaptation using default <see cref="XYZAndLMSConverter" />

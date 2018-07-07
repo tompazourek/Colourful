@@ -32,16 +32,10 @@ namespace Colourful
         public double y { get; }
 
         /// <inheritdoc cref="object" />
-        public bool Equals(xyChromaticityCoordinates other)
-        {
-            return x.Equals(other.x) && y.Equals(other.y);
-        }
+        public bool Equals(xyChromaticityCoordinates other) => x.Equals(other.x) && y.Equals(other.y);
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is xyChromaticityCoordinates coordinates && Equals(coordinates);
-        }
+        public override bool Equals(object obj) => obj is xyChromaticityCoordinates coordinates && Equals(coordinates);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -53,24 +47,15 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(xyChromaticityCoordinates left, xyChromaticityCoordinates right) => left.Equals(right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(xyChromaticityCoordinates left, xyChromaticityCoordinates right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(xyChromaticityCoordinates left, xyChromaticityCoordinates right) => !left.Equals(right);
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "xy [x={0:0.##}, y={1:0.##}]", x, y);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "xy [x={0:0.##}, y={1:0.##}]", x, y);
 
         #endregion
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -112,9 +111,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to RGB color
-        /// </summary>
+/// <summary>
+/// Convert to RGB color
+/// </summary>
         public RGBColor ToRGB<T>(T color) where T : IColorVector
         {
             if (color is RGBColor converted)

@@ -41,34 +41,23 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(LinearRGBToXYZConverter other)
         {
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(this, other))
+                return true;
 
-            return object.Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
+            return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LinearRGBToXYZConverter other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LinearRGBToXYZConverter other && Equals(other);
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return SourceRGBWorkingSpace?.GetHashCode() ?? 0;
-        }
+        public override int GetHashCode() => SourceRGBWorkingSpace?.GetHashCode() ?? 0;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right) => !Equals(left, right);
 
         #endregion
     }

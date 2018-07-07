@@ -1,10 +1,13 @@
-﻿namespace Colourful.Implementation.Conversion
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts color between two color spaces.
     /// </summary>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TOutput"></typeparam>
+    [SuppressMessage("ReSharper", "TypeParameterCanBeVariant")]
     public interface IColorConversion<TInput, TOutput>
         where TInput : struct
         where TOutput : struct

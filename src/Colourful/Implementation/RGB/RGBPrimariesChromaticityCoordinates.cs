@@ -32,16 +32,13 @@
         public xyChromaticityCoordinates B { get; }
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBPrimariesChromaticityCoordinates other) => 
-            R.Equals(other.R) && 
-            G.Equals(other.G) && 
+        public bool Equals(RGBPrimariesChromaticityCoordinates other) =>
+            R.Equals(other.R) &&
+            G.Equals(other.G) &&
             B.Equals(other.B);
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is RGBPrimariesChromaticityCoordinates other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is RGBPrimariesChromaticityCoordinates other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -56,15 +53,9 @@
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right) => left.Equals(right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right) => !left.Equals(right);
     }
 }

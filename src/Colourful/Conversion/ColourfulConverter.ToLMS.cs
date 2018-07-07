@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Colourful.Conversion
+﻿namespace Colourful.Conversion
 {
     public partial class ColourfulConverter
     {
@@ -96,9 +94,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to LMS color
-        /// </summary>
+/// <summary>
+/// Convert to LMS color
+/// </summary>
         public LMSColor ToLMS<T>(T color) where T : IColorVector
         {
             if (color is LMSColor converted)

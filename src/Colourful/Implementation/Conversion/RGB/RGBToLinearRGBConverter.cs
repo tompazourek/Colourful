@@ -1,6 +1,4 @@
-﻿using System;
-
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+﻿using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -9,6 +7,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly RGBToLinearRGBConverter Default = new RGBToLinearRGBConverter();
 
         /// <summary>
@@ -40,31 +41,19 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public bool Equals(RGBToLinearRGBConverter other)
-        {
-            return other != null;
-        }
+        public bool Equals(RGBToLinearRGBConverter other) => other != null;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is RGBToLinearRGBConverter;
-        }
+        public override bool Equals(object obj) => obj is RGBToLinearRGBConverter;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(RGBToLinearRGBConverter left, RGBToLinearRGBConverter right) => !Equals(left, right);
 
         #endregion
     }

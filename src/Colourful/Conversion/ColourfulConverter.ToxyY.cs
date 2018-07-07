@@ -1,5 +1,4 @@
-﻿using System;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -97,11 +96,11 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE xyY color
-        /// </summary>
+/// <summary>
+/// Convert to CIE xyY color
+/// </summary>
         public xyYColor ToxyY<T>(T color) where T : IColorVector
-        {        
+        {
             if (color is xyYColor converted)
             {
                 return converted;

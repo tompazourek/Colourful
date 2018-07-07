@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -81,12 +81,12 @@ namespace Colourful
         public double b { get; }
 
         /// <remarks>
-        ///     <see cref="Illuminants" />
+        /// <see cref="Illuminants" />
         /// </remarks>
         public XYZColor WhitePoint { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, a, b };
 
@@ -95,16 +95,14 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LabColor other) =>
             L == other.L &&
             a == other.a &&
             b == other.b;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LabColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LabColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -119,26 +117,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LabColor left, LabColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LabColor left, LabColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LabColor left, LabColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LabColor left, LabColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "Lab [L={0:0.##}, a={1:0.##}, b={2:0.##}]", L, a, b);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "Lab [L={0:0.##}, a={1:0.##}, b={2:0.##}]", L, a, b);
 
         #endregion
     }

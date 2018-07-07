@@ -10,7 +10,7 @@ namespace Colourful.Tests
         /// <summary>
         /// Data from: http://en.wikipedia.org/wiki/Standard_illuminant#White_points_of_standard_illuminants
         /// </summary>
-        public static readonly IEnumerable<object[]> CCTData_Wikipedia = new []
+        public static readonly IEnumerable<object[]> CCTData_Wikipedia = new[]
         {
             new object[] { 0.44757, 0.40745, 2856 }, // (A) Incandescent / Tungsten
             new object[] { 0.34842, 0.35161, 4874 }, // (B) Direct sunlight at noon
@@ -39,7 +39,7 @@ namespace Colourful.Tests
         /// </summary>
         // ReSharper disable once UnusedMember.Local
         // Results are not precise enough.
-        public static readonly IEnumerable<object[]> CCTData_Lindbloom = new []
+        public static readonly IEnumerable<object[]> CCTData_Lindbloom = new[]
         {
             new object[] { 0.585719, 0.393121, 1500 },
             new object[] { 0.526679, 0.413297, 2000 },

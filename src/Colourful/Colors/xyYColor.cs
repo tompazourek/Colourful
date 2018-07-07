@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -61,7 +61,7 @@ namespace Colourful
         public xyChromaticityCoordinates Chromaticity { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { x, y, Luminance };
 
@@ -70,16 +70,14 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(xyYColor other) => 
-            x == other.x && 
-            y == other.y && 
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
+        public bool Equals(xyYColor other) =>
+            x == other.x &&
+            y == other.y &&
             Luminance == other.Luminance;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is xyYColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is xyYColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -94,26 +92,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(xyYColor left, xyYColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(xyYColor left, xyYColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(xyYColor left, xyYColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(xyYColor left, xyYColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "xyY [x={0:0.##}, y={1:0.##}, Y={2:0.##}]", x, y, Luminance);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "xyY [x={0:0.##}, y={1:0.##}, Y={2:0.##}]", x, y, Luminance);
 
         #endregion
     }

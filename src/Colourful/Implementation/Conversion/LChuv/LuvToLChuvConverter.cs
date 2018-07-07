@@ -7,6 +7,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LuvToLChuvConverter : IColorConversion<LuvColor, LChuvColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly LuvToLChuvConverter Default = new LuvToLChuvConverter();
 
         /// <summary>
@@ -26,28 +29,16 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LuvToLChuvConverter;
-        }
+        public override bool Equals(object obj) => obj is LuvToLChuvConverter;
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return 1;
-        }
+        public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LuvToLChuvConverter left, LuvToLChuvConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LuvToLChuvConverter left, LuvToLChuvConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LuvToLChuvConverter left, LuvToLChuvConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LuvToLChuvConverter left, LuvToLChuvConverter right) => !Equals(left, right);
 
         #endregion
     }

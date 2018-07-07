@@ -32,24 +32,15 @@ namespace Colourful.Implementation.RGB
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LCompanding;
-        }
+        public override bool Equals(object obj) => obj is LCompanding;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LCompanding left, LCompanding right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LCompanding left, LCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LCompanding left, LCompanding right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LCompanding left, LCompanding right) => !Equals(left, right);
     }
 }

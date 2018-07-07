@@ -108,11 +108,11 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE L*a*b* (1976) color
-        /// </summary>
+/// <summary>
+/// Convert to CIE L*a*b* (1976) color
+/// </summary>
         public LabColor ToLab<T>(T color) where T : struct, IColorVector
-        {        
+        {
             if (color is LabColor converted)
             {
                 return converted;

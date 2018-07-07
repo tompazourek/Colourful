@@ -80,12 +80,12 @@ namespace Colourful
         public double b { get; }
 
         /// <remarks>
-        ///     <see cref="Illuminants" />
+        /// <see cref="Illuminants" />
         /// </remarks>
         public XYZColor WhitePoint { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, a, b };
 
@@ -94,16 +94,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LabColor other)
-        {
-            return L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
-        }
+        public bool Equals(LabColor other) => L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LabColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LabColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -118,26 +112,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(HunterLabColor left, HunterLabColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(HunterLabColor left, HunterLabColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(HunterLabColor left, HunterLabColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(HunterLabColor left, HunterLabColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "HunterLab [L={0:0.##}, a={1:0.##}, b={2:0.##}]", L, a, b);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "HunterLab [L={0:0.##}, a={1:0.##}, b={2:0.##}]", L, a, b);
 
         #endregion
     }

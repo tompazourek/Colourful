@@ -29,27 +29,15 @@ namespace Colourful.Implementation.RGB
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is sRGBCompanding;
-        }
+        public override bool Equals(object obj) => obj is sRGBCompanding;
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return 1;
-        }
+        public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(sRGBCompanding left, sRGBCompanding right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(sRGBCompanding left, sRGBCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(sRGBCompanding left, sRGBCompanding right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(sRGBCompanding left, sRGBCompanding right) => !Equals(left, right);
     }
 }

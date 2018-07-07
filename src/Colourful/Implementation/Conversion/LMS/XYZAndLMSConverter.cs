@@ -1,6 +1,4 @@
-﻿using System;
-
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+﻿using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -15,22 +13,9 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public static readonly Matrix DefaultTransformationMatrix = LMSTransformationMatrix.Bradford;
 
-        /// <summary>
-        /// Transformation matrix used for the conversion (definition of the cone response domain).
-        /// <see cref="LMSTransformationMatrix" />
-        /// </summary>
-        public Matrix TransformationMatrix
-        {
-            get => _transformationMatrix;
-            internal set
-            {
-                _transformationMatrix = value;
-                _transformationMatrixInverse = TransformationMatrix.Inverse();
-            }
-        }
+        private Matrix _transformationMatrix;
 
         private Matrix _transformationMatrixInverse;
-        private Matrix _transformationMatrix;
 
         /// <summary>
         /// Constructs with <see cref="DefaultTransformationMatrix" />
@@ -46,13 +31,17 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <summary>
-        /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" />.
+        /// Transformation matrix used for the conversion (definition of the cone response domain).
+        /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        public LMSColor Convert(in XYZColor input)
+        public Matrix TransformationMatrix
         {
-            var outputVector = TransformationMatrix.MultiplyBy(input.Vector);
-            var output = new LMSColor(outputVector);
-            return output;
+            get => _transformationMatrix;
+            internal set
+            {
+                _transformationMatrix = value;
+                _transformationMatrixInverse = TransformationMatrix.Inverse();
+            }
         }
 
         /// <summary>
@@ -62,6 +51,16 @@ namespace Colourful.Implementation.Conversion
         {
             var outputVector = _transformationMatrixInverse.MultiplyBy(input.Vector);
             var output = new XYZColor(outputVector);
+            return output;
+        }
+
+        /// <summary>
+        /// Converts from <see cref="XYZColor" /> to <see cref="LMSColor" />.
+        /// </summary>
+        public LMSColor Convert(in XYZColor input)
+        {
+            var outputVector = TransformationMatrix.MultiplyBy(input.Vector);
+            var output = new LMSColor(outputVector);
             return output;
         }
     }

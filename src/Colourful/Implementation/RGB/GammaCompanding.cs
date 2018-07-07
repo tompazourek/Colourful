@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Implementation.RGB
 {
@@ -42,35 +43,25 @@ namespace Colourful.Implementation.RGB
         }
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(GammaCompanding other)
         {
-            if (other == null) return false;
+            if (other == null)
+                return false;
 
             return Gamma == other.Gamma;
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is GammaCompanding other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is GammaCompanding other && Equals(other);
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return Gamma.GetHashCode();
-        }
+        public override int GetHashCode() => Gamma.GetHashCode();
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(GammaCompanding left, GammaCompanding right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(GammaCompanding left, GammaCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(GammaCompanding left, GammaCompanding right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(GammaCompanding left, GammaCompanding right) => !Equals(left, right);
     }
 }

@@ -35,11 +35,17 @@ namespace Colourful.Implementation
             for (var i = 0; i < vector.Count; i++)
             {
                 if (vector[i] < min)
+                {
                     croppedVector[i] = min;
+                }
                 else if (vector[i] > max)
+                {
                     croppedVector[i] = max;
+                }
                 else
+                {
                     croppedVector[i] = vector[i];
+                }
             }
 
             // ReSharper disable once CoVariantArrayConversion
@@ -83,8 +89,12 @@ namespace Colourful.Implementation
             var result = new double[matrix.Count];
 
             for (var i = 0; i < matrix.Count; ++i) // each row of matrix
+            {
                 for (var k = 0; k < vector.Count; ++k) // each element of vector
+                {
                     result[i] += matrix[i][k] * vector[k];
+                }
+            }
 
             // ReSharper disable once CoVariantArrayConversion
             return result;
@@ -98,9 +108,15 @@ namespace Colourful.Implementation
             var result = MatrixFactory.CreateEmpty(matrix1.Count, matrix2[0].Count);
 
             for (var i = 0; i < matrix1.Count; ++i) // each row of 1
+            {
                 for (var j = 0; j < matrix2[0].Count; ++j) // each column of 2
+                {
                     for (var k = 0; k < matrix1[0].Count; ++k)
+                    {
                         result[i][j] += matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
 
             // ReSharper disable once CoVariantArrayConversion
             return result;

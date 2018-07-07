@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
@@ -66,9 +65,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes XYZ/RGB matrix
         /// </summary>
-        protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace)
-        {
-            return GetRGBToXYZMatrix(workingSpace).Inverse();
-        }
+        protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace) => GetRGBToXYZMatrix(workingSpace).Inverse();
     }
 }

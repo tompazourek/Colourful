@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Base class for converters between XYZ and Hunter Lab

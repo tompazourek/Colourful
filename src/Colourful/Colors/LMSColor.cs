@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -56,7 +56,7 @@ namespace Colourful
         public double S { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { L, M, S };
 
@@ -65,16 +65,14 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LMSColor other) =>
             L == other.L &&
             M == other.M &&
             S == other.S;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LMSColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LMSColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -89,26 +87,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LMSColor left, LMSColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LMSColor left, LMSColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LMSColor left, LMSColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LMSColor left, LMSColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "LMS [L={0:0.##}, M={1:0.##}, S={2:0.##}]", L, M, S);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "LMS [L={0:0.##}, M={1:0.##}, S={2:0.##}]", L, M, S);
 
         #endregion
     }

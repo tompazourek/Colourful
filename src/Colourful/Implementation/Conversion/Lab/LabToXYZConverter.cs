@@ -5,6 +5,9 @@
     /// </summary>
     public sealed class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly LabToXYZConverter Default = new LabToXYZConverter();
 
         /// <summary>
@@ -43,25 +46,16 @@
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LabToXYZConverter;
-        }
+        public override bool Equals(object obj) => obj is LabToXYZConverter;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LabToXYZConverter left, LabToXYZConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LabToXYZConverter left, LabToXYZConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LabToXYZConverter left, LabToXYZConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LabToXYZConverter left, LabToXYZConverter right) => !Equals(left, right);
 
         #endregion
     }

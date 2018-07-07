@@ -7,6 +7,9 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class HunterLabToXYZConverter : XYZAndHunterLabConverterBase, IColorConversion<HunterLabColor, XYZColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly HunterLabToXYZConverter Default = new HunterLabToXYZConverter();
 
         /// <summary>
@@ -31,25 +34,16 @@ namespace Colourful.Implementation.Conversion
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is HunterLabToXYZConverter;
-        }
+        public override bool Equals(object obj) => obj is HunterLabToXYZConverter;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(HunterLabToXYZConverter left, HunterLabToXYZConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(HunterLabToXYZConverter left, HunterLabToXYZConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(HunterLabToXYZConverter left, HunterLabToXYZConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(HunterLabToXYZConverter left, HunterLabToXYZConverter right) => !Equals(left, right);
 
         #endregion
     }

@@ -91,6 +91,7 @@ namespace Colourful.Tests
                     default:
                         throw new Exception();
                 }
+
                 Assert.Equal(actualColor, expectedColor, new ColorVectorComparer(Comparer<double>.Default));
             }
         }

@@ -61,34 +61,23 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(XYZToLabConverter other)
         {
-            if (other == null) return false;
-            
+            if (other == null)
+                return false;
+
             return ReferenceEquals(this, other) || LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is XYZToLabConverter other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is XYZToLabConverter other && Equals(other);
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return LabWhitePoint.GetHashCode();
-        }
+        public override int GetHashCode() => LabWhitePoint.GetHashCode();
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(XYZToLabConverter left, XYZToLabConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(XYZToLabConverter left, XYZToLabConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(XYZToLabConverter left, XYZToLabConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(XYZToLabConverter left, XYZToLabConverter right) => !Equals(left, right);
 
         #endregion
     }

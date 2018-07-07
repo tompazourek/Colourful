@@ -1,5 +1,4 @@
-﻿using System;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -153,16 +152,16 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE 1931 XYZ color
-        /// </summary>
+/// <summary>
+/// Convert to CIE 1931 XYZ color
+/// </summary>
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
             if (color is XYZColor converted)
             {
                 return converted;
             }
-            
+
             dynamic source = color;
 
             return ToXYZ(source);

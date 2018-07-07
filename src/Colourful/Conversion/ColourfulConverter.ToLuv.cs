@@ -1,5 +1,4 @@
-﻿using System;
-using Colourful.Implementation.Conversion;
+﻿using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -109,9 +108,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE L*u*v* (1976) color
-        /// </summary>
+/// <summary>
+/// Convert to CIE L*u*v* (1976) color
+/// </summary>
         public LuvColor ToLuv<T>(T color) where T : IColorVector
         {
             if (color is LuvColor converted)

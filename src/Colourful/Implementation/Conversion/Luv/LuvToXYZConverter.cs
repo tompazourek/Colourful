@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
     /// </summary>
     public sealed class LuvToXYZConverter : IColorConversion<LuvColor, XYZColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly LuvToXYZConverter Default = new LuvToXYZConverter();
 
         /// <summary>
@@ -45,38 +46,23 @@ namespace Colourful.Implementation.Conversion
             return result;
         }
 
-        private static double Compute_u0(XYZColor input)
-        {
-            return 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
-        }
+        private static double Compute_u0(XYZColor input) => 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
 
-        private static double Compute_v0(XYZColor input)
-        {
-            return 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
-        }
+        private static double Compute_v0(XYZColor input) => 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LuvToXYZConverter;
-        }
+        public override bool Equals(object obj) => obj is LuvToXYZConverter;
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LuvToXYZConverter left, LuvToXYZConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LuvToXYZConverter left, LuvToXYZConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LuvToXYZConverter left, LuvToXYZConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LuvToXYZConverter left, LuvToXYZConverter right) => !Equals(left, right);
 
         #endregion
     }

@@ -27,6 +27,10 @@ namespace Colourful.Tests
             return result;
         }
 
+        public bool Equals(double x, double y) => Compare(x, y) == 0;
+
+        public int GetHashCode(double obj) => throw new NotSupportedException();
+
         /// <summary>
         /// Floors number and preserves specific numer of decimal places.
         /// </summary>
@@ -39,9 +43,5 @@ namespace Colourful.Tests
             var output = Math.Floor(input * power) / power;
             return output;
         }
-
-        public bool Equals(double x, double y) => Compare(x, y) == 0;
-
-        public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }

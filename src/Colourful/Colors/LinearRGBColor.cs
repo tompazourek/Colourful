@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Colourful.Implementation;
-
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -35,7 +35,7 @@ namespace Colourful
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <param name="workingSpace">
-        ///     <see cref="RGBWorkingSpaces" />
+        /// <see cref="RGBWorkingSpaces" />
         /// </param>
         public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
         {
@@ -54,10 +54,13 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         /// <param name="workingSpace">
-        ///     <see cref="RGBWorkingSpaces" />
+        /// <see cref="RGBWorkingSpaces" />
         /// </param>
         public LinearRGBColor(Vector vector, IRGBWorkingSpace workingSpace)
-            : this(vector[0], vector[1], vector[2], workingSpace) { }
+            : this(vector[0], vector[1], vector[2], workingSpace)
+        {
+        }
+
         #endregion
 
         #region Channels
@@ -87,7 +90,7 @@ namespace Colourful
         public double B { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { R, G, B };
 
@@ -106,6 +109,7 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(RGBColor other) =>
             R == other.R &&
             G == other.G &&
@@ -113,10 +117,7 @@ namespace Colourful
             WorkingSpace.Equals(other.WorkingSpace);
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is LinearRGBColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is LinearRGBColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -128,16 +129,10 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(LinearRGBColor left, LinearRGBColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(LinearRGBColor left, LinearRGBColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(LinearRGBColor left, LinearRGBColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(LinearRGBColor left, LinearRGBColor right) => !Equals(left, right);
 
         #endregion
 
@@ -148,32 +143,23 @@ namespace Colourful
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
         /// <param name="workingSpace">
-        ///     <see cref="RGBWorkingSpaces" />
+        /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public static LinearRGBColor FromGrey(double value, IRGBWorkingSpace workingSpace)
-        {
-            return new LinearRGBColor(value, value, value, workingSpace);
-        }
+        public static LinearRGBColor FromGrey(double value, IRGBWorkingSpace workingSpace) => new LinearRGBColor(value, value, value, workingSpace);
 
         /// <summary>
         /// Creates RGB color with all channels equal
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public static LinearRGBColor FromGrey(double value)
-        {
-            return FromGrey(value, DefaultWorkingSpace);
-        }
+        public static LinearRGBColor FromGrey(double value) => FromGrey(value, DefaultWorkingSpace);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "LinearRGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "LinearRGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);
 
         #endregion
     }

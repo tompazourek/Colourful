@@ -99,11 +99,11 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to CIE L*C*h° (Luv) color
-        /// </summary>
+/// <summary>
+/// Convert to CIE L*C*h° (Luv) color
+/// </summary>
         public LChuvColor ToLChuv<T>(T color) where T : IColorVector
-        {        
+        {
             if (color is LChuvColor converted)
             {
                 return converted;

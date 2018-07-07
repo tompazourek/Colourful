@@ -12,40 +12,28 @@ namespace Colourful.Implementation
         /// </summary>
         /// <param name="x">Base</param>
         /// <returns>Result of the exponentiation</returns>
-        public static double Pow2(double x)
-        {
-            return x * x;
-        }
+        public static double Pow2(double x) => x * x;
 
         /// <summary>
         /// Compute x^3
         /// </summary>
         /// <param name="x">Base</param>
         /// <returns>Result of the exponentiation</returns>
-        public static double Pow3(double x)
-        {
-            return x * x * x;
-        }
+        public static double Pow3(double x) => x * x * x;
 
         /// <summary>
         /// Compute x^4
         /// </summary>
         /// <param name="x">Base</param>
         /// <returns>Result of the exponentiation</returns>
-        public static double Pow4(double x)
-        {
-            return x * x * (x * x);
-        }
+        public static double Pow4(double x) => x * x * (x * x);
 
         /// <summary>
         /// Compute x^7
         /// </summary>
         /// <param name="x">Base</param>
         /// <returns>Result of the exponentiation</returns>
-        public static double Pow7(double x)
-        {
-            return x * x * x * (x * x * x) * x;
-        }
+        public static double Pow7(double x) => x * x * x * (x * x * x) * x;
 
         /// <summary>
         /// Compute sine of angle in degrees

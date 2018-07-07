@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="xyYColor" /> to <see cref="XYZColor" /> and back.
     /// </summary>
     public sealed class xyYAndXYZConverter : IColorConversion<XYZColor, xyYColor>, IColorConversion<xyYColor, XYZColor>
     {
+        /// <summary>
+        /// Default singleton instance of the converter.
+        /// </summary>
         public static readonly xyYAndXYZConverter Default = new xyYAndXYZConverter();
 
         /// <summary>

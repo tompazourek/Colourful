@@ -1,6 +1,4 @@
-﻿using System;
-
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+﻿using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
 
 namespace Colourful.Implementation.Conversion
 {
@@ -51,34 +49,23 @@ namespace Colourful.Implementation.Conversion
         /// <inheritdoc cref="object" />
         public bool Equals(XYZToLinearRGBConverter other)
         {
-            if (other == null) return false;
-            
+            if (other == null)
+                return false;
+
             return ReferenceEquals(this, other) || TargetRGBWorkingSpace.Equals(other.TargetRGBWorkingSpace);
         }
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is XYZToLinearRGBConverter other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is XYZToLinearRGBConverter other && Equals(other);
 
         /// <inheritdoc cref="object" />
-        public override int GetHashCode()
-        {
-            return TargetRGBWorkingSpace?.GetHashCode() ?? 0;
-        }
+        public override int GetHashCode() => TargetRGBWorkingSpace?.GetHashCode() ?? 0;
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right) => !Equals(left, right);
 
         #endregion
     }

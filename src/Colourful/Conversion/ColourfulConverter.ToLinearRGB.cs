@@ -101,9 +101,9 @@ namespace Colourful.Conversion
         }
 
 #if (DYNAMIC)
-        /// <summary>
-        /// Convert to linear RGB
-        /// </summary>
+/// <summary>
+/// Convert to linear RGB
+/// </summary>
         public LinearRGBColor ToLinearRGB<T>(T color) where T : IColorVector
         {
             if (color is LinearRGBColor converted)

@@ -79,6 +79,7 @@ namespace Colourful.Difference
             var SL = L1 < 16
                 ? 0.511
                 : 0.040975 * L1 / (1 + 0.01765 * L1);
+
             var SH = SC * (F * T + 1 - F);
 
             var dE_1 = dL / (_l * SL);

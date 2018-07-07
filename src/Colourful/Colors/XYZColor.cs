@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
@@ -47,7 +47,7 @@ namespace Colourful
         public double Z { get; }
 
         /// <summary>
-        ///     <see cref="IColorVector" />
+        /// <see cref="IColorVector" />
         /// </summary>
         public Vector Vector => new[] { X, Y, Z };
 
@@ -56,16 +56,14 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(XYZColor other) =>
             X == other.X &&
             Y == other.Y &&
             Z == other.Z;
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj)
-        {
-            return obj is XYZColor other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is XYZColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
@@ -80,26 +78,17 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-        public static bool operator ==(XYZColor left, XYZColor right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(XYZColor left, XYZColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-        public static bool operator !=(XYZColor left, XYZColor right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(XYZColor left, XYZColor right) => !Equals(left, right);
 
         #endregion
 
         #region Overrides
 
         /// <inheritdoc cref="object" />
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "XYZ [X={0:0.##}, Y={1:0.##}, Z={2:0.##}]", X, Y, Z);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "XYZ [X={0:0.##}, Y={1:0.##}, Z={2:0.##}]", X, Y, Z);
 
         #endregion
     }
