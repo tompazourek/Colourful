@@ -94,10 +94,10 @@ namespace Colourful
         #region Equality
 
         /// <inheritdoc cref="object" />
-        public bool Equals(LabColor other) => L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
+        public bool Equals(HunterLabColor other) => L.Equals(other.L) && a.Equals(other.a) && b.Equals(other.b);
 
         /// <inheritdoc cref="object" />
-        public override bool Equals(object obj) => obj is LabColor other && Equals(other);
+        public override bool Equals(object obj) => obj is HunterLabColor other && Equals(other);
 
         /// <inheritdoc cref="object" />
         public override int GetHashCode()
