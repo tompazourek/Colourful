@@ -110,7 +110,7 @@ namespace Colourful
 
         /// <inheritdoc cref="object" />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
-        public bool Equals(RGBColor other) =>
+        public bool Equals(LinearRGBColor other) =>
             R == other.R &&
             G == other.G &&
             B == other.B &&
