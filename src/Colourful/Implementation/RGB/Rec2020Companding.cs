@@ -11,11 +11,15 @@ namespace Colourful.Implementation.RGB
     /// </remarks>
     public sealed class Rec2020Companding : ICompanding
     {
+        private const double Alpha = 1.09929682680944;
+        private const double Beta = 0.018053968510807;
+        private const double InverseBeta = Beta * 4.5;
+
         /// <inheritdoc />
         public double InverseCompanding(double channel)
         {
             var V = channel;
-            var L = V < 0.08145 ? V / 4.5 : Math.Pow((V + 0.0993) / 1.0993, 1 / 0.45);
+            var L = V < InverseBeta ? V / 4.5 : Math.Pow((V + Alpha - 1.0) / Alpha, 1 / 0.45);
             return L;
         }
 
@@ -23,7 +27,7 @@ namespace Colourful.Implementation.RGB
         public double Companding(double channel)
         {
             var L = channel;
-            var V = L < 0.0181 ? 4500 * L : 1.0993 * L - 0.0993;
+            var V = L < Beta ? 4.5 * L : Alpha * Math.Pow(L, 0.45) - (Alpha - 1.0);
             return V;
         }
     }

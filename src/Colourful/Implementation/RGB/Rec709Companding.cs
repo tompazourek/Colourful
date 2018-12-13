@@ -22,7 +22,7 @@ namespace Colourful.Implementation.RGB
         public double Companding(double channel)
         {
             var L = channel;
-            var V = L < 0.018 ? 4500 * L : 1.099 * L - 0.099;
+            var V = L < 0.018 ? 4.5 * L : 1.099 * Math.Pow(L, 0.45) - 0.099;
             return V;
         }
     }
