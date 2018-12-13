@@ -19,7 +19,7 @@ namespace Colourful.Implementation.RGB
         public double InverseCompanding(double channel)
         {
             var V = channel;
-            var v = V <= 0.08 ? 100 * V / Kappa : MathUtils.Pow3((V + 0.16) / 1.16);
+            var v = V <= 0.08 ? 100.0 * V / Kappa : Math.Pow((V + 0.16) / 1.16, 3.0);
             return v;
         }
 
@@ -27,7 +27,7 @@ namespace Colourful.Implementation.RGB
         public double Companding(double channel)
         {
             var v = channel;
-            var V = v <= Epsilon ? v * Kappa / 100d : Math.Pow(1.16 * v, 1 / 3d) - 0.16;
+            var V = v <= Epsilon ? v * Kappa / 100.0 : 1.16 * Math.Pow(v, 1.0 / 3.0) - 0.16;
             return V;
         }
 
