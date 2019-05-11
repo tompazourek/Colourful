@@ -48,7 +48,7 @@ namespace Colourful
             R = r.CheckRange(0, 1);
             G = g.CheckRange(0, 1);
             B = b.CheckRange(0, 1);
-            WorkingSpace = workingSpace;
+            _workingSpace = workingSpace;
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
@@ -126,7 +126,9 @@ namespace Colourful
         /// RGB color space
         /// <seealso cref="RGBWorkingSpaces" />
         /// </summary>
-        public IRGBWorkingSpace WorkingSpace { get; }
+        public IRGBWorkingSpace WorkingSpace => _workingSpace ?? DefaultWorkingSpace;
+
+        private readonly IRGBWorkingSpace _workingSpace;
 
         #endregion
 

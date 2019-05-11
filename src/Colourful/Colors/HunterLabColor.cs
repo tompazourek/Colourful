@@ -33,7 +33,7 @@ namespace Colourful
             L = l;
             this.a = a;
             this.b = b;
-            WhitePoint = whitePoint;
+            _whitePoint = whitePoint;
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
@@ -82,7 +82,9 @@ namespace Colourful
         /// <remarks>
         /// <see cref="Illuminants" />
         /// </remarks>
-        public XYZColor WhitePoint { get; }
+        public XYZColor WhitePoint => _whitePoint ?? DefaultWhitePoint;
+
+        private readonly XYZColor? _whitePoint;
 
         /// <summary>
         /// <see cref="IColorVector" />
