@@ -1,4 +1,5 @@
-﻿using Colourful.Implementation.Conversion;
+﻿using System;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -151,21 +152,36 @@ namespace Colourful.Conversion
             return converted;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to CIE 1931 XYZ color
-/// </summary>
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
         public XYZColor ToXYZ<T>(T color) where T : IColorVector
         {
-            if (color is XYZColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LinearRGBColor typedColor:
+                    return ToXYZ(in typedColor);
+                case XYZColor typedColor:
+                    return typedColor;
+                case xyYColor typedColor:
+                    return ToXYZ(in typedColor);
+                case HunterLabColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LabColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LChabColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LuvColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LChuvColor typedColor:
+                    return ToXYZ(in typedColor);
+                case LMSColor typedColor:
+                    return ToXYZ(in typedColor);
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToXYZ(source);
         }
-#endif
     }
 }

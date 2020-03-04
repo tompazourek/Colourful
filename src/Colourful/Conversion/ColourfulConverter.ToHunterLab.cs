@@ -1,4 +1,5 @@
-﻿using Colourful.Implementation.Conversion;
+﻿using System;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -100,21 +101,36 @@ namespace Colourful.Conversion
             return result;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to Hunter Lab color
-/// </summary>
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
         public HunterLabColor ToHunterLab<T>(T color) where T : struct, IColorVector
         {
-            if (color is HunterLabColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case LinearRGBColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case XYZColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case xyYColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case HunterLabColor typedColor:
+                    return typedColor;
+                case LabColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case LChabColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case LuvColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case LChuvColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case LMSColor typedColor:
+                    return ToHunterLab(in typedColor);
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToHunterLab(source);
         }
-#endif
     }
 }

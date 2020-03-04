@@ -1,4 +1,6 @@
-﻿namespace Colourful.Conversion
+﻿using System;
+
+namespace Colourful.Conversion
 {
     public partial class ColourfulConverter
     {
@@ -93,21 +95,36 @@
             return result;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to LMS color
-/// </summary>
+        /// <summary>
+        /// Convert to LMS color
+        /// </summary>
         public LMSColor ToLMS<T>(T color) where T : IColorVector
         {
-            if (color is LMSColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToLMS(in typedColor);
+                case LinearRGBColor typedColor:
+                    return ToLMS(in typedColor);
+                case XYZColor typedColor:
+                    return ToLMS(in typedColor);
+                case xyYColor typedColor:
+                    return ToLMS(in typedColor);
+                case HunterLabColor typedColor:
+                    return ToLMS(in typedColor);
+                case LabColor typedColor:
+                    return ToLMS(in typedColor);
+                case LChabColor typedColor:
+                    return ToLMS(in typedColor);
+                case LuvColor typedColor:
+                    return ToLMS(in typedColor);
+                case LChuvColor typedColor:
+                    return ToLMS(in typedColor);
+                case LMSColor typedColor:
+                    return typedColor;
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToLMS(source);
         }
-#endif
     }
 }

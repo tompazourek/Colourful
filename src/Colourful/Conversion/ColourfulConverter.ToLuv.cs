@@ -1,4 +1,5 @@
-﻿using Colourful.Implementation.Conversion;
+﻿using System;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -73,7 +74,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*u*v* (1976) color
         /// </summary>
-        public LuvColor ToLuv(HunterLabColor color)
+        public LuvColor ToLuv(in HunterLabColor color)
         {
             var xyzColor = ToXYZ(color);
             var result = ToLuv(xyzColor);
@@ -107,21 +108,36 @@ namespace Colourful.Conversion
             return result;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to CIE L*u*v* (1976) color
-/// </summary>
+        /// <summary>
+        /// Convert to CIE L*u*v* (1976) color
+        /// </summary>
         public LuvColor ToLuv<T>(T color) where T : IColorVector
         {
-            if (color is LuvColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToLuv(in typedColor);
+                case LinearRGBColor typedColor:
+                    return ToLuv(in typedColor);
+                case XYZColor typedColor:
+                    return ToLuv(in typedColor);
+                case xyYColor typedColor:
+                    return ToLuv(in typedColor);
+                case HunterLabColor typedColor:
+                    return ToLuv(in typedColor);
+                case LabColor typedColor:
+                    return ToLuv(in typedColor);
+                case LChabColor typedColor:
+                    return ToLuv(in typedColor);
+                case LuvColor typedColor:
+                    return typedColor;
+                case LChuvColor typedColor:
+                    return ToLuv(in typedColor);
+                case LMSColor typedColor:
+                    return ToLuv(in typedColor);
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToLuv(source);
         }
-#endif
     }
 }

@@ -1,4 +1,5 @@
-﻿using Colourful.Implementation.Conversion;
+﻿using System;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -98,21 +99,36 @@ namespace Colourful.Conversion
             return result;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to CIE L*C*h° (Lab) color
-/// </summary>
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab<T>(T color) where T : struct, IColorVector
         {
-            if (color is LChabColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToLChab(in typedColor);
+                case LinearRGBColor typedColor:
+                    return ToLChab(in typedColor);
+                case XYZColor typedColor:
+                    return ToLChab(in typedColor);
+                case xyYColor typedColor:
+                    return ToLChab(in typedColor);
+                case HunterLabColor typedColor:
+                    return ToLChab(in typedColor);
+                case LabColor typedColor:
+                    return ToLChab(in typedColor);
+                case LChabColor typedColor:
+                    return typedColor;
+                case LuvColor typedColor:
+                    return ToLChab(in typedColor);
+                case LChuvColor typedColor:
+                    return ToLChab(in typedColor);
+                case LMSColor typedColor:
+                    return ToLChab(in typedColor);
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToLChab(source);
         }
-#endif
     }
 }

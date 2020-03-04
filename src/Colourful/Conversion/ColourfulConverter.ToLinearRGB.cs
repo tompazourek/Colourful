@@ -1,4 +1,5 @@
-﻿using Colourful.Implementation.Conversion;
+﻿using System;
+using Colourful.Implementation.Conversion;
 
 namespace Colourful.Conversion
 {
@@ -100,21 +101,36 @@ namespace Colourful.Conversion
             return result;
         }
 
-#if (DYNAMIC)
-/// <summary>
-/// Convert to linear RGB
-/// </summary>
+        /// <summary>
+        /// Convert to linear RGB
+        /// </summary>
         public LinearRGBColor ToLinearRGB<T>(T color) where T : IColorVector
         {
-            if (color is LinearRGBColor converted)
+            switch (color)
             {
-                return converted;
+                case RGBColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LinearRGBColor typedColor:
+                    return typedColor;
+                case XYZColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case xyYColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case HunterLabColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LabColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LChabColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LuvColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LChuvColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                case LMSColor typedColor:
+                    return ToLinearRGB(in typedColor);
+                default:
+                    throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }
-
-            dynamic source = color;
-
-            return ToLinearRGB(source);
         }
-#endif
     }
 }
