@@ -19,7 +19,6 @@
     <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
     <PackageId>Colourful</PackageId>
     <DocumentationFile>/bin/$(Configuration)/Colourful.xml</DocumentationFile>
-    <Deterministic>True</Deterministic>
     <LangVersion>7.3</LangVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
