@@ -12,7 +12,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tompazourek/Colourful.git</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_64.png</PackageIconUrl>
+    <PackageIcon>logo_64.png</PackageIcon>
     <PackageTags>adobe-rgb bradford c-sharp cct chromatic-adaptation chromaticity cie-lab cie-luv cie-xyy cie-xyz color-difference color-space conversion delta-e lab lms luv rgb srgb xyz</PackageTags>
     <Description>Open source .NET library for working with color spaces.</Description>
     <RepositoryType>git</RepositoryType>
@@ -50,6 +50,7 @@
 
   <ItemGroup>
     <None Remove="Colourful.csproj.DotSettings" />
+    <None Include="..\..\assets\logo_64.png" Pack="true" PackagePath="" />
   </ItemGroup>
     
 </Project>
