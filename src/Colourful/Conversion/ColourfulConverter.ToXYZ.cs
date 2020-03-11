@@ -24,10 +24,10 @@ namespace Colourful.Conversion
             // uncompanding
             var rgbConverter = RGBToLinearRGBConverter.Default;
 
-            var linear = rgbConverter.Convert(color);
+            var linear = rgbConverter.Convert(in color);
 
             // conversion
-            var result = ToXYZ(linear);
+            var result = ToXYZ(in linear);
             return result;
         }
 
@@ -38,12 +38,12 @@ namespace Colourful.Conversion
         {
             // conversion
             var converterXyz = GetLinearRGBToXYZConverter(color.WorkingSpace);
-            var unadapted = converterXyz.Convert(color);
+            var unadapted = converterXyz.Convert(in color);
 
             // adaptation
             var adapted = color.WorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
-                : Adapt(unadapted, color.WorkingSpace.WhitePoint);
+                : Adapt(in unadapted, color.WorkingSpace.WhitePoint);
 
             return adapted;
         }
@@ -55,7 +55,7 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = xyYAndXYZConverter.Default;
-            var converted = converter.Convert(color);
+            var converted = converter.Convert(in color);
             return converted;
         }
 
@@ -66,12 +66,12 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = LabToXYZConverter.Default;
-            var unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(in color);
 
             // adaptation
             var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
-                : Adapt(unadapted, color.WhitePoint);
+                : Adapt(in unadapted, color.WhitePoint);
 
             return adapted;
         }
@@ -84,10 +84,10 @@ namespace Colourful.Conversion
             // conversion to Lab
             var labConverter = LChabToLabConverter.Default;
 
-            var labColor = labConverter.Convert(color);
+            var labColor = labConverter.Convert(in color);
 
             // conversion to XYZ (incl. adaptation)
-            var result = ToXYZ(labColor);
+            var result = ToXYZ(in labColor);
             return result;
         }
 
@@ -99,12 +99,12 @@ namespace Colourful.Conversion
             // conversion
             var converter = HunterLabToXYZConverter.Default;
 
-            var unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(in color);
 
             // adaptation
             var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
-                : Adapt(unadapted, color.WhitePoint);
+                : Adapt(in unadapted, color.WhitePoint);
 
             return adapted;
         }
@@ -116,12 +116,12 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = LuvToXYZConverter.Default;
-            var unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(in color);
 
             // adaptation
             var adapted = color.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? unadapted
-                : Adapt(unadapted, color.WhitePoint);
+                : Adapt(in unadapted, color.WhitePoint);
 
             return adapted;
         }
@@ -134,10 +134,10 @@ namespace Colourful.Conversion
             // conversion to Luv
             var luvConverter = LChuvToLuvConverter.Default;
 
-            var labColor = luvConverter.Convert(color);
+            var labColor = luvConverter.Convert(in color);
 
             // conversion to XYZ (incl. adaptation)
-            var result = ToXYZ(labColor);
+            var result = ToXYZ(in labColor);
             return result;
         }
 
@@ -148,8 +148,39 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = _cachedXYZAndLMSConverter;
-            var converted = converter.Convert(color);
+            var converted = converter.Convert(in color);
             return converted;
+        }
+        
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
+        public XYZColor ToXYZ(in JzazbzColor color)
+        {
+            // conversion
+            var converter = JzazbzToXYZConverter.Default;
+            var unadapted = converter.Convert(in color);
+
+            // adaptation
+            var adapted = JzazbzToXYZConverter.XYZWhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
+                ? unadapted
+                : Adapt(unadapted, JzazbzToXYZConverter.XYZWhitePoint);
+
+            return adapted;
+        }
+        
+        /// <summary>
+        /// Convert to CIE 1931 XYZ color
+        /// </summary>
+        public XYZColor ToXYZ(in JzCzhzColor color)
+        {
+            // conversion to Jzazbz
+            var converter = JzCzhzToJzazbzConverter.Default;
+            var jzazbzColor = converter.Convert(in color);
+
+            // conversion to XYZ
+            var result = ToXYZ(in jzazbzColor);
+            return result;
         }
 
         /// <summary>
@@ -178,6 +209,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToXYZ(in typedColor);
                 case LMSColor typedColor:
+                    return ToXYZ(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToXYZ(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToXYZ(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));

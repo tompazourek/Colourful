@@ -102,6 +102,26 @@ namespace Colourful.Conversion
         /// <summary>
         /// Convert to CIE L*C*h° (Lab) color
         /// </summary>
+        public LChabColor ToLChab(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
+        public LChabColor ToLChab(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLChab(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to CIE L*C*h° (Lab) color
+        /// </summary>
         public LChabColor ToLChab<T>(T color) where T : struct, IColorVector
         {
             switch (color)
@@ -125,6 +145,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToLChab(in typedColor);
                 case LMSColor typedColor:
+                    return ToLChab(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToLChab(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToLChab(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));

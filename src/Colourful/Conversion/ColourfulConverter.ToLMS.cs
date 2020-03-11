@@ -94,6 +94,26 @@ namespace Colourful.Conversion
             var result = ToLMS(xyzColor);
             return result;
         }
+        
+        /// <summary>
+        /// Convert to LMS color
+        /// </summary>
+        public LMSColor ToLMS(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to LMS color
+        /// </summary>
+        public LMSColor ToLMS(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLMS(xyzColor);
+            return result;
+        }
 
         /// <summary>
         /// Convert to LMS color
@@ -122,6 +142,10 @@ namespace Colourful.Conversion
                     return ToLMS(in typedColor);
                 case LMSColor typedColor:
                     return typedColor;
+                case JzazbzColor typedColor:
+                    return ToLMS(in typedColor);
+                case JzCzhzColor typedColor:
+                    return ToLMS(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
             }

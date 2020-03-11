@@ -5,7 +5,6 @@
     /// </summary>
     /// <typeparam name="TColor"></typeparam>
     public interface IColorDifference<TColor>
-        where TColor : struct
     {
         /// <summary>
         /// Computes distance between color x and y.

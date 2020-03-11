@@ -95,6 +95,26 @@ namespace Colourful.Conversion
             var result = ToxyY(xyzColor);
             return result;
         }
+        
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
+        public xyYColor ToxyY(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to CIE xyY color
+        /// </summary>
+        public xyYColor ToxyY(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToxyY(xyzColor);
+            return result;
+        }
 
         /// <summary>
         /// Convert to CIE xyY color
@@ -122,6 +142,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToxyY(in typedColor);
                 case LMSColor typedColor:
+                    return ToxyY(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToxyY(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToxyY(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));

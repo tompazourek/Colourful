@@ -107,6 +107,26 @@ namespace Colourful.Conversion
             var result = ToLab(xyzColor);
             return result;
         }
+        
+        /// <summary>
+        /// Convert to CIE L*a*b* (1976) color
+        /// </summary>
+        public LabColor ToLab(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLab(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to CIE L*a*b* (1976) color
+        /// </summary>
+        public LabColor ToLab(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToLab(xyzColor);
+            return result;
+        }
 
         /// <summary>
         /// Convert to CIE L*a*b* (1976) color
@@ -134,6 +154,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToLab(in typedColor);
                 case LMSColor typedColor:
+                    return ToLab(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToLab(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToLab(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));

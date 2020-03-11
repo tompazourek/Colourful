@@ -100,6 +100,26 @@ namespace Colourful.Conversion
             var result = ToHunterLab(xyzColor);
             return result;
         }
+        
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
+        public HunterLabColor ToHunterLab(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to Hunter Lab color
+        /// </summary>
+        public HunterLabColor ToHunterLab(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToHunterLab(xyzColor);
+            return result;
+        }
 
         /// <summary>
         /// Convert to Hunter Lab color
@@ -127,6 +147,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToHunterLab(in typedColor);
                 case LMSColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToHunterLab(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToHunterLab(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));

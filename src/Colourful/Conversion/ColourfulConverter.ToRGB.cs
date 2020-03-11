@@ -110,6 +110,26 @@ namespace Colourful.Conversion
             var result = ToRGB(xyzColor);
             return result;
         }
+        
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
+        public RGBColor ToRGB(in JzazbzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
+            return result;
+        }
+
+        /// <summary>
+        /// Convert to RGB color
+        /// </summary>
+        public RGBColor ToRGB(in JzCzhzColor color)
+        {
+            var xyzColor = ToXYZ(color);
+            var result = ToRGB(xyzColor);
+            return result;
+        }
 
         /// <summary>
         /// Convert to RGB color
@@ -137,6 +157,10 @@ namespace Colourful.Conversion
                 case LChuvColor typedColor:
                     return ToRGB(in typedColor);
                 case LMSColor typedColor:
+                    return ToRGB(in typedColor);
+                case JzazbzColor typedColor:
+                    return ToRGB(in typedColor);
+                case JzCzhzColor typedColor:
                     return ToRGB(in typedColor);
                 default:
                     throw new ArgumentException($"Cannot accept type '{typeof(T)}'.", nameof(color));
