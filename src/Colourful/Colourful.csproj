@@ -11,19 +11,18 @@
     <Copyright>Tomáš Pažourek</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/tompazourek/Colourful.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tompazourek/Colourful</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageIcon>logo_64.png</PackageIcon>
     <PackageTags>adobe-rgb bradford c-sharp cct chromatic-adaptation chromaticity cie-lab cie-luv cie-xyy cie-xyz color-difference color-space conversion delta-e lab lms luv rgb srgb xyz</PackageTags>
     <Description>Open source .NET library for working with color spaces.</Description>
-    <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
     <PackageId>Colourful</PackageId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>7.3</LangVersion>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <LangVersion>7.3</LangVersion>    
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
