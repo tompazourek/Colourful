@@ -27,4 +27,3 @@ test_script:
 
 artifacts:
   - path: src\Colourful\bin\%configuration%\*.nupkg
-  - path: src\Colourful\bin\%configuration%\*.snupkg
