@@ -7,7 +7,7 @@ before_build:
 
 environment:
   base_version: '2.0.5'
-  version_suffix: '-alpha6'
+  version_suffix: '-alpha7'
 
 version: $(base_version).{build}$(version_suffix)
 
