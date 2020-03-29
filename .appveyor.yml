@@ -6,17 +6,7 @@ before_build:
   - dotnet restore
 
 environment:
-  base_version: '2.0.5'
-  version_suffix: ''
-
-version: $(base_version).{build}$(version_suffix)
-
-dotnet_csproj:
-  patch: true
-  file: 'src\Colourful\*.csproj'
-  version: '$(base_version)$(version_suffix)'
-  assembly_version: '$(base_version)'
-  file_version: '$(base_version).{build}'
+  MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
 
 build:
   parallel: true
