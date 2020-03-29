@@ -8,6 +8,8 @@ before_build:
 environment:
   MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
 
+version: '{build}'
+
 build:
   parallel: true
   verbosity: minimal
