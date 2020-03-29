@@ -2,25 +2,26 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;netstandard1.1;netstandard2.0;</TargetFrameworks>
-    <Version>0.0.1</Version>
-    <AssemblyVersion>0.0.0.1</AssemblyVersion>
-    <FileVersion>0.0.0.1</FileVersion>
+    <LangVersion>7.3</LangVersion>
+
+    <!-- NuGet package -->
     <Authors>Tomáš Pažourek</Authors>
     <Company>Tomáš Pažourek</Company>
-    <Product />
     <Copyright>Tomáš Pažourek</Copyright>
+    <Product />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tompazourek/Colourful</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageIcon>logo_64.png</PackageIcon>
     <PackageTags>adobe-rgb bradford c-sharp cct chromatic-adaptation chromaticity cie-lab cie-luv cie-xyy cie-xyz color-difference color-space conversion delta-e lab lms luv rgb srgb xyz</PackageTags>
     <Description>Open source .NET library for working with color spaces.</Description>
     <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
     <PackageId>Colourful</PackageId>
+
+    <!-- Symbols, docs -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>7.3</LangVersion>    
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
@@ -29,7 +30,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Drawing" />
   </ItemGroup>
 
@@ -41,15 +42,11 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <DefineConstants>$(DefineConstants);NET45;DRAWING</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
-    <DefineConstants>$(DefineConstants);</DefineConstants>
+    <DefineConstants>$(DefineConstants);DRAWING</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Colourful.csproj.DotSettings" />
+    <None Remove="*.DotSettings" />
     <None Include="..\..\assets\logo_64.png" Pack="true" PackagePath="" />
   </ItemGroup>
     
