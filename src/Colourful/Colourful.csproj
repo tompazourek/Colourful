@@ -54,4 +54,7 @@
     <None Include="..\..\assets\logo_64.png" Pack="true" PackagePath="" />
   </ItemGroup>
     
+  <Target Name="UpdateAppVeyorBuildVersion" AfterTargets="MinVer" Condition=" '$(APPVEYOR)' == 'true' ">
+    <Exec Command="appveyor UpdateBuild -Version &quot;$(MinVerVersion)&quot;" />
+   </Target>
 </Project>

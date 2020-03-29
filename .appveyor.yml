@@ -8,7 +8,7 @@ before_build:
 environment:
   MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
 
-version: '{build}'
+version: '{build}' # will get updated by MSBuild target
 
 build:
   parallel: true
