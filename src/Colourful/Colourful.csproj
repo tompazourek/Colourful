@@ -6,18 +6,16 @@
 
     <!-- NuGet package -->
     <Authors>Tomáš Pažourek</Authors>
-    <Company>Tomáš Pažourek</Company>
-    <Copyright>Tomáš Pažourek</Copyright>
-    <Product />
+    <Company>$(Authors)</Company>
+    <Copyright>$(Copyright)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/tompazourek/Colourful</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tompazourek/Colourful</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageReleaseNotes>$(RepositoryUrl)/releases</PackageReleaseNotes>
     <PackageIcon>logo_64.png</PackageIcon>
     <PackageTags>adobe-rgb bradford c-sharp cct chromatic-adaptation chromaticity cie-lab cie-luv cie-xyy cie-xyz color-difference color-space conversion delta-e lab lms luv rgb srgb xyz</PackageTags>
     <Description>Open source .NET library for working with color spaces.</Description>
-    <PackageReleaseNotes>https://github.com/tompazourek/Colourful/releases</PackageReleaseNotes>
-    <PackageId>Colourful</PackageId>
 
     <!-- Symbols, docs -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -30,6 +28,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <DefineConstants>$(DefineConstants);DRAWING</DefineConstants>
+  </PropertyGroup>
+  
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Drawing" />
   </ItemGroup>
@@ -44,10 +46,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <DefineConstants>$(DefineConstants);DRAWING</DefineConstants>
-  </PropertyGroup>
 
   <ItemGroup>
     <None Remove="*.DotSettings" />
