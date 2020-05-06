@@ -30,11 +30,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_D50_to_sRGB(double x, double y, double z, double r, double g, double b)
         {
             // arange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D50, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
-            var output = converter.ToRGB(input);
+            var output = converter.ToRGB(in input);
 
             // assert
             Assert.Equal(output.WorkingSpace, RGBColor.DefaultWorkingSpace);
@@ -58,11 +58,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_D65_to_sRGB(double x, double y, double z, double r, double g, double b)
         {
             // arange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // act
-            var output = converter.ToRGB(input);
+            var output = converter.ToRGB(in input);
 
             // assert
             Assert.Equal(output.WorkingSpace, RGBColor.DefaultWorkingSpace);
@@ -86,11 +86,11 @@ namespace Colourful.Tests
         public void Convert_sRGB_to_XYZ_D50(double r, double g, double b, double x, double y, double z)
         {
             // arrange
-            var input = new RGBColor(r, g, b);
+            var input = new RGBColor(in r, in g, in b);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D50 };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparer);
@@ -113,11 +113,11 @@ namespace Colourful.Tests
         public void Convert_sRGB_to_XYZ_D65(double r, double g, double b, double x, double y, double z)
         {
             // arrange
-            var input = new RGBColor(r, g, b);
+            var input = new RGBColor(in r, in g, in b);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparer);

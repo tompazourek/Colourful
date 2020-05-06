@@ -9,8 +9,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -19,8 +19,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -31,7 +31,7 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = _cachedXYZAndLMSConverter;
-            var result = converter.Convert(color);
+            var result = converter.Convert(in color);
             return result;
         }
 
@@ -40,8 +40,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -50,8 +50,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in LabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -60,8 +60,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in LChabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -70,8 +70,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -80,8 +80,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 
@@ -90,8 +90,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LMSColor ToLMS(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLMS(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLMS(in xyzColor);
             return result;
         }
 

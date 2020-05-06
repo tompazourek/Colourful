@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Colourful
@@ -6,14 +7,14 @@ namespace Colourful
     /// <summary>
     /// CIE 1931 XYZ color space
     /// </summary>
-    public readonly struct XYZColor : IColorVector
+    public readonly struct XYZColor : IColorVector, IEquatable<XYZColor>
     {
         #region Constructor
 
         /// <param name="x">X (usually from 0 to 1)</param>
         /// <param name="y">Y (usually from 0 to 1)</param>
         /// <param name="z">Z (usually from 0 to 1)</param>
-        public XYZColor(double x, double y, double z)
+        public XYZColor(in double x, in double y, in double z)
         {
             X = x;
             Y = y;
@@ -21,8 +22,8 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        public XYZColor(double[] vector)
-            : this(vector[0], vector[1], vector[2])
+        public XYZColor(in double[] vector)
+            : this(in vector[0], in vector[1], in vector[2])
         {
         }
 
@@ -54,17 +55,17 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(XYZColor other) =>
             X == other.X &&
             Y == other.Y &&
             Z == other.Z;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is XYZColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -86,7 +87,7 @@ namespace Colourful
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "XYZ [X={0:0.##}, Y={1:0.##}, Z={2:0.##}]", X, Y, Z);
 
         #endregion

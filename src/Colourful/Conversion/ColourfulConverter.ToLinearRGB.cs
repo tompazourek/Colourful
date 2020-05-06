@@ -12,7 +12,7 @@ namespace Colourful.Conversion
         {
             var converter = RGBToLinearRGBConverter.Default;
 
-            return converter.Convert(color);
+            return converter.Convert(in color);
         }
 
         /// <summary>
@@ -23,11 +23,11 @@ namespace Colourful.Conversion
             // adaptation
             var adapted = TargetRGBWorkingSpace.WhitePoint.Equals(WhitePoint) || !IsChromaticAdaptationPerformed
                 ? color
-                : ChromaticAdaptation.Transform(color, WhitePoint, TargetRGBWorkingSpace.WhitePoint);
+                : ChromaticAdaptation.Transform(in color, WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion to linear RGB
             var xyzConverter = GetXYZToLinearRGBConverter(TargetRGBWorkingSpace);
-            var result = xyzConverter.Convert(adapted);
+            var result = xyzConverter.Convert(in adapted);
             return result;
         }
 
@@ -36,8 +36,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -46,8 +46,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in LabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -56,8 +56,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in LChabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -66,8 +66,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -76,8 +76,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -86,8 +86,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 
@@ -96,8 +96,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LinearRGBColor ToLinearRGB(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLinearRGB(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLinearRGB(in xyzColor);
             return result;
         }
 

@@ -8,7 +8,7 @@
         /// <summary>
         /// Computes the Ka parameter
         /// </summary>
-        protected static double ComputeKa(XYZColor whitePoint)
+        protected static double ComputeKa(in XYZColor whitePoint)
         {
             if (whitePoint == Illuminants.C)
                 return 175;
@@ -20,7 +20,7 @@
         /// <summary>
         /// Computes the Kb parameter
         /// </summary>
-        protected static double ComputeKb(XYZColor whitePoint)
+        protected static double ComputeKb(in XYZColor whitePoint)
         {
             if (whitePoint == Illuminants.C)
                 return 70;

@@ -24,7 +24,7 @@ namespace Colourful.Difference
         /// <summary>
         /// Constructs with given recommended threshold parameters.
         /// </summary>
-        public CMCColorDifference(CMCColorDifferenceThreshold threshold)
+        public CMCColorDifference(in CMCColorDifferenceThreshold threshold)
         {
             switch (threshold)
             {
@@ -44,7 +44,7 @@ namespace Colourful.Difference
         /// <summary>
         /// Constructs with arbitrary threshold parameters.
         /// </summary>
-        public CMCColorDifference(double lightness, double chroma)
+        public CMCColorDifference(in double lightness, in double chroma)
         {
             _l = lightness;
             _c = chroma;
@@ -66,9 +66,9 @@ namespace Colourful.Difference
 
             var dH_pow2 = da * da + db * db - dC * dC;
             var H1_rad = Math.Atan2(b1, a1);
-            var H1 = Angle.NormalizeDegree(Angle.RadianToDegree(H1_rad));
+            var H1 = Angle.NormalizeDegree(Angle.RadianToDegree(in H1_rad));
 
-            var C1_pow4 = MathUtils.Pow4(C1);
+            var C1_pow4 = MathUtils.Pow4(in C1);
             var F = Math.Sqrt(C1_pow4 / (C1_pow4 + 1900));
 
             var T = H1 >= 164 && H1 <= 345

@@ -1,9 +1,11 @@
-﻿namespace Colourful.Implementation.Conversion
+﻿using System;
+
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LabColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public sealed class LabToXYZConverter : IColorConversion<LabColor, XYZColor>
+    public sealed class LabToXYZConverter : IColorConversion<LabColor, XYZColor>, IEquatable<LabToXYZConverter>
     {
         /// <summary>
         /// Default singleton instance of the converter.
@@ -39,16 +41,25 @@
             var Y = yr * Yr;
             var Z = zr * Zr;
 
-            var result = new XYZColor(X, Y, Z);
+            var result = new XYZColor(in X, in Y, in Z);
             return result;
         }
 
-        #region Overrides
+        #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
+        public bool Equals(LabToXYZConverter other)
+        {
+            if (other == null)
+                return false;
+
+            return true;
+        }
+
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LabToXYZConverter;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />

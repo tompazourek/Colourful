@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="LChabColor" /> to <see cref="LabColor" />.
     /// </summary>
-    public sealed class LChabToLabConverter : IColorConversion<LChabColor, LabColor>
+    public sealed class LChabToLabConverter : IColorConversion<LChabColor, LabColor>, IEquatable<LChabToLabConverter>
     {
         /// <summary>
         /// Default singleton instance of the converter.
@@ -18,21 +18,30 @@ namespace Colourful.Implementation.Conversion
         public LabColor Convert(in LChabColor input)
         {
             double L = input.L, C = input.C, hDegrees = input.h;
-            var hRadians = Angle.DegreeToRadian(hDegrees);
+            var hRadians = Angle.DegreeToRadian(in hDegrees);
 
             var a = C * Math.Cos(hRadians);
             var b = C * Math.Sin(hRadians);
 
-            var output = new LabColor(L, a, b, input.WhitePoint);
+            var output = new LabColor(in L, in a, in b, input.WhitePoint);
             return output;
         }
+        
+        #region Equality
+        
+        /// <inheritdoc />
+        public bool Equals(LChabToLabConverter other)
+        {
+            if (other == null)
+                return false;
 
-        #region Overrides
+            return true;
+        }
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LChabToLabConverter;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />

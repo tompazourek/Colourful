@@ -31,11 +31,11 @@ namespace Colourful.Tests
         public void Convert_Lab_to_XYZ(double l, double a, double b, double x, double y, double z)
         {
             // arrange
-            var input = new LabColor(l, a, b, Illuminants.D65);
+            var input = new LabColor(in l, in a, in b, in Illuminants.D65);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLabWhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
@@ -56,11 +56,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_to_Lab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLabWhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToLab(input);
+            var output = converter.ToLab(in input);
 
             // assert
             Assert.Equal(output.L, l, DoubleComparerLabPrecision);

@@ -8,7 +8,7 @@ namespace Colourful.Tests
     /// </summary>
     public class DoubleRoundingComparer : IComparer<double>, IEqualityComparer<double>
     {
-        public DoubleRoundingComparer(int precision)
+        public DoubleRoundingComparer(in int precision)
         {
             Precision = precision;
         }

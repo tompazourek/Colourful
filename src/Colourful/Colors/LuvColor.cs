@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Colourful
@@ -6,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*u*v* (1976) color
     /// </summary>
-    public readonly struct LuvColor : IColorVector
+    public readonly struct LuvColor : IColorVector, IEquatable<LuvColor>
     {
         /// <summary>
         /// D65 standard illuminant.
@@ -20,7 +21,7 @@ namespace Colourful
         /// <param name="u">u* (usually from -100 to 100)</param>
         /// <param name="v">v* (usually from -100 to 100)</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        public LuvColor(double l, double u, double v) : this(l, u, v, DefaultWhitePoint)
+        public LuvColor(in double l, in double u, in double v) : this(in l, in u, in v, in DefaultWhitePoint)
         {
         }
 
@@ -28,7 +29,7 @@ namespace Colourful
         /// <param name="u">u* (usually from -100 to 100)</param>
         /// <param name="v">v* (usually from -100 to 100)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public LuvColor(double l, double u, double v, XYZColor whitePoint)
+        public LuvColor(in double l, in double u, in double v, in XYZColor whitePoint)
         {
             L = l;
             this.u = u;
@@ -38,14 +39,14 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        public LuvColor(double[] vector) : this(vector, DefaultWhitePoint)
+        public LuvColor(in double[] vector) : this(in vector, in DefaultWhitePoint)
         {
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public LuvColor(double[] vector, XYZColor whitePoint)
-            : this(vector[0], vector[1], vector[2], whitePoint)
+        public LuvColor(in double[] vector, in XYZColor whitePoint)
+            : this(in vector[0], in vector[1], in vector[2], in whitePoint)
         {
         }
 
@@ -93,17 +94,17 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LuvColor other) =>
             L == other.L &&
             u == other.u &&
             v == other.v;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LuvColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -125,7 +126,7 @@ namespace Colourful
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "Luv [L={0:0.##}, u={1:0.##}, v={2:0.##}]", L, u, v);
 
         #endregion

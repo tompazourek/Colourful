@@ -52,7 +52,7 @@ namespace Colourful.Tests
 
         public static LChuvColor GetLChuvColor(this Row row) => new LChuvColor(row.L, row.C_uv, row.H_uv, Illuminants.C);
 
-        public static double CropRange(this double value, double min, double max)
+        public static double CropRange(in this double value, in double min, in double max)
         {
             if (value < min)
                 return min;
@@ -65,7 +65,7 @@ namespace Colourful.Tests
 
         public class Row
         {
-            public Row(string name, double X, double Y, double Z, double x_chromaticity, double y_chromaticity, double L, double a, double b, double C_ab, double H_ab, double u, double v, double C_uv, double H_uv, double R, double G, double B)
+            public Row(in string name, in double X, in double Y, in double Z, in double x_chromaticity, in double y_chromaticity, in double L, in double a, in double b, in double C_ab, in double H_ab, in double u, in double v, in double C_uv, in double H_uv, in double R, in double G, in double B)
             {
                 Name = name;
                 this.X = X;

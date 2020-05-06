@@ -5,20 +5,20 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="XYZColor" /> to <see cref="LuvColor" />.
     /// </summary>
-    public sealed class XYZToLuvConverter : IColorConversion<XYZColor, LuvColor>
+    public sealed class XYZToLuvConverter : IColorConversion<XYZColor, LuvColor>, IEquatable<XYZToLuvConverter>
     {
         /// <summary>
         /// Constructs with <see cref="LuvColor.DefaultWhitePoint" />
         /// </summary>
         public XYZToLuvConverter()
-            : this(LuvColor.DefaultWhitePoint)
+            : this(in LuvColor.DefaultWhitePoint)
         {
         }
 
         /// <summary>
         /// Constructs with arbitrary white point
         /// </summary>
-        public XYZToLuvConverter(XYZColor labWhitePoint)
+        public XYZToLuvConverter(in XYZColor labWhitePoint)
         {
             LuvWhitePoint = labWhitePoint;
         }
@@ -55,28 +55,27 @@ namespace Colourful.Implementation.Conversion
             if (double.IsNaN(v))
                 v = 0;
 
-            return new LuvColor(L, u, v, LuvWhitePoint);
+            return new LuvColor(in L, in u, in v, LuvWhitePoint);
         }
 
         private static double Compute_up(XYZColor input) => 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
 
         private static double Compute_vp(XYZColor input) => 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
 
-        #region Overrides
+        #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public bool Equals(XYZToLuvConverter other)
         {
-            if (other == null)
-                return false;
-
-            return ReferenceEquals(this, other) || LuvWhitePoint.Equals(other.LuvWhitePoint);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return LuvWhitePoint.Equals(other.LuvWhitePoint);
         }
 
-        /// <inheritdoc cref="object" />
-        public override bool Equals(object obj) => obj is XYZToLuvConverter other && Equals(other);
+        /// <inheritdoc />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is XYZToLuvConverter other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => LuvWhitePoint.GetHashCode();
 
         /// <inheritdoc cref="object" />

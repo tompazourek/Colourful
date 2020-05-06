@@ -30,11 +30,11 @@ namespace Colourful.Tests
         public void Convert_Luv_to_XYZ(double l, double u, double v, double x, double y, double z)
         {
             // arrange
-            var input = new LuvColor(l, u, v, Illuminants.D65);
+            var input = new LuvColor(in l, in u, in v, in Illuminants.D65);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
@@ -55,11 +55,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_to_Luv(double x, double y, double z, double l, double u, double v)
         {
             // arrange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65, TargetLuvWhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToLuv(input);
+            var output = converter.ToLuv(in input);
 
             // assert
             Assert.Equal(output.L, l, DoubleComparerLuvPrecision);

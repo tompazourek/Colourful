@@ -32,10 +32,10 @@ namespace Colourful.Tests
         public void Convert_LCHab_to_Lab(double l, double c, double h, double l2, double a, double b)
         {
             // arrange
-            var input = new LChabColor(l, c, h);
+            var input = new LChabColor(in l, in c, in h);
 
             // act
-            var output = Converter.ToLab(input);
+            var output = Converter.ToLab(in input);
 
             // assert
             Assert.Equal(output.L, l2, DoubleComparer);
@@ -58,10 +58,10 @@ namespace Colourful.Tests
         public void Convert_Lab_to_LCHab(double l, double a, double b, double l2, double c, double h)
         {
             // arrange
-            var input = new LabColor(l, a, b);
+            var input = new LabColor(in l, in a, in b);
 
             // act
-            var output = Converter.ToLChab(input);
+            var output = Converter.ToLChab(in input);
 
             // assert
             Assert.Equal(output.L, l2, DoubleComparer);

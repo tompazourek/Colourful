@@ -1,11 +1,13 @@
-﻿
+﻿ 
+
+using System;
 
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="RGBColor" /> to <see cref="LinearRGBColor" />.
     /// </summary>
-    public sealed class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>
+    public sealed class RGBToLinearRGBConverter : IColorConversion<RGBColor, LinearRGBColor>, IEquatable<RGBToLinearRGBConverter>
     {
         /// <summary>
         /// Default singleton instance of the converter.
@@ -17,8 +19,8 @@ namespace Colourful.Implementation.Conversion
         /// </summary>
         public LinearRGBColor Convert(in RGBColor input)
         {
-            var uncompandedVector = UncompandVector(input);
-            var converted = new LinearRGBColor(uncompandedVector, input.WorkingSpace);
+            var uncompandedVector = UncompandVector(in input);
+            var converted = new LinearRGBColor(in uncompandedVector, input.WorkingSpace);
             return converted;
         }
 
@@ -29,24 +31,30 @@ namespace Colourful.Implementation.Conversion
         {
             var companding = rgbColor.WorkingSpace.Companding;
             var compandedVector = rgbColor.Vector;
-            double[] uncompandedVector = new[]
+            double[] uncompandedVector = 
             {
                 companding.InverseCompanding(compandedVector[0]).CropRange(0, 1),
                 companding.InverseCompanding(compandedVector[1]).CropRange(0, 1),
-                companding.InverseCompanding(compandedVector[2]).CropRange(0, 1)
+                companding.InverseCompanding(compandedVector[2]).CropRange(0, 1),
             };
             return uncompandedVector;
         }
+        
+        #region Equality
+        
+        /// <inheritdoc />
+        public bool Equals(RGBToLinearRGBConverter other)
+        {
+            if (other == null)
+                return false;
 
-        #region Overrides
+            return true;
+        }
 
-        /// <inheritdoc cref="object" />
-        public bool Equals(RGBToLinearRGBConverter other) => other != null;
-
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is RGBToLinearRGBConverter;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />

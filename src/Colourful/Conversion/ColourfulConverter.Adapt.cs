@@ -13,7 +13,7 @@ namespace Colourful.Conversion
             if (!IsChromaticAdaptationPerformed)
                 throw new InvalidOperationException("Cannot perform chromatic adaptation, provide chromatic adaptation method and white point.");
 
-            var result = ChromaticAdaptation.Transform(color, sourceWhitePoint, WhitePoint);
+            var result = ChromaticAdaptation.Transform(in color, in sourceWhitePoint, WhitePoint);
             return result;
         }
 
@@ -30,14 +30,14 @@ namespace Colourful.Conversion
 
             // conversion to XYZ
             var converterToXYZ = GetLinearRGBToXYZConverter(color.WorkingSpace);
-            var unadapted = converterToXYZ.Convert(color);
+            var unadapted = converterToXYZ.Convert(in color);
 
             // adaptation
-            var adapted = ChromaticAdaptation.Transform(unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
+            var adapted = ChromaticAdaptation.Transform(in unadapted, color.WorkingSpace.WhitePoint, TargetRGBWorkingSpace.WhitePoint);
 
             // conversion back to RGB
             var converterToRGB = GetXYZToLinearRGBConverter(TargetRGBWorkingSpace);
-            var result = converterToRGB.Convert(adapted);
+            var result = converterToRGB.Convert(in adapted);
 
             return result;
         }
@@ -47,9 +47,9 @@ namespace Colourful.Conversion
         /// </summary>
         public RGBColor Adapt(in RGBColor color)
         {
-            var linearInput = ToLinearRGB(color);
-            var linearOutput = Adapt(linearInput);
-            var compandedOutput = ToRGB(linearOutput);
+            var linearInput = ToLinearRGB(in color);
+            var linearOutput = Adapt(in linearInput);
+            var compandedOutput = ToRGB(in linearOutput);
 
             return compandedOutput;
         }
@@ -65,8 +65,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLabWhitePoint))
                 return color;
 
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -81,8 +81,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLabWhitePoint))
                 return color;
 
-            var labColor = ToLab(color);
-            var result = ToLChab(labColor);
+            var labColor = ToLab(in color);
+            var result = ToLChab(in labColor);
             return result;
         }
 
@@ -97,8 +97,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetHunterLabWhitePoint))
                 return color;
 
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -113,8 +113,8 @@ namespace Colourful.Conversion
             if (color.WhitePoint.Equals(TargetLuvWhitePoint))
                 return color;
 
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
     }

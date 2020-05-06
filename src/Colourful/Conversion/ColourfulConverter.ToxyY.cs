@@ -10,8 +10,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -20,8 +20,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -32,7 +32,7 @@ namespace Colourful.Conversion
         {
             // conversion
             var converter = new xyYAndXYZConverter();
-            var result = converter.Convert(color);
+            var result = converter.Convert(in color);
             return result;
         }
 
@@ -41,8 +41,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -51,8 +51,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LChabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -61,8 +61,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -71,8 +71,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -81,8 +81,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 
@@ -91,8 +91,8 @@ namespace Colourful.Conversion
         /// </summary>
         public xyYColor ToxyY(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToxyY(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToxyY(in xyzColor);
             return result;
         }
 

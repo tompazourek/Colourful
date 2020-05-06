@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
@@ -8,7 +10,7 @@ namespace Colourful.Implementation.Conversion
     /// <remarks>
     /// The target RGB working space is <see cref="RGBColor.DefaultWorkingSpace" /> when not set.
     /// </remarks>
-    public sealed class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>
+    public sealed class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>, IEquatable<XYZToLinearRGBConverter>
     {
         private readonly double[,] _conversionMatrix;
 
@@ -22,7 +24,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Constructs with arbitrary working space.
         /// </summary>
-        public XYZToLinearRGBConverter(IRGBWorkingSpace targetRGBWorkingSpace)
+        public XYZToLinearRGBConverter(in IRGBWorkingSpace targetRGBWorkingSpace)
         {
             TargetRGBWorkingSpace = targetRGBWorkingSpace ?? RGBColor.DefaultWorkingSpace;
             _conversionMatrix = GetXYZToRGBMatrix(TargetRGBWorkingSpace);
@@ -40,26 +42,25 @@ namespace Colourful.Implementation.Conversion
         {
             var inputVector = input.Vector;
             var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
-            var result = new LinearRGBColor(uncompandedVector, TargetRGBWorkingSpace);
+            var result = new LinearRGBColor(in uncompandedVector, TargetRGBWorkingSpace);
             return result;
         }
 
-        #region Overrides
+        #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public bool Equals(XYZToLinearRGBConverter other)
         {
-            if (other == null)
-                return false;
-
-            return ReferenceEquals(this, other) || TargetRGBWorkingSpace.Equals(other.TargetRGBWorkingSpace);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(TargetRGBWorkingSpace, other.TargetRGBWorkingSpace);
         }
 
-        /// <inheritdoc cref="object" />
-        public override bool Equals(object obj) => obj is XYZToLinearRGBConverter other && Equals(other);
+        /// <inheritdoc />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is XYZToLinearRGBConverter other && Equals(other);
 
-        /// <inheritdoc cref="object" />
-        public override int GetHashCode() => TargetRGBWorkingSpace?.GetHashCode() ?? 0;
+        /// <inheritdoc />
+        public override int GetHashCode() => (TargetRGBWorkingSpace != null ? TargetRGBWorkingSpace.GetHashCode() : 0);
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(XYZToLinearRGBConverter left, XYZToLinearRGBConverter right) => Equals(left, right);

@@ -30,8 +30,8 @@ namespace Colourful
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public RGBColor(double r, double g, double b)
-            : this(r, g, b, DefaultWorkingSpace)
+        public RGBColor(in double r, in double g, in double b)
+            : this(in r, in g, in b, in DefaultWorkingSpace)
         {
         }
 
@@ -41,7 +41,7 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
+        public RGBColor(in double r, in double g, in double b, in IRGBWorkingSpace workingSpace)
         {
             R = r.CheckRange(0, 1);
             G = g.CheckRange(0, 1);
@@ -51,7 +51,7 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public RGBColor(double[] vector)
+        public RGBColor(in double[] vector)
             : this(vector, DefaultWorkingSpace)
         {
         }
@@ -60,15 +60,15 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public RGBColor(double[] vector, IRGBWorkingSpace workingSpace)
-            : this(vector[0], vector[1], vector[2], workingSpace)
+        public RGBColor(in double[] vector, in IRGBWorkingSpace workingSpace)
+            : this(in vector[0], in vector[1], in vector[2], in workingSpace)
         {
         }
 
 #if (DRAWING)
-/// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public RGBColor(Color color)
-            : this(color, DefaultWorkingSpace)
+        /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
+        public RGBColor(in Color color)
+            : this(in color, in DefaultWorkingSpace)
         {
         }
 
@@ -76,8 +76,8 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public RGBColor(Color color, IRGBWorkingSpace workingSpace)
-            : this((double)color.R / 255, (double)color.G / 255, (double)color.B / 255, workingSpace)
+        public RGBColor(in Color color, in IRGBWorkingSpace workingSpace)
+            : this(color.R / 255d, color.G / 255d, color.B / 255d, in workingSpace)
         {
         }
 
@@ -132,7 +132,7 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(RGBColor other) =>
             R == other.R &&
@@ -140,10 +140,10 @@ namespace Colourful
             B == other.B &&
             WorkingSpace.Equals(other.WorkingSpace);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is RGBColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -169,14 +169,14 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public static RGBColor FromGrey(double value, IRGBWorkingSpace workingSpace) => new RGBColor(value, value, value, workingSpace);
+        public static RGBColor FromGrey(in double value, in IRGBWorkingSpace workingSpace) => new RGBColor(in value, in value, in value, in workingSpace);
 
         /// <summary>
         /// Creates RGB color with all channels equal
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public static RGBColor FromGrey(double value) => FromGrey(value, DefaultWorkingSpace);
+        public static RGBColor FromGrey(in double value) => FromGrey(in value, in DefaultWorkingSpace);
 
         /// <summary>
         /// Creates RGB color from 8-bit channels
@@ -187,14 +187,14 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public static RGBColor FromRGB8bit(byte red, byte green, byte blue, IRGBWorkingSpace workingSpace) => new RGBColor(red / 255d, green / 255d, blue / 255d, workingSpace);
+        public static RGBColor FromRGB8bit(in byte red, in byte green, in byte blue, in IRGBWorkingSpace workingSpace) => new RGBColor(red / 255d, green / 255d, blue / 255d, in workingSpace);
 
 
         /// <summary>
         /// Creates RGB color from 8-bit channels
         /// </summary>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public static RGBColor FromRGB8bit(byte red, byte green, byte blue) => FromRGB8bit(red, green, blue, DefaultWorkingSpace);
+        public static RGBColor FromRGB8bit(in byte red, in byte green, in byte blue) => FromRGB8bit(in red, in green, in blue, in DefaultWorkingSpace);
 
         #endregion
 
@@ -221,7 +221,7 @@ namespace Colourful
         /// <summary>
         /// Convert from <see cref="System.Drawing.Color" />.
         /// </summary>
-        public static explicit operator RGBColor(Color color) => new RGBColor(color);
+        public static explicit operator RGBColor(Color color) => new RGBColor(in color);
 
         #endregion
 
@@ -229,7 +229,7 @@ namespace Colourful
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "RGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);
 
         #endregion

@@ -8,7 +8,7 @@ namespace Colourful.Tests
     /// </summary>
     public class DoubleDeltaComparer : IComparer<double>, IEqualityComparer<double>
     {
-        public DoubleDeltaComparer(double delta)
+        public DoubleDeltaComparer(in double delta)
         {
             Delta = delta;
         }

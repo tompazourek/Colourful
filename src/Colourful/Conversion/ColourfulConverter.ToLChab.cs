@@ -10,8 +10,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -20,8 +20,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -30,8 +30,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in XYZColor color)
         {
-            var labColor = ToLab(color);
-            var result = ToLChab(labColor);
+            var labColor = ToLab(in color);
+            var result = ToLChab(in labColor);
             return result;
         }
 
@@ -40,8 +40,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -51,11 +51,11 @@ namespace Colourful.Conversion
         public LChabColor ToLChab(in LabColor color)
         {
             // adaptation to target lab white point (LabWhitePoint)
-            var adapted = IsChromaticAdaptationPerformed ? Adapt(color) : color;
+            var adapted = IsChromaticAdaptationPerformed ? Adapt(in color) : color;
 
             // conversion (preserving white point)
             var converter = LabToLChabConverter.Default;
-            var result = converter.Convert(adapted);
+            var result = converter.Convert(in adapted);
             return result;
         }
 
@@ -64,8 +64,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -74,8 +74,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -84,8 +84,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 
@@ -94,8 +94,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LChabColor ToLChab(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLChab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLChab(in xyzColor);
             return result;
         }
 

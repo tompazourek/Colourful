@@ -10,8 +10,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -20,8 +20,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -32,12 +32,12 @@ namespace Colourful.Conversion
         {
             // adaptation
             var adapted = !WhitePoint.Equals(TargetLuvWhitePoint) && IsChromaticAdaptationPerformed
-                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLuvWhitePoint)
+                ? ChromaticAdaptation.Transform(in color, WhitePoint, TargetLuvWhitePoint)
                 : color;
 
             // conversion
             var converter = new XYZToLuvConverter(TargetLuvWhitePoint);
-            var result = converter.Convert(adapted);
+            var result = converter.Convert(in adapted);
             return result;
         }
 
@@ -46,8 +46,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -56,8 +56,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in LabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -66,8 +66,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in LChabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -76,8 +76,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 
@@ -88,13 +88,13 @@ namespace Colourful.Conversion
         {
             // conversion (preserving white point)
             var converter = LChuvToLuvConverter.Default;
-            var unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(in color);
 
             if (!IsChromaticAdaptationPerformed)
                 return unadapted;
 
             // adaptation to target luv white point (LuvWhitePoint)
-            var adapted = Adapt(unadapted);
+            var adapted = Adapt(in unadapted);
             return adapted;
         }
 
@@ -103,8 +103,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LuvColor ToLuv(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLuv(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLuv(in xyzColor);
             return result;
         }
 

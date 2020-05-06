@@ -25,7 +25,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedXYZ = row.GetXYZColor();
-            var actualXYZ = Converter.ToXYZ(inputLab);
+            var actualXYZ = Converter.ToXYZ(in inputLab);
 
             Assert.Equal(actualXYZ, expectedXYZ, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
@@ -36,7 +36,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedRGB = row.GetRGBColor();
-            var actualRGB = Converter.ToRGB(inputLab);
+            var actualRGB = Converter.ToRGB(in inputLab);
             Assert.Equal(actualRGB, expectedRGB, new ColorVectorComparer(new DoubleDeltaComparer(0.00912)));
         }
 
@@ -46,7 +46,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedxyY = row.GetxyYColor();
-            var actualxyY = Converter.ToxyY(inputLab);
+            var actualxyY = Converter.ToxyY(in inputLab);
 
             Assert.Equal(actualxyY, expectedxyY, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
@@ -57,7 +57,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedLChab = row.GetLChabColor();
-            var actualLChab = Converter.ToLChab(inputLab);
+            var actualLChab = Converter.ToLChab(in inputLab);
 
             Assert.Equal(actualLChab, expectedLChab, new ColorVectorComparer(new DoubleDeltaComparer(0.00017)));
         }
@@ -68,7 +68,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedLChuv = row.GetLChuvColor();
-            var actualLChuv = Converter.ToLChuv(inputLab);
+            var actualLChuv = Converter.ToLChuv(in inputLab);
 
             Assert.Equal(actualLChuv, expectedLChuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00022)));
         }
@@ -79,7 +79,7 @@ namespace Colourful.Tests
         {
             var inputLab = row.GetLabColor();
             var expectedLuv = row.GetLuvColor();
-            var actualLuv = Converter.ToLuv(inputLab);
+            var actualLuv = Converter.ToLuv(in inputLab);
 
             Assert.Equal(actualLuv, expectedLuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00000105)));
         }

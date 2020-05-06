@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Colourful
@@ -6,29 +7,29 @@ namespace Colourful
     /// <summary>
     /// CIE xyY color space (derived from <see cref="XYZColor" /> color space)
     /// </summary>
-    public readonly struct xyYColor : IColorVector
+    public readonly struct xyYColor : IColorVector, IEquatable<xyYColor>
     {
         #region Constructor
 
         /// <param name="x">x (usually from 0 to 1) chromaticity coordinate</param>
         /// <param name="y">y (usually from 0 to 1) chromaticity coordinate</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
-        public xyYColor(double x, double y, double Y)
-            : this(new xyChromaticityCoordinates(x, y), Y)
+        public xyYColor(in double x, in double y, in double Y)
+            : this(new xyChromaticityCoordinates(in x, in y), in Y)
         {
         }
 
         /// <param name="chromaticity">Chromaticity coordinates (x and y together)</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
-        public xyYColor(xyChromaticityCoordinates chromaticity, double Y)
+        public xyYColor(in xyChromaticityCoordinates chromaticity, in double Y)
         {
             Chromaticity = chromaticity;
             Luminance = Y;
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        public xyYColor(double[] vector)
-            : this(vector[0], vector[1], vector[2])
+        public xyYColor(in double[] vector)
+            : this(in vector[0], in vector[1], in vector[2])
         {
         }
 
@@ -68,17 +69,17 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(xyYColor other) =>
             x == other.x &&
             y == other.y &&
             Luminance == other.Luminance;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is xyYColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -100,7 +101,7 @@ namespace Colourful
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "xyY [x={0:0.##}, y={1:0.##}, Y={2:0.##}]", x, y, Luminance);
 
         #endregion

@@ -10,8 +10,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -20,8 +20,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -32,12 +32,12 @@ namespace Colourful.Conversion
         {
             // adaptation
             var adapted = !WhitePoint.Equals(TargetHunterLabWhitePoint) && IsChromaticAdaptationPerformed
-                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetHunterLabWhitePoint)
+                ? ChromaticAdaptation.Transform(in color, WhitePoint, TargetHunterLabWhitePoint)
                 : color;
 
             // conversion
             var converter = new XYZToHunterLabConverter(TargetHunterLabWhitePoint);
-            var result = converter.Convert(adapted);
+            var result = converter.Convert(in adapted);
             return result;
         }
 
@@ -46,8 +46,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -56,8 +56,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -66,8 +66,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LChabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -76,8 +76,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -86,8 +86,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 
@@ -96,8 +96,8 @@ namespace Colourful.Conversion
         /// </summary>
         public HunterLabColor ToHunterLab(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToHunterLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToHunterLab(in xyzColor);
             return result;
         }
 

@@ -1,9 +1,11 @@
-﻿namespace Colourful.Implementation.Conversion
+﻿using System;
+
+namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Converts from <see cref="LuvColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public sealed class LuvToXYZConverter : IColorConversion<LuvColor, XYZColor>
+    public sealed class LuvToXYZConverter : IColorConversion<LuvColor, XYZColor>, IEquatable<LuvToXYZConverter>
     {
         /// <summary>
         /// Default singleton instance of the converter.
@@ -42,20 +44,29 @@
             if (double.IsNaN(Z) || Z < 0)
                 Z = 0;
 
-            var result = new XYZColor(X, Y, Z);
+            var result = new XYZColor(in X, in Y, in Z);
             return result;
         }
 
-        private static double Compute_u0(XYZColor input) => 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
+        private static double Compute_u0(in XYZColor input) => 4 * input.X / (input.X + 15 * input.Y + 3 * input.Z);
 
-        private static double Compute_v0(XYZColor input) => 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
+        private static double Compute_v0(in XYZColor input) => 9 * input.Y / (input.X + 15 * input.Y + 3 * input.Z);
+        
+        #region Equality
+        
+        /// <inheritdoc />
+        public bool Equals(LuvToXYZConverter other)
+        {
+            if (other == null)
+                return false;
 
-        #region Overrides
+            return true;
+        }
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LuvToXYZConverter;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />

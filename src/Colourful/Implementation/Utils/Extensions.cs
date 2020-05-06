@@ -5,7 +5,7 @@ namespace Colourful.Implementation
 {
     internal static class Extensions
     {
-        public static double CheckRange(this double value, double min, double max)
+        public static double CheckRange(in this double value, in double min, in double max)
         {
             if (value < min)
                 throw new ArgumentOutOfRangeException(nameof(value), value, "The minimum value is " + min);
@@ -16,7 +16,7 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static double CropRange(this double value, double min, double max)
+        public static double CropRange(in this double value, in double min, in double max)
         {
             if (value < min)
                 return min;
@@ -27,7 +27,7 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static double[] CropRange(this double[] vector, double min, double max)
+        public static double[] CropRange(this double[] vector, in double min, in double max)
         {
             var vectorLength = vector.Length;
             var croppedVector = new double[vectorLength];
@@ -48,7 +48,6 @@ namespace Colourful.Implementation
                 }
             }
 
-            // ReSharper disable once CoVariantArrayConversion
             return croppedVector;
         }
 
@@ -98,7 +97,6 @@ namespace Colourful.Implementation
                 }
             }
 
-            // ReSharper disable once CoVariantArrayConversion
             return result;
         }
 
@@ -126,7 +124,6 @@ namespace Colourful.Implementation
                 }
             }
 
-            // ReSharper disable once CoVariantArrayConversion
             return result;
         }
     }

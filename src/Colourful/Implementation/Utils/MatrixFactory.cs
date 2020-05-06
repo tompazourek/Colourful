@@ -2,7 +2,7 @@
 {
     internal static class MatrixFactory
     {
-        public static double[,] CreateIdentity(int size)
+        public static double[,] CreateIdentity(in int size)
         {
             var result = new double[size, size];
 

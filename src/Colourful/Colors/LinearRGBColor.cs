@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Colourful.Implementation;
 
@@ -7,7 +8,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>, which has linear channels (not companded)
     /// </summary>
-    public readonly struct LinearRGBColor : IColorVector
+    public readonly struct LinearRGBColor : IColorVector, IEquatable<LinearRGBColor>
     {
         #region Other
 
@@ -25,7 +26,7 @@ namespace Colourful
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public LinearRGBColor(double r, double g, double b)
+        public LinearRGBColor(in double r, in double g, in double b)
             : this(r, g, b, DefaultWorkingSpace)
         {
         }
@@ -36,7 +37,7 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
+        public LinearRGBColor(in double r, in double g, in double b, in IRGBWorkingSpace workingSpace)
         {
             R = r.CheckRange(0, 1);
             G = g.CheckRange(0, 1);
@@ -46,8 +47,8 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public LinearRGBColor(double[] vector)
-            : this(vector, DefaultWorkingSpace)
+        public LinearRGBColor(in double[] vector)
+            : this(in vector, in DefaultWorkingSpace)
         {
         }
 
@@ -55,8 +56,8 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public LinearRGBColor(double[] vector, IRGBWorkingSpace workingSpace)
-            : this(vector[0], vector[1], vector[2], workingSpace)
+        public LinearRGBColor(in double[] vector, in IRGBWorkingSpace workingSpace)
+            : this(in vector[0], in vector[1], in vector[2], in workingSpace)
         {
         }
 
@@ -109,7 +110,7 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LinearRGBColor other) =>
             R == other.R &&
@@ -117,10 +118,10 @@ namespace Colourful
             B == other.B &&
             WorkingSpace.Equals(other.WorkingSpace);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LinearRGBColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -146,20 +147,20 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public static LinearRGBColor FromGrey(double value, IRGBWorkingSpace workingSpace) => new LinearRGBColor(value, value, value, workingSpace);
+        public static LinearRGBColor FromGrey(in double value, in IRGBWorkingSpace workingSpace) => new LinearRGBColor(in value, in value, in value, in workingSpace);
 
         /// <summary>
         /// Creates RGB color with all channels equal
         /// </summary>
         /// <param name="value">Grey value (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public static LinearRGBColor FromGrey(double value) => FromGrey(value, DefaultWorkingSpace);
+        public static LinearRGBColor FromGrey(in double value) => FromGrey(in value, in DefaultWorkingSpace);
 
         #endregion
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "LinearRGB [R={0:0.##}, G={1:0.##}, B={2:0.##}]", R, G, B);
 
         #endregion

@@ -19,8 +19,8 @@ namespace Colourful.Tests
             var companding = new sRGBCompanding();
 
             // action
-            var actual = companding.Companding(input);
-            var loopback = companding.InverseCompanding(actual);
+            var actual = companding.Companding(in input);
+            var loopback = companding.InverseCompanding(in actual);
 
             // assert
             Assert.Equal(expected, actual, DoubleComparer);
@@ -38,8 +38,8 @@ namespace Colourful.Tests
             var companding = new Rec709Companding();
 
             // action
-            var actual = companding.Companding(input);
-            var loopback = companding.InverseCompanding(actual);
+            var actual = companding.Companding(in input);
+            var loopback = companding.InverseCompanding(in actual);
 
             // assert
             Assert.Equal(expected, actual, DoubleComparer);
@@ -57,8 +57,8 @@ namespace Colourful.Tests
             var companding = new Rec2020Companding();
 
             // action
-            var actual = companding.Companding(input);
-            var loopback = companding.InverseCompanding(actual);
+            var actual = companding.Companding(in input);
+            var loopback = companding.InverseCompanding(in actual);
 
             // assert
             Assert.Equal(expected, actual, DoubleComparer);
@@ -76,8 +76,8 @@ namespace Colourful.Tests
             var companding = new GammaCompanding(2.2);
 
             // action
-            var actual = companding.Companding(input);
-            var loopback = companding.InverseCompanding(actual);
+            var actual = companding.Companding(in input);
+            var loopback = companding.InverseCompanding(in actual);
 
             // assert
             Assert.Equal(expected, actual, DoubleComparer);
@@ -95,13 +95,12 @@ namespace Colourful.Tests
             var companding = new LCompanding();
 
             // action
-            var actual = companding.Companding(input);
-            var loopback = companding.InverseCompanding(actual);
+            var actual = companding.Companding(in input);
+            var loopback = companding.InverseCompanding(in actual);
 
             // assert
             Assert.Equal(expected, actual, DoubleComparer);
             Assert.Equal(input, loopback, DoubleComparer);
         }
-
     }
 }

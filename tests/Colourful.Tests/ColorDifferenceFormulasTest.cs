@@ -27,11 +27,11 @@ namespace Colourful.Tests
         public void CIE76ColorDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE)
         {
             // arrange
-            var x = new LabColor(l1, a1, b1);
-            var y = new LabColor(l2, a2, b2);
+            var x = new LabColor(in l1, in a1, in b1);
+            var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE = new CIE76ColorDifference().ComputeDifference(x, y);
+            var deltaE = new CIE76ColorDifference().ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
@@ -52,11 +52,11 @@ namespace Colourful.Tests
         public void CIE94ColorDifference_GraphicArts(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE)
         {
             // arrange
-            var x = new LabColor(l1, a1, b1);
-            var y = new LabColor(l2, a2, b2);
+            var x = new LabColor(in l1, in a1, in b1);
+            var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.GraphicArts).ComputeDifference(x, y);
+            var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.GraphicArts).ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
@@ -77,11 +77,11 @@ namespace Colourful.Tests
         public void CIE94ColorDifference_Textiles(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE)
         {
             // arrange
-            var x = new LabColor(l1, a1, b1);
-            var y = new LabColor(l2, a2, b2);
+            var x = new LabColor(in l1, in a1, in b1);
+            var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.Textiles).ComputeDifference(x, y);
+            var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.Textiles).ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
@@ -132,11 +132,11 @@ namespace Colourful.Tests
         public void CIEDE2000ColorDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE)
         {
             // arrange
-            var x = new LabColor(l1, a1, b1);
-            var y = new LabColor(l2, a2, b2);
+            var x = new LabColor(in l1, in a1, in b1);
+            var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE = new CIEDE2000ColorDifference().ComputeDifference(x, y);
+            var deltaE = new CIEDE2000ColorDifference().ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabRounding);
@@ -158,13 +158,12 @@ namespace Colourful.Tests
         public void CMCColorDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE_imperceptibility, double expectedDeltaE_acceptability)
         {
             // arrange
-            var x = new LabColor(l1, a1, b1);
-            var y = new LabColor(l2, a2, b2);
+            var x = new LabColor(in l1, in a1, in b1);
+            var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceThreshold.Imperceptibility).ComputeDifference(x, y);
-            var deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceThreshold.Acceptability).ComputeDifference(x, y);
-
+            var deltaE_imperceptibility = new CMCColorDifference(CMCColorDifferenceThreshold.Imperceptibility).ComputeDifference(in x, in y);
+            var deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceThreshold.Acceptability).ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(deltaE_imperceptibility, expectedDeltaE_imperceptibility, DoubleComparerLabPrecision);

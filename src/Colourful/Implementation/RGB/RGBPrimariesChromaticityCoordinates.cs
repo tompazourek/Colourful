@@ -1,15 +1,17 @@
-﻿namespace Colourful.Implementation.RGB
+﻿using System;
+
+namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Chromaticity coordinates of RGB primaries.
     /// One of the specifiers of <see cref="IRGBWorkingSpace" />.
     /// </summary>
-    public readonly struct RGBPrimariesChromaticityCoordinates
+    public readonly struct RGBPrimariesChromaticityCoordinates : IEquatable<RGBPrimariesChromaticityCoordinates>
     {
         /// <summary>
         /// Constructs coordinates
         /// </summary>
-        public RGBPrimariesChromaticityCoordinates(xyChromaticityCoordinates r, xyChromaticityCoordinates g, xyChromaticityCoordinates b)
+        public RGBPrimariesChromaticityCoordinates(in xyChromaticityCoordinates r, in xyChromaticityCoordinates g, in xyChromaticityCoordinates b)
         {
             R = r;
             G = g;
@@ -31,16 +33,18 @@
         /// </summary>
         public xyChromaticityCoordinates B { get; }
 
-        /// <inheritdoc cref="object" />
+        #region Equality
+
+        /// <inheritdoc />
         public bool Equals(RGBPrimariesChromaticityCoordinates other) =>
             R.Equals(other.R) &&
             G.Equals(other.G) &&
             B.Equals(other.B);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is RGBPrimariesChromaticityCoordinates other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -57,5 +61,7 @@
 
         /// <inheritdoc cref="object" />
         public static bool operator !=(RGBPrimariesChromaticityCoordinates left, RGBPrimariesChromaticityCoordinates right) => !left.Equals(right);
+
+        #endregion
     }
 }

@@ -1,14 +1,16 @@
-﻿namespace Colourful.Implementation.RGB
+﻿using System;
+
+namespace Colourful.Implementation.RGB
 {
     /// <summary>
     /// Trivial implementation of <see cref="IRGBWorkingSpace" />
     /// </summary>
-    public sealed class RGBWorkingSpace : IRGBWorkingSpace
+    public sealed class RGBWorkingSpace : IRGBWorkingSpace, IEquatable<IRGBWorkingSpace>
     {
         /// <summary>
         /// Constructs RGB working space using a reference white, companding, and chromacity coordinates.
         /// </summary>
-        public RGBWorkingSpace(XYZColor referenceWhite, ICompanding companding, RGBPrimariesChromaticityCoordinates chromaticityCoordinates)
+        public RGBWorkingSpace(in XYZColor referenceWhite, in ICompanding companding, in RGBPrimariesChromaticityCoordinates chromaticityCoordinates)
         {
             WhitePoint = referenceWhite;
             Companding = companding;
@@ -30,9 +32,9 @@
         /// </summary>
         public ICompanding Companding { get; }
 
-        #region Overrides
+        #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public bool Equals(IRGBWorkingSpace other)
         {
             if (other == null)
@@ -46,10 +48,10 @@
                    && Companding.Equals(other.Companding);
         }
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is IRGBWorkingSpace other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked

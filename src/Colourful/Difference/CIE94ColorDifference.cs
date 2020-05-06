@@ -30,7 +30,7 @@ namespace Colourful.Difference
         /// Construct using weighting factors for given application of color difference
         /// </summary>
         /// <param name="application">A <see cref="CIE94ColorDifferenceApplication" /> value specifying the application area. Different weighting factors are used in the computation depending on the application.</param>
-        public CIE94ColorDifference(CIE94ColorDifferenceApplication application)
+        public CIE94ColorDifference(in CIE94ColorDifferenceApplication application)
         {
             switch (application)
             {

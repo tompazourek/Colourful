@@ -25,12 +25,12 @@ namespace Colourful.Tests
         public void Adapt_RGB_WideGamutRGB_To_sRGB(double r1, double g1, double b1, double r2, double g2, double b2)
         {
             // arrange
-            var input = new RGBColor(r1, g1, b1, RGBWorkingSpaces.WideGamutRGB);
-            var expectedOutput = new RGBColor(r2, g2, b2, RGBWorkingSpaces.sRGB);
+            var input = new RGBColor(in r1, in g1, in b1, RGBWorkingSpaces.WideGamutRGB);
+            var expectedOutput = new RGBColor(in r2, in g2, in b2, RGBWorkingSpaces.sRGB);
             var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.sRGB };
 
             // action
-            var output = converter.Adapt(input);
+            var output = converter.Adapt(in input);
 
             // assert
             Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
@@ -46,12 +46,12 @@ namespace Colourful.Tests
         public void Adapt_RGB_sRGB_To_WideGamutRGB(double r1, double g1, double b1, double r2, double g2, double b2)
         {
             // arrange
-            var input = new RGBColor(r1, g1, b1, RGBWorkingSpaces.sRGB);
-            var expectedOutput = new RGBColor(r2, g2, b2, RGBWorkingSpaces.WideGamutRGB);
+            var input = new RGBColor(in r1, in g1, in b1, RGBWorkingSpaces.sRGB);
+            var expectedOutput = new RGBColor(in r2, in g2, in b2, RGBWorkingSpaces.WideGamutRGB);
             var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.WideGamutRGB };
 
             // action
-            var output = converter.Adapt(input);
+            var output = converter.Adapt(in input);
 
             // assert
             Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
@@ -66,12 +66,12 @@ namespace Colourful.Tests
         public void Adapt_Lab_D65_To_D50(double l1, double a1, double b1, double l2, double a2, double b2)
         {
             // arrange
-            var input = new LabColor(l1, a1, b1, Illuminants.D65);
-            var expectedOutput = new LabColor(l2, a2, b2);
+            var input = new LabColor(in l1, in a1, in b1, in Illuminants.D65);
+            var expectedOutput = new LabColor(in l2, in a2, in b2);
             var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D50 };
 
             // action
-            var output = converter.Adapt(input);
+            var output = converter.Adapt(in input);
 
             // assert
             Assert.Equal(output.L, expectedOutput.L, DoublePrecisionComparer);
@@ -85,12 +85,12 @@ namespace Colourful.Tests
         public void Adapt_LChab_D50_To_D65(double l1, double c1, double h1, double l2, double c2, double h2)
         {
             // arrange
-            var input = new LChabColor(l1, c1, h1, Illuminants.D50);
-            var expectedOutput = new LChabColor(l2, c2, h2);
+            var input = new LChabColor(in l1, in c1, in h1, in Illuminants.D50);
+            var expectedOutput = new LChabColor(in l2, in c2, in h2);
             var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D65 };
 
             // action
-            var output = converter.Adapt(input);
+            var output = converter.Adapt(in input);
 
             // assert
             Assert.Equal(output.L, expectedOutput.L, DoubleRoundingComparer);
@@ -104,15 +104,15 @@ namespace Colourful.Tests
         public void Adapt_XYZ_D65_To_D50_Bradford(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
-            var input = new XYZColor(x1, y1, z1);
-            var expectedOutput = new XYZColor(x2, y2, z2);
+            var input = new XYZColor(in x1, in y1, in z1);
+            var expectedOutput = new XYZColor(in x2, in y2, in z2);
             var converter = new ColourfulConverter
             {
                 WhitePoint = Illuminants.D50
             };
 
             // action
-            var output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
             Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
@@ -126,16 +126,16 @@ namespace Colourful.Tests
         public void Adapt_XYZ_D65_To_D50_VonKries(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
-            var input = new XYZColor(x1, y1, z1);
-            var expectedOutput = new XYZColor(x2, y2, z2);
+            var input = new XYZColor(in x1, in y1, in z1);
+            var expectedOutput = new XYZColor(in x2, in y2, in z2);
             var converter = new ColourfulConverter
             {
-                ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.VonKriesHPEAdjusted),
-                WhitePoint = Illuminants.D50
+                ChromaticAdaptation = new VonKriesChromaticAdaptation(in LMSTransformationMatrix.VonKriesHPEAdjusted),
+                WhitePoint = Illuminants.D50,
             };
 
             // action
-            var output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
             Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
@@ -149,16 +149,16 @@ namespace Colourful.Tests
         public void Adapt_XYZ_D65_To_D50_XYZScaling(double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // arrange
-            var input = new XYZColor(x1, y1, z1);
-            var expectedOutput = new XYZColor(x2, y2, z2);
+            var input = new XYZColor(in x1, in y1, in z1);
+            var expectedOutput = new XYZColor(in x2, in y2, in z2);
             var converter = new ColourfulConverter
             {
-                ChromaticAdaptation = new VonKriesChromaticAdaptation(LMSTransformationMatrix.XYZScaling),
-                WhitePoint = Illuminants.D50
+                ChromaticAdaptation = new VonKriesChromaticAdaptation(in LMSTransformationMatrix.XYZScaling),
+                WhitePoint = Illuminants.D50,
             };
 
             // action
-            var output = converter.Adapt(input, Illuminants.D65);
+            var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
             Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);

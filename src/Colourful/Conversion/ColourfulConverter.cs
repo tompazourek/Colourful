@@ -47,15 +47,7 @@ namespace Colourful.Conversion
             set
             {
                 _transformationMatrix = value;
-
-                if (_cachedXYZAndLMSConverter == null)
-                {
-                    _cachedXYZAndLMSConverter = new XYZAndLMSConverter(value);
-                }
-                else
-                {
-                    _cachedXYZAndLMSConverter.TransformationMatrix = value;
-                }
+                _cachedXYZAndLMSConverter = new XYZAndLMSConverter(value);
             }
         }
 

@@ -1,15 +1,16 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Colourful
 {
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
     /// </summary>
-    public readonly struct xyChromaticityCoordinates
+    public readonly struct xyChromaticityCoordinates : IEquatable<xyChromaticityCoordinates>
     {
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
-        public xyChromaticityCoordinates(double x, double y)
+        public xyChromaticityCoordinates(in double x, in double y)
         {
             this.x = x;
             this.y = y;
@@ -31,13 +32,15 @@ namespace Colourful
         /// </remarks>
         public double y { get; }
 
-        /// <inheritdoc cref="object" />
+        #region Equality
+
+        /// <inheritdoc />
         public bool Equals(xyChromaticityCoordinates other) => x.Equals(other.x) && y.Equals(other.y);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is xyChromaticityCoordinates coordinates && Equals(coordinates);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -52,9 +55,11 @@ namespace Colourful
         /// <inheritdoc cref="object" />
         public static bool operator !=(xyChromaticityCoordinates left, xyChromaticityCoordinates right) => !left.Equals(right);
 
+        #endregion
+
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "xy [x={0:0.##}, y={1:0.##}]", x, y);
 
         #endregion

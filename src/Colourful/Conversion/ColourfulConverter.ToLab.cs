@@ -10,8 +10,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in RGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -20,8 +20,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in LinearRGBColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -32,12 +32,12 @@ namespace Colourful.Conversion
         {
             // adaptation
             var adapted = !WhitePoint.Equals(TargetLabWhitePoint) && IsChromaticAdaptationPerformed
-                ? ChromaticAdaptation.Transform(color, WhitePoint, TargetLabWhitePoint)
+                ? ChromaticAdaptation.Transform(in color, WhitePoint, TargetLabWhitePoint)
                 : color;
 
             // conversion
             var converter = new XYZToLabConverter(TargetLabWhitePoint);
-            var result = converter.Convert(adapted);
+            var result = converter.Convert(in adapted);
             return result;
         }
 
@@ -46,8 +46,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in xyYColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -58,13 +58,13 @@ namespace Colourful.Conversion
         {
             // conversion (preserving white point)
             var converter = LChabToLabConverter.Default;
-            var unadapted = converter.Convert(color);
+            var unadapted = converter.Convert(in color);
 
             if (!IsChromaticAdaptationPerformed)
                 return unadapted;
 
             // adaptation to target lab white point (LabWhitePoint)
-            var adapted = Adapt(unadapted);
+            var adapted = Adapt(in unadapted);
             return adapted;
         }
 
@@ -73,8 +73,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in HunterLabColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -83,8 +83,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in LuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -93,8 +93,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in LChuvColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 
@@ -103,8 +103,8 @@ namespace Colourful.Conversion
         /// </summary>
         public LabColor ToLab(in LMSColor color)
         {
-            var xyzColor = ToXYZ(color);
-            var result = ToLab(xyzColor);
+            var xyzColor = ToXYZ(in color);
+            var result = ToLab(in xyzColor);
             return result;
         }
 

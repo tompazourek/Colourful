@@ -8,7 +8,7 @@
         /// <summary>
         /// Returns saturation of the color (chroma normalized by lightness)
         /// </summary>
-        public static double GetSaturation(double L, double C)
+        public static double GetSaturation(in double L, in double C)
         {
             var result = 100 * (C / L);
 
@@ -21,7 +21,7 @@
         /// <summary>
         /// Gets chroma from saturation and lightness
         /// </summary>
-        public static double GetChroma(double saturation, double L)
+        public static double GetChroma(in double saturation, in double L)
         {
             var result = L * (saturation / 100);
             return result;

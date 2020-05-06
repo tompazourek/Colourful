@@ -5,20 +5,20 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="XYZColor" /> to <see cref="LabColor" />.
     /// </summary>
-    public sealed class XYZToLabConverter : IColorConversion<XYZColor, LabColor>
+    public sealed class XYZToLabConverter : IColorConversion<XYZColor, LabColor>, IEquatable<XYZToLabConverter>
     {
         /// <summary>
         /// Constructs with <see cref="LabColor.DefaultWhitePoint" />
         /// </summary>
         public XYZToLabConverter()
-            : this(LabColor.DefaultWhitePoint)
+            : this(in LabColor.DefaultWhitePoint)
         {
         }
 
         /// <summary>
         /// Constructs with arbitrary white point
         /// </summary>
-        public XYZToLabConverter(XYZColor labWhitePoint)
+        public XYZToLabConverter(in XYZColor labWhitePoint)
         {
             LabWhitePoint = labWhitePoint;
         }
@@ -46,7 +46,7 @@ namespace Colourful.Implementation.Conversion
             var a = 500 * (fx - fy);
             var b = 200 * (fy - fz);
 
-            var output = new LabColor(L, a, b, LabWhitePoint);
+            var output = new LabColor(in L, in a, in b, LabWhitePoint);
             return output;
         }
 
@@ -55,22 +55,21 @@ namespace Colourful.Implementation.Conversion
             var fc = cr > CIEConstants.Epsilon ? Math.Pow(cr, 1 / 3d) : (CIEConstants.Kappa * cr + 16) / 116d;
             return fc;
         }
+        
+        #region Equality
 
-        #region Overrides
-
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public bool Equals(XYZToLabConverter other)
         {
-            if (other == null)
-                return false;
-
-            return ReferenceEquals(this, other) || LabWhitePoint.Equals(other.LabWhitePoint);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return LabWhitePoint.Equals(other.LabWhitePoint);
         }
 
-        /// <inheritdoc cref="object" />
-        public override bool Equals(object obj) => obj is XYZToLabConverter other && Equals(other);
+        /// <inheritdoc />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is XYZToLabConverter other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => LabWhitePoint.GetHashCode();
 
         /// <inheritdoc cref="object" />

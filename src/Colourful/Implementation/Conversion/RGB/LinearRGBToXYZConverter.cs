@@ -6,15 +6,15 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="LinearRGBColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public sealed class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>
+    public sealed class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>, IEquatable<LinearRGBToXYZConverter>
     {
         private readonly double[,] _conversionMatrix;
 
         /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
-        public LinearRGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace)
+        public LinearRGBToXYZConverter(in IRGBWorkingSpace sourceRGBWorkingSpace)
         {
             SourceRGBWorkingSpace = sourceRGBWorkingSpace;
-            _conversionMatrix = GetRGBToXYZMatrix(SourceRGBWorkingSpace);
+            _conversionMatrix = GetRGBToXYZMatrix(in sourceRGBWorkingSpace);
         }
 
         /// <summary>
@@ -36,22 +36,21 @@ namespace Colourful.Implementation.Conversion
             return converted;
         }
 
-        #region Overrides
+        #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public bool Equals(LinearRGBToXYZConverter other)
         {
-            if (ReferenceEquals(this, other))
-                return true;
-
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
             return Equals(SourceRGBWorkingSpace, other.SourceRGBWorkingSpace);
         }
 
-        /// <inheritdoc cref="object" />
-        public override bool Equals(object obj) => obj is LinearRGBToXYZConverter other && Equals(other);
+        /// <inheritdoc />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is LinearRGBToXYZConverter other && Equals(other);
 
-        /// <inheritdoc cref="object" />
-        public override int GetHashCode() => SourceRGBWorkingSpace?.GetHashCode() ?? 0;
+        /// <inheritdoc />
+        public override int GetHashCode() => (SourceRGBWorkingSpace != null ? SourceRGBWorkingSpace.GetHashCode() : 0);
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(LinearRGBToXYZConverter left, LinearRGBToXYZConverter right) => Equals(left, right);

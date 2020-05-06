@@ -25,11 +25,11 @@ namespace Colourful.Tests
         public void Convert_HunterLab_to_XYZ(double l, double a, double b, double x, double y, double z)
         {
             // arrange
-            var input = new HunterLabColor(l, a, b);
+            var input = new HunterLabColor(in l, in a, in b);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.C };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
@@ -46,11 +46,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_to_HunterLab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.C };
 
             // act
-            var output = converter.ToHunterLab(input);
+            var output = converter.ToHunterLab(in input);
 
             // assert
             Assert.Equal(output.L, l, DoubleComparerLabPrecision);
@@ -67,11 +67,11 @@ namespace Colourful.Tests
         public void Convert_HunterLab_to_XYZ_D65(double l, double a, double b, double x, double y, double z)
         {
             // arrange
-            var input = new HunterLabColor(l, a, b);
+            var input = new HunterLabColor(in l, in a, in b);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
@@ -88,11 +88,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_D65_to_HunterLab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
-            var input = new XYZColor(x, y, z);
+            var input = new XYZColor(in x, in y, in z);
             var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
 
             // act
-            var output = converter.ToHunterLab(input);
+            var output = converter.ToHunterLab(in input);
 
             // assert
             Assert.Equal(output.L, l, DoubleComparerLabPrecision);

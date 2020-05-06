@@ -1,7 +1,5 @@
 ﻿using System;
 
-
-
 namespace Colourful.Implementation.Conversion
 {
     /// <summary>
@@ -12,7 +10,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes RGB/XYZ matrix
         /// </summary>
-        protected static double[,] GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
+        protected static double[,] GetRGBToXYZMatrix(in IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException(nameof(workingSpace));
 
@@ -65,6 +63,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes XYZ/RGB matrix
         /// </summary>
-        protected static double[,] GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace) => GetRGBToXYZMatrix(workingSpace).Inverse();
+        protected static double[,] GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace) => GetRGBToXYZMatrix(in workingSpace).Inverse();
     }
 }

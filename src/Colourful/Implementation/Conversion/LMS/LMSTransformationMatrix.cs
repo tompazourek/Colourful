@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Colourful.Implementation.Conversion
+﻿namespace Colourful.Implementation.Conversion
 {
     /// <summary>
     /// Matrix used for transformation from XYZ to LMS, defining the cone response domain.

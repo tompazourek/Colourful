@@ -14,7 +14,7 @@
         /// For more info see:
         /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
         /// </remarks>
-        double InverseCompanding(double channel);
+        double InverseCompanding(in double channel);
 
         /// <summary>
         /// Uncompanded channel (linear) is made nonlinear (depends on the RGB color system).
@@ -23,6 +23,6 @@
         /// For more info see:
         /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
         /// </remarks>
-        double Companding(double channel);
+        double Companding(in double channel);
     }
 }

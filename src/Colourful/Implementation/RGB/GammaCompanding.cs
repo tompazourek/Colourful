@@ -11,12 +11,12 @@ namespace Colourful.Implementation.RGB
     /// http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
     /// http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
     /// </remarks>
-    public sealed class GammaCompanding : ICompanding
+    public sealed class GammaCompanding : ICompanding, IEquatable<GammaCompanding>
     {
         /// <summary>
         /// Constructs with given gamma
         /// </summary>
-        public GammaCompanding(double gamma)
+        public GammaCompanding(in double gamma)
         {
             Gamma = gamma;
         }
@@ -27,7 +27,7 @@ namespace Colourful.Implementation.RGB
         public double Gamma { get; }
 
         /// <inheritdoc />
-        public double InverseCompanding(double channel)
+        public double InverseCompanding(in double channel)
         {
             var V = channel;
             var v = Math.Pow(V, Gamma);
@@ -35,14 +35,14 @@ namespace Colourful.Implementation.RGB
         }
 
         /// <inheritdoc />
-        public double Companding(double channel)
+        public double Companding(in double channel)
         {
             var v = channel;
             var V = Math.Pow(v, 1 / Gamma);
             return V;
         }
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(GammaCompanding other)
         {
@@ -52,10 +52,10 @@ namespace Colourful.Implementation.RGB
             return Gamma == other.Gamma;
         }
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is GammaCompanding other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => Gamma.GetHashCode();
 
         /// <inheritdoc cref="object" />

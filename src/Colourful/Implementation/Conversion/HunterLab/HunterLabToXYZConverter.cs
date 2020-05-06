@@ -5,7 +5,7 @@ namespace Colourful.Implementation.Conversion
     /// <summary>
     /// Converts from <see cref="HunterLabColor" /> to <see cref="XYZColor" />.
     /// </summary>
-    public sealed class HunterLabToXYZConverter : XYZAndHunterLabConverterBase, IColorConversion<HunterLabColor, XYZColor>
+    public sealed class HunterLabToXYZConverter : XYZAndHunterLabConverterBase, IColorConversion<HunterLabColor, XYZColor>, IEquatable<HunterLabToXYZConverter>
     {
         /// <summary>
         /// Default singleton instance of the converter.
@@ -27,16 +27,25 @@ namespace Colourful.Implementation.Conversion
             var X = (a / Ka * Math.Sqrt(Y / Yn) + Y / Yn) * Xn;
             var Z = (b / Kb * Math.Sqrt(Y / Yn) - Y / Yn) * -Zn;
 
-            var result = new XYZColor(X, Y, Z);
+            var result = new XYZColor(in X, in Y, in Z);
             return result;
         }
+        
+        #region Equality
 
-        #region Overrides
+        /// <inheritdoc />
+        public bool Equals(HunterLabToXYZConverter other)
+        {
+            if (other == null)
+                return false;
 
-        /// <inheritdoc cref="object" />
+            return true;
+        }
+
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is HunterLabToXYZConverter;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode() => 1;
 
         /// <inheritdoc cref="object" />

@@ -32,18 +32,18 @@ namespace Colourful.Conversion
         /// Transformation matrix used for the conversion (definition of the cone response domain).
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        public VonKriesChromaticAdaptation(double[,] transformationMatrix) : this(new XYZAndLMSConverter(transformationMatrix))
+        public VonKriesChromaticAdaptation(in double[,] transformationMatrix) : this(new XYZAndLMSConverter(in transformationMatrix))
         {
         }
 
-        private VonKriesChromaticAdaptation(XYZAndLMSConverter converter) : this(converter, converter)
+        private VonKriesChromaticAdaptation(in XYZAndLMSConverter converter) : this(converter, converter)
         {
         }
 
         /// <summary>
         /// Constructs von Kries chromatic adaptation using given converters
         /// </summary>
-        public VonKriesChromaticAdaptation(IColorConversion<XYZColor, LMSColor> conversionToLMS, IColorConversion<LMSColor, XYZColor> conversionToXYZ)
+        public VonKriesChromaticAdaptation(in IColorConversion<XYZColor, LMSColor> conversionToLMS, in IColorConversion<LMSColor, XYZColor> conversionToXYZ)
         {
             _conversionToLMS = conversionToLMS ?? throw new ArgumentNullException(nameof(conversionToLMS));
             _conversionToXYZ = conversionToXYZ ?? throw new ArgumentNullException(nameof(conversionToXYZ));
@@ -57,12 +57,12 @@ namespace Colourful.Conversion
             if (sourceWhitePoint.Equals(targetWhitePoint))
                 return sourceColor;
 
-            var sourceColorLMS = _conversionToLMS.Convert(sourceColor);
+            var sourceColorLMS = _conversionToLMS.Convert(in sourceColor);
 
             if (sourceWhitePoint != _lastSourceWhitePoint || targetWhitePoint != _lastTargetWhitePoint)
             {
-                var sourceWhitePointLMS = _conversionToLMS.Convert(sourceWhitePoint);
-                var targetWhitePointLMS = _conversionToLMS.Convert(targetWhitePoint);
+                var sourceWhitePointLMS = _conversionToLMS.Convert(in sourceWhitePoint);
+                var targetWhitePointLMS = _conversionToLMS.Convert(in targetWhitePoint);
 
                 _cachedDiagonalMatrix = MatrixFactory.CreateDiagonal(targetWhitePointLMS.L / sourceWhitePointLMS.L, targetWhitePointLMS.M / sourceWhitePointLMS.M, targetWhitePointLMS.S / sourceWhitePointLMS.S);
                 _lastSourceWhitePoint = sourceWhitePoint;
@@ -70,7 +70,7 @@ namespace Colourful.Conversion
             }
 
             var targetColorLMS = new LMSColor(_cachedDiagonalMatrix.MultiplyBy(sourceColorLMS.Vector));
-            var targetColor = _conversionToXYZ.Convert(targetColorLMS);
+            var targetColor = _conversionToXYZ.Convert(in targetColorLMS);
             return targetColor;
         }
     }

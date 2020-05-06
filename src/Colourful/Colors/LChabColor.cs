@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Colourful
@@ -6,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>
     /// </summary>
-    public readonly struct LChabColor : IColorVector
+    public readonly struct LChabColor : IColorVector, IEquatable<LChabColor>
     {
         /// <summary>
         /// D50 standard illuminant.
@@ -19,7 +20,7 @@ namespace Colourful
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="c">C* (chroma) (from 0 to 100)</param>
         /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
-        public LChabColor(double l, double c, double h) : this(l, c, h, DefaultWhitePoint)
+        public LChabColor(in double l, in double c, in double h) : this(in l, in c, in h, in DefaultWhitePoint)
         {
         }
 
@@ -27,7 +28,7 @@ namespace Colourful
         /// <param name="c">C* (chroma) (from 0 to 100)</param>
         /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public LChabColor(double l, double c, double h, XYZColor whitePoint)
+        public LChabColor(in double l, in double c, in double h, in XYZColor whitePoint)
         {
             L = l;
             C = c;
@@ -37,14 +38,14 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        public LChabColor(double[] vector) : this(vector, DefaultWhitePoint)
+        public LChabColor(in double[] vector) : this(in vector, in DefaultWhitePoint)
         {
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public LChabColor(double[] vector, XYZColor whitePoint)
-            : this(vector[0], vector[1], vector[2], whitePoint)
+        public LChabColor(in double[] vector, in XYZColor whitePoint)
+            : this(in vector[0], in vector[1], in vector[2], in whitePoint)
         {
         }
 
@@ -104,17 +105,17 @@ namespace Colourful
 
         #region Equality
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(LChabColor other) =>
             L == other.L &&
             C == other.C &&
             h == other.h;
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is LChabColor other && Equals(other);
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -136,7 +137,7 @@ namespace Colourful
 
         #region Overrides
 
-        /// <inheritdoc cref="object" />
+        /// <inheritdoc />
         public override string ToString() => string.Format(CultureInfo.InvariantCulture, "LChab [L={0:0.##}, C={1:0.##}, h={2:0.##}]", L, C, h);
 
         #endregion

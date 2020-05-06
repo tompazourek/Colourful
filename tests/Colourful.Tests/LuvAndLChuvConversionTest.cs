@@ -32,10 +32,10 @@ namespace Colourful.Tests
         public void Convert_LChuv_to_Luv(double l, double c, double h, double l2, double u, double v)
         {
             // arrange
-            var input = new LChuvColor(l, c, h);
+            var input = new LChuvColor(in l, in c, in h);
 
             // act
-            var output = Converter.ToLuv(input);
+            var output = Converter.ToLuv(in input);
 
             // assert
             Assert.Equal(output.L, l2, DoubleComparer);
@@ -59,10 +59,10 @@ namespace Colourful.Tests
         public void Convert_Luv_to_LChuv(double l, double u, double v, double l2, double c, double h)
         {
             // arrange
-            var input = new LuvColor(l, u, v);
+            var input = new LuvColor(in l, in u, in v);
 
             // act
-            var output = Converter.ToLChuv(input);
+            var output = Converter.ToLChuv(in input);
 
             // assert
             Assert.Equal(output.L, l2, DoubleComparer);

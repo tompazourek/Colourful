@@ -29,11 +29,11 @@ namespace Colourful.Tests
         public void Convert_xyY_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
-            var input = new xyYColor(x, y, Y);
+            var input = new xyYColor(in x, in y, in Y);
             var converter = new ColourfulConverter();
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, xyzX, DoubleComparer);
@@ -47,11 +47,11 @@ namespace Colourful.Tests
         public void Convert_XYZ_to_xyY(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
-            var input = new XYZColor(xyzX, xyzY, xyzZ);
+            var input = new XYZColor(in xyzX, in xyzY, in xyzZ);
             var converter = new ColourfulConverter();
 
             // act
-            var output = converter.ToxyY(input);
+            var output = converter.ToxyY(in input);
 
             // assert
             Assert.Equal(output.x, x, DoubleComparer);
@@ -65,12 +65,12 @@ namespace Colourful.Tests
         public void Convert_xyY_as_vector_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
         {
             // arrange
-            var input = new xyYColor(x, y, Y);
+            var input = new xyYColor(in x, in y, in Y);
 
             var converter = new ColourfulConverter();
 
             // act
-            var output = converter.ToXYZ(input);
+            var output = converter.ToXYZ(in input);
 
             // assert
             Assert.Equal(output.X, xyzX, DoubleComparer);
@@ -84,7 +84,7 @@ namespace Colourful.Tests
         public void Convert_XYZ_as_vector_to_XYZ(double x, double y, double z)
         {
             // arrange
-            IColorVector input = new XYZColor(x, y, z);
+            IColorVector input = new XYZColor(in x, in y, in z);
 
             var converter = new ColourfulConverter();
 

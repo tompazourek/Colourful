@@ -10,7 +10,9 @@ namespace Colourful.Tests
         {
             var defaultColor = default(LinearRGBColor);
             var converter = new ColourfulConverter();
-            var actual = converter.Adapt(defaultColor);
+            
+            // ReSharper disable once UnusedVariable
+            var actual = converter.Adapt(in defaultColor);
         }
     }
 }
