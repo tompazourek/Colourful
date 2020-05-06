@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-
 namespace Colourful
 {
     /// <summary>

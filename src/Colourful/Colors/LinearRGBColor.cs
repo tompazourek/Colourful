@@ -2,7 +2,6 @@
 using System.Globalization;
 using Colourful.Implementation;
 
-
 namespace Colourful
 {
     /// <summary>

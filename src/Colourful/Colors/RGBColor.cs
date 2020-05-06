@@ -2,8 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Colourful.Implementation;
-
-
 #if (DRAWING)
 using System.Drawing;
 

@@ -1,6 +1,5 @@
 ﻿using Colourful.Implementation.Conversion;
 
-
 namespace Colourful.Conversion
 {
     /// <summary>
