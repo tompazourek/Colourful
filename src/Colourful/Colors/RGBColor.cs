@@ -44,9 +44,9 @@ namespace Colourful
         public RGBColor(in double r, in double g, in double b, in IRGBWorkingSpace workingSpace)
         {
             _workingSpace = workingSpace;
-            R = r.CheckRange(min: 0, max: 1);
-            G = g.CheckRange(min: 0, max: 1);
-            B = b.CheckRange(min: 0, max: 1);
+            R = r;
+            G = g;
+            B = b;
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>

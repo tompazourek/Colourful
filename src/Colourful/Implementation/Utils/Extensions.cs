@@ -1,21 +1,9 @@
 ﻿using System;
 
-
 namespace Colourful.Implementation
 {
     internal static class Extensions
     {
-        public static double CheckRange(in this double value, in double min, in double max)
-        {
-            if (value < min)
-                throw new ArgumentOutOfRangeException(nameof(value), value, "The minimum value is " + min);
-
-            if (value > max)
-                throw new ArgumentOutOfRangeException(nameof(value), value, "The maximum value is " + max);
-
-            return value;
-        }
-
         public static double CropRange(in this double value, in double min, in double max)
         {
             if (value < min)
