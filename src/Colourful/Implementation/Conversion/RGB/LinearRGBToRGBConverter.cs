@@ -29,9 +29,9 @@ namespace Colourful.Implementation.Conversion
             var companding = workingSpace.Companding;
             double[] compandedVector = 
             {
-                companding.Companding(uncompandedVector[0]).CropRange(0, 1),
-                companding.Companding(uncompandedVector[1]).CropRange(0, 1),
-                companding.Companding(uncompandedVector[2]).CropRange(0, 1)
+                companding.Companding(uncompandedVector[0]),
+                companding.Companding(uncompandedVector[1]),
+                companding.Companding(uncompandedVector[2]),
             };
             var result = new RGBColor(in compandedVector, in workingSpace);
             return result;

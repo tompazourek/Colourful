@@ -33,9 +33,9 @@ namespace Colourful.Implementation.Conversion
             var compandedVector = rgbColor.Vector;
             double[] uncompandedVector = 
             {
-                companding.InverseCompanding(compandedVector[0]).CropRange(0, 1),
-                companding.InverseCompanding(compandedVector[1]).CropRange(0, 1),
-                companding.InverseCompanding(compandedVector[2]).CropRange(0, 1),
+                companding.InverseCompanding(compandedVector[0]),
+                companding.InverseCompanding(compandedVector[1]),
+                companding.InverseCompanding(compandedVector[2]),
             };
             return uncompandedVector;
         }

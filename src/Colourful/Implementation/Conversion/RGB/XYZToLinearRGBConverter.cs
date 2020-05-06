@@ -41,7 +41,7 @@ namespace Colourful.Implementation.Conversion
         public LinearRGBColor Convert(in XYZColor input)
         {
             var inputVector = input.Vector;
-            var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector).CropRange(0, 1);
+            var uncompandedVector = _conversionMatrix.MultiplyBy(inputVector);
             var result = new LinearRGBColor(in uncompandedVector, TargetRGBWorkingSpace);
             return result;
         }

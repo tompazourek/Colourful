@@ -40,7 +40,7 @@ namespace Colourful.Tests
 
         public static XYZColor GetXYZColor(this Row row) => new XYZColor(row.X, row.Y, row.Z);
 
-        public static RGBColor GetRGBColor(this Row row) => new RGBColor(row.R.CropRange(0, 1), row.G.CropRange(0, 1), row.B.CropRange(0, 1), RGBWorkingSpaces.sRGB);
+        public static RGBColor GetRGBColor(this Row row) => new RGBColor(row.R, row.G, row.B, RGBWorkingSpaces.sRGB);
 
         public static LabColor GetLabColor(this Row row) => new LabColor(row.L, row.a, row.b, Illuminants.C);
 
@@ -51,17 +51,6 @@ namespace Colourful.Tests
         public static LChabColor GetLChabColor(this Row row) => new LChabColor(row.L, row.C_ab, row.H_ab, Illuminants.C);
 
         public static LChuvColor GetLChuvColor(this Row row) => new LChuvColor(row.L, row.C_uv, row.H_uv, Illuminants.C);
-
-        public static double CropRange(in this double value, in double min, in double max)
-        {
-            if (value < min)
-                return min;
-
-            if (value > max)
-                return max;
-
-            return value;
-        }
 
         public class Row
         {

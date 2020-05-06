@@ -38,9 +38,9 @@ namespace Colourful.Tests
 
             // assert
             Assert.Equal(RGBColor.DefaultWorkingSpace, output.WorkingSpace);
-            Assert.Equal(r, output.R, DoubleComparer);
-            Assert.Equal(g, output.G, DoubleComparer);
-            Assert.Equal(b, output.B, DoubleComparer);
+            Assert.Equal(r, output.R, DoubleComparer.CropRange(0, 1));
+            Assert.Equal(g, output.G, DoubleComparer.CropRange(0, 1));
+            Assert.Equal(b, output.B, DoubleComparer.CropRange(0, 1));
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Colourful.Tests
 
             // assert
             Assert.Equal(output.WorkingSpace, RGBColor.DefaultWorkingSpace);
-            Assert.Equal(r, output.R, DoubleComparer);
-            Assert.Equal(g, output.G, DoubleComparer);
-            Assert.Equal(b, output.B, DoubleComparer);
+            Assert.Equal(r, output.R, DoubleComparer.CropRange(0, 1));
+            Assert.Equal(g, output.G, DoubleComparer.CropRange(0, 1));
+            Assert.Equal(b, output.B, DoubleComparer.CropRange(0, 1));
         }
 
         /// <summary>
