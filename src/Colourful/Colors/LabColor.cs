@@ -60,7 +60,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        public double L { get; }
+        public readonly double L;
 
         /// <summary>
         /// a*
@@ -69,7 +69,7 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// Negative values indicate green while positive values indicate magenta.
         /// </remarks>
-        public double a { get; }
+        public readonly double a;
 
         /// <summary>
         /// b*
@@ -78,7 +78,7 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// Negative values indicate blue and positive values indicate yellow.
         /// </remarks>
-        public double b { get; }
+        public readonly double b;
 
         /// <remarks>
         /// <see cref="Illuminants" />

@@ -6,7 +6,7 @@ namespace Colourful
     /// <summary>
     /// Coordinates of CIE xy chromaticity space
     /// </summary>
-    public readonly struct xyChromaticityCoordinates : IEquatable<xyChromaticityCoordinates>
+    public readonly struct xyChromaticityCoordinates : IColorVector, IEquatable<xyChromaticityCoordinates>
     {
         /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
         /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
@@ -22,7 +22,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double x { get; }
+        public readonly double x;
 
         /// <summary>
         /// Chromaticity coordinate y
@@ -30,7 +30,12 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double y { get; }
+        public readonly double y;
+
+        /// <summary>
+        /// <see cref="IColorVector" />
+        /// </summary>
+        public double[] Vector => new[] { x, y };
 
         #region Equality
 

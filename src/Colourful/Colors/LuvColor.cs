@@ -60,7 +60,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        public double L { get; }
+        public readonly double L;
 
         /// <summary>
         /// u*
@@ -68,7 +68,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -100 to 100.
         /// </remarks>
-        public double u { get; }
+        public readonly double u;
 
         /// <summary>
         /// v*
@@ -76,7 +76,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -100 to 100.
         /// </remarks>
-        public double v { get; }
+        public readonly double v;
 
         /// <remarks>
         /// <see cref="Illuminants" />

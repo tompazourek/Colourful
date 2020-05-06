@@ -34,17 +34,17 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double X { get; }
+        public readonly double X;
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double Y { get; }
+        public readonly double Y;
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double Z { get; }
+        public readonly double Z;
 
         /// <summary>
         /// <see cref="IColorVector" />

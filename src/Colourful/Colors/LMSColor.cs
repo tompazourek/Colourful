@@ -37,7 +37,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        public double L { get; }
+        public readonly double L;
 
         /// <summary>
         /// Medium wavelengths (green) cone response (Gamma)
@@ -45,7 +45,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        public double M { get; }
+        public readonly double M;
 
         /// <summary>
         /// Short wavelengths (blue) cone response (Beta)
@@ -53,7 +53,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from -1 to 1.
         /// </remarks>
-        public double S { get; }
+        public readonly double S;
 
         /// <summary>
         /// <see cref="IColorVector" />

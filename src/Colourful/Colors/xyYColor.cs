@@ -15,16 +15,17 @@ namespace Colourful
         /// <param name="y">y (usually from 0 to 1) chromaticity coordinate</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
         public xyYColor(in double x, in double y, in double Y)
-            : this(new xyChromaticityCoordinates(in x, in y), in Y)
         {
+            this.x = x;
+            this.y = y;
+            Luminance = Y;
         }
 
         /// <param name="chromaticity">Chromaticity coordinates (x and y together)</param>
         /// <param name="Y">Y (usually from 0 to 1)</param>
         public xyYColor(in xyChromaticityCoordinates chromaticity, in double Y)
+            : this(in chromaticity.x, in chromaticity.y, in Y)
         {
-            Chromaticity = chromaticity;
-            Luminance = Y;
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
@@ -40,12 +41,12 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double x => Chromaticity.x;
+        public readonly double x;
 
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double y => Chromaticity.y;
+        public readonly double y;
 
         /// <summary>
         /// Y channel (luminance)
@@ -53,12 +54,12 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 1.
         /// </remarks>
-        public double Luminance { get; }
+        public readonly double Luminance;
 
         /// <remarks>
         /// Chromaticity coordinates (identical to x and y)
         /// </remarks>
-        public xyChromaticityCoordinates Chromaticity { get; }
+        public xyChromaticityCoordinates Chromaticity => new xyChromaticityCoordinates(in x, in y);
 
         /// <summary>
         /// <see cref="IColorVector" />

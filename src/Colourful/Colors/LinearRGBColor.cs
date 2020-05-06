@@ -27,7 +27,7 @@ namespace Colourful
         /// <param name="b">Blue (from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
         public LinearRGBColor(in double r, in double g, in double b)
-            : this(r, g, b, DefaultWorkingSpace)
+            : this(in r, in g, in b, in DefaultWorkingSpace)
         {
         }
 
@@ -71,7 +71,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double R { get; }
+        public readonly double R;
 
         /// <summary>
         /// Green
@@ -79,7 +79,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double G { get; }
+        public readonly double G;
 
         /// <summary>
         /// Blue
@@ -87,7 +87,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double B { get; }
+        public readonly double B;
 
         /// <summary>
         /// <see cref="IColorVector" />

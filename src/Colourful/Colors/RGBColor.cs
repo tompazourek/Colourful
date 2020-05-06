@@ -43,16 +43,16 @@ namespace Colourful
         /// </param>
         public RGBColor(in double r, in double g, in double b, in IRGBWorkingSpace workingSpace)
         {
-            R = r.CheckRange(0, 1);
-            G = g.CheckRange(0, 1);
-            B = b.CheckRange(0, 1);
             _workingSpace = workingSpace;
+            R = r.CheckRange(min: 0, max: 1);
+            G = g.CheckRange(min: 0, max: 1);
+            B = b.CheckRange(min: 0, max: 1);
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
         public RGBColor(in double[] vector)
-            : this(vector, DefaultWorkingSpace)
+            : this(in vector, in DefaultWorkingSpace)
         {
         }
 
@@ -93,7 +93,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double R { get; }
+        public readonly double R;
 
         /// <summary>
         /// Green
@@ -101,7 +101,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double G { get; }
+        public readonly double G;
 
         /// <summary>
         /// Blue
@@ -109,7 +109,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 1.
         /// </remarks>
-        public double B { get; }
+        public readonly double B;
 
         /// <summary>
         /// <see cref="IColorVector" />
@@ -199,6 +199,7 @@ namespace Colourful
         #endregion
 
 #if (DRAWING)
+
         #region Color conversions
 
         /// <summary>

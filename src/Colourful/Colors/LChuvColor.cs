@@ -59,7 +59,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        public double L { get; }
+        public readonly double L;
 
         /// <summary>
         /// C* (chroma)
@@ -67,7 +67,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges usually from 0 to 100.
         /// </remarks>
-        public double C { get; }
+        public readonly double C;
 
         /// <summary>
         /// h° (hue in degrees)
@@ -75,7 +75,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 360.
         /// </remarks>
-        public double h { get; }
+        public readonly double h;
 
         /// <remarks>
         /// <see cref="Illuminants" />
@@ -99,7 +99,7 @@ namespace Colourful
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
-        public double Saturation => SaturationLChFormulas.GetSaturation(L, C);
+        public double Saturation => SaturationLChFormulas.GetSaturation(in L, in C);
 
         /// <summary>
         /// Constructs the color using saturation instead of chromas
