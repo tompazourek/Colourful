@@ -32,7 +32,7 @@ namespace Colourful.Conversion
         /// </summary>
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
-        private double[][] _transformationMatrix;
+        private double[,] _transformationMatrix;
 
         /// <summary>
         /// Chromatic adaptation method used. When null, no adaptation will be performed.
@@ -42,7 +42,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Transformation matrix used in conversion to <see cref="LMSColor" />, also used in the default Von Kries Chromatic Adaptation method.
         /// </summary>
-        public double[][] LMSTransformationMatrix
+        public double[,] LMSTransformationMatrix
         {
             get => _transformationMatrix;
             set

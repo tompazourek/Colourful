@@ -16,7 +16,7 @@ namespace Colourful.Conversion
     {
         private readonly IColorConversion<XYZColor, LMSColor> _conversionToLMS;
         private readonly IColorConversion<LMSColor, XYZColor> _conversionToXYZ;
-        private double[][] _cachedDiagonalMatrix;
+        private double[,] _cachedDiagonalMatrix;
 
         private XYZColor _lastSourceWhitePoint;
         private XYZColor _lastTargetWhitePoint;
@@ -32,7 +32,7 @@ namespace Colourful.Conversion
         /// Transformation matrix used for the conversion (definition of the cone response domain).
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        public VonKriesChromaticAdaptation(double[][] transformationMatrix) : this(new XYZAndLMSConverter(transformationMatrix))
+        public VonKriesChromaticAdaptation(double[,] transformationMatrix) : this(new XYZAndLMSConverter(transformationMatrix))
         {
         }
 

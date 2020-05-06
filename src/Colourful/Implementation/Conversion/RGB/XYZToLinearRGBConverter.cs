@@ -10,7 +10,7 @@ namespace Colourful.Implementation.Conversion
     /// </remarks>
     public sealed class XYZToLinearRGBConverter : LinearRGBAndXYZConverterBase, IColorConversion<XYZColor, LinearRGBColor>
     {
-        private readonly double[][] _conversionMatrix;
+        private readonly double[,] _conversionMatrix;
 
         /// <summary>
         /// Constructs with <see cref="RGBColor.DefaultWorkingSpace" />.
