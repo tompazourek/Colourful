@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
 
 namespace Colourful
 {
@@ -38,13 +37,13 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        public HunterLabColor(Vector vector) : this(vector, DefaultWhitePoint)
+        public HunterLabColor(double[] vector) : this(vector, DefaultWhitePoint)
         {
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public HunterLabColor(Vector vector, XYZColor whitePoint)
+        public HunterLabColor(double[] vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
         }
@@ -89,7 +88,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>
-        public Vector Vector => new[] { L, a, b };
+        public double[] Vector => new[] { L, a, b };
 
         #endregion
 

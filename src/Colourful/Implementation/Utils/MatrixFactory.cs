@@ -1,5 +1,5 @@
-﻿using Vector = System.Collections.Generic.IReadOnlyList<double>;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+﻿
+
 
 namespace Colourful.Implementation
 {
@@ -16,7 +16,7 @@ namespace Colourful.Implementation
             return result;
         }
 
-        public static Matrix CreateIdentity(int size)
+        public static double[][] CreateIdentity(int size)
         {
             var result = new double[size][];
             for (var i = 0; i < size; i++)
@@ -29,7 +29,7 @@ namespace Colourful.Implementation
             return result;
         }
 
-        public static Matrix CreateDiagonal(params double[] items)
+        public static double[][] CreateDiagonal(params double[] items)
         {
             var size = items.Length;
             var result = new double[size][];

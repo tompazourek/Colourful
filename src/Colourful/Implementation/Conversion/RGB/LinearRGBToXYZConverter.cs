@@ -1,5 +1,5 @@
 ﻿using System;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 
 namespace Colourful.Implementation.Conversion
 {
@@ -8,7 +8,7 @@ namespace Colourful.Implementation.Conversion
     /// </summary>
     public sealed class LinearRGBToXYZConverter : LinearRGBAndXYZConverterBase, IColorConversion<LinearRGBColor, XYZColor>
     {
-        private readonly Matrix _conversionMatrix;
+        private readonly double[][] _conversionMatrix;
 
         /// <param name="sourceRGBWorkingSpace">Source RGB working space</param>
         public LinearRGBToXYZConverter(IRGBWorkingSpace sourceRGBWorkingSpace)

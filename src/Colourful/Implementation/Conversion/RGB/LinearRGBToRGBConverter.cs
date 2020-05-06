@@ -1,4 +1,4 @@
-﻿using Vector = System.Collections.Generic.IReadOnlyList<double>;
+﻿
 
 namespace Colourful.Implementation.Conversion
 {
@@ -24,10 +24,10 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Applying the working space companding function (<see cref="IRGBWorkingSpace.Companding" />) to uncompanded vector.
         /// </summary>
-        private static RGBColor CompandVector(Vector uncompandedVector, IRGBWorkingSpace workingSpace)
+        private static RGBColor CompandVector(double[] uncompandedVector, IRGBWorkingSpace workingSpace)
         {
             var companding = workingSpace.Companding;
-            Vector compandedVector = new[]
+            double[] compandedVector = new[]
             {
                 companding.Companding(uncompandedVector[0]).CropRange(0, 1),
                 companding.Companding(uncompandedVector[1]).CropRange(0, 1),

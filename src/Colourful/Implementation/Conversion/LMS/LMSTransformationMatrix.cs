@@ -1,5 +1,5 @@
-﻿using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+﻿
+
 
 namespace Colourful.Implementation.Conversion
 {
@@ -19,7 +19,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez adjusted for D65)
         /// </summary>
-        public static readonly Matrix VonKriesHPEAdjusted = new Vector[]
+        public static readonly double[][] VonKriesHPEAdjusted = new double[][]
         {
             new[] { 0.40024, 0.7076, -0.08081 },
             new[] { -0.2263, 1.16532, 0.0457 },
@@ -29,7 +29,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez for equal energy)
         /// </summary>
-        public static readonly Matrix VonKriesHPE = new Vector[]
+        public static readonly double[][] VonKriesHPE = new double[][]
         {
             new[] { 0.3897, 0.6890, -0.0787 },
             new[] { -0.2298, 1.1834, 0.0464 },
@@ -39,12 +39,12 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// XYZ scaling chromatic adaptation transform matrix
         /// </summary>
-        public static readonly Matrix XYZScaling = MatrixFactory.CreateIdentity(3);
+        public static readonly double[][] XYZScaling = MatrixFactory.CreateIdentity(3);
 
         /// <summary>
         /// Bradford chromatic adaptation transform matrix (used in CMCCAT97)
         /// </summary>
-        public static readonly Matrix Bradford = new Vector[]
+        public static readonly double[][] Bradford = new double[][]
         {
             new[] { 0.8951, 0.2664, -0.1614 },
             new[] { -0.7502, 1.7135, 0.0367 },
@@ -54,7 +54,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Spectral sharpening and the Bradford transform
         /// </summary>
-        public static readonly Matrix BradfordSharp = new Vector[]
+        public static readonly double[][] BradfordSharp = new double[][]
         {
             new[] { 1.2694, -0.0988, -0.1706 },
             new[] { -0.8364, 1.8006, 0.0357 },
@@ -64,7 +64,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// CMCCAT2000 (fitted from all available color data sets)
         /// </summary>
-        public static readonly Matrix CMCCAT2000 = new Vector[]
+        public static readonly double[][] CMCCAT2000 = new double[][]
         {
             new[] { 0.7982, 0.3389, -0.1371 },
             new[] { -0.5918, 1.5512, 0.0406 },
@@ -74,7 +74,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// CAT02 (optimized for minimizing CIELAB differences)
         /// </summary>
-        public static readonly Matrix CAT02 = new Vector[]
+        public static readonly double[][] CAT02 = new double[][]
         {
             new[] { 0.7328, 0.4296, -0.1624 },
             new[] { -0.7036, 1.6975, 0.0061 },

@@ -1,6 +1,6 @@
 ﻿using System;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
+
 
 namespace Colourful.Implementation.Conversion
 {
@@ -12,7 +12,7 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes RGB/XYZ matrix
         /// </summary>
-        protected static Matrix GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
+        protected static double[][] GetRGBToXYZMatrix(IRGBWorkingSpace workingSpace)
         {
             if (workingSpace == null) throw new ArgumentNullException(nameof(workingSpace));
 
@@ -38,7 +38,7 @@ namespace Colourful.Implementation.Conversion
             const double Yb = 1;
             var Zb = (1 - xb - yb) / yb;
 
-            var S = new Vector[]
+            var S = new double[][]
             {
                 new[] { Xr, Xg, Xb },
                 new[] { Yr, Yg, Yb },
@@ -52,7 +52,7 @@ namespace Colourful.Implementation.Conversion
             var Sg = SW[1];
             var Sb = SW[2];
 
-            Matrix M = new Vector[]
+            double[][] M = new double[][]
             {
                 new[] { Sr * Xr, Sg * Xg, Sb * Xb },
                 new[] { Sr * Yr, Sg * Yg, Sb * Yb },
@@ -65,6 +65,6 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Computes XYZ/RGB matrix
         /// </summary>
-        protected static Matrix GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace) => GetRGBToXYZMatrix(workingSpace).Inverse();
+        protected static double[][] GetXYZToRGBMatrix(IRGBWorkingSpace workingSpace) => GetRGBToXYZMatrix(workingSpace).Inverse();
     }
 }

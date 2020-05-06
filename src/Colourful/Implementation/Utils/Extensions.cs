@@ -1,6 +1,6 @@
 ﻿using System;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+
+
 
 namespace Colourful.Implementation
 {
@@ -28,11 +28,11 @@ namespace Colourful.Implementation
             return value;
         }
 
-        public static Vector CropRange(this Vector vector, double min, double max)
+        public static double[] CropRange(this double[] vector, double min, double max)
         {
-            var croppedVector = new double[vector.Count];
+            var croppedVector = new double[vector.Length];
 
-            for (var i = 0; i < vector.Count; i++)
+            for (var i = 0; i < vector.Length; i++)
             {
                 if (vector[i] < min)
                 {
@@ -57,9 +57,9 @@ namespace Colourful.Implementation
         /// </summary>
         /// <param name="matrix"></param>
         /// <returns></returns>
-        public static Matrix Inverse(this Matrix matrix)
+        public static double[][] Inverse(this double[][] matrix)
         {
-            if (matrix.Count != 3 || matrix[0].Count != 3)
+            if (matrix.Length != 3 || matrix[0].Length != 3)
                 throw new ArgumentOutOfRangeException(nameof(matrix), "Inversion is supported only on 3 by 3 matrices.");
 
             var A = matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1];
@@ -72,7 +72,7 @@ namespace Colourful.Implementation
             var F = -(matrix[0][0] * matrix[2][1] - matrix[0][1] * matrix[2][0]);
             var I = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
             var det = matrix[0][0] * A + matrix[0][1] * B + matrix[0][2] * C;
-            Matrix result = new Vector[]
+            double[][] result = new[]
             {
                 new[] { A / det, D / det, G / det },
                 new[] { B / det, E / det, H / det },
@@ -81,16 +81,16 @@ namespace Colourful.Implementation
             return result;
         }
 
-        public static Vector MultiplyBy(this Matrix matrix, Vector vector)
+        public static double[] MultiplyBy(this double[][] matrix, double[] vector)
         {
-            if (matrix[0].Count != vector.Count)
+            if (matrix[0].Length != vector.Length)
                 throw new ArgumentOutOfRangeException(nameof(matrix), "Non-conformable matrices and vectors cannot be multiplied.");
 
-            var result = new double[matrix.Count];
+            var result = new double[matrix.Length];
 
-            for (var i = 0; i < matrix.Count; ++i) // each row of matrix
+            for (var i = 0; i < matrix.Length; ++i) // each row of matrix
             {
-                for (var k = 0; k < vector.Count; ++k) // each element of vector
+                for (var k = 0; k < vector.Length; ++k) // each element of vector
                 {
                     result[i] += matrix[i][k] * vector[k];
                 }
@@ -100,18 +100,18 @@ namespace Colourful.Implementation
             return result;
         }
 
-        public static Matrix MultiplyBy(this Matrix matrix1, Matrix matrix2)
+        public static double[][] MultiplyBy(this double[][] matrix1, double[][] matrix2)
         {
-            if (matrix1[0].Count != matrix2.Count)
+            if (matrix1[0].Length != matrix2.Length)
                 throw new ArgumentOutOfRangeException(nameof(matrix1), "Non-conformable matrices cannot be multiplied.");
 
-            var result = MatrixFactory.CreateEmpty(matrix1.Count, matrix2[0].Count);
+            var result = MatrixFactory.CreateEmpty(matrix1.Length, matrix2[0].Length);
 
-            for (var i = 0; i < matrix1.Count; ++i) // each row of 1
+            for (var i = 0; i < matrix1.Length; ++i) // each row of 1
             {
-                for (var j = 0; j < matrix2[0].Count; ++j) // each column of 2
+                for (var j = 0; j < matrix2[0].Length; ++j) // each column of 2
                 {
-                    for (var k = 0; k < matrix1[0].Count; ++k)
+                    for (var k = 0; k < matrix1[0].Length; ++k)
                     {
                         result[i][j] += matrix1[i][k] * matrix2[k][j];
                     }

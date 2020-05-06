@@ -1,6 +1,4 @@
-﻿using Vector = System.Collections.Generic.IReadOnlyList<double>;
-
-namespace Colourful
+﻿namespace Colourful
 {
     /// <summary>
     /// Color represented as a vector in its color space
@@ -10,6 +8,6 @@ namespace Colourful
         /// <summary>
         /// Vector
         /// </summary>
-        Vector Vector { get; }
+        double[] Vector { get; }
     }
 }

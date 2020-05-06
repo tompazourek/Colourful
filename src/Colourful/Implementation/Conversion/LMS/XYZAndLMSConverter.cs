@@ -1,4 +1,4 @@
-﻿using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+﻿
 
 namespace Colourful.Implementation.Conversion
 {
@@ -11,11 +11,11 @@ namespace Colourful.Implementation.Conversion
         /// Default transformation matrix used, when no other is set. (Bradford)
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        public static readonly Matrix DefaultTransformationMatrix = LMSTransformationMatrix.Bradford;
+        public static readonly double[][] DefaultTransformationMatrix = LMSTransformationMatrix.Bradford;
 
-        private Matrix _transformationMatrix;
+        private double[][] _transformationMatrix;
 
-        private Matrix _transformationMatrixInverse;
+        private double[][] _transformationMatrixInverse;
 
         /// <summary>
         /// Constructs with <see cref="DefaultTransformationMatrix" />
@@ -25,7 +25,7 @@ namespace Colourful.Implementation.Conversion
         }
 
         /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />), if not set <see cref="DefaultTransformationMatrix" /> will be used.</param>
-        public XYZAndLMSConverter(Matrix transformationMatrix)
+        public XYZAndLMSConverter(double[][] transformationMatrix)
         {
             TransformationMatrix = transformationMatrix;
         }
@@ -34,7 +34,7 @@ namespace Colourful.Implementation.Conversion
         /// Transformation matrix used for the conversion (definition of the cone response domain).
         /// <see cref="LMSTransformationMatrix" />
         /// </summary>
-        public Matrix TransformationMatrix
+        public double[][] TransformationMatrix
         {
             get => _transformationMatrix;
             internal set

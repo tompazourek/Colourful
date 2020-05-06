@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+
 
 namespace Colourful
 {
@@ -22,7 +22,7 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        public LMSColor(Vector vector)
+        public LMSColor(double[] vector)
             : this(vector[0], vector[1], vector[2])
         {
         }
@@ -58,7 +58,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>
-        public Vector Vector => new[] { L, M, S };
+        public double[] Vector => new[] { L, M, S };
 
         #endregion
 

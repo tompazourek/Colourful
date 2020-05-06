@@ -1,5 +1,5 @@
 ﻿using Colourful.Implementation.Conversion;
-using Matrix = System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<double>>;
+
 
 namespace Colourful.Conversion
 {
@@ -32,7 +32,7 @@ namespace Colourful.Conversion
         /// </summary>
         public static readonly XYZColor DefaultWhitePoint = Illuminants.D65;
 
-        private Matrix _transformationMatrix;
+        private double[][] _transformationMatrix;
 
         /// <summary>
         /// Chromatic adaptation method used. When null, no adaptation will be performed.
@@ -42,7 +42,7 @@ namespace Colourful.Conversion
         /// <summary>
         /// Transformation matrix used in conversion to <see cref="LMSColor" />, also used in the default Von Kries Chromatic Adaptation method.
         /// </summary>
-        public Matrix LMSTransformationMatrix
+        public double[][] LMSTransformationMatrix
         {
             get => _transformationMatrix;
             set

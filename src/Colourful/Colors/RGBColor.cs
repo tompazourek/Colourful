@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Colourful.Implementation;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+
 
 #if (DRAWING)
 using System.Drawing;
@@ -53,7 +53,7 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
         /// <remarks>Uses <see cref="DefaultWorkingSpace" /> as working space.</remarks>
-        public RGBColor(Vector vector)
+        public RGBColor(double[] vector)
             : this(vector, DefaultWorkingSpace)
         {
         }
@@ -62,7 +62,7 @@ namespace Colourful
         /// <param name="workingSpace">
         /// <see cref="RGBWorkingSpaces" />
         /// </param>
-        public RGBColor(Vector vector, IRGBWorkingSpace workingSpace)
+        public RGBColor(double[] vector, IRGBWorkingSpace workingSpace)
             : this(vector[0], vector[1], vector[2], workingSpace)
         {
         }
@@ -116,7 +116,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>
-        public Vector Vector => new[] { R, G, B };
+        public double[] Vector => new[] { R, G, B };
 
         #endregion
 

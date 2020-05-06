@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+
 
 namespace Colourful
 {
@@ -28,7 +28,7 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
-        public xyYColor(Vector vector)
+        public xyYColor(double[] vector)
             : this(vector[0], vector[1], vector[2])
         {
         }
@@ -63,7 +63,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>
-        public Vector Vector => new[] { x, y, Luminance };
+        public double[] Vector => new[] { x, y, Luminance };
 
         #endregion
 

@@ -1,4 +1,4 @@
-﻿using Vector = System.Collections.Generic.IReadOnlyList<double>;
+﻿
 
 namespace Colourful.Implementation.Conversion
 {
@@ -25,11 +25,11 @@ namespace Colourful.Implementation.Conversion
         /// <summary>
         /// Applying the working space inverse companding function (<see cref="IRGBWorkingSpace.Companding" />) to RGB vector.
         /// </summary>
-        private static Vector UncompandVector(in RGBColor rgbColor)
+        private static double[] UncompandVector(in RGBColor rgbColor)
         {
             var companding = rgbColor.WorkingSpace.Companding;
             var compandedVector = rgbColor.Vector;
-            Vector uncompandedVector = new[]
+            double[] uncompandedVector = new[]
             {
                 companding.InverseCompanding(compandedVector[0]).CropRange(0, 1),
                 companding.InverseCompanding(compandedVector[1]).CropRange(0, 1),

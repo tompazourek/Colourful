@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Vector = System.Collections.Generic.IReadOnlyList<double>;
+
 
 namespace Colourful
 {
@@ -39,13 +39,13 @@ namespace Colourful
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <remarks>Uses <see cref="DefaultWhitePoint" /> as white point.</remarks>
-        public LuvColor(Vector vector) : this(vector, DefaultWhitePoint)
+        public LuvColor(double[] vector) : this(vector, DefaultWhitePoint)
         {
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
         /// <param name="whitePoint">Reference white (see <see cref="Illuminants" />)</param>
-        public LuvColor(Vector vector, XYZColor whitePoint)
+        public LuvColor(double[] vector, XYZColor whitePoint)
             : this(vector[0], vector[1], vector[2], whitePoint)
         {
         }
@@ -88,7 +88,7 @@ namespace Colourful
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>
-        public Vector Vector => new[] { L, u, v };
+        public double[] Vector => new[] { L, u, v };
 
         #endregion
 
