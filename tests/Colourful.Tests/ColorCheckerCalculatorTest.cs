@@ -27,7 +27,7 @@ namespace Colourful.Tests
             var expectedXYZ = row.GetXYZColor();
             var actualXYZ = Converter.ToXYZ(in inputLab);
 
-            Assert.Equal(actualXYZ, expectedXYZ, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
+            Assert.Equal(expectedXYZ, actualXYZ, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
 
         [Theory]
@@ -37,7 +37,7 @@ namespace Colourful.Tests
             var inputLab = row.GetLabColor();
             var expectedRGB = row.GetRGBColor();
             var actualRGB = Converter.ToRGB(in inputLab);
-            Assert.Equal(actualRGB, expectedRGB, new ColorVectorComparer(new DoubleDeltaComparer(0.00912)));
+            Assert.Equal(expectedRGB, actualRGB, new ColorVectorComparer(new DoubleDeltaComparer(0.00912)));
         }
 
         [Theory]
@@ -48,7 +48,7 @@ namespace Colourful.Tests
             var expectedxyY = row.GetxyYColor();
             var actualxyY = Converter.ToxyY(in inputLab);
 
-            Assert.Equal(actualxyY, expectedxyY, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
+            Assert.Equal(expectedxyY, actualxyY, new ColorVectorComparer(new DoubleDeltaComparer(0.000001)));
         }
 
         [Theory]
@@ -59,7 +59,7 @@ namespace Colourful.Tests
             var expectedLChab = row.GetLChabColor();
             var actualLChab = Converter.ToLChab(in inputLab);
 
-            Assert.Equal(actualLChab, expectedLChab, new ColorVectorComparer(new DoubleDeltaComparer(0.00017)));
+            Assert.Equal(expectedLChab, actualLChab, new ColorVectorComparer(new DoubleDeltaComparer(0.00017)));
         }
 
         [Theory]
@@ -70,7 +70,7 @@ namespace Colourful.Tests
             var expectedLChuv = row.GetLChuvColor();
             var actualLChuv = Converter.ToLChuv(in inputLab);
 
-            Assert.Equal(actualLChuv, expectedLChuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00022)));
+            Assert.Equal(expectedLChuv, actualLChuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00022)));
         }
 
         [Theory]
@@ -81,7 +81,7 @@ namespace Colourful.Tests
             var expectedLuv = row.GetLuvColor();
             var actualLuv = Converter.ToLuv(in inputLab);
 
-            Assert.Equal(actualLuv, expectedLuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00000105)));
+            Assert.Equal(expectedLuv, actualLuv, new ColorVectorComparer(new DoubleDeltaComparer(0.00000105)));
         }
     }
 }

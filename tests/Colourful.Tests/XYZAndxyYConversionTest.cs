@@ -9,7 +9,7 @@ namespace Colourful.Tests
     /// </summary>
     public class XYZAndxyYConversionTest
     {
-        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(precision: 4);
 
         /// <summary>
         /// Data from: http://www.brucelindbloom.com/index.html?ColorCalculator.html
@@ -20,7 +20,7 @@ namespace Colourful.Tests
             new object[] { 0, 0, 0, 0, 0, 0 },
             new object[] { 0.436075, 0.222504, 0.013932, 0.648427, 0.330856, 0.222504 },
             new object[] { 0.964220, 1.000000, 0.825210, 0.345669, 0.358496, 1.000000 },
-            new object[] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 },
+            new object[] { 0.434119, 0.356820, 0.369447, 0.374116, 0.307501, 0.356820 }
         };
 
         [Theory]
@@ -36,9 +36,9 @@ namespace Colourful.Tests
             var output = converter.ToXYZ(in input);
 
             // assert
-            Assert.Equal(output.X, xyzX, DoubleComparer);
-            Assert.Equal(output.Y, xyzY, DoubleComparer);
-            Assert.Equal(output.Z, xyzZ, DoubleComparer);
+            Assert.Equal(xyzX, output.X, DoubleComparer);
+            Assert.Equal(xyzY, output.Y, DoubleComparer);
+            Assert.Equal(xyzZ, output.Z, DoubleComparer);
         }
 
         [Theory]
@@ -54,9 +54,9 @@ namespace Colourful.Tests
             var output = converter.ToxyY(in input);
 
             // assert
-            Assert.Equal(output.x, x, DoubleComparer);
-            Assert.Equal(output.y, y, DoubleComparer);
-            Assert.Equal(output.Luminance, Y, DoubleComparer);
+            Assert.Equal(x, output.x, DoubleComparer);
+            Assert.Equal(y, output.y, DoubleComparer);
+            Assert.Equal(Y, output.Luminance, DoubleComparer);
         }
 
         [Theory]
@@ -73,9 +73,9 @@ namespace Colourful.Tests
             var output = converter.ToXYZ(in input);
 
             // assert
-            Assert.Equal(output.X, xyzX, DoubleComparer);
-            Assert.Equal(output.Y, xyzY, DoubleComparer);
-            Assert.Equal(output.Z, xyzZ, DoubleComparer);
+            Assert.Equal(xyzX, output.X, DoubleComparer);
+            Assert.Equal(xyzY, output.Y, DoubleComparer);
+            Assert.Equal(xyzZ, output.Z, DoubleComparer);
         }
 
 
@@ -92,9 +92,9 @@ namespace Colourful.Tests
             var output = converter.ToXYZ(input);
 
             // assert
-            Assert.Equal(output.X, x, DoubleComparer);
-            Assert.Equal(output.Y, y, DoubleComparer);
-            Assert.Equal(output.Z, z, DoubleComparer);
+            Assert.Equal(x, output.X, DoubleComparer);
+            Assert.Equal(y, output.Y, DoubleComparer);
+            Assert.Equal(z, output.Z, DoubleComparer);
         }
     }
 }

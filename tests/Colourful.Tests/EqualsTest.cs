@@ -4,7 +4,6 @@ namespace Colourful.Tests
 {
     public class EqualsTest
     {
-
         [Fact]
         public void ChromaticityCoordinates()
         {

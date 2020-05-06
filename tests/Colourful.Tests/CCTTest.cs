@@ -74,7 +74,7 @@ namespace Colourful.Tests
             // assert
             Debug.WriteLine($"CCT {cct} K (difference {Math.Abs(expectedCCT - cct)} K)");
             var deltaComparer = new DoubleDeltaComparer(66);
-            Assert.Equal(cct, expectedCCT, deltaComparer);
+            Assert.Equal(expectedCCT, cct, deltaComparer);
         }
 
         [Theory]
@@ -86,8 +86,8 @@ namespace Colourful.Tests
 
             // assert
             var deltaComparer = new DoubleDeltaComparer(0.02);
-            Assert.Equal(chromaticity.x, expectedX, deltaComparer);
-            Assert.Equal(chromaticity.y, expectedY, deltaComparer);
+            Assert.Equal(expectedX, chromaticity.x, deltaComparer);
+            Assert.Equal(expectedY, chromaticity.y, deltaComparer);
         }
     }
 }

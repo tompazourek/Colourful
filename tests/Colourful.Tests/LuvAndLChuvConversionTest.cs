@@ -13,7 +13,7 @@ namespace Colourful.Tests
     /// </remarks>
     public class LuvAndLChuvConversionTest
     {
-        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(precision: 4);
 
         private static ColourfulConverter Converter => new ColourfulConverter();
 
@@ -38,9 +38,9 @@ namespace Colourful.Tests
             var output = Converter.ToLuv(in input);
 
             // assert
-            Assert.Equal(output.L, l2, DoubleComparer);
-            Assert.Equal(output.u, u, DoubleComparer);
-            Assert.Equal(output.v, v, DoubleComparer);
+            Assert.Equal(l2, output.L, DoubleComparer);
+            Assert.Equal(u, output.u, DoubleComparer);
+            Assert.Equal(v, output.v, DoubleComparer);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Colourful.Tests
             var output = Converter.ToLChuv(in input);
 
             // assert
-            Assert.Equal(output.L, l2, DoubleComparer);
-            Assert.Equal(output.C, c, DoubleComparer);
-            Assert.Equal(output.h, h, DoubleComparer);
+            Assert.Equal(l2, output.L, DoubleComparer);
+            Assert.Equal(c, output.C, DoubleComparer);
+            Assert.Equal(h, output.h, DoubleComparer);
         }
     }
 }

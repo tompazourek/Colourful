@@ -92,7 +92,7 @@ namespace Colourful.Tests
                         throw new Exception();
                 }
 
-                Assert.Equal(actualColor, expectedColor, new ColorVectorComparer(Comparer<double>.Default));
+                Assert.Equal(expectedColor, actualColor, new ColorVectorComparer(Comparer<double>.Default));
             }
         }
     }

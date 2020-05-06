@@ -32,9 +32,9 @@ namespace Colourful.Tests
             var output = converter.ToXYZ(in input);
 
             // assert
-            Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
-            Assert.Equal(output.Y, y, DoubleComparerXYZPrecision);
-            Assert.Equal(output.Z, z, DoubleComparerXYZPrecision);
+            Assert.Equal(x, output.X, DoubleComparerXYZPrecision);
+            Assert.Equal(y, output.Y, DoubleComparerXYZPrecision);
+            Assert.Equal(z, output.Z, DoubleComparerXYZPrecision);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace Colourful.Tests
             var output = converter.ToHunterLab(in input);
 
             // assert
-            Assert.Equal(output.L, l, DoubleComparerLabPrecision);
-            Assert.Equal(output.a, a, DoubleComparerLabPrecision);
-            Assert.Equal(output.b, b, DoubleComparerLabPrecision);
+            Assert.Equal(l, output.L, DoubleComparerLabPrecision);
+            Assert.Equal(a, output.a, DoubleComparerLabPrecision);
+            Assert.Equal(b, output.b, DoubleComparerLabPrecision);
         }
 
         /// <summary>
@@ -74,9 +74,9 @@ namespace Colourful.Tests
             var output = converter.ToXYZ(in input);
 
             // assert
-            Assert.Equal(output.X, x, DoubleComparerXYZPrecision);
-            Assert.Equal(output.Y, y, DoubleComparerXYZPrecision);
-            Assert.Equal(output.Z, z, DoubleComparerXYZPrecision);
+            Assert.Equal(x, output.X, DoubleComparerXYZPrecision);
+            Assert.Equal(y, output.Y, DoubleComparerXYZPrecision);
+            Assert.Equal(z, output.Z, DoubleComparerXYZPrecision);
         }
 
         /// <summary>
@@ -95,9 +95,9 @@ namespace Colourful.Tests
             var output = converter.ToHunterLab(in input);
 
             // assert
-            Assert.Equal(output.L, l, DoubleComparerLabPrecision);
-            Assert.Equal(output.a, a, DoubleComparerLabPrecision);
-            Assert.Equal(output.b, b, DoubleComparerLabPrecision);
+            Assert.Equal(l, output.L, DoubleComparerLabPrecision);
+            Assert.Equal(a, output.a, DoubleComparerLabPrecision);
+            Assert.Equal(b, output.b, DoubleComparerLabPrecision);
         }
     }
 }

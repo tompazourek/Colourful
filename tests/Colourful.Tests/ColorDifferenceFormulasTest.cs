@@ -34,7 +34,7 @@ namespace Colourful.Tests
             var deltaE = new CIE76ColorDifference().ComputeDifference(in x, in y);
 
             // assert
-            Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
+            Assert.Equal(expectedDeltaE, deltaE, DoubleComparerLabPrecision);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Colourful.Tests
             var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.GraphicArts).ComputeDifference(in x, in y);
 
             // assert
-            Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
+            Assert.Equal(expectedDeltaE, deltaE, DoubleComparerLabPrecision);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Colourful.Tests
             var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.Textiles).ComputeDifference(in x, in y);
 
             // assert
-            Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabPrecision);
+            Assert.Equal(expectedDeltaE, deltaE, DoubleComparerLabPrecision);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Colourful.Tests
             var deltaE = new CIEDE2000ColorDifference().ComputeDifference(in x, in y);
 
             // assert
-            Assert.Equal(deltaE, expectedDeltaE, DoubleComparerLabRounding);
+            Assert.Equal(expectedDeltaE, deltaE, DoubleComparerLabRounding);
         }
 
         /// <summary>
@@ -166,8 +166,8 @@ namespace Colourful.Tests
             var deltaE_acceptability = new CMCColorDifference(CMCColorDifferenceThreshold.Acceptability).ComputeDifference(in x, in y);
 
             // assert
-            Assert.Equal(deltaE_imperceptibility, expectedDeltaE_imperceptibility, DoubleComparerLabPrecision);
-            Assert.Equal(deltaE_acceptability, expectedDeltaE_acceptability, DoubleComparerLabPrecision);
+            Assert.Equal(expectedDeltaE_imperceptibility, deltaE_imperceptibility, DoubleComparerLabPrecision);
+            Assert.Equal(expectedDeltaE_acceptability, deltaE_acceptability, DoubleComparerLabPrecision);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Colourful.Tests
     /// </remarks>
     public class LabAndLChabConversionTest
     {
-        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(precision: 4);
 
         private static ColourfulConverter Converter => new ColourfulConverter();
 
@@ -38,9 +38,9 @@ namespace Colourful.Tests
             var output = Converter.ToLab(in input);
 
             // assert
-            Assert.Equal(output.L, l2, DoubleComparer);
-            Assert.Equal(output.a, a, DoubleComparer);
-            Assert.Equal(output.b, b, DoubleComparer);
+            Assert.Equal(l2, output.L, DoubleComparer);
+            Assert.Equal(a, output.a, DoubleComparer);
+            Assert.Equal(b, output.b, DoubleComparer);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace Colourful.Tests
             var output = Converter.ToLChab(in input);
 
             // assert
-            Assert.Equal(output.L, l2, DoubleComparer);
-            Assert.Equal(output.C, c, DoubleComparer);
-            Assert.Equal(output.h, h, DoubleComparer);
+            Assert.Equal(l2, output.L, DoubleComparer);
+            Assert.Equal(c, output.C, DoubleComparer);
+            Assert.Equal(h, output.h, DoubleComparer);
         }
     }
 }

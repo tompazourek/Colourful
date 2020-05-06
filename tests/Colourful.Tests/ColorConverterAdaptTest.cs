@@ -34,9 +34,9 @@ namespace Colourful.Tests
 
             // assert
             Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
-            Assert.Equal(output.R, expectedOutput.R, DoubleRoundingComparer);
-            Assert.Equal(output.G, expectedOutput.G, DoubleRoundingComparer);
-            Assert.Equal(output.B, expectedOutput.B, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.R, output.R, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.G, output.G, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.B, output.B, DoubleRoundingComparer);
         }
 
         [Theory]
@@ -55,9 +55,9 @@ namespace Colourful.Tests
 
             // assert
             Assert.Equal(expectedOutput.WorkingSpace, output.WorkingSpace);
-            Assert.Equal(output.R, expectedOutput.R, DoubleRoundingComparer);
-            Assert.Equal(output.G, expectedOutput.G, DoubleRoundingComparer);
-            Assert.Equal(output.B, expectedOutput.B, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.R, output.R, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.G, output.G, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.B, output.B, DoubleRoundingComparer);
         }
 
         [Theory]
@@ -74,9 +74,9 @@ namespace Colourful.Tests
             var output = converter.Adapt(in input);
 
             // assert
-            Assert.Equal(output.L, expectedOutput.L, DoublePrecisionComparer);
-            Assert.Equal(output.a, expectedOutput.a, DoublePrecisionComparer);
-            Assert.Equal(output.b, expectedOutput.b, DoublePrecisionComparer);
+            Assert.Equal(expectedOutput.L, output.L, DoublePrecisionComparer);
+            Assert.Equal(expectedOutput.a, output.a, DoublePrecisionComparer);
+            Assert.Equal(expectedOutput.b, output.b, DoublePrecisionComparer);
         }
 
         [Theory]
@@ -93,9 +93,9 @@ namespace Colourful.Tests
             var output = converter.Adapt(in input);
 
             // assert
-            Assert.Equal(output.L, expectedOutput.L, DoubleRoundingComparer);
-            Assert.Equal(output.C, expectedOutput.C, DoubleRoundingComparer);
-            Assert.Equal(output.h, expectedOutput.h, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.L, output.L, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.C, output.C, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.h, output.h, DoubleRoundingComparer);
         }
 
         [Theory]
@@ -115,9 +115,9 @@ namespace Colourful.Tests
             var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
-            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
-            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
-            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.X, output.X, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Y, output.Y, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Z, output.Z, DoubleRoundingComparer);
         }
 
         [Theory]
@@ -138,9 +138,9 @@ namespace Colourful.Tests
             var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
-            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
-            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
-            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.X, output.X, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Y, output.Y, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Z, output.Z, DoubleRoundingComparer);
         }
 
         [Theory]
@@ -161,9 +161,9 @@ namespace Colourful.Tests
             var output = converter.Adapt(in input, in Illuminants.D65);
 
             // assert
-            Assert.Equal(output.X, expectedOutput.X, DoubleRoundingComparer);
-            Assert.Equal(output.Y, expectedOutput.Y, DoubleRoundingComparer);
-            Assert.Equal(output.Z, expectedOutput.Z, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.X, output.X, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Y, output.Y, DoubleRoundingComparer);
+            Assert.Equal(expectedOutput.Z, output.Z, DoubleRoundingComparer);
         }
     }
 }
