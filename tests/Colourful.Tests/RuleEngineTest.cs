@@ -1,4 +1,4 @@
-﻿using Colourful.Rules;
+﻿using Colourful.Strategy;
 using Xunit;
 
 namespace Colourful.Tests
