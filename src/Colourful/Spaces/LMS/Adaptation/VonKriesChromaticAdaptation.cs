@@ -7,7 +7,7 @@
     /// Transformation described here:
     /// http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
     /// </remarks>
-    public class VonKriesChromaticAdaptation : IChromaticAdaptation<LMSColor>
+    public class VonKriesChromaticAdaptation : IColorConversion<LMSColor, LMSColor>
     {
         private readonly double[,] _diagonalMatrix;
 
@@ -22,7 +22,7 @@
         }
 
         /// <inheritdoc />
-        public LMSColor Transform(in LMSColor sourceColor)
+        public LMSColor Convert(in LMSColor sourceColor)
         {
             var sourceVector = sourceColor.Vector;
             var targetVector = MatrixUtils.MultiplyBy(in _diagonalMatrix, in sourceVector);
