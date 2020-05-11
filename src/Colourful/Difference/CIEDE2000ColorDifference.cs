@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Colourful.Implementation;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CIE Delta-E 2000 formula
     /// </summary>
-    public sealed class CIEDE2000ColorDifference : IColorDifference<LabColor>
+    public class CIEDE2000ColorDifference : IColorDifference<LabColor>
     {
         // parametric weighting factors:
         private const double k_H = 1;
@@ -20,9 +19,6 @@ namespace Colourful.Difference
         /// <returns>Delta-E (2000) color difference</returns>
         public double ComputeDifference(in LabColor x, in LabColor y)
         {
-            if (x.WhitePoint != y.WhitePoint)
-                throw new ArgumentException("Colors must have same white point to be compared.");
-
             // 1. Calculate C_prime, h_prime
             Calculate_a_prime(x.a, y.a, x.b, y.b, out var a_prime0, out var a_prime1);
             Calculate_C_prime(in a_prime0, in a_prime1, x.b, y.b, out var C_prime0, out var C_prime1);
@@ -80,11 +76,11 @@ namespace Colourful.Difference
         {
             // eq. (7)
             var hRadians = Math.Atan2(b0, a_prime0);
-            var hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(in hRadians));
+            var hDegrees = MathUtils.NormalizeDegree(MathUtils.RadianToDegree(in hRadians));
             h_prime0 = hDegrees;
 
             hRadians = Math.Atan2(b1, a_prime1);
-            hDegrees = Angle.NormalizeDegree(Angle.RadianToDegree(in hRadians));
+            hDegrees = MathUtils.NormalizeDegree(MathUtils.RadianToDegree(in hRadians));
             h_prime1 = hDegrees;
         }
 

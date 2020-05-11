@@ -1,7 +1,6 @@
 ﻿using System;
-using Colourful.Implementation;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CIE Delta-E 1994 formula
@@ -10,7 +9,7 @@ namespace Colourful.Difference
     /// Implementation notes:
     /// http://www.brucelindbloom.com/Eqn_DeltaE_CIE94.html
     /// </remarks>
-    public sealed class CIE94ColorDifference : IColorDifference<LabColor>
+    public class CIE94ColorDifference : IColorDifference<LabColor>
     {
         private const double KH = 1;
         private const double KC = 1;
@@ -54,9 +53,6 @@ namespace Colourful.Difference
         /// <returns>Delta-E (1994) color difference</returns>
         public double ComputeDifference(in LabColor x, in LabColor y)
         {
-            if (x.WhitePoint != y.WhitePoint)
-                throw new ArgumentException("Colors must have same white point to be compared.");
-
             var da = x.a - y.a;
             var db = x.b - y.b;
             var dL = x.L - y.L;

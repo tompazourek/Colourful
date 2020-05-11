@@ -1,7 +1,6 @@
 ﻿using System;
-using Colourful.Implementation;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CMC l:c (1984) color difference
@@ -9,7 +8,7 @@ namespace Colourful.Difference
     /// <remarks>
     /// Equations: http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CMC.html
     /// </remarks>
-    public sealed class CMCColorDifference : IColorDifference<LabColor>
+    public class CMCColorDifference : IColorDifference<LabColor>
     {
         /// <summary>
         /// Chroma
@@ -66,7 +65,7 @@ namespace Colourful.Difference
 
             var dH_pow2 = da * da + db * db - dC * dC;
             var H1_rad = Math.Atan2(b1, a1);
-            var H1 = Angle.NormalizeDegree(Angle.RadianToDegree(in H1_rad));
+            var H1 = MathUtils.NormalizeDegree(MathUtils.RadianToDegree(in H1_rad));
 
             var C1_pow4 = MathUtils.Pow4(in C1);
             var F = Math.Sqrt(C1_pow4 / (C1_pow4 + 1900));
