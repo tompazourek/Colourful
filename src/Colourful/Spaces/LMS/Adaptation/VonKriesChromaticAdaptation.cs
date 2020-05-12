@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="sourceWhitePoint">Source white point</param>
         /// <param name="targetWhitePoint">Target white point</param>
-        public VonKriesChromaticAdaptation(LMSColor sourceWhitePoint, LMSColor targetWhitePoint)
+        public VonKriesChromaticAdaptation(in LMSColor sourceWhitePoint, in LMSColor targetWhitePoint)
         {
             _diagonalMatrix = MatrixUtils.CreateDiagonal(targetWhitePoint.L / sourceWhitePoint.L, targetWhitePoint.M / sourceWhitePoint.M, targetWhitePoint.S / sourceWhitePoint.S);
         }

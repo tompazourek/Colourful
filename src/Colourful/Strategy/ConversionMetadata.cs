@@ -6,6 +6,14 @@ namespace Colourful.Strategy
     internal class ConversionMetadata : IConversionMetadata
     {
         private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
+
+        public ConversionMetadata(params KeyValuePair<string, object>[] setItems)
+        {
+            foreach (var item in setItems)
+            {
+                _items[item.Key] = item.Value;
+            }
+        }
         
         public TValue GetItemOrDefault<TValue>(in string key)
         {
@@ -15,14 +23,7 @@ namespace Colourful.Strategy
             return default;
         }
 
-        public IConversionMetadata CloneWith(params KeyValuePair<string, object>[] setItems)
-        {
-            var clone = new ConversionMetadata();
-            foreach (var item in _items.Concat(setItems))
-            {
-                clone._items[item.Key] = item.Value;
-            }
-            return clone;
-        }
+        public IConversionMetadata CloneWith(params KeyValuePair<string, object>[] setItems) 
+            => new ConversionMetadata(_items.Concat(setItems).ToArray());
     }
 }

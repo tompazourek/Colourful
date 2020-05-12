@@ -5,9 +5,9 @@
     {
         private readonly double[,] _conversionMatrix;
 
-        /// <param name="targetPrimaries">Chromaticity of RGB working space primaries.</param>
         /// <param name="targetWhitePoint">White point of the RGB working space.</param>
-        public XYZToLinearRGBConversion(in RGBPrimaries targetPrimaries, in XYZColor targetWhitePoint)
+        /// <param name="targetPrimaries">Chromaticity of RGB working space primaries.</param>
+        public XYZToLinearRGBConversion(in XYZColor targetWhitePoint, in RGBPrimaries targetPrimaries)
         {
             _conversionMatrix = LinearRGBConversionUtils.GetXYZToRGBMatrix(in targetPrimaries, in targetWhitePoint);
         }

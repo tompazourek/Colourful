@@ -5,10 +5,11 @@ namespace Colourful.Strategy.Rules
 {
     /// <summary>
     /// If the conversion is to arbitrary type, adds an intermediate node.
+    /// The intermediate node will use the source white point.
     /// </summary>
     /// <typeparam name="TSource">Source color type</typeparam>
     /// <typeparam name="TIntermediate">Intermediate color type</typeparam>
-    public class Intermediate_ToAny<TSource, TIntermediate> : IConversionRule
+    public class Intermediate_ToAny_UseSourceWhitePoint<TSource, TIntermediate> : IConversionRule
         where TSource : struct
         where TIntermediate : struct
     {
@@ -24,7 +25,7 @@ namespace Colourful.Strategy.Rules
             if (!sourceNode.HasColorType<TSource>())
                 return false;
 
-            var intermediateNode = sourceNode.CloneWithColorType<TIntermediate>();
+            var intermediateNode = new ConversionMetadata(CreateColorType<TIntermediate>(), CreateWhitePoint(sourceNode.GetWhitePoint()));
             replacementNodes = new[] { sourceNode, intermediateNode, targetNode };
             return true;
         }

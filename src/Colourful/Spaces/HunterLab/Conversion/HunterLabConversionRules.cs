@@ -17,8 +17,8 @@ namespace Colourful.Conversion
             yield return new Return_EqSpace_EqWhitePoint<HunterLabColor>();
             yield return new Convert_EqWhitePoint<HunterLabColor, XYZColor>((source, _) => new HunterLabToXYZConversion(source.GetWhitePointRequired()));
             yield return new Convert_EqWhitePoint<XYZColor, HunterLabColor>((_, target) => new XYZToHunterLabConversion(target.GetWhitePointRequired()));
-            yield return new Intermediate_ToAny<HunterLabColor, XYZColor>();
-            yield return new Intermediate_FromAny<HunterLabColor, XYZColor>();
+            yield return new Intermediate_ToAny_UseSourceWhitePoint<HunterLabColor, XYZColor>();
+            yield return new Intermediate_FromAny_UseTargetWhitePoint<HunterLabColor, XYZColor>();
         }
     }
 }
