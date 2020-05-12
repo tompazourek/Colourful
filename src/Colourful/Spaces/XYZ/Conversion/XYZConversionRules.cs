@@ -5,18 +5,14 @@ using Colourful.Strategy;
 
 namespace Colourful.Conversion
 {
-    /// <summary>
-    /// Rules for the <see cref="XYZColor"/> space.
-    /// </summary>
     public static class XYZConversionRules
     {
-        /// <summary>
-        /// Rules for the <see cref="XYZColor"/> space.
-        /// </summary>
-        public static IEnumerable<IConversionRule> GetRules()
+        public static IEnumerable<IConversionRule<TSource, TTarget>> GetRules<TSource, TTarget>(ConversionFactory conversionFactory)
+            where TSource : struct
+            where TTarget : struct
         {
-            yield return new Return_EqSpace_EqWhitePoint<XYZColor>();
-            yield return new Intermediate_EqSpace_NotEqWhitePoint_UseSourceWhitePoint<XYZColor, LMSColor>();
+            yield return new Bypass_EqWhitePoint<XYZColor>();
+            yield return new Intermediate_NotEqWhitePoint_UseSourceWhitePoint<XYZColor, LMSColor>();
         }
     }
 }

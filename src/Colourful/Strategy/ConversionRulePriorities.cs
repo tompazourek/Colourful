@@ -8,9 +8,9 @@ namespace Colourful.Strategy
     public static class ConversionRulePriorities
     {
         /// <summary>
-        /// Priority for <see cref="Return_EqSpace_EqWhitePoint{TColor}"/> kinds of rules.
+        /// Priority for <see cref="Bypass_EqWhitePoint{TColor}"/> kinds of rules.
         /// </summary>
-        public const int Return = 100;
+        public const int Bypass = 100;
 
         /// <summary>
         /// Priority for Convert kind of rules that generate operations.

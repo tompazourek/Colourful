@@ -1,15 +1,15 @@
 ﻿using static Colourful.Strategy.ConversionRulePriorities;
-using static Colourful.Strategy.Rules.ConversionRuleUtils;
+using static Colourful.Strategy.ConversionMetadataUtils;
 
 namespace Colourful.Strategy.Rules
 {
     /// <summary>
-    /// If the conversion is to arbitrary type, adds an intermediate node.
-    /// The intermediate node will use the source white point.
+    /// If the conversion is to arbitrary type and the white points are not equal, adds an intermediate node.
+    /// The intermediate node will use the target white point.
     /// </summary>
     /// <typeparam name="TSource">Source color type</typeparam>
     /// <typeparam name="TIntermediate">Intermediate color type</typeparam>
-    public class Intermediate_ToAny_UseSourceWhitePoint<TSource, TIntermediate> : IConversionRule
+    public class Intermediate_NotEqWhitePoint_UseTargetWhitePoint<TSource, TIntermediate> : IConversionRule
         where TSource : struct
         where TIntermediate : struct
     {
@@ -25,7 +25,10 @@ namespace Colourful.Strategy.Rules
             if (!sourceNode.HasColorType<TSource>())
                 return false;
 
-            var intermediateNode = new ConversionMetadata(CreateColorType<TIntermediate>(), CreateWhitePoint(sourceNode.GetWhitePoint()));
+            if (EqualWhitePoints(in sourceNode, in targetNode))
+                return false;
+
+            var intermediateNode = new ConversionMetadata(CreateColorType<TIntermediate>(), CreateWhitePoint(targetNode.GetWhitePoint()));
             replacementNodes = new[] { sourceNode, intermediateNode, targetNode };
             return true;
         }

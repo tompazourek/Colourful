@@ -4,21 +4,17 @@ using Colourful.Strategy;
 
 namespace Colourful.Conversion
 {
-    /// <summary>
-    /// Rules for the <see cref="xyYColor"/> space.
-    /// </summary>
     public static class xyYConversionRules
     {
-        /// <summary>
-        /// Rules for the <see cref="xyYColor"/> space.
-        /// </summary>
-        public static IEnumerable<IConversionRule> GetRules()
+        public static IEnumerable<IConversionRule<TSource, TTarget>> GetRules<TSource, TTarget>(ConversionFactory conversionFactory)
+            where TSource : struct
+            where TTarget : struct
         {
-            yield return new Return_EqSpace_EqWhitePoint<xyYColor>();
+            yield return new Bypass_EqWhitePoint<xyYColor>();
             yield return new Convert_Always<xyYColor, XYZColor>((source, _) => new xyYToXYZConversion());
             yield return new Convert_Always<XYZColor, xyYColor>((_, target) => new XYZToxyYConversion());
-            yield return new Intermediate_ToAny_UseSourceWhitePoint<xyYColor, XYZColor>();
-            yield return new Intermediate_FromAny_UseTargetWhitePoint<xyYColor, XYZColor>();
+            yield return new Intermediate_UseSourceWhitePoint<,,>();
+            yield return new Intermediate_UseTargetWhitePoint<,,>();
         }
     }
 }

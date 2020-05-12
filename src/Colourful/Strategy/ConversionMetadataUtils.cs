@@ -3,41 +3,13 @@ using System.Collections.Generic;
 using Colourful.Companding;
 using Colourful.Conversion;
 
-namespace Colourful.Strategy.Rules
+namespace Colourful.Strategy
 {
     /// <summary>
-    /// Utilities for building <see cref="IConversionRule" />.
+    /// Utilities for working with <see cref="IConversionMetadata"/>
     /// </summary>
-    public static class ConversionRuleUtils
+    public static class ConversionMetadataUtils
     {
-        #region Color type
-
-        /// <summary>
-        /// Helper extension method to get <see cref="ConversionMetadataKeys.ColorType" />
-        /// </summary>
-        public static Type GetColorType(this IConversionMetadata node)
-            => node.GetItemOrDefault<Type>(ConversionMetadataKeys.ColorType);
-
-        /// <summary>
-        /// Returns true if the node has the color type.
-        /// </summary>
-        public static bool HasColorType<TColor>(this IConversionMetadata node)
-            => node.GetColorType() == typeof(TColor);
-
-        /// <summary>
-        /// Returns true if the nodes have the color types.
-        /// </summary>
-        public static bool HaveColorTypes<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode)
-            => sourceNode.HasColorType<TSource>() && targetNode.HasColorType<TTarget>();
-        
-        /// <summary>
-        /// Creates a new item for <see cref="ConversionMetadataKeys.ColorType" />.
-        /// </summary>
-        public static KeyValuePair<string, object> CreateColorType<TColor>()
-            => new KeyValuePair<string, object>(ConversionMetadataKeys.ColorType, typeof(TColor));
-
-        #endregion
-
         #region White point
 
         /// <summary>
