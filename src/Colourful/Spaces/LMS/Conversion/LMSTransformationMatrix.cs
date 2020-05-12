@@ -1,4 +1,6 @@
-﻿namespace Colourful.Conversion
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Colourful.Conversion
 {
     /// <summary>
     /// Matrix used for transformation from XYZ to LMS, defining the cone response domain.
@@ -10,6 +12,7 @@
     /// DISCo, Department of Informatics, Systems and Communication, University of Milan-Bicocca, viale Sarca 336, 20126 Milan, Italy
     /// http://www.ivl.disco.unimib.it/papers2003/CRA-CAT.pdf
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class LMSTransformationMatrix
     {
         /// <summary>
