@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Colourful.Companding;
-using Colourful.Conversion;
 
 namespace Colourful.Strategy
 {
     /// <summary>
-    /// Utilities for working with <see cref="IConversionMetadata"/>
+    /// Utilities for working with <see cref="IConversionMetadata" />
     /// </summary>
     public static class ConversionMetadataUtils
     {
@@ -17,6 +16,12 @@ namespace Colourful.Strategy
         /// </summary>
         public static XYZColor? GetWhitePoint(this IConversionMetadata node)
             => node.GetItemOrDefault<XYZColor?>(ConversionMetadataKeys.WhitePoint);
+
+        /// <summary>
+        /// Helper extension method to get <see cref="ConversionMetadataKeys.WhitePoint" /> as Key-Value pair.
+        /// </summary>
+        public static KeyValuePair<string, object> GetWhitePointItem(this IConversionMetadata node)
+            => new KeyValuePair<string, object>(ConversionMetadataKeys.WhitePoint, node.GetWhitePoint());
 
         /// <summary>
         /// Helper extension method to get <see cref="ConversionMetadataKeys.WhitePoint" />
@@ -37,7 +42,7 @@ namespace Colourful.Strategy
             => new KeyValuePair<string, object>(ConversionMetadataKeys.WhitePoint, whitePoint);
 
         #endregion
-        
+
         #region RGB Primaries
 
         /// <summary>
@@ -45,6 +50,12 @@ namespace Colourful.Strategy
         /// </summary>
         public static RGBPrimaries? GetRGBPrimaries(this IConversionMetadata node)
             => node.GetItemOrDefault<RGBPrimaries?>(ConversionMetadataKeys.RGBPrimaries);
+
+        /// <summary>
+        /// Helper extension method to get <see cref="ConversionMetadataKeys.RGBPrimaries" /> as Key-Value pair.
+        /// </summary>
+        public static KeyValuePair<string, object> GetRGBPrimariesItem(this IConversionMetadata node)
+            => new KeyValuePair<string, object>(ConversionMetadataKeys.RGBPrimaries, node.GetRGBPrimaries());
 
         /// <summary>
         /// Helper extension method to get <see cref="ConversionMetadataKeys.RGBPrimaries" />
@@ -65,7 +76,7 @@ namespace Colourful.Strategy
             => new KeyValuePair<string, object>(ConversionMetadataKeys.RGBPrimaries, primaries);
 
         #endregion
-        
+
         #region Companding
 
         /// <summary>
@@ -73,6 +84,12 @@ namespace Colourful.Strategy
         /// </summary>
         public static ICompanding GetCompanding(this IConversionMetadata node)
             => node.GetItemOrDefault<ICompanding>(ConversionMetadataKeys.Companding);
+
+        /// <summary>
+        /// Helper extension method to get <see cref="ConversionMetadataKeys.Companding" /> as Key-Value pair.
+        /// </summary>
+        public static KeyValuePair<string, object> GetCompandingItem(this IConversionMetadata node)
+            => new KeyValuePair<string, object>(ConversionMetadataKeys.Companding, node.GetCompanding());
 
         /// <summary>
         /// Helper extension method to get <see cref="ConversionMetadataKeys.Companding" />
