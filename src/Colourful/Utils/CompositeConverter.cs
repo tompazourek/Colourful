@@ -1,4 +1,4 @@
-﻿namespace Colourful.Strategy.Rules
+﻿namespace Colourful
 {
     public class CompositeConverter<TSource, TIntermediate, TTarget> : IColorConverter<TSource, TTarget>
         where TSource : struct

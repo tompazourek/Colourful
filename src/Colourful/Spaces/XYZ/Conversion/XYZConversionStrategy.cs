@@ -1,5 +1,4 @@
 ﻿using Colourful.Strategy;
-using Colourful.Strategy.Rules;
 using static Colourful.Strategy.ConversionMetadataUtils;
 
 namespace Colourful.Conversion

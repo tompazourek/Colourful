@@ -1,6 +1,4 @@
-﻿using Colourful.Adaptation;
-using Colourful.Strategy;
-using Colourful.Strategy.Rules;
+﻿using Colourful.Strategy;
 using static Colourful.Strategy.ConversionMetadataUtils;
 
 namespace Colourful.Conversion

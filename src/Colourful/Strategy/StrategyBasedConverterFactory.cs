@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Colourful.Strategy
 {
-    public class ConverterFactory : IConverterFactory
+    public class StrategyBasedConverterFactory : IConverterFactory
     {
-        private readonly List<IConversionStrategy> _conversionStrategies = new List<IConversionStrategy>();
-        
-        public void RegisterStrategy(IConversionStrategy conversionStrategy)
+        private readonly IConversionStrategy[] _conversionStrategies;
+
+        public StrategyBasedConverterFactory(IConversionStrategy[] conversionStrategies)
         {
-            _conversionStrategies.Add(conversionStrategy);
+            _conversionStrategies = conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies));
         }
 
         public IColorConverter<TSource, TTarget> CreateConverter<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata)
