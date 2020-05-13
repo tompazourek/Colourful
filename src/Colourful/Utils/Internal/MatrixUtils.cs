@@ -1,4 +1,4 @@
-﻿namespace Colourful
+﻿namespace Colourful.Utils
 {
     internal static class MatrixUtils
     {

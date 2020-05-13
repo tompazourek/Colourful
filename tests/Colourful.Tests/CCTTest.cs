@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Colourful.Utils;
 using Xunit;
 
 namespace Colourful.Tests
@@ -66,7 +67,7 @@ namespace Colourful.Tests
         public void CCTFromChromaticity(double x, double y, double expectedCCT)
         {
             // arrange
-            var chromaticity = new xyChromaticityCoordinates(in x, in y);
+            var chromaticity = new xyChromaticity(in x, in y);
 
             // action
             var cct = CCTConverter.GetCCTOfChromaticity(in chromaticity);

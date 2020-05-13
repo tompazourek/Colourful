@@ -1,4 +1,4 @@
-﻿namespace Colourful
+﻿namespace Colourful.Strategy
 {
     public class BypassConverter<TColor> : IColorConverter<TColor, TColor>
         where TColor : struct

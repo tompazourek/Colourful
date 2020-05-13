@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Colourful.Companding
+namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// Gamma companding

@@ -1,4 +1,6 @@
 ﻿using Colourful.Implementation.RGB;
+using Colourful.RGBWorkingSpace;
+using Colourful.Utils;
 using Xunit;
 
 namespace Colourful.Tests
@@ -14,7 +16,7 @@ namespace Colourful.Tests
 
             public XYZColor WhitePoint => Illuminants.D65;
 
-            public RGBPrimariesChromaticityCoordinates ChromaticityCoordinates => new RGBPrimariesChromaticityCoordinates(new xyChromaticityCoordinates(0.6400, 0.3300), new xyChromaticityCoordinates(0.2100, 0.7100), new xyChromaticityCoordinates(0.1500, 0.0600));
+            public RGBPrimaries ChromaticityCoordinates => new RGBPrimaries(new xyChromaticity(0.6400, 0.3300), new xyChromaticity(0.2100, 0.7100), new xyChromaticity(0.1500, 0.0600));
         }
 
         [Fact]

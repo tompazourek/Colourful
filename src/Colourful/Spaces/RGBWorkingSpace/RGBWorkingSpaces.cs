@@ -1,7 +1,4 @@
-﻿using Colourful.Companding;
-using Colourful.Conversion;
-
-namespace Colourful
+﻿namespace Colourful.RGBWorkingSpace
 {
     /// <remarks>
     /// Chromaticity coordinates taken from:

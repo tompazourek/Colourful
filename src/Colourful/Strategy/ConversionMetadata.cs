@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Colourful.Strategy
 {
-    internal class ConversionMetadata : IConversionMetadata
+    public class ConversionMetadata : IConversionMetadata
     {
         private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
 

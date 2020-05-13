@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Colourful.RGBWorkingSpace;
+using Colourful.Utils;
+
 #if (DRAWING)
 using System.Drawing;
 

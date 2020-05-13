@@ -1,4 +1,4 @@
-﻿using Colourful.Companding;
+﻿using Colourful.RGBWorkingSpace;
 
 namespace Colourful.Conversion
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful
+namespace Colourful.Utils
 {
     /// <summary>
     /// Can compute chromaticity from CCT (Correlated color temperature) and also

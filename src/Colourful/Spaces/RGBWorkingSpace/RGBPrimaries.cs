@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful
+namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// Chromaticity coordinates of RGB primaries.

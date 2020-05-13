@@ -1,4 +1,6 @@
-﻿namespace Colourful.Conversion
+﻿using Colourful.Utils;
+
+namespace Colourful.Conversion
 {
     /// <summary>
     /// Basic implementation of the von Kries chromatic adaptation model

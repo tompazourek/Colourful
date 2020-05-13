@@ -1,4 +1,5 @@
 ﻿using Colourful.Strategy;
+using Colourful.Utils;
 using static Colourful.Strategy.ConversionMetadataUtils;
 
 namespace Colourful.Conversion
@@ -21,19 +22,21 @@ namespace Colourful.Conversion
             var firstConversion = converterFactory.CreateConverter<TColor, LMSColor>(in sourceMetadata, intermediateNode);
             var secondConversion = converterFactory.CreateConverter<LMSColor, TColor>(intermediateNode, in targetMetadata);
             return new CompositeConverter<TColor, LMSColor, TColor>(firstConversion, secondConversion);
-
         }
 
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
             where TSource : struct
             where TTarget : struct
             => null;
 
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
             where TSource : struct
             where TTarget : struct
             => null;
 
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory) where TSource : struct where TTarget : struct => throw new System.NotImplementedException();
+        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+            where TSource : struct
+            where TTarget : struct
+            => null;
     }
 }

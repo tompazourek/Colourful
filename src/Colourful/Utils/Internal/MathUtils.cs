@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful
+namespace Colourful.Utils
 {
     /// <summary>
     /// Math helper functions

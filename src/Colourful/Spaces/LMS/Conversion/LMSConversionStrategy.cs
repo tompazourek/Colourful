@@ -1,4 +1,5 @@
 ﻿using Colourful.Strategy;
+using Colourful.Utils;
 using static Colourful.Strategy.ConversionMetadataUtils;
 
 namespace Colourful.Conversion
@@ -16,40 +17,30 @@ namespace Colourful.Conversion
             where TColor : struct
         {
             // only process LMS
-            if (typeof(TColor) != typeof(LMSColor)) 
+            if (typeof(TColor) != typeof(LMSColor))
                 return null;
 
             // if equal WP, bypass
             if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 return new BypassConverter<LMSColor>() as IColorConverter<TColor, TColor>;
 
-            return null;
+            // LMS{WP1} -> LMS{WP2} (WP1 != WP2)
+            var sourceWhitePointXYZ = sourceMetadata.GetWhitePointRequired();
+            var targetWhitePointXYZ = targetMetadata.GetWhitePointRequired();
+            var whitePointConversion = new XYZToLMSConverter(in _transformationMatrix);
+            var sourceWhitePointLMS = whitePointConversion.Convert(in sourceWhitePointXYZ);
+            var targetWhitePointLMS = whitePointConversion.Convert(in targetWhitePointXYZ);
+            return new VonKriesChromaticAdaptation(in sourceWhitePointLMS, in targetWhitePointLMS) as IColorConverter<TColor, TColor>;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
             where TSource : struct
             where TTarget : struct
         {
-            // LMS{WP1} -> LMS{WP2} (WP1 != WP2)
-            if (typeof(TSource) == typeof(LMSColor) && typeof(TTarget) == typeof(LMSColor))
-            {
-                if (!EqualWhitePoints(in sourceNode, in targetNode))
-                {
-                    var sourceWhitePointXYZ = sourceNode.GetWhitePointRequired();
-                    var targetWhitePointXYZ = targetNode.GetWhitePointRequired();
-
-                    var whitePointConversion = new XYZToLMSConverter(in _transformationMatrix);
-
-                    var sourceWhitePointLMS = whitePointConversion.Convert(in sourceWhitePointXYZ);
-                    var targetWhitePointLMS = whitePointConversion.Convert(in targetWhitePointXYZ);
-
-                    return new VonKriesChromaticAdaptation(in sourceWhitePointLMS, in targetWhitePointLMS) as IColorConverter<TSource, TTarget>;
-                }
-            }
             // LMS{WP1} -> XYZ{WP1}
-            else if (typeof(TSource) == typeof(LMSColor) && typeof(TTarget) == typeof(XYZColor))
+            if (typeof(TSource) == typeof(LMSColor) && typeof(TTarget) == typeof(XYZColor))
             {
-                if (EqualWhitePoints(in sourceNode, in targetNode))
+                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
                     return new LMSToXYZConverter(in _transformationMatrix) as IColorConverter<TSource, TTarget>;
                 }
@@ -57,7 +48,7 @@ namespace Colourful.Conversion
             // XYZ{WP1} -> LMS{WP1}
             else if (typeof(TSource) == typeof(XYZColor) && typeof(TTarget) == typeof(LMSColor))
             {
-                if (EqualWhitePoints(in sourceNode, in targetNode))
+                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
                     return new XYZToLMSConverter(in _transformationMatrix) as IColorConverter<TSource, TTarget>;
                 }
@@ -66,26 +57,26 @@ namespace Colourful.Conversion
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
             where TSource : struct
             where TTarget : struct
         {
             if (typeof(TSource) == typeof(LMSColor))
             {
                 // LMS{WP1} -> any{WP1} = LMS{WP1} -> XYZ{WP1} -> any{WP1}
-                if (EqualWhitePoints(in sourceNode, in targetNode))
+                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
-                    var intermediateNode = new ConversionMetadata(sourceNode.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceNode, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetNode);
+                    var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
+                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
                 }
                 // LMS{WP1} -> any{WP2} = LMS{WP1} -> LMS{WP2} -> any{WP2} (WP1 != WP2)
                 else
                 {
-                    var intermediateNode = new ConversionMetadata(targetNode.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceNode, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetNode);
+                    var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
+                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, LMSColor, TTarget>(firstConversion, secondConversion);
                 }
             }
@@ -93,26 +84,26 @@ namespace Colourful.Conversion
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceNode, in IConversionMetadata targetNode, in IConverterFactory converterFactory)
-            where TSource : struct 
+        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+            where TSource : struct
             where TTarget : struct
         {
-            if (typeof(TSource) == typeof(LMSColor))
+            if (typeof(TTarget) == typeof(LMSColor))
             {
                 // any{WP1} -> LMS{WP1} = any{WP1} -> XYZ{WP1} -> LMS{WP1}
-                if (EqualWhitePoints(in sourceNode, in targetNode))
+                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
-                    var intermediateNode = new ConversionMetadata(targetNode.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceNode, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetNode);
+                    var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
+                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
                 }
                 // any{WP1} -> LMS{WP2} = any{WP1} -> LMS{WP1} -> LMS{WP2} (WP1 != WP2)
                 else
                 {
-                    var intermediateNode = new ConversionMetadata(sourceNode.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceNode, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetNode);
+                    var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
+                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, LMSColor, TTarget>(firstConversion, secondConversion);
                 }
             }

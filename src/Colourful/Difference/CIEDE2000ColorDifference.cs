@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Colourful.Utils;
 
-namespace Colourful
+namespace Colourful.Difference
 {
     /// <summary>
     /// CIE Delta-E 2000 formula

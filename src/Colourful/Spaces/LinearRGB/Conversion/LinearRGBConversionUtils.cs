@@ -1,4 +1,7 @@
-﻿namespace Colourful.Conversion
+﻿using Colourful.RGBWorkingSpace;
+using Colourful.Utils;
+
+namespace Colourful.Conversion
 {
     /// <summary>
     /// Utils for conversions between Linear RGB and XYZ.

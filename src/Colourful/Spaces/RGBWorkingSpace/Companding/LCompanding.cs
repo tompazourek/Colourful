@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful.Companding
+namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// L* companding

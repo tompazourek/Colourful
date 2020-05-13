@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Colourful.Utils;
 
 namespace Colourful.Conversion
 {

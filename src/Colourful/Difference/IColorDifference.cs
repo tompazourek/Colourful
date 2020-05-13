@@ -1,4 +1,4 @@
-﻿namespace Colourful
+﻿namespace Colourful.Difference
 {
     /// <summary>
     /// Computes distance between two vectors in color space

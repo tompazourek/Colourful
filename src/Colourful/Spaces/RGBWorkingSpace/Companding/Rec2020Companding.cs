@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful.Companding
+namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// Rec. 2020 companding function (for 12-bit).

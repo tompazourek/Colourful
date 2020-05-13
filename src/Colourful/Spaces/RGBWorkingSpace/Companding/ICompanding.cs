@@ -1,4 +1,4 @@
-﻿namespace Colourful.Companding
+﻿namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// Pair of companding functions for <see cref="IRGBWorkingSpace" />.

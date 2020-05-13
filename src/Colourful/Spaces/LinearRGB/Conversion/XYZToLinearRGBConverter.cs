@@ -1,4 +1,7 @@
-﻿namespace Colourful.Conversion
+﻿using Colourful.RGBWorkingSpace;
+using Colourful.Utils;
+
+namespace Colourful.Conversion
 {
     /// <inheritdoc />
     public class XYZToLinearRGBConverter : IColorConverter<XYZColor, LinearRGBColor>

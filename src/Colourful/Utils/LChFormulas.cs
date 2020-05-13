@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful
+namespace Colourful.Utils
 {
     /// <summary>
     /// Formulas useful for cylindrical color spaces (<see cref="LChabColor" /> and <see cref="LChuvColor" />)

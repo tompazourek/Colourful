@@ -1,8 +1,6 @@
 ﻿using System;
-using Colourful.Companding;
-using Colourful.Conversion;
 
-namespace Colourful
+namespace Colourful.RGBWorkingSpace
 {
     /// <summary>
     /// Trivial implementation of <see cref="IRGBWorkingSpace" />

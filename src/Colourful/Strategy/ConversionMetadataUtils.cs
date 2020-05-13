@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Colourful.Companding;
+using Colourful.RGBWorkingSpace;
+using Colourful.Utils;
 
 namespace Colourful.Strategy
 {

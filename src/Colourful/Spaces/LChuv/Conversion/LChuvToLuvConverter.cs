@@ -1,4 +1,6 @@
-﻿namespace Colourful.Conversion
+﻿using Colourful.Utils;
+
+namespace Colourful.Conversion
 {
     /// <inheritdoc />
     public class LChuvToLuvConverter : IColorConverter<LChuvColor, LuvColor>

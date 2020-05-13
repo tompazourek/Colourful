@@ -1,4 +1,6 @@
-﻿namespace Colourful.Conversion
+﻿using Colourful.Utils;
+
+namespace Colourful.Conversion
 {
     /// <summary>
     /// Utils for conversions between XYZ and Hunter Lab.
