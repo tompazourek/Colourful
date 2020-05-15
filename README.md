@@ -33,9 +33,12 @@ Usage
 ```csharp
 RGBColor input = new RGBColor(1, 0, 0);
 
-var converter = new ColourfulConverter { WhitePoint = Illuminants.D65 };
+var converter = new ConverterBuilder()
+    .FromRGB()
+    .ToXYZ()
+    .Build();
 
-XYZColor output = converter.ToXYZ(input);
+XYZColor output = converter.Convert(in input);
 ```
 
 The `ColourfulConverter` facade can convert **from any of the [supported color spaces](#color-spaces) to any other color space**.
@@ -46,13 +49,15 @@ It **always performs the chromatic adaptation** if the input and output color sp
 
 The adaptation can be also performed alone (e.g. from CIELAB D50 to CIELAB D65).
 
-
 ```csharp
-LabColor input = new LabColor(10, 20, 30, Illuminants.D50);
+LabColor input = new LabColor(10, 20, 30);
 
-var converter = new ColourfulConverter { TargetLabWhitePoint = Illuminants.D65 };
+var converter = new ConverterBuilder()
+    .FromLab(Illuminants.D50)
+    .ToLab(Illuminants.D65)
+    .Build();
 
-LabColor output = converter.Adapt(input);
+LabColor output = converter.Convert(in input);
 ```
 
 ### Conversion between RGB working spaces
@@ -60,9 +65,13 @@ LabColor output = converter.Adapt(input);
 Adaptation can also convert from one RGB working space to another (e.g. from sRGB to Adobe RGB).
 
 ```csharp
-RGBColor input = new RGBColor(Color.Yellow, RGBWorkingSpaces.sRGB);
 
-var converter = new ColourfulConverter { TargetRGBWorkingSpace = RGBWorkingSpaces.AdobeRGB1998 };
+RGBColor input = new RGBColor(Color.Yellow);
+
+var converter = new ConverterBuilder()
+    .FromRGB(RGBWorkingSpaces.sRGB)
+    .ToRGB(RGBWorkingSpaces.AdobeRGB1998)
+    .Build();
 
 RGBColor output = converter.Adapt(input);
 ```
@@ -74,11 +83,8 @@ Converter can be configured to arbitrary chromatic adaptation method, [several a
 Colourful also supports computing **correlated color temperature (CCT)** from chromaticity and computing chromaticity from CCT. Although these are just approximations with low precision.
 
 ```csharp
-var converter = new CCTConverter();
-
-ChromaticityCoordinates chromaticity = converter.GetChromaticityOfCCT(5454); // x=0.33, y=0.34
-
-double cct = converter.GetCCTOfChromaticity(new ChromaticityCoordinates(0.31271, 0.32902)); // cca 6500 K 
+xyChromaticity chromaticity = CCTConverter.GetChromaticityOfCCT(5454); // x=0.33, y=0.34
+double cct = CCTConverter.GetCCTOfChromaticity(new xyChromaticity(0.31271, 0.32902)); // cca 6500 K 
 ```
 
 To obtain chromaticity of a color in any color space, use conversion to **CIE xyY** color space. To obtain color from chromaticity (xy), just add the luminance **Y** and the result is **xyY**. 
@@ -124,6 +130,9 @@ Colourful currently supports following color spaces (and conversions between eac
 * **CIE L\*C\*h°<sub>uv</sub>** *(CIELCH)*
 * **Hunter Lab**
 * **LMS** *(cone response)*
+* **J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>** *Safdar & al. (2017)*
+* **J<sub>z</sub>C<sub>z</sub>h<sub>z</sub>**
+* *(user-defined color spaces)*
 
 <sup>* for more information, see: http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no</sup>
 
@@ -150,7 +159,7 @@ All of these color spaces (including RGB) have double precision. Conversion to `
   * Wide Gamut RGB
   * Rec. 709 *(ITU-R Recommendation BT.709 &ndash; HDTV)*
   * Rec. 2020 *(ITU-R Recommendation BT.2020 &ndash; UHDTV)*
-  * *(custom RGB working spaces)*
+  * *(user-defined RGB working spaces)*
 
 ### Illuminants &mdash; white points
 
@@ -165,11 +174,11 @@ All of these color spaces (including RGB) have double precision. Conversion to `
 * F2 *(Cool White Fluorescent)*
 * F7 *(D65 simulator, Daylight simulator)*
 * F11 *(Philips TL84, Ultralume 40)*
-* *(custom white points)*
+* *(user-defined white points)*
 
 ### Chromatic adaptation
 
-Right now there is only one chromatic adaptation method, the **von Kries chromatic adaptation method**. Custom used-defined chromatic adaptation methods are also supported. The von Kries chromatic adaptation method can be parametrized using **LMS transformation matrix**. These LMS transformation matrices are available:
+Right now, the chromatic adaptation is performed in the LMS color space by using the **von Kries chromatic adaptation method**. The von Kries chromatic adaptation method can be parametrized using **LMS transformation matrix**. These LMS transformation matrices are available:
 
 * Bradford (default)
 * Von Kries (Hunt-Pointer-Estevez adjusted for D65)
@@ -178,10 +187,11 @@ Right now there is only one chromatic adaptation method, the **von Kries chromat
 * Spectral-sharpened Bradford 
 * CMCCAT2000
 * CAT02
-* *(custom chromatic adaptation)*
+* *(user-defined chromatic adaptation)*
 
 ### Color difference formulas (ΔE)
 
+* Euclidean distance
 * CIE Delta-E 1976
 * CMC l:c (1984)
 * CIE Delta-E 1994
