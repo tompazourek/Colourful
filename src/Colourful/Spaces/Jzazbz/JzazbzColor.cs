@@ -5,7 +5,7 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// Jz az bz color space introduced in Safdar & al. (2017).
+    /// Jz az bz color space introduced in Safdar &amp; al. (2017).
     /// See: https://www.osapublishing.org/oe/abstract.cfm?uri=oe-25-13-15131
     /// </summary>
     public readonly struct JzazbzColor : IColorSpace, IColorVector, IEquatable<JzazbzColor>

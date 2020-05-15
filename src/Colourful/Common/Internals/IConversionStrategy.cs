@@ -6,7 +6,7 @@
     public interface IConversionStrategy
     {
         /// <summary>
-        /// Processes the conversions in case the source and target spaces are the same (<see cref="TColor" />).
+        /// Processes the conversions in case the source and target spaces are the same.
         /// These conversions are attempted 1st (it might result in a bypass conversions <see cref="BypassConverter{TColor}" />).
         /// </summary>
         /// <param name="sourceMetadata">Metadata about the source space.</param>

@@ -14,7 +14,6 @@ namespace Colourful
         /// Intended only for internal implementation.
         /// Use the ToXXX extension methods.
         /// </summary>
-        /// <typeparam name="TSource">Source space.</typeparam>
         /// <typeparam name="TTarget">Target space.</typeparam>
         /// <param name="targetMetadata">Metadata about the target space.</param>
         /// <returns>Fluent interface.</returns>
