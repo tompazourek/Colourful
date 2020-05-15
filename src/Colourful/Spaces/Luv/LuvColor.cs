@@ -10,7 +10,7 @@ namespace Colourful
     public readonly struct LuvColor : IColorSpace, IColorVector, IEquatable<LuvColor>
     {
         #region Constructor
-        
+
         /// <param name="l">L* (lightness) (from 0 to 100)</param>
         /// <param name="u">u* (usually from -100 to 100)</param>
         /// <param name="v">v* (usually from -100 to 100)</param>
@@ -54,7 +54,7 @@ namespace Colourful
         /// Ranges usually from -100 to 100.
         /// </remarks>
         public readonly double v;
-        
+
         /// <summary>
         /// <see cref="IColorVector" />
         /// </summary>

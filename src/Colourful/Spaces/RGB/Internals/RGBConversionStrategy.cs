@@ -4,11 +4,11 @@ namespace Colourful.Internals
 {
     public class RGBConversionStrategy : IConversionStrategy
     {
-        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory) 
+        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TColor : IColorSpace
         {
             // only process RGB
-            if (typeof(TColor) != typeof(RGBColor)) 
+            if (typeof(TColor) != typeof(RGBColor))
                 return null;
 
             // if same WP, primaries and companding, bypass
@@ -18,7 +18,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory) 
+        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -42,7 +42,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory) 
+        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -50,24 +50,24 @@ namespace Colourful.Internals
             if (typeof(TSource) == typeof(RGBColor))
             {
                 var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem(), sourceMetadata.GetRGBPrimariesItem());
-                var firstConversion = converterFactory.CreateConverter<TSource, LinearRGBColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterFactory.CreateConverter<LinearRGBColor, TTarget>(intermediateNode, in targetMetadata);
+                var firstConversion = converterAbstractFactory.CreateConverter<TSource, LinearRGBColor>(in sourceMetadata, intermediateNode);
+                var secondConversion = converterAbstractFactory.CreateConverter<LinearRGBColor, TTarget>(intermediateNode, in targetMetadata);
                 return new CompositeConverter<TSource, LinearRGBColor, TTarget>(firstConversion, secondConversion);
             }
 
             return null;
         }
-        
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
-            where TSource : IColorSpace 
+
+        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+            where TSource : IColorSpace
             where TTarget : IColorSpace
         {
             // any -> RGB{WP1, primaries1} = any -> LinearRGB{WP1, primaries1} -> RGB{WP1, primaries1}
             if (typeof(TTarget) == typeof(RGBColor))
             {
                 var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem(), targetMetadata.GetRGBPrimariesItem());
-                var firstConversion = converterFactory.CreateConverter<TSource, LinearRGBColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterFactory.CreateConverter<LinearRGBColor, TTarget>(intermediateNode, in targetMetadata);
+                var firstConversion = converterAbstractFactory.CreateConverter<TSource, LinearRGBColor>(in sourceMetadata, intermediateNode);
+                var secondConversion = converterAbstractFactory.CreateConverter<LinearRGBColor, TTarget>(intermediateNode, in targetMetadata);
                 return new CompositeConverter<TSource, LinearRGBColor, TTarget>(firstConversion, secondConversion);
             }
 

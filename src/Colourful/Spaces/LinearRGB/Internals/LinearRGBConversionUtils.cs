@@ -35,7 +35,7 @@
             {
                 { Xr, Xg, Xb },
                 { Yr, Yg, Yb },
-                { Zr, Zg, Zb }
+                { Zr, Zg, Zb },
             });
 
             var W = sourceWhitePoint.Vector;
@@ -49,7 +49,7 @@
             {
                 { Sr * Xr, Sg * Xg, Sb * Xb },
                 { Sr * Yr, Sg * Yg, Sb * Yb },
-                { Sr * Zr, Sg * Zg, Sb * Zb }
+                { Sr * Zr, Sg * Zg, Sb * Zb },
             };
 
             return M;

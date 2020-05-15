@@ -3,13 +3,13 @@
 namespace Colourful
 {
     /// <summary>
-    /// CIE Delta-E 1976 formula
+    /// CIE Delta-E 1976 color difference formula.
     /// </summary>
     public class CIE76ColorDifference : IColorDifference<LabColor>
     {
-        /// <param name="x">Reference color</param>
-        /// <param name="y">Sample color</param>
-        /// <returns>Delta-E (1976) color difference</returns>
+        /// <param name="x">Reference color.</param>
+        /// <param name="y">Sample color.</param>
+        /// <returns>Delta-E (1976) color difference.</returns>
         public double ComputeDifference(in LabColor x, in LabColor y)
         {
             // Euclidean distance

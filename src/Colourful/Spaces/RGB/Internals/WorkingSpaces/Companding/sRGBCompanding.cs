@@ -16,7 +16,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var v = V <= 0.04045 ? V / 12.92 : Math.Pow((V + 0.055) / 1.055, 2.4);
+            var v = V <= 0.04045 ? V / 12.92 : Math.Pow((V + 0.055) / 1.055, y: 2.4);
             return v;
         }
 
@@ -27,7 +27,7 @@ namespace Colourful.Internals
             var V = v <= 0.0031308 ? 12.92 * v : 1.055 * Math.Pow(v, 1 / 2.4d) - 0.055;
             return V;
         }
-        
+
         #region Equality
 
         /// <inheritdoc />

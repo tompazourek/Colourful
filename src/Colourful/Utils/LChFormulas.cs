@@ -42,7 +42,7 @@ namespace Colourful
             var targetVector = new[] { sourceVector[0], C, hDegrees };
             return targetVector;
         }
-        
+
         /// <summary>
         /// Converts a vector in form of Lightness, Chroma, Hue into Lightness, Chroma1, Chroma2.
         /// </summary>

@@ -18,7 +18,7 @@ namespace Colourful.Internals
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez adjusted for D65)
         /// </summary>
-        public static readonly double[,] VonKriesHPEAdjusted = 
+        public static readonly double[,] VonKriesHPEAdjusted =
         {
             { 0.40024, 0.7076, -0.08081 },
             { -0.2263, 1.16532, 0.0457 },
@@ -28,7 +28,7 @@ namespace Colourful.Internals
         /// <summary>
         /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez for equal energy)
         /// </summary>
-        public static readonly double[,] VonKriesHPE = 
+        public static readonly double[,] VonKriesHPE =
         {
             { 0.3897, 0.6890, -0.0787 },
             { -0.2298, 1.1834, 0.0464 },
@@ -38,7 +38,7 @@ namespace Colourful.Internals
         /// <summary>
         /// XYZ scaling chromatic adaptation transform matrix
         /// </summary>
-        public static readonly double[,] XYZScaling = MatrixUtils.CreateIdentity(3);
+        public static readonly double[,] XYZScaling = MatrixUtils.CreateIdentity(size: 3);
 
         /// <summary>
         /// Bradford chromatic adaptation transform matrix (used in CMCCAT97)

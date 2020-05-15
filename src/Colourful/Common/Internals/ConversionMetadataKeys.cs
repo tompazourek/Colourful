@@ -3,7 +3,7 @@
 namespace Colourful.Internals
 {
     /// <summary>
-    /// Keys for values in <see cref="IConversionMetadata" />.
+    /// Keys for values in <see cref="IConversionMetadata" /> that are used by the built-in color spaces.
     /// </summary>
     public static class ConversionMetadataKeys
     {

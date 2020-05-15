@@ -4,10 +4,15 @@ using System.Linq;
 
 namespace Colourful.Internals
 {
-    public class ConverterAbstractFactory : IConverterFactory
+    /// <inheritdoc />
+    public class ConverterAbstractFactory : IConverterAbstractFactory
     {
         private readonly IConversionStrategy[] _conversionStrategies;
 
+        /// <summary>
+        /// Constructs a new instance.
+        /// </summary>
+        /// <param name="conversionStrategies">Conversion strategies to use.</param>
         public ConverterAbstractFactory(IEnumerable<IConversionStrategy> conversionStrategies)
         {
             if (conversionStrategies == null) throw new ArgumentNullException(nameof(conversionStrategies));
@@ -15,6 +20,7 @@ namespace Colourful.Internals
             _conversionStrategies = conversionStrategies.ToArray();
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> CreateConverter<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata)
             where TSource : IColorSpace
             where TTarget : IColorSpace

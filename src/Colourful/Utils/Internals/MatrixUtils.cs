@@ -48,7 +48,7 @@
             {
                 { A / det, D / det, G / det },
                 { B / det, E / det, H / det },
-                { C / det, F / det, I / det }
+                { C / det, F / det, I / det },
             };
             return result;
         }

@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>
+    /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>.
     /// </summary>
     public readonly struct LChabColor : IColorSpace, IColorVector, IEquatable<LChabColor>
     {
         #region Constructor
 
-        /// <param name="l">L* (lightness) (from 0 to 100)</param>
-        /// <param name="c">C* (chroma) (from 0 to 100)</param>
-        /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
+        /// <param name="l">L* (lightness) (from 0 to 100).</param>
+        /// <param name="c">C* (chroma) (from 0 to 100).</param>
+        /// <param name="h">h° (hue in degrees) (from 0 to 360).</param>
         public LChabColor(in double l, in double c, in double h)
         {
             L = l;
@@ -21,7 +21,7 @@ namespace Colourful
             this.h = h;
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions.</param>
         public LChabColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -32,7 +32,7 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// L* (lightness)
+        /// L* (lightness).
         /// </summary>
         /// <remarks>
         /// Ranges from 0 to 100.
@@ -40,7 +40,7 @@ namespace Colourful
         public readonly double L;
 
         /// <summary>
-        /// C* (chroma)
+        /// C* (chroma).
         /// </summary>
         /// <remarks>
         /// Ranges usually from 0 to 100.
@@ -48,7 +48,7 @@ namespace Colourful
         public readonly double C;
 
         /// <summary>
-        /// h° (hue in degrees)
+        /// h° (hue in degrees).
         /// </summary>
         /// <remarks>
         /// Ranges from 0 to 360.
@@ -65,15 +65,15 @@ namespace Colourful
         #region Saturation
 
         /// <summary>
-        /// Computes saturation of the color (chroma normalized by lightness)
+        /// Computes saturation of the color (chroma normalized by lightness).
         /// </summary>
         /// <remarks>
         /// Ranges from 0 to 100.
         /// </remarks>
         public double Saturation => LChFormulas.GetSaturation(in L, in C);
-        
+
         /// <summary>
-        /// Constructs the color using saturation instead of chromas
+        /// Constructs the color using saturation instead of chromas.
         /// </summary>
         public static LChabColor FromSaturation(in double lightness, in double hue, in double saturation)
         {

@@ -15,7 +15,7 @@
         public LinearRGBColor Convert(in RGBColor sourceColor)
         {
             var sourceVector = sourceColor.Vector;
-            double[] targetVector = 
+            double[] targetVector =
             {
                 _sourceCompanding.ConvertToLinear(sourceVector[0]),
                 _sourceCompanding.ConvertToLinear(sourceVector[1]),

@@ -11,7 +11,7 @@ namespace Colourful.Internals
             _transformationMatrix = transformationMatrix;
         }
 
-        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TColor : IColorSpace
         {
             // only process LMS
@@ -31,7 +31,7 @@ namespace Colourful.Internals
             return new VonKriesChromaticAdaptation(in sourceWhitePointLMS, in targetWhitePointLMS) as IColorConverter<TColor, TColor>;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -55,7 +55,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -65,16 +65,16 @@ namespace Colourful.Internals
                 if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
                     var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+                    var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
                 }
                 // LMS{WP1} -> any{WP2} = LMS{WP1} -> LMS{WP2} -> any{WP2} (WP1 != WP2)
                 else
                 {
                     var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
+                    var firstConversion = converterAbstractFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterAbstractFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, LMSColor, TTarget>(firstConversion, secondConversion);
                 }
             }
@@ -82,7 +82,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -92,16 +92,16 @@ namespace Colourful.Internals
                 if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
                     var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+                    var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
                 }
                 // any{WP1} -> LMS{WP2} = any{WP1} -> LMS{WP1} -> LMS{WP2} (WP1 != WP2)
                 else
                 {
                     var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
-                    var firstConversion = converterFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
-                    var secondConversion = converterFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
+                    var firstConversion = converterAbstractFactory.CreateConverter<TSource, LMSColor>(in sourceMetadata, intermediateNode);
+                    var secondConversion = converterAbstractFactory.CreateConverter<LMSColor, TTarget>(intermediateNode, in targetMetadata);
                     return new CompositeConverter<TSource, LMSColor, TTarget>(firstConversion, secondConversion);
                 }
             }

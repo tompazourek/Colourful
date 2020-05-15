@@ -16,7 +16,7 @@ namespace Colourful
     public readonly struct RGBColor : IColorSpace, IColorVector, IEquatable<RGBColor>
     {
         #region Constructor
-        
+
         /// <param name="r">Red (from 0 to 1)</param>
         /// <param name="g">Green (from 0 to 1)</param>
         /// <param name="b">Blue (from 0 to 1)</param>
@@ -75,7 +75,7 @@ namespace Colourful
         public double[] Vector => new[] { R, G, B };
 
         #endregion
-        
+
         #region Equality
 
         /// <inheritdoc />
@@ -124,7 +124,6 @@ namespace Colourful
         #endregion
 
 #if (DRAWING)
-
         #region Color conversions
 
         /// <summary>

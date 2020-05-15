@@ -8,7 +8,7 @@
         {
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (sourceColor.y == 0)
-                return new XYZColor(0, 0, sourceColor.Luminance);
+                return new XYZColor(x: 0, y: 0, sourceColor.Luminance);
 
             var X = sourceColor.x * sourceColor.Luminance / sourceColor.y;
             var Y = sourceColor.Luminance;

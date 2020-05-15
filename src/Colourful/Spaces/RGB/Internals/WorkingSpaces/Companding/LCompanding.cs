@@ -19,7 +19,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var v = V <= 0.08 ? 100.0 * V / Kappa : Math.Pow((V + 0.16) / 1.16, 3.0);
+            var v = V <= 0.08 ? 100.0 * V / Kappa : Math.Pow((V + 0.16) / 1.16, y: 3.0);
             return v;
         }
 

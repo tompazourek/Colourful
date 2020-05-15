@@ -5,23 +5,23 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE L*a*b* (1976) color
+    /// CIE L*a*b* (1976) color.
     /// </summary>
     public readonly struct LabColor : IColorSpace, IColorVector, IEquatable<LabColor>
     {
         #region Constructor
-        
-        /// <param name="l">L* (lightness) (from 0 to 100)</param>
-        /// <param name="a">a* (usually from -100 to 100)</param>
-        /// <param name="b">b* (usually from -100 to 100)</param>
+
+        /// <param name="l">L* (lightness) (from 0 to 100).</param>
+        /// <param name="a">a* (usually from -100 to 100).</param>
+        /// <param name="b">b* (usually from -100 to 100).</param>
         public LabColor(in double l, in double a, in double b)
         {
             L = l;
             this.a = a;
             this.b = b;
         }
-        
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions.</param>
         public LabColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -32,7 +32,7 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// L* (lightness)
+        /// L* (lightness).
         /// </summary>
         /// <remarks>
         /// Ranges from 0 to 100.
@@ -40,7 +40,7 @@ namespace Colourful
         public readonly double L;
 
         /// <summary>
-        /// a*
+        /// a*.
         /// </summary>
         /// <remarks>
         /// Ranges usually from -100 to 100.
@@ -49,7 +49,7 @@ namespace Colourful
         public readonly double a;
 
         /// <summary>
-        /// b*
+        /// b*.
         /// </summary>
         /// <remarks>
         /// Ranges usually from -100 to 100.

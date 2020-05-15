@@ -7,7 +7,7 @@ namespace Colourful.Internals
     {
         private readonly XYZColor _targetWhitePoint;
 
-        /// <param name="targetWhitePoint">White point of the target color</param>
+        /// <param name="targetWhitePoint">White point of the target color.</param>
         public XYZToLabConverter(in XYZColor targetWhitePoint)
         {
             _targetWhitePoint = targetWhitePoint;

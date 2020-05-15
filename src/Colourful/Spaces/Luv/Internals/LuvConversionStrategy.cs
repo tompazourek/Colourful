@@ -4,7 +4,7 @@ namespace Colourful.Internals
 {
     public class LuvConversionStrategy : IConversionStrategy
     {
-        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TColor : IColorSpace
         {
             // only process Luv
@@ -18,7 +18,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -42,7 +42,7 @@ namespace Colourful.Internals
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
+        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
         {
@@ -50,24 +50,24 @@ namespace Colourful.Internals
             if (typeof(TSource) == typeof(LuvColor))
             {
                 var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
-                var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+                var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                 return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
             }
 
             return null;
         }
 
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterFactory converterFactory)
-            where TSource : IColorSpace 
+        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+            where TSource : IColorSpace
             where TTarget : IColorSpace
         {
             // any -> Luv{WP1} = any -> XYZ{WP1} -> Luv{WP1}
             if (typeof(TTarget) == typeof(LuvColor))
             {
                 var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
-                var firstConversion = converterFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+                var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+                var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
                 return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
             }
 

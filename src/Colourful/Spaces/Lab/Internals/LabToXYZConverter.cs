@@ -5,7 +5,7 @@
     {
         private readonly XYZColor _sourceWhitePoint;
 
-        /// <param name="sourceWhitePoint">White point of the source color</param>
+        /// <param name="sourceWhitePoint">White point of the source color.</param>
         public LabToXYZConverter(in XYZColor sourceWhitePoint)
         {
             _sourceWhitePoint = sourceWhitePoint;

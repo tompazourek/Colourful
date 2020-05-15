@@ -22,10 +22,10 @@ namespace Colourful.Internals
         public double ConvertToNonLinear(in double linearChannel)
         {
             var L = linearChannel;
-            var V = L < 0.018 ? 4.5 * L : 1.099 * Math.Pow(L, 0.45) - 0.099;
+            var V = L < 0.018 ? 4.5 * L : 1.099 * Math.Pow(L, y: 0.45) - 0.099;
             return V;
         }
-        
+
         #region Equality
 
         /// <inheritdoc />

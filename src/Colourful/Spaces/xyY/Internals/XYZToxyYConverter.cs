@@ -10,7 +10,7 @@
             var y = sourceColor.Y / (sourceColor.X + sourceColor.Y + sourceColor.Z);
 
             if (double.IsNaN(x) || double.IsNaN(y))
-                return new xyYColor(0, 0, sourceColor.Y);
+                return new xyYColor(x: 0, y: 0, sourceColor.Y);
 
             var Y = sourceColor.Y;
             var targetColor = new xyYColor(in x, in y, in Y);

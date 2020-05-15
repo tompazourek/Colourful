@@ -4,7 +4,7 @@ using Colourful.Internals;
 namespace Colourful
 {
     /// <summary>
-    /// CMC l:c (1984) color difference
+    /// CMC l:c (1984) color difference formula.
     /// </summary>
     /// <remarks>
     /// Equations: http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CMC.html
@@ -12,12 +12,12 @@ namespace Colourful
     public class CMCColorDifference : IColorDifference<LabColor>
     {
         /// <summary>
-        /// Chroma
+        /// Chroma.
         /// </summary>
         private readonly double _c;
 
         /// <summary>
-        /// Lightness
+        /// Lightness.
         /// </summary>
         private readonly double _l;
 
@@ -89,21 +89,5 @@ namespace Colourful
             var dE = Math.Sqrt(dE_1 * dE_1 + dE_2 * dE_2 + dE_3_pow2);
             return dE;
         }
-    }
-
-    /// <summary>
-    /// Weighting parameters for CMC l:c
-    /// </summary>
-    public enum CMCColorDifferenceThreshold
-    {
-        /// <summary>
-        /// 2:1 (l:c)
-        /// </summary>
-        Acceptability,
-
-        /// <summary>
-        /// 1:1 (l:c)
-        /// </summary>
-        Imperceptibility
     }
 }

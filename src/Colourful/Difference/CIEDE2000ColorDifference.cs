@@ -5,7 +5,7 @@ using Colourful.Internals;
 namespace Colourful
 {
     /// <summary>
-    /// CIE Delta-E 2000 formula
+    /// CIE Delta-E 2000 color difference formula.
     /// </summary>
     public class CIEDE2000ColorDifference : IColorDifference<LabColor>
     {
@@ -14,10 +14,10 @@ namespace Colourful
         private const double k_L = 1;
         private const double k_C = 1;
 
-        /// <param name="x">Reference color</param>
-        /// <param name="y">Sample color</param>
+        /// <param name="x">Reference color.</param>
+        /// <param name="y">Sample color.</param>
         /// <remarks>Implemented according to: Sharma, Gaurav; Wencheng Wu, Edul N. Dalal (2005). "The CIEDE2000 color-difference formula: Implementation notes, supplementary test data, and mathematical observations" (http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf)</remarks>
-        /// <returns>Delta-E (2000) color difference</returns>
+        /// <returns>Delta-E (2000) color difference.</returns>
         public double ComputeDifference(in LabColor x, in LabColor y)
         {
             // 1. Calculate C_prime, h_prime
@@ -38,7 +38,7 @@ namespace Colourful
             var T = 1 - 0.17 * MathUtils.CosDeg(h_prime_mean - 30) + 0.24 * MathUtils.CosDeg(2 * h_prime_mean)
                                                                    + 0.32 * MathUtils.CosDeg(3 * h_prime_mean + 6) - 0.20 * MathUtils.CosDeg(4 * h_prime_mean - 63); // eq. (15)
             var dTheta = 30 * Math.Exp(-MathUtils.Pow2((h_prime_mean - 275) / 25)); // eq. (16)
-            var R_C = 2 * Math.Sqrt(MathUtils.Pow7(in C_prime_mean) / (MathUtils.Pow7(in C_prime_mean) + MathUtils.Pow7(25))); // eq. (17)
+            var R_C = 2 * Math.Sqrt(MathUtils.Pow7(in C_prime_mean) / (MathUtils.Pow7(in C_prime_mean) + MathUtils.Pow7(x: 25))); // eq. (17)
             var S_L = 1 + 0.015 * MathUtils.Pow2(L_prime_mean - 50) / Math.Sqrt(20 + MathUtils.Pow2(L_prime_mean - 50)); // eq. (18)
             var S_C = 1 + 0.045 * C_prime_mean; // eq. (19)
             var S_H = 1 + 0.015 * C_prime_mean * T; // eq. (20)
@@ -61,7 +61,7 @@ namespace Colourful
 
             var C_ab_mean = (C_ab0 + C_ab1) / 2; // eq. (3)
 
-            var G = 0.5d * (1 - Math.Sqrt(MathUtils.Pow7(in C_ab_mean) / (MathUtils.Pow7(in C_ab_mean) + MathUtils.Pow7(25)))); // eq. (4)
+            var G = 0.5d * (1 - Math.Sqrt(MathUtils.Pow7(in C_ab_mean) / (MathUtils.Pow7(in C_ab_mean) + MathUtils.Pow7(x: 25)))); // eq. (4)
 
             a_prime0 = (1 + G) * a0; // eq. (5)
             a_prime1 = (1 + G) * a1;
