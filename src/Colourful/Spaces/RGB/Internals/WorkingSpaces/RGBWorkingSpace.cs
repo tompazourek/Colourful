@@ -2,34 +2,26 @@
 
 namespace Colourful.Internals
 {
-    /// <summary>
-    /// Trivial implementation of <see cref="IRGBWorkingSpace" />
-    /// </summary>
+    /// <inheritdoc cref="IRGBWorkingSpace" />
     public class RGBWorkingSpace : IRGBWorkingSpace, IEquatable<IRGBWorkingSpace>
     {
         /// <summary>
-        /// Constructs RGB working space using a reference white, companding, and chromacity coordinates.
+        /// Constructs RGB working space using a white point, companding, and primeries.
         /// </summary>
-        public RGBWorkingSpace(in XYZColor referenceWhite, in ICompanding companding, in RGBPrimaries chromaticityCoordinates)
+        public RGBWorkingSpace(in XYZColor whitePoint, in ICompanding companding, in RGBPrimaries primaries)
         {
-            WhitePoint = referenceWhite;
+            WhitePoint = whitePoint;
             Companding = companding;
-            Primaries = chromaticityCoordinates;
+            Primaries = primaries;
         }
 
-        /// <summary>
-        /// Reference white point
-        /// </summary>
+        /// <inheritdoc />
         public XYZColor WhitePoint { get; }
 
-        /// <summary>
-        /// Chromacity coordinates
-        /// </summary>
+        /// <inheritdoc />
         public RGBPrimaries Primaries { get; }
 
-        /// <summary>
-        /// Companding
-        /// </summary>
+        /// <inheritdoc />
         public ICompanding Companding { get; }
 
         #region Equality

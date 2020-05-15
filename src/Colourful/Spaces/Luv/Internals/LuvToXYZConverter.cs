@@ -1,11 +1,15 @@
-﻿namespace Colourful.Internals
+﻿using static System.Double;
+using static Colourful.Internals.CIEConstants;
+using static Colourful.Internals.MathUtils;
+
+namespace Colourful.Internals
 {
     /// <inheritdoc />
     public class LuvToXYZConverter : IColorConverter<LuvColor, XYZColor>
     {
         private readonly XYZColor _sourceWhitePoint;
 
-        /// <param name="sourceWhitePoint">White point of the source color</param>
+        /// <param name="sourceWhitePoint">White point of the source color.</param>
         public LuvToXYZConverter(in XYZColor sourceWhitePoint)
         {
             _sourceWhitePoint = sourceWhitePoint;
@@ -20,9 +24,9 @@
             var u0 = Compute_u0(_sourceWhitePoint);
             var v0 = Compute_v0(_sourceWhitePoint);
 
-            var Y = L > CIEConstants.Kappa * CIEConstants.Epsilon
-                ? MathUtils.Pow3((L + 16) / 116)
-                : L / CIEConstants.Kappa;
+            var Y = L > Kappa * CIEConstants.Epsilon
+                ? Pow3((L + 16) / 116)
+                : L / Kappa;
 
             var a = (52 * L / (u + 13 * L * u0) - 1) / 3;
             var b = -5 * Y;
@@ -32,13 +36,13 @@
             var X = (d - b) / (a - c);
             var Z = X * a + b;
 
-            if (double.IsNaN(X) || X < 0)
+            if (IsNaN(X) || X < 0)
                 X = 0;
 
-            if (double.IsNaN(Y) || Y < 0)
+            if (IsNaN(Y) || Y < 0)
                 Y = 0;
 
-            if (double.IsNaN(Z) || Z < 0)
+            if (IsNaN(Z) || Z < 0)
                 Z = 0;
 
             var targetColor = new XYZColor(in X, in Y, in Z);

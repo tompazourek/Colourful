@@ -1,9 +1,10 @@
 ﻿using System;
+using static System.Math;
 
 namespace Colourful.Internals
 {
     /// <summary>
-    /// Rec. 709 companding function
+    /// Rec. 709 companding function.
     /// </summary>
     /// <remarks>
     /// http://en.wikipedia.org/wiki/Rec._709
@@ -14,7 +15,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var L = V < 0.081 ? V / 4.5 : Math.Pow((V + 0.099) / 1.099, 1 / 0.45);
+            var L = V < 0.081 ? V / 4.5 : Pow((V + 0.099) / 1.099, 1 / 0.45);
             return L;
         }
 
@@ -22,7 +23,7 @@ namespace Colourful.Internals
         public double ConvertToNonLinear(in double linearChannel)
         {
             var L = linearChannel;
-            var V = L < 0.018 ? 4.5 * L : 1.099 * Math.Pow(L, y: 0.45) - 0.099;
+            var V = L < 0.018 ? 4.5 * L : 1.099 * Pow(L, y: 0.45) - 0.099;
             return V;
         }
 

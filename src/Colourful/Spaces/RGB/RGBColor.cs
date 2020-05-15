@@ -5,21 +5,20 @@ using Colourful.Internals;
 
 #if (DRAWING)
 using System.Drawing;
-
 #endif
 
 namespace Colourful
 {
     /// <summary>
-    /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>
+    /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>.
     /// </summary>
     public readonly struct RGBColor : IColorSpace, IColorVector, IEquatable<RGBColor>
     {
         #region Constructor
 
-        /// <param name="r">Red (from 0 to 1)</param>
-        /// <param name="g">Green (from 0 to 1)</param>
-        /// <param name="b">Blue (from 0 to 1)</param>
+        /// <param name="r">Red (from 0 to 1).</param>
+        /// <param name="g">Green (from 0 to 1).</param>
+        /// <param name="b">Blue (from 0 to 1).</param>
         public RGBColor(in double r, in double g, in double b)
         {
             R = r;
@@ -27,7 +26,7 @@ namespace Colourful
             B = b;
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1).</param>
         public RGBColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -46,32 +45,24 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// Red
+        /// Red.
+        /// Ranges usually from 0 to 1.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 1.
-        /// </remarks>
         public readonly double R;
 
         /// <summary>
-        /// Green
+        /// Green.
+        /// Ranges usually from 0 to 1.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 1.
-        /// </remarks>
         public readonly double G;
 
         /// <summary>
-        /// Blue
+        /// Blue.
+        /// Ranges usually from 0 to 1.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 1.
-        /// </remarks>
         public readonly double B;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { R, G, B };
 
         #endregion
@@ -108,17 +99,14 @@ namespace Colourful
         #region Factory methods
 
         /// <summary>
-        /// Creates RGB color with all channels equal
+        /// Creates RGB color with all channels equal.
         /// </summary>
-        /// <param name="value">Grey value (from 0 to 1)</param>
+        /// <param name="value">Grey value (from 0 to 1).</param>
         public static RGBColor FromGrey(in double value) => new RGBColor(in value, in value, in value);
 
         /// <summary>
-        /// Creates RGB color from 8-bit channels
+        /// Creates RGB color from 8-bit channels.
         /// </summary>
-        /// <param name="red"></param>
-        /// <param name="green"></param>
-        /// <param name="blue"></param>
         public static RGBColor FromRGB8bit(in byte red, in byte green, in byte blue) => new RGBColor(red / 255d, green / 255d, blue / 255d);
 
         #endregion
@@ -149,7 +137,6 @@ namespace Colourful
         public static explicit operator RGBColor(Color color) => new RGBColor(in color);
 
         #endregion
-
 #endif
 
         #region Overrides

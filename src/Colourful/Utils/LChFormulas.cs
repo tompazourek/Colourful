@@ -1,28 +1,29 @@
-﻿using System;
-using Colourful.Internals;
+﻿using static System.Double;
+using static System.Math;
+using static Colourful.Internals.MathUtils;
 
 namespace Colourful
 {
     /// <summary>
-    /// Formulas useful for cylindrical color spaces (<see cref="LChabColor" /> and <see cref="LChuvColor" />)
+    /// Formulas useful for cylindrical color spaces (<see cref="LChabColor" /> and <see cref="LChuvColor" />).
     /// </summary>
     public static class LChFormulas
     {
         /// <summary>
-        /// Returns saturation of the color (chroma normalized by lightness)
+        /// Returns saturation of the color (chroma normalized by lightness).
         /// </summary>
         public static double GetSaturation(in double L, in double C)
         {
             var result = 100 * (C / L);
 
-            if (double.IsNaN(result))
+            if (IsNaN(result))
                 return 0;
 
             return result;
         }
 
         /// <summary>
-        /// Gets chroma from saturation and lightness
+        /// Gets chroma from saturation and lightness.
         /// </summary>
         public static double GetChroma(in double saturation, in double L)
         {
@@ -36,9 +37,9 @@ namespace Colourful
         public static double[] ConvertToLCh(in double[] sourceVector)
         {
             double chroma1 = sourceVector[1], chroma2 = sourceVector[2];
-            var C = Math.Sqrt(chroma1 * chroma1 + chroma2 * chroma2);
-            var hRadians = Math.Atan2(chroma2, chroma1);
-            var hDegrees = MathUtils.NormalizeDegree(MathUtils.RadianToDegree(in hRadians));
+            var C = Sqrt(chroma1 * chroma1 + chroma2 * chroma2);
+            var hRadians = Atan2(chroma2, chroma1);
+            var hDegrees = NormalizeDegree(RadianToDegree(in hRadians));
             var targetVector = new[] { sourceVector[0], C, hDegrees };
             return targetVector;
         }
@@ -49,10 +50,10 @@ namespace Colourful
         public static double[] ConvertFromLCh(in double[] sourceVector)
         {
             double C = sourceVector[1], hDegrees = sourceVector[2];
-            var hRadians = MathUtils.DegreeToRadian(in hDegrees);
+            var hRadians = DegreeToRadian(in hDegrees);
 
-            var a = C * Math.Cos(hRadians);
-            var b = C * Math.Sin(hRadians);
+            var a = C * Cos(hRadians);
+            var b = C * Sin(hRadians);
 
             var targetVector = new[] { sourceVector[0], a, b };
             return targetVector;

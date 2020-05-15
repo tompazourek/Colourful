@@ -1,4 +1,7 @@
-﻿namespace Colourful.Internals
+﻿using static Colourful.Internals.CIEConstants;
+using static Colourful.Internals.MathUtils;
+
+namespace Colourful.Internals
 {
     /// <inheritdoc />
     public class LabToXYZConverter : IColorConverter<LabColor, XYZColor>
@@ -20,12 +23,12 @@
             var fx = a / 500d + fy;
             var fz = fy - b / 200d;
 
-            var fx3 = MathUtils.Pow3(fx);
-            var fz3 = MathUtils.Pow3(fz);
+            var fx3 = Pow3(fx);
+            var fz3 = Pow3(fz);
 
-            var xr = fx3 > CIEConstants.Epsilon ? fx3 : (116 * fx - 16) / CIEConstants.Kappa;
-            var yr = L > CIEConstants.Kappa * CIEConstants.Epsilon ? MathUtils.Pow3((L + 16) / 116d) : L / CIEConstants.Kappa;
-            var zr = fz3 > CIEConstants.Epsilon ? fz3 : (116 * fz - 16) / CIEConstants.Kappa;
+            var xr = fx3 > Epsilon ? fx3 : (116 * fx - 16) / Kappa;
+            var yr = L > Kappa * Epsilon ? Pow3((L + 16) / 116d) : L / Kappa;
+            var zr = fz3 > Epsilon ? fz3 : (116 * fz - 16) / Kappa;
 
             double Xr = _sourceWhitePoint.X, Yr = _sourceWhitePoint.Y, Zr = _sourceWhitePoint.Z;
 

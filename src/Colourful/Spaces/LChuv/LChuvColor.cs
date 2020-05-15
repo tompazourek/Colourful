@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE L*C*h°, cylindrical form of <see cref="LuvColor">CIE L*u*v* (1976)</see>
+    /// CIE L*C*h°, cylindrical form of <see cref="LuvColor">CIE L*u*v* (1976)</see>.
     /// </summary>
     public readonly struct LChuvColor : IColorSpace, IColorVector, IEquatable<LChuvColor>
     {
         #region Constructor
 
-        /// <param name="l">L* (lightness) (from 0 to 100)</param>
-        /// <param name="c">C* (chroma) (from 0 to 100)</param>
-        /// <param name="h">h° (hue in degrees) (from 0 to 360)</param>
+        /// <param name="l">L* (lightness) (from 0 to 100).</param>
+        /// <param name="c">C* (chroma) (from 0 to 100).</param>
+        /// <param name="h">h° (hue in degrees) (from 0 to 360).</param>
         public LChuvColor(in double l, in double c, in double h)
         {
             L = l;
@@ -21,7 +21,7 @@ namespace Colourful
             this.h = h;
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions.</param>
         public LChuvColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -32,32 +32,24 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// L* (lightness)
+        /// L* (lightness).
+        /// Ranges usually from 0 to 100.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 100.
-        /// </remarks>
         public readonly double L;
 
         /// <summary>
-        /// C* (chroma)
-        /// </summary>
-        /// <remarks>
+        /// C* (chroma).
         /// Ranges usually from 0 to 100.
-        /// </remarks>
+        /// </summary>
         public readonly double C;
 
         /// <summary>
-        /// h° (hue in degrees)
+        /// h° (hue in degrees).
+        /// Ranges usually from 0 to 360.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 360.
-        /// </remarks>
         public readonly double h;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { L, C, h };
 
         #endregion
@@ -65,15 +57,13 @@ namespace Colourful
         #region Saturation
 
         /// <summary>
-        /// Computes saturation of the color (chroma normalized by lightness)
-        /// </summary>
-        /// <remarks>
+        /// Computes saturation of the color (chroma normalized by lightness).
         /// Ranges from 0 to 100.
-        /// </remarks>
+        /// </summary>
         public double Saturation => LChFormulas.GetSaturation(in L, in C);
 
         /// <summary>
-        /// Constructs the color using saturation instead of chromas
+        /// Constructs the color using saturation instead of chromas.
         /// </summary>
         public static LChuvColor FromSaturation(in double lightness, in double hue, in double saturation)
         {

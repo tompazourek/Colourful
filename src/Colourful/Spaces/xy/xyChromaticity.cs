@@ -4,12 +4,12 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// Coordinates of CIE xy chromaticity space
+    /// CIE xy chromaticity space.
     /// </summary>
     public readonly struct xyChromaticity : IColorVector, IEquatable<xyChromaticity>
     {
-        /// <param name="x">Chromaticity coordinate x (usually from 0 to 1)</param>
-        /// <param name="y">Chromaticity coordinate y (usually from 0 to 1)</param>
+        /// <param name="x">Chromaticity x (usually from 0 to 1).</param>
+        /// <param name="y">Chromaticity y (usually from 0 to 1).</param>
         public xyChromaticity(in double x, in double y)
         {
             this.x = x;
@@ -17,24 +17,18 @@ namespace Colourful
         }
 
         /// <summary>
-        /// Chromaticity coordinate x
-        /// </summary>
-        /// <remarks>
+        /// Chromaticity x.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double x;
 
         /// <summary>
-        /// Chromaticity coordinate y
-        /// </summary>
-        /// <remarks>
+        /// Chromaticity y.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double y;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { x, y };
 
         #region Equality
@@ -43,7 +37,7 @@ namespace Colourful
         public bool Equals(xyChromaticity other) => x.Equals(other.x) && y.Equals(other.y);
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is xyChromaticity coordinates && Equals(coordinates);
+        public override bool Equals(object obj) => obj is xyChromaticity xyChromaticity && Equals(xyChromaticity);
 
         /// <inheritdoc />
         public override int GetHashCode()

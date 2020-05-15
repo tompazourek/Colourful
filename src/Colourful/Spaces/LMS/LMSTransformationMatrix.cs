@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Colourful.Internals;
 
-namespace Colourful.Internals
+namespace Colourful
 {
     /// <summary>
     /// Matrix used for transformation from XYZ to LMS, defining the cone response domain.
@@ -16,7 +17,7 @@ namespace Colourful.Internals
     public static class LMSTransformationMatrix
     {
         /// <summary>
-        /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez adjusted for D65)
+        /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez adjusted for D65).
         /// </summary>
         public static readonly double[,] VonKriesHPEAdjusted =
         {
@@ -26,7 +27,7 @@ namespace Colourful.Internals
         };
 
         /// <summary>
-        /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez for equal energy)
+        /// Von Kries chromatic adaptation transform matrix (Hunt-Pointer-Estevez for equal energy).
         /// </summary>
         public static readonly double[,] VonKriesHPE =
         {
@@ -36,12 +37,12 @@ namespace Colourful.Internals
         };
 
         /// <summary>
-        /// XYZ scaling chromatic adaptation transform matrix
+        /// XYZ scaling chromatic adaptation transform matrix.
         /// </summary>
         public static readonly double[,] XYZScaling = MatrixUtils.CreateIdentity(size: 3);
 
         /// <summary>
-        /// Bradford chromatic adaptation transform matrix (used in CMCCAT97)
+        /// Bradford chromatic adaptation transform matrix (used in CMCCAT97).
         /// </summary>
         public static readonly double[,] Bradford =
         {
@@ -51,7 +52,7 @@ namespace Colourful.Internals
         };
 
         /// <summary>
-        /// Spectral sharpening and the Bradford transform
+        /// Spectral sharpening and the Bradford transform.
         /// </summary>
         public static readonly double[,] BradfordSharp =
         {
@@ -61,7 +62,7 @@ namespace Colourful.Internals
         };
 
         /// <summary>
-        /// CMCCAT2000 (fitted from all available color data sets)
+        /// CMCCAT2000 (fitted from all available color data sets).
         /// </summary>
         public static readonly double[,] CMCCAT2000 =
         {
@@ -71,7 +72,7 @@ namespace Colourful.Internals
         };
 
         /// <summary>
-        /// CAT02 (optimized for minimizing CIELAB differences)
+        /// CAT02 (optimized for minimizing CIELAB differences).
         /// </summary>
         public static readonly double[,] CAT02 =
         {

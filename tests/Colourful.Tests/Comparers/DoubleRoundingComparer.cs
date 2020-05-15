@@ -14,7 +14,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Number of fractional digits
+        /// Number of fractional digits.
         /// </summary>
         public int Precision { get; }
 

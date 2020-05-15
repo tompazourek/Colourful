@@ -2,8 +2,10 @@
 
 namespace Colourful.Internals
 {
+    /// <inheritdoc />
     public class LinearRGBConversionStrategy : IConversionStrategy
     {
+        /// <inheritdoc />
         public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TColor : IColorSpace
         {
@@ -20,6 +22,7 @@ namespace Colourful.Internals
             return null;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
@@ -44,6 +47,7 @@ namespace Colourful.Internals
             return null;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
@@ -60,7 +64,7 @@ namespace Colourful.Internals
             return null;
         }
 
-
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace

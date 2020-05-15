@@ -1,4 +1,6 @@
-﻿namespace Colourful.Internals
+﻿using static Colourful.Internals.MatrixUtils;
+
+namespace Colourful.Internals
 {
     /// <summary>
     /// Utils for conversions between Linear RGB and XYZ.
@@ -31,7 +33,7 @@
             const double Yb = 1;
             var Zb = (1 - xb - yb) / yb;
 
-            var S = MatrixUtils.Inverse(new[,]
+            var S = Inverse(new[,]
             {
                 { Xr, Xg, Xb },
                 { Yr, Yg, Yb },
@@ -40,7 +42,7 @@
 
             var W = sourceWhitePoint.Vector;
 
-            var SW = MatrixUtils.MultiplyBy(in S, in W);
+            var SW = MultiplyBy(in S, in W);
             var Sr = SW[0];
             var Sg = SW[1];
             var Sb = SW[2];
@@ -59,6 +61,6 @@
         /// Computes the XYZ/RGB matrix.
         /// </summary>
         public static double[,] GetXYZToRGBMatrix(in RGBPrimaries targetPrimaries, in XYZColor targetWhitePoint)
-            => MatrixUtils.Inverse(GetRGBToXYZMatrix(in targetPrimaries, in targetWhitePoint));
+            => Inverse(GetRGBToXYZMatrix(in targetPrimaries, in targetWhitePoint));
     }
 }

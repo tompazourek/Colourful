@@ -33,31 +33,23 @@ namespace Colourful
 
         /// <summary>
         /// L* (lightness).
+        /// Ranges usuallyfrom 0 to 100.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 100.
-        /// </remarks>
         public readonly double L;
 
         /// <summary>
         /// C* (chroma).
-        /// </summary>
-        /// <remarks>
         /// Ranges usually from 0 to 100.
-        /// </remarks>
+        /// </summary>
         public readonly double C;
 
         /// <summary>
         /// h° (hue in degrees).
+        /// Ranges usually from 0 to 360.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 360.
-        /// </remarks>
         public readonly double h;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { L, C, h };
 
         #endregion
@@ -66,10 +58,8 @@ namespace Colourful
 
         /// <summary>
         /// Computes saturation of the color (chroma normalized by lightness).
-        /// </summary>
-        /// <remarks>
         /// Ranges from 0 to 100.
-        /// </remarks>
+        /// </summary>
         public double Saturation => LChFormulas.GetSaturation(in L, in C);
 
         /// <summary>

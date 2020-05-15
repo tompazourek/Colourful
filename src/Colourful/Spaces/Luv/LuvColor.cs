@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE L*u*v* (1976) color
+    /// CIE L*u*v* (1976) color.
     /// </summary>
     public readonly struct LuvColor : IColorSpace, IColorVector, IEquatable<LuvColor>
     {
         #region Constructor
 
-        /// <param name="l">L* (lightness) (from 0 to 100)</param>
-        /// <param name="u">u* (usually from -100 to 100)</param>
-        /// <param name="v">v* (usually from -100 to 100)</param>
+        /// <param name="l">L* (lightness) (from 0 to 100).</param>
+        /// <param name="u">u* (usually from -100 to 100).</param>
+        /// <param name="v">v* (usually from -100 to 100).</param>
         public LuvColor(in double l, in double u, in double v)
         {
             L = l;
@@ -21,7 +21,7 @@ namespace Colourful
             this.v = v;
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions.</param>
         public LuvColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -32,32 +32,24 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// L* (lightness)
-        /// </summary>
-        /// <remarks>
+        /// L* (lightness).
         /// Ranges from 0 to 100.
-        /// </remarks>
+        /// </summary>
         public readonly double L;
 
         /// <summary>
-        /// u*
-        /// </summary>
-        /// <remarks>
+        /// u*.
         /// Ranges usually from -100 to 100.
-        /// </remarks>
+        /// </summary>
         public readonly double u;
 
         /// <summary>
-        /// v*
-        /// </summary>
-        /// <remarks>
+        /// v*.
         /// Ranges usually from -100 to 100.
-        /// </remarks>
+        /// </summary>
         public readonly double v;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { L, u, v };
 
         #endregion

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using static System.Double;
+using static System.Math;
+using static Colourful.Internals.HunterLabConversionUtils;
 
 namespace Colourful.Internals
 {
@@ -20,17 +22,17 @@ namespace Colourful.Internals
             double X = sourceColor.X, Y = sourceColor.Y, Z = sourceColor.Z;
             double Xn = _targetWhitePoint.X, Yn = _targetWhitePoint.Y, Zn = _targetWhitePoint.Z;
 
-            var Ka = HunterLabConversionUtils.ComputeKa(in _targetWhitePoint);
-            var Kb = HunterLabConversionUtils.ComputeKb(in _targetWhitePoint);
+            var Ka = ComputeKa(in _targetWhitePoint);
+            var Kb = ComputeKb(in _targetWhitePoint);
 
-            var L = 100 * Math.Sqrt(Y / Yn);
-            var a = Ka * ((X / Xn - Y / Yn) / Math.Sqrt(Y / Yn));
-            var b = Kb * ((Y / Yn - Z / Zn) / Math.Sqrt(Y / Yn));
+            var L = 100 * Sqrt(Y / Yn);
+            var a = Ka * ((X / Xn - Y / Yn) / Sqrt(Y / Yn));
+            var b = Kb * ((Y / Yn - Z / Zn) / Sqrt(Y / Yn));
 
-            if (double.IsNaN(a))
+            if (IsNaN(a))
                 a = 0;
 
-            if (double.IsNaN(b))
+            if (IsNaN(b))
                 b = 0;
 
             var targetColor = new HunterLabColor(in L, in a, in b);

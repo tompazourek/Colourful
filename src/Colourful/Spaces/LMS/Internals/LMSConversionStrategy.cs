@@ -2,15 +2,18 @@
 
 namespace Colourful.Internals
 {
+    /// <inheritdoc />
     public class LMSConversionStrategy : IConversionStrategy
     {
         private readonly double[,] _transformationMatrix;
 
+        /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />).</param>
         public LMSConversionStrategy(double[,] transformationMatrix)
         {
             _transformationMatrix = transformationMatrix;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TColor : IColorSpace
         {
@@ -31,6 +34,7 @@ namespace Colourful.Internals
             return new VonKriesChromaticAdaptation(in sourceWhitePointLMS, in targetWhitePointLMS) as IColorConverter<TColor, TColor>;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
@@ -55,6 +59,7 @@ namespace Colourful.Internals
             return null;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace
@@ -82,6 +87,7 @@ namespace Colourful.Internals
             return null;
         }
 
+        /// <inheritdoc />
         public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
             where TSource : IColorSpace
             where TTarget : IColorSpace

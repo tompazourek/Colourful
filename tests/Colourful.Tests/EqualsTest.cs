@@ -5,7 +5,7 @@ namespace Colourful.Tests
     public class EqualsTest
     {
         [Fact]
-        public void ChromaticityCoordinates()
+        public void xyChromaticity()
         {
             var first = new xyChromaticity(x: 1, y: 0.445);
             var second = new xyChromaticity(x: 1, y: 0.445);

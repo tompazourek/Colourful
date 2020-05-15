@@ -1,4 +1,6 @@
-﻿namespace Colourful.Internals
+﻿using static Colourful.Internals.MatrixUtils;
+
+namespace Colourful.Internals
 {
     /// <inheritdoc />
     public class XYZToLMSConverter : IColorConverter<XYZColor, LMSColor>
@@ -15,7 +17,7 @@
         public LMSColor Convert(in XYZColor sourceColor)
         {
             var sourceVector = sourceColor.Vector;
-            var targetVector = MatrixUtils.MultiplyBy(in _transformationMatrix, in sourceVector);
+            var targetVector = MultiplyBy(in _transformationMatrix, in sourceVector);
             var targetColor = new LMSColor(in targetVector);
             return targetColor;
         }

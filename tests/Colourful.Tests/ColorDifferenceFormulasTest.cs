@@ -8,8 +8,8 @@ namespace Colourful.Tests
     /// </summary>
     public class ColorDifferenceFormulasTest
     {
-        private static readonly IEqualityComparer<double> DoubleComparerLabPrecision = new DoublePrecisionComparer(4);
-        private static readonly IEqualityComparer<double> DoubleComparerLabRounding = new DoubleRoundingComparer(4);
+        private static readonly IEqualityComparer<double> DoubleComparerLabPrecision = new DoublePrecisionComparer(precision: 4);
+        private static readonly IEqualityComparer<double> DoubleComparerLabRounding = new DoubleRoundingComparer(precision: 4);
 
         /// <summary>
         /// Tests <see cref="Colourful.CIE76ColorDifference" />

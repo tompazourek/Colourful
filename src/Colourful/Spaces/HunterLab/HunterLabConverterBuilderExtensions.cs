@@ -1,4 +1,5 @@
 ﻿using Colourful.Internals;
+using static Colourful.Internals.ConversionMetadataUtils;
 
 namespace Colourful
 {
@@ -13,7 +14,7 @@ namespace Colourful
         /// <param name="builder"></param>
         /// <param name="whitePoint">Optionally, you can set a white point. For HunterLab, the <see cref="Illuminants.C" /> is usually used.</param>
         public static IFluentConverterBuilderFrom<HunterLabColor> FromHunterLab(this ConverterBuilder builder, in XYZColor? whitePoint)
-            => builder.From<HunterLabColor>(new ConversionMetadata(ConversionMetadataUtils.CreateWhitePoint(in whitePoint)));
+            => builder.From<HunterLabColor>(new ConversionMetadata(CreateWhitePoint(in whitePoint)));
 
         /// <summary>
         /// Specifies that the source space is <see cref="HunterLabColor" />.
@@ -29,7 +30,7 @@ namespace Colourful
         /// <param name="whitePoint">Optionally, you can set a white point. For HunterLab, the <see cref="Illuminants.C" /> is usually used.</param>
         public static IFluentConverterBuilderFromTo<TSource, HunterLabColor> ToHunterLab<TSource>(this IFluentConverterBuilderFrom<TSource> builder, in XYZColor? whitePoint)
             where TSource : IColorSpace
-            => builder.To<HunterLabColor>(new ConversionMetadata(ConversionMetadataUtils.CreateWhitePoint(in whitePoint)));
+            => builder.To<HunterLabColor>(new ConversionMetadata(CreateWhitePoint(in whitePoint)));
 
         /// <summary>
         /// Specifies that the target space is <see cref="HunterLabColor" />.

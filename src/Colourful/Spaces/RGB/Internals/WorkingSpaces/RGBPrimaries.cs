@@ -3,12 +3,12 @@
 namespace Colourful.Internals
 {
     /// <summary>
-    /// Chromaticity coordinates of RGB primaries.
+    /// Chromaticity of RGB primaries.
     /// </summary>
     public readonly struct RGBPrimaries : IEquatable<RGBPrimaries>
     {
         /// <summary>
-        /// Constructs coordinates
+        /// Constructs RGB primaries.
         /// </summary>
         public RGBPrimaries(in xyChromaticity r, in xyChromaticity g, in xyChromaticity b)
         {
@@ -18,17 +18,17 @@ namespace Colourful.Internals
         }
 
         /// <summary>
-        /// Red
+        /// Red.
         /// </summary>
         public xyChromaticity R { get; }
 
         /// <summary>
-        /// Green
+        /// Green.
         /// </summary>
         public xyChromaticity G { get; }
 
         /// <summary>
-        /// Blue
+        /// Blue.
         /// </summary>
         public xyChromaticity B { get; }
 

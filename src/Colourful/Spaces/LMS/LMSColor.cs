@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// LMS color space represented by the response of the three types of cones of the human eye
+    /// LMS color space represented by the response of the three types of cones of the human eye.
     /// </summary>
     public readonly struct LMSColor : IColorSpace, IColorVector, IEquatable<LMSColor>
     {
         #region Constructor
 
-        /// <param name="l">L (usually from -1 to 1)</param>
-        /// <param name="m">M (usually from -1 to 1)</param>
-        /// <param name="s">S (usually from -1 to 1)</param>
+        /// <param name="l">L (usually from -1 to 1).</param>
+        /// <param name="m">M (usually from -1 to 1).</param>
+        /// <param name="s">S (usually from -1 to 1).</param>
         public LMSColor(in double l, in double m, in double s)
         {
             L = l;
@@ -32,32 +32,24 @@ namespace Colourful
         #region Channels
 
         /// <summary>
-        /// Long wavelengths (red) cone response (Rho)
-        /// </summary>
-        /// <remarks>
+        /// Long wavelengths (red) cone response (Rho).
         /// Ranges usually from -1 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double L;
 
         /// <summary>
-        /// Medium wavelengths (green) cone response (Gamma)
-        /// </summary>
-        /// <remarks>
+        /// Medium wavelengths (green) cone response (Gamma).
         /// Ranges usually from -1 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double M;
 
         /// <summary>
-        /// Short wavelengths (blue) cone response (Beta)
-        /// </summary>
-        /// <remarks>
+        /// Short wavelengths (blue) cone response (Beta).
         /// Ranges usually from -1 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double S;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { L, M, S };
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace Colourful
 {
@@ -13,7 +13,7 @@ namespace Colourful
         public double ComputeDifference(in LabColor x, in LabColor y)
         {
             // Euclidean distance
-            var distance = Math.Sqrt(
+            var distance = Sqrt(
                 (x.L - y.L) * (x.L - y.L) +
                 (x.a - y.a) * (x.a - y.a) +
                 (x.b - y.b) * (x.b - y.b)

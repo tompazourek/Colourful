@@ -5,7 +5,7 @@
     {
         private readonly ICompanding _sourceCompanding;
 
-        /// <param name="sourceCompanding">Companding function of the source RGB working space</param>
+        /// <param name="sourceCompanding">Companding function of the source RGB working space.</param>
         public RGBToLinearRGBConverter(ICompanding sourceCompanding)
         {
             _sourceCompanding = sourceCompanding;

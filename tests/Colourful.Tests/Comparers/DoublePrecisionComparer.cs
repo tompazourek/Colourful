@@ -14,7 +14,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Number of fractional digits
+        /// Number of fractional digits.
         /// </summary>
         public int Precision { get; }
 
@@ -34,12 +34,9 @@ namespace Colourful.Tests
         /// <summary>
         /// Floors number and preserves specific numer of decimal places.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="decimalPlaces"></param>
-        /// <returns></returns>
         private static double FloorWithPrecision(double input, int decimalPlaces)
         {
-            var power = Math.Pow(10, decimalPlaces);
+            var power = Math.Pow(x: 10, decimalPlaces);
             var output = Math.Floor(input * power) / power;
             return output;
         }

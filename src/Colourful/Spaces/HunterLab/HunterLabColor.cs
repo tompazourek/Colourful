@@ -32,33 +32,25 @@ namespace Colourful
 
         /// <summary>
         /// L (lightness).
+        /// Ranges usually from 0 to 100.
         /// </summary>
-        /// <remarks>
-        /// Ranges from 0 to 100.
-        /// </remarks>
         public readonly double L;
 
         /// <summary>
         /// a.
-        /// </summary>
-        /// <remarks>
         /// Ranges usually from -100 to 100.
         /// Negative values indicate green while positive values indicate magenta.
-        /// </remarks>
+        /// </summary>
         public readonly double a;
 
         /// <summary>
         /// b.
-        /// </summary>
-        /// <remarks>
         /// Ranges usually from -100 to 100.
         /// Negative values indicate blue and positive values indicate yellow.
-        /// </remarks>
+        /// </summary>
         public readonly double b;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { L, a, b };
 
         #endregion

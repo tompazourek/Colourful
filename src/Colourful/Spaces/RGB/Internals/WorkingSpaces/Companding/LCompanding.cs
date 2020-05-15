@@ -1,9 +1,10 @@
 ﻿using System;
+using static System.Math;
 
 namespace Colourful.Internals
 {
     /// <summary>
-    /// L* companding
+    /// L* companding.
     /// </summary>
     /// <remarks>
     /// For more info see:
@@ -19,7 +20,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var v = V <= 0.08 ? 100.0 * V / Kappa : Math.Pow((V + 0.16) / 1.16, y: 3.0);
+            var v = V <= 0.08 ? 100.0 * V / Kappa : Pow((V + 0.16) / 1.16, y: 3.0);
             return v;
         }
 
@@ -27,7 +28,7 @@ namespace Colourful.Internals
         public double ConvertToNonLinear(in double linearChannel)
         {
             var v = linearChannel;
-            var V = v <= Epsilon ? v * Kappa / 100.0 : 1.16 * Math.Pow(v, 1.0 / 3.0) - 0.16;
+            var V = v <= Epsilon ? v * Kappa / 100.0 : 1.16 * Pow(v, 1.0 / 3.0) - 0.16;
             return V;
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using static System.Math;
+using static Colourful.Internals.CIEConstants;
 
 namespace Colourful.Internals
 {
@@ -35,7 +36,7 @@ namespace Colourful.Internals
 
         private static double f(double cr)
         {
-            var fc = cr > CIEConstants.Epsilon ? Math.Pow(cr, 1 / 3d) : (CIEConstants.Kappa * cr + 16) / 116d;
+            var fc = cr > Epsilon ? Pow(cr, 1 / 3d) : (Kappa * cr + 16) / 116d;
             return fc;
         }
     }

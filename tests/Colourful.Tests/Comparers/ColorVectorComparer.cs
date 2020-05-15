@@ -5,7 +5,7 @@ using System.Linq;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Compares two color vectors
+    /// Compares two color vectors.
     /// </summary>
     public class ColorVectorComparer : IComparer<IColorVector>, IEqualityComparer<IColorVector>
     {

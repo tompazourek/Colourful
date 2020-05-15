@@ -1,17 +1,17 @@
 ﻿namespace Colourful.Internals
 {
     /// <summary>
-    /// RGB working color space
+    /// RGB working color space.
     /// </summary>
     public interface IRGBWorkingSpace
     {
         /// <summary>
-        /// Reference white of the color space
+        /// White point of the color space.
         /// </summary>
         XYZColor WhitePoint { get; }
 
         /// <summary>
-        /// Chromaticity coordinates of the primaries
+        /// Chromaticity of the primaries.
         /// </summary>
         RGBPrimaries Primaries { get; }
 

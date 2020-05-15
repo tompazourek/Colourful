@@ -1,4 +1,6 @@
-﻿namespace Colourful.Internals
+﻿using static Colourful.LChFormulas;
+
+namespace Colourful.Internals
 {
     /// <inheritdoc />
     public class LabToLChabConverter : IColorConverter<LabColor, LChabColor>
@@ -6,7 +8,7 @@
         /// <inheritdoc />
         public LChabColor Convert(in LabColor sourceColor)
         {
-            var targetVector = LChFormulas.ConvertToLCh(sourceColor.Vector);
+            var targetVector = ConvertToLCh(sourceColor.Vector);
             var targetColor = new LChabColor(in targetVector);
             return targetColor;
         }

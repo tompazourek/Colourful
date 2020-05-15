@@ -14,7 +14,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Smallest allowed difference
+        /// Smallest allowed difference.
         /// </summary>
         public double Delta { get; }
 

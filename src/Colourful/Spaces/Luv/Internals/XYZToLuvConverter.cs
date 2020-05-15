@@ -1,4 +1,6 @@
-﻿using System;
+﻿using static System.Double;
+using static System.Math;
+using static Colourful.Internals.CIEConstants;
 
 namespace Colourful.Internals
 {
@@ -7,7 +9,7 @@ namespace Colourful.Internals
     {
         private readonly XYZColor _targetWhitePoint;
 
-        /// <param name="targetWhitePoint">White point of the target color</param>
+        /// <param name="targetWhitePoint">White point of the target color.</param>
         public XYZToLuvConverter(in XYZColor targetWhitePoint)
         {
             _targetWhitePoint = targetWhitePoint;
@@ -24,18 +26,18 @@ namespace Colourful.Internals
             var upr = Compute_up(_targetWhitePoint);
             var vpr = Compute_vp(_targetWhitePoint);
 
-            var L = yr > CIEConstants.Epsilon ? 116 * Math.Pow(yr, 1 / 3d) - 16 : CIEConstants.Kappa * yr;
+            var L = yr > CIEConstants.Epsilon ? 116 * Pow(yr, 1 / 3d) - 16 : Kappa * yr;
 
-            if (double.IsNaN(L) || L < 0)
+            if (IsNaN(L) || L < 0)
                 L = 0;
 
             var u = 13 * L * (up - upr);
             var v = 13 * L * (vp - vpr);
 
-            if (double.IsNaN(u))
+            if (IsNaN(u))
                 u = 0;
 
-            if (double.IsNaN(v))
+            if (IsNaN(v))
                 v = 0;
 
             var targetColor = new LuvColor(in L, in u, in v);

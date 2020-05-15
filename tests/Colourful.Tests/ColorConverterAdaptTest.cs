@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Colourful.Internals;
 using Xunit;
 
 namespace Colourful.Tests

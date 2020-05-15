@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE xyY color space (derived from <see cref="XYZColor" /> color space)
+    /// CIE xyY color space (derived from <see cref="XYZColor" /> color space).
     /// </summary>
     public readonly struct xyYColor : IColorSpace, IColorVector, IEquatable<xyYColor>
     {
         #region Constructor
 
-        /// <param name="x">x (usually from 0 to 1) chromaticity coordinate</param>
-        /// <param name="y">y (usually from 0 to 1) chromaticity coordinate</param>
-        /// <param name="Y">Y (usually from 0 to 1)</param>
+        /// <param name="x">x (usually from 0 to 1) chromaticity.</param>
+        /// <param name="y">y (usually from 0 to 1) chromaticity.</param>
+        /// <param name="Y">Y (luminance) (usually from 0 to 1).</param>
         public xyYColor(in double x, in double y, in double Y)
         {
             this.x = x;
@@ -21,14 +21,14 @@ namespace Colourful
             Luminance = Y;
         }
 
-        /// <param name="chromaticity">Chromaticity coordinates (x and y together)</param>
-        /// <param name="Y">Y (usually from 0 to 1)</param>
+        /// <param name="chromaticity">Chromaticity (x and y together).</param>
+        /// <param name="Y">Y (luminance) (usually from 0 to 1).</param>
         public xyYColor(in xyChromaticity chromaticity, in double Y)
             : this(in chromaticity.x, in chromaticity.y, in Y)
         {
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1).</param>
         public xyYColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -38,32 +38,30 @@ namespace Colourful
 
         #region Channels
 
-        /// <remarks>
+        /// <summary>
+        /// Chromaticity x.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double x;
 
-        /// <remarks>
+        /// <summary>
+        /// Chromaticity y.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double y;
 
         /// <summary>
-        /// Y channel (luminance)
-        /// </summary>
-        /// <remarks>
+        /// Y channel (luminance).
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double Luminance;
 
-        /// <remarks>
-        /// Chromaticity coordinates (identical to x and y)
-        /// </remarks>
+        /// <summary>
+        /// Chromaticity (identical to x and y).
+        /// </summary>
         public xyChromaticity Chromaticity => new xyChromaticity(in x, in y);
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { x, y, Luminance };
 
         #endregion

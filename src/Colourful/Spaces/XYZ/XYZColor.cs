@@ -5,15 +5,15 @@ using System.Globalization;
 namespace Colourful
 {
     /// <summary>
-    /// CIE 1931 XYZ color space
+    /// CIE 1931 XYZ color space.
     /// </summary>
     public readonly struct XYZColor : IColorSpace, IColorVector, IEquatable<XYZColor>
     {
         #region Constructor
 
-        /// <param name="x">X (usually from 0 to 1)</param>
-        /// <param name="y">Y (usually from 0 to 1)</param>
-        /// <param name="z">Z (usually from 0 to 1)</param>
+        /// <param name="x">X (usually from 0 to 1).</param>
+        /// <param name="y">Y (usually from 0 to 1).</param>
+        /// <param name="z">Z (usually from 0 to 1).</param>
         public XYZColor(in double x, in double y, in double z)
         {
             X = x;
@@ -21,7 +21,7 @@ namespace Colourful
             Z = z;
         }
 
-        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1)</param>
+        /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (usually from 0 to 1).</param>
         public XYZColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
@@ -31,24 +31,25 @@ namespace Colourful
 
         #region Channels
 
-        /// <remarks>
+        /// <summary>
+        /// X.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double X;
 
-        /// <remarks>
+        /// <summary>
+        /// Y.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double Y;
 
-        /// <remarks>
+        /// <summary>
+        /// Z.
         /// Ranges usually from 0 to 1.
-        /// </remarks>
+        /// </summary>
         public readonly double Z;
 
-        /// <summary>
-        /// <see cref="IColorVector" />
-        /// </summary>
+        /// <inheritdoc />
         public double[] Vector => new[] { X, Y, Z };
 
         #endregion

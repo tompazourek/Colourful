@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Math;
 
 namespace Colourful.Internals
 {
@@ -19,7 +20,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var L = V < InverseBeta ? V / 4.5 : Math.Pow((V + Alpha - 1.0) / Alpha, 1 / 0.45);
+            var L = V < InverseBeta ? V / 4.5 : Pow((V + Alpha - 1.0) / Alpha, 1 / 0.45);
             return L;
         }
 
@@ -27,7 +28,7 @@ namespace Colourful.Internals
         public double ConvertToNonLinear(in double linearChannel)
         {
             var L = linearChannel;
-            var V = L < Beta ? 4.5 * L : Alpha * Math.Pow(L, y: 0.45) - (Alpha - 1.0);
+            var V = L < Beta ? 4.5 * L : Alpha * Pow(L, y: 0.45) - (Alpha - 1.0);
             return V;
         }
 

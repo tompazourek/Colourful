@@ -5,10 +5,10 @@ namespace Colourful.Tests
     public class ToStringTest
     {
         [Fact]
-        public void ChromaticityCoordinates()
+        public void xyChromaticity()
         {
-            var coordinates = new xyChromaticity(x: 1, y: 0.445);
-            Assert.Equal("xy [x=1, y=0.45]", coordinates.ToString());
+            var xyChromaticity = new xyChromaticity(x: 1, y: 0.445);
+            Assert.Equal("xy [x=1, y=0.45]", xyChromaticity.ToString());
         }
 
         [Fact]

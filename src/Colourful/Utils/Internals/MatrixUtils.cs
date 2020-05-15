@@ -28,10 +28,8 @@
         }
 
         /// <summary>
-        /// Matrix inverse for 3 by 3 matrices
+        /// Matrix inverse for 3 by 3 matrices.
         /// </summary>
-        /// <param name="matrix"></param>
-        /// <returns></returns>
         public static double[,] Inverse(in double[,] matrix)
         {
             var A = matrix[1, 1] * matrix[2, 2] - matrix[1, 2] * matrix[2, 1];

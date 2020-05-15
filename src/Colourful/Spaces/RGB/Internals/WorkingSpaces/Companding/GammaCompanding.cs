@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using static System.Math;
 
 namespace Colourful.Internals
 {
     /// <summary>
-    /// Gamma companding
+    /// Gamma companding.
     /// </summary>
     /// <remarks>
     /// For more info see:
@@ -14,7 +15,7 @@ namespace Colourful.Internals
     public class GammaCompanding : ICompanding, IEquatable<GammaCompanding>
     {
         /// <summary>
-        /// Constructs with given gamma
+        /// Constructs with given gamma.
         /// </summary>
         public GammaCompanding(in double gamma)
         {
@@ -22,7 +23,7 @@ namespace Colourful.Internals
         }
 
         /// <summary>
-        /// Gamma
+        /// Gamma.
         /// </summary>
         public double Gamma { get; }
 
@@ -30,7 +31,7 @@ namespace Colourful.Internals
         public double ConvertToLinear(in double nonLinearChannel)
         {
             var V = nonLinearChannel;
-            var v = Math.Pow(V, Gamma);
+            var v = Pow(V, Gamma);
             return v;
         }
 
@@ -38,7 +39,7 @@ namespace Colourful.Internals
         public double ConvertToNonLinear(in double linearChannel)
         {
             var v = linearChannel;
-            var V = Math.Pow(v, 1 / Gamma);
+            var V = Pow(v, 1 / Gamma);
             return V;
         }
 
