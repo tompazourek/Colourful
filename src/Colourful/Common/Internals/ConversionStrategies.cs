@@ -17,6 +17,8 @@ namespace Colourful.Internals
         )
         {
             yield return new HunterLabConversionStrategy();
+            yield return new JzazbzConversionStrategy();
+            yield return new JzCzhzConversionStrategy();
             yield return new LabConversionStrategy();
             yield return new LChabConversionStrategy();
             yield return new LChuvConversionStrategy();

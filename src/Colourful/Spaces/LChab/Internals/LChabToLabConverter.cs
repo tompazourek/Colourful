@@ -1,4 +1,4 @@
-﻿using static Colourful.LChFormulas;
+﻿using static Colourful.CylindricalFormulas;
 
 namespace Colourful.Internals
 {

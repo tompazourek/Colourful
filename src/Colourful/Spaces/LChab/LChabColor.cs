@@ -60,14 +60,14 @@ namespace Colourful
         /// Computes saturation of the color (chroma normalized by lightness).
         /// Ranges from 0 to 100.
         /// </summary>
-        public double Saturation => LChFormulas.GetSaturation(in L, in C);
+        public double Saturation => CylindricalFormulas.GetSaturation(in L, in C);
 
         /// <summary>
         /// Constructs the color using saturation instead of chromas.
         /// </summary>
         public static LChabColor FromSaturation(in double lightness, in double hue, in double saturation)
         {
-            var chroma = LChFormulas.GetChroma(in saturation, in lightness);
+            var chroma = CylindricalFormulas.GetChroma(in saturation, in lightness);
             return new LChabColor(in lightness, in chroma, in hue);
         }
 

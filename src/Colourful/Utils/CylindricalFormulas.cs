@@ -7,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// Formulas useful for cylindrical color spaces (<see cref="LChabColor" /> and <see cref="LChuvColor" />).
     /// </summary>
-    public static class LChFormulas
+    public static class CylindricalFormulas
     {
         /// <summary>
         /// Returns saturation of the color (chroma normalized by lightness).

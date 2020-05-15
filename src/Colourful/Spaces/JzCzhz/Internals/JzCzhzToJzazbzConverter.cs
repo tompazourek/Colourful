@@ -3,13 +3,13 @@
 namespace Colourful.Internals
 {
     /// <inheritdoc />
-    public class LChuvToLuvConverter : IColorConverter<LChuvColor, LuvColor>
+    public class JzCzhzToJzazbzConverter : IColorConverter<JzCzhzColor, JzazbzColor>
     {
         /// <inheritdoc />
-        public LuvColor Convert(in LChuvColor sourceColor)
+        public JzazbzColor Convert(in JzCzhzColor sourceColor)
         {
             var targetVector = ConvertFromLCh(sourceColor.Vector);
-            var targetColor = new LuvColor(in targetVector);
+            var targetColor = new JzazbzColor(in targetVector);
             return targetColor;
         }
     }
