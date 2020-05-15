@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CIE Delta-E 1976 formula

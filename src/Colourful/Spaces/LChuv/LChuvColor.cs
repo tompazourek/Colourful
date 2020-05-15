@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Colourful.Utils;
 
 namespace Colourful
 {
     /// <summary>
     /// CIE L*C*h°, cylindrical form of <see cref="LuvColor">CIE L*u*v* (1976)</see>
     /// </summary>
-    public readonly struct LChuvColor : IColorVector, IEquatable<LChuvColor>
+    public readonly struct LChuvColor : IColorSpace, IColorVector, IEquatable<LChuvColor>
     {
         #region Constructor
 

@@ -7,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*u*v* (1976) color
     /// </summary>
-    public readonly struct LuvColor : IColorVector, IEquatable<LuvColor>
+    public readonly struct LuvColor : IColorSpace, IColorVector, IEquatable<LuvColor>
     {
         #region Constructor
         

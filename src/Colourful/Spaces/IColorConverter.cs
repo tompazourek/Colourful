@@ -6,8 +6,8 @@
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TTarget"></typeparam>
     public interface IColorConverter<TSource, out TTarget>
-        where TSource : struct
-        where TTarget : struct
+        where TSource : IColorSpace
+        where TTarget : IColorSpace
     {
         /// <summary>
         /// Converts from the input color space to the output color space.

@@ -7,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE xyY color space (derived from <see cref="XYZColor" /> color space)
     /// </summary>
-    public readonly struct xyYColor : IColorVector, IEquatable<xyYColor>
+    public readonly struct xyYColor : IColorSpace, IColorVector, IEquatable<xyYColor>
     {
         #region Constructor
 

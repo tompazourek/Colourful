@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Colourful.RGBWorkingSpace;
-using Colourful.Utils;
+using Colourful.Internals;
 
 namespace Colourful
 {
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>, which has linear channels (not companded)
     /// </summary>
-    public readonly struct LinearRGBColor : IColorVector, IEquatable<LinearRGBColor>
+    public readonly struct LinearRGBColor : IColorSpace, IColorVector, IEquatable<LinearRGBColor>
     {
         #region Constructor
 

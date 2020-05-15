@@ -1,7 +1,7 @@
 ﻿using System;
-using Colourful.Utils;
+using Colourful.Internals;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CIE Delta-E 1994 formula

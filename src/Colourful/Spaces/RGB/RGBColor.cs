@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Colourful.RGBWorkingSpace;
-using Colourful.Utils;
+using Colourful.Internals;
 
 #if (DRAWING)
 using System.Drawing;
@@ -14,7 +13,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>
     /// </summary>
-    public readonly struct RGBColor : IColorVector, IEquatable<RGBColor>
+    public readonly struct RGBColor : IColorSpace, IColorVector, IEquatable<RGBColor>
     {
         #region Constructor
         

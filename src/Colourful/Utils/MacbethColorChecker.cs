@@ -1,6 +1,6 @@
 ﻿using ColorList = System.Collections.Generic.IReadOnlyList<Colourful.RGBColor>;
 
-namespace Colourful.Utils
+namespace Colourful
 {
     /// <summary>
     /// Colors of the Macbeth ColorChecker

@@ -6,7 +6,7 @@ namespace Colourful
     /// <summary>
     /// Hunter Lab color
     /// </summary>
-    public readonly struct HunterLabColor : IColorVector, IEquatable<HunterLabColor>
+    public readonly struct HunterLabColor : IColorSpace, IColorVector, IEquatable<HunterLabColor>
     {
         #region Constructor
         

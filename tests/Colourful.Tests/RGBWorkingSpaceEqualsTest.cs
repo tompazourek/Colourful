@@ -1,6 +1,4 @@
-﻿using Colourful.Implementation.RGB;
-using Colourful.RGBWorkingSpace;
-using Colourful.Utils;
+﻿using Colourful.Internals;
 using Xunit;
 
 namespace Colourful.Tests
@@ -12,11 +10,11 @@ namespace Colourful.Tests
     {
         private class AdobeRGB1998Duplicate : IRGBWorkingSpace
         {
-            public ICompanding Companding => new GammaCompanding(2.2);
+            public ICompanding Companding => new GammaCompanding(gamma: 2.2);
 
             public XYZColor WhitePoint => Illuminants.D65;
 
-            public RGBPrimaries ChromaticityCoordinates => new RGBPrimaries(new xyChromaticity(0.6400, 0.3300), new xyChromaticity(0.2100, 0.7100), new xyChromaticity(0.1500, 0.0600));
+            public RGBPrimaries Primaries => new RGBPrimaries(new xyChromaticity(x: 0.6400, y: 0.3300), new xyChromaticity(x: 0.2100, y: 0.7100), new xyChromaticity(x: 0.1500, y: 0.0600));
         }
 
         [Fact]

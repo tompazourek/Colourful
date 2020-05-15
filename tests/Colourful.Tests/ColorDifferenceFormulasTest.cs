@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Colourful.Difference;
 using Xunit;
 
 namespace Colourful.Tests
@@ -13,7 +12,7 @@ namespace Colourful.Tests
         private static readonly IEqualityComparer<double> DoubleComparerLabRounding = new DoubleRoundingComparer(4);
 
         /// <summary>
-        /// Tests <see cref="Difference.CIE76ColorDifference" />
+        /// Tests <see cref="Colourful.CIE76ColorDifference" />
         /// </summary>
         /// <remarks>
         /// Test data generated using:
@@ -88,7 +87,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Tests <see cref="Difference.CIEDE2000ColorDifference" />
+        /// Tests <see cref="Colourful.CIEDE2000ColorDifference" />
         /// </summary>
         /// <remarks>
         /// Test data from:

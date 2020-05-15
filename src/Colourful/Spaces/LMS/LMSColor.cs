@@ -7,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// LMS color space represented by the response of the three types of cones of the human eye
     /// </summary>
-    public readonly struct LMSColor : IColorVector, IEquatable<LMSColor>
+    public readonly struct LMSColor : IColorSpace, IColorVector, IEquatable<LMSColor>
     {
         #region Constructor
 

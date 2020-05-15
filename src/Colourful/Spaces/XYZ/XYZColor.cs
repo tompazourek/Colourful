@@ -7,7 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE 1931 XYZ color space
     /// </summary>
-    public readonly struct XYZColor : IColorVector, IEquatable<XYZColor>
+    public readonly struct XYZColor : IColorSpace, IColorVector, IEquatable<XYZColor>
     {
         #region Constructor
 

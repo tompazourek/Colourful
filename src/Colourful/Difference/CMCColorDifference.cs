@@ -1,7 +1,7 @@
 ﻿using System;
-using Colourful.Utils;
+using Colourful.Internals;
 
-namespace Colourful.Difference
+namespace Colourful
 {
     /// <summary>
     /// CMC l:c (1984) color difference
