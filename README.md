@@ -130,8 +130,8 @@ Colourful currently supports following color spaces (and conversions between eac
 * **CIE L\*C\*h°<sub>uv</sub>** *(CIELCH)*
 * **Hunter Lab**
 * **LMS** *(cone response)*
-* **J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>** *Safdar & al. (2017)*
-* **J<sub>z</sub>C<sub>z</sub>h<sub>z</sub>**
+* **J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>** *(Safdar & al., 2017)*
+* **J<sub>z</sub>C<sub>z</sub>h<sub>z</sub>** *(polar of J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>)*
 * *(user-defined color spaces)*
 
 <sup>* for more information, see: http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no</sup>
