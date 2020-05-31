@@ -32,11 +32,6 @@ namespace Colourful.Internals
 
             double Xr = _sourceWhitePoint.X, Yr = _sourceWhitePoint.Y, Zr = _sourceWhitePoint.Z;
 
-            // avoids XYZ coordinates out range (restricted by 0 and XYZ reference white)
-            xr = xr.CropRange(min: 0, max: 1);
-            yr = yr.CropRange(min: 0, max: 1);
-            zr = zr.CropRange(min: 0, max: 1);
-
             var X = xr * Xr;
             var Y = yr * Yr;
             var Z = zr * Zr;

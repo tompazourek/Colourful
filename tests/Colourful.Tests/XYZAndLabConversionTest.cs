@@ -26,7 +26,7 @@ namespace Colourful.Tests
         [InlineData(0, 0, -172.4138, 0, 0, 1.08883)]
         [InlineData(45.6398, 39.8753, 35.2091, 0.216938, 0.150041, 0.048850)]
         [InlineData(77.1234, -40.1235, 78.1120, 0.358530, 0.517372, 0.076273)]
-        [InlineData(10, -400, 20, 0, 0.011260, 0)]
+        [InlineData(10, -400, 20, -0.08712414334331052, 0.011260, -0.0019286340563368727)]
         public void Convert_Lab_to_XYZ(double l, double a, double b, double x, double y, double z)
         {
             // arrange
