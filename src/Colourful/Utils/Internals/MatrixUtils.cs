@@ -67,27 +67,5 @@
 
             return result;
         }
-
-        public static double[,] MultiplyBy(in double[,] matrix1, in double[,] matrix2)
-        {
-            var matrix1Length1 = matrix1.GetLength(dimension: 1);
-            var matrix1Length0 = matrix1.GetLength(dimension: 0);
-            var matrix2Length1 = matrix2.GetLength(dimension: 1);
-
-            var result = new double[matrix1Length0, matrix2Length1];
-
-            for (var i = 0; i < matrix1Length0; ++i) // each row of 1
-            {
-                for (var j = 0; j < matrix2Length1; ++j) // each column of 2
-                {
-                    for (var k = 0; k < matrix1Length1; ++k)
-                    {
-                        result[i, j] += matrix1[i, k] * matrix2[k, j];
-                    }
-                }
-            }
-
-            return result;
-        }
     }
 }
