@@ -15,9 +15,7 @@ namespace Colourful.Internals
         /// <param name="conversionStrategies">Conversion strategies to use.</param>
         public ConverterAbstractFactory(IEnumerable<IConversionStrategy> conversionStrategies)
         {
-            if (conversionStrategies == null) throw new ArgumentNullException(nameof(conversionStrategies));
-
-            _conversionStrategies = conversionStrategies.ToArray();
+            _conversionStrategies = (conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies))).ToArray();
         }
 
         /// <inheritdoc />

@@ -17,33 +17,27 @@ namespace Colourful
         /// </summary>
         public ConverterBuilder(IEnumerable<IConversionStrategy> conversionStrategies)
         {
-            if (conversionStrategies == null) throw new ArgumentNullException(nameof(conversionStrategies));
-            _converterAbstractFactory = new ConverterAbstractFactory(conversionStrategies);
+            _converterAbstractFactory = new ConverterAbstractFactory(conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies)));
         }
 
         /// <summary>
         /// Creates a builder with all the defaults (all built-in strategies).
         /// </summary>
         /// <param name="lmsTransformationMatrix">Optionally pick LMS transformation matrix (<see cref="LMSTransformationMatrix" />) used for LMS-XYZ conversion and chromatic adaptation for color spaces with different white points. If empty, <see cref="LMSTransformationMatrix.Bradford" /> will be used.</param>
-        public ConverterBuilder(double[,] lmsTransformationMatrix = null)
+        public ConverterBuilder(double[,] lmsTransformationMatrix = null) : this(ConversionStrategies.GetDefault(lmsTransformationMatrix))
         {
-            _converterAbstractFactory = new ConverterAbstractFactory(ConversionStrategies.GetDefault(lmsTransformationMatrix));
         }
 
         /// <summary>
         /// Creates a builder with all the defaults (all built-in strategies with default settings).
         /// </summary>
-        public ConverterBuilder()
+        public ConverterBuilder() : this(ConversionStrategies.GetDefault())
         {
-            _converterAbstractFactory = new ConverterAbstractFactory(ConversionStrategies.GetDefault());
         }
 
         /// <inheritdoc />
         public IFluentConverterBuilderFrom<TSource> From<TSource>(IConversionMetadata sourceMetadata) where TSource : IColorSpace
-        {
-            if (sourceMetadata == null) throw new ArgumentNullException(nameof(sourceMetadata));
-            return new FluentFrom<TSource>(_converterAbstractFactory, sourceMetadata);
-        }
+            => new FluentFrom<TSource>(_converterAbstractFactory, sourceMetadata ?? throw new ArgumentNullException(nameof(sourceMetadata)));
 
         private class FluentFrom<TSource> : IFluentConverterBuilderFrom<TSource>
             where TSource : IColorSpace
@@ -58,10 +52,7 @@ namespace Colourful
             }
 
             public IFluentConverterBuilderFromTo<TSource, TTarget> To<TTarget>(IConversionMetadata targetMetadata) where TTarget : IColorSpace
-            {
-                if (targetMetadata == null) throw new ArgumentNullException(nameof(targetMetadata));
-                return new FluentFromTo<TSource, TTarget>(_converterAbstractFactory, _sourceMetadata, targetMetadata);
-            }
+                => new FluentFromTo<TSource, TTarget>(_converterAbstractFactory, _sourceMetadata, targetMetadata ?? throw new ArgumentNullException(nameof(targetMetadata)));
         }
 
         private class FluentFromTo<TSource, TTarget> : IFluentConverterBuilderFromTo<TSource, TTarget>
