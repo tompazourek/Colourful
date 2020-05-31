@@ -38,7 +38,7 @@ namespace Colourful.Tests
         /// Data from: http://www.brucelindbloom.com/index.html?ColorCalculator.html
         /// </summary>
         // ReSharper disable once UnusedMember.Local
-        // Results are not precise enough.
+        // Results are for Robertson's method of CCT approximation.
         public static readonly IEnumerable<object[]> CCTData_Lindbloom = new[]
         {
             new object[] { 0.585719, 0.393121, 1500 },
