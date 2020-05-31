@@ -6,7 +6,7 @@ namespace Colourful
     /// <summary>
     /// CIE xy chromaticity space.
     /// </summary>
-    public readonly struct xyChromaticity : IColorVector, IEquatable<xyChromaticity>
+    public readonly struct xyChromaticity : IColorSpace, IColorVector, IEquatable<xyChromaticity>
     {
         /// <param name="x">Chromaticity x (usually from 0 to 1).</param>
         /// <param name="y">Chromaticity y (usually from 0 to 1).</param>

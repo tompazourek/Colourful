@@ -26,6 +26,7 @@ namespace Colourful.Internals
             yield return new LMSConversionStrategy(lmsTransformationMatrix ?? LMSTransformationMatrix.Bradford);
             yield return new LuvConversionStrategy();
             yield return new RGBConversionStrategy();
+            yield return new xyConversionStrategy();
             yield return new xyYConversionStrategy();
             yield return new XYZConversionStrategy();
         }
