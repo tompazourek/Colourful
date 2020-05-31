@@ -13,8 +13,7 @@ namespace Colourful.Tests
                 .ToLinearRGB()
                 .Build();
 
-            // ReSharper disable once UnusedVariable
-            var actual = converter.Convert(in defaultColor);
+            converter.Convert(in defaultColor);
         }
     }
 }
