@@ -1,7 +1,7 @@
 ﻿namespace Colourful.Internals
 {
     /// <inheritdoc />
-    public class XyYToXYZConverter : IColorConverter<xyYColor, XYZColor>
+    public class xyYToXYZConverter : IColorConverter<xyYColor, XYZColor>
     {
         /// <inheritdoc />
         public XYZColor Convert(in xyYColor sourceColor)

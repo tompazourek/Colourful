@@ -30,7 +30,7 @@ namespace Colourful.Internals
             {
                 if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
-                    return new XyYToXYZConverter() as IColorConverter<TSource, TTarget>;
+                    return new xyYToXYZConverter() as IColorConverter<TSource, TTarget>;
                 }
             }
             // XYZ{WP1} -> xyY{WP1}
