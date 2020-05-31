@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\src\Colourful\Colourful.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="*.DotSettings" />
+  </ItemGroup>
+
 </Project>

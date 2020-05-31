@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Colourful.Tests
 {
-    public class CCTTest
+    public class CCTConverterTest
     {
         /// <summary>
         /// Data from: http://en.wikipedia.org/wiki/Standard_illuminant#White_points_of_standard_illuminants
