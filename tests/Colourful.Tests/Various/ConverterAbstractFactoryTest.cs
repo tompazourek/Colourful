@@ -20,8 +20,8 @@ namespace Colourful.Tests
                 conversionAbstractFactory.CreateConverter<LabColor, XYZColor>(ConversionMetadata.Empty, ConversionMetadata.Empty);
             });
 
-            Assert.Equal(ex.SourceType, typeof(LabColor));
-            Assert.Equal(ex.TargetType, typeof(XYZColor));
+            Assert.Equal(typeof(LabColor), ex.SourceType);
+            Assert.Equal(typeof(XYZColor), ex.TargetType);
         }
     }
 }
