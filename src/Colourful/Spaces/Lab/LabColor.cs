@@ -81,9 +81,11 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator ==(LabColor left, LabColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator !=(LabColor left, LabColor right) => !Equals(left, right);
 
         #endregion

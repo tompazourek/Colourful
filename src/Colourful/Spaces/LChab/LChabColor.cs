@@ -98,9 +98,11 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator ==(LChabColor left, LChabColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator !=(LChabColor left, LChabColor right) => !Equals(left, right);
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Internals
 {
@@ -56,9 +57,11 @@ namespace Colourful.Internals
         }
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator ==(RGBPrimaries left, RGBPrimaries right) => left.Equals(right);
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator !=(RGBPrimaries left, RGBPrimaries right) => !left.Equals(right);
 
         #endregion

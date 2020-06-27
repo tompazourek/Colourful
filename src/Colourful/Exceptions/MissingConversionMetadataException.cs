@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Colourful.Internals;
 
@@ -16,6 +17,7 @@ namespace Colourful
         public string Key { get; }
 
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public MissingConversionMetadataException()
         {
         }
@@ -29,22 +31,27 @@ namespace Colourful
         }
 
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public MissingConversionMetadataException(string message)
             : base(message) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public MissingConversionMetadataException(string format, params object[] args)
             : base(string.Format(format, args)) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public MissingConversionMetadataException(string message, Exception innerException)
             : base(message, innerException) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public MissingConversionMetadataException(string format, Exception innerException, params object[] args)
             : base(string.Format(format, args), innerException) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         protected MissingConversionMetadataException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
     }

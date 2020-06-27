@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using static System.Math;
 
 namespace Colourful.Internals
@@ -45,9 +46,11 @@ namespace Colourful.Internals
         public override int GetHashCode() => typeof(Rec709Companding).GetHashCode();
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator ==(Rec709Companding left, Rec709Companding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator !=(Rec709Companding left, Rec709Companding right) => !Equals(left, right);
 
         #endregion

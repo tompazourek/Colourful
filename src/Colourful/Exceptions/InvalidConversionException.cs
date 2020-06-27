@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace Colourful
@@ -20,6 +21,7 @@ namespace Colourful
         public Type TargetType { get; }
 
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public InvalidConversionException()
         {
         }
@@ -34,22 +36,27 @@ namespace Colourful
         }
 
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public InvalidConversionException(string message)
             : base(message) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public InvalidConversionException(string format, params object[] args)
             : base(string.Format(format, args)) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public InvalidConversionException(string message, Exception innerException)
             : base(message, innerException) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         public InvalidConversionException(string format, Exception innerException, params object[] args)
             : base(string.Format(format, args), innerException) { }
     
         /// <inheritdoc />
+        [ExcludeFromCodeCoverage]
         protected InvalidConversionException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
     }

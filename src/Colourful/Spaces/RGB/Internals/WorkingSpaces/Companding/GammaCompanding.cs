@@ -60,9 +60,11 @@ namespace Colourful.Internals
         public override int GetHashCode() => Gamma.GetHashCode();
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator ==(GammaCompanding left, GammaCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+        [ExcludeFromCodeCoverage]
         public static bool operator !=(GammaCompanding left, GammaCompanding right) => !Equals(left, right);
     }
 }
