@@ -52,7 +52,7 @@ namespace Colourful.Internals
                     return converter;
             }
 
-            throw new InvalidOperationException("Conversion not possible according to registered strategies.");
+            throw new InvalidConversionException(typeof(TSource), typeof(TTarget));
         }
     }
 }

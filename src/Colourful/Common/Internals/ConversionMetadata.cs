@@ -9,6 +9,11 @@ namespace Colourful.Internals
         private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
 
         /// <summary>
+        /// No conversion metadata, empty instance.
+        /// </summary>
+        public static ConversionMetadata Empty = new ConversionMetadata();
+
+        /// <summary>
         /// Creates new instance given an array of items.
         /// </summary>
         /// <param name="setItems">Items to set as the metadata.</param>
