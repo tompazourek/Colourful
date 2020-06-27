@@ -196,3 +196,4 @@ Right now, the chromatic adaptation is performed in the LMS color space by using
 * CMC l:c (1984)
 * CIE Delta-E 1994
 * CIE Delta-E 2000
+* J<sub>z</sub>C<sub>z</sub>h<sub>z</sub> Delta-E<sub>z</sub>
