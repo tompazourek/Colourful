@@ -10,7 +10,7 @@ namespace Colourful.Tests
     /// </summary>
     /// <remarks>
     /// Test data generated using:
-    /// https://observablehq.com/@jrus/JzCzhz
+    /// https://observablehq.com/@jrus/jzazbz
     /// </remarks>
     public class XYZAndJzCzhzConversionTest
     {

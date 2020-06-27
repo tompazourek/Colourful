@@ -5,7 +5,7 @@ using Xunit;
 namespace Colourful.Tests
 {
     /// <summary>
-    /// Tests <see cref="XYZColor" />-<see cref="LabColor" /> conversions.
+    /// Tests <see cref="XYZColor" />-<see cref="HunterLabColor" /> conversions.
     /// </summary>
     /// <remarks>
     /// Test data generated using:
@@ -13,7 +13,7 @@ namespace Colourful.Tests
     /// </remarks>
     public class XYZAndHunterLabConversionTest
     {
-        private static readonly IEqualityComparer<double> DoubleComparerLabPrecision = new DoubleRoundingComparer(precision: 3);
+        private static readonly IEqualityComparer<double> DoubleComparerHunterLabPrecision = new DoubleRoundingComparer(precision: 3);
         private static readonly IEqualityComparer<double> DoubleComparerXYZPrecision = new DoubleRoundingComparer(precision: 3);
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        [InlineData(100, 0, 0, 0.98074, 1, 1.18232)] // C white point is HunerLab 100, 0, 0
+        [InlineData(100, 0, 0, 0.98074, 1, 1.18232)] // C white point is HunterLab 100, 0, 0
         public void Convert_HunterLab_to_XYZ(double l, double a, double b, double x, double y, double z)
         {
             // arrange
@@ -45,7 +45,7 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        [InlineData(0.98074, 1, 1.18232, 100, 0, 0)] // C white point is HunerLab 100, 0, 0
+        [InlineData(0.98074, 1, 1.18232, 100, 0, 0)] // C white point is HunterLab 100, 0, 0
         public void Convert_XYZ_to_HunterLab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
@@ -59,9 +59,9 @@ namespace Colourful.Tests
             var output = converter.Convert(in input);
 
             // assert
-            Assert.Equal(l, output.L, DoubleComparerLabPrecision);
-            Assert.Equal(a, output.a, DoubleComparerLabPrecision);
-            Assert.Equal(b, output.b, DoubleComparerLabPrecision);
+            Assert.Equal(l, output.L, DoubleComparerHunterLabPrecision);
+            Assert.Equal(a, output.a, DoubleComparerHunterLabPrecision);
+            Assert.Equal(b, output.b, DoubleComparerHunterLabPrecision);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        [InlineData(100, 0, 0, 0.95047, 1, 1.08883)] // D65 white point is HunerLab 100, 0, 0 (adaptation to C performed)
+        [InlineData(100, 0, 0, 0.95047, 1, 1.08883)] // D65 white point is HunterLab 100, 0, 0 (adaptation to C performed)
         public void Convert_HunterLab_to_XYZ_D65(double l, double a, double b, double x, double y, double z)
         {
             // arrange
@@ -93,7 +93,7 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        [InlineData(0.95047, 1, 1.08883, 100, 0, 0)] // D65 white point is HunerLab 100, 0, 0 (adaptation to C performed)
+        [InlineData(0.95047, 1, 1.08883, 100, 0, 0)] // D65 white point is HunterLab 100, 0, 0 (adaptation to C performed)
         public void Convert_XYZ_D65_to_HunterLab(double x, double y, double z, double l, double a, double b)
         {
             // arrange
@@ -107,9 +107,9 @@ namespace Colourful.Tests
             var output = converter.Convert(in input);
 
             // assert
-            Assert.Equal(l, output.L, DoubleComparerLabPrecision);
-            Assert.Equal(a, output.a, DoubleComparerLabPrecision);
-            Assert.Equal(b, output.b, DoubleComparerLabPrecision);
+            Assert.Equal(l, output.L, DoubleComparerHunterLabPrecision);
+            Assert.Equal(a, output.a, DoubleComparerHunterLabPrecision);
+            Assert.Equal(b, output.b, DoubleComparerHunterLabPrecision);
         }
     }
 }
