@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Colourful.Internals;
 using Xunit;
 
 namespace Colourful.Tests
@@ -71,6 +72,20 @@ namespace Colourful.Tests
             Assert.Equal(l, output.L, DoubleComparerLabPrecision);
             Assert.Equal(a, output.a, DoubleComparerLabPrecision);
             Assert.Equal(b, output.b, DoubleComparerLabPrecision);
+        }
+        
+        /// <summary>
+        /// Tests conversion from <see cref="XYZColor" /> to <see cref="LabColor" /> and checks that it requires a white point.
+        /// </summary>
+        [Fact]
+        public void Convert_XYZ_to_Lab_RequiredWhitePoint()
+        {
+            var ex = Assert.Throws<MissingConversionMetadataException>(() =>
+            {
+                new ConverterBuilder().FromXYZ().ToLab().Build();
+            });
+
+            Assert.Equal(ex.Key, ConversionMetadataKeys.WhitePoint);
         }
     }
 }

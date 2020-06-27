@@ -26,7 +26,7 @@ namespace Colourful.Internals
         /// Helper extension method to get <see cref="ConversionMetadataKeys.WhitePoint" />
         /// </summary>
         public static XYZColor GetWhitePointRequired(this IConversionMetadata node)
-            => node.GetWhitePoint() ?? throw new InvalidOperationException("White point is not specified, but is required for the conversion.");
+            => node.GetWhitePoint() ?? throw new MissingConversionMetadataException("White point is not specified, but is required for the conversion.", ConversionMetadataKeys.WhitePoint);
 
         /// <summary>
         /// Returns true if the nodes have the same white point.
@@ -60,7 +60,7 @@ namespace Colourful.Internals
         /// Helper extension method to get <see cref="ConversionMetadataKeys.RGBPrimaries" />
         /// </summary>
         public static RGBPrimaries GetRGBPrimariesRequired(this IConversionMetadata node)
-            => node.GetRGBPrimaries() ?? throw new InvalidOperationException("RGB primaries of the working space are not specified, but are required for the conversion.");
+            => node.GetRGBPrimaries() ?? throw new MissingConversionMetadataException("RGB primaries of the working space are not specified, but are required for the conversion.", ConversionMetadataKeys.RGBPrimaries);
 
         /// <summary>
         /// Returns true if the nodes have the same RGB primaries.
@@ -94,7 +94,7 @@ namespace Colourful.Internals
         /// Helper extension method to get <see cref="ConversionMetadataKeys.Companding" />
         /// </summary>
         public static ICompanding GetCompandingRequired(this IConversionMetadata node)
-            => node.GetCompanding() ?? throw new InvalidOperationException("Companding of the RGB working space is not specified, but is required for the conversion.");
+            => node.GetCompanding() ?? throw new MissingConversionMetadataException("Companding of the RGB working space is not specified, but is required for the conversion.", ConversionMetadataKeys.Companding);
 
         /// <summary>
         /// Returns true if the nodes have the same companding.
