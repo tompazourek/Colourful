@@ -101,6 +101,7 @@ namespace Colourful
             if (h_prime1 - h_prime0 < -180)
                 return h_prime1 - h_prime0 + 360;
 
+            // this won't ever happen
             return 0;
         }
 
@@ -121,6 +122,7 @@ namespace Colourful
             if (Abs(h_prime0 - h_prime1) > 180 && h_prime0 + h_prime1 >= 360)
                 return (h_prime0 + h_prime1 - 360) / 2;
 
+            // this won't ever happen
             return h_prime0 + h_prime1;
         }
     }
