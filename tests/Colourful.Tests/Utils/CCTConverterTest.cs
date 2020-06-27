@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Colourful.Tests.Comparers;
 using Xunit;
 
 namespace Colourful.Tests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     /// <summary>
     /// Compares two doubles using delta difference.

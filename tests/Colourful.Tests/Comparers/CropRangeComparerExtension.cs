@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     public static class CropRangeComparerExtension
     {

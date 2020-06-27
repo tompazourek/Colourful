@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     /// <summary>
     /// Compares two color vectors.

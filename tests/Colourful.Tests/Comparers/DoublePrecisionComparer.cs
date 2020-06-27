@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     /// <summary>
     /// Compares two doubles and takes only specific number of fractional digits into account.
