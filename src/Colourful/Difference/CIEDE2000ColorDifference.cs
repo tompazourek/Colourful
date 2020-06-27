@@ -92,38 +92,35 @@ namespace Colourful
             if (C_prime0 * C_prime1 == 0d)
                 return 0;
 
-            if (Abs(h_prime1 - h_prime0) <= 180)
-                return h_prime1 - h_prime0;
+            var delta = h_prime1 - h_prime0;
+            if (Abs(delta) <= 180)
+                return delta;
 
-            if (h_prime1 - h_prime0 > 180)
-                return h_prime1 - h_prime0 - 360;
+            if (delta > 180)
+                return delta - 360;
 
-            if (h_prime1 - h_prime0 < -180)
-                return h_prime1 - h_prime0 + 360;
-
-            // this won't ever happen
-            return 0;
+            // note: no need to check for (delta < -180), it's always true
+            return delta + 360;
         }
 
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private static double Calculate_h_prime_mean(in double h_prime0, in double h_prime1, in double C_prime0, in double C_prime1)
         {
             // eq. (14)
+            var sum = h_prime0 + h_prime1;
             if (C_prime0 * C_prime1 == 0d)
-                return h_prime0 + h_prime1;
+                return sum;
 
-            if (Abs(h_prime0 - h_prime1) <= 180)
-                return (h_prime0 + h_prime1) / 2;
+            var delta = h_prime0 - h_prime1;
+            if (Abs(delta) <= 180)
+                return sum / 2;
 
-            if (Abs(h_prime0 - h_prime1) > 180 &&
-                h_prime0 + h_prime1 < 360)
-                return (h_prime0 + h_prime1 + 360) / 2;
+            if (Abs(delta) > 180 &&
+                sum < 360)
+                return (sum + 360) / 2;
 
-            if (Abs(h_prime0 - h_prime1) > 180 && h_prime0 + h_prime1 >= 360)
-                return (h_prime0 + h_prime1 - 360) / 2;
-
-            // this won't ever happen
-            return h_prime0 + h_prime1;
+            // note: no need to check for (Abs(delta) > 180 && sum >= 360), it's always true
+            return (sum - 360) / 2;
         }
     }
 }
