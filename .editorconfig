@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# CA1814: Prefer jagged arrays over multidimensional
+# Justification: Intentionally multidimensional
+dotnet_diagnostic.CA1814.severity = none
+
+# CA1062: Validate arguments of public methods
+# Justification: Not dealing with these at the moment (maybe adopt the C# nullable instead?)
+dotnet_diagnostic.CA1062.severity = none
+
+# CA1303: Do not pass literals as localized parameters
+# Justification: No localization support
+dotnet_diagnostic.CA1303.severity = none

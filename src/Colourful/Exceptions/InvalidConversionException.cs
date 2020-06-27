@@ -8,6 +8,7 @@ namespace Colourful
     /// Exception when trying to create a converter for an impossible conversion.
     /// </summary>
     [Serializable]
+    [SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Using the default exception formatting.")]
     public class InvalidConversionException : Exception
     {
         /// <summary>

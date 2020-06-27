@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// LMS color space represented by the response of the three types of cones of the human eye.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct LMSColor : IColorSpace, IColorVector, IEquatable<LMSColor>
     {
         #region Constructor
@@ -50,6 +51,7 @@ namespace Colourful
         public readonly double S;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { L, M, S };
 
         #endregion

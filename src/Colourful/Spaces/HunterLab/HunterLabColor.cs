@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// Hunter Lab color.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct HunterLabColor : IColorSpace, IColorVector, IEquatable<HunterLabColor>
     {
         #region Constructor
@@ -51,7 +52,9 @@ namespace Colourful
         /// </summary>
         public readonly double b;
 
+
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { L, a, b };
 
         #endregion

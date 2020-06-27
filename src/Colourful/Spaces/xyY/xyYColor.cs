@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE xyY color space (derived from <see cref="XYZColor" /> color space).
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct xyYColor : IColorSpace, IColorVector, IEquatable<xyYColor>
     {
         #region Constructor
@@ -62,6 +63,7 @@ namespace Colourful
         public xyChromaticity Chromaticity => new xyChromaticity(in x, in y);
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { x, y, Luminance };
 
         #endregion

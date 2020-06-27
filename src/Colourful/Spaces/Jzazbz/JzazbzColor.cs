@@ -8,6 +8,7 @@ namespace Colourful
     /// Jz az bz color space introduced in Safdar &amp; al. (2017).
     /// See: https://www.osapublishing.org/oe/abstract.cfm?uri=oe-25-13-15131
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct JzazbzColor : IColorSpace, IColorVector, IEquatable<JzazbzColor>
     {
         #region Constructor
@@ -50,6 +51,7 @@ namespace Colourful
         public readonly double bz;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { Jz, az, bz };
 
         #endregion

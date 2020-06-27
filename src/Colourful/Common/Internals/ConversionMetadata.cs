@@ -11,7 +11,7 @@ namespace Colourful.Internals
         /// <summary>
         /// No conversion metadata, empty instance.
         /// </summary>
-        public static ConversionMetadata Empty = new ConversionMetadata();
+        public static readonly ConversionMetadata Empty = new ConversionMetadata();
 
         /// <summary>
         /// Creates new instance given an array of items.

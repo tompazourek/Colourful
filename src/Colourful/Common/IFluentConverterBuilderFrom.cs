@@ -1,4 +1,5 @@
-﻿using Colourful.Internals;
+﻿using System.Diagnostics.CodeAnalysis;
+using Colourful.Internals;
 
 namespace Colourful
 {
@@ -17,6 +18,7 @@ namespace Colourful
         /// <typeparam name="TTarget">Target space.</typeparam>
         /// <param name="targetMetadata">Metadata about the target space.</param>
         /// <returns>Fluent interface.</returns>
+        [SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "Need this for a really fluent interface.")]
         IFluentConverterBuilderFromTo<TSource, TTarget> To<TTarget>(IConversionMetadata targetMetadata)
             where TTarget : IColorSpace;
     }

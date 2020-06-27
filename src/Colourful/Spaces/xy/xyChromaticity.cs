@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE xy chromaticity space.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct xyChromaticity : IColorSpace, IColorVector, IEquatable<xyChromaticity>
     {
         /// <param name="x">Chromaticity x (usually from 0 to 1).</param>
@@ -36,6 +37,7 @@ namespace Colourful
         public readonly double y;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { x, y };
 
         #region Equality

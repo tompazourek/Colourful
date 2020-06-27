@@ -12,6 +12,7 @@ namespace Colourful
     /// <summary>
     /// RGB color with specified <see cref="IRGBWorkingSpace">working space</see>.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct RGBColor : IColorSpace, IColorVector, IEquatable<RGBColor>
     {
         #region Constructor
@@ -63,6 +64,7 @@ namespace Colourful
         public readonly double B;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { R, G, B };
 
         #endregion

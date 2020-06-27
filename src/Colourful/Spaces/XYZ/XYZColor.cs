@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE 1931 XYZ color space.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct XYZColor : IColorSpace, IColorVector, IEquatable<XYZColor>
     {
         #region Constructor
@@ -50,6 +51,7 @@ namespace Colourful
         public readonly double Z;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { X, Y, Z };
 
         #endregion

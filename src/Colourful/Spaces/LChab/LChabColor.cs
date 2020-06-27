@@ -7,6 +7,7 @@ namespace Colourful
     /// <summary>
     /// CIE L*C*h°, cylindrical form of <see cref="LabColor">CIE L*a*b* (1976)</see>.
     /// </summary>
+    [SuppressMessage("Design", "CA1051:Do not declare visible instance fields", Justification = "They're immutable, and we don't need getters.")]
     public readonly struct LChabColor : IColorSpace, IColorVector, IEquatable<LChabColor>
     {
         #region Constructor
@@ -50,6 +51,7 @@ namespace Colourful
         public readonly double h;
 
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Array for performance reasons.")]
         public double[] Vector => new[] { L, C, h };
 
         #endregion
