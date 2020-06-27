@@ -6,9 +6,6 @@ namespace Colourful
     /// <summary>
     /// Delta Ez color difference for JzCzhz color space.
     /// </summary>
-    /// <remarks>
-    /// Equations: http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CMC.html
-    /// </remarks>
     public sealed class JzCzhzDEzColorDifference : IColorDifference<JzCzhzColor>
     {
         /// <inheritdoc />
