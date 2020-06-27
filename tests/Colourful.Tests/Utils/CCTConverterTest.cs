@@ -64,7 +64,7 @@ namespace Colourful.Tests
 
         [Theory]
         [MemberData(nameof(CCTData_Wikipedia))]
-        public void CCTFromChromaticity(double x, double y, double expectedCCT)
+        public void CCTFromChromaticity_WikipediaData(double x, double y, double expectedCCT)
         {
             // arrange
             var chromaticity = new xyChromaticity(in x, in y);
@@ -80,7 +80,36 @@ namespace Colourful.Tests
 
         [Theory]
         [MemberData(nameof(CCTData_Wikipedia))]
-        public void ChromaticityFromCCT(double expectedX, double expectedY, double cct)
+        public void ChromaticityFromCCT_WikipediaData(double expectedX, double expectedY, double cct)
+        {
+            // action
+            var chromaticity = CCTConverter.GetChromaticityOfCCT(in cct);
+
+            // assert
+            var deltaComparer = new DoubleDeltaComparer(delta: 0.02);
+            Assert.Equal(expectedX, chromaticity.x, deltaComparer);
+            Assert.Equal(expectedY, chromaticity.y, deltaComparer);
+        }
+        
+        [Theory]
+        [MemberData(nameof(CCTData_Lindbloom))]
+        public void CCTFromChromaticity_LindbloomData(double x, double y, double expectedCCT)
+        {
+            // arrange
+            var chromaticity = new xyChromaticity(in x, in y);
+
+            // action
+            var cct = CCTConverter.GetCCTOfChromaticity(in chromaticity);
+
+            // assert
+            Debug.WriteLine($"CCT {cct} K (difference {Math.Abs(expectedCCT - cct)} K)");
+            var deltaComparer = new DoubleDeltaComparer(delta: 624); // uses a different method (Robertsons) => very big differences
+            Assert.Equal(expectedCCT, cct, deltaComparer);
+        }
+
+        [Theory]
+        [MemberData(nameof(CCTData_Lindbloom))]
+        public void ChromaticityFromCCT_LindbloomData(double expectedX, double expectedY, double cct)
         {
             // action
             var chromaticity = CCTConverter.GetChromaticityOfCCT(in cct);
