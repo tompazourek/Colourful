@@ -15,10 +15,13 @@ namespace Colourful.Tests
             var conversionAbstractFactory = new ConverterAbstractFactory(conversionStrategies);
 
             // action & assert
-            Assert.Throws<InvalidConversionException>(() =>
+            var ex = Assert.Throws<InvalidConversionException>(() =>
             {
                 conversionAbstractFactory.CreateConverter<LabColor, XYZColor>(ConversionMetadata.Empty, ConversionMetadata.Empty);
             });
+
+            Assert.Equal(ex.SourceType, typeof(LabColor));
+            Assert.Equal(ex.TargetType, typeof(XYZColor));
         }
     }
 }
