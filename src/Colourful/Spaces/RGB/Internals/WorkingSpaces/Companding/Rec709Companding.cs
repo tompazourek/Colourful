@@ -42,7 +42,7 @@ namespace Colourful.Internals
         public override bool Equals(object obj) => obj is Rec709Companding;
 
         /// <inheritdoc />
-        public override int GetHashCode() => 1;
+        public override int GetHashCode() => typeof(Rec709Companding).GetHashCode();
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(Rec709Companding left, Rec709Companding right) => Equals(left, right);

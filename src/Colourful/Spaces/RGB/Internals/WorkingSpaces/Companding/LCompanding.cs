@@ -47,7 +47,7 @@ namespace Colourful.Internals
         public override bool Equals(object obj) => obj is LCompanding;
 
         /// <inheritdoc />
-        public override int GetHashCode() => 1;
+        public override int GetHashCode() => typeof(LCompanding).GetHashCode();
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(LCompanding left, LCompanding right) => Equals(left, right);

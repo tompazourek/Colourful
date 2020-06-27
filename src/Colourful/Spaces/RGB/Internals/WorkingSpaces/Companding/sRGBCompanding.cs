@@ -44,7 +44,7 @@ namespace Colourful.Internals
         public override bool Equals(object obj) => obj is sRGBCompanding;
 
         /// <inheritdoc />
-        public override int GetHashCode() => 1;
+        public override int GetHashCode() => typeof(sRGBCompanding).GetHashCode();
 
         /// <inheritdoc cref="object" />
         public static bool operator ==(sRGBCompanding left, sRGBCompanding right) => Equals(left, right);

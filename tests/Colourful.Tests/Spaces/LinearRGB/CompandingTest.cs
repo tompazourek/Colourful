@@ -102,5 +102,52 @@ namespace Colourful.Tests
             Assert.Equal(expected, actual, DoubleComparer);
             Assert.Equal(input, loopback, DoubleComparer);
         }
+
+        [Fact]
+        public void ComplexCompandingEqualityTest()
+        {
+            var compandings1 = new List<ICompanding>
+            {
+                new LCompanding(),
+                new Rec2020Companding(),
+                new Rec709Companding(),
+                new sRGBCompanding(),
+                new GammaCompanding(gamma: 2.0),
+                new GammaCompanding(gamma: 3.0),
+            };
+
+            // same as above, separate instances
+            var compandings2 = new List<ICompanding>
+            {
+                new LCompanding(),
+                new Rec2020Companding(),
+                new Rec709Companding(),
+                new sRGBCompanding(),
+                new GammaCompanding(gamma: 2.0),
+                new GammaCompanding(gamma: 3.0),
+            };
+
+            // check that same are the same and different are different
+            for (var i = 0; i < compandings1.Count; i++)
+            {
+                var c1 = compandings1[i];
+
+                for (var j = 0; j < compandings2.Count; j++)
+                {
+                    var c2 = compandings2[j];
+
+                    if (i == j)
+                    {
+                        Assert.True(c1.Equals(c2));
+                        Assert.Equal(c1.GetHashCode(), c2.GetHashCode());
+                    }
+                    else
+                    {
+                        Assert.False(c1.Equals(c2));
+                        Assert.NotEqual(c1.GetHashCode(), c2.GetHashCode());
+                    }
+                }
+            }
+        }
     }
 }
