@@ -26,21 +26,9 @@ namespace Colourful
         /// <summary>
         /// Constructs with given recommended threshold parameters.
         /// </summary>
-        public CMCColorDifference(in CMCColorDifferenceThreshold threshold)
+        public CMCColorDifference(in CMCColorDifferenceThreshold threshold) 
+            : this(threshold == Acceptability ? 2 : 1, 1)
         {
-            switch (threshold)
-            {
-                case Acceptability:
-                    _l = 2;
-                    _c = 1;
-                    break;
-                case Imperceptibility:
-                    _l = 1;
-                    _c = 1;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(threshold));
-            }
         }
 
         /// <summary>

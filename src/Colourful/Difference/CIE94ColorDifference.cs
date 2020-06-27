@@ -34,20 +34,18 @@ namespace Colourful
         /// <param name="application">A <see cref="CIE94ColorDifferenceApplication" /> value specifying the application area. Different weighting factors are used in the computation depending on the application.</param>
         public CIE94ColorDifference(in CIE94ColorDifferenceApplication application)
         {
-            switch (application)
+            if (application == Textiles)
             {
-                case GraphicArts:
-                    KL = 1;
-                    K1 = 0.045;
-                    K2 = 0.015;
-                    break;
-                case Textiles:
-                    KL = 2;
-                    K1 = 0.048;
-                    K2 = 0.014;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(application));
+                KL = 2;
+                K1 = 0.048;
+                K2 = 0.014;
+            }
+            else
+            {
+                // GraphicArts
+                KL = 1;
+                K1 = 0.045;
+                K2 = 0.015;
             }
         }
 

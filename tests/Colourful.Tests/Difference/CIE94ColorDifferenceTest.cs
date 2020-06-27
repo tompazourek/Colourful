@@ -27,7 +27,7 @@ namespace Colourful.Tests
             var y = new LabColor(in l2, in a2, in b2);
 
             // act
-            var deltaE = new CIE94ColorDifference(CIE94ColorDifferenceApplication.GraphicArts).ComputeDifference(in x, in y);
+            var deltaE = new CIE94ColorDifference().ComputeDifference(in x, in y);
 
             // assert
             Assert.Equal(expectedDeltaE, deltaE, DoubleComparerLabPrecision);
