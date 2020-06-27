@@ -16,6 +16,12 @@ namespace Colourful
             this.x = x;
             this.y = y;
         }
+        
+        /// <param name="vector"><see cref="Vector" />, expected 2 dimensions.</param>
+        public xyChromaticity(in double[] vector)
+            : this(in vector[0], in vector[1])
+        {
+        }
 
         /// <summary>
         /// Chromaticity x.

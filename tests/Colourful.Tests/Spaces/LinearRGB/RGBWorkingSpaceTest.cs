@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks.Dataflow;
 using Colourful.Internals;
+using Colourful.Tests.Assertions;
 using Xunit;
 using static Colourful.RGBWorkingSpaces;
 
@@ -139,13 +139,11 @@ namespace Colourful.Tests
 
                     if (i == j)
                     {
-                        Assert.True(s1.Equals(s2));
-                        Assert.Equal(s1.GetHashCode(), s2.GetHashCode());
+                        CustomAssert.EqualsWithHashCode(s1, s2);
                     }
                     else
                     {
-                        Assert.False(s1.Equals(s2));
-                        Assert.NotEqual(s1.GetHashCode(), s2.GetHashCode());
+                        CustomAssert.NotEqualsWithHashCode(s1, s2);
                     }
                 }
             }
