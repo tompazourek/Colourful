@@ -51,11 +51,15 @@ namespace Colourful.Internals
         public override int GetHashCode() => typeof(LCompanding).GetHashCode();
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(LCompanding left, LCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(LCompanding left, LCompanding right) => !Equals(left, right);
 
         #endregion

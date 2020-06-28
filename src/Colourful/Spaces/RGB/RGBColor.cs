@@ -91,11 +91,15 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(RGBColor left, RGBColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(RGBColor left, RGBColor right) => !Equals(left, right);
 
         #endregion
@@ -115,8 +119,12 @@ namespace Colourful
 
         #endregion
 
-#if (DRAWING)
-        #region Color conversions
+#if DRAWING
+
+        /// <summary>
+        /// Creates RGB color from 8-bit channels.
+        /// </summary>
+        public static RGBColor FromColor(in Color color) => FromRGB8bit(color.R, color.G, color.B);
 
         /// <summary>
         /// Convert to <see cref="System.Drawing.Color" />.
@@ -128,9 +136,9 @@ namespace Colourful
         /// </summary>
         public static implicit operator Color(RGBColor input)
         {
-            var r = (byte)Math.Round(input.R * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
-            var g = (byte)Math.Round(input.G * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
-            var b = (byte)Math.Round(input.B * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
+            var r = (byte)RangeHelper.CropRange(Math.Round(input.R * 255, MidpointRounding.AwayFromZero), 0, 255);
+            var g = (byte)RangeHelper.CropRange(Math.Round(input.G * 255, MidpointRounding.AwayFromZero), 0, 255);
+            var b = (byte)RangeHelper.CropRange(Math.Round(input.B * 255, MidpointRounding.AwayFromZero), 0, 255);
             var output = Color.FromArgb(r, g, b);
             return output;
         }
@@ -139,8 +147,6 @@ namespace Colourful
         /// Convert from <see cref="System.Drawing.Color" />.
         /// </summary>
         public static explicit operator RGBColor(Color color) => new RGBColor(in color);
-
-        #endregion
 #endif
 
         #region Overrides

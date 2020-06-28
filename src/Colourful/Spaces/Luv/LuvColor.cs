@@ -81,11 +81,15 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(LuvColor left, LuvColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(LuvColor left, LuvColor right) => !Equals(left, right);
 
         #endregion

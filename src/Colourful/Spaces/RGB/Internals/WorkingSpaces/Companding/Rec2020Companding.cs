@@ -51,11 +51,15 @@ namespace Colourful.Internals
         public override int GetHashCode() => typeof(Rec2020Companding).GetHashCode();
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(Rec2020Companding left, Rec2020Companding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(Rec2020Companding left, Rec2020Companding right) => !Equals(left, right);
 
         #endregion

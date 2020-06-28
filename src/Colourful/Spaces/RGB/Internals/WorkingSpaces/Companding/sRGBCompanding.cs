@@ -48,11 +48,15 @@ namespace Colourful.Internals
         public override int GetHashCode() => typeof(sRGBCompanding).GetHashCode();
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(sRGBCompanding left, sRGBCompanding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(sRGBCompanding left, sRGBCompanding right) => !Equals(left, right);
 
         #endregion

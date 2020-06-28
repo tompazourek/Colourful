@@ -57,11 +57,15 @@ namespace Colourful.Internals
         }
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator ==(RGBPrimaries left, RGBPrimaries right) => left.Equals(right);
 
         /// <inheritdoc cref="object" />
+#if !NETSTANDARD10
         [ExcludeFromCodeCoverage]
+#endif
         public static bool operator !=(RGBPrimaries left, RGBPrimaries right) => !left.Equals(right);
 
         #endregion
