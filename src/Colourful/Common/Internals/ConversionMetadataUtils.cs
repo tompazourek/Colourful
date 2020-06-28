@@ -88,6 +88,7 @@ namespace Colourful.Internals
         /// Helper extension method to get <see cref="ConversionMetadataKeys.Companding" /> as Key-Value pair.
         /// </summary>
         public static KeyValuePair<string, object> GetCompandingItem(this IConversionMetadata node)
+            // note: this might not be needed at the moment
             => new KeyValuePair<string, object>(ConversionMetadataKeys.Companding, node.GetCompanding());
 
         /// <summary>

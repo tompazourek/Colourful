@@ -97,6 +97,7 @@ namespace Colourful.Internals
                 // any{WP1} -> LMS{WP1} = any{WP1} -> XYZ{WP1} -> LMS{WP1}
                 if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
                 {
+                    // note: this might never get called at the moment, as other rules will always take precedence
                     var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
                     var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
                     var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);

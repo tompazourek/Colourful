@@ -147,6 +147,8 @@ namespace Colourful.Tests
                         CustomAssert.NotEqualsWithHashCode(c1, c2);
                     }
                 }
+
+                CustomAssert.NotEqualsWithHashCode(c1, (ICompanding)null);
             }
         }
     }

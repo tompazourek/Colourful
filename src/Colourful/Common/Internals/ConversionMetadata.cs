@@ -36,6 +36,7 @@ namespace Colourful.Internals
 
         /// <inheritdoc />
         public IConversionMetadata CloneWith(params KeyValuePair<string, object>[] setItems)
+            // note: this might not be used currently
             => new ConversionMetadata(_items.Concat(setItems).ToArray());
     }
 }
