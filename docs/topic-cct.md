@@ -55,9 +55,9 @@ double temperature = CCTConverter.GetCCTOfChromaticity(chromaticity); // 1293 K
 The results are unfortunately not too precise and sometimes you might end up with values outside of the expected range.
 
 
-### McCamy cubic approximation
+### Low-temperature CCT approximation equation
 
-To approximate CCT from chromaticity, Colourful currently uses cubic approximation method proposed by McCamy. The algorithm is described [here](https://en.wikipedia.org/wiki/Color_temperature#Approximation).
+To approximate CCT from chromaticity, Colourful currently uses low-temperature equation proposed by J. Hernández-Andrés, R. L. Lee, and J. Romero. The algorithm is described [here](https://en.wikipedia.org/wiki/Color_temperature#Approximation).
 
 Alternative methods aren't yet implemented (see [#74](https://github.com/tompazourek/Colourful/issues/74)).
 
