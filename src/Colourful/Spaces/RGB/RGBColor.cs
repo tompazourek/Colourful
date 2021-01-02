@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Colourful.Internals;
 using static System.Math;
+using static System.MidpointRounding;
 
 #if (DRAWING)
 using System.Drawing;
@@ -115,9 +116,9 @@ namespace Colourful
         public static RGBColor FromGrey(in double value) => new RGBColor(in value, in value, in value);
 
         /// <summary>
-        /// Creates RGB color from 8-bit channels.
+        /// Creates RGB color from 8-bit channels ranging from 0 to 255.
         /// </summary>
-        public static RGBColor FromRGB8bit(in byte red, in byte green, in byte blue) => new RGBColor(red / 255d, green / 255d, blue / 255d);
+        public static RGBColor FromRGB8Bit(in byte r, in byte g, in byte b) => new RGBColor(r / 255d, g / 255d, b / 255d);
 
         #endregion
 
@@ -126,7 +127,7 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color from 8-bit channels.
         /// </summary>
-        public static RGBColor FromColor(in Color color) => FromRGB8bit(color.R, color.G, color.B);
+        public static RGBColor FromColor(in Color color) => FromRGB8Bit(color.R, color.G, color.B);
 
         /// <summary>
         /// Convert to <see cref="System.Drawing.Color" />.
@@ -138,9 +139,7 @@ namespace Colourful
         /// </summary>
         public static implicit operator Color(RGBColor input)
         {
-            var r = (byte)Math.Round(input.R * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
-            var g = (byte)Math.Round(input.G * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
-            var b = (byte)Math.Round(input.B * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
+            input.ToRGB8Bit(out var r, out var g, out var b);
             var output = Color.FromArgb(r, g, b);
             return output;
         }
@@ -161,6 +160,16 @@ namespace Colourful
             r = R;
             g = G;
             b = B;
+        }
+
+        /// <summary>
+        /// Returns channel values as 8-bit values ranging from 0 to 255.
+        /// </summary>
+        public void ToRGB8Bit(out byte r, out byte g, out byte b)
+        {
+            r = (byte)Round(R * 255, AwayFromZero).Clamp(0, 255);
+            g = (byte)Round(G * 255, AwayFromZero).Clamp(0, 255);
+            b = (byte)Round(B * 255, AwayFromZero).Clamp(0, 255);
         }
 
         #endregion
