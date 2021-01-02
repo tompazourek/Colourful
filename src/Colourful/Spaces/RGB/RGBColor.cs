@@ -137,9 +137,9 @@ namespace Colourful
         /// </summary>
         public static implicit operator Color(RGBColor input)
         {
-            var r = (byte)Math.Round(input.R * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
-            var g = (byte)Math.Round(input.G * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
-            var b = (byte)Math.Round(input.B * 255, MidpointRounding.AwayFromZero).CropRange(0, 255);
+            var r = (byte)Math.Round(input.R * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
+            var g = (byte)Math.Round(input.G * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
+            var b = (byte)Math.Round(input.B * 255, MidpointRounding.AwayFromZero).Clamp(0, 255);
             var output = Color.FromArgb(r, g, b);
             return output;
         }

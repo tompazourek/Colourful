@@ -5,14 +5,14 @@ namespace Colourful
     /// <summary>
     /// Utilities to crop range of values or vectors.
     /// </summary>
-    public static class RangeHelper
+    public static class ClampHelper
     {
         /// <summary>
         /// If the given value is less than the minimum, returns the minimum value.
         /// If the given value is greater than the maximum, returns the maximum value.
         /// Otherwise, returns the value
         /// </summary>
-        public static double CropRange(this double value, double min, double max)
+        public static double Clamp(this double value, double min, double max)
         {
             if (value < min)
                 return min;
@@ -28,9 +28,9 @@ namespace Colourful
         /// If any value is greater than the maximum, replace it with the maximum value.
         /// Otherwise, copy the value.
         /// </summary>
-        public static double[] CropRange(this double[] vector, double min, double max)
+        public static double[] Clamp(this double[] vector, double min, double max)
         {
-            var croppedVector = vector.Select(x => x.CropRange(min, max)).ToArray();
+            var croppedVector = vector.Select(x => x.Clamp(min, max)).ToArray();
             return croppedVector;
         }
 
@@ -39,9 +39,9 @@ namespace Colourful
         /// If any value is greater than the corresponding maximum, replace it with the maximum value.
         /// Otherwise, copy the value.
         /// </summary>
-        public static double[] CropRange(this double[] vector, double[] mins, double[] maxs)
+        public static double[] Clamp(this double[] vector, double[] minVector, double[] maxVector)
         {
-            var croppedVector = vector.Select((x, index) => x.CropRange(mins[index], maxs[index])).ToArray();
+            var croppedVector = vector.Select((x, index) => x.Clamp(minVector[index], maxVector[index])).ToArray();
             return croppedVector;
         }
     }
