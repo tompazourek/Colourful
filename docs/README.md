@@ -1,5 +1,7 @@
 # Colourful documentation
 
+This folder contains documentation pages for the Colourful library. Either use the links below, or directly open the files in this folder.
+
 
 ## Spaces
 

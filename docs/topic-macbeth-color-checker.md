@@ -1,6 +1,6 @@
 # Macbeth ColorChecker chart
 
-The Colourful library contains predefined constants for the 24 individual colors of the [Macbeth ColorChecker Color Rendition Chart](https://en.wikipedia.org/wiki/ColorChecker).
+The Colourful library contains predefined constants for the 24 individual colors of the **Macbeth ColorChecker Color Rendition Chart**.
 
 These can be accessed via a static class called `MacbethColorChecker`. The colors are defined in the [sRGB color space](spaces-rgb.md#rgb-working-spaces). This means that if you want to [convert](topic-conversion.md) the colors into a different space, use the sRGB as the input working space.
 
@@ -38,3 +38,8 @@ Alternatively, you can also get all those colors in a list:
 ```csharp
 IReadOnlyList<RGBColor> colors = MacbethColorChecker.Colors;
 ```
+
+## Related links
+
+- https://en.wikipedia.org/wiki/ColorChecker
+- http://xritephoto.com/documents/literature/en/ColorData-1p_EN.pdf
