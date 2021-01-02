@@ -30,7 +30,7 @@ You'll notice that the resulting [RGB color](spaces-rgb.md) is outside of its ra
 color = color.NormalizeIntensity(); // RGB [R=1, G=0.72, B=0.44]
 ```
 
-This value corresponds to RGB values 255, 185, 111, or ![#FFB96F](https://via.placeholder.com/15/FFB96F/000000?text=+) `#FFB96F` in the hex format.
+This value corresponds to RGB values 255, 185, 111, or #FFB96F ![#FFB96F](https://via.placeholder.com/10/FFB96F/000000?text=+) in the hex format.
 
 
 
