@@ -11,3 +11,11 @@ dotnet_diagnostic.CA1062.severity = none
 # CA1303: Do not pass literals as localized parameters
 # Justification: No localization support
 dotnet_diagnostic.CA1303.severity = none
+
+# IDE1006: Naming Styles
+# Justification: Intentionally not following the letter-casing guidelines
+dotnet_diagnostic.IDE1006.severity = none
+
+# IDE0079: Remove unnecessary suppression
+# Justification: Suggestions are false positives and don't work well with ReSharper
+dotnet_diagnostic.IDE0079.severity = none

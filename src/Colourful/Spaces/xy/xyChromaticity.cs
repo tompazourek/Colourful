@@ -19,6 +19,7 @@ namespace Colourful
         }
         
         /// <param name="vector"><see cref="Vector" />, expected 2 dimensions.</param>
+        [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Not checking this for brevity.")]
         public xyChromaticity(in double[] vector)
             : this(in vector[0], in vector[1])
         {

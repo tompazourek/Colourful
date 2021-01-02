@@ -24,6 +24,7 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions.</param>
+        [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Not checking this for brevity.")]
         public JzazbzColor(in double[] vector) : this(vector[0], vector[1], vector[2])
         {
         }

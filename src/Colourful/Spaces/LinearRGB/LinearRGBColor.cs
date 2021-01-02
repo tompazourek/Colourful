@@ -24,6 +24,7 @@ namespace Colourful
         }
 
         /// <param name="vector"><see cref="Vector" />, expected 3 dimensions (range from 0 to 1).</param>
+        [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Not checking this for brevity.")]
         public LinearRGBColor(in double[] vector)
             : this(in vector[0], in vector[1], in vector[2])
         {
