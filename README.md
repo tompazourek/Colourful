@@ -22,7 +22,13 @@ The library is also [published on NuGet.org](https://www.nuget.org/packages/Colo
 PM> Install-Package Colourful
 ```
 
-<sup>Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for .NET Standard 1.1, .NET Standard 1.6, .NET Framework 4.5, and .NET 5. For older .NET Framework 4.0 see [version 1 of the library](https://github.com/tompazourek/Colourful/releases/tag/1.2.2).</sup>
+Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for these target frameworks:
+
+- .NET 5
+- .NET Framework 4.5
+- .NET Standard 2.0
+- .NET Standard 1.1
+- *For older .NET Framework 4.0 see [version 1 of the library](https://github.com/tompazourek/Colourful/releases/tag/1.2.2).*
 
 
 Usage
