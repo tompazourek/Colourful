@@ -2,15 +2,15 @@
 
 namespace Colourful.Tests.Comparers
 {
-    public static class CropRangeComparerExtension
+    public static class ClampComparerExtension
     {
-        private class CropRangeEqualityComparer : IEqualityComparer<double>
+        private class ClampEqualityComparer : IEqualityComparer<double>
         {
             private readonly IEqualityComparer<double> _innerEqualityComparer;
             private readonly double _min;
             private readonly double _max;
 
-            public CropRangeEqualityComparer(IEqualityComparer<double> innerEqualityComparer, double min, double max)
+            public ClampEqualityComparer(IEqualityComparer<double> innerEqualityComparer, double min, double max)
             {
                 _innerEqualityComparer = innerEqualityComparer;
                 _min = min;
@@ -92,10 +92,10 @@ namespace Colourful.Tests.Comparers
             }
         }
 
-        public static IEqualityComparer<double> CropRange(this IEqualityComparer<double> comparer, double min, double max)
-            => new CropRangeEqualityComparer(comparer, min, max);
+        public static IEqualityComparer<double> Clamp(this IEqualityComparer<double> comparer, double min, double max)
+            => new ClampEqualityComparer(comparer, min, max);
 
-        public static IComparer<double> CropRange(this IComparer<double> comparer, double min, double max)
+        public static IComparer<double> Clamp(this IComparer<double> comparer, double min, double max)
             => new CropRangeComparer(comparer, min, max);
     }
 }

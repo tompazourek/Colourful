@@ -40,9 +40,9 @@ namespace Colourful.Tests
             var output = converter.Convert(in input);
 
             // assert
-            Assert.Equal(r, output.R, DoubleComparer.CropRange(min: 0, max: 1));
-            Assert.Equal(g, output.G, DoubleComparer.CropRange(min: 0, max: 1));
-            Assert.Equal(b, output.B, DoubleComparer.CropRange(min: 0, max: 1));
+            Assert.Equal(r, output.R, DoubleComparer.Clamp(min: 0, max: 1));
+            Assert.Equal(g, output.G, DoubleComparer.Clamp(min: 0, max: 1));
+            Assert.Equal(b, output.B, DoubleComparer.Clamp(min: 0, max: 1));
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace Colourful.Tests
             var output = converter.Convert(in input);
 
             // assert
-            Assert.Equal(r, output.R, DoubleComparer.CropRange(min: 0, max: 1));
-            Assert.Equal(g, output.G, DoubleComparer.CropRange(min: 0, max: 1));
-            Assert.Equal(b, output.B, DoubleComparer.CropRange(min: 0, max: 1));
+            Assert.Equal(r, output.R, DoubleComparer.Clamp(min: 0, max: 1));
+            Assert.Equal(g, output.G, DoubleComparer.Clamp(min: 0, max: 1));
+            Assert.Equal(b, output.B, DoubleComparer.Clamp(min: 0, max: 1));
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Colourful.Internals;
+using static System.Math;
 
 namespace Colourful
 {
@@ -113,6 +114,40 @@ namespace Colourful
             r = R;
             g = G;
             b = B;
+        }
+
+        #endregion
+        
+        #region Utils
+
+        /// <summary>
+        /// Returns a new color that has each channel clamped. If the channel was lower than 0, it'll be 0. If it was higher than 1, it'll be 1.
+        /// </summary>
+        public LinearRGBColor Clamp()
+        {
+            var r = R.Clamp(0, 1);
+            var g = G.Clamp(0, 1);
+            var b = B.Clamp(0, 1);
+            return new LinearRGBColor(r, g, b);
+        }
+
+        /// <summary>
+        /// Returns a new color that has channels within the range, and at least one channel is maxed out to 1.
+        /// Does this by dividing all channels by the maximum channel value out of those three.
+        /// This is useful for scenarios where we're working with chromaticity.
+        /// </summary>
+        public LinearRGBColor NormalizeIntensity()
+        {
+            var maxChannel = Max(R, Max(G, B));
+            if (maxChannel == 0)
+            {
+                maxChannel = 1;
+            }
+
+            var r = (R / maxChannel).Clamp(0, 1);
+            var g = (G / maxChannel).Clamp(0, 1);
+            var b = (B / maxChannel).Clamp(0, 1);
+            return new LinearRGBColor(r, g, b);
         }
 
         #endregion

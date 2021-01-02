@@ -132,7 +132,7 @@ namespace Colourful.Tests
             var expectedRGB = row.GetRGBColor();
             var actualRGB = converter.Convert(in inputLab);
 
-            Assert.Equal(expectedRGB, actualRGB, new ColorVectorComparer(((IComparer<double>)new DoubleDeltaComparer(delta: 0.00912)).CropRange(min: 0, max: 1)));
+            Assert.Equal(expectedRGB, actualRGB, new ColorVectorComparer(((IComparer<double>)new DoubleDeltaComparer(delta: 0.00912)).Clamp(min: 0, max: 1)));
         }
 
         [Theory]

@@ -1,10 +1,14 @@
-﻿using Colourful.Tests.Assertions;
+﻿using System.Collections.Generic;
+using Colourful.Tests.Assertions;
+using Colourful.Tests.Comparers;
 using Xunit;
 
 namespace Colourful.Tests
 {
     public class LinearRGBColorTest
     {
+        private static readonly IEqualityComparer<double> DoubleComparer = new DoubleRoundingComparer(precision: 12);
+
         [Fact]
         public void Equals_Same()
         {
@@ -56,6 +60,24 @@ namespace Colourful.Tests
             Assert.Equal(r1, r2);
             Assert.Equal(g1, g2);
             Assert.Equal(b1, b2);
+        }
+        
+        [Fact]
+        public void Clamp()
+        {
+            var (r, g, b) = new LinearRGBColor(1.1, -0.5, 0.01).Clamp();
+            Assert.Equal(1, r);
+            Assert.Equal(0, g);
+            Assert.Equal(0.01, b);
+        }
+        
+        [Fact]
+        public void NormalizeIntensity()
+        {
+            var (r, g, b) = new LinearRGBColor(1.282323002024544, 0.92870160729369322, 0.55886769485605214).NormalizeIntensity();
+            Assert.Equal(1, r);
+            Assert.Equal(0.72423375844264681, g, DoubleComparer);
+            Assert.Equal(0.4358244326692311, b, DoubleComparer);
         }
     }
 }
