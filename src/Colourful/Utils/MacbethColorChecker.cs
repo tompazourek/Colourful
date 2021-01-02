@@ -5,6 +5,7 @@ namespace Colourful
 {
     /// <summary>
     /// Colors of the Macbeth ColorChecker.
+    /// Assume that the RGB colors are in sRGB working space.
     /// </summary>
     /// <remarks>
     /// Values obtained from: http://xritephoto.com/documents/literature/en/ColorData-1p_EN.pdf
