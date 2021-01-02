@@ -94,6 +94,20 @@ namespace Colourful
         public static bool operator !=(LuvColor left, LuvColor right) => !Equals(left, right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double l, out double u, out double v)
+        {
+            l = L;
+            u = this.u;
+            v = this.v;
+        }
+
+        #endregion
 
         #region Overrides
 

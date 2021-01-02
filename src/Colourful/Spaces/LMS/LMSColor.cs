@@ -94,6 +94,20 @@ namespace Colourful
         public static bool operator !=(LMSColor left, LMSColor right) => !Equals(left, right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double l, out double m, out double s)
+        {
+            l = L;
+            m = M;
+            s = S;
+        }
+
+        #endregion
 
         #region Overrides
 

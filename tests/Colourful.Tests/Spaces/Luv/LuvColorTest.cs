@@ -37,5 +37,17 @@ namespace Colourful.Tests
             var color = new LuvColor(l: 10, u: 20.5, v: 45.445);
             Assert.Equal("Luv [L=10, u=20.5, v=45.45]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double l1 = 10;
+            const double u1 = 20.5;
+            const double v1 = 45.445;
+            var (l2, u2, v2) = new LuvColor(l1, u1, v1);
+            Assert.Equal(l1, l2);
+            Assert.Equal(u1, u2);
+            Assert.Equal(v1, v2);
+        }
     }
 }

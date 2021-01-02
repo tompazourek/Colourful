@@ -37,5 +37,15 @@ namespace Colourful.Tests
             var color = new xyChromaticity(x: .1, y: .205);
             Assert.Equal("xy [x=0.1, y=0.21]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double x1 = 10;
+            const double y1 = 20.5;
+            var (x2, y2) = new xyChromaticity(x1, y1);
+            Assert.Equal(x1, x2);
+            Assert.Equal(y1, y2);
+        }
     }
 }

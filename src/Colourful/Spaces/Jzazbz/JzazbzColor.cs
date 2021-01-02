@@ -94,6 +94,20 @@ namespace Colourful
         public static bool operator !=(JzazbzColor left, JzazbzColor right) => !Equals(left, right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double jz, out double az, out double bz)
+        {
+            jz = Jz;
+            az = this.az;
+            bz = this.bz;
+        }
+
+        #endregion
 
         #region Overrides
 

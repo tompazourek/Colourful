@@ -71,6 +71,19 @@ namespace Colourful
         public static bool operator !=(xyChromaticity left, xyChromaticity right) => !left.Equals(right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double x, out double y)
+        {
+            x = this.x;
+            y = this.y;
+        }
+
+        #endregion
 
         #region Overrides
 

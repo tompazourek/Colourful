@@ -37,5 +37,17 @@ namespace Colourful.Tests
             var color = new LMSColor(l: .1, m: .205, s: .45445);
             Assert.Equal("LMS [L=0.1, M=0.21, S=0.45]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double l1 = .1;
+            const double m1 = .205;
+            const double s1 = .45445;
+            var (l2, m2, s2) = new LMSColor(l1, m1, s1);
+            Assert.Equal(l1, l2);
+            Assert.Equal(m1, m2);
+            Assert.Equal(s1, s2);
+        }
     }
 }

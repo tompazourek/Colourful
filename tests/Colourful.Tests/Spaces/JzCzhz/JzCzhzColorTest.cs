@@ -47,5 +47,17 @@ namespace Colourful.Tests
             var color = new JzCzhzColor(jz: 0.6, cz: 0.3, hz: 150);
             Assert.Equal("JzCzhz [Jz=0.6, Cz=0.3, hz=150]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double jz1 = 0.6;
+            const double cz1 = 0.3;
+            const double hz1 = 150;
+            var (jz2, cz2, hz2) = new JzCzhzColor(jz1, cz1, hz1);
+            Assert.Equal(jz1, jz2);
+            Assert.Equal(cz1, cz2);
+            Assert.Equal(hz1, hz2);
+        }
     }
 }

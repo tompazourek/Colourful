@@ -14,18 +14,18 @@ namespace Colourful
 
         /// <param name="x">x (usually from 0 to 1) chromaticity.</param>
         /// <param name="y">y (usually from 0 to 1) chromaticity.</param>
-        /// <param name="Y">Y (luminance) (usually from 0 to 1).</param>
-        public xyYColor(in double x, in double y, in double Y)
+        /// <param name="luminance">Y (luminance) (usually from 0 to 1).</param>
+        public xyYColor(in double x, in double y, in double luminance)
         {
             this.x = x;
             this.y = y;
-            Luminance = Y;
+            Luminance = luminance;
         }
 
         /// <param name="chromaticity">Chromaticity (x and y together).</param>
-        /// <param name="Y">Y (luminance) (usually from 0 to 1).</param>
-        public xyYColor(in xyChromaticity chromaticity, in double Y)
-            : this(in chromaticity.x, in chromaticity.y, in Y)
+        /// <param name="luminance">Y (luminance) (usually from 0 to 1).</param>
+        public xyYColor(in xyChromaticity chromaticity, in double luminance)
+            : this(in chromaticity.x, in chromaticity.y, in luminance)
         {
         }
 
@@ -104,6 +104,20 @@ namespace Colourful
         [ExcludeFromCodeCoverage]
 #endif
         public static bool operator !=(xyYColor left, xyYColor right) => !Equals(left, right);
+
+        #endregion
+
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double x, out double y, out double luminance)
+        {
+            x = this.x;
+            y = this.y;
+            luminance = Luminance;
+        }
 
         #endregion
 

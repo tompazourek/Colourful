@@ -45,5 +45,17 @@ namespace Colourful.Tests
             var color = new LinearRGBColor(r: .1, g: .205, b: .45445);
             Assert.Equal("LinearRGB [R=0.1, G=0.21, B=0.45]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double r1 = .1;
+            const double g1 = .205;
+            const double b1 = .45445;
+            var (r2, g2, b2) = new LinearRGBColor(r1, g1, b1);
+            Assert.Equal(r1, r2);
+            Assert.Equal(g1, g2);
+            Assert.Equal(b1, b2);
+        }
     }
 }

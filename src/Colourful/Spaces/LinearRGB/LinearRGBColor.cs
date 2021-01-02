@@ -102,6 +102,20 @@ namespace Colourful
         public static LinearRGBColor FromGrey(in double value) => new LinearRGBColor(in value, in value, in value);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double r, out double g, out double b)
+        {
+            r = R;
+            g = G;
+            b = B;
+        }
+
+        #endregion
 
         #region Overrides
 

@@ -47,5 +47,17 @@ namespace Colourful.Tests
             var color = new LChuvColor(l: 10, c: 20.5, h: 45.445);
             Assert.Equal("LChuv [L=10, C=20.5, h=45.45]", color.ToString());
         }
+
+        [Fact]
+        public void Dctor()
+        {
+            const double l1 = 10;
+            const double c1 = 20.5;
+            const double h1 = 45.445;
+            var (l2, c2, h2) = new LChuvColor(l1, c1, h1);
+            Assert.Equal(l1, l2);
+            Assert.Equal(c1, c2);
+            Assert.Equal(h1, h2);
+        }
     }
 }

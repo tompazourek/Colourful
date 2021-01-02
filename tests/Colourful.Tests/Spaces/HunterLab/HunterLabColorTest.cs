@@ -37,5 +37,17 @@ namespace Colourful.Tests
             var color = new HunterLabColor(l: 10, a: 20.5, b: 45.445);
             Assert.Equal("HunterLab [L=10, a=20.5, b=45.45]", color.ToString());
         }
+        
+        [Fact]
+        public void Dctor()
+        {
+            const double l1 = 10;
+            const double a1 = 20.5;
+            const double b1 = 45.445;
+            var (l2, a2, b2) = new HunterLabColor(l1, a1, b1);
+            Assert.Equal(l1, l2);
+            Assert.Equal(a1, a2);
+            Assert.Equal(b1, b2);
+        }
     }
 }

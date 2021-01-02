@@ -92,6 +92,20 @@ namespace Colourful
         public static bool operator !=(HunterLabColor left, HunterLabColor right) => !Equals(left, right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double l, out double a, out double b)
+        {
+            l = L;
+            a = this.a;
+            b = this.b;
+        }
+
+        #endregion
 
         #region Overrides
 

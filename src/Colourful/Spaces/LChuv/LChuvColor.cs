@@ -113,6 +113,20 @@ namespace Colourful
         public static bool operator !=(LChuvColor left, LChuvColor right) => !Equals(left, right);
 
         #endregion
+        
+        #region Deconstructor
+
+        /// <summary>
+        /// Deconstructs color into individual channels.
+        /// </summary>
+        public void Deconstruct(out double l, out double c, out double h)
+        {
+            l = L;
+            c = C;
+            h = this.h;
+        }
+
+        #endregion
 
         #region Overrides
 
