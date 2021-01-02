@@ -39,6 +39,7 @@ Alternatively, you can also get all those colors in a list:
 IReadOnlyList<RGBColor> colors = MacbethColorChecker.Colors;
 ```
 
+
 ## Related links
 
 - https://en.wikipedia.org/wiki/ColorChecker
