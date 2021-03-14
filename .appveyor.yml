@@ -4,20 +4,21 @@ image: Visual Studio 2019
 environment:
   MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
 
-# AppVeyor's displaye version, will get updated by MSBuild target
+# AppVeyor's displayed version, will get updated by MSBuild target
 version: '{build}'
 
-configuration: Release
-
 before_build:
-  - dotnet restore
+- dotnet restore
 
-build:
-  parallel: true
-  verbosity: minimal
+build_script:
+- dotnet build --no-restore --configuration Release
 
 test_script:
-  - dotnet test
+- dotnet test --no-build --configuration Release -p:CollectCoverage=true
+
+after_test:
+- choco install codecov
+- pwsh: codecov --file @(ls ./testresults/*.opencover.xml)
 
 artifacts:
-  - path: ./**/*.nupkg
+- path: ./**/*.nupkg

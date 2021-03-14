@@ -2,7 +2,9 @@
 ==============
 
 [![Build status](https://img.shields.io/appveyor/ci/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful)
-[![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests) [![NuGet version](https://img.shields.io/nuget/v/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
+[![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests)
+[![codecov](https://codecov.io/gh/tompazourek/Colourful/branch/master/graph/badge.svg?token=gSGKtsdmw3)](https://codecov.io/gh/tompazourek/Colourful)
+[![NuGet version](https://img.shields.io/nuget/v/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 
 *Open source .NET library for working with color spaces.*
