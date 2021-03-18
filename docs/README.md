@@ -14,11 +14,12 @@ This folder contains documentation pages for the Colourful library. Either use t
 - [J<sub>z</sub>a<sub>z</sub>b<sub>z</sub> color spaces](spaces-jzazbz.md)
 
 
-## Other topics
+## Topics
 
+- [Conversion between color spaces](topic-conversion.md)
 - [Correlated color temperature (CCT)](topic-cct.md)
 - [Ranges of channel values and clamping](topic-clamp.md)
-- [Computing color difference](topic-conversion.md)
+- [Computing color difference](topic-color-difference.md)
 - [Cylindrical color spaces](topic-cylindrical-spaces.md)
 - [Illuminants and white points](topic-illuminants.md)
 - [Macbeth ColorChecker chart](topic-macbeth-color-checker.md)
