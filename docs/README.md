@@ -8,7 +8,7 @@ This folder contains documentation pages for the Colourful library. Either use t
 - [RGB color spaces](spaces-rgb.md)
 - [Lab color spaces](spaces-lab.md)
 - [Luv color spaces](spaces-luv.md)
-- [XYZ color space](spaces.md)
+- [XYZ color space](spaces-xyz.md)
 - [LMS color space](spaces-lms.md)
 - [xy chromaticity](spaces-xy.md)
 - [J<sub>z</sub>a<sub>z</sub>b<sub>z</sub> color spaces](spaces-jzazbz.md)
@@ -24,7 +24,7 @@ This folder contains documentation pages for the Colourful library. Either use t
 - [Illuminants and white points](topic-illuminants.md)
 - [Macbeth ColorChecker chart](topic-macbeth-color-checker.md)
 - [Changes between v2 and v3](topic-changes-v2-v3.md)
-- [Implementing custom color space](topic-custom-color-space.md)
+- [Implementing a custom color space](topic-custom-color-space.md)
 
 
 ## Examples

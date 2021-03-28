@@ -1,3 +1,3 @@
-# Implementing custom color space
+# Implementing a custom color space
 
 TODO
