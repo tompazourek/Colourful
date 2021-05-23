@@ -33,7 +33,7 @@ namespace Colourful.Tests.Docs
             var converter4 = new ConverterBuilder().FromRGB(RGBWorkingSpaces.ProPhotoRGB).ToXYZ(Illuminants.D50).Build();
 
             // create the converter once (e.g. store it in a field somewhere)
-            var _rgbToXyz = new ConverterBuilder().FromRGB().ToXYZ(Illuminants.D65).Build();
+            IColorConverter<RGBColor, XYZColor> _rgbToXyz = new ConverterBuilder().FromRGB().ToXYZ(Illuminants.D65).Build();
 
             // use it for conversion
             var rgbColor1 = new RGBColor(1, 0, 0.5);

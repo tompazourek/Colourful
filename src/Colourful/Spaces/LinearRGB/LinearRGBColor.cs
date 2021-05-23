@@ -81,13 +81,13 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-#if !NETSTANDARD10
+#if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public static bool operator ==(LinearRGBColor left, LinearRGBColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-#if !NETSTANDARD10
+#if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public static bool operator !=(LinearRGBColor left, LinearRGBColor right) => !Equals(left, right);

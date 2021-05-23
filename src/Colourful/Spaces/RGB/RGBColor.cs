@@ -5,7 +5,7 @@ using Colourful.Internals;
 using static System.Math;
 using static System.MidpointRounding;
 
-#if (DRAWING)
+#if !NETSTANDARD1_1
 using System.Drawing;
 #endif
 
@@ -36,7 +36,7 @@ namespace Colourful
         {
         }
 
-#if (DRAWING)
+#if !NETSTANDARD1_1
         /// <param name="color"></param>
         public RGBColor(in Color color)
             : this(color.R / 255d, color.G / 255d, color.B / 255d)
@@ -94,13 +94,13 @@ namespace Colourful
         }
 
         /// <inheritdoc cref="object" />
-#if !NETSTANDARD10
+#if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public static bool operator ==(RGBColor left, RGBColor right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
-#if !NETSTANDARD10
+#if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public static bool operator !=(RGBColor left, RGBColor right) => !Equals(left, right);
@@ -122,7 +122,7 @@ namespace Colourful
 
         #endregion
 
-#if DRAWING
+#if !NETSTANDARD1_1
 
         /// <summary>
         /// Creates RGB color from 8-bit channels.
