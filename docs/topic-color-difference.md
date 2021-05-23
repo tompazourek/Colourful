@@ -87,7 +87,7 @@ double difference = differenceCalculator.ComputeDifference(in labColor1, in labC
 
 ## Delta E<sub>z</sub>
 
-The ΔE<sub>z</sub> algorithm operates on the [J<sub>z</sub>C<sub>z</sub>h<sub>z</sub> color space, a cylindrical variant of J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>](spaces-jzazbz.md).
+The ΔE<sub>z</sub> algorithm operates on the [J<sub>z</sub>C<sub>z</sub>h<sub>z</sub> color space, a [cylindrical variant](topic-cylindrical-spaces.md) of J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>](spaces-jzazbz.md).
 
 ```csharp
 var differenceCalculator = new JzCzhzDEzColorDifference();
