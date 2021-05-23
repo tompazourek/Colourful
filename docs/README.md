@@ -24,9 +24,3 @@ This folder contains documentation pages for the Colourful library. Either use t
 - [Illuminants and white points](topic-illuminants.md)
 - [Macbeth ColorChecker chart](topic-macbeth-color-checker.md)
 - [Changes between v2 and v3](topic-changes-v2-v3.md)
-- [Implementing a custom color space](topic-custom-color-space.md)
-
-
-## Examples
-
-- TODO: some interesting example usages, e.g. xy to RGB conversion, horseshoe diagram?

@@ -209,7 +209,7 @@ Note that **if no chromatic adaptation is performed during the conversion, then 
 
 What you might see as a user of the `ConverterBuilder` class is a mention of conversion strategies. This is an advanced concept used if you want to extend Colourful with your own custom color spaces, or if you want to further customize the conversion process. This might not be useful for most cases.
 
-However, in case you're interested in that, see the [Implementing custom color space](topic-custom-color-space.md) for more information, or check out the source code itself to understand how it's working.
+Implenting custom color spaces is possible, but not yet documented. See see [#93](https://github.com/tompazourek/Colourful/issues/93)).
 
 
 ## Related links
@@ -219,4 +219,3 @@ However, in case you're interested in that, see the [Implementing custom color s
 - [Illuminants and white points](topic-illuminants.md)
 - [Ranges of channel values and clamping](topic-clamp.md)
 - [Changes between v2 and v3](topic-changes-v2-v3.md)
-- [Implementing custom color space](topic-custom-color-space.md)
