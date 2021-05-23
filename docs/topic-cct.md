@@ -2,13 +2,13 @@
 
 Colourful supports working with **correlated color temperature (CCT)** in two ways:
 
-- Approximating the [xy chromaticity](spaces-xy.md) from a CCT specified in K.
+- Approximating the [xy chromaticity](spaces-xy.md) from a CCT specified in kelvin (K).
 - Approximating the CCT from a given [xy chromaticity](spaces-xy.md).
 
 
 ## How to compute color from CCT?
 
-Your input in this case is a temperature in kelvin (K) and you want to figure out what color this corresponds to.
+Your input in this case is a temperature in kelvin (K), and you want to figure out what color this corresponds to.
 
 Colourful provides a helper class `CCTConverter` that can be used to approximate the [xy chromaticity](spaces-xy.md) from the given temperature.
 
@@ -17,7 +17,7 @@ double temperature = 3000; // in K
 xyChromaticity chromaticity = CCTConverter.GetChromaticityOfCCT(temperature); // xy [x=0.44, y=0.4]
 ```
 
-Using this you'll only have the chromaticity, not an actual color. However, you can use a [color converter](topic-conversion.md) to convert this to the target color space. In the example below, we'll try to represent the color in the sRGB color space.
+Using this, you'll only have the chromaticity, not an actual color. However, you can use a [color converter](topic-conversion.md) to convert this to the target color space. In the example below, we'll try to represent the color in the sRGB color space.
 
 ```csharp
 IColorConverter<xyChromaticity, RGBColor> converter = new ConverterBuilder().Fromxy(Illuminants.D65).ToRGB(RGBWorkingSpaces.sRGB).Build();
