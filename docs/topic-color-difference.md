@@ -2,18 +2,7 @@
 
 The Colourful library contains a range of algorithms that can be used to compute a [difference between colors](https://en.wikipedia.org/wiki/Color_difference), i.e. provide a certain metric that can be used as a distance between two colors in a color space.
 
-The color difference is commonly denoted as delta E, or ΔE.
-
-The algorithms that are currently built-in are:
-
-- CIE Delta-E 1976
-- CMC l:c 1984
-- CIE Delta-E 1994
-- CIE Delta-E 2000
-- Delta E<sub>z</sub>
-- Euclidean distance
-
-Some of these algorithms operate on specific color spaces. If you want to use them in other color spaces, you can do so if you [convert your colors](topic-conversion.md) into the required space beforehand.
+The color difference is commonly denoted as delta E, or ΔE. Some of the algorithms operate on specific color spaces. If you want to use them in other color spaces, you can do so if you [convert your colors](topic-conversion.md) into the required space beforehand.
 
 
 ## CIE Delta-E 1976
@@ -32,7 +21,7 @@ double difference = new CIE76ColorDifference().ComputeDifference(labColor1, labC
 - https://en.wikipedia.org/wiki/Color_difference#CIE76
 
 
-## CMC l:c 1984
+## CMC l:c (1984)
 
 The CMC algorithm operates in the [Lab color space](spaces-lab.md) and has two modes: `Acceptability` and `Imperceptibility`.
 
@@ -85,7 +74,7 @@ double difference = differenceCalculator.ComputeDifference(in labColor1, in labC
 - https://en.wikipedia.org/wiki/Color_difference#CIEDE2000
 
 
-## Delta E<sub>z</sub>
+## J<sub>z</sub>C<sub>z</sub>h<sub>z</sub> Delta-E<sub>z</sub>
 
 The ΔE<sub>z</sub> algorithm operates on the [J<sub>z</sub>C<sub>z</sub>h<sub>z</sub> color space, a [cylindrical variant](topic-cylindrical-spaces.md) of J<sub>z</sub>a<sub>z</sub>b<sub>z</sub>](spaces-jzazbz.md).
 

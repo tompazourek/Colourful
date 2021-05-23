@@ -53,7 +53,7 @@ Lots of automated tests have been added to increase the test coverage of the exi
 
 ## New documentation
 
-As part of the v3 release, there was also a bigger focus on documentation. As a result of that, there are now more detailed documentation topics. See the [documentation home page](README.md) for links.
+As part of the v3 release, there was also a bigger focus on documentation. As a result of that, there are now more detailed documentation topics.
 
 
 ## Many new helper classes

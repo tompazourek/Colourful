@@ -2,7 +2,7 @@
 
 The main functionality facilitated by the Colourful library is the conversion between color spaces.
 
-Colourful supports a range of color spaces out of the box. See the [README.md](README.md) for some docs about the various color spaces supported. In addition to that, it's possible to [implement your own color space](topic-custom-color-space.md).
+Colourful supports a range of color spaces out of the box. In addition to that, it's possible to [implement your own color space](topic-custom-color-space.md).
 
 
 ## Converter builder
@@ -151,7 +151,6 @@ var xyzAdapted = xyzCustomWhitePointAdapter.Convert(new XYZColor(0.5, 0.5, 0.5))
 
 
 ### LMS transformation matrix
-
 
 Chromatic adaptation between different white points is implemented by converting to the [LMS color space](spaces-lms.md) where the adaptation is performed.
 
