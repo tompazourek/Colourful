@@ -96,7 +96,7 @@ Please see the docs pages below for various topics:
 For information about specific color spaces, see the following docs pages:
 
 - [RGB color spaces](docs/spaces-rgb.md)
-  - support for both ordinary RGb and linear RGB
+  - support for both ordinary RGB and [linear RGB](http://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no)
   - multiple working spaces supported:
     - sRGB
     - Simplified sRGB
