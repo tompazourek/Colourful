@@ -107,7 +107,7 @@ For example, in RGB, we are used to work with channel values from 0 to 1 (corres
 This is done mainly for these reasons:
 
 - So we wouldn't lose the color information in case we're doing some processing and then converting the color to another color space.
-- Because in different scenarios you might want to treat the outside values differently. For example, sometimes you might want to simply clamp them (i.e. if it's higher than 1, clamp it to 1, etc.), but in other scenarios, you might want to normalize the values (e.g. by finding the highest channel value, and then divide all channels by it).
+- Because in different scenarios you might want to treat the outside values differently. For example, sometimes you might want to simply clamp them (i.e. if it's higher than 1, clamp it to 1, etc.), but in other scenarios, you might want to normalize the values (e.g. by finding the highest channel value, and then divide all channels by it, for RGB, see the `.NormalizeIntensity()` function).
 
 This additional processing is now left to the user. For more information about channel ranges, clamping, and the helpers that Colourful provides, see the [Ranges of channel values and clamping](topic-clamp.md) page.
 
