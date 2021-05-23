@@ -52,6 +52,11 @@ namespace Colourful.Tests.Docs
             var sRgbToAdobe = new ConverterBuilder().FromRGB(RGBWorkingSpaces.sRGB).ToRGB(RGBWorkingSpaces.AdobeRGB1998).Build();
             var rgbAdapted = sRgbToAdobe.Convert(new RGBColor(0.25, 0.65, 0.1));
 
+            // adapt a XYZ color relative to D65 to a custom white point
+            var xyzCustomWhitePoint = new XYZColor(0.95, 0.54, 0.72);
+            var xyzCustomWhitePointAdapter = new ConverterBuilder().FromXYZ(Illuminants.D65).ToXYZ(xyzCustomWhitePoint).Build();
+            var xyzCustomAdapted = xyzCustomWhitePointAdapter.Convert(new XYZColor(0.5, 0.5, 0.5));
+
             // Default; Bradford chromatic adaptation transform matrix (used in CMCCAT97)
             var matrix1 = new ConverterBuilder();
 

@@ -69,7 +69,7 @@ var converter4 = new ConverterBuilder().FromRGB(RGBWorkingSpaces.ProPhotoRGB).To
 
 Other color spaces might have different metadata that might be useful or even required to configure for some kinds of conversions. To see what conversion metadata is available, always check the parameters of the `.FromXXX(...)` and `.ToXXX(...)` methods to see what you can configure.
 
-For most color spaces, you'll see the white point setting.
+For most color spaces, you'll see a white point setting.
 
 
 ## Converter object
@@ -102,12 +102,12 @@ var xyzColor2 = _rgbToXyz.Convert(rgbColor2);
 
 There is one important [change for users coming from v2](topic-changes-v2-v3.md). During the conversion, the target values might actually end up outside of the range of the target color space.
 
-For example, in RGB, we are used to work with channel values from 0 to 1 (correspond to 0 to 100% of red/green/blue). But if we're converting from a color space with a wider gamut than RGB, we might end up with values either below 0 or above 1. These values aren't automatically clamped to fit the range.
+For example, in RGB, we are used to work with channel values from 0 to 1 (correspond to 0 to 100% of red/green/blue). But if we're converting from a color space with a wider gamut than RGB, we might end up with values either below 0 or above 1. These values are NOT automatically clamped to fit the range.
 
 This is done mainly for these reasons:
 
 - So we wouldn't lose the color information in case we're doing some processing and then converting the color to another color space.
-- Because in different scenarios you might want to treat the outside values differently. For example, sometimes you might want to simply clamp them (i.e. if it's higher than 1, clamp it to 1, etc.), but in other scenarios, you might want to normalize the values (i.e. find the highest channel value, and divide all channels by the highest).
+- Because in different scenarios you might want to treat the outside values differently. For example, sometimes you might want to simply clamp them (i.e. if it's higher than 1, clamp it to 1, etc.), but in other scenarios, you might want to normalize the values (e.g. by finding the highest channel value, and then divide all channels by it).
 
 This additional processing is now left to the user. For more information about channel ranges, clamping, and the helpers that Colourful provides, see the [Ranges of channel values and clamping](topic-clamp.md) page.
 
@@ -123,8 +123,6 @@ For example, you might:
 - Convert between [RGB](spaces-rgb.md) in sRGB working space to [RGB](spaces-rgb.md) in Adobe RGB working space.
 - etc.
 
-You can also create your own custom illuminant and use it to "white balance" the color to the desired illuminant.
-
 
 ### Example
 
@@ -137,6 +135,18 @@ var labAdapted = labD50ToD65.Convert(new LabColor(50, -30, 75));
 
 var sRgbToAdobe = new ConverterBuilder().FromRGB(RGBWorkingSpaces.sRGB).ToRGB(RGBWorkingSpaces.AdobeRGB1998).Build();
 var rgbAdapted = sRgbToAdobe.Convert(new RGBColor(0.25, 0.65, 0.1));
+```
+
+
+### White balance
+
+You can also create your own custom illuminant and use it to "white balance" the color to the desired illuminant.
+
+```csharp
+// adapt a XYZ color relative to D65 to a custom white point
+var xyzCustomWhitePoint = new XYZColor(0.95, 0.54, 0.72);
+var xyzCustomWhitePointAdapter = new ConverterBuilder().FromXYZ(Illuminants.D65).ToXYZ(xyzCustomWhitePoint).Build();
+var xyzAdapted = xyzCustomWhitePointAdapter.Convert(new XYZColor(0.5, 0.5, 0.5));
 ```
 
 
