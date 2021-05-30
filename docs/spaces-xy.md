@@ -53,6 +53,8 @@ var c4 = new xyYColor(0.3127, 0.3290, 0);
 
 When converting between `xyChromaticity` and any other color space, it always goes through the `xyYColor` first. When converting to xyY, Colourful uses the maximum luminance (channel Y) of 1. As a side-effect of this, it might mean that the resulting color falls outside of the gamut of another color space. If your values fall outside of the range, see the [dedicated page about clamping and normalizing intensity](topic-clamp.md). When converting from xyY to xy, the Y channel is simply discarded.
 
+**It is important to note that as xy is not a proper color space, it doesn't hold the same amount of information.** This means that when you're converting between xy and other color spaces, some information is either lost, or artificially added. If you want to keep a full color, you can try using the xyY color space instead of only the chromaticity.
+
 When converting between `xyYColor` and any other color space, it goes through the [XYZ color space](spaces-xyz.md).
 
 
