@@ -17,7 +17,7 @@ The chromaticity is often used to specify the color of the light without saying 
 // red
 var c1 = new xyChromaticity(0.5736, 0.3209);
 
-// white/gray/black (relative to D65 illuminant)
+// white/gray/black
 var c2 = new xyChromaticity(0.3127, 0.3290);
 ```
 
@@ -30,7 +30,7 @@ Note that in the example above, the colors white, gray, and black, all correspon
 - **Channels:**
   - **x** from 0 to 1
   - **y** from 0 to 1
-  - **Y** (Luminance) from 0 to 1
+  - **Luminance** (Y) from 0 to 1
 
 The xyY color space is just the xy chromaticity with the luminance channel Y added to it.
 
@@ -38,13 +38,13 @@ The xyY color space is just the xy chromaticity with the luminance channel Y add
 // red
 var c1 = new xyYColor(0.5736, 0.3209, 0.21);
 
-// white (relative to D65 illuminant)
+// white
 var c2 = new xyYColor(0.3127, 0.3290, 1);
 
-// gray (relative to D65 illuminant)
+// gray
 var c3 = new xyYColor(0.3127, 0.3290, 0.21);
 
-// black (relative to D65 illuminant), note chromaticity doesn't matter here
+// black (chromaticity doesn't actually matter here)
 var c4 = new xyYColor(0.3127, 0.3290, 0);
 ```
 
@@ -56,7 +56,7 @@ When converting between `xyChromaticity` and any other color space, it always go
 When converting between `xyYColor` and any other color space, it goes through the [XYZ color space](spaces-xyz.md).
 
 
-## Converting between xy and RGB
+## Convert between xy and RGB
 
 Converting from [RGB color space](spaces-rgb.md) to xy chromaticity is fairly straightforward. What you might encounter is the need to specify the white point. In most cases, you'll probably want to use the same white point as your RGB working space does.
 
@@ -87,3 +87,4 @@ var outputRgb = linearRgbToRgb.Convert(normalizedLinearRgb); // RGB [R=1, G=0.22
 
 - https://en.wikipedia.org/wiki/Chromaticity
 - https://en.wikipedia.org/wiki/CIE_1931_color_space#CIE_xy_chromaticity_diagram_and_the_CIE_xyY_color_space
+- http://www.brucelindbloom.com/index.html?Eqn_xyY_to_XYZ.html
