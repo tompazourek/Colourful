@@ -1,6 +1,6 @@
 # xy chromaticity
 
-## xy chromaticity space
+## xy
 
 - **Type:** `xyChromaticity`
 - **Channels:**
@@ -24,7 +24,7 @@ var c2 = new xyChromaticity(0.3127, 0.3290);
 Note that in the example above, the colors white, gray, and black, all correspond to the same chromaticity. That is because these colors all have the same chromaticity, they only differ in luminance, which is what is missing.
 
 
-## xyY color space
+## xyY
 
 - **Type:** `xyYColor`
 - **Channels:**
