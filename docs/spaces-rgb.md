@@ -97,7 +97,7 @@ public double ConvertToNonLinear(in double x)
 
 Colourful comes with many predefined RGB working spaces. To access those, see the `RGBWorkingSpaces` static class.
 
-In most cases, you'll probably want to use `RGBWorkingSpaces.sRGB`.
+In most cases, you'll probably want to use `RGBWorkingSpaces.sRGB`, which is also the default if you don't specify any.
 
 
 ## Linear RGB
