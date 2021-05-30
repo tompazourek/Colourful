@@ -38,7 +38,7 @@ When we convert from `LMSColor` to any other color space, the conversion always 
 The `ConverterBuilder` class can be set up with different LMS transformation matrices that correspond to different methods of chromatic adaptation. See more at [LMS transformation matrix](topic-conversion.md#lms-transformation-matrix).
 
 
-## Convert between LMS and RGB
+## How to convert between LMS and RGB?
 
 In this example, the conversion from [RGB color space](spaces-rgb.md) to LMS is demonstrated. We use the sRGB working space and keep the [D65 white point](topic-illuminants.md).
 

@@ -60,7 +60,7 @@ When converting between `xyChromaticity` and any other color space, it always go
 When converting between `xyYColor` and any other color space, it goes through the [XYZ color space](spaces-xyz.md).
 
 
-## Convert between xy and RGB
+## How to convert between xy and RGB?
 
 Converting from [RGB color space](spaces-rgb.md) to xy chromaticity is fairly straightforward. What you might encounter is the need to specify the white point. In most cases, you'll probably want to use the same white point as your RGB working space does.
 

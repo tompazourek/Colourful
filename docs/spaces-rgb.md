@@ -130,7 +130,7 @@ Due to the linear intensity of the linear RGB space, it is more useful for any s
 **If you intend to do any sort of custom math operations with an RGB color, you should probably use the linear RGB color space.** Usually, you'd start with sRGB, then convert to linear RGB, do the computation, and then convert back.
 
 
-### Example
+### Example: How to blend two colors in linear RGB?
 
 In the following example, this approach is demonstrated via blending two colors:
 

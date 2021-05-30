@@ -42,7 +42,7 @@ Since XYZ is considered as the "base" space, it's actually the other color space
 Most of the time when talking about colors, you need to specify the reference white point. For more information about this, see the [Illuminants and white points](topic-illuminants.md) page.
 
 
-## Convert between XYZ and RGB
+## How to convert between XYZ and RGB?
 
 In this example, the conversion from [RGB color space](spaces-rgb.md) to XYZ is demonstrated. We use the sRGB working space and keep the [D65 white point](topic-illuminants.md) so no [chromatic adaptation](topic-conversion.md#chromatic-adaptation) is needed.
 

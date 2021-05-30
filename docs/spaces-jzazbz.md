@@ -15,7 +15,7 @@ TODO
 TODO
 
 
-## Convert between Luv and RGB
+## How to convert between J<sub>z</sub>a<sub>z</sub>b<sub>z</sub> and RGB?
 
 TODO
 

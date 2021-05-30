@@ -23,7 +23,7 @@ TODO
 - mention D50
 
 
-## Convert between Lab and RGB
+## How to convert between Lab and RGB?
 
 TODO
 
