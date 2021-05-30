@@ -4,7 +4,7 @@ When doing [color conversion](topic-conversion.md) and other color manipulation,
 
 Color spaces tend to use specific white points. For example, the [sRGB working space of the RGB color space](spaces-rgb.md) uses the white point of the CIE Standard Illuminant D65 which is intended to represent the average midday light in Europe. It has [color temperature](topic-cct.md) of about 6504 K, which makes it a little bit colder (bluish shade) color.
 
-Other color spaces can use different white points. Adobe RGB color space, for example, uses a slightly warmer D50 illuminant. The same D50 is also often used in the [Lab color space](spaces-lab.md) used in the printing industry.
+Other color spaces can use different white points. The *Wide Gamut RGB* color space, for example, uses a slightly warmer D50 illuminant. The same D50 is also often used in the [Lab color space](spaces-lab.md) used in the printing industry.
 
 Because the white points are important to the color spaces, they sometimes need to be explicitly specified during [color conversion](topic-conversion.md). The Colourful library then automatically adjusts the colors during the conversion via a process called [chromatic adaptation](topic-conversion.md#chromatic-adaptation).
 
