@@ -1,5 +1,8 @@
 ﻿using Xunit;
 
+// ReSharper disable ObjectCreationAsStatement
+// ReSharper disable UnusedVariable
+
 namespace Colourful.Tests.Docs
 {
     public class TopicConversion
@@ -32,8 +35,11 @@ namespace Colourful.Tests.Docs
             // assumes the source color is ProPhoto RGB (which has D50 white point), target will be XYZ with the D50 white point, because both white points are the same, no chromatic adaptation will be performed
             var converter4 = new ConverterBuilder().FromRGB(RGBWorkingSpaces.ProPhotoRGB).ToXYZ(Illuminants.D50).Build();
 
+            // note no reference white points are needed here (they'd only be specified if they are different)
+            var converter5 = new ConverterBuilder().Fromxy().ToXYZ().Build();
+
             // create the converter once (e.g. store it in a field somewhere)
-            IColorConverter<RGBColor, XYZColor> _rgbToXyz = new ConverterBuilder().FromRGB().ToXYZ(Illuminants.D65).Build();
+            var _rgbToXyz = new ConverterBuilder().FromRGB().ToXYZ(Illuminants.D65).Build();
 
             // use it for conversion
             var rgbColor1 = new RGBColor(1, 0, 0.5);

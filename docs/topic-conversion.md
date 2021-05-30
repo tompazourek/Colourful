@@ -64,6 +64,13 @@ var converter3 = new ConverterBuilder().FromRGB().ToXYZ(Illuminants.D50).Build()
 var converter4 = new ConverterBuilder().FromRGB(RGBWorkingSpaces.ProPhotoRGB).ToXYZ(Illuminants.D50).Build();
 ```
 
+Note that the white points might not always be necessary. For example, when converting from [xy chromaticity space](spaces-xy.md) to [XYZ color space](spaces-xyz.md), the reference white points are optional, but you'd probably not usually specify them.
+
+```csharp
+// note no reference white points are needed here (they'd only be specified if they are different)
+var converter5 = new ConverterBuilder().Fromxy().ToXYZ().Build();
+```
+
 
 ### What conversion metadata are available?
 
