@@ -7,7 +7,7 @@
   - **x** from 0 to 1
   - **y** from 0 to 1
 
-The xy chromaticity space is unusual for two reasons. It's not an actual color space, as the xy coordinates don't fully specify a color, it says nothing about how bright the color actually is.
+The CIE xy chromaticity space is unusual for two reasons. It's not an actual color space, as the xy coordinates don't fully specify a color, it says nothing about how bright the color actually is.
 
 It also only has two channels *x* and *y*.
 
@@ -32,7 +32,7 @@ Note that in the example above, the colors white, gray, and black, all correspon
   - **y** from 0 to 1
   - **Luminance** (Y) from 0 to 1
 
-The xyY color space is just the xy chromaticity with the luminance channel Y added to it.
+The CIE xyY color space is just the xy chromaticity with the luminance channel Y added to it.
 
 ```csharp
 // red
@@ -47,6 +47,8 @@ var c3 = new xyYColor(0.3127, 0.3290, 0.21);
 // black (chromaticity doesn't actually matter here)
 var c4 = new xyYColor(0.3127, 0.3290, 0);
 ```
+
+The CIE xyY color space is very similar to the [CIE XYZ color space](spaces-xyz.md).
 
 
 ## Conversion strategy
