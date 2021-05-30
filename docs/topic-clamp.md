@@ -45,3 +45,10 @@ For RGB, there's a helper called `NormalizeIntensity`:
 RGBColor color = new RGBColor(2, -3, 0.5);
 var normalizedColor = color.NormalizeIntensity(); // RGB [R=1, G=0, B=0.25]
 ```
+
+**Note that in most cases, you should use the `NormalizeIntensity` in the linear RGB color space `LinearRGBColor`.** This means to convert to linear RGB, do the normalization there, and then convert to the final RGB. See the [RGB color space page](spaces-rgb.md) for more information.
+
+```csharp
+LinearRGBColor color = new LinearRGBColor(2, -3, 0.5);
+var normalizedColor = color.NormalizeIntensity(); // LinearRGBColor [R=1, G=0, B=0.25]
+```
