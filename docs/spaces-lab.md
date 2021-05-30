@@ -1,6 +1,33 @@
 # Lab color spaces
 
-- TODO
+## Lab
+
+TODO
 - CIE L\*a\*b\* (1976) *(CIELAB)*
+
+
+## LChab
+
+TODO
 - CIE L\*C\*h°<sub>ab</sub> *(CIELCH)*
-- Hunter Lab
+
+
+## Hunter Lab
+
+TODO
+
+
+## Conversion strategy
+
+TODO
+- mention D50
+
+
+## Convert between Lab and RGB
+
+TODO
+
+
+## Related links
+
+- TODO
