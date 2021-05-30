@@ -37,10 +37,10 @@ namespace Colourful.Tests
         }
 
         [Fact]
-        public void FromGreyCtor()
+        public void FromGrayCtor()
         {
             var first = new RGBColor(r: .4, g: .4, b: .4);
-            var second = RGBColor.FromGrey(.4);
+            var second = RGBColor.FromGray(.4);
             CustomAssert.EqualsWithHashCode(first, second);
         }
 

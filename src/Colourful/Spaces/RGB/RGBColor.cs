@@ -112,8 +112,8 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color with all channels equal.
         /// </summary>
-        /// <param name="value">Grey value (from 0 to 1).</param>
-        public static RGBColor FromGrey(in double value) => new RGBColor(in value, in value, in value);
+        /// <param name="value">Gray value (from 0 to 1).</param>
+        public static RGBColor FromGray(in double value) => new RGBColor(in value, in value, in value);
 
         /// <summary>
         /// Creates RGB color from 8-bit channels ranging from 0 to 255.

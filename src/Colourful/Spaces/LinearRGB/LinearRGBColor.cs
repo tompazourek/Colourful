@@ -99,8 +99,8 @@ namespace Colourful
         /// <summary>
         /// Creates RGB color with all channels equal.
         /// </summary>
-        /// <param name="value">Grey value (from 0 to 1).</param>
-        public static LinearRGBColor FromGrey(in double value) => new LinearRGBColor(in value, in value, in value);
+        /// <param name="value">Gray value (from 0 to 1).</param>
+        public static LinearRGBColor FromGray(in double value) => new LinearRGBColor(in value, in value, in value);
 
         #endregion
         
