@@ -20,7 +20,7 @@ var c2 = new XYZColor(0.95047, 1, 1.08883);
 // gray (D65)
 var c3 = new XYZColor(0.2034, 0.2140, 0.2331);
 
-// black (D65)
+// black
 var c4 = new XYZColor(0, 0, 0);
 ```
 

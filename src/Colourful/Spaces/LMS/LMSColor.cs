@@ -12,9 +12,9 @@ namespace Colourful
     {
         #region Constructor
 
-        /// <param name="l">L (usually from -1 to 1).</param>
-        /// <param name="m">M (usually from -1 to 1).</param>
-        /// <param name="s">S (usually from -1 to 1).</param>
+        /// <param name="l">L (usually from 0 to 1).</param>
+        /// <param name="m">M (usually from 0 to 1).</param>
+        /// <param name="s">S (usually from 0 to 1).</param>
         public LMSColor(in double l, in double m, in double s)
         {
             L = l;
@@ -35,19 +35,19 @@ namespace Colourful
 
         /// <summary>
         /// Long wavelengths (red) cone response (Rho).
-        /// Ranges usually from -1 to 1.
+        /// Ranges usually from 0 to 1.
         /// </summary>
         public readonly double L;
 
         /// <summary>
         /// Medium wavelengths (green) cone response (Gamma).
-        /// Ranges usually from -1 to 1.
+        /// Ranges usually from 0 to 1.
         /// </summary>
         public readonly double M;
 
         /// <summary>
         /// Short wavelengths (blue) cone response (Beta).
-        /// Ranges usually from -1 to 1.
+        /// Ranges usually from 0 to 1.
         /// </summary>
         public readonly double S;
 
