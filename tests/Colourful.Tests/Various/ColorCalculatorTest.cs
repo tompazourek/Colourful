@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Colourful.Tests.Comparers;
 using Xunit;
@@ -47,6 +48,8 @@ namespace Colourful.Tests
             };
         }
 
+        [SuppressMessage("Design", "CA1034:Nested types should not be visible")]
+        [SuppressMessage("Design", "CA1024:Use properties where appropriate")]
         public class DataRow
         {
             public DataRow(in string name, in double X, in double Y, in double Z, in double x_chromaticity, in double y_chromaticity, in double L, in double a, in double b, in double C_ab, in double H_ab, in double u, in double v, in double C_uv, in double H_uv, in double R, in double G, in double B)

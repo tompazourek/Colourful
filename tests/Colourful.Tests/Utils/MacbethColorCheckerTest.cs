@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Colourful.Tests.Comparers;
 using Xunit;
 
@@ -8,6 +9,7 @@ namespace Colourful.Tests
     public class MacbethColorCheckerTest
     {
         [Fact]
+        [SuppressMessage("Maintainability", "CA1502:Avoid excessive complexity")]
         public void TestColors()
         {
             Assert.Equal(expected: 24, MacbethColorChecker.Colors.Count);

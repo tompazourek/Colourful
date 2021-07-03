@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Colourful.Tests.Comparers
@@ -9,10 +10,7 @@ namespace Colourful.Tests.Comparers
     /// </summary>
     public class ColorVectorComparer : IComparer<IColorVector>, IEqualityComparer<IColorVector>
     {
-        public ColorVectorComparer(IComparer<double> doubleComparer)
-        {
-            DoubleComparer = doubleComparer;
-        }
+        public ColorVectorComparer(IComparer<double> doubleComparer) => DoubleComparer = doubleComparer;
 
         public IComparer<double> DoubleComparer { get; }
 
@@ -31,6 +29,7 @@ namespace Colourful.Tests.Comparers
 
         public bool Equals(IColorVector x, IColorVector y) => Compare(x, y) == 0;
 
+        [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
         public int GetHashCode(IColorVector obj) => throw new NotSupportedException();
     }
 }

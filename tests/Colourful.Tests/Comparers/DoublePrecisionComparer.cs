@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Colourful.Tests.Comparers
 {
@@ -8,10 +9,7 @@ namespace Colourful.Tests.Comparers
     /// </summary>
     public class DoublePrecisionComparer : IComparer<double>, IEqualityComparer<double>
     {
-        public DoublePrecisionComparer(in int precision)
-        {
-            Precision = precision;
-        }
+        public DoublePrecisionComparer(in int precision) => Precision = precision;
 
         /// <summary>
         /// Number of fractional digits.
@@ -29,6 +27,7 @@ namespace Colourful.Tests.Comparers
 
         public bool Equals(double x, double y) => Compare(x, y) == 0;
 
+        [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
         public int GetHashCode(double obj) => throw new NotSupportedException();
 
         /// <summary>
