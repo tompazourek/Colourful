@@ -27,7 +27,12 @@ namespace Colourful.Tests
         [InlineData(0.00000, 0.00000, 0.82521, 0, 0.181415, 1)]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.297676, 0.267854, 0.045504, 0.720315, 0.509999, 0.168112)]
-        public void Convert_XYZ_D50_to_sRGB(double x, double y, double z, double r, double g, double b)
+        public void Convert_XYZ_D50_to_sRGB(double x,
+            double y,
+            double z,
+            double r,
+            double g,
+            double b)
         {
             // arange
             var input = new XYZColor(in x, in y, in z);
@@ -57,7 +62,12 @@ namespace Colourful.Tests
         [InlineData(0, 0, 1.088830, 0, 0.235458, 1)]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.297676, 0.267854, 0.045504, 0.754903, 0.501961, 0.099998)]
-        public void Convert_XYZ_D65_to_sRGB(double x, double y, double z, double r, double g, double b)
+        public void Convert_XYZ_D65_to_sRGB(double x,
+            double y,
+            double z,
+            double r,
+            double g,
+            double b)
         {
             // arange
             var input = new XYZColor(in x, in y, in z);
@@ -87,7 +97,12 @@ namespace Colourful.Tests
         [InlineData(0, 1, 0, 0.385065, 0.716879, 0.097105)]
         [InlineData(0, 0, 1, 0.143080, 0.060617, 0.714173)]
         [InlineData(0.754902, 0.501961, 0.100000, 0.315757, 0.273323, 0.035506)]
-        public void Convert_sRGB_to_XYZ_D50(double r, double g, double b, double x, double y, double z)
+        public void Convert_sRGB_to_XYZ_D50(double r,
+            double g,
+            double b,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new RGBColor(in r, in g, in b);
@@ -117,7 +132,12 @@ namespace Colourful.Tests
         [InlineData(0, 1, 0, 0.357576, 0.715152, 0.119192)]
         [InlineData(0, 0, 1, 0.180437, 0.072175, 0.950304)]
         [InlineData(0.754902, 0.501961, 0.100000, 0.297676, 0.267854, 0.045504)]
-        public void Convert_sRGB_to_XYZ_D65(double r, double g, double b, double x, double y, double z)
+        public void Convert_sRGB_to_XYZ_D65(double r,
+            double g,
+            double b,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new RGBColor(in r, in g, in b);

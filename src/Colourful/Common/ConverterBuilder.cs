@@ -15,10 +15,7 @@ namespace Colourful
         /// If you want to customize the conversion process, provide your own list of conversion strategies.
         /// Otherwise, use the parameterless constructor that uses <see cref="ConversionStrategies.GetDefault" />.
         /// </summary>
-        public ConverterBuilder(IEnumerable<IConversionStrategy> conversionStrategies)
-        {
-            _converterAbstractFactory = new ConverterAbstractFactory(conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies)));
-        }
+        public ConverterBuilder(IEnumerable<IConversionStrategy> conversionStrategies) => _converterAbstractFactory = new ConverterAbstractFactory(conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies)));
 
         /// <summary>
         /// Creates a builder with all the defaults (all built-in strategies).

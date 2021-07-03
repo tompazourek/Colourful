@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using Xunit;
 
 // ReSharper disable UnusedVariable
@@ -15,7 +16,7 @@ namespace Colourful.Tests.Docs
             // red
             var c1 = new RGBColor(0.937, 0.2, 0.251);
             var c2 = RGBColor.FromRGB8Bit(239, 51, 64);
-            var c3 = RGBColor.FromColor(System.Drawing.Color.FromArgb(239, 51, 64));
+            var c3 = RGBColor.FromColor(Color.FromArgb(239, 51, 64));
 
             // gray
             var c4 = new RGBColor(0.5, 0.5, 0.5);
@@ -48,13 +49,13 @@ namespace Colourful.Tests.Docs
         [Fact]
         public void BlendRgbColors()
         {
-            RGBColor color1 = RGBColor.FromRGB8Bit(255, 0, 0);
-            RGBColor color2 = RGBColor.FromRGB8Bit(0, 0, 255);
+            var color1 = RGBColor.FromRGB8Bit(255, 0, 0);
+            var color2 = RGBColor.FromRGB8Bit(0, 0, 255);
 
             var rgbToLinear = new ConverterBuilder().FromRGB().ToLinearRGB().Build();
 
-            LinearRGBColor linear1 = rgbToLinear.Convert(color1);
-            LinearRGBColor linear2 = rgbToLinear.Convert(color2);
+            var linear1 = rgbToLinear.Convert(color1);
+            var linear2 = rgbToLinear.Convert(color2);
 
             var linearBlend = new LinearRGBColor(
                 (linear1.R + linear2.R) / 2,
@@ -63,7 +64,7 @@ namespace Colourful.Tests.Docs
 
             var linearToRgb = new ConverterBuilder().FromLinearRGB().ToRGB().Build();
 
-            RGBColor blend = linearToRgb.Convert(linearBlend);
+            var blend = linearToRgb.Convert(linearBlend);
             blend.ToRGB8Bit(out var r, out var g, out var b);
 
             Assert.Equal(188, r);

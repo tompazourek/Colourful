@@ -13,10 +13,7 @@ namespace Colourful.Internals
         /// Constructs a new instance.
         /// </summary>
         /// <param name="conversionStrategies">Conversion strategies to use.</param>
-        public ConverterAbstractFactory(IEnumerable<IConversionStrategy> conversionStrategies)
-        {
-            _conversionStrategies = (conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies))).ToArray();
-        }
+        public ConverterAbstractFactory(IEnumerable<IConversionStrategy> conversionStrategies) => _conversionStrategies = (conversionStrategies ?? throw new ArgumentNullException(nameof(conversionStrategies))).ToArray();
 
         /// <inheritdoc />
         public IColorConverter<TSource, TTarget> CreateConverter<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata)

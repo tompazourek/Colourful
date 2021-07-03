@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Colourful.Internals;
 #if !NETSTANDARD1_1
 using System.Runtime.Serialization;
+
 #endif
-using Colourful.Internals;
 
 namespace Colourful
 {
@@ -17,7 +18,7 @@ namespace Colourful
     public class MissingConversionMetadataException : Exception
     {
         /// <summary>
-        /// Conversion metadata key, see <see cref="IConversionMetadata.GetItemOrDefault{TValue}"/>.
+        /// Conversion metadata key, see <see cref="IConversionMetadata.GetItemOrDefault{TValue}" />.
         /// </summary>
         public string Key { get; }
 
@@ -33,43 +34,51 @@ namespace Colourful
         /// <param name="key">Key that was missing</param>
         public MissingConversionMetadataException(string message, string key)
             : base(message)
-        {
-            Key = key;
-        }
+            => Key = key;
 
         /// <inheritdoc />
 #if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public MissingConversionMetadataException(string message)
-            : base(message) { }
-    
+            : base(message)
+        {
+        }
+
         /// <inheritdoc />
 #if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public MissingConversionMetadataException(string format, params object[] args)
-            : base(string.Format(format, args)) { }
-    
+            : base(string.Format(format, args))
+        {
+        }
+
         /// <inheritdoc />
 #if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public MissingConversionMetadataException(string message, Exception innerException)
-            : base(message, innerException) { }
-    
+            : base(message, innerException)
+        {
+        }
+
         /// <inheritdoc />
 #if !NETSTANDARD1_1
         [ExcludeFromCodeCoverage]
 #endif
         public MissingConversionMetadataException(string format, Exception innerException, params object[] args)
-            : base(string.Format(format, args), innerException) { }
-    
+            : base(string.Format(format, args), innerException)
+        {
+        }
+
 #if !NETSTANDARD1_1
         /// <inheritdoc />
         [ExcludeFromCodeCoverage]
         protected MissingConversionMetadataException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
+            : base(info, context)
+        {
+        }
 #endif
     }
 }

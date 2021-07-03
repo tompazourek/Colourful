@@ -10,10 +10,7 @@ namespace Colourful.Internals
 
         /// <param name="sourceWhitePoint">White point of the RGB working space.</param>
         /// <param name="sourcePrimaries">Chromaticity of RGB working space primaries.</param>
-        public LinearRGBToXYZConverter(in XYZColor sourceWhitePoint, in RGBPrimaries sourcePrimaries)
-        {
-            _conversionMatrix = GetRGBToXYZMatrix(in sourcePrimaries, in sourceWhitePoint);
-        }
+        public LinearRGBToXYZConverter(in XYZColor sourceWhitePoint, in RGBPrimaries sourcePrimaries) => _conversionMatrix = GetRGBToXYZMatrix(in sourcePrimaries, in sourceWhitePoint);
 
         /// <inheritdoc />
         public XYZColor Convert(in LinearRGBColor sourceColor)

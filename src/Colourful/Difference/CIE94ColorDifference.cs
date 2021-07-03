@@ -1,5 +1,4 @@
-﻿using System;
-using static System.Math;
+﻿using static System.Math;
 using static Colourful.CIE94ColorDifferenceApplication;
 using static Colourful.Internals.MathUtils;
 

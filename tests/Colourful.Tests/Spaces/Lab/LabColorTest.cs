@@ -12,7 +12,7 @@ namespace Colourful.Tests
             var second = new LabColor(l: 10, a: 20.5, b: 45.445);
             CustomAssert.EqualsWithHashCode(first, second);
         }
-        
+
         [Fact]
         public void Equals_Different()
         {
@@ -37,7 +37,7 @@ namespace Colourful.Tests
             var color = new LabColor(l: 10, a: 20.5, b: 45.445);
             Assert.Equal("Lab [L=10, a=20.5, b=45.45]", color.ToString());
         }
-        
+
         [Fact]
         public void Dctor()
         {

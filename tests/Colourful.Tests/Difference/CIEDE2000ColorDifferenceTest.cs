@@ -50,7 +50,13 @@ namespace Colourful.Tests
         [InlineData(90.9257, -0.5406, -0.9208, 88.6381, -0.8985, -0.7239, 1.5381)]
         [InlineData(6.7747, -0.2908, -2.4247, 5.8714, -0.0985, -2.2286, 0.6377)]
         [InlineData(2.0776, 0.0795, -1.1350, 0.9033, -0.0636, -0.5514, 0.9082)]
-        public void ComputeDifference(double l1, double a1, double b1, double l2, double a2, double b2, double expectedDeltaE)
+        public void ComputeDifference(double l1,
+            double a1,
+            double b1,
+            double l2,
+            double a2,
+            double b2,
+            double expectedDeltaE)
         {
             // arrange
             var x = new LabColor(in l1, in a1, in b1);

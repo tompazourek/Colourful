@@ -26,7 +26,12 @@ namespace Colourful.Tests
         [InlineData(1, 1, 1, 0.9886011804209902, -0.00024120640221192424, -0.00015051014313560707)]
         [InlineData(210 / 255d, 88 / 255d, 6 / 255d, 0.5724569969567214, 0.11371956333703165, 0.20847893937029804)]
         [InlineData(255 / 255d, 254 / 255d, 206 / 255d, 0.9655170100316091, -0.007751523182026876, 0.05434705677934293)]
-        public void Convert_sRGB_to_Jzazbz(double r, double g, double b, double jz, double az, double bz)
+        public void Convert_sRGB_to_Jzazbz(double r,
+            double g,
+            double b,
+            double jz,
+            double az,
+            double bz)
         {
             // arrange
             var input = new RGBColor(r, g, b);
@@ -57,7 +62,12 @@ namespace Colourful.Tests
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0, .1, .1, double.NaN, double.NaN, double.NaN)]
         [InlineData(.5, -.1, .1, 0.26664213995884956, 0.5430249807908226, 0.27655883327102515)]
-        public void Convert_Jzazbz_to_sRGB(double jz, double az, double bz, double r, double g, double b)
+        public void Convert_Jzazbz_to_sRGB(double jz,
+            double az,
+            double bz,
+            double r,
+            double g,
+            double b)
         {
             // arrange
             var input = new JzazbzColor(jz, az, bz);

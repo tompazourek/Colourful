@@ -112,7 +112,7 @@ namespace Colourful
         public static bool operator !=(JzCzhzColor left, JzCzhzColor right) => !Equals(left, right);
 
         #endregion
-        
+
         #region Deconstructor
 
         /// <summary>

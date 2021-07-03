@@ -9,10 +9,7 @@ namespace Colourful.Internals
         private readonly XYZColor _sourceWhitePoint;
 
         /// <param name="sourceWhitePoint">White point of the source color.</param>
-        public LabToXYZConverter(in XYZColor sourceWhitePoint)
-        {
-            _sourceWhitePoint = sourceWhitePoint;
-        }
+        public LabToXYZConverter(in XYZColor sourceWhitePoint) => _sourceWhitePoint = sourceWhitePoint;
 
         /// <inheritdoc />
         public XYZColor Convert(in LabColor sourceColor)

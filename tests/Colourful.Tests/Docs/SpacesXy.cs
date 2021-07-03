@@ -48,13 +48,13 @@ namespace Colourful.Tests.Docs
             Assert.Equal(0.32086778187972526, outputXy.y);
         }
 
-        
+
         [Fact]
         public void XyToRGB()
         {
             var inputXy = new xyChromaticity(0.5736, 0.3209);
             var rgbWorkingSpace = RGBWorkingSpaces.sRGB;
-           
+
             var xyToLinearRgb = new ConverterBuilder().Fromxy(rgbWorkingSpace.WhitePoint).ToLinearRGB(rgbWorkingSpace).Build();
             var linearRgb = xyToLinearRgb.Convert(inputXy); // LinearRGB [R=4.09, G=0.16, B=0.24]
             var normalizedLinearRgb = linearRgb.NormalizeIntensity(); // LinearRGB [R=1, G=0.04, B=0.06]
@@ -65,7 +65,7 @@ namespace Colourful.Tests.Docs
             Assert.Equal(4.09118633506919, linearRgb.R);
             Assert.Equal(0.1571363198987878, linearRgb.G);
             Assert.Equal(0.24301157278955215, linearRgb.B);
-            
+
             Assert.Equal(0.9999999999999999, outputRgb.R);
             Assert.Equal(0.21628795305057674, outputRgb.G);
             Assert.Equal(0.2703317877324105, outputRgb.B);

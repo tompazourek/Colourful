@@ -26,7 +26,12 @@ namespace Colourful.Tests
         [InlineData(1, 1, 1, 0.9999999999999939, 1.4142135623731162, 0.7853981633974273 * 180 / Math.PI)]
         [InlineData(.5, .5, .5, 0.49999999999998834, 0.7071067811865418, 0.7853981633974352 * 180 / Math.PI)]
         [InlineData(.21321, -.45401, -.93646, 0.21320999999999796, 1.0407124538987635, -2.0222224319240194 * 180 / Math.PI + 360)]
-        public void Convert_Jzazbz_to_JzCzhz(double jz, double az, double bz, double jhz, double cz, double hz)
+        public void Convert_Jzazbz_to_JzCzhz(double jz,
+            double az,
+            double bz,
+            double jhz,
+            double cz,
+            double hz)
         {
             // arrange
             var input = new JzazbzColor(jz, az, bz);
@@ -54,7 +59,12 @@ namespace Colourful.Tests
         [InlineData(1, 1, 1, 0.9999999999999939, 1.4142135623731162, 0.7853981633974273 * 180 / Math.PI)]
         [InlineData(.5, .5, .5, 0.49999999999998834, 0.7071067811865418, 0.7853981633974352 * 180 / Math.PI)]
         [InlineData(.21321, -.45401, -.93646, 0.21320999999999796, 1.0407124538987635, -2.0222224319240194 * 180 / Math.PI + 360)]
-        public void Convert_JzCzhz_to_Jzazbz(double jz, double az, double bz, double jhz, double cz, double hz)
+        public void Convert_JzCzhz_to_Jzazbz(double jz,
+            double az,
+            double bz,
+            double jhz,
+            double cz,
+            double hz)
         {
             // arrange
             var input = new JzCzhzColor(jhz, cz, hz);

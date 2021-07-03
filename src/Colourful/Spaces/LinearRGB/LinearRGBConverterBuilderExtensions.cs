@@ -14,8 +14,7 @@ namespace Colourful
         /// <param name="builder"></param>
         /// <param name="rgbWorkingSpace">Optionally, you can set an RGB working space. The <see cref="RGBWorkingSpaces.sRGB" /> is the usual default.</param>
         public static IFluentConverterBuilderFrom<LinearRGBColor> FromLinearRGB(this ConverterBuilder builder, in IRGBWorkingSpace rgbWorkingSpace)
-            => builder.From<LinearRGBColor>(new ConversionMetadata
-            (
+            => builder.From<LinearRGBColor>(new ConversionMetadata(
                 CreateWhitePoint(rgbWorkingSpace?.WhitePoint),
                 CreateRGBPrimaries(rgbWorkingSpace?.Primaries),
                 CreateCompanding(rgbWorkingSpace?.Companding)
@@ -35,8 +34,7 @@ namespace Colourful
         /// <param name="rgbWorkingSpace">Optionally, you can set an RGB working space. The <see cref="RGBWorkingSpaces.sRGB" /> is the usual default.</param>
         public static IFluentConverterBuilderFromTo<TSource, LinearRGBColor> ToLinearRGB<TSource>(this IFluentConverterBuilderFrom<TSource> builder, in IRGBWorkingSpace rgbWorkingSpace)
             where TSource : IColorSpace
-            => builder.To<LinearRGBColor>(new ConversionMetadata
-            (
+            => builder.To<LinearRGBColor>(new ConversionMetadata(
                 CreateWhitePoint(rgbWorkingSpace?.WhitePoint),
                 CreateRGBPrimaries(rgbWorkingSpace?.Primaries),
                 CreateCompanding(rgbWorkingSpace?.Companding)

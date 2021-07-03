@@ -1,5 +1,4 @@
-﻿using System;
-using static System.Math;
+﻿using static System.Math;
 using static Colourful.CMCColorDifferenceThreshold;
 using static Colourful.Internals.MathUtils;
 
@@ -26,7 +25,7 @@ namespace Colourful
         /// <summary>
         /// Constructs with given recommended threshold parameters.
         /// </summary>
-        public CMCColorDifference(in CMCColorDifferenceThreshold threshold) 
+        public CMCColorDifference(in CMCColorDifferenceThreshold threshold)
             : this(threshold == Acceptability ? 2 : 1, 1)
         {
         }

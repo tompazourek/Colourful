@@ -14,7 +14,7 @@ namespace Colourful.Tests.Docs
         {
             // red
             var c1 = new XYZColor(0.3769, 0.2108, 0.0694);
-            
+
             // white (relative to D65)
             var c2 = new XYZColor(0.95047, 1, 1.08883);
 
@@ -23,9 +23,8 @@ namespace Colourful.Tests.Docs
 
             // black (relative to D65)
             var c4 = new XYZColor(0, 0, 0);
-
         }
-       
+
         [Fact]
         public void RgbToXyz()
         {

@@ -113,7 +113,7 @@ namespace Colourful
         public static bool operator !=(LChabColor left, LChabColor right) => !Equals(left, right);
 
         #endregion
-        
+
         #region Deconstructor
 
         /// <summary>

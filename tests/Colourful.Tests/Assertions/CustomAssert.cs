@@ -26,7 +26,7 @@ namespace Colourful.Tests.Assertions
             Assert.False(x.Equals(y));
             Assert.False(x.Equals((object)y));
             Assert.NotEqual(x?.GetHashCode(), y?.GetHashCode());
-            
+
             dynamic dx = x;
             dynamic dy = y;
 

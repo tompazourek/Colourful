@@ -8,7 +8,7 @@ namespace Colourful.Internals
     public static class ConversionMetadataKeys
     {
         /// <summary>
-        /// White point of the color converted. The value is a <see cref="Nullable{XYZColor}" />.
+        /// White point of the color converted. The value is a <see cref="Nullable{T}" />.
         /// </summary>
         public const string WhitePoint = nameof(WhitePoint);
 

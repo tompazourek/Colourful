@@ -92,7 +92,7 @@ namespace Colourful
         public static bool operator !=(HunterLabColor left, HunterLabColor right) => !Equals(left, right);
 
         #endregion
-        
+
         #region Deconstructor
 
         /// <summary>

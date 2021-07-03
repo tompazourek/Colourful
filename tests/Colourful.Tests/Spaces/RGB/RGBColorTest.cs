@@ -100,7 +100,7 @@ namespace Colourful.Tests
             Assert.Equal(77, color.G);
             Assert.Equal(102, color.B);
         }
-        
+
         [Fact]
         public void FromColor_ExplicitOperator()
         {

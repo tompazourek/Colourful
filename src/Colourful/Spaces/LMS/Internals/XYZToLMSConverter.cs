@@ -8,10 +8,7 @@ namespace Colourful.Internals
         private readonly double[,] _transformationMatrix;
 
         /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />)</param>
-        public XYZToLMSConverter(in double[,] transformationMatrix)
-        {
-            _transformationMatrix = transformationMatrix;
-        }
+        public XYZToLMSConverter(in double[,] transformationMatrix) => _transformationMatrix = transformationMatrix;
 
         /// <inheritdoc />
         public LMSColor Convert(in XYZColor sourceColor)

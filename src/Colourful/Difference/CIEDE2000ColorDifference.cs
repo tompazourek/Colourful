@@ -36,7 +36,7 @@ namespace Colourful
             var C_prime_mean = (C_prime0 + C_prime1) / 2; // eq. (13)
             var h_prime_mean = Calculate_h_prime_mean(in h_prime0, in h_prime1, in C_prime0, in C_prime1);
             var T = 1 - 0.17 * CosDeg(h_prime_mean - 30) + 0.24 * CosDeg(2 * h_prime_mean)
-                                                                   + 0.32 * CosDeg(3 * h_prime_mean + 6) - 0.20 * CosDeg(4 * h_prime_mean - 63); // eq. (15)
+                                                         + 0.32 * CosDeg(3 * h_prime_mean + 6) - 0.20 * CosDeg(4 * h_prime_mean - 63); // eq. (15)
             var dTheta = 30 * Exp(-Pow2((h_prime_mean - 275) / 25)); // eq. (16)
             var R_C = 2 * Sqrt(Pow7(in C_prime_mean) / (Pow7(in C_prime_mean) + Pow7(x: 25))); // eq. (17)
             var S_L = 1 + 0.015 * Pow2(L_prime_mean - 50) / Sqrt(20 + Pow2(L_prime_mean - 50)); // eq. (18)
@@ -54,7 +54,12 @@ namespace Colourful
             return dE00;
         }
 
-        private static void Calculate_a_prime(in double a0, in double a1, in double b0, in double b1, out double a_prime0, out double a_prime1)
+        private static void Calculate_a_prime(in double a0,
+            in double a1,
+            in double b0,
+            in double b1,
+            out double a_prime0,
+            out double a_prime1)
         {
             var C_ab0 = Sqrt(a0 * a0 + b0 * b0); // eq. (2)
             var C_ab1 = Sqrt(a1 * a1 + b1 * b1);
@@ -67,13 +72,23 @@ namespace Colourful
             a_prime1 = (1 + G) * a1;
         }
 
-        private static void Calculate_C_prime(in double a_prime0, in double a_prime1, in double b0, in double b1, out double C_prime0, out double C_prime1)
+        private static void Calculate_C_prime(in double a_prime0,
+            in double a_prime1,
+            in double b0,
+            in double b1,
+            out double C_prime0,
+            out double C_prime1)
         {
             C_prime0 = Sqrt(a_prime0 * a_prime0 + b0 * b0); // eq. (6)
             C_prime1 = Sqrt(a_prime1 * a_prime1 + b1 * b1);
         }
 
-        private static void Calculate_h_prime(in double a_prime0, in double a_prime1, in double b0, in double b1, out double h_prime0, out double h_prime1)
+        private static void Calculate_h_prime(in double a_prime0,
+            in double a_prime1,
+            in double b0,
+            in double b1,
+            out double h_prime0,
+            out double h_prime1)
         {
             // eq. (7)
             var hRadians = Atan2(b0, a_prime0);

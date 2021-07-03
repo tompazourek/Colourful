@@ -52,7 +52,24 @@ namespace Colourful.Tests
         [SuppressMessage("Design", "CA1024:Use properties where appropriate")]
         public class DataRow
         {
-            public DataRow(in string name, in double X, in double Y, in double Z, in double x_chromaticity, in double y_chromaticity, in double L, in double a, in double b, in double C_ab, in double H_ab, in double u, in double v, in double C_uv, in double H_uv, in double R, in double G, in double B)
+            public DataRow(in string name,
+                in double X,
+                in double Y,
+                in double Z,
+                in double x_chromaticity,
+                in double y_chromaticity,
+                in double L,
+                in double a,
+                in double b,
+                in double C_ab,
+                in double H_ab,
+                in double u,
+                in double v,
+                in double C_uv,
+                in double H_uv,
+                in double R,
+                in double G,
+                in double B)
             {
                 Name = name;
                 this.X = X;
@@ -201,12 +218,17 @@ namespace Colourful.Tests
 
             Assert.Equal(expectedLuv, actualLuv, new ColorVectorComparer(new DoubleDeltaComparer(delta: 0.00000105)));
         }
-        
+
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(1, 1, 1, 1, 1, 1)]
         [InlineData(0.206162, 0.260277, 0.746717, 0.220000, 0.130000, 0.780000)]
-        public void Adapt_RGB_WideGamutRGB_To_sRGB(double r1, double g1, double b1, double r2, double g2, double b2)
+        public void Adapt_RGB_WideGamutRGB_To_sRGB(double r1,
+            double g1,
+            double b1,
+            double r2,
+            double g2,
+            double b2)
         {
             // arrange
             var input = new RGBColor(in r1, in g1, in b1);
@@ -229,7 +251,12 @@ namespace Colourful.Tests
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(1, 1, 1, 1, 1, 1)]
         [InlineData(0.220000, 0.130000, 0.780000, 0.206162, 0.260277, 0.746717)]
-        public void Adapt_RGB_sRGB_To_WideGamutRGB(double r1, double g1, double b1, double r2, double g2, double b2)
+        public void Adapt_RGB_sRGB_To_WideGamutRGB(double r1,
+            double g1,
+            double b1,
+            double r2,
+            double g2,
+            double b2)
         {
             // arrange
             var input = new RGBColor(in r1, in g1, in b1);
@@ -251,7 +278,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(22, 33, 1, 22.269869, 32.841164, 1.633926)]
-        public void Adapt_Lab_D65_To_D50(double l1, double a1, double b1, double l2, double a2, double b2)
+        public void Adapt_Lab_D65_To_D50(double l1,
+            double a1,
+            double b1,
+            double l2,
+            double a2,
+            double b2)
         {
             // arrange
             var input = new LabColor(in l1, in a1, in b1);
@@ -273,7 +305,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(2, 3, 4, 1.978956, 2.967544, 3.121752)]
-        public void Adapt_LChab_D50_To_D65(double l1, double c1, double h1, double l2, double c2, double h2)
+        public void Adapt_LChab_D50_To_D65(double l1,
+            double c1,
+            double h1,
+            double l2,
+            double c2,
+            double h2)
         {
             // arrange
             var input = new LChabColor(in l1, in c1, in h1);
@@ -295,7 +332,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.5, 0.5, 0.5, 0.510286, 0.501489, 0.378970)]
-        public void Adapt_XYZ_D65_To_D50_Bradford(double x1, double y1, double z1, double x2, double y2, double z2)
+        public void Adapt_XYZ_D65_To_D50_Bradford(double x1,
+            double y1,
+            double z1,
+            double x2,
+            double y2,
+            double z2)
         {
             // arrange
             var input = new XYZColor(in x1, in y1, in z1);
@@ -317,7 +359,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.5, 0.5, 0.5, 0.509591, 0.500204, 0.378942)]
-        public void Adapt_XYZ_D65_To_D50_VonKries(double x1, double y1, double z1, double x2, double y2, double z2)
+        public void Adapt_XYZ_D65_To_D50_VonKries(double x1,
+            double y1,
+            double z1,
+            double x2,
+            double y2,
+            double z2)
         {
             // arrange
             var input = new XYZColor(in x1, in y1, in z1);
@@ -339,7 +386,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.5, 0.5, 0.5, 0.507233, 0.500000, 0.378943)]
-        public void Adapt_XYZ_D65_To_D50_XYZScaling(double x1, double y1, double z1, double x2, double y2, double z2)
+        public void Adapt_XYZ_D65_To_D50_XYZScaling(double x1,
+            double y1,
+            double z1,
+            double x2,
+            double y2,
+            double z2)
         {
             // arrange
             var input = new XYZColor(in x1, in y1, in z1);

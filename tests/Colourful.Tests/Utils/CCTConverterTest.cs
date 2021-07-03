@@ -90,7 +90,7 @@ namespace Colourful.Tests
             Assert.Equal(expectedX, chromaticity.x, deltaComparer);
             Assert.Equal(expectedY, chromaticity.y, deltaComparer);
         }
-        
+
         [Theory]
         [MemberData(nameof(CCTData_Lindbloom))]
         public void CCTFromChromaticity_LindbloomData(double x, double y, double expectedCCT)

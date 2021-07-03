@@ -37,7 +37,7 @@ namespace Colourful.Tests
             var color = new XYZColor(x: .1, y: .205, z: .45445);
             Assert.Equal("XYZ [X=0.1, Y=0.21, Z=0.45]", color.ToString());
         }
-        
+
         [Fact]
         public void Dctor()
         {

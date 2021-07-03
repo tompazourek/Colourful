@@ -18,7 +18,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(100, 0, 0, 100, 0, 0)]
-        public void Convert_HunterLab_to_Lab(double hl, double ha, double hb, double l, double a, double b)
+        public void Convert_HunterLab_to_Lab(double hl,
+            double ha,
+            double hb,
+            double l,
+            double a,
+            double b)
         {
             // arrange
             var input = new HunterLabColor(in hl, in ha, in hb);
@@ -42,7 +47,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(100, 0, 0, 100, 0, 0)]
-        public void Convert_Lab_to_HunterLab(double l, double a, double b, double hl, double ha, double hb)
+        public void Convert_Lab_to_HunterLab(double l,
+            double a,
+            double b,
+            double hl,
+            double ha,
+            double hb)
         {
             // arrange
             var input = new LabColor(in l, in a, in b);

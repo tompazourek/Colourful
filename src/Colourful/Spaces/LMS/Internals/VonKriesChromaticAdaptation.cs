@@ -15,10 +15,7 @@ namespace Colourful.Internals
 
         /// <param name="sourceWhitePoint">Source white point.</param>
         /// <param name="targetWhitePoint">Target white point.</param>
-        public VonKriesChromaticAdaptation(in LMSColor sourceWhitePoint, in LMSColor targetWhitePoint)
-        {
-            _diagonalMatrix = CreateDiagonal(targetWhitePoint.L / sourceWhitePoint.L, targetWhitePoint.M / sourceWhitePoint.M, targetWhitePoint.S / sourceWhitePoint.S);
-        }
+        public VonKriesChromaticAdaptation(in LMSColor sourceWhitePoint, in LMSColor targetWhitePoint) => _diagonalMatrix = CreateDiagonal(targetWhitePoint.L / sourceWhitePoint.L, targetWhitePoint.M / sourceWhitePoint.M, targetWhitePoint.S / sourceWhitePoint.S);
 
         /// <inheritdoc />
         public LMSColor Convert(in LMSColor sourceColor)

@@ -17,7 +17,7 @@ namespace Colourful
             this.x = x;
             this.y = y;
         }
-        
+
         /// <param name="vector"><see cref="Vector" />, expected 2 dimensions.</param>
         [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Not checking this for brevity.")]
         public xyChromaticity(in double[] vector)
@@ -71,7 +71,7 @@ namespace Colourful
         public static bool operator !=(xyChromaticity left, xyChromaticity right) => !left.Equals(right);
 
         #endregion
-        
+
         #region Deconstructor
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace Colourful.Tests
             var second = new LChuvColor(l: 10, c: 20.5, h: 45.445);
             CustomAssert.EqualsWithHashCode(first, second);
         }
-        
+
         [Fact]
         public void Equals_Different()
         {
@@ -30,7 +30,7 @@ namespace Colourful.Tests
             CustomAssert.EqualsWithHashCode(first, second);
             Assert.Equal(vector, second.Vector);
         }
-        
+
         [Fact]
         public void FromSaturationCtor()
         {

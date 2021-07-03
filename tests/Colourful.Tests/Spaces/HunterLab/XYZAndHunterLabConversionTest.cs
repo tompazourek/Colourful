@@ -22,7 +22,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(100, 0, 0, 0.98074, 1, 1.18232)] // C white point is HunterLab 100, 0, 0
-        public void Convert_HunterLab_to_XYZ(double l, double a, double b, double x, double y, double z)
+        public void Convert_HunterLab_to_XYZ(double l,
+            double a,
+            double b,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new HunterLabColor(in l, in a, in b);
@@ -46,7 +51,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.98074, 1, 1.18232, 100, 0, 0)] // C white point is HunterLab 100, 0, 0
-        public void Convert_XYZ_to_HunterLab(double x, double y, double z, double l, double a, double b)
+        public void Convert_XYZ_to_HunterLab(double x,
+            double y,
+            double z,
+            double l,
+            double a,
+            double b)
         {
             // arrange
             var input = new XYZColor(in x, in y, in z);
@@ -70,7 +80,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(100, 0, 0, 0.95047, 1, 1.08883)] // D65 white point is HunterLab 100, 0, 0 (adaptation to C performed)
-        public void Convert_HunterLab_to_XYZ_D65(double l, double a, double b, double x, double y, double z)
+        public void Convert_HunterLab_to_XYZ_D65(double l,
+            double a,
+            double b,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new HunterLabColor(in l, in a, in b);
@@ -94,7 +109,12 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
         [InlineData(0.95047, 1, 1.08883, 100, 0, 0)] // D65 white point is HunterLab 100, 0, 0 (adaptation to C performed)
-        public void Convert_XYZ_D65_to_HunterLab(double x, double y, double z, double l, double a, double b)
+        public void Convert_XYZ_D65_to_HunterLab(double x,
+            double y,
+            double z,
+            double l,
+            double a,
+            double b)
         {
             // arrange
             var input = new XYZColor(in x, in y, in z);

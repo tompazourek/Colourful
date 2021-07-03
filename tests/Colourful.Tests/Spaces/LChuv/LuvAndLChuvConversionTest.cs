@@ -27,7 +27,12 @@ namespace Colourful.Tests
         [InlineData(10, 36.0555, 123.6901, 10, -20, 30)]
         [InlineData(10, 36.0555, 303.6901, 10, 20, -30)]
         [InlineData(10, 36.0555, 236.3099, 10, -20, -30)]
-        public void Convert_LChuv_to_Luv(double l, double c, double h, double l2, double u, double v)
+        public void Convert_LChuv_to_Luv(double l,
+            double c,
+            double h,
+            double l2,
+            double u,
+            double v)
         {
             // arrange
             var converter = new ConverterBuilder()
@@ -59,7 +64,12 @@ namespace Colourful.Tests
         [InlineData(10, 20, -30, 10, 36.0555, 303.6901)]
         [InlineData(10, -20, -30, 10, 36.0555, 236.3099)]
         [InlineData(37.3511, 24.1720, 16.0684, 37.3511, 29.0255, 33.6141)]
-        public void Convert_Luv_to_LChuv(double l, double u, double v, double l2, double c, double h)
+        public void Convert_Luv_to_LChuv(double l,
+            double u,
+            double v,
+            double l2,
+            double c,
+            double h)
         {
             // arrange
             var converter = new ConverterBuilder()

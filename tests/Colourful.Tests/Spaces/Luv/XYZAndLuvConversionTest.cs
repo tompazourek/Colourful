@@ -27,7 +27,12 @@ namespace Colourful.Tests
         [InlineData(10.0000, -1.2345, -10.0000, 0.012191, 0.011260, 0.025939)]
         [InlineData(100, 0, 0, 0.950470, 1.000000, 1.088830)]
         [InlineData(1, 1, 1, 0.001255, 0.001107, 0.000137)]
-        public void Convert_Luv_to_XYZ(double l, double u, double v, double x, double y, double z)
+        public void Convert_Luv_to_XYZ(double l,
+            double u,
+            double v,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new LuvColor(in l, in u, in v);
@@ -55,7 +60,12 @@ namespace Colourful.Tests
         [InlineData(0.012191, 0.011260, 0.025939, 9.9998, -1.2343, -9.9999)]
         [InlineData(0.950470, 1.000000, 1.088830, 100, 0, 0)]
         [InlineData(0.001255, 0.001107, 0.000137, 0.9999, 0.9998, 1.0004)]
-        public void Convert_XYZ_to_Luv(double x, double y, double z, double l, double u, double v)
+        public void Convert_XYZ_to_Luv(double x,
+            double y,
+            double z,
+            double l,
+            double u,
+            double v)
         {
             // arrange
             var input = new XYZColor(in x, in y, in z);

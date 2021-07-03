@@ -8,10 +8,7 @@ namespace Colourful.Internals
         private readonly double[,] _transformationMatrix;
 
         /// <param name="transformationMatrix">Definition of the cone response domain (see <see cref="LMSTransformationMatrix" />).</param>
-        public LMSConversionStrategy(double[,] transformationMatrix)
-        {
-            _transformationMatrix = transformationMatrix;
-        }
+        public LMSConversionStrategy(double[,] transformationMatrix) => _transformationMatrix = transformationMatrix;
 
         /// <inheritdoc />
         public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)

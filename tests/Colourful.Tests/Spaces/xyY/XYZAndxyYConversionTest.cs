@@ -26,7 +26,12 @@ namespace Colourful.Tests
         [Theory]
         [MemberData(nameof(TestData))]
         [InlineData(0, 0, 0, 0.538842, 0.000000, 0.000000)]
-        public void Convert_xyY_to_XYZ(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
+        public void Convert_xyY_to_XYZ(double xyzX,
+            double xyzY,
+            double xyzZ,
+            double x,
+            double y,
+            double Y)
         {
             // arrange
             var input = new xyYColor(in x, in y, in Y);
@@ -47,7 +52,12 @@ namespace Colourful.Tests
         [Theory]
         [MemberData(nameof(TestData))]
         [InlineData(0.231809, 0, 0.077528, 0.749374, 0.000000, 0.000000)]
-        public void Convert_XYZ_to_xyY(double xyzX, double xyzY, double xyzZ, double x, double y, double Y)
+        public void Convert_XYZ_to_xyY(double xyzX,
+            double xyzY,
+            double xyzZ,
+            double x,
+            double y,
+            double Y)
         {
             // arrange
             var input = new XYZColor(in xyzX, in xyzY, in xyzZ);

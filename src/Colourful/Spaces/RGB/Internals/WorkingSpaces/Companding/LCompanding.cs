@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using static System.Math;
 
 namespace Colourful.Internals

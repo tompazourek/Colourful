@@ -11,7 +11,13 @@ namespace Colourful.Tests
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0, 0)]
         [InlineData(-0.2, .5, 1, 0, 0, 0.17, 0.989394)]
-        public void ComputeDifference(double a1, double a2, double a3, double b1, double b2, double b3, double expectedDeltaE)
+        public void ComputeDifference(double a1,
+            double a2,
+            double a3,
+            double b1,
+            double b2,
+            double b3,
+            double expectedDeltaE)
         {
             // arrange
             var x = new RGBColor(in a1, in a2, in a3);

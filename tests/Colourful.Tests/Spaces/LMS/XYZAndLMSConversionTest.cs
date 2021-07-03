@@ -17,7 +17,12 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        public void Convert_LMS_to_XYZ(double l, double m, double s, double x, double y, double z)
+        public void Convert_LMS_to_XYZ(double l,
+            double m,
+            double s,
+            double x,
+            double y,
+            double z)
         {
             // arrange
             var input = new LMSColor(in l, in m, in s);
@@ -40,7 +45,12 @@ namespace Colourful.Tests
         /// </summary>
         [Theory]
         [InlineData(0, 0, 0, 0, 0, 0)]
-        public void Convert_XYZ_to_LMS(double x, double y, double z, double l, double m, double s)
+        public void Convert_XYZ_to_LMS(double x,
+            double y,
+            double z,
+            double l,
+            double m,
+            double s)
         {
             // arrange
             var input = new XYZColor(in x, in y, in z);

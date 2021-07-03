@@ -14,7 +14,7 @@ namespace Colourful.Tests.Docs
         {
             // red
             var c1 = new LMSColor(0.3823, 0.0811, 0.07162);
-            
+
             // white (D65)
             var c2 = new LMSColor(0.9414, 1.0404, 1.0895);
 
@@ -24,7 +24,7 @@ namespace Colourful.Tests.Docs
             // black
             var c4 = new LMSColor(0, 0, 0);
         }
-       
+
         [Fact]
         public void RgbToLms()
         {

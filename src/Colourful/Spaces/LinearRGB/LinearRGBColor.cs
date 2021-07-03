@@ -103,7 +103,7 @@ namespace Colourful
         public static LinearRGBColor FromGray(in double value) => new LinearRGBColor(in value, in value, in value);
 
         #endregion
-        
+
         #region Deconstructor
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Colourful
         }
 
         #endregion
-        
+
         #region Utils
 
         /// <summary>

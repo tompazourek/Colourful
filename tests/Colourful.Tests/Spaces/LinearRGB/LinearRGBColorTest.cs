@@ -24,7 +24,7 @@ namespace Colourful.Tests
             var second = new LinearRGBColor(r: .1, g: .205, b: .45445);
             CustomAssert.NotEqualsWithHashCode(first, second);
         }
-        
+
         [Fact]
         public void VectorCtor()
         {
@@ -34,7 +34,7 @@ namespace Colourful.Tests
             CustomAssert.EqualsWithHashCode(first, second);
             Assert.Equal(vector, second.Vector);
         }
-        
+
         [Fact]
         public void FromGrayCtor()
         {
@@ -61,7 +61,7 @@ namespace Colourful.Tests
             Assert.Equal(g1, g2);
             Assert.Equal(b1, b2);
         }
-        
+
         [Fact]
         public void Clamp()
         {
@@ -70,7 +70,7 @@ namespace Colourful.Tests
             Assert.Equal(0, g);
             Assert.Equal(0.01, b);
         }
-        
+
         [Fact]
         public void NormalizeIntensity()
         {

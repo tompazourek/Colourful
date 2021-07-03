@@ -10,10 +10,7 @@ namespace Colourful.Internals
         private readonly XYZColor _sourceWhitePoint;
 
         /// <param name="sourceWhitePoint">White point of the source color.</param>
-        public LuvToXYZConverter(in XYZColor sourceWhitePoint)
-        {
-            _sourceWhitePoint = sourceWhitePoint;
-        }
+        public LuvToXYZConverter(in XYZColor sourceWhitePoint) => _sourceWhitePoint = sourceWhitePoint;
 
         /// <inheritdoc />
         public XYZColor Convert(in LuvColor sourceColor)

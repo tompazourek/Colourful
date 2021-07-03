@@ -10,10 +10,7 @@ namespace Colourful.Internals
         private readonly XYZColor _targetWhitePoint;
 
         /// <param name="targetWhitePoint">White point of the target color</param>
-        public XYZToHunterLabConverter(in XYZColor targetWhitePoint)
-        {
-            _targetWhitePoint = targetWhitePoint;
-        }
+        public XYZToHunterLabConverter(in XYZColor targetWhitePoint) => _targetWhitePoint = targetWhitePoint;
 
         /// <inheritdoc />
         public HunterLabColor Convert(in XYZColor sourceColor)

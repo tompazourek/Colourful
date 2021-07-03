@@ -6,10 +6,7 @@
         private readonly ICompanding _targetCompanding;
 
         /// <param name="targetCompanding">Companding function of the target RGB working space.</param>
-        public LinearRGBToRGBConverter(ICompanding targetCompanding)
-        {
-            _targetCompanding = targetCompanding;
-        }
+        public LinearRGBToRGBConverter(ICompanding targetCompanding) => _targetCompanding = targetCompanding;
 
         /// <inheritdoc />
         public RGBColor Convert(in LinearRGBColor sourceColor)

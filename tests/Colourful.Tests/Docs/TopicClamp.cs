@@ -33,14 +33,14 @@ namespace Colourful.Tests.Docs
             Assert.Equal(new[] { 1, 0, 0.5 }, color2.Vector);
 
             var color3 = color1.NormalizeIntensity(); // RGB [R=1, G=0, B=0.25]
-            
+
             // asserts
             Assert.Equal(new[] { 1, 0, 0.25 }, color3.Vector);
 
             // linear RGB
-            LinearRGBColor linearColor = new LinearRGBColor(2, -3, 0.5);
+            var linearColor = new LinearRGBColor(2, -3, 0.5);
             var normalizedLinearColor = linearColor.NormalizeIntensity(); // LinearRGB [R=1, G=0, B=0.25]
-            
+
             // asserts
             Assert.Equal(new[] { 1, 0, 0.25 }, normalizedLinearColor.Vector);
         }

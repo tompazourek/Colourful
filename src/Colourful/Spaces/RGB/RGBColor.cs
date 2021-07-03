@@ -4,9 +4,9 @@ using System.Globalization;
 using Colourful.Internals;
 using static System.Math;
 using static System.MidpointRounding;
-
 #if !NETSTANDARD1_1
 using System.Drawing;
+
 #endif
 
 namespace Colourful
@@ -123,7 +123,6 @@ namespace Colourful
         #endregion
 
 #if !NETSTANDARD1_1
-
         /// <summary>
         /// Creates RGB color from 8-bit channels.
         /// </summary>

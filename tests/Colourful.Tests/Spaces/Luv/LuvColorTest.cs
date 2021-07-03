@@ -12,7 +12,7 @@ namespace Colourful.Tests
             var second = new LuvColor(l: 10, u: 20.5, v: 45.445);
             CustomAssert.EqualsWithHashCode(first, second);
         }
-        
+
         [Fact]
         public void Equals_Different()
         {

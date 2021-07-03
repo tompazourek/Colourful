@@ -17,10 +17,7 @@ namespace Colourful.Internals
         /// <summary>
         /// Constructs with given gamma.
         /// </summary>
-        public GammaCompanding(in double gamma)
-        {
-            Gamma = gamma;
-        }
+        public GammaCompanding(in double gamma) => Gamma = gamma;
 
         /// <summary>
         /// Gamma.

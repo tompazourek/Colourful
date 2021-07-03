@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Colourful.Internals;
 using Xunit;
 
@@ -15,10 +14,7 @@ namespace Colourful.Tests
             var conversionAbstractFactory = new ConverterAbstractFactory(conversionStrategies);
 
             // action & assert
-            var ex = Assert.Throws<InvalidConversionException>(() =>
-            {
-                conversionAbstractFactory.CreateConverter<LabColor, XYZColor>(ConversionMetadata.Empty, ConversionMetadata.Empty);
-            });
+            var ex = Assert.Throws<InvalidConversionException>(() => { conversionAbstractFactory.CreateConverter<LabColor, XYZColor>(ConversionMetadata.Empty, ConversionMetadata.Empty); });
 
             Assert.Equal(typeof(LabColor), ex.SourceType);
             Assert.Equal(typeof(XYZColor), ex.TargetType);

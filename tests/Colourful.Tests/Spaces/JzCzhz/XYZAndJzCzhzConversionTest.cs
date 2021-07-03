@@ -26,7 +26,12 @@ namespace Colourful.Tests
         [InlineData(10000 / 10000d, 10000 / 10000d, 10000 / 10000d, 0.9962177641398566, 0.023243401709370465, 0.6942355713504587 * 180 / Math.PI)]
         [InlineData(3333 / 10000d, 5555 / 10000d, 1111 / 10000d, 0.7306836888937366, 0.2283688525264617, 2.178752906908651 * 180 / Math.PI)]
         [InlineData(7000 / 10000d, 20 / 10000d, 9500 / 10000d, 0.6118957788657648, 0.6637894734869301, -0.4015277024972921 * 180 / Math.PI + 360)]
-        public void Convert_XYZ_to_JzCzhz(double x, double y, double z, double jz, double cz, double hz)
+        public void Convert_XYZ_to_JzCzhz(double x,
+            double y,
+            double z,
+            double jz,
+            double cz,
+            double hz)
         {
             // arrange
             var input = new XYZColor(x, y, z);
@@ -54,7 +59,12 @@ namespace Colourful.Tests
         [InlineData(10000 / 10000d, 10000 / 10000d, 10000 / 10000d, 0.9962177641398566, 0.023243401709370465, 0.6942355713504587 * 180 / Math.PI)]
         [InlineData(3333 / 10000d, 5555 / 10000d, 1111 / 10000d, 0.7306836888937366, 0.2283688525264617, 2.178752906908651 * 180 / Math.PI)]
         [InlineData(7000 / 10000d, 20 / 10000d, 9500 / 10000d, 0.6118957788657648, 0.6637894734869301, -0.4015277024972921 * 180 / Math.PI + 360)]
-        public void Convert_JzCzhz_to_XYZ(double x, double y, double z, double jz, double cz, double hz)
+        public void Convert_JzCzhz_to_XYZ(double x,
+            double y,
+            double z,
+            double jz,
+            double cz,
+            double hz)
         {
             // arrange
             var input = new JzCzhzColor(jz, cz, hz);

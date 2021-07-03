@@ -37,7 +37,7 @@ namespace Colourful.Tests
             var color = new JzazbzColor(jz: 0.6, az: -0.3, bz: 0.01);
             Assert.Equal("Jzazbz [Jz=0.6, az=-0.3, bz=0.01]", color.ToString());
         }
-        
+
         [Fact]
         public void Dctor()
         {

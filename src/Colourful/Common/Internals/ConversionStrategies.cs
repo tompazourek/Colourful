@@ -11,8 +11,7 @@ namespace Colourful.Internals
         /// Returns list of conversion strategies that are built-in to the library.
         /// </summary>
         /// <param name="lmsTransformationMatrix">Optionally pick LMS transformation matrix (<see cref="LMSTransformationMatrix" />) used for LMS-XYZ conversion and chromatic adaptation for color spaces with different white points. If empty, <see cref="LMSTransformationMatrix.Bradford" /> will be used.</param>
-        public static IEnumerable<IConversionStrategy> GetDefault
-        (
+        public static IEnumerable<IConversionStrategy> GetDefault(
             double[,] lmsTransformationMatrix = null
         )
         {
