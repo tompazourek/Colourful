@@ -29,6 +29,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{12E41E2E-58E9-459F-9092-0DFDD7E25A59}"
+	ProjectSection(SolutionItems) = preProject
+		docs\spaces-jzazbz.md = docs\spaces-jzazbz.md
+		docs\spaces-lab.md = docs\spaces-lab.md
+		docs\spaces-lms.md = docs\spaces-lms.md
+		docs\spaces-luv.md = docs\spaces-luv.md
+		docs\spaces-rgb.md = docs\spaces-rgb.md
+		docs\spaces-xy.md = docs\spaces-xy.md
+		docs\spaces-xyz.md = docs\spaces-xyz.md
+		docs\topic-cct.md = docs\topic-cct.md
+		docs\topic-changes-v2-v3.md = docs\topic-changes-v2-v3.md
+		docs\topic-clamp.md = docs\topic-clamp.md
+		docs\topic-color-difference.md = docs\topic-color-difference.md
+		docs\topic-conversion.md = docs\topic-conversion.md
+		docs\topic-cylindrical-spaces.md = docs\topic-cylindrical-spaces.md
+		docs\topic-illuminants.md = docs\topic-illuminants.md
+		docs\topic-macbeth-color-checker.md = docs\topic-macbeth-color-checker.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
