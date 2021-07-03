@@ -51,13 +51,13 @@ namespace Colourful.Internals
 
         /// <inheritdoc cref="object" />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 #endif
         public static bool operator ==(Rec2020Companding left, Rec2020Companding right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 #endif
         public static bool operator !=(Rec2020Companding left, Rec2020Companding right) => !Equals(left, right);
 

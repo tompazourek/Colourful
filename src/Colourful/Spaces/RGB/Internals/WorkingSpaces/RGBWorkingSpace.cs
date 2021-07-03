@@ -57,13 +57,13 @@ namespace Colourful.Internals
 
         /// <inheritdoc cref="object" />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 #endif
         public static bool operator ==(RGBWorkingSpace left, RGBWorkingSpace right) => Equals(left, right);
 
         /// <inheritdoc cref="object" />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 #endif
         public static bool operator !=(RGBWorkingSpace left, RGBWorkingSpace right) => !Equals(left, right);
 
