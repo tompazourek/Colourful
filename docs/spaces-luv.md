@@ -33,7 +33,7 @@ var c4 = new LuvColor(0, 0, 0);
   - **C<span>*</span>** (chroma) usually between 0% and 100%
   - **h<span>°</span>** (hue in degrees) between 0° and 360°
 
-The CIE L\*C\*h°<sub>uv</sub> *(CIELCH)* color space is a [cylindrical representation](topic-cylindrical-spaces.md) of the Luv color space. Sometimes it's also known as  CIE HLC<sub>uv</sub>.
+The CIE L\*C\*h°<sub>uv</sub> *(CIELCH)* color space is a [cylindrical representation](topic-cylindrical-spaces.md) of the Luv color space. Sometimes it's also known as CIE HLC<sub>uv</sub>.
 
 ```csharp
 // red
