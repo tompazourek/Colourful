@@ -1,4 +1,4 @@
-# ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/assets/logo_32.png) Colourful .NET
+# ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/master/assets/logo_32.png) Colourful .NET
 
 [![Build status](https://img.shields.io/appveyor/ci/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful)
 [![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests)
