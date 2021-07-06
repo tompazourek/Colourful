@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     /// <summary>
     /// Compares two doubles and rounds to specific number of fractional digits.
     /// </summary>
     public class DoubleRoundingComparer : IComparer<double>, IEqualityComparer<double>
     {
-        public DoubleRoundingComparer(int precision)
-        {
-            Precision = precision;
-        }
+        public DoubleRoundingComparer(in int precision) => Precision = precision;
 
         /// <summary>
-        /// Number of fractional digits
+        /// Number of fractional digits.
         /// </summary>
         public int Precision { get; }
 
@@ -29,6 +27,7 @@ namespace Colourful.Tests
 
         public bool Equals(double x, double y) => Compare(x, y) == 0;
 
+        [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
         public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }

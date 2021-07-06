@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Colourful.Tests
+namespace Colourful.Tests.Comparers
 {
     /// <summary>
     /// Compares two doubles using delta difference.
     /// </summary>
     public class DoubleDeltaComparer : IComparer<double>, IEqualityComparer<double>
     {
-        public DoubleDeltaComparer(double delta)
-        {
-            Delta = delta;
-        }
+        public DoubleDeltaComparer(in double delta) => Delta = delta;
 
         /// <summary>
-        /// Smallest allowed difference
+        /// Smallest allowed difference.
         /// </summary>
         public double Delta { get; }
 
@@ -31,6 +29,7 @@ namespace Colourful.Tests
 
         public bool Equals(double x, double y) => Compare(x, y) == 0;
 
+        [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
         public int GetHashCode(double obj) => throw new NotSupportedException();
     }
 }

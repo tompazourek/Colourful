@@ -1,11 +1,11 @@
-﻿namespace Colourful.Difference
+﻿namespace Colourful
 {
     /// <summary>
-    /// Computes distance between two vectors in color space
+    /// Computes distance between two vectors in color space.
     /// </summary>
-    /// <typeparam name="TColor"></typeparam>
+    /// <typeparam name="TColor">Color space</typeparam>
     public interface IColorDifference<TColor>
-        where TColor : struct
+        where TColor : IColorSpace
     {
         /// <summary>
         /// Computes distance between color x and y.

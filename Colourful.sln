@@ -1,19 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3EC12833-9E63-43C8-A831-32351B04E1E7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{03794C19-00FA-4D01-94D9-4B1B8FC6FE02}"
-	ProjectSection(SolutionItems) = preProject
-		.appveyor.yml = .appveyor.yml
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{73E40E52-5507-4918-8A5D-302C85691A0C}"
 	ProjectSection(SolutionItems) = preProject
@@ -28,6 +18,35 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colourful", "src\Colourful\Colourful.csproj", "{B9EC174E-55E6-423C-B30A-CE5FE6FA5310}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colourful.Tests", "tests\Colourful.Tests\Colourful.Tests.csproj", "{0A692080-39D3-41E0-AAA0-74F2F2615C80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{62EFC213-D733-42B9-B22E-8938F70267B5}"
+	ProjectSection(SolutionItems) = preProject
+		.appveyor.yml = .appveyor.yml
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{12E41E2E-58E9-459F-9092-0DFDD7E25A59}"
+	ProjectSection(SolutionItems) = preProject
+		docs\spaces-jzazbz.md = docs\spaces-jzazbz.md
+		docs\spaces-lab.md = docs\spaces-lab.md
+		docs\spaces-lms.md = docs\spaces-lms.md
+		docs\spaces-luv.md = docs\spaces-luv.md
+		docs\spaces-rgb.md = docs\spaces-rgb.md
+		docs\spaces-xy.md = docs\spaces-xy.md
+		docs\spaces-xyz.md = docs\spaces-xyz.md
+		docs\topic-cct.md = docs\topic-cct.md
+		docs\topic-changes-v2-v3.md = docs\topic-changes-v2-v3.md
+		docs\topic-clamp.md = docs\topic-clamp.md
+		docs\topic-color-difference.md = docs\topic-color-difference.md
+		docs\topic-conversion.md = docs\topic-conversion.md
+		docs\topic-cylindrical-spaces.md = docs\topic-cylindrical-spaces.md
+		docs\topic-illuminants.md = docs\topic-illuminants.md
+		docs\topic-macbeth-color-checker.md = docs\topic-macbeth-color-checker.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
