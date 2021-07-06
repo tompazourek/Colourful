@@ -24,7 +24,7 @@ namespace Colourful.Tests.Docs
             // black
             var c4 = new LabColor(0, 0, 0);
         }
-        
+
         [Fact]
         public void RgbToLab()
         {
@@ -98,7 +98,6 @@ namespace Colourful.Tests.Docs
         }
 
 
-
         [Fact]
         public void SamplesHunterLab()
         {
@@ -114,7 +113,7 @@ namespace Colourful.Tests.Docs
             // black
             var c4 = new HunterLabColor(0, 0, 0);
         }
-        
+
         [Fact]
         public void RgbToHunterLab()
         {

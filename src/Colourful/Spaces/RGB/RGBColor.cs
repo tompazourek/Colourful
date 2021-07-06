@@ -4,6 +4,7 @@ using System.Globalization;
 using Colourful.Internals;
 using static System.Math;
 using static System.MidpointRounding;
+
 #if !NETSTANDARD1_1
 using System.Drawing;
 

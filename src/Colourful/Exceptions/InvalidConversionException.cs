@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+
 #if !NETSTANDARD1_1
 using System.Runtime.Serialization;
 

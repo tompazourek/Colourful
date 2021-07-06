@@ -68,7 +68,7 @@ namespace Colourful.Tests.Docs
             // black
             var c4 = new JzCzhzColor(0, 0, 0);
         }
-        
+
         [Fact]
         public void RgbToJzCzhz()
         {
