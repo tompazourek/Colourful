@@ -8,7 +8,7 @@
   - **u<span>*</span>** chromaticity mostly between -100% and 100% (not always)
   - **v<span>*</span>** chromaticity mostly between -100% and 100% (not always)
 
-The CIE L\*u\*v\* (1976) *(CIELUV)* color space is designed to have perceptual uniformity, which means that distances in the color space should more closely correspond to how humans perceive the color differences.
+The CIE L\*u\*v\* (1976) *(CIELUV)* color space (similarly to [CIELAB](spaces-lab.md)) is designed to have perceptual uniformity, which means that distances in the color space should more closely correspond to how humans perceive the color differences.
 
 ```csharp
 // red
@@ -110,3 +110,5 @@ var outputRgb = lChuvToRgb.Convert(inputLChuv); // RGB [R=0.94, G=0.2, B=0.25]
 - https://en.wikipedia.org/wiki/CIELUV
 - [Cylindrical color spaces](topic-cylindrical-spaces.md)
 - [Euclidean distance](topic-color-difference.md#euclidean-distance)
+- http://www.brucelindbloom.com/index.html?Eqn_Luv_to_XYZ.html
+- http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_Luv.html
