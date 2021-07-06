@@ -91,7 +91,7 @@ The `LabColor` values are relative to the [white point](topic-illuminants.md) us
 
 In most cases, the CIELAB values you will encounter use the D50 white point (which is different to D65 white point used by [sRGB](spaces-rgb.md)).
 
-If you use Hunter Lab, you'll probably want to use the C illuminant in the Hunter Lab space.
+For `HunterLabColor` and any other color space, it always goes through `XYZColor` first (same strategy as `LabColor`, but different formulas). If you use Hunter Lab, you'll probably want to use the C white point in the Hunter Lab space.
 
 
 ## How to convert between Lab and RGB?
