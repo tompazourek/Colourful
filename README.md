@@ -1,16 +1,14 @@
-# ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/vnext/assets/logo_32.png) Colourful .NET
+# ![Colourful logo](https://raw.githubusercontent.com/tompazourek/Colourful/assets/logo_32.png) Colourful .NET
 
-**Note: The *vnext* branch corresponds to the *version 3* of the library, which is still in prerelease. For breaking changes from *version 2*, see the [Changes between v2 and v3](docs/topic-changes-v2-v3.md) page.**
-
-[![Build status](https://img.shields.io/appveyor/ci/tompazourek/colourful/vnext.svg)](https://ci.appveyor.com/project/tompazourek/colourful)
-[![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful/vnext.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests)
-[![codecov](https://codecov.io/gh/tompazourek/Colourful/branch/vnext/graph/badge.svg?token=gSGKtsdmw3)](https://codecov.io/gh/tompazourek/Colourful)
-[![NuGet version](https://img.shields.io/nuget/vpre/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
+[![Build status](https://img.shields.io/appveyor/ci/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful)
+[![Tests](https://img.shields.io/appveyor/tests/tompazourek/colourful/master.svg)](https://ci.appveyor.com/project/tompazourek/colourful/build/tests)
+[![codecov](https://codecov.io/gh/tompazourek/Colourful/branch/master/graph/badge.svg?token=gSGKtsdmw3)](https://codecov.io/gh/tompazourek/Colourful)
+[![NuGet version](https://img.shields.io/nuget/v/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 
 *Open source .NET library for working with color spaces.*
 
-The library is written in C# and released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/vnext/LICENSE), so feel **free to fork** or **use commercially**.
+The library is written in C# and released with an [MIT license](https://raw.githubusercontent.com/tompazourek/Colourful/LICENSE), so feel **free to fork** or **use commercially**.
 
 **Any feedback is appreciated, please visit the [issues](https://github.com/tompazourek/Colourful/issues?state=open) page or send me an [e-mail](mailto:tom.pazourek@gmail.com).**
 
@@ -22,7 +20,7 @@ Binaries of the last build can be downloaded on the [AppVeyor CI page of the pro
 The library is also [published on NuGet.org](https://www.nuget.org/packages/Colourful/), install using:
 
 ```
-PM> Install-Package Colourful -IncludePrerelease
+PM> Install-Package Colourful
 ```
 
 Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for these target frameworks:
