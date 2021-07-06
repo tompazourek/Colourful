@@ -210,6 +210,8 @@ When converting between `LinearRGBColor` and any other color space, it goes thro
 
 ## Related links
 
+- http://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/
+- [Computer Color is Broken (YouTube)](https://www.youtube.com/watch?v=LKnqECcg6Gw)
 - https://stackoverflow.com/questions/12524623/what-are-the-practical-differences-when-working-with-colors-in-a-linear-vs-a-no
 - https://en.wikipedia.org/wiki/RGB_color_space
 - https://en.wikipedia.org/wiki/RGB_color_model
