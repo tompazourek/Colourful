@@ -1,6 +1,6 @@
 # Cylindrical color spaces
 
-Many of the color spaces also have their cylindrical equivalents. A cylindrical color space usually consists of three channels:
+Many of the color spaces also have their cylindrical equivalents (sometimes also called "polar" equivalents). A cylindrical color space usually consists of three channels:
 
 - Lightness channel, often denoted as "L"
 - Chroma (also chrominance or colourfulness) channel, often denoted as "C"
