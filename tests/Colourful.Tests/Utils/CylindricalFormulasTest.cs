@@ -1,14 +1,13 @@
 ﻿using Xunit;
 
-namespace Colourful.Tests
+namespace Colourful.Tests;
+
+public class CylindricalFormulasTest
 {
-    public class CylindricalFormulasTest
+    [Fact]
+    public void GetSaturation_Zeroes()
     {
-        [Fact]
-        public void GetSaturation_Zeroes()
-        {
-            var result = CylindricalFormulas.GetSaturation(L: 0, C: 0);
-            Assert.Equal(expected: 0, result);
-        }
+        var result = CylindricalFormulas.GetSaturation(L: 0, C: 0);
+        Assert.Equal(expected: 0, result);
     }
 }

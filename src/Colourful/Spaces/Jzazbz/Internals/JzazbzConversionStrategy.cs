@@ -1,82 +1,81 @@
 ﻿using static Colourful.Internals.ConversionMetadataUtils;
 
-namespace Colourful.Internals
+namespace Colourful.Internals;
+
+/// <inheritdoc />
+public class JzazbzConversionStrategy : IConversionStrategy
 {
     /// <inheritdoc />
-    public class JzazbzConversionStrategy : IConversionStrategy
+    public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+        where TColor : IColorSpace
     {
-        /// <inheritdoc />
-        public IColorConverter<TColor, TColor> TrySame<TColor>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
-            where TColor : IColorSpace
-        {
-            // only process Jzazbz
-            if (typeof(TColor) != typeof(JzazbzColor))
-                return null;
+        // only process Jzazbz
+        if (typeof(TColor) != typeof(JzazbzColor))
+            return null;
 
-            // if equal WP, bypass
+        // if equal WP, bypass
+        if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
+            return new BypassConverter<JzazbzColor>() as IColorConverter<TColor, TColor>;
+
+        return null;
+    }
+
+    /// <inheritdoc />
+    public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+        where TSource : IColorSpace
+        where TTarget : IColorSpace
+    {
+        // Jzazbz{WP1} -> XYZ{WP1}
+        if (typeof(TSource) == typeof(JzazbzColor) && typeof(TTarget) == typeof(XYZColor))
+        {
             if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
-                return new BypassConverter<JzazbzColor>() as IColorConverter<TColor, TColor>;
-
-            return null;
+            {
+                return new JzazbzToXYZConverter() as IColorConverter<TSource, TTarget>;
+            }
         }
-
-        /// <inheritdoc />
-        public IColorConverter<TSource, TTarget> TryConvert<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
-            where TSource : IColorSpace
-            where TTarget : IColorSpace
+        // XYZ{WP1} -> Jzazbz{WP1}
+        else if (typeof(TSource) == typeof(XYZColor) && typeof(TTarget) == typeof(JzazbzColor))
         {
-            // Jzazbz{WP1} -> XYZ{WP1}
-            if (typeof(TSource) == typeof(JzazbzColor) && typeof(TTarget) == typeof(XYZColor))
+            if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
             {
-                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
-                {
-                    return new JzazbzToXYZConverter() as IColorConverter<TSource, TTarget>;
-                }
+                return new XYZToJzazbzConverter() as IColorConverter<TSource, TTarget>;
             }
-            // XYZ{WP1} -> Jzazbz{WP1}
-            else if (typeof(TSource) == typeof(XYZColor) && typeof(TTarget) == typeof(JzazbzColor))
-            {
-                if (EqualWhitePoints(in sourceMetadata, in targetMetadata))
-                {
-                    return new XYZToJzazbzConverter() as IColorConverter<TSource, TTarget>;
-                }
-            }
-
-            return null;
         }
 
-        /// <inheritdoc />
-        public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
-            where TSource : IColorSpace
-            where TTarget : IColorSpace
+        return null;
+    }
+
+    /// <inheritdoc />
+    public IColorConverter<TSource, TTarget> TryConvertToAnyTarget<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+        where TSource : IColorSpace
+        where TTarget : IColorSpace
+    {
+        // Jzazbz{WP1} -> any = Jzazbz{WP1} -> XYZ{WP1} -> any
+        if (typeof(TSource) == typeof(JzazbzColor))
         {
-            // Jzazbz{WP1} -> any = Jzazbz{WP1} -> XYZ{WP1} -> any
-            if (typeof(TSource) == typeof(JzazbzColor))
-            {
-                var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
-                var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
-                return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
-            }
-
-            return null;
+            var intermediateNode = new ConversionMetadata(sourceMetadata.GetWhitePointItem());
+            var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+            var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+            return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
         }
 
-        /// <inheritdoc />
-        public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
-            where TSource : IColorSpace
-            where TTarget : IColorSpace
+        return null;
+    }
+
+    /// <inheritdoc />
+    public IColorConverter<TSource, TTarget> TryConvertFromAnySource<TSource, TTarget>(in IConversionMetadata sourceMetadata, in IConversionMetadata targetMetadata, in IConverterAbstractFactory converterAbstractFactory)
+        where TSource : IColorSpace
+        where TTarget : IColorSpace
+    {
+        // any -> Jzazbz{WP1} = any -> XYZ{WP1} -> Jzazbz{WP1}
+        if (typeof(TTarget) == typeof(JzazbzColor))
         {
-            // any -> Jzazbz{WP1} = any -> XYZ{WP1} -> Jzazbz{WP1}
-            if (typeof(TTarget) == typeof(JzazbzColor))
-            {
-                var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
-                var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
-                var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
-                return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
-            }
-
-            return null;
+            var intermediateNode = new ConversionMetadata(targetMetadata.GetWhitePointItem());
+            var firstConversion = converterAbstractFactory.CreateConverter<TSource, XYZColor>(in sourceMetadata, intermediateNode);
+            var secondConversion = converterAbstractFactory.CreateConverter<XYZColor, TTarget>(intermediateNode, in targetMetadata);
+            return new CompositeConverter<TSource, XYZColor, TTarget>(firstConversion, secondConversion);
         }
+
+        return null;
     }
 }

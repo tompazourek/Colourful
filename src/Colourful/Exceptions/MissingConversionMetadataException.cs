@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Colourful.Internals;
-
 #if !NETSTANDARD1_1
 using System.Runtime.Serialization;
 

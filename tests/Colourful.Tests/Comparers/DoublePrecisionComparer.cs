@@ -2,42 +2,41 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Colourful.Tests.Comparers
+namespace Colourful.Tests.Comparers;
+
+/// <summary>
+/// Compares two doubles and takes only specific number of fractional digits into account.
+/// </summary>
+public class DoublePrecisionComparer : IComparer<double>, IEqualityComparer<double>
 {
+    public DoublePrecisionComparer(in int precision) => Precision = precision;
+
     /// <summary>
-    /// Compares two doubles and takes only specific number of fractional digits into account.
+    /// Number of fractional digits.
     /// </summary>
-    public class DoublePrecisionComparer : IComparer<double>, IEqualityComparer<double>
+    public int Precision { get; }
+
+    public int Compare(double x, double y)
     {
-        public DoublePrecisionComparer(in int precision) => Precision = precision;
+        var xp = FloorWithPrecision(x, Precision);
+        var yp = FloorWithPrecision(y, Precision);
 
-        /// <summary>
-        /// Number of fractional digits.
-        /// </summary>
-        public int Precision { get; }
+        var result = Comparer<double>.Default.Compare(xp, yp);
+        return result;
+    }
 
-        public int Compare(double x, double y)
-        {
-            var xp = FloorWithPrecision(x, Precision);
-            var yp = FloorWithPrecision(y, Precision);
+    public bool Equals(double x, double y) => Compare(x, y) == 0;
 
-            var result = Comparer<double>.Default.Compare(xp, yp);
-            return result;
-        }
+    [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
+    public int GetHashCode(double obj) => throw new NotSupportedException();
 
-        public bool Equals(double x, double y) => Compare(x, y) == 0;
-
-        [SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations")]
-        public int GetHashCode(double obj) => throw new NotSupportedException();
-
-        /// <summary>
-        /// Floors number and preserves specific numer of decimal places.
-        /// </summary>
-        private static double FloorWithPrecision(double input, int decimalPlaces)
-        {
-            var power = Math.Pow(x: 10, decimalPlaces);
-            var output = Math.Floor(input * power) / power;
-            return output;
-        }
+    /// <summary>
+    /// Floors number and preserves specific numer of decimal places.
+    /// </summary>
+    private static double FloorWithPrecision(double input, int decimalPlaces)
+    {
+        var power = Math.Pow(x: 10, decimalPlaces);
+        var output = Math.Floor(input * power) / power;
+        return output;
     }
 }
