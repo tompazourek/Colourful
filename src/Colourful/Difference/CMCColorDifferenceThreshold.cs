@@ -1,19 +1,18 @@
-﻿namespace Colourful
+﻿namespace Colourful;
+
+/// <summary>
+/// Weighting parameters for CMC l:c color difference formula.
+/// <see cref="CMCColorDifference" /> for usage.
+/// </summary>
+public enum CMCColorDifferenceThreshold
 {
     /// <summary>
-    /// Weighting parameters for CMC l:c color difference formula.
-    /// <see cref="CMCColorDifference" /> for usage.
+    /// 2:1 (l:c).
     /// </summary>
-    public enum CMCColorDifferenceThreshold
-    {
-        /// <summary>
-        /// 2:1 (l:c).
-        /// </summary>
-        Acceptability,
+    Acceptability,
 
-        /// <summary>
-        /// 1:1 (l:c).
-        /// </summary>
-        Imperceptibility,
-    }
+    /// <summary>
+    /// 1:1 (l:c).
+    /// </summary>
+    Imperceptibility,
 }
