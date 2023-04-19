@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "jetbrains.resharper.globaltools": {
-      "version": "2021.3.1",
+      "version": "2023.1.0",
       "commands": [
         "jb"
       ]
