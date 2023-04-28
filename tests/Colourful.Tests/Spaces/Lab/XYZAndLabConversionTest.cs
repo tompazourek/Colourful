@@ -93,6 +93,6 @@ public class XYZAndLabConversionTest
     {
         var ex = Assert.Throws<MissingConversionMetadataException>(() => { new ConverterBuilder().FromXYZ().ToLab().Build(); });
 
-        Assert.Equal(ex.Key, ConversionMetadataKeys.WhitePoint);
+        Assert.Equal(ConversionMetadataKeys.WhitePoint, ex.Key);
     }
 }
