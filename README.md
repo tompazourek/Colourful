@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/tompazourek/Colourful/branch/master/graph/badge.svg?token=gSGKtsdmw3)](https://codecov.io/gh/tompazourek/Colourful)
 [![NuGet version](https://img.shields.io/nuget/v/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/Colourful.svg)](https://www.nuget.org/packages/Colourful/)
+[![API documentation](https://img.shields.io/badge/API%20Documentation-RobiniaDocs-43bc00?logo=readme&logoColor=white)](https://www.robiniadocs.com/d/colourful/api/Colourful.RGBColor.html)
 
 *Open source .NET library for working with color spaces.*
 
