@@ -1,5 +1,4 @@
-﻿using static System.Double;
-using static System.Math;
+﻿using static System.Math;
 using static Colourful.Internals.MathUtils;
 
 namespace Colourful;
@@ -16,7 +15,7 @@ public static class CylindricalFormulas
     {
         var result = 100 * (C / L);
 
-        if (IsNaN(result))
+        if (double.IsNaN(result))
             return 0;
 
         return result;

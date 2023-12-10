@@ -73,12 +73,14 @@ namespace Colourful
         }
 
 #if !NETSTANDARD1_1
+#pragma warning disable SYSLIB0051
         /// <inheritdoc />
         [ExcludeFromCodeCoverage]
         protected MissingConversionMetadataException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#pragma warning restore SYSLIB0051
 #endif
     }
 }

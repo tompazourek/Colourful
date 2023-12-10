@@ -1,5 +1,4 @@
-﻿using static System.Double;
-using static System.Math;
+﻿using static System.Math;
 using static Colourful.Internals.HunterLabConversionUtils;
 
 namespace Colourful.Internals;
@@ -26,10 +25,10 @@ public class XYZToHunterLabConverter : IColorConverter<XYZColor, HunterLabColor>
         var a = Ka * ((X / Xn - Y / Yn) / Sqrt(Y / Yn));
         var b = Kb * ((Y / Yn - Z / Zn) / Sqrt(Y / Yn));
 
-        if (IsNaN(a))
+        if (double.IsNaN(a))
             a = 0;
 
-        if (IsNaN(b))
+        if (double.IsNaN(b))
             b = 0;
 
         var targetColor = new HunterLabColor(in L, in a, in b);

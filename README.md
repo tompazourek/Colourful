@@ -26,7 +26,7 @@ PM> Install-Package Colourful
 
 Colourful is CLS Compliant (to allow use in VB.NET etc.) and is built for these target frameworks:
 
-- .NET 6
+- .NET 6 or newer
 - .NET Framework 4.5
 - .NET Standard 2.0
 - .NET Standard 1.1

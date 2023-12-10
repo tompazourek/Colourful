@@ -1,5 +1,4 @@
-﻿using static System.Double;
-using static Colourful.Internals.CIEConstants;
+﻿using static Colourful.Internals.CIEConstants;
 using static Colourful.Internals.MathUtils;
 
 namespace Colourful.Internals;
@@ -33,13 +32,13 @@ public class LuvToXYZConverter : IColorConverter<LuvColor, XYZColor>
         var X = (d - b) / (a - c);
         var Z = X * a + b;
 
-        if (IsNaN(X) || X < 0)
+        if (double.IsNaN(X) || X < 0)
             X = 0;
 
-        if (IsNaN(Y) || Y < 0)
+        if (double.IsNaN(Y) || Y < 0)
             Y = 0;
 
-        if (IsNaN(Z) || Z < 0)
+        if (double.IsNaN(Z) || Z < 0)
             Z = 0;
 
         var targetColor = new XYZColor(in X, in Y, in Z);

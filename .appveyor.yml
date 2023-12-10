@@ -1,8 +1,11 @@
 image: Visual Studio 2022
 
-# Adds "+build.XXX" to MinVer's build metadata
 environment:
+  # Adds "+build.XXX" to MinVer's build metadata
   MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 # AppVeyor's displayed version, will get updated by MSBuild target
 version: '{build}'
@@ -11,14 +14,14 @@ before_build:
 - dotnet restore
 
 build_script:
-- dotnet build --no-restore --configuration Release
+- dotnet build --no-restore --configuration Release -p:GeneratePackageOnBuild=true -p:ContinuousIntegrationBuild=true
 
 test_script:
 - dotnet test --no-build --configuration Release -p:CollectCoverage=true
 
 after_test:
 - choco install codecov
-- pwsh: codecov --file @(ls ./testresults/*.opencover.xml)
+- pwsh: codecov --file @(Get-ChildItem -Path artifacts/coverage/*opencover*.xml -Recurse)
 
 artifacts:
-- path: ./**/*.nupkg
+- path: artifacts/package/**/*.nupkg
