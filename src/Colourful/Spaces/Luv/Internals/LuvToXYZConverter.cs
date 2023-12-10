@@ -20,7 +20,7 @@ public class LuvToXYZConverter : IColorConverter<LuvColor, XYZColor>
         var u0 = Compute_u0(_sourceWhitePoint);
         var v0 = Compute_v0(_sourceWhitePoint);
 
-        var Y = L > Kappa * CIEConstants.Epsilon
+        var Y = L > Kappa * Epsilon
             ? Pow3((L + 16) / 116)
             : L / Kappa;
 

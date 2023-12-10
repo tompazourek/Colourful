@@ -1,5 +1,4 @@
-﻿
-namespace Colourful.Internals;
+﻿namespace Colourful.Internals;
 
 /// <inheritdoc />
 public class XYZToxyYConverter : IColorConverter<XYZColor, xyYColor>

@@ -22,7 +22,7 @@ public class XYZToLuvConverter : IColorConverter<XYZColor, LuvColor>
         var upr = Compute_up(_targetWhitePoint);
         var vpr = Compute_vp(_targetWhitePoint);
 
-        var L = yr > CIEConstants.Epsilon ? 116 * Pow(yr, 1 / 3d) - 16 : Kappa * yr;
+        var L = yr > Epsilon ? 116 * Pow(yr, 1 / 3d) - 16 : Kappa * yr;
 
         if (double.IsNaN(L) || L < 0)
             L = 0;

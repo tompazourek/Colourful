@@ -5,89 +5,88 @@ using System.Runtime.Serialization;
 
 #endif
 
-namespace Colourful
+namespace Colourful;
+
+/// <summary>
+/// Exception when trying to create a converter for an impossible conversion.
+/// </summary>
+#if !NETSTANDARD1_1
+[Serializable]
+#endif
+[SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Using the default exception formatting.")]
+public class InvalidConversionException : Exception
 {
     /// <summary>
-    /// Exception when trying to create a converter for an impossible conversion.
+    /// Source color type
     /// </summary>
+    public Type SourceType { get; }
+
+    /// <summary>
+    /// Target color type
+    /// </summary>
+    public Type TargetType { get; }
+
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-    [Serializable]
+    [ExcludeFromCodeCoverage]
 #endif
-    [SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Using the default exception formatting.")]
-    public class InvalidConversionException : Exception
+    public InvalidConversionException()
     {
-        /// <summary>
-        /// Source color type
-        /// </summary>
-        public Type SourceType { get; }
+    }
 
-        /// <summary>
-        /// Target color type
-        /// </summary>
-        public Type TargetType { get; }
+    /// <param name="sourceType">Source color type</param>
+    /// <param name="targetType">Target color type</param>
+    public InvalidConversionException(Type sourceType, Type targetType)
+        : base($"Conversion between {sourceType} and {targetType} is not possible according to registered strategies.")
+    {
+        SourceType = sourceType;
+        TargetType = targetType;
+    }
 
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public InvalidConversionException()
-        {
-        }
+    public InvalidConversionException(string message)
+        : base(message)
+    {
+    }
 
-        /// <param name="sourceType">Source color type</param>
-        /// <param name="targetType">Target color type</param>
-        public InvalidConversionException(Type sourceType, Type targetType)
-            : base($"Conversion between {sourceType} and {targetType} is not possible according to registered strategies.")
-        {
-            SourceType = sourceType;
-            TargetType = targetType;
-        }
-
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public InvalidConversionException(string message)
-            : base(message)
-        {
-        }
+    public InvalidConversionException(string format, params object[] args)
+        : base(string.Format(format, args))
+    {
+    }
 
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public InvalidConversionException(string format, params object[] args)
-            : base(string.Format(format, args))
-        {
-        }
+    public InvalidConversionException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+    }
 
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public InvalidConversionException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
-        /// <inheritdoc />
-#if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
-#endif
-        public InvalidConversionException(string format, Exception innerException, params object[] args)
-            : base(string.Format(format, args), innerException)
-        {
-        }
+    public InvalidConversionException(string format, Exception innerException, params object[] args)
+        : base(string.Format(format, args), innerException)
+    {
+    }
 
 #if !NETSTANDARD1_1
 #pragma warning disable SYSLIB0051
-        /// <inheritdoc />
-        [ExcludeFromCodeCoverage]
-        protected InvalidConversionException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
+    /// <inheritdoc />
+    [ExcludeFromCodeCoverage]
+    protected InvalidConversionException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+    }
 #pragma warning restore SYSLIB0051
 #endif
-    }
 }

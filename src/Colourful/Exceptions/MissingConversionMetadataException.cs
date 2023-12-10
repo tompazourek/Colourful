@@ -6,81 +6,80 @@ using System.Runtime.Serialization;
 
 #endif
 
-namespace Colourful
+namespace Colourful;
+
+/// <summary>
+/// Exception when trying to create a converter for an impossible conversion.
+/// </summary>
+#if !NETSTANDARD1_1
+[Serializable]
+#endif
+[SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Using the default exception formatting.")]
+public class MissingConversionMetadataException : Exception
 {
     /// <summary>
-    /// Exception when trying to create a converter for an impossible conversion.
+    /// Conversion metadata key, see <see cref="IConversionMetadata.GetItemOrDefault{TValue}" />.
     /// </summary>
+    public string Key { get; }
+
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-    [Serializable]
+    [ExcludeFromCodeCoverage]
 #endif
-    [SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Using the default exception formatting.")]
-    public class MissingConversionMetadataException : Exception
+    public MissingConversionMetadataException()
     {
-        /// <summary>
-        /// Conversion metadata key, see <see cref="IConversionMetadata.GetItemOrDefault{TValue}" />.
-        /// </summary>
-        public string Key { get; }
+    }
 
-        /// <inheritdoc />
+    /// <param name="message">Exception message</param>
+    /// <param name="key">Key that was missing</param>
+    public MissingConversionMetadataException(string message, string key)
+        : base(message)
+        => Key = key;
+
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public MissingConversionMetadataException()
-        {
-        }
+    public MissingConversionMetadataException(string message)
+        : base(message)
+    {
+    }
 
-        /// <param name="message">Exception message</param>
-        /// <param name="key">Key that was missing</param>
-        public MissingConversionMetadataException(string message, string key)
-            : base(message)
-            => Key = key;
-
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public MissingConversionMetadataException(string message)
-            : base(message)
-        {
-        }
+    public MissingConversionMetadataException(string format, params object[] args)
+        : base(string.Format(format, args))
+    {
+    }
 
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public MissingConversionMetadataException(string format, params object[] args)
-            : base(string.Format(format, args))
-        {
-        }
+    public MissingConversionMetadataException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+    }
 
-        /// <inheritdoc />
+    /// <inheritdoc />
 #if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
 #endif
-        public MissingConversionMetadataException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
-        /// <inheritdoc />
-#if !NETSTANDARD1_1
-        [ExcludeFromCodeCoverage]
-#endif
-        public MissingConversionMetadataException(string format, Exception innerException, params object[] args)
-            : base(string.Format(format, args), innerException)
-        {
-        }
+    public MissingConversionMetadataException(string format, Exception innerException, params object[] args)
+        : base(string.Format(format, args), innerException)
+    {
+    }
 
 #if !NETSTANDARD1_1
 #pragma warning disable SYSLIB0051
-        /// <inheritdoc />
-        [ExcludeFromCodeCoverage]
-        protected MissingConversionMetadataException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
+    /// <inheritdoc />
+    [ExcludeFromCodeCoverage]
+    protected MissingConversionMetadataException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+    }
 #pragma warning restore SYSLIB0051
 #endif
-    }
 }
