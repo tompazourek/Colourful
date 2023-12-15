@@ -6,7 +6,7 @@
 
     <!-- Documents, symbols, validation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb;$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DebugType>embedded</DebugType>
     <EnablePackageValidation>true</EnablePackageValidation>
 
     <Authors>Tomáš Pažourek</Authors>
