@@ -8,7 +8,7 @@
     <CoverletOutput>$(ArtifactsPath)/coverage/$(MSBuildProjectName)/opencover.xml</CoverletOutput>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="6.0.2">
+    <PackageReference Include="coverlet.msbuild" Version="6.0.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
